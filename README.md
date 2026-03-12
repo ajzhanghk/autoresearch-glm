@@ -6,6 +6,8 @@ The original repo studies autonomous code-editing loops on a tiny GPT training b
 
 The canonical v1 benchmark is the Taiwan credit card default dataset from UCI. That keeps the repo grounded in a real credit-scoring problem while preserving the tiny, fixed-benchmark character of the upstream project.
 
+Compared with the upstream GPT benchmark, this fork has a much smaller dependency footprint and no GPU requirement. It is a plain CPU-first Python benchmark with NumPy, pandas, `ucimlrepo`, and Matplotlib for analysis.
+
 The idea is simple:
 
 - `prepare.py` defines a fixed tabular benchmark and validation split.
@@ -46,6 +48,8 @@ python train.py
 ```
 
 `prepare.py` fetches the TaiwanCredit benchmark from UCI through `ucimlrepo`, builds the fixed train/validation split, and caches the prepared arrays.
+
+There is no PyTorch stack, no tokenizer, and no GPU dependency. If you can run a normal scientific Python environment, you can usually try this fork.
 
 If you want the cache inside the repo instead of `~/.cache/autoresearch-glm`, set:
 
