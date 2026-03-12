@@ -42,8 +42,19 @@ No multiclass support, no regression support, no deep learning, no feature platf
 
 ## Quickstart
 
+Requirements:
+
+- Python 3.11+
+- internet access the first time `prepare.py` fetches TaiwanCredit from UCI
+
 ```bash
+# 1. Install the minimal dependencies
+python -m pip install numpy pandas matplotlib ucimlrepo
+
+# 2. Prepare the fixed TaiwanCredit benchmark
 python prepare.py
+
+# 3. Run the compact GLM feature search benchmark
 python train.py
 ```
 
