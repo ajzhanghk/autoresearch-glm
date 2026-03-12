@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import itertools
 import json
 import time
@@ -207,9 +205,9 @@ def candidate_configs() -> list[dict]:
     configs = []
     for shape in SEARCH_PLAN:
         for screen_k in SCREEN_KS:
-            max_singles = screen_k * len(shape["transforms"])
-            feature_cap = min(shape["feature_cap"], max_singles)
             for l2 in L2_GRID:
+                max_singles = screen_k * len(shape["transforms"])
+                feature_cap = min(shape["feature_cap"], max_singles)
                 configs.append(
                     {
                         "screen_k": screen_k,

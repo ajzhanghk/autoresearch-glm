@@ -17,6 +17,8 @@ That makes the fork about one concrete problem:
 
 **autonomous fixed-budget feature discovery for GLMs on tabular data**
 
+![Autoresearch-GLM progress](progress.png)
+
 ## Why this is interesting
 
 Classical tabular modeling still contains a hard combinatorial core. Even when the final estimator is just logistic regression, the choice of variables, transformations, caps, and interactions can dominate performance. In domains like credit scoring, fraud, AML, and loss forecasting, that search space has historically been important, labor-intensive, and difficult to systematize.
@@ -43,17 +45,7 @@ python prepare.py
 python train.py
 ```
 
-By default, `prepare.py` fetches the TaiwanCredit benchmark from UCI through `ucimlrepo`. If you want an offline smoke test, you can switch to the synthetic fallback:
-
-```bash
-python prepare.py --dataset synthetic_credit
-```
-
-You can also point it at a local CSV or Parquet file with a binary target:
-
-```bash
-python prepare.py --input data.csv --target target
-```
+`prepare.py` fetches the TaiwanCredit benchmark from UCI through `ucimlrepo`, builds the fixed train/validation split, and caches the prepared arrays.
 
 If you want the cache inside the repo instead of `~/.cache/autoresearch-glm`, set:
 

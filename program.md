@@ -15,7 +15,7 @@ The core benchmark is intentionally small. `prepare.py` owns the data split and 
 - Edit `train.py` first.
 - Avoid editing `prepare.py` unless there is a clear bug in data preparation or metric computation.
 - Do not change the validation split, the task definition, or the reported objective just to make the score look better.
-- Treat TaiwanCredit as the default benchmark unless there is a strong reason to run the synthetic fallback for smoke testing.
+- Treat TaiwanCredit as the fixed benchmark.
 
 ## Good directions
 
