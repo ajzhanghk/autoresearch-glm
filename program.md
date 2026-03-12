@@ -1,12 +1,12 @@
 # Program: autoresearch-glm
 
-Goal: improve the validation AUC of the fixed binary tabular benchmark.
+Goal: improve the validation AUC of the fixed binary tabular benchmark, with TaiwanCredit as the canonical v1 example.
 
 The core benchmark is intentionally small. `prepare.py` owns the data split and the AUC definition. `train.py` is the main research surface and should stay compact, readable, and hackable.
 
 ## Workflow
 
-1. Run `python prepare.py` once to materialize the dataset.
+1. Run `python prepare.py` once to materialize the benchmark dataset.
 2. Run `python train.py` and optimize the final `val_auc:` line.
 3. Make small, testable edits and keep only changes that improve the score without making the code needlessly larger or more obscure.
 
@@ -15,6 +15,7 @@ The core benchmark is intentionally small. `prepare.py` owns the data split and 
 - Edit `train.py` first.
 - Avoid editing `prepare.py` unless there is a clear bug in data preparation or metric computation.
 - Do not change the validation split, the task definition, or the reported objective just to make the score look better.
+- Treat TaiwanCredit as the default benchmark unless there is a strong reason to run the synthetic fallback for smoke testing.
 
 ## Good directions
 

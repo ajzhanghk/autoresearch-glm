@@ -11,6 +11,9 @@ import pandas as pd
 SEED = 1337
 VAL_FRACTION = 0.2
 TIME_BUDGET = 60.0
+DEFAULT_DATASET = "taiwancredit"
+TAIWAN_CREDIT_ID = 350
+TAIWAN_CREDIT_TARGET = "default.payment.next.month"
 
 
 def default_cache_dir() -> Path:
@@ -111,16 +114,82 @@ def make_synthetic_credit_data(n_rows: int = 8000, seed: int = SEED) -> pd.DataF
     )
 
 
-def read_frame(input_path: str | None, n_rows: int, seed: int) -> pd.DataFrame:
-    if input_path is None:
-        return make_synthetic_credit_data(n_rows=n_rows, seed=seed)
+def load_taiwan_credit_from_uci() -> pd.DataFrame:
+    try:
+        from ucimlrepo import fetch_ucirepo
+    except ImportError as exc:
+        raise ImportError(
+            "TaiwanCredit download requires `ucimlrepo`. Install project dependencies first."
+        ) from exc
 
-    path = Path(input_path)
+    dataset = fetch_ucirepo(id=TAIWAN_CREDIT_ID)
+    frame = pd.concat([dataset.data.features, dataset.data.targets], axis=1)
+    return normalize_taiwan_credit_frame(frame)
+
+
+def read_table(path: Path) -> pd.DataFrame:
     if path.suffix.lower() == ".csv":
         return pd.read_csv(path)
     if path.suffix.lower() in {".parquet", ".pq"}:
         return pd.read_parquet(path)
     raise ValueError(f"Unsupported dataset format: {path.suffix}")
+
+
+def normalize_taiwan_credit_frame(frame: pd.DataFrame) -> pd.DataFrame:
+    frame = frame.dropna(how="all").dropna(axis=1, how="all").copy()
+    frame.columns = [str(col).strip() for col in frame.columns]
+
+    if TAIWAN_CREDIT_TARGET not in frame.columns and not frame.empty:
+        header_row = [str(value).strip() for value in frame.iloc[0].tolist()]
+        if TAIWAN_CREDIT_TARGET in header_row:
+            frame.columns = header_row
+            frame = frame.iloc[1:].reset_index(drop=True)
+            frame.columns = [str(col).strip() for col in frame.columns]
+
+    if "ID" in frame.columns:
+        frame = frame.drop(columns=["ID"])
+
+    for column in frame.columns:
+        converted = pd.to_numeric(frame[column], errors="coerce")
+        if converted.notna().sum() >= max(1, int(0.9 * len(frame))):
+            frame[column] = converted
+
+    return frame
+
+
+def read_frame(input_path: str | None, dataset: str, n_rows: int, seed: int) -> pd.DataFrame:
+    if input_path is None:
+        if dataset == "synthetic_credit":
+            return make_synthetic_credit_data(n_rows=n_rows, seed=seed)
+        if dataset == "taiwancredit":
+            return load_taiwan_credit_from_uci()
+        raise ValueError(f"Unknown dataset: {dataset}")
+
+    path = Path(input_path)
+    frame = read_table(path)
+    if dataset == "taiwancredit":
+        return normalize_taiwan_credit_frame(frame)
+    return frame
+
+
+def infer_target(frame: pd.DataFrame, target: str | None, dataset: str) -> str:
+    if target is not None:
+        return target
+
+    if dataset == "taiwancredit":
+        aliases = [
+            TAIWAN_CREDIT_TARGET,
+            "default payment next month",
+            "Y",
+            "target",
+        ]
+        for alias in aliases:
+            if alias in frame.columns:
+                return alias
+
+    if "target" in frame.columns:
+        return "target"
+    return str(frame.columns[-1])
 
 
 def coerce_binary_target(series: pd.Series) -> np.ndarray:
@@ -180,12 +249,13 @@ def prepare_dataset(
     cache_dir: Path | None = None,
     n_rows: int = 8000,
     seed: int = SEED,
+    dataset: str = DEFAULT_DATASET,
 ) -> dict:
     cache_dir = cache_dir or default_cache_dir()
     cache_dir.mkdir(parents=True, exist_ok=True)
 
-    frame = read_frame(input_path=input_path, n_rows=n_rows, seed=seed)
-    target = target or ("target" if "target" in frame.columns else frame.columns[-1])
+    frame = read_frame(input_path=input_path, dataset=dataset, n_rows=n_rows, seed=seed)
+    target = infer_target(frame=frame, target=target, dataset=dataset)
     x, y, feature_names = numeric_feature_frame(frame, target=target)
     train_idx, val_idx = stratified_split(y, val_fraction=VAL_FRACTION, seed=seed)
 
@@ -206,7 +276,7 @@ def prepare_dataset(
         "features": int(len(feature_names)),
         "target": target,
         "cache_dir": str(cache_dir),
-        "source": str(input_path) if input_path else "synthetic_credit",
+        "source": str(input_path) if input_path else dataset,
     }
     (cache_dir / "meta.json").write_text(json.dumps(meta, indent=2) + "\n")
     return meta
@@ -230,6 +300,13 @@ def load_dataset(cache_dir: Path | None = None) -> dict:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Prepare the autoresearch-glm dataset.")
+    parser.add_argument(
+        "--dataset",
+        type=str,
+        default=DEFAULT_DATASET,
+        choices=["taiwancredit", "synthetic_credit"],
+        help="Fixed benchmark dataset. TaiwanCredit is the canonical v1 benchmark.",
+    )
     parser.add_argument("--input", type=str, default=None, help="Optional CSV or Parquet dataset.")
     parser.add_argument("--target", type=str, default=None, help="Binary target column name.")
     parser.add_argument("--rows", type=int, default=8000, help="Rows for the synthetic benchmark.")
@@ -243,6 +320,7 @@ def main() -> None:
         cache_dir=args.cache_dir,
         n_rows=args.rows,
         seed=args.seed,
+        dataset=args.dataset,
     )
     print(json.dumps(meta, indent=2))
 
