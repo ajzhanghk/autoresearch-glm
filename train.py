@@ -11,7 +11,7 @@ SCREEN_K = 10
 FEATURE_CAP = 28
 INTERACTION_CAP = 10
 CLIP_Q = 0.99
-L2 = 0.01
+L2 = 0.0
 TRANSFORMS = ("identity", "log1p", "sqrt", "square")
 
 
