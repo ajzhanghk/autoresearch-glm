@@ -10,7 +10,7 @@ from prepare import auc_score, load_dataset
 SCREEN_K = 10
 FEATURE_CAP = 28
 INTERACTION_CAP = 10
-CLIP_Q = 0.97
+CLIP_Q = 0.96
 L2 = 0.0
 TRANSFORMS = ("identity", "log1p", "sqrt", "square")
 
