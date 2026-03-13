@@ -1,30 +1,18 @@
 import itertools
 import json
-import time
 from dataclasses import dataclass
 
 import numpy as np
 
-from prepare import TIME_BUDGET, auc_score, load_dataset
+from prepare import auc_score, load_dataset
 
-SCREEN_KS = [8, 12]
-L2_GRID = [0.0, 0.1, 1.0]
-SEARCH_PLAN = [
-    {"feature_cap": 8, "interaction_cap": 0, "clip_q": None, "transforms": ("identity",)},
-    {"feature_cap": 8, "interaction_cap": 0, "clip_q": 0.99, "transforms": ("identity",)},
-    {"feature_cap": 12, "interaction_cap": 3, "clip_q": None, "transforms": ("identity",)},
-    {"feature_cap": 12, "interaction_cap": 3, "clip_q": 0.99, "transforms": ("identity",)},
-    {"feature_cap": 12, "interaction_cap": 0, "clip_q": 0.99, "transforms": ("identity", "square")},
-    {"feature_cap": 12, "interaction_cap": 0, "clip_q": 0.99, "transforms": ("identity", "log1p", "square")},
-    {"feature_cap": 12, "interaction_cap": 0, "clip_q": 0.99, "transforms": ("identity", "sqrt", "square")},
-    {
-        "feature_cap": 16,
-        "interaction_cap": 4,
-        "clip_q": 0.99,
-        "transforms": ("identity", "log1p", "sqrt", "square"),
-    },
-]
-MAX_TRIALS = 48
+# The agent should primarily edit this policy block.
+SCREEN_K = 10
+FEATURE_CAP = 28
+INTERACTION_CAP = 10
+CLIP_Q = 0.96
+L2 = 0.03
+TRANSFORMS = ("identity", "log1p", "sqrt", "square")
 
 
 @dataclass(frozen=True)
@@ -51,21 +39,15 @@ def safe_corr(x: np.ndarray, y: np.ndarray) -> float:
     return float(abs((x @ y) / denom))
 
 
-def maybe_clip(train: np.ndarray, val: np.ndarray, q: float | None) -> tuple[np.ndarray, np.ndarray, str]:
-    if q is None:
+def maybe_clip(train: np.ndarray, val: np.ndarray) -> tuple[np.ndarray, np.ndarray, str]:
+    if CLIP_Q is None:
         return train, val, ""
-    lo, hi = np.quantile(train, [1.0 - q, q])
-    return np.clip(train, lo, hi), np.clip(val, lo, hi), f"_clip{int(q * 100)}"
+    lo, hi = np.quantile(train, [1.0 - CLIP_Q, CLIP_Q])
+    return np.clip(train, lo, hi), np.clip(val, lo, hi), f"_clip{int(CLIP_Q * 100)}"
 
 
-def transform_feature(
-    name: str,
-    train: np.ndarray,
-    val: np.ndarray,
-    transform: str,
-    clip_q: float | None,
-) -> Candidate | None:
-    train, val, clip_suffix = maybe_clip(train, val, clip_q)
+def transform_feature(name: str, train: np.ndarray, val: np.ndarray, transform: str) -> Candidate | None:
+    train, val, clip_suffix = maybe_clip(train, val)
 
     if transform == "identity":
         feat_train = train
@@ -110,24 +92,21 @@ def build_design(
     x_val: np.ndarray,
     y_train: np.ndarray,
     feature_names: list[str],
-    config: dict,
 ) -> tuple[np.ndarray, np.ndarray, list[str]]:
     ranked = screen_variables(x_train, y_train, feature_names)
-    screened = ranked[: config["screen_k"]]
+    screened = ranked[:SCREEN_K]
 
     singles: list[Candidate] = []
     for idx in screened:
-        for transform in config["transforms"]:
+        for transform in TRANSFORMS:
             candidate = transform_feature(
                 name=feature_names[idx],
                 train=x_train[:, idx],
                 val=x_val[:, idx],
                 transform=transform,
-                clip_q=config["clip_q"],
             )
-            if candidate is None:
-                continue
-            singles.append(candidate)
+            if candidate is not None:
+                singles.append(candidate)
 
     rescored = [
         Candidate(name=c.name, train=c.train, val=c.val, score=safe_corr(c.train, y_train))
@@ -142,17 +121,17 @@ def build_design(
             continue
         chosen.append(candidate)
         seen.add(candidate.name)
-        if len(chosen) >= config["feature_cap"]:
+        if len(chosen) >= FEATURE_CAP:
             break
 
-    interaction_pool: list[Candidate] = []
-    source = screened[: min(len(screened), max(2, config["interaction_cap"] + 1))]
-    if config["interaction_cap"] > 0:
+    if INTERACTION_CAP > 0:
+        interaction_pool: list[Candidate] = []
+        source = screened[: min(len(screened), max(2, INTERACTION_CAP + 1))]
         for left, right in itertools.combinations(source, 2):
             left_name = feature_names[left]
             right_name = feature_names[right]
-            left_train, left_val, _ = maybe_clip(x_train[:, left], x_val[:, left], config["clip_q"])
-            right_train, right_val, _ = maybe_clip(x_train[:, right], x_val[:, right], config["clip_q"])
+            left_train, left_val, _ = maybe_clip(x_train[:, left], x_val[:, left])
+            right_train, right_val, _ = maybe_clip(x_train[:, right], x_val[:, right])
             train_term = left_train * right_train
             val_term = left_val * right_val
             interaction_pool.append(
@@ -164,7 +143,7 @@ def build_design(
                 )
             )
         interaction_pool.sort(key=lambda item: item.score, reverse=True)
-        chosen.extend(interaction_pool[: config["interaction_cap"]])
+        chosen.extend(interaction_pool[:INTERACTION_CAP])
 
     train_matrix = np.column_stack([candidate.train for candidate in chosen])
     val_matrix = np.column_stack([candidate.val for candidate in chosen])
@@ -172,7 +151,7 @@ def build_design(
     return train_matrix, val_matrix, [candidate.name for candidate in chosen]
 
 
-def fit_logistic_glm(x_train: np.ndarray, y_train: np.ndarray, l2: float) -> np.ndarray:
+def fit_logistic_glm(x_train: np.ndarray, y_train: np.ndarray) -> np.ndarray:
     design = np.column_stack([np.ones(len(x_train)), x_train])
     beta = np.zeros(design.shape[1], dtype=np.float64)
     penalty = np.ones_like(beta)
@@ -182,9 +161,9 @@ def fit_logistic_glm(x_train: np.ndarray, y_train: np.ndarray, l2: float) -> np.
         logits = design @ beta
         probs = sigmoid(logits)
         weights = np.clip(probs * (1.0 - probs), 1e-6, None)
-        grad = design.T @ (y_train - probs) - l2 * penalty * beta
+        grad = design.T @ (y_train - probs) - L2 * penalty * beta
         hess = design.T @ (weights[:, None] * design)
-        hess.flat[:: hess.shape[0] + 1] += l2 * penalty
+        hess.flat[:: hess.shape[0] + 1] += L2 * penalty
         try:
             step = np.linalg.solve(hess, grad)
         except np.linalg.LinAlgError:
@@ -201,27 +180,17 @@ def predict_scores(x: np.ndarray, beta: np.ndarray) -> np.ndarray:
     return design @ beta
 
 
-def candidate_configs() -> list[dict]:
-    configs = []
-    for shape in SEARCH_PLAN:
-        for screen_k in SCREEN_KS:
-            for l2 in L2_GRID:
-                max_singles = screen_k * len(shape["transforms"])
-                feature_cap = min(shape["feature_cap"], max_singles)
-                configs.append(
-                    {
-                        "screen_k": screen_k,
-                        "feature_cap": feature_cap,
-                        "interaction_cap": shape["interaction_cap"],
-                        "clip_q": shape["clip_q"],
-                        "l2": l2,
-                        "transforms": shape["transforms"],
-                    }
-                )
-    return configs
+def describe_policy() -> str:
+    clip = "none" if CLIP_Q is None else f"clip{int(CLIP_Q * 100)}"
+    transforms = "+".join(TRANSFORMS)
+    return (
+        f"screen_k={SCREEN_K} feature_cap={FEATURE_CAP} "
+        f"interaction_cap={INTERACTION_CAP} clip={clip} "
+        f"l2={L2:.3f} transforms={transforms}"
+    )
 
 
-def run_search() -> dict:
+def run_experiment() -> dict:
     dataset = load_dataset()
     x_train = dataset["x_train"]
     y_train = dataset["y_train"]
@@ -229,58 +198,29 @@ def run_search() -> dict:
     y_val = dataset["y_val"]
     feature_names = dataset["feature_names"]
 
-    start = time.time()
-    best = None
-    seen_designs = set()
-    evaluated = 0
+    train_matrix, val_matrix, names = build_design(
+        x_train=x_train,
+        x_val=x_val,
+        y_train=y_train,
+        feature_names=feature_names,
+    )
+    beta = fit_logistic_glm(train_matrix, y_train)
+    val_scores = predict_scores(val_matrix, beta)
+    val_auc = auc_score(y_val, val_scores)
 
-    for config in candidate_configs():
-        if evaluated >= MAX_TRIALS or time.time() - start > TIME_BUDGET:
-            break
-
-        train_matrix, val_matrix, names = build_design(
-            x_train=x_train,
-            x_val=x_val,
-            y_train=y_train,
-            feature_names=feature_names,
-            config=config,
-        )
-        signature = (tuple(names), config["l2"])
-        if signature in seen_designs:
-            continue
-        seen_designs.add(signature)
-
-        evaluated += 1
-        beta = fit_logistic_glm(train_matrix, y_train, l2=config["l2"])
-        val_scores = predict_scores(val_matrix, beta)
-        val_auc = auc_score(y_val, val_scores)
-
-        result = {
-            "trial": evaluated,
-            "val_auc": val_auc,
-            "num_features": len(names),
-            "feature_names": names,
-            "config": config,
-        }
-        print(
-            f"trial={evaluated:02d} val_auc={val_auc:.6f} "
-            f"features={len(names):02d} screen_k={config['screen_k']:02d} "
-            f"interactions={config['interaction_cap']:02d} l2={config['l2']:.3f} "
-            f"transforms={'+'.join(config['transforms'])}"
-        )
-
-        if best is None or val_auc > best["val_auc"]:
-            best = result
-
-    assert best is not None
-    best["elapsed_seconds"] = time.time() - start
-    return best
+    return {
+        "val_auc": val_auc,
+        "num_features": len(names),
+        "feature_names": names,
+        "policy": describe_policy(),
+    }
 
 
 def main() -> None:
-    best = run_search()
-    print(json.dumps(best, indent=2))
-    print(f"val_auc: {best['val_auc']:.6f}")
+    result = run_experiment()
+    print(result["policy"])
+    print(json.dumps(result, indent=2))
+    print(f"val_auc: {result['val_auc']:.6f}")
 
 
 if __name__ == "__main__":
