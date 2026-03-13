@@ -1,0 +1,31 @@
+commit	val_auc	num_features	status	description
+66ca3da	0.762133	20	keep	baseline
+9d655b6	0.762133	20	keep	collapse train.py to one explicit policy
+4ebb883	0.768132	26	keep	try wider screen and larger interaction set
+f0244d3	0.767909	26	discard	try lighter tail clipping
+68a5b15	0.768132	26	discard	broaden interaction screening pool
+75ee88a	0.768131	26	discard	try light regularization on wider policy
+5343b13	0.764793	23	discard	try leaner feature and interaction caps
+1877af1	0.766776	26	discard	try univariate AUC variable screening
+7ecef9d	0.768132	26	discard	try a wider univariate screening set
+fc20470	0.768071	30	discard	try a larger transformed feature cap
+e36884a	0.768149	28	keep	try a deeper interaction shortlist
+80b665e	0.768362	30	keep	try an even deeper interaction shortlist
+b6c907e	0.768365	34	keep	try a larger feature cap with more interactions
+863c920	0.769059	38	keep	try a still larger transformed feature cap
+ceeddea	0.769059	38	discard	try pushing the feature cap past thirty
+c0b3650	0.769057	40	discard	try a dozen interaction terms
+fd16d17	0.767858	38	discard	try screening one more raw variable
+ba656bd	0.767871	34	discard	try screening one fewer raw variable
+c10ccde	0.769049	38	discard	try tiny regularization on the best policy
+615d282	0.762976	38	discard	try removing clipping on the best policy
+a19c9ff	0.770192	38	keep	try slightly stronger clipping
+fed2a56	0.770438	38	keep	try stronger clipping again
+f78d03b	0.770904	38	keep	try clipping at the 96th percentile
+b82ffd7	0.769987	38	discard	try clipping at the 95th percentile
+5996d83	0.768602	34	discard	try dropping sqrt from the transform set
+4791b1e	0.770000	34	discard	try dropping log1p from the transform set
+3ae484e	0.752160	28	discard	try dropping square from the transform set
+94d4289	0.770823	37	discard	try nine interaction terms
+6cc1c05	0.770482	36	discard	try trimming the feature cap to twenty-six
+363a17e	0.770949	38	keep	try light regularization with stronger clipping

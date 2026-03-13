@@ -22,7 +22,7 @@ To set up a new experiment, work with the user to:
    If not, tell the human to run `python prepare.py`.
 
 5. Initialize `results.tsv`.
-   Create it with just the header row.
+   If starting a fresh experiment branch, reset it to just the header row.
 
 6. Confirm setup looks good, then begin experimentation.
 
@@ -135,8 +135,7 @@ c3d4e5f	0.739218	12	discard	stronger l2 with same feature set
 d4e5f6g	0.000000	0	crash	bad interaction logic
 ```
 
-Do not commit `results.tsv`.
-Leave it untracked.
+`results.tsv` is a tracked artifact in this fork. Keep it updated as the experiment log, but prefer to checkpoint log-only changes separately from the code-change commits that are being evaluated.
 
 ## The Experiment Loop
 

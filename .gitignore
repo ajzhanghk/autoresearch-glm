@@ -2,4 +2,3 @@ __pycache__/
 .pytest_cache/
 .cache/
 *.pyc
-results.tsv
