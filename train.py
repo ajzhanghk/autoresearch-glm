@@ -39,10 +39,6 @@ def safe_corr(x: np.ndarray, y: np.ndarray) -> float:
     return float(abs((x @ y) / denom))
 
 
-def univariate_auc_score(x: np.ndarray, y: np.ndarray) -> float:
-    return max(auc_score(y, x), auc_score(y, -x))
-
-
 def maybe_clip(train: np.ndarray, val: np.ndarray) -> tuple[np.ndarray, np.ndarray, str]:
     if CLIP_Q is None:
         return train, val, ""
@@ -80,7 +76,7 @@ def transform_feature(name: str, train: np.ndarray, val: np.ndarray, transform: 
 
 
 def screen_variables(x_train: np.ndarray, y_train: np.ndarray, feature_names: list[str]) -> list[int]:
-    scores = [univariate_auc_score(x_train[:, idx], y_train) for idx in range(x_train.shape[1])]
+    scores = [safe_corr(x_train[:, idx], y_train) for idx in range(x_train.shape[1])]
     return sorted(range(len(feature_names)), key=lambda idx: scores[idx], reverse=True)
 
 
