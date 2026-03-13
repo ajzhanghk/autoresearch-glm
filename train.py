@@ -9,7 +9,7 @@ from prepare import auc_score, load_dataset
 # The agent should primarily edit this policy block.
 SCREEN_K = 10
 FEATURE_CAP = 20
-INTERACTION_CAP = 8
+INTERACTION_CAP = 10
 CLIP_Q = 0.99
 L2 = 0.0
 TRANSFORMS = ("identity", "log1p", "sqrt", "square")
