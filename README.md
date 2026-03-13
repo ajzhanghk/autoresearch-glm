@@ -75,7 +75,7 @@ export AUTORESEARCH_GLM_CACHE=.cache/autoresearch-glm
 Simply spin up your Claude, Codex, or whatever agent you want in this repo, then prompt something like:
 
 ```text
-Hi have a look at program.md and let's kick off a new experiment! let's do the setup first.
+Hi have a look at program.md and let's kick off a new experiment! 
 ```
 
 The `program.md` file is essentially a super lightweight skill. It tells the agent what it can edit, what it should optimize, how to log experiments, and when to keep or revert a change.
