@@ -126,7 +126,7 @@ def build_design(
 
     if INTERACTION_CAP > 0:
         interaction_pool: list[Candidate] = []
-        source = screened[: min(len(screened), max(2, INTERACTION_CAP + 1))]
+        source = screened
         for left, right in itertools.combinations(source, 2):
             left_name = feature_names[left]
             right_name = feature_names[right]
