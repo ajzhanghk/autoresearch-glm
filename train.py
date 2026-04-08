@@ -20,8 +20,8 @@ XGB_INTERACTION_ETA = 0.05
 CLIP_Q = 0.98
 L1 = 0.01
 L2 = 0.02
-PRUNE_KEEP = None
-PRUNE_MIN_COEF = 0.03
+PRUNE_KEEP = 36
+PRUNE_MIN_COEF = 0.0
 # Primary main-effect path: nonparametric XGBoost-seeded splines.
 # Optional main-effect support: XGBoost joint bins (`xgb_bin`) and raw terms (`identity`).
 TRANSFORMS = ("identity", "xgb_spline")
