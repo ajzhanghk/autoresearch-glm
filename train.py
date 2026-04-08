@@ -11,7 +11,7 @@ import xgboost as xgb
 from prepare import load_dataset
 
 # The agent should primarily edit this policy block.
-SCREEN_K = 10
+SCREEN_K = None
 FEATURE_CAP = 28
 INTERACTION_CAP = 0
 FAST_BINS = 8
