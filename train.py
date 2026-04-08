@@ -21,8 +21,8 @@ CLIP_Q = 0.96
 L1 = 0.0
 L2 = 0.03
 # Primary main-effect path: nonparametric XGBoost-seeded splines.
-# Optional main-effect support: XGBoost joint bins (`xgb_bin`), heavy-tail squashes (`asinh`), and raw terms (`identity`).
-TRANSFORMS = ("identity", "asinh", "xgb_spline")
+# Optional main-effect support: XGBoost joint bins (`xgb_bin`) and raw terms (`identity`).
+TRANSFORMS = ("identity", "xgb_spline")
 XGB_BIN_TREES = 100
 XGB_BIN_ETA = 0.1
 XGB_BIN_MAX_KNOTS = 4
@@ -359,28 +359,6 @@ def identity_candidates(
     return candidates
 
 
-def asinh_candidates(
-    x_train: np.ndarray,
-    x_val: np.ndarray,
-    feature_names: list[str],
-    screened: list[int],
-) -> list[Candidate]:
-    candidates: list[Candidate] = []
-    for idx in screened:
-        raw_train, raw_val, clip_suffix = maybe_clip(x_train[:, idx], x_val[:, idx])
-        scale = np.median(np.abs(raw_train))
-        scale = 1.0 if scale < 1e-6 else scale
-        candidates.append(
-            Candidate(
-                name=f"{feature_names[idx]}{clip_suffix}__asinh",
-                train=np.arcsinh(raw_train / scale),
-                val=np.arcsinh(raw_val / scale),
-                score=0.0,
-            )
-        )
-    return candidates
-
-
 def screen_variables(x_train: np.ndarray, y_train: np.ndarray, feature_names: list[str]) -> list[int]:
     scores = [safe_corr(x_train[:, idx], y_train) for idx in range(x_train.shape[1])]
     return sorted(range(len(feature_names)), key=lambda idx: scores[idx], reverse=True)
@@ -438,14 +416,12 @@ def build_design(
     xgb_stumps = None
 
     singles: list[Candidate] = []
-    unknown = set(TRANSFORMS) - {"identity", "asinh", "xgb_bin", "xgb_spline"}
+    unknown = set(TRANSFORMS) - {"identity", "xgb_bin", "xgb_spline"}
     if unknown:
         raise ValueError(f"Unknown transform(s): {sorted(unknown)}")
 
     if "identity" in TRANSFORMS:
         singles.extend(identity_candidates(x_train, x_val, feature_names, screened))
-    if "asinh" in TRANSFORMS:
-        singles.extend(asinh_candidates(x_train, x_val, feature_names, screened))
     if "xgb_bin" in TRANSFORMS:
         xgb_stumps = fit_xgb_depth1_stumps(x_train, y_train, feature_names)
         singles.extend(xgb_joint_bin_candidates(x_train, x_val, xgb_stumps, feature_names, screened))
