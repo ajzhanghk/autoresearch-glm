@@ -21,8 +21,8 @@ CLIP_Q = 0.96
 L1 = 0.0
 L2 = 0.03
 # Primary main-effect path: nonparametric XGBoost-seeded splines.
-# Optional main-effect support: XGBoost joint bins (`xgb_bin`), cut indicators (`xgb_cut`), and raw terms (`identity`).
-TRANSFORMS = ("identity", "xgb_cut", "xgb_spline")
+# Optional main-effect support: XGBoost joint bins (`xgb_bin`) and raw terms (`identity`).
+TRANSFORMS = ("identity", "xgb_spline")
 XGB_BIN_TREES = 100
 XGB_BIN_ETA = 0.1
 XGB_BIN_MAX_KNOTS = 4
@@ -339,34 +339,6 @@ def xgb_joint_spline_candidates(
     return candidates
 
 
-def xgb_joint_cut_candidates(
-    x_train: np.ndarray,
-    x_val: np.ndarray,
-    stumps: dict[str, list[tuple[float, float, float]]],
-    feature_names: list[str],
-    screened: list[int],
-) -> list[Candidate]:
-    candidates: list[Candidate] = []
-    for idx in screened:
-        name = feature_names[idx]
-        feature_stumps = stumps[name]
-        if not feature_stumps:
-            continue
-        raw_train, raw_val, clip_suffix = maybe_clip(x_train[:, idx], x_val[:, idx])
-        step_target = xgb_step_values(raw_train, feature_stumps)
-        initial_knots = [split for split, _, _ in feature_stumps]
-        for knot in adaspline_knots(raw_train, step_target, initial_knots, XGB_BIN_MAX_KNOTS):
-            candidates.append(
-                Candidate(
-                    name=f"{name}{clip_suffix}__xgb_cut_{knot:g}",
-                    train=(raw_train >= knot).astype(np.float64),
-                    val=(raw_val >= knot).astype(np.float64),
-                    score=0.0,
-                )
-            )
-    return candidates
-
-
 def identity_candidates(
     x_train: np.ndarray,
     x_val: np.ndarray,
@@ -444,7 +416,7 @@ def build_design(
     xgb_stumps = None
 
     singles: list[Candidate] = []
-    unknown = set(TRANSFORMS) - {"identity", "xgb_bin", "xgb_cut", "xgb_spline"}
+    unknown = set(TRANSFORMS) - {"identity", "xgb_bin", "xgb_spline"}
     if unknown:
         raise ValueError(f"Unknown transform(s): {sorted(unknown)}")
 
@@ -453,9 +425,6 @@ def build_design(
     if "xgb_bin" in TRANSFORMS:
         xgb_stumps = fit_xgb_depth1_stumps(x_train, y_train, feature_names)
         singles.extend(xgb_joint_bin_candidates(x_train, x_val, xgb_stumps, feature_names, screened))
-    if "xgb_cut" in TRANSFORMS:
-        xgb_stumps = fit_xgb_depth1_stumps(x_train, y_train, feature_names) if xgb_stumps is None else xgb_stumps
-        singles.extend(xgb_joint_cut_candidates(x_train, x_val, xgb_stumps, feature_names, screened))
     if "xgb_spline" in TRANSFORMS:
         xgb_stumps = fit_xgb_depth1_stumps(x_train, y_train, feature_names) if xgb_stumps is None else xgb_stumps
         singles.extend(xgb_joint_spline_candidates(x_train, x_val, xgb_stumps, feature_names, screened))
@@ -554,7 +523,7 @@ def describe_policy() -> str:
     xgb_bits = []
     if "xgb_bin" in TRANSFORMS or "xgb_spline" in TRANSFORMS:
         xgb_bits.append(f"xgb_trees={XGB_BIN_TREES}")
-    if "xgb_bin" in TRANSFORMS or "xgb_cut" in TRANSFORMS:
+    if "xgb_bin" in TRANSFORMS:
         xgb_bits.append(f"xgb_bin_knots={XGB_BIN_MAX_KNOTS}")
     if "xgb_spline" in TRANSFORMS:
         xgb_bits.append(f"xgb_spline_knots={XGB_SPLINE_MAX_KNOTS}")
