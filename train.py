@@ -21,14 +21,13 @@ CLIP_Q = 0.96
 L1 = 0.0
 L2 = 0.03
 # Primary main-effect path: nonparametric XGBoost-seeded splines.
-# Optional main-effect support: XGBoost joint bins (`xgb_bin`), low-cardinality indicators (`categorical`), and raw terms (`identity`).
-TRANSFORMS = ("identity", "categorical", "xgb_spline")
+# Optional main-effect support: XGBoost joint bins (`xgb_bin`) and raw terms (`identity`).
+TRANSFORMS = ("identity", "xgb_spline")
 XGB_BIN_TREES = 100
 XGB_BIN_ETA = 0.1
 XGB_BIN_MAX_KNOTS = 4
 # Budget of retained XGBoost-seeded knots per raw feature for continuous linear splines.
 XGB_SPLINE_MAX_KNOTS = 6
-LOW_CARD_MAX_LEVELS = 10
 ADASPLINE_LAMBDA = 1.0
 ADASPLINE_STEPS = 15
 ADASPLINE_EPS = 1e-4
@@ -360,33 +359,6 @@ def identity_candidates(
     return candidates
 
 
-def categorical_candidates(
-    x_train: np.ndarray,
-    x_val: np.ndarray,
-    feature_names: list[str],
-    screened: list[int],
-) -> list[Candidate]:
-    candidates: list[Candidate] = []
-    for idx in screened:
-        raw_train = x_train[:, idx]
-        raw_val = x_val[:, idx]
-        levels, counts = np.unique(raw_train, return_counts=True)
-        if len(levels) <= 1 or len(levels) > LOW_CARD_MAX_LEVELS:
-            continue
-        base = int(np.argmax(counts))
-        for level in levels[np.arange(len(levels)) != base]:
-            label = str(level).replace("-", "m").replace(".", "p")
-            candidates.append(
-                Candidate(
-                    name=f"{feature_names[idx]}__eq_{label}",
-                    train=(raw_train == level).astype(np.float64),
-                    val=(raw_val == level).astype(np.float64),
-                    score=0.0,
-                )
-            )
-    return candidates
-
-
 def screen_variables(x_train: np.ndarray, y_train: np.ndarray, feature_names: list[str]) -> list[int]:
     scores = [safe_corr(x_train[:, idx], y_train) for idx in range(x_train.shape[1])]
     return sorted(range(len(feature_names)), key=lambda idx: scores[idx], reverse=True)
@@ -444,14 +416,12 @@ def build_design(
     xgb_stumps = None
 
     singles: list[Candidate] = []
-    unknown = set(TRANSFORMS) - {"identity", "categorical", "xgb_bin", "xgb_spline"}
+    unknown = set(TRANSFORMS) - {"identity", "xgb_bin", "xgb_spline"}
     if unknown:
         raise ValueError(f"Unknown transform(s): {sorted(unknown)}")
 
     if "identity" in TRANSFORMS:
         singles.extend(identity_candidates(x_train, x_val, feature_names, screened))
-    if "categorical" in TRANSFORMS:
-        singles.extend(categorical_candidates(x_train, x_val, feature_names, screened))
     if "xgb_bin" in TRANSFORMS:
         xgb_stumps = fit_xgb_depth1_stumps(x_train, y_train, feature_names)
         singles.extend(xgb_joint_bin_candidates(x_train, x_val, xgb_stumps, feature_names, screened))
