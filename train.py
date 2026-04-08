@@ -20,6 +20,8 @@ XGB_INTERACTION_ETA = 0.05
 CLIP_Q = 0.98
 L1 = 0.01
 L2 = 0.02
+PRUNE_KEEP = 37
+PRUNE_MIN_COEF = 0.0
 # Primary main-effect path: nonparametric XGBoost-seeded splines.
 # Optional main-effect support: XGBoost joint bins (`xgb_bin`) and raw terms (`identity`).
 TRANSFORMS = ("identity", "xgb_spline")
@@ -378,6 +380,33 @@ def quantile_bin_edges(x: np.ndarray, bins: int) -> np.ndarray:
     return np.unique(np.quantile(x, probs))
 
 
+def prune_design(
+    train_matrix: np.ndarray,
+    val_matrix: np.ndarray,
+    names: list[str],
+    y_train: np.ndarray,
+) -> tuple[np.ndarray, np.ndarray, list[str]]:
+    if not names or (PRUNE_KEEP is None and PRUNE_MIN_COEF <= 0.0):
+        return train_matrix, val_matrix, names
+
+    beta = fit_logistic_glm(train_matrix, y_train)
+    coef = np.abs(beta[1:])
+    keep = np.arange(len(names))
+    if PRUNE_MIN_COEF > 0.0:
+        keep = keep[coef >= PRUNE_MIN_COEF]
+    if PRUNE_KEEP is not None and len(keep) > PRUNE_KEEP:
+        order = np.argsort(coef[keep])[::-1]
+        keep = keep[order[:PRUNE_KEEP]]
+    if len(keep) == 0:
+        keep = np.array([int(np.argmax(coef))])
+    keep = np.sort(keep)
+    return (
+        train_matrix[:, keep],
+        val_matrix[:, keep],
+        [names[idx] for idx in keep],
+    )
+
+
 def fast_interaction_score(left: np.ndarray, right: np.ndarray, residual: np.ndarray) -> float:
     left_edges = quantile_bin_edges(left, FAST_BINS)
     right_edges = quantile_bin_edges(right, FAST_BINS)
@@ -472,7 +501,10 @@ def build_design(
     train_matrix = np.column_stack([candidate.train for candidate in chosen])
     val_matrix = np.column_stack([candidate.val for candidate in chosen])
     train_matrix, val_matrix = standardize(train_matrix, val_matrix)
-    return train_matrix, val_matrix, [candidate.name for candidate in chosen]
+    names = [candidate.name for candidate in chosen]
+    train_matrix, val_matrix, names = prune_design(train_matrix, val_matrix, names, y_train)
+    train_matrix, val_matrix = standardize(train_matrix, val_matrix)
+    return train_matrix, val_matrix, names
 
 
 def fit_logistic_glm(x_train: np.ndarray, y_train: np.ndarray) -> np.ndarray:
@@ -519,6 +551,14 @@ def predict_scores(x: np.ndarray, beta: np.ndarray) -> np.ndarray:
 def describe_policy() -> str:
     clip = "none" if CLIP_Q is None else f"clip{int(CLIP_Q * 100)}"
     screen = "all" if SCREEN_K is None else str(SCREEN_K)
+    if PRUNE_KEEP is None and PRUNE_MIN_COEF <= 0.0:
+        prune = "none"
+    elif PRUNE_KEEP is None:
+        prune = f"coef>={PRUNE_MIN_COEF:.3f}"
+    elif PRUNE_MIN_COEF <= 0.0:
+        prune = f"keep{PRUNE_KEEP}"
+    else:
+        prune = f"keep{PRUNE_KEEP}_coef>={PRUNE_MIN_COEF:.3f}"
     transforms = "+".join(TRANSFORMS)
     xgb_bits = []
     if "xgb_bin" in TRANSFORMS or "xgb_spline" in TRANSFORMS:
@@ -530,7 +570,7 @@ def describe_policy() -> str:
     xgb_suffix = "" if not xgb_bits else " " + " ".join(xgb_bits)
     return (
         f"screen_k={screen} feature_cap={FEATURE_CAP} "
-        f"interaction_cap={INTERACTION_CAP} clip={clip} "
+        f"interaction_cap={INTERACTION_CAP} clip={clip} prune={prune} "
         f"l1={L1:.3f} l2={L2:.3f} transforms={transforms}{xgb_suffix}"
     )
 
