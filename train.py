@@ -13,7 +13,8 @@ from prepare import load_dataset
 # The agent should primarily edit this policy block.
 SCREEN_K = None
 FEATURE_CAP = 40
-INTERACTION_CAP = 0
+INTERACTION_CAP = 1
+INTERACTION_SOURCE_K = 12
 FAST_BINS = 8
 XGB_INTERACTION_TREES = 40
 XGB_INTERACTION_ETA = 0.05
@@ -482,7 +483,7 @@ def build_design(
         main_beta = fit_logistic_glm(main_train_std, y_train)
         residual = y_train - sigmoid(predict_scores(main_train_std, main_beta))
         pair_scores: list[tuple[float, int, int]] = []
-        source = screened[: min(len(screened), max(2, INTERACTION_CAP + 1))]
+        source = screened[: min(len(screened), max(2, INTERACTION_SOURCE_K))]
         for left, right in itertools.combinations(source, 2):
             left_train, left_val, _ = maybe_clip(x_train[:, left], x_val[:, left])
             right_train, right_val, _ = maybe_clip(x_train[:, right], x_val[:, right])
