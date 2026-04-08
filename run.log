@@ -1,0 +1,213 @@
+=== commit c46becc | baseline raw glm | status keep ===
+screen_k=all feature_cap=28 interaction_cap=0 clip=none l1=0.000 l2=0.030 transforms=identity
+val_auc: 0.730375
+num_features: 23
+=== commit 6bb15d1 | add raw plus xgb spline main effects | status keep ===
+screen_k=10 feature_cap=28 interaction_cap=0 clip=clip96 l1=0.000 l2=0.030 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=4
+val_auc: 0.764403
+num_features: 23
+=== commit 86dd69d | enable residual xgb interaction features | status discard ===
+screen_k=10 feature_cap=28 interaction_cap=4 clip=clip96 l1=0.000 l2=0.030 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=4
+val_auc: 0.763396
+num_features: 24
+=== commit 45cf674 | screen all features for spline candidates | status keep ===
+screen_k=all feature_cap=28 interaction_cap=0 clip=clip96 l1=0.000 l2=0.030 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=4
+val_auc: 0.765522
+num_features: 28
+=== commit 3ee8be1 | raise spline feature cap | status keep ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip96 l1=0.000 l2=0.030 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=4
+val_auc: 0.774969
+num_features: 40
+=== commit e8c4a00 | increase spline budget to fifty features | status discard ===
+screen_k=all feature_cap=50 interaction_cap=0 clip=clip96 l1=0.000 l2=0.030 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=4
+val_auc: 0.773803
+num_features: 45
+=== commit e7f09d7 | increase spline knots to 6 with fifty-feature cap | status discard ===
+screen_k=all feature_cap=50 interaction_cap=0 clip=clip96 l1=0.000 l2=0.030 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.774068
+num_features: 46
+=== commit f79f0ab | increase xgb spline knots at capped budget | status keep ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip96 l1=0.000 l2=0.030 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.775159
+num_features: 40
+=== commit ae46dab | increase l2 for spline model | status discard ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip96 l1=0.000 l2=0.050 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.775106
+num_features: 40
+=== commit e6bae71 | add xgb bin candidates with stronger l2 | status discard ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip96 l1=0.000 l2=0.050 transforms=identity+xgb_bin+xgb_spline xgb_trees=100 xgb_bin_knots=4 xgb_spline_knots=6
+val_auc: 0.771216
+num_features: 40
+=== commit c839acf | add xgb bin candidates to best spline policy | status discard ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip96 l1=0.000 l2=0.030 transforms=identity+xgb_bin+xgb_spline xgb_trees=100 xgb_bin_knots=4 xgb_spline_knots=6
+val_auc: 0.771244
+num_features: 40
+=== commit 4bf730c | add xgb cut indicator features | status discard ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip96 l1=0.000 l2=0.030 transforms=identity+xgb_cut+xgb_spline xgb_trees=100 xgb_bin_knots=4 xgb_spline_knots=6
+val_auc: 0.771601
+num_features: 40
+=== commit a7b9904 | add asinh heavy-tail features | status discard ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip96 l1=0.000 l2=0.030 transforms=identity+asinh+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.765626
+num_features: 40
+=== commit 7432538 | add low-cardinality indicator features | status discard ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip96 l1=0.000 l2=0.030 transforms=identity+categorical+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.767278
+num_features: 40
+=== commit cc6739d | retry categorical features with more budget | status discard ===
+screen_k=all feature_cap=50 interaction_cap=0 clip=clip96 l1=0.000 l2=0.030 transforms=identity+categorical+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.766902
+num_features: 50
+=== commit ce45f42 | test spline-only main effects | status discard ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip96 l1=0.000 l2=0.030 transforms=xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.746651
+num_features: 23
+=== commit 0f7bdfb | test mild l1 shrinkage | status keep ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip96 l1=0.010 l2=0.030 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.775260
+num_features: 40
+=== commit 2cece36 | increase l1 from new frontier | status discard ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip96 l1=0.020 l2=0.030 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.775257
+num_features: 40
+=== commit 1d65327 | loosen clipping on l1 frontier | status keep ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip97 l1=0.010 l2=0.030 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.775753
+num_features: 40
+=== commit 8e9fbba | loosen clipping further | status keep ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip98 l1=0.010 l2=0.030 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.775943
+num_features: 40
+=== commit 2acf8cf | loosen clipping to ninety-nine | status discard ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip99 l1=0.010 l2=0.030 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.768120
+num_features: 40
+=== commit 893abaf | increase feature cap on l1 clip frontier | status discard ===
+screen_k=all feature_cap=45 interaction_cap=0 clip=clip98 l1=0.010 l2=0.030 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.775439
+num_features: 45
+=== commit 593e0d1 | lighten l2 on l1 clip frontier | status keep ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip98 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.775944
+num_features: 40
+=== commit 6245e43 | lower l2 further on l1 clip frontier | status discard ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip98 l1=0.010 l2=0.010 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.775937
+num_features: 40
+=== commit 9710639 | increase spline knots on l1 clip frontier | status discard ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip98 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=7
+val_auc: 0.775944
+num_features: 40
+=== commit 0405a52 | tighten feature cap on l1 clip frontier | status discard ===
+screen_k=all feature_cap=38 interaction_cap=0 clip=clip98 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.775855
+num_features: 38
+=== commit 28f24cf | add post-fit pruning logic | status keep ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip98 prune=keep37 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.776001
+num_features: 37
+=== commit f655e4d | tighten pruning to thirty-six | status keep ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip98 prune=keep36 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.776529
+num_features: 36
+=== commit 33cf926 | tighten pruning to thirty-five | status discard ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip98 prune=keep35 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.775248
+num_features: 35
+=== commit 7f12ebe | relax l1 under pruning | status discard ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip98 prune=keep36 l1=0.005 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.776525
+num_features: 36
+=== commit 2224b84 | test clip97 under pruning | status discard ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip97 prune=keep36 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.776152
+num_features: 36
+=== commit 5852e21 | raise l2 under pruning | status discard ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip98 prune=keep36 l1=0.010 l2=0.030 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.776524
+num_features: 36
+=== commit 681f502 | test one residual interaction with pruning | status discard ===
+screen_k=all feature_cap=40 interaction_cap=1 clip=clip98 prune=keep36 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.776529
+num_features: 36
+=== commit 10a7099 | test two residual interactions with pruning | status discard ===
+screen_k=all feature_cap=40 interaction_cap=2 clip=clip98 prune=keep36 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.776529
+num_features: 36
+=== commit 04d18ac | allow interactions through pruning | status discard ===
+screen_k=all feature_cap=40 interaction_cap=2 clip=clip98 prune=keep38 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.775824
+num_features: 38
+=== commit 46d6a6d | test interactions without pruning | status discard ===
+screen_k=all feature_cap=40 interaction_cap=2 clip=clip98 prune=none l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.775944
+num_features: 40
+=== commit 360147c | broaden pre-prune pool to forty-five | status discard ===
+screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=d =screen_k=all feature_cap=45screen_k=all feature_cap=45screen_k=all featur0.050 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.776529
+num_features: 36
+=== commit cb77051 | raise spline knots under keep36 pruning | status discard ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip98 prune=keep36 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=7
+val_auc: 0.776529
+num_features: 36
+=== commit 1ff4950 | raise spline knots to eight under keep36 pruning | status discard ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip98 prune=keep36 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=8
+val_auc: 0.776529
+num_features: 36
+=== commit 896d8fe | widen residual pair screen to twelve raws | status discard ===
+screen_k=all feature_cap=40 interaction_cap=1 clip=clip98 prune=keep36 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.776529
+num_features: 36
+=== commit 4dbb9c6 | test two interactions with wider pair screen | status discard ===
+screen_k=all feature_cap=40 interaction_cap=2 clip=clip98 prune=keep36 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.776529
+num_features: 36
+=== commit ea71156 | test four interactions with wider pair screen | status keep ===
+screen_k=all feature_cap=40 interaction_cap=4 clip=clip98 prune=keep36 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.781135
+num_features: 36
+=== commit 08ceeee | loosen pruning on wider interaction frontier | status discard ===
+screen_k=all feature_cap=40 interaction_cap=4 clip=clip98 prune=keep38 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.780198
+num_features: 38
+
+=== commit 360147c | broaden pre-prune pool to forty-five | status discard ===
+screen_k=all feature_cap=45 interaction_cap=0 clip=clip98 prune=keep36 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.773560
+num_features: 36
+=== commit 2a5d094 | broaden pre-prune pool to fifty | status discard ===
+screen_k=all feature_cap=50 interaction_cap=0 clip=clip98 prune=keep36 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.774310
+num_features: 36
+=== commit 51d2227 | threshold prune at three-hundredths | status discard ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip98 prune=coef>=0.030 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.776001
+num_features: 37
+=== commit e5bdcad | threshold prune at five-hundredths | status discard ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip98 prune=coef>=0.050 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.776529
+num_features: 36
+=== commit cb77051 | raise spline knots under keep36 pruning | status discard ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip98 prune=keep36 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=7
+val_auc: 0.776529
+num_features: 36
+=== commit 1ff4950 | raise spline knots to eight under keep36 pruning | status discard ===
+screen_k=all feature_cap=40 interaction_cap=0 clip=clip98 prune=keep36 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=8
+val_auc: 0.776529
+num_features: 36
+=== commit 896d8fe | widen residual pair screen to twelve raws | status discard ===
+screen_k=all feature_cap=40 interaction_cap=1 clip=clip98 prune=keep36 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.776529
+num_features: 36
+=== commit 4dbb9c6 | test two interactions with wider pair screen | status discard ===
+screen_k=all feature_cap=40 interaction_cap=2 clip=clip98 prune=keep36 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.776529
+num_features: 36
+=== commit ea71156 | test four interactions with wider pair screen | status keep ===
+screen_k=all feature_cap=40 interaction_cap=4 clip=clip98 prune=keep36 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.781135
+num_features: 36
+=== commit 08ceeee | loosen pruning on wider interaction frontier | status discard ===
+screen_k=all feature_cap=40 interaction_cap=4 clip=clip98 prune=keep38 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
+val_auc: 0.780198
+num_features: 38

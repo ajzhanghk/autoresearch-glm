@@ -1,1 +1,47 @@
 commit	val_auc	num_features	status	description
+c46becc	0.730375	23	keep	baseline raw glm
+6bb15d1	0.764403	23	keep	add raw plus xgb spline main effects
+86dd69d	0.763396	24	discard	enable residual xgb interaction features
+45cf674	0.765522	28	keep	screen all features for spline candidates
+3ee8be1	0.774969	40	keep	raise spline feature cap
+e8c4a00	0.773803	45	discard	increase spline budget to fifty features
+e7f09d7	0.774068	46	discard	increase spline knots to 6 with fifty-feature cap
+f79f0ab	0.775159	40	keep	increase xgb spline knots at capped budget
+ae46dab	0.775106	40	discard	increase l2 for spline model
+e6bae71	0.771216	40	discard	add xgb bin candidates with stronger l2
+c839acf	0.771244	40	discard	add xgb bin candidates to best spline policy
+4bf730c	0.771601	40	discard	add xgb cut indicator features
+a7b9904	0.765626	40	discard	add asinh heavy-tail features
+7432538	0.767278	40	discard	add low-cardinality indicator features
+cc6739d	0.766902	50	discard	retry categorical features with more budget
+ce45f42	0.746651	23	discard	test spline-only main effects
+0f7bdfb	0.775260	40	keep	test mild l1 shrinkage
+2cece36	0.775257	40	discard	increase l1 from new frontier
+1d65327	0.775753	40	keep	loosen clipping on l1 frontier
+8e9fbba	0.775943	40	keep	loosen clipping further
+2acf8cf	0.768120	40	discard	loosen clipping to ninety-nine
+893abaf	0.775439	45	discard	increase feature cap on l1 clip frontier
+593e0d1	0.775944	40	keep	lighten l2 on l1 clip frontier
+6245e43	0.775937	40	discard	lower l2 further on l1 clip frontier
+9710639	0.775944	40	discard	increase spline knots on l1 clip frontier
+0405a52	0.775855	38	discard	tighten feature cap on l1 clip frontier
+28f24cf	0.776001	37	keep	add post-fit pruning logic
+f655e4d	0.776529	36	keep	tighten pruning to thirty-six
+33cf926	0.775248	35	discard	tighten pruning to thirty-five
+7f12ebe	0.776525	36	discard	relax l1 under pruning
+2224b84	0.776152	36	discard	test clip97 under pruning
+5852e21	0.776524	36	discard	raise l2 under pruning
+681f502	0.776529	36	discard	test one residual interaction with pruning
+10a7099	0.776529	36	discard	test two residual interactions with pruning
+04d18ac	0.775824	38	discard	allow interactions through pruning
+46d6a6d	0.775944	40	discard	test interactions without pruning
+360147c	0.773560	36	discard	broaden pre-prune pool to forty-five
+2a5d094	0.774310	36	discard	broaden pre-prune pool to fifty
+51d2227	0.776001	37	discard	threshold prune at three-hundredths
+e5bdcad	0.776529	36	discard	threshold prune at five-hundredths
+cb77051	0.776529	36	discard	raise spline knots under keep36 pruning
+1ff4950	0.776529	36	discard	raise spline knots to eight under keep36 pruning
+896d8fe	0.776529	36	discard	widen residual pair screen to twelve raws
+4dbb9c6	0.776529	36	discard	test two interactions with wider pair screen
+ea71156	0.781135	36	keep	test four interactions with wider pair screen
+08ceeee	0.780198	38	discard	loosen pruning on wider interaction frontier
