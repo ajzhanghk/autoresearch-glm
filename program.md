@@ -12,26 +12,42 @@ To set up a new experiment, work with the user to:
 2. Create a fresh branch.
    Use `autoresearch/<tag>` from current `master`.
 
-3. Read the in-scope files for full context:
+3. Ensure the `.venv` environment exists in the repo root.
+   Check with:
+   ```bash
+   ls .venv/bin/python
+   ```
+   If missing, create and populate it:
+   ```bash
+   python3.12 -m venv .venv
+   .venv/bin/pip install -e .
+   .venv/bin/pip install scikit-learn xgboost
+   ```
+   All subsequent `python` commands must use `.venv/bin/python`.
+
+4. Read the in-scope files for full context:
    - `README.md` for repository context
    - `prepare.py` for the fixed benchmark setup, data prep, and metric
    - `train.py` for the editable experiment code
 
-4. Verify the dataset cache exists.
+5. Verify the dataset cache exists.
    Check whether `~/.cache/autoresearch-glm/` already contains `dataset.npz`.
-   If not, tell the human to run `python prepare.py`.
+   If not, run:
+   ```bash
+   .venv/bin/python prepare.py
+   ```
 
-5. Initialize `results.tsv`.
+6. Initialize `results.tsv`.
    If starting a fresh experiment branch, reset it to just the header row.
 
-6. Confirm setup looks good, then begin experimentation.
+7. Confirm setup looks good, then begin experimentation.
 
 ## Experimentation
 
 Each experiment is one run of:
 
 ```bash
-python train.py
+.venv/bin/python train.py
 ```
 
 The script evaluates one current GLM feature-search policy and prints a final scalar:
@@ -174,7 +190,7 @@ Loop:
 4. Run the experiment and capture stdout/stderr to a temporary file:
 
 ```bash
-python train.py > /tmp/autoresearch-glm-run.log 2>&1
+.venv/bin/python train.py > /tmp/autoresearch-glm-run.log 2>&1
 ```
 
 5. Read out the metric:
@@ -205,7 +221,7 @@ num_features: <count>
 9. Refresh `model_forms.tsv` with:
 
 ```bash
-python build_model_forms.py
+.venv/bin/python build_model_forms.py
 ```
 
 10. If `val_auc` improved, keep the commit and advance.
