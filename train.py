@@ -11,18 +11,18 @@ import xgboost as xgb
 from prepare import load_dataset
 
 # The agent should primarily edit this policy block.
-SCREEN_K = 10
+SCREEN_K = None
 FEATURE_CAP = 28
-INTERACTION_CAP = 4
+INTERACTION_CAP = 0
 FAST_BINS = 8
 XGB_INTERACTION_TREES = 40
 XGB_INTERACTION_ETA = 0.05
-CLIP_Q = 0.96
+CLIP_Q = None
 L1 = 0.0
 L2 = 0.03
 # Primary main-effect path: nonparametric XGBoost-seeded splines.
-# Optional main-effect support: XGBoost joint bins (`xgb_bin`) and clipping.
-TRANSFORMS = ("xgb_spline",)
+# Optional main-effect support: XGBoost joint bins (`xgb_bin`) and raw terms (`identity`).
+TRANSFORMS = ("identity",)
 XGB_BIN_TREES = 100
 XGB_BIN_ETA = 0.1
 XGB_BIN_MAX_KNOTS = 4
@@ -339,6 +339,26 @@ def xgb_joint_spline_candidates(
     return candidates
 
 
+def identity_candidates(
+    x_train: np.ndarray,
+    x_val: np.ndarray,
+    feature_names: list[str],
+    screened: list[int],
+) -> list[Candidate]:
+    candidates: list[Candidate] = []
+    for idx in screened:
+        raw_train, raw_val, clip_suffix = maybe_clip(x_train[:, idx], x_val[:, idx])
+        candidates.append(
+            Candidate(
+                name=f"{feature_names[idx]}{clip_suffix}",
+                train=raw_train,
+                val=raw_val,
+                score=0.0,
+            )
+        )
+    return candidates
+
+
 def screen_variables(x_train: np.ndarray, y_train: np.ndarray, feature_names: list[str]) -> list[int]:
     scores = [safe_corr(x_train[:, idx], y_train) for idx in range(x_train.shape[1])]
     return sorted(range(len(feature_names)), key=lambda idx: scores[idx], reverse=True)
@@ -392,14 +412,16 @@ def build_design(
     feature_names: list[str],
 ) -> tuple[np.ndarray, np.ndarray, list[str]]:
     ranked = screen_variables(x_train, y_train, feature_names)
-    screened = ranked[:SCREEN_K]
+    screened = ranked if SCREEN_K is None else ranked[:SCREEN_K]
     xgb_stumps = None
 
     singles: list[Candidate] = []
-    unknown = set(TRANSFORMS) - {"xgb_bin", "xgb_spline"}
+    unknown = set(TRANSFORMS) - {"identity", "xgb_bin", "xgb_spline"}
     if unknown:
         raise ValueError(f"Unknown transform(s): {sorted(unknown)}")
 
+    if "identity" in TRANSFORMS:
+        singles.extend(identity_candidates(x_train, x_val, feature_names, screened))
     if "xgb_bin" in TRANSFORMS:
         xgb_stumps = fit_xgb_depth1_stumps(x_train, y_train, feature_names)
         singles.extend(xgb_joint_bin_candidates(x_train, x_val, xgb_stumps, feature_names, screened))
@@ -496,6 +518,7 @@ def predict_scores(x: np.ndarray, beta: np.ndarray) -> np.ndarray:
 
 def describe_policy() -> str:
     clip = "none" if CLIP_Q is None else f"clip{int(CLIP_Q * 100)}"
+    screen = "all" if SCREEN_K is None else str(SCREEN_K)
     transforms = "+".join(TRANSFORMS)
     xgb_bits = []
     if "xgb_bin" in TRANSFORMS or "xgb_spline" in TRANSFORMS:
@@ -506,7 +529,7 @@ def describe_policy() -> str:
         xgb_bits.append(f"xgb_spline_knots={XGB_SPLINE_MAX_KNOTS}")
     xgb_suffix = "" if not xgb_bits else " " + " ".join(xgb_bits)
     return (
-        f"screen_k={SCREEN_K} feature_cap={FEATURE_CAP} "
+        f"screen_k={screen} feature_cap={FEATURE_CAP} "
         f"interaction_cap={INTERACTION_CAP} clip={clip} "
         f"l1={L1:.3f} l2={L2:.3f} transforms={transforms}{xgb_suffix}"
     )
