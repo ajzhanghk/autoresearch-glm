@@ -91,6 +91,15 @@ GLM-oriented, readable feature logic is preferred over clever machinery.
 
 The first run should always establish the baseline on the current `train.py` as-is.
 
+The baseline should be a raw GLM with no feature engineering:
+
+- raw variables only
+- no transforms
+- no spline terms
+- no interactions
+
+Only after that baseline is logged should you start adding or pruning feature logic.
+
 ## Output Format
 
 When `train.py` finishes, it prints:
@@ -137,6 +146,22 @@ d4e5f6g	0.000000	0	crash	bad interaction logic
 
 `results.tsv` is a tracked artifact in this fork. Keep it updated as the experiment log, but prefer to checkpoint log-only changes separately from the code-change commits that are being evaluated.
 
+`model_forms.tsv` is the separate tracked model-spec log. It should track only the baseline and later `keep` runs, not `discard` or `crash` runs.
+
+Regenerate it with:
+
+```bash
+python build_model_forms.py
+```
+
+Expected columns:
+
+```text
+commit	num_features	added_terms	pruned_terms	glm_formula
+```
+
+Use `glm_formula` to inspect the explicit GLM form. `added_terms` and `pruned_terms` should be computed relative to the previous kept model and written in `{term1, term2, ...}` format. Use `{}` when no terms were added or pruned.
+
 ## The Experiment Loop
 
 The experiment runs on a dedicated branch such as `autoresearch/mar12`.
@@ -146,28 +171,45 @@ Loop:
 1. Check the current git state.
 2. Edit `train.py` with one experimental idea.
 3. Commit the change.
-4. Run:
+4. Run the experiment and capture stdout/stderr to a temporary file:
 
 ```bash
-python train.py > run.log 2>&1
+python train.py > /tmp/autoresearch-glm-run.log 2>&1
 ```
 
 5. Read out the metric:
 
 ```bash
-grep "^val_auc:" run.log
+grep "^val_auc:" /tmp/autoresearch-glm-run.log
 ```
 
 6. If `grep` is empty, the run crashed.
    Read the traceback with:
 
 ```bash
-tail -n 50 run.log
+tail -n 50 /tmp/autoresearch-glm-run.log
 ```
 
-7. Record the result in `results.tsv`.
-8. If `val_auc` improved, keep the commit and advance.
-9. If `val_auc` is equal or worse, revert to the previous good commit.
+7. Append a new block to `run.log`. Do not overwrite old runs. Keep the blocks in time order, one block per experiment commit.
+
+Use this shape:
+
+```text
+=== commit <hash> | <description> | status <keep/discard/crash> ===
+<policy string>
+val_auc: <metric>
+num_features: <count>
+```
+
+8. Record the result in `results.tsv`.
+9. Refresh `model_forms.tsv` with:
+
+```bash
+python build_model_forms.py
+```
+
+10. If `val_auc` improved, keep the commit and advance.
+11. If `val_auc` is equal or worse, revert to the previous good commit.
 
 ## Never Stop Rule
 
