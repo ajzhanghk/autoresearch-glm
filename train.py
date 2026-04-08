@@ -13,7 +13,7 @@ from prepare import load_dataset
 # The agent should primarily edit this policy block.
 SCREEN_K = None
 FEATURE_CAP = 40
-INTERACTION_CAP = 2
+INTERACTION_CAP = 4
 INTERACTION_SOURCE_K = 12
 FAST_BINS = 8
 XGB_INTERACTION_TREES = 40
