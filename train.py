@@ -11,18 +11,18 @@ import xgboost as xgb
 from prepare import load_dataset
 
 # The agent should primarily edit this policy block.
-SCREEN_K = None
+SCREEN_K = 10
 FEATURE_CAP = 28
 INTERACTION_CAP = 0
 FAST_BINS = 8
 XGB_INTERACTION_TREES = 40
 XGB_INTERACTION_ETA = 0.05
-CLIP_Q = None
+CLIP_Q = 0.96
 L1 = 0.0
 L2 = 0.03
 # Primary main-effect path: nonparametric XGBoost-seeded splines.
 # Optional main-effect support: XGBoost joint bins (`xgb_bin`) and raw terms (`identity`).
-TRANSFORMS = ("identity",)
+TRANSFORMS = ("identity", "xgb_spline")
 XGB_BIN_TREES = 100
 XGB_BIN_ETA = 0.1
 XGB_BIN_MAX_KNOTS = 4
