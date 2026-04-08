@@ -19,7 +19,7 @@ XGB_INTERACTION_TREES = 40
 XGB_INTERACTION_ETA = 0.05
 CLIP_Q = 0.98
 L1 = 0.01
-L2 = 0.03
+L2 = 0.02
 PRUNE_KEEP = 36
 PRUNE_MIN_COEF = 0.0
 # Primary main-effect path: nonparametric XGBoost-seeded splines.
