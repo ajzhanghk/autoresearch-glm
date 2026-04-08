@@ -17,7 +17,7 @@ INTERACTION_CAP = 0
 FAST_BINS = 8
 XGB_INTERACTION_TREES = 40
 XGB_INTERACTION_ETA = 0.05
-CLIP_Q = 0.97
+CLIP_Q = 0.98
 L1 = 0.01
 L2 = 0.03
 # Primary main-effect path: nonparametric XGBoost-seeded splines.
