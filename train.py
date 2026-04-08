@@ -27,7 +27,7 @@ XGB_BIN_TREES = 100
 XGB_BIN_ETA = 0.1
 XGB_BIN_MAX_KNOTS = 4
 # Budget of retained XGBoost-seeded knots per raw feature for continuous linear splines.
-XGB_SPLINE_MAX_KNOTS = 7
+XGB_SPLINE_MAX_KNOTS = 6
 ADASPLINE_LAMBDA = 1.0
 ADASPLINE_STEPS = 15
 ADASPLINE_EPS = 1e-4
