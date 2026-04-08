@@ -12,7 +12,7 @@ from prepare import load_dataset
 
 # The agent should primarily edit this policy block.
 SCREEN_K = None
-FEATURE_CAP = 40
+FEATURE_CAP = 50
 INTERACTION_CAP = 0
 FAST_BINS = 8
 XGB_INTERACTION_TREES = 40
@@ -27,7 +27,7 @@ XGB_BIN_TREES = 100
 XGB_BIN_ETA = 0.1
 XGB_BIN_MAX_KNOTS = 4
 # Budget of retained XGBoost-seeded knots per raw feature for continuous linear splines.
-XGB_SPLINE_MAX_KNOTS = 4
+XGB_SPLINE_MAX_KNOTS = 6
 ADASPLINE_LAMBDA = 1.0
 ADASPLINE_STEPS = 15
 ADASPLINE_EPS = 1e-4
