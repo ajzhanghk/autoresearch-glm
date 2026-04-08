@@ -19,7 +19,7 @@ XGB_INTERACTION_TREES = 40
 XGB_INTERACTION_ETA = 0.05
 CLIP_Q = 0.96
 L1 = 0.0
-L2 = 0.03
+L2 = 0.05
 # Primary main-effect path: nonparametric XGBoost-seeded splines.
 # Optional main-effect support: XGBoost joint bins (`xgb_bin`) and raw terms (`identity`).
 TRANSFORMS = ("identity", "xgb_spline")
