@@ -21,7 +21,6 @@ To set up a new experiment, work with the user to:
    ```bash
    python3.12 -m venv .venv
    .venv/bin/pip install -e .
-   .venv/bin/pip install scikit-learn xgboost
    ```
    All subsequent `python` commands must use `.venv/bin/python`.
 
@@ -68,6 +67,26 @@ Higher is better.
   - feature caps
   - clipping rules
   - regularization
+  - separate `L1` and `L2` strengths
+- Add compact tabular transforms such as:
+  - XGBoost depth-1 joint-binning features (`xgb_bin`)
+  - AdaSpline-style continuous spline features fit to XGBoost joint bins (`xgb_spline`)
+- Screen interactions only after fitting the main-effect model.
+- Prefer residual-based two-way interaction screening over naive raw product correlation.
+  A good default is a FAST-style screen: bin each raw variable coarsely, score each pair on the residual left by the main-effect fit, then pass only the top few pairs into a small depth-2 XGBoost interaction model via explicit `interaction_constraints`.
+  Use that second-stage XGBoost fit to discover pairwise regions, then map them into explicit GLM interaction terms such as leaf-region indicators or rectangle terms. Do not fall back to plain raw products unless you are deliberately testing that baseline.
+- Treat `xgb_spline` as a primary main-effect method.
+- Treat `xgb_bin` as an optional main-effect method.
+  It is piecewise constant and discontinuous, so use it when that shape is helpful rather than as the default.
+- Treat clipping as optional support for special values, extreme tails, and heavier-tailed variables.
+- Tune the XGBoost spline budgets directly in `train.py`, especially:
+  - whether `xgb_bin` is present in `TRANSFORMS`
+  - whether `xgb_spline` is present in `TRANSFORMS`
+  - `XGB_BIN_MAX_KNOTS`
+  - `XGB_SPLINE_MAX_KNOTS`
+Keep `XGB_BIN_TREES` fixed as infrastructure unless there is a strong reason to revisit it.
+- Use `L1` when you want the GLM fit itself to zero weak coefficients and reduce effective model complexity.
+- Use `L2` when you want extra numerical stability or gentler shrinkage without inducing sparsity.
 - Simplify code if the metric holds up or improves.
 
 ## What You CANNOT Do
@@ -102,6 +121,7 @@ When deciding whether to keep a change, weigh:
 - interpretability of the resulting feature policy
 
 GLM-oriented, readable feature logic is preferred over clever machinery.
+For interactions in particular, compact residual-based screening is preferred over brute-force expansion.
 
 ## The First Run
 
@@ -258,7 +278,14 @@ If the idea itself is broken, log it as `crash`, revert, and move on.
 Good directions:
 
 - better univariate screening
-- better compact transforms such as `log1p`, `sqrt`, `square`, or clipped variants
+- better use of `xgb_spline` as a primary main-effect feature engine
+- optional clipping when it helps with special values or heavy tails
+- simple residual parametric transforms such as `square` when they clearly add signal
+- XGBoost depth-1 joint binning to produce compact piecewise-constant feature candidates
+  - tune the knot budget with `XGB_BIN_MAX_KNOTS`
+- AdaSpline-style approximation of those XGBoost bins into a small continuous piecewise-linear spline basis
+  - tune the spline knot budget with `XGB_SPLINE_MAX_KNOTS`
+  - treat `XGB_BIN_TREES` as fixed by default
 - tighter interaction screening among only the strongest variables
 - simpler feature sets with equal or better AUC
 - more sensible regularization for the chosen feature design

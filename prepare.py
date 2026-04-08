@@ -5,6 +5,8 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from sklearn.impute import SimpleImputer
+from sklearn.model_selection import train_test_split
 
 SEED = 1337
 VAL_FRACTION = 0.2
@@ -23,38 +25,6 @@ def default_cache_dir() -> Path:
     if root:
         return Path(root)
     return Path.home() / ".cache" / "autoresearch-glm"
-
-
-def auc_score(y_true: np.ndarray, y_score: np.ndarray) -> float:
-    y_true = np.asarray(y_true, dtype=np.int64)
-    y_score = np.asarray(y_score, dtype=np.float64)
-    n_pos = int(y_true.sum())
-    n_neg = int(len(y_true) - n_pos)
-    if n_pos == 0 or n_neg == 0:
-        raise ValueError("AUC requires both positive and negative examples.")
-
-    order = np.argsort(y_score, kind="mergesort")
-    scores = y_score[order]
-    labels = y_true[order]
-
-    concordant = 0.0
-    negatives_seen = 0
-    i = 0
-    while i < len(scores):
-        j = i
-        pos = 0
-        neg = 0
-        while j < len(scores) and scores[j] == scores[i]:
-            if labels[j] == 1:
-                pos += 1
-            else:
-                neg += 1
-            j += 1
-        concordant += pos * (negatives_seen + 0.5 * neg)
-        negatives_seen += neg
-        i = j
-
-    return concordant / (n_pos * n_neg)
 
 
 def load_taiwan_credit_from_uci() -> pd.DataFrame:
@@ -112,28 +82,9 @@ def numeric_feature_frame(frame: pd.DataFrame, target: str) -> tuple[np.ndarray,
         raise ValueError("No numeric predictor columns found.")
 
     x_frame = x_frame.replace([np.inf, -np.inf], np.nan)
-    x_frame = x_frame.fillna(x_frame.median(numeric_only=True))
-    return x_frame.to_numpy(dtype=np.float64), y, list(x_frame.columns)
-
-
-def stratified_split(y: np.ndarray, val_fraction: float, seed: int) -> tuple[np.ndarray, np.ndarray]:
-    rng = np.random.default_rng(seed)
-    train_idx = []
-    val_idx = []
-
-    for label in (0, 1):
-        idx = np.flatnonzero(y == label)
-        if len(idx) < 2:
-            raise ValueError("Each class needs at least two rows for a train/validation split.")
-        idx = rng.permutation(idx)
-        n_val = max(1, int(round(len(idx) * val_fraction)))
-        n_val = min(n_val, len(idx) - 1)
-        val_idx.append(idx[:n_val])
-        train_idx.append(idx[n_val:])
-
-    train = np.concatenate(train_idx)
-    val = np.concatenate(val_idx)
-    return rng.permutation(train), rng.permutation(val)
+    imputer = SimpleImputer(strategy="median")
+    x = imputer.fit_transform(x_frame).astype(np.float64)
+    return x, y, list(x_frame.columns)
 
 
 def prepare_dataset(
@@ -146,14 +97,22 @@ def prepare_dataset(
     frame = load_taiwan_credit_from_uci()
     target = TAIWAN_CREDIT_TARGET
     x, y, feature_names = numeric_feature_frame(frame, target=target)
-    train_idx, val_idx = stratified_split(y, val_fraction=VAL_FRACTION, seed=seed)
+    if np.min(np.bincount(y)) < 2:
+        raise ValueError("Each class needs at least two rows for a train/validation split.")
+    x_train, x_val, y_train, y_val = train_test_split(
+        x,
+        y,
+        test_size=VAL_FRACTION,
+        random_state=seed,
+        stratify=y,
+    )
 
     np.savez_compressed(
         cache_dir / "dataset.npz",
-        x_train=x[train_idx],
-        y_train=y[train_idx],
-        x_val=x[val_idx],
-        y_val=y[val_idx],
+        x_train=x_train,
+        y_train=y_train,
+        x_val=x_val,
+        y_val=y_val,
         feature_names=np.asarray(feature_names, dtype=object),
     )
 
