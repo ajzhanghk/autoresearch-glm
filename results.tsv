@@ -47,3 +47,4 @@ ea71156	0.781135	36	keep	test four interactions with wider pair screen
 08ceeee	0.780198	38	discard	loosen pruning on wider interaction frontier
 d235f8f	0.777844	36	keep	v3 baseline: nn_main + nn_pair (16x16)
 8916e8b	0.778799	36	keep	ensemble nn subnetworks across 3 seeds
+715793b	0.780696	36	keep	ensemble 5 seeds
