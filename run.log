@@ -311,3 +311,6 @@ val_auc: 0.781858
 
 === commit 50e1936 | L1=0.005 | discard ===
 val_auc: 0.781586
+
+=== commit 12c9936 | L2=0.05 | discard ===
+val_auc: 0.781528

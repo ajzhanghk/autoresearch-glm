@@ -17,9 +17,9 @@ FEATURE_CAP = 40
 INTERACTION_CAP = 6
 INTERACTION_SOURCE_K = 12
 FAST_BINS = 8
-CLIP_Q = 0.98
+CLIP_Q = 0.99
 L1 = 0.01
-L2 = 0.05
+L2 = 0.02
 PRUNE_KEEP = 38
 PRUNE_MIN_COEF = 0.0
 # v3 primary main-effect path: per-variable ReLU MLP shape function (`nn_main`).

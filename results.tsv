@@ -69,3 +69,4 @@ ee4e0bf	0.781525	36	discard	ensemble=6 worse than 5
 8972ea5	0.782104	40	discard	PRUNE_KEEP=40 tied with 38 (prefer simpler)
 9214f68	0.781858	37	discard	PRUNE_KEEP=37 worse
 50e1936	0.781586	38	discard	L1=0.005 worse
+12c9936	0.781528	38	discard	L2=0.05 worse
