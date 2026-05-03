@@ -271,3 +271,6 @@ num_features: 36
 ensemble=5 cap=6 source_k=15
 val_auc: 0.780706
 num_features: 36
+
+=== commit 8864178 | NN_LR=5e-4 | discard ===
+val_auc: 0.780285
