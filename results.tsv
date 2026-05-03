@@ -70,3 +70,4 @@ ee4e0bf	0.781525	36	discard	ensemble=6 worse than 5
 9214f68	0.781858	37	discard	PRUNE_KEEP=37 worse
 50e1936	0.781586	38	discard	L1=0.005 worse
 12c9936	0.781528	38	discard	L2=0.05 worse
+c06ead5	0.782581	38	keep	CLIP_Q=0.99 new frontier

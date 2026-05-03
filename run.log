@@ -314,3 +314,8 @@ val_auc: 0.781586
 
 === commit 12c9936 | L2=0.05 | discard ===
 val_auc: 0.781528
+
+=== commit c06ead5 | CLIP_Q=0.99 | KEEP — new frontier ===
+ensemble=5 hidden=24x24 cap=6 prune=38 clip=99
+val_auc: 0.782581
+num_features: 38
