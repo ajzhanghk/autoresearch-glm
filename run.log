@@ -216,3 +216,8 @@ num_features: 38
 screen_k=all feature_cap=40 interaction_cap=4 clip=clip98 prune=keep36 l1=0.010 l2=0.020 transforms=identity+nn_main interaction_engine=nn nn_hidden=16x16
 val_auc: 0.777844
 num_features: 36
+
+=== commit 8916e8b | ensemble 3 seeds | status keep ===
+screen_k=all feature_cap=40 interaction_cap=4 clip=clip98 prune=keep36 l1=0.010 l2=0.020 transforms=identity+nn_main interaction_engine=nn nn_hidden=16x16 ensemble=3
+val_auc: 0.778799
+num_features: 36
