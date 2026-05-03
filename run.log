@@ -236,3 +236,8 @@ num_features: 36
 ensemble=5 hidden=32x32
 val_auc: 0.779880
 num_features: 36
+
+=== commit 0adf375 | hidden=(8,8) | status discard ===
+ensemble=5 hidden=8x8
+val_auc: 0.779140
+num_features: 36
