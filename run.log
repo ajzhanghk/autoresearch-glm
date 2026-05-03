@@ -226,3 +226,8 @@ num_features: 36
 ensemble=5 hidden=16x16
 val_auc: 0.780696
 num_features: 36
+
+=== commit b008e11 | ensemble 8 seeds | status discard ===
+ensemble=8 hidden=16x16
+val_auc: 0.779008
+num_features: 36
