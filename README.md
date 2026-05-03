@@ -275,3 +275,7 @@ Version 3 keeps the same fixed benchmark and the same logistic GLM as the final 
 The neural networks act as feature-discovery subnetworks, not as the final model. Each subnetwork outputs a single shape function that becomes a GLM column. The L1/L2 regularization, post-fit pruning, and standardization machinery from v2 carry over unchanged.
 
 The implementation uses `sklearn.neural_network.MLPRegressor` to keep the dependency footprint minimal — no PyTorch, no TensorFlow, no GPU. The legacy v2 XGBoost paths (`xgb_bin`, `xgb_spline`, and `INTERACTION_ENGINE="xgb"`) are preserved in `train.py` so older v2 commits can still be replayed via `build_model_forms.py`.
+
+## Disclaimer
+
+This project is not about chasing AUC in a Kaggle-style benchmark. It is about testing whether an agentic loop can autonomously discover useful feature structures under different forms of guidance. The AUC numbers are only a sanity check that the loop is making sensible modeling decisions. They are evidence of direction, not the objective.
