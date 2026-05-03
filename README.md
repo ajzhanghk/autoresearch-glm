@@ -4,7 +4,7 @@
 
 The original repo studies autonomous code-editing loops on a tiny GPT training benchmark. This fork keeps that spirit, but pivots the benchmark to tabular binary classification with a logistic GLM and autonomous feature search.
 
-The canonical benchmark is the Taiwan credit card default dataset from UCI. The March 2026 `v1` line established that fixed TaiwanCredit GLM benchmark, and the April 2026 `v2` line keeps the same dataset and metric while expanding the feature-search machinery. That keeps the repo grounded in a real credit-scoring problem while preserving the tiny, fixed-benchmark character of the upstream project.
+The canonical benchmark is the Taiwan credit card default dataset from UCI. The March 2026 `v1` line established that fixed TaiwanCredit GLM benchmark, the April 2026 `v2` line expanded the feature-search machinery with XGBoost-seeded splines and rectangle interactions, and the May 2026 `v3` line replaces XGBoost with GAMI-Net-style ReLU subnetworks as the feature engine. The dataset and metric stay fixed across all three lines, keeping the repo grounded in a real credit-scoring problem while preserving the tiny, fixed-benchmark character of the upstream project.
 
 Compared with the upstream GPT benchmark, this fork has a much smaller dependency footprint and no GPU requirement. It is a plain CPU-first Python benchmark with NumPy, pandas, `ucimlrepo`, and Matplotlib for analysis.
 
@@ -20,22 +20,22 @@ That makes the fork about one concrete problem:
 
 ## Current frontier
 
-This README describes the current `v2` line of the project: the XGBoost-seeded GLM feature-search version with pruning and explicit interaction screening.
+This README describes the current `v3` line of the project: the GAMI-Net-style ReLU neural network feature-engine version. The `v2` line (XGBoost-seeded splines and rectangle interactions) is preserved as a comparison frontier.
 
-As of Apr 8, 2026, the best kept policy on the fixed TaiwanCredit validation split is:
+The best kept `v2` policy on the fixed TaiwanCredit validation split (Apr 8, 2026) is:
 
 - commit `ea71156`
 - validation AUC `0.781135`
 - 36 final GLM terms after pruning
 
-That frontier uses:
+The first `v3` baseline (May 2026) lands at validation AUC `0.777844` with the same 36-feature budget, using:
 
-- raw identity terms plus XGBoost-seeded spline terms as the main-effect path
+- raw identity terms plus per-variable ReLU MLP shape functions (`nn_main`) as the main-effect path
 - post-fit pruning to keep the final GLM compact
 - residual-based two-way interaction screening over the top 12 screened raw variables
-- a constrained depth-2 XGBoost fit to propose explicit rectangle interaction indicators
+- a small bivariate ReLU MLP per surviving pair (`nn_pair`), one feature column per interaction
 
-The current kept interaction frontier adds two surviving rectangle terms to the GLM while staying within a 36-feature budget.
+The agent's job in `v3` is to push the NN frontier above the `v2` frontier while keeping the GLM compact and the feature engine readable.
 
 ## How it works
 
@@ -50,9 +50,10 @@ Inside that small surface, the current `train.py` policy already supports a usef
 - variable screening by marginal correlation
 - optional tail clipping for raw variables
 - `identity` raw terms
-- `xgb_bin` piecewise-constant main effects derived from XGBoost depth-1 stumps
-- `xgb_spline` continuous truncated-linear main effects seeded from the same stump splits
-- residual-based interaction screening plus explicit rectangle interaction terms
+- `nn_main` per-variable ReLU MLP shape functions (v3 primary main-effect path)
+- `nn_pair` bivariate ReLU MLP per surviving interaction pair (v3 interaction path)
+- `xgb_bin` and `xgb_spline` legacy XGBoost-seeded paths (v2, kept for replay and ablations)
+- residual-based FAST interaction screening
 - L1/L2 regularization and a post-fit pruning pass
 
 By design, the benchmark is narrow and fixed:
@@ -138,44 +139,58 @@ pyproject.toml  dependencies
 
 The benchmark intentionally keeps the final estimator fixed as a logistic GLM, but `train.py` now contains a richer feature-policy surface than the initial raw baseline.
 
-### XGBoost-seeded main effects
+### GAMI-Net-style ReLU subnetworks (v3)
 
-The current code fits shallow XGBoost depth-1 trees as feature-discovery infrastructure, not as the final model.
+The current code uses small ReLU MLPs as feature-discovery subnetworks, following the [GAMI-Net](https://arxiv.org/abs/2003.07132) architecture: each subnetwork is a shape function that maps either one raw variable (main effect) or one bivariate raw pair (interaction) to a single scalar feature column for the downstream GLM.
 
-- `xgb_bin` turns the discovered stump split locations into a compact piecewise-constant univariate feature.
-- `xgb_spline` turns those same discovered split locations into truncated linear bases, giving a continuous piecewise-linear main effect.
-- `identity` keeps the raw clipped variable available alongside these nonlinear corrections.
+- `nn_main` fits a per-variable MLP from the standardized raw variable to `y` (binary, treated as 0/1 regression). The MLP's prediction becomes one continuous main-effect column.
+- `nn_pair` fits a per-pair MLP from the standardized raw bivariate input to the residual left by the main-effect GLM. The MLP's prediction becomes one interaction column per surviving pair.
+- `identity` keeps the raw clipped variable available alongside these nonlinear corrections so the GLM can still anchor a linear shape when it is best.
 
-In practice, `xgb_spline` became the primary main-effect path. It consistently outperformed the raw-only baseline and remained better than the tested `xgb_bin` variants on the current TaiwanCredit benchmark.
+The default subnetwork is a `(16, 16)` ReLU MLP trained with Adam, L2 weight decay, and early stopping. The downstream GLM provides the logistic link, the L1/L2 sparsification, and the post-fit pruning.
+
+### Legacy XGBoost-seeded main effects (v2)
+
+The v2 main-effect engine remains available for replay and ablations:
+
+- `xgb_bin` turns discovered depth-1 stump split locations into a compact piecewise-constant univariate feature.
+- `xgb_spline` turns those same split locations into truncated linear bases, giving a continuous piecewise-linear main effect.
+
+In v2, `xgb_spline` was the primary main-effect path; v3 replaces it with `nn_main`.
 
 ### Post-fit pruning
 
-After the candidate main-effect and interaction terms are selected and standardized, the code fits the GLM once, ranks terms by absolute coefficient magnitude, prunes weak terms, and re-standardizes the reduced design.
+After the candidate main-effect and interaction terms are selected and standardized, the code fits the GLM once, ranks terms by absolute coefficient magnitude, prunes weak terms, and re-standardizes the reduced design. The current frontier uses `PRUNE_KEEP = 36`.
 
-This pruning pass was one of the key improvements in the current frontier. The best kept configuration uses `PRUNE_KEEP = 36`.
+### Residual-based interaction screening
 
-### XGBoost interaction screening
-
-The current interaction path is explicitly residual-based:
+The interaction path is explicitly residual-based:
 
 1. Fit the current main-effect GLM.
 2. Compute the residual left by that fit.
 3. Coarsely score raw variable pairs with a FAST-style interaction score on the residual.
-4. Send only the top screened pairs into a constrained depth-2 XGBoost model.
-5. Convert the discovered pairwise regions into explicit GLM rectangle indicator terms.
+4. Send only the top screened pairs into the active interaction engine.
+5. Materialize each surviving pair as a GLM column.
 
-The important recent change was widening the interaction source pool from the tiny early screen to the top 12 screened raw variables. That finally produced surviving rectangle terms and lifted the best kept validation AUC to `0.781135`.
+The interaction engine itself is selected by `INTERACTION_ENGINE`:
+
+- `"nn"` (v3 default) fits one bivariate ReLU MLP per surviving pair on the residual and uses its prediction as a single interaction column.
+- `"xgb"` (v2) fits a constrained depth-2 XGBoost model and converts its leaves into explicit rectangle indicator terms.
 
 ## Recent empirical notes
 
-The latest search loop established a few practical conclusions that are useful if you continue experimenting:
+The v2 search loop (XGBoost feature engine) established a few practical conclusions that still inform the v3 line:
 
-- `xgb_spline` is the main nonlinear workhorse and should be treated as the default main-effect path.
-- `xgb_bin` is still available and useful as an experimental piecewise-constant option, but it has not beaten the current spline frontier.
-- broader pre-prune candidate pools at 45 or 50 features were worse than the current `FEATURE_CAP = 40` setup.
+- broader pre-prune candidate pools at 45 or 50 features were worse than `FEATURE_CAP = 40`.
 - coefficient-threshold pruning tied or underperformed the `keep36` pruning rule.
-- increasing spline-knot budgets above 6 only tied the old frontier and did not beat it.
-- interaction screening mattered only after broadening the raw pair source pool; once widened, `INTERACTION_CAP = 4` produced the current best kept model.
+- interaction screening mattered only after broadening the raw pair source pool to 12 raws; once widened, `INTERACTION_CAP = 4` produced the v2 best kept model.
+
+In v3 the natural directions to explore are NN-specific:
+
+- subnetwork width and depth (`NN_HIDDEN`) — narrower or deeper than the `(16, 16)` baseline.
+- L2 weight decay (`NN_ALPHA`) and learning rate (`NN_LR`).
+- whether identity terms still help once `nn_main` is the main-effect path.
+- whether `nn_pair` benefits from a smaller architecture than `nn_main` since it sees only two inputs.
 
 ## Design choices
 
@@ -209,3 +224,19 @@ Version 2 keeps the same fixed benchmark, but upgrades the feature-search machin
 - compact feature search inside `train.py`
 
 No multiclass support, no regression support, no deep learning, no feature platform, and no large framework abstractions.
+
+## v3 scope (May 2026)
+
+Version 3 keeps the same fixed benchmark and the same logistic GLM as the final estimator, but replaces the v2 XGBoost feature engine with a [GAMI-Net](https://arxiv.org/abs/2003.07132)-style ReLU neural network feature engine:
+
+- binary classification only
+- logistic regression / GLM only
+- validation AUC only
+- per-variable ReLU MLP subnetwork main effects (`nn_main`) replacing `xgb_spline`
+- residual-based FAST interaction screening (unchanged from v2)
+- per-pair bivariate ReLU MLP subnetwork interactions (`nn_pair`) replacing the v2 rectangle indicator terms
+- compact feature search inside `train.py`
+
+The neural networks act as feature-discovery subnetworks, not as the final model. Each subnetwork outputs a single shape function that becomes a GLM column. The L1/L2 regularization, post-fit pruning, and standardization machinery from v2 carry over unchanged.
+
+The implementation uses `sklearn.neural_network.MLPRegressor` to keep the dependency footprint minimal — no PyTorch, no TensorFlow, no GPU. The legacy v2 XGBoost paths (`xgb_bin`, `xgb_spline`, and `INTERACTION_ENGINE="xgb"`) are preserved in `train.py` so older v2 commits can still be replayed via `build_model_forms.py`.

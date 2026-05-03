@@ -69,22 +69,23 @@ Higher is better.
   - regularization
   - separate `L1` and `L2` strengths
 - Add compact tabular transforms such as:
-  - XGBoost depth-1 joint-binning features (`xgb_bin`)
-  - AdaSpline-style continuous spline features fit to XGBoost joint bins (`xgb_spline`)
+  - GAMI-Net-style ReLU MLP main-effect subnetworks (`nn_main`)
+  - Legacy XGBoost-seeded features (`xgb_bin`, `xgb_spline`) — kept available for ablations and v2 replay
 - Screen interactions only after fitting the main-effect model.
 - Prefer residual-based two-way interaction screening over naive raw product correlation.
-  A good default is a FAST-style screen: bin each raw variable coarsely, score each pair on the residual left by the main-effect fit, then pass only the top few pairs into a small depth-2 XGBoost interaction model via explicit `interaction_constraints`.
-  Use that second-stage XGBoost fit to discover pairwise regions, then map them into explicit GLM interaction terms such as leaf-region indicators or rectangle terms. Do not fall back to plain raw products unless you are deliberately testing that baseline.
-- Treat `xgb_spline` as a primary main-effect method.
-- Treat `xgb_bin` as an optional main-effect method.
-  It is piecewise constant and discontinuous, so use it when that shape is helpful rather than as the default.
+  A good default is a FAST-style screen: bin each raw variable coarsely, score each pair on the residual left by the main-effect fit, then pass only the top few pairs into the active interaction engine.
+  In v3 the active engine is `INTERACTION_ENGINE="nn"`: each surviving pair gets one small bivariate ReLU MLP fit on the residual, and the MLP's prediction is added as a single GLM interaction column. The legacy `INTERACTION_ENGINE="xgb"` path (constrained depth-2 XGBoost into rectangle indicator terms) is still selectable for ablations. Do not fall back to plain raw products unless you are deliberately testing that baseline.
+- Treat `nn_main` as the primary main-effect method.
+- Treat `xgb_bin` and `xgb_spline` as optional ablation paths. `xgb_bin` is piecewise constant and discontinuous; `xgb_spline` is continuous piecewise-linear. Use them only when you have a specific shape hypothesis to test against `nn_main`.
 - Treat clipping as optional support for special values, extreme tails, and heavier-tailed variables.
-- Tune the XGBoost spline budgets directly in `train.py`, especially:
-  - whether `xgb_bin` is present in `TRANSFORMS`
-  - whether `xgb_spline` is present in `TRANSFORMS`
-  - `XGB_BIN_MAX_KNOTS`
-  - `XGB_SPLINE_MAX_KNOTS`
-Keep `XGB_BIN_TREES` fixed as infrastructure unless there is a strong reason to revisit it.
+- Tune the NN feature engine directly in `train.py`, especially:
+  - whether `nn_main` is present in `TRANSFORMS`
+  - `INTERACTION_ENGINE` (`"nn"` or `"xgb"`)
+  - `NN_HIDDEN` (subnetwork width/depth)
+  - `NN_ALPHA` (L2 weight decay)
+  - `NN_LR` (Adam learning rate)
+  - `NN_MAX_ITER` and `NN_EARLY_STOP_PATIENCE` (training budget)
+- The NN subnetworks use `sklearn.neural_network.MLPRegressor` with Adam, ReLU, and early stopping. There is no PyTorch or GPU dependency.
 - Use `L1` when you want the GLM fit itself to zero weak coefficients and reduce effective model complexity.
 - Use `L2` when you want extra numerical stability or gentler shrinkage without inducing sparsity.
 - Simplify code if the metric holds up or improves.
@@ -278,17 +279,16 @@ If the idea itself is broken, log it as `crash`, revert, and move on.
 Good directions:
 
 - better univariate screening
-- better use of `xgb_spline` as a primary main-effect feature engine
+- better use of `nn_main` as the primary main-effect feature engine
+  - tune `NN_HIDDEN` (e.g. `(8, 8)`, `(32, 32)`, `(16, 16, 16)`)
+  - tune `NN_ALPHA` for stronger or weaker shape regularization
+  - tune `NN_LR` and `NN_MAX_ITER` if convergence looks unstable
 - optional clipping when it helps with special values or heavy tails
-- simple residual parametric transforms such as `square` when they clearly add signal
-- XGBoost depth-1 joint binning to produce compact piecewise-constant feature candidates
-  - tune the knot budget with `XGB_BIN_MAX_KNOTS`
-- AdaSpline-style approximation of those XGBoost bins into a small continuous piecewise-linear spline basis
-  - tune the spline knot budget with `XGB_SPLINE_MAX_KNOTS`
-  - treat `XGB_BIN_TREES` as fixed by default
-- tighter interaction screening among only the strongest variables
+- tighter or wider interaction screening among only the strongest variables
+- bivariate-pair MLP architecture distinct from the main-effect MLP architecture (e.g. narrower since the input is only 2-D)
+- comparing `INTERACTION_ENGINE="nn"` against `INTERACTION_ENGINE="xgb"` once main effects are tuned
 - simpler feature sets with equal or better AUC
-- more sensible regularization for the chosen feature design
+- more sensible L1/L2 regularization on the GLM for the chosen feature design
 
 Bad directions:
 

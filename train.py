@@ -6,6 +6,7 @@ from dataclasses import dataclass
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import roc_auc_score
+from sklearn.neural_network import MLPRegressor
 import xgboost as xgb
 
 from prepare import load_dataset
@@ -16,20 +17,30 @@ FEATURE_CAP = 40
 INTERACTION_CAP = 4
 INTERACTION_SOURCE_K = 12
 FAST_BINS = 8
-XGB_INTERACTION_TREES = 40
-XGB_INTERACTION_ETA = 0.05
 CLIP_Q = 0.98
 L1 = 0.01
 L2 = 0.02
 PRUNE_KEEP = 36
 PRUNE_MIN_COEF = 0.0
-# Primary main-effect path: nonparametric XGBoost-seeded splines.
-# Optional main-effect support: XGBoost joint bins (`xgb_bin`) and raw terms (`identity`).
-TRANSFORMS = ("identity", "xgb_spline")
+# v3 primary main-effect path: per-variable ReLU MLP shape function (`nn_main`).
+# Optional main-effect support: raw `identity`, plus legacy XGBoost-seeded paths
+# (`xgb_bin`, `xgb_spline`) kept available for back-compat with v2 commits.
+TRANSFORMS = ("identity", "nn_main")
+# Interaction engine: "nn" (v3 bivariate MLP per pair) or "xgb" (v2 rectangle indicators).
+INTERACTION_ENGINE = "nn"
+# v3 NN subnetwork hyperparameters (GAMI-Net-style, scaled down for this benchmark).
+NN_HIDDEN = (16, 16)
+NN_MAX_ITER = 500
+NN_ALPHA = 1e-3
+NN_LR = 1e-3
+NN_EARLY_STOP_PATIENCE = 20
+NN_VAL_FRACTION = 0.1
+# Legacy v2 XGBoost knobs (only used when xgb_* transforms or INTERACTION_ENGINE="xgb").
+XGB_INTERACTION_TREES = 40
+XGB_INTERACTION_ETA = 0.05
 XGB_BIN_TREES = 100
 XGB_BIN_ETA = 0.1
 XGB_BIN_MAX_KNOTS = 4
-# Budget of retained XGBoost-seeded knots per raw feature for continuous linear splines.
 XGB_SPLINE_MAX_KNOTS = 6
 ADASPLINE_LAMBDA = 1.0
 ADASPLINE_STEPS = 15
@@ -362,6 +373,78 @@ def identity_candidates(
     return candidates
 
 
+def make_subnetwork(seed: int) -> MLPRegressor:
+    return MLPRegressor(
+        hidden_layer_sizes=NN_HIDDEN,
+        activation="relu",
+        solver="adam",
+        learning_rate_init=NN_LR,
+        alpha=NN_ALPHA,
+        max_iter=NN_MAX_ITER,
+        early_stopping=True,
+        validation_fraction=NN_VAL_FRACTION,
+        n_iter_no_change=NN_EARLY_STOP_PATIENCE,
+        random_state=seed,
+    )
+
+
+def nn_main_candidates(
+    x_train: np.ndarray,
+    x_val: np.ndarray,
+    y_train: np.ndarray,
+    feature_names: list[str],
+    screened: list[int],
+) -> list[Candidate]:
+    candidates: list[Candidate] = []
+    target = y_train.astype(np.float64)
+    for idx in screened:
+        raw_train, raw_val, clip_suffix = maybe_clip(x_train[:, idx], x_val[:, idx])
+        scaled_train, scaled_val = standardize(
+            raw_train.reshape(-1, 1), raw_val.reshape(-1, 1)
+        )
+        mlp = make_subnetwork(seed=idx)
+        mlp.fit(scaled_train, target)
+        candidates.append(
+            Candidate(
+                name=f"{feature_names[idx]}{clip_suffix}__nn_main",
+                train=mlp.predict(scaled_train),
+                val=mlp.predict(scaled_val),
+                score=0.0,
+            )
+        )
+    return candidates
+
+
+def nn_interaction_candidates(
+    x_train: np.ndarray,
+    x_val: np.ndarray,
+    residual: np.ndarray,
+    feature_names: list[str],
+    screened_pairs: list[tuple[int, int]],
+) -> list[Candidate]:
+    candidates: list[Candidate] = []
+    for left, right in screened_pairs:
+        left_train, left_val, _ = maybe_clip(x_train[:, left], x_val[:, left])
+        right_train, right_val, _ = maybe_clip(x_train[:, right], x_val[:, right])
+        pair_train = np.column_stack([left_train, right_train])
+        pair_val = np.column_stack([left_val, right_val])
+        scaled_train, scaled_val = standardize(pair_train, pair_val)
+        mlp = make_subnetwork(seed=left * 1000 + right)
+        mlp.fit(scaled_train, residual)
+        feat_train = mlp.predict(scaled_train)
+        feat_val = mlp.predict(scaled_val)
+        candidates.append(
+            Candidate(
+                name=f"{feature_names[left]}__x__{feature_names[right]}__nn_pair",
+                train=feat_train,
+                val=feat_val,
+                score=safe_corr(feat_train, residual),
+            )
+        )
+    candidates.sort(key=lambda item: item.score, reverse=True)
+    return candidates[:INTERACTION_CAP]
+
+
 def screen_variables(x_train: np.ndarray, y_train: np.ndarray, feature_names: list[str]) -> list[int]:
     scores = [safe_corr(x_train[:, idx], y_train) for idx in range(x_train.shape[1])]
     return sorted(range(len(feature_names)), key=lambda idx: scores[idx], reverse=True)
@@ -446,12 +529,16 @@ def build_design(
     xgb_stumps = None
 
     singles: list[Candidate] = []
-    unknown = set(TRANSFORMS) - {"identity", "xgb_bin", "xgb_spline"}
+    unknown = set(TRANSFORMS) - {"identity", "xgb_bin", "xgb_spline", "nn_main"}
     if unknown:
         raise ValueError(f"Unknown transform(s): {sorted(unknown)}")
+    if INTERACTION_ENGINE not in {"nn", "xgb"}:
+        raise ValueError(f"Unknown INTERACTION_ENGINE: {INTERACTION_ENGINE!r}")
 
     if "identity" in TRANSFORMS:
         singles.extend(identity_candidates(x_train, x_val, feature_names, screened))
+    if "nn_main" in TRANSFORMS:
+        singles.extend(nn_main_candidates(x_train, x_val, y_train, feature_names, screened))
     if "xgb_bin" in TRANSFORMS:
         xgb_stumps = fit_xgb_depth1_stumps(x_train, y_train, feature_names)
         singles.extend(xgb_joint_bin_candidates(x_train, x_val, xgb_stumps, feature_names, screened))
@@ -490,13 +577,22 @@ def build_design(
             pair_scores.append((fast_interaction_score(left_train, right_train, residual), left, right))
         pair_scores.sort(reverse=True)
         top_pairs = [(left, right) for _, left, right in pair_scores[:INTERACTION_CAP]]
-        interaction_features = fit_xgb_interaction_feature(
-            x_train=x_train,
-            x_val=x_val,
-            residual=residual,
-            feature_names=feature_names,
-            screened_pairs=top_pairs,
-        )
+        if INTERACTION_ENGINE == "nn":
+            interaction_features = nn_interaction_candidates(
+                x_train=x_train,
+                x_val=x_val,
+                residual=residual,
+                feature_names=feature_names,
+                screened_pairs=top_pairs,
+            )
+        else:
+            interaction_features = fit_xgb_interaction_feature(
+                x_train=x_train,
+                x_val=x_val,
+                residual=residual,
+                feature_names=feature_names,
+                screened_pairs=top_pairs,
+            )
         chosen.extend(interaction_features)
 
     train_matrix = np.column_stack([candidate.train for candidate in chosen])
@@ -561,18 +657,22 @@ def describe_policy() -> str:
     else:
         prune = f"keep{PRUNE_KEEP}_coef>={PRUNE_MIN_COEF:.3f}"
     transforms = "+".join(TRANSFORMS)
-    xgb_bits = []
+    extra_bits = []
+    if "nn_main" in TRANSFORMS or INTERACTION_ENGINE == "nn":
+        hidden = "x".join(str(unit) for unit in NN_HIDDEN)
+        extra_bits.append(f"nn_hidden={hidden}")
     if "xgb_bin" in TRANSFORMS or "xgb_spline" in TRANSFORMS:
-        xgb_bits.append(f"xgb_trees={XGB_BIN_TREES}")
+        extra_bits.append(f"xgb_trees={XGB_BIN_TREES}")
     if "xgb_bin" in TRANSFORMS:
-        xgb_bits.append(f"xgb_bin_knots={XGB_BIN_MAX_KNOTS}")
+        extra_bits.append(f"xgb_bin_knots={XGB_BIN_MAX_KNOTS}")
     if "xgb_spline" in TRANSFORMS:
-        xgb_bits.append(f"xgb_spline_knots={XGB_SPLINE_MAX_KNOTS}")
-    xgb_suffix = "" if not xgb_bits else " " + " ".join(xgb_bits)
+        extra_bits.append(f"xgb_spline_knots={XGB_SPLINE_MAX_KNOTS}")
+    extra_suffix = "" if not extra_bits else " " + " ".join(extra_bits)
     return (
         f"screen_k={screen} feature_cap={FEATURE_CAP} "
         f"interaction_cap={INTERACTION_CAP} clip={clip} prune={prune} "
-        f"l1={L1:.3f} l2={L2:.3f} transforms={transforms}{xgb_suffix}"
+        f"l1={L1:.3f} l2={L2:.3f} transforms={transforms} "
+        f"interaction_engine={INTERACTION_ENGINE}{extra_suffix}"
     )
 
 
