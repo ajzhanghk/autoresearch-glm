@@ -285,3 +285,6 @@ num_features: 36
 
 === commit 8235d60 | hidden=(16,16,16) | discard ===
 val_auc: 0.781110
+
+=== commit 05723df | hidden=(28,28) | discard ===
+val_auc: 0.781516

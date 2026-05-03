@@ -29,7 +29,7 @@ TRANSFORMS = ("identity", "nn_main")
 # Interaction engine: "nn" (v3 bivariate MLP per pair) or "xgb" (v2 rectangle indicators).
 INTERACTION_ENGINE = "nn"
 # v3 NN subnetwork hyperparameters (GAMI-Net-style, scaled down for this benchmark).
-NN_HIDDEN = (28, 28)
+NN_HIDDEN = (20, 20)
 NN_MAX_ITER = 500
 NN_ALPHA = 1e-3
 NN_LR = 1e-3
