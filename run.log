@@ -308,3 +308,6 @@ val_auc: 0.782104
 
 === commit 9214f68 | PRUNE_KEEP=37 | discard ===
 val_auc: 0.781858
+
+=== commit 50e1936 | L1=0.005 | discard ===
+val_auc: 0.781586
