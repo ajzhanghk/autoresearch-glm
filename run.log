@@ -322,3 +322,8 @@ num_features: 38
 
 === commit 8ef1470 | CLIP_Q=0.995 | discard ===
 val_auc: 0.782355
+
+=== commit 603a51f | CLIP_Q=None | KEEP — new frontier ===
+ensemble=5 hidden=24x24 cap=6 prune=38 clip=none
+val_auc: 0.783046
+num_features: 38
