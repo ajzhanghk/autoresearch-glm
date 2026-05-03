@@ -14,7 +14,7 @@ from prepare import load_dataset
 # The agent should primarily edit this policy block.
 SCREEN_K = None
 FEATURE_CAP = 40
-INTERACTION_CAP = 6
+INTERACTION_CAP = 8
 INTERACTION_SOURCE_K = 12
 FAST_BINS = 8
 CLIP_Q = 0.98
