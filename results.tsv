@@ -45,3 +45,4 @@ cb77051	0.776529	36	discard	raise spline knots under keep36 pruning
 4dbb9c6	0.776529	36	discard	test two interactions with wider pair screen
 ea71156	0.781135	36	keep	test four interactions with wider pair screen
 08ceeee	0.780198	38	discard	loosen pruning on wider interaction frontier
+d235f8f	0.777844	36	keep	v3 baseline: nn_main + nn_pair (16x16)

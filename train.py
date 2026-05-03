@@ -35,6 +35,7 @@ NN_ALPHA = 1e-3
 NN_LR = 1e-3
 NN_EARLY_STOP_PATIENCE = 20
 NN_VAL_FRACTION = 0.1
+NN_ENSEMBLE = 3
 # Legacy v2 XGBoost knobs (only used when xgb_* transforms or INTERACTION_ENGINE="xgb").
 XGB_INTERACTION_TREES = 40
 XGB_INTERACTION_ETA = 0.05
@@ -388,6 +389,22 @@ def make_subnetwork(seed: int) -> MLPRegressor:
     )
 
 
+def fit_ensemble(
+    scaled_train: np.ndarray,
+    target: np.ndarray,
+    scaled_val: np.ndarray,
+    base_seed: int,
+) -> tuple[np.ndarray, np.ndarray]:
+    train_preds = np.zeros(len(scaled_train), dtype=np.float64)
+    val_preds = np.zeros(len(scaled_val), dtype=np.float64)
+    for k in range(NN_ENSEMBLE):
+        mlp = make_subnetwork(seed=base_seed * 17 + k)
+        mlp.fit(scaled_train, target)
+        train_preds += mlp.predict(scaled_train)
+        val_preds += mlp.predict(scaled_val)
+    return train_preds / NN_ENSEMBLE, val_preds / NN_ENSEMBLE
+
+
 def nn_main_candidates(
     x_train: np.ndarray,
     x_val: np.ndarray,
@@ -402,13 +419,12 @@ def nn_main_candidates(
         scaled_train, scaled_val = standardize(
             raw_train.reshape(-1, 1), raw_val.reshape(-1, 1)
         )
-        mlp = make_subnetwork(seed=idx)
-        mlp.fit(scaled_train, target)
+        train_pred, val_pred = fit_ensemble(scaled_train, target, scaled_val, idx)
         candidates.append(
             Candidate(
                 name=f"{feature_names[idx]}{clip_suffix}__nn_main",
-                train=mlp.predict(scaled_train),
-                val=mlp.predict(scaled_val),
+                train=train_pred,
+                val=val_pred,
                 score=0.0,
             )
         )
@@ -429,10 +445,9 @@ def nn_interaction_candidates(
         pair_train = np.column_stack([left_train, right_train])
         pair_val = np.column_stack([left_val, right_val])
         scaled_train, scaled_val = standardize(pair_train, pair_val)
-        mlp = make_subnetwork(seed=left * 1000 + right)
-        mlp.fit(scaled_train, residual)
-        feat_train = mlp.predict(scaled_train)
-        feat_val = mlp.predict(scaled_val)
+        feat_train, feat_val = fit_ensemble(
+            scaled_train, residual, scaled_val, left * 1000 + right
+        )
         candidates.append(
             Candidate(
                 name=f"{feature_names[left]}__x__{feature_names[right]}__nn_pair",

@@ -211,3 +211,8 @@ num_features: 36
 screen_k=all feature_cap=40 interaction_cap=4 clip=clip98 prune=keep38 l1=0.010 l2=0.020 transforms=identity+xgb_spline xgb_trees=100 xgb_spline_knots=6
 val_auc: 0.780198
 num_features: 38
+
+=== commit d235f8f | v3 baseline: nn_main + nn_pair (16x16) | status keep ===
+screen_k=all feature_cap=40 interaction_cap=4 clip=clip98 prune=keep36 l1=0.010 l2=0.020 transforms=identity+nn_main interaction_engine=nn nn_hidden=16x16
+val_auc: 0.777844
+num_features: 36
