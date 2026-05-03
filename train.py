@@ -14,13 +14,13 @@ from prepare import load_dataset
 # The agent should primarily edit this policy block.
 SCREEN_K = None
 FEATURE_CAP = 40
-INTERACTION_CAP = 4
+INTERACTION_CAP = 6
 INTERACTION_SOURCE_K = 12
 FAST_BINS = 8
 CLIP_Q = None
 L1 = 0.01
 L2 = 0.02
-PRUNE_KEEP = 38
+PRUNE_KEEP = 40
 PRUNE_MIN_COEF = 0.0
 # v3 primary main-effect path: per-variable ReLU MLP shape function (`nn_main`).
 # Optional main-effect support: raw `identity`, plus legacy XGBoost-seeded paths

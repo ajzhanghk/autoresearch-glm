@@ -73,3 +73,4 @@ ee4e0bf	0.781525	36	discard	ensemble=6 worse than 5
 c06ead5	0.782581	38	keep	CLIP_Q=0.99 new frontier
 8ef1470	0.782355	38	discard	CLIP_Q=0.995 worse than 0.99
 603a51f	0.783046	38	keep	CLIP_Q=None new frontier
+a90957e	0.782597	38	discard	INTERACTION_CAP=4 worse at new frontier
