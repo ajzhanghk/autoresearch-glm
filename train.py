@@ -29,13 +29,13 @@ TRANSFORMS = ("identity", "nn_main")
 # Interaction engine: "nn" (v3 bivariate MLP per pair) or "xgb" (v2 rectangle indicators).
 INTERACTION_ENGINE = "nn"
 # v3 NN subnetwork hyperparameters (GAMI-Net-style, scaled down for this benchmark).
-NN_HIDDEN = (20, 20)
+NN_HIDDEN = (24, 24)
 NN_MAX_ITER = 500
 NN_ALPHA = 1e-3
 NN_LR = 1e-3
 NN_EARLY_STOP_PATIENCE = 20
 NN_VAL_FRACTION = 0.1
-NN_ENSEMBLE = 5
+NN_ENSEMBLE = 6
 # Legacy v2 XGBoost knobs (only used when xgb_* transforms or INTERACTION_ENGINE="xgb").
 XGB_INTERACTION_TREES = 40
 XGB_INTERACTION_ETA = 0.05
