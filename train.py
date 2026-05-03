@@ -18,9 +18,9 @@ INTERACTION_CAP = 6
 INTERACTION_SOURCE_K = 12
 FAST_BINS = 8
 CLIP_Q = 0.98
-L1 = 0.01
+L1 = 0.005
 L2 = 0.02
-PRUNE_KEEP = 37
+PRUNE_KEEP = 38
 PRUNE_MIN_COEF = 0.0
 # v3 primary main-effect path: per-variable ReLU MLP shape function (`nn_main`).
 # Optional main-effect support: raw `identity`, plus legacy XGBoost-seeded paths
