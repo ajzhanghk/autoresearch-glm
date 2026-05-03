@@ -149,7 +149,7 @@ The benchmark intentionally keeps the final estimator fixed as a logistic GLM, b
 
 ### GAMI-Net-style ReLU subnetworks (v3)
 
-The current code uses small ReLU MLPs as feature-discovery subnetworks, following the [GAMI-Net](https://arxiv.org/abs/2003.07132) architecture: each subnetwork is a shape function that maps either one raw variable (main effect) or one bivariate raw pair (interaction) to a single scalar feature column for the downstream GLM.
+The current code uses small ReLU MLPs as feature-discovery subnetworks, following the [GAMI-Net](https://scholar.google.com/scholar?q=gami-net) architecture: each subnetwork is a shape function that maps either one raw variable (main effect) or one bivariate raw pair (interaction) to a single scalar feature column for the downstream GLM.
 
 - `nn_main` fits a per-variable MLP from the standardized raw variable to `y` (binary, treated as 0/1 regression), averaged across `NN_ENSEMBLE` random seeds. The mean prediction becomes one continuous main-effect column.
 - `nn_pair` fits a per-pair MLP from the standardized raw bivariate input to the residual left by the main-effect GLM, again ensembled across `NN_ENSEMBLE` seeds. The mean prediction becomes one interaction column per surviving pair.
@@ -262,7 +262,7 @@ No multiclass support, no regression support, no deep learning, no feature platf
 
 ## v3 scope (May 2026)
 
-Version 3 keeps the same fixed benchmark and the same logistic GLM as the final estimator, but replaces the v2 XGBoost feature engine with a [GAMI-Net](https://arxiv.org/abs/2003.07132)-style ReLU neural network feature engine:
+Version 3 keeps the same fixed benchmark and the same logistic GLM as the final estimator, but replaces the v2 XGBoost feature engine with a [GAMI-Net](https://scholar.google.com/scholar?q=gami-net)-style ReLU neural network feature engine:
 
 - binary classification only
 - logistic regression / GLM only
