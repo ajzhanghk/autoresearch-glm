@@ -31,7 +31,7 @@ INTERACTION_ENGINE = "nn"
 # v3 NN subnetwork hyperparameters (GAMI-Net-style, scaled down for this benchmark).
 NN_HIDDEN = (16, 16)
 NN_MAX_ITER = 500
-NN_ALPHA = 1e-2
+NN_ALPHA = 1e-4
 NN_LR = 1e-3
 NN_EARLY_STOP_PATIENCE = 20
 NN_VAL_FRACTION = 0.1

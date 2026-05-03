@@ -241,3 +241,8 @@ num_features: 36
 ensemble=5 hidden=8x8
 val_auc: 0.779140
 num_features: 36
+
+=== commit 9f9e8e7 | NN_ALPHA=1e-2 | status discard ===
+ensemble=5 hidden=16x16 alpha=1e-2
+val_auc: 0.779579
+num_features: 36
