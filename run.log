@@ -277,3 +277,8 @@ val_auc: 0.780285
 
 === commit 814867a | NN_LR=3e-3 | discard ===
 val_auc: 0.780478
+
+=== commit 5b891f5 | hidden=(24,24) | KEEP — new frontier ===
+ensemble=5 hidden=24x24 cap=6
+val_auc: 0.781785
+num_features: 36
