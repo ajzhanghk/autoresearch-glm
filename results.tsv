@@ -64,3 +64,4 @@ b5dd279	0.777814	36	discard	INTERACTION_CAP=8 (worse)
 05723df	0.781516	36	discard	hidden=(28,28) slightly worse than (24,24)
 3d1da1c	0.781241	36	discard	hidden=(20,20) worse than (24,24)
 ee4e0bf	0.781525	36	discard	ensemble=6 worse than 5
+40c7854	0.781554	36	discard	ensemble=7 worse

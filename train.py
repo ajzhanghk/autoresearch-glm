@@ -20,7 +20,7 @@ FAST_BINS = 8
 CLIP_Q = 0.98
 L1 = 0.01
 L2 = 0.02
-PRUNE_KEEP = 36
+PRUNE_KEEP = 38
 PRUNE_MIN_COEF = 0.0
 # v3 primary main-effect path: per-variable ReLU MLP shape function (`nn_main`).
 # Optional main-effect support: raw `identity`, plus legacy XGBoost-seeded paths
@@ -35,7 +35,7 @@ NN_ALPHA = 1e-3
 NN_LR = 1e-3
 NN_EARLY_STOP_PATIENCE = 20
 NN_VAL_FRACTION = 0.1
-NN_ENSEMBLE = 7
+NN_ENSEMBLE = 5
 # Legacy v2 XGBoost knobs (only used when xgb_* transforms or INTERACTION_ENGINE="xgb").
 XGB_INTERACTION_TREES = 40
 XGB_INTERACTION_ETA = 0.05
