@@ -330,3 +330,6 @@ num_features: 38
 
 === commit a90957e | INTERACTION_CAP=4 | discard ===
 val_auc: 0.782597
+
+=== commit 8d881c6 | PRUNE_KEEP=40 | discard (tied, prefer simpler) ===
+val_auc: 0.783055
