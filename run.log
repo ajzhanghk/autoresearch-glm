@@ -282,3 +282,6 @@ val_auc: 0.780478
 ensemble=5 hidden=24x24 cap=6
 val_auc: 0.781785
 num_features: 36
+
+=== commit 8235d60 | hidden=(16,16,16) | discard ===
+val_auc: 0.781110

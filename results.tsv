@@ -60,3 +60,4 @@ b5dd279	0.777814	36	discard	INTERACTION_CAP=8 (worse)
 8864178	0.780285	36	discard	lower NN_LR=5e-4
 814867a	0.780478	36	discard	higher NN_LR=3e-3
 5b891f5	0.781785	36	keep	hidden=(24,24) beats v2 frontier
+8235d60	0.781110	36	discard	deeper (16,16,16) worse
