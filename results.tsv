@@ -56,3 +56,4 @@ cadff57	0.779722	36	discard	weaker NN_ALPHA 1e-4
 b9ed737	0.778855	27	discard	drop identity, nn_main only
 0721e54	0.780706	36	keep	INTERACTION_CAP=6 (marginal +1e-5)
 b5dd279	0.777814	36	discard	INTERACTION_CAP=8 (worse)
+5eaf5f5	0.780706	36	discard	wider source K=15 (identical to K=12)

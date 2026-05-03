@@ -266,3 +266,8 @@ num_features: 36
 ensemble=5 hidden=16x16 cap=8
 val_auc: 0.777814
 num_features: 36
+
+=== commit 5eaf5f5 | source K=15 | status discard ===
+ensemble=5 cap=6 source_k=15
+val_auc: 0.780706
+num_features: 36
