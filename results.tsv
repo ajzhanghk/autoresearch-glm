@@ -65,3 +65,4 @@ b5dd279	0.777814	36	discard	INTERACTION_CAP=8 (worse)
 3d1da1c	0.781241	36	discard	hidden=(20,20) worse than (24,24)
 ee4e0bf	0.781525	36	discard	ensemble=6 worse than 5
 40c7854	0.781554	36	discard	ensemble=7 worse
+3bf2876	0.782100	38	keep	PRUNE_KEEP=38 new frontier

@@ -297,3 +297,8 @@ val_auc: 0.781525
 
 === commit 40c7854 | ensemble=7 | discard ===
 val_auc: 0.781554
+
+=== commit 3bf2876 | PRUNE_KEEP=38 | KEEP — new frontier ===
+ensemble=5 hidden=24x24 cap=6 prune=38
+val_auc: 0.782100
+num_features: 38
