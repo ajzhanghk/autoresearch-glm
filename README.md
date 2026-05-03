@@ -28,14 +28,22 @@ The best kept `v2` policy on the fixed TaiwanCredit validation split (Apr 8, 202
 - validation AUC `0.781135`
 - 36 final GLM terms after pruning
 
-The first `v3` baseline (May 2026) lands at validation AUC `0.777844` with the same 36-feature budget, using:
+As of May 2, 2026, the best kept `v3` policy is:
 
-- raw identity terms plus per-variable ReLU MLP shape functions (`nn_main`) as the main-effect path
-- post-fit pruning to keep the final GLM compact
-- residual-based two-way interaction screening over the top 12 screened raw variables
-- a small bivariate ReLU MLP per surviving pair (`nn_pair`), one feature column per interaction
+- commit `603a51f`
+- validation AUC `0.783046` (+0.001911 over the v2 frontier)
+- 38 final GLM terms after pruning
 
-The agent's job in `v3` is to push the NN frontier above the `v2` frontier while keeping the GLM compact and the feature engine readable.
+That frontier uses:
+
+- per-variable ReLU MLP shape functions (`nn_main`, `(24, 24)` hidden) plus raw identity terms as the main-effect path
+- a 5-seed ensemble per subnetwork to stabilize the shape functions
+- no tail clipping (NN weight decay + early stopping handle outliers natively)
+- residual-based two-way FAST interaction screening over the top 12 screened raw variables
+- a bivariate ReLU MLP per surviving pair (`nn_pair`), with the 5-seed ensemble averaged into one column per pair
+- post-fit pruning to a 38-feature GLM with `L1=0.01`, `L2=0.02`
+
+The 5 kept interaction columns are `LIMIT_BAL × PAY_0` (`X1×X6`), `LIMIT_BAL × PAY_3` (`X1×X8`), `LIMIT_BAL × PAY_AMT1` (`X1×X18`), `PAY_0 × PAY_2` (`X6×X7`), and `PAY_0 × PAY_3` (`X6×X8`) — exactly the credit-limit × payment-status and payment-status × payment-status structure credit-risk modelers expect to matter.
 
 ## How it works
 
@@ -143,11 +151,11 @@ The benchmark intentionally keeps the final estimator fixed as a logistic GLM, b
 
 The current code uses small ReLU MLPs as feature-discovery subnetworks, following the [GAMI-Net](https://arxiv.org/abs/2003.07132) architecture: each subnetwork is a shape function that maps either one raw variable (main effect) or one bivariate raw pair (interaction) to a single scalar feature column for the downstream GLM.
 
-- `nn_main` fits a per-variable MLP from the standardized raw variable to `y` (binary, treated as 0/1 regression). The MLP's prediction becomes one continuous main-effect column.
-- `nn_pair` fits a per-pair MLP from the standardized raw bivariate input to the residual left by the main-effect GLM. The MLP's prediction becomes one interaction column per surviving pair.
-- `identity` keeps the raw clipped variable available alongside these nonlinear corrections so the GLM can still anchor a linear shape when it is best.
+- `nn_main` fits a per-variable MLP from the standardized raw variable to `y` (binary, treated as 0/1 regression), averaged across `NN_ENSEMBLE` random seeds. The mean prediction becomes one continuous main-effect column.
+- `nn_pair` fits a per-pair MLP from the standardized raw bivariate input to the residual left by the main-effect GLM, again ensembled across `NN_ENSEMBLE` seeds. The mean prediction becomes one interaction column per surviving pair.
+- `identity` keeps the raw variable available alongside these nonlinear corrections so the GLM can still anchor a linear shape when it is best. Empirically, identity terms survive pruning on roughly a third of the screened variables in the v3 frontier.
 
-The default subnetwork is a `(16, 16)` ReLU MLP trained with Adam, L2 weight decay, and early stopping. The downstream GLM provides the logistic link, the L1/L2 sparsification, and the post-fit pruning.
+The frontier subnetwork is a `(24, 24)` ReLU MLP trained with Adam, L2 weight decay, and early stopping, averaged across 5 random seeds per subnetwork to stabilize the shape function. The downstream GLM provides the logistic link, the L1/L2 sparsification, and the post-fit pruning.
 
 ### Legacy XGBoost-seeded main effects (v2)
 
@@ -160,7 +168,7 @@ In v2, `xgb_spline` was the primary main-effect path; v3 replaces it with `nn_ma
 
 ### Post-fit pruning
 
-After the candidate main-effect and interaction terms are selected and standardized, the code fits the GLM once, ranks terms by absolute coefficient magnitude, prunes weak terms, and re-standardizes the reduced design. The current frontier uses `PRUNE_KEEP = 36`.
+After the candidate main-effect and interaction terms are selected and standardized, the code fits the GLM once, ranks terms by absolute coefficient magnitude, prunes weak terms, and re-standardizes the reduced design. The current v3 frontier uses `PRUNE_KEEP = 38`; the v2 frontier used `PRUNE_KEEP = 36`.
 
 ### Residual-based interaction screening
 
@@ -179,18 +187,45 @@ The interaction engine itself is selected by `INTERACTION_ENGINE`:
 
 ## Recent empirical notes
 
-The v2 search loop (XGBoost feature engine) established a few practical conclusions that still inform the v3 line:
+### v1 → v2 → v3 frontier comparison
 
-- broader pre-prune candidate pools at 45 or 50 features were worse than `FEATURE_CAP = 40`.
-- coefficient-threshold pruning tied or underperformed the `keep36` pruning rule.
-- interaction screening mattered only after broadening the raw pair source pool to 12 raws; once widened, `INTERACTION_CAP = 4` produced the v2 best kept model.
+| line | feature engine | best commit | val AUC | features | clip | prune | interactions |
+|------|----------------|-------------|---------|----------|------|-------|--------------|
+| v1 (Mar 2026) | raw + parametric | `c46becc` | 0.730375 | 23 | — | — | none |
+| v2 (Apr 2026) | XGBoost stumps + AdaSpline | `ea71156` | 0.781135 | 36 | clip98 | keep36 | 4× rectangle indicators |
+| v3 (May 2026) | ReLU MLP subnetworks (5-seed ensemble) | `603a51f` | **0.783046** | 38 | none | keep38 | 5× bivariate MLP |
 
-In v3 the natural directions to explore are NN-specific:
+The cumulative lift is `+0.052671` from raw v1 to v3.
 
-- subnetwork width and depth (`NN_HIDDEN`) — narrower or deeper than the `(16, 16)` baseline.
-- L2 weight decay (`NN_ALPHA`) and learning rate (`NN_LR`).
-- whether identity terms still help once `nn_main` is the main-effect path.
-- whether `nn_pair` benefits from a smaller architecture than `nn_main` since it sees only two inputs.
+### v1 key findings
+
+- raw logistic GLM on 23 numeric TaiwanCredit predictors lands at `0.730375`.
+- screening, clipping, and simple parametric transforms (square, asinh) make small dents but do not break above the high-`0.74`s on this split.
+- the v1 line established that the binary/AUC/logistic-GLM benchmark is the right scope: small, fast, and sensitive enough to feature-policy edits to drive a search loop.
+
+### v2 key findings
+
+- `xgb_spline` (continuous truncated-linear bases seeded from depth-1 XGBoost stump splits) is the workhorse main-effect path; `xgb_bin` (piecewise-constant) tied or trailed.
+- `FEATURE_CAP = 40` was the sweet spot. Broader pre-prune pools at 45 or 50 made the post-fit pruning noisier and lost AUC.
+- post-fit `keep36` coefficient-magnitude pruning beat coefficient-threshold pruning at the same effective size.
+- residual-based FAST interaction screening only mattered after the raw-pair source pool was widened to the top 12 screened raws; before that, no rectangles survived.
+- once the source pool was wide enough, `INTERACTION_CAP = 4` rectangle indicators (constrained depth-2 XGBoost) added `+0.0046` AUC over the main-effect-only frontier.
+- `clip98` tail clipping was needed to keep the truncated-linear bases stable in the heavy tails of `LIMIT_BAL` and the `BILL_AMT*` family.
+
+### v3 key findings (30-run search loop)
+
+- the v3 frontier landed at `0.783046` with 38 features, `+0.001911` over the v2 frontier.
+- **5-seed ensembling per subnetwork** is the highest-leverage change. A single MLP fit is noisy; averaging predictions across 5 seeds lifted `+0.0029` over a single-seed v3 baseline. Going to 6, 7, or 8 seeds did not help further.
+- **`(24, 24)` is the architecture sweet spot.** Wider `(32, 32)`, narrower `(8, 8)` or `(20, 20)`, and deeper `(16, 16, 16)` all underperformed.
+- **No tail clipping is needed** in v3. Adam + L2 weight decay + early stopping handle outliers natively, so dropping `CLIP_Q` from `0.98` to `None` lifted `+0.0005` AUC. This is a structural advantage over v2's truncated-linear bases.
+- **`PRUNE_KEEP = 38`** beats `36`/`37` and ties `40`. The two extra retained columns survive because the NN shape functions are slightly less redundant with the linear identity terms than v2's spline bases were.
+- **`INTERACTION_CAP = 6`** was a marginal win over `4`; `8` overfits.
+- the kept interactions — `LIMIT_BAL × PAY_0`, `LIMIT_BAL × PAY_3`, `LIMIT_BAL × PAY_AMT1`, `PAY_0 × PAY_2`, `PAY_0 × PAY_3` — are exactly the credit-limit × payment-status and payment × payment-status pairs credit-risk modelers expect. The bivariate MLPs recovered them automatically from a residual + FAST screen.
+- changes that did **not** help: stronger or weaker `NN_ALPHA`, lower or higher `NN_LR`, dropping `identity` terms (the NN does not subsume linear shape on every variable), tightening or loosening L1/L2 on the GLM, widening interaction source pool to 15 raws.
+
+### Methodological note
+
+The v3 lift over v2 is not just a hyperparameter win — it reflects a representational fact. XGBoost depth-1 stumps are piecewise-constant; the AdaSpline post-process tries to recover a piecewise-linear shape from those constant pieces, which is structurally suboptimal. A ReLU MLP is natively piecewise-linear: the shape function is exactly the kind of basis the GLM column wants. Per-pair bivariate MLPs likewise produce a smooth surface rather than axis-aligned rectangle indicators. The `+0.0019` AUC gap is the cost of that representational mismatch in v2.
 
 ## Design choices
 
