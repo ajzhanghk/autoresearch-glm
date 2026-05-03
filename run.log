@@ -302,3 +302,6 @@ val_auc: 0.781554
 ensemble=5 hidden=24x24 cap=6 prune=38
 val_auc: 0.782100
 num_features: 38
+
+=== commit 8972ea5 | PRUNE_KEEP=40 | discard (tied, prefer simpler) ===
+val_auc: 0.782104
