@@ -14,7 +14,7 @@ from prepare import load_dataset
 # The agent should primarily edit this policy block.
 SCREEN_K = None
 FEATURE_CAP = 40
-INTERACTION_CAP = 4
+INTERACTION_CAP = 6
 INTERACTION_SOURCE_K = 12
 FAST_BINS = 8
 CLIP_Q = 0.98
@@ -25,7 +25,7 @@ PRUNE_MIN_COEF = 0.0
 # v3 primary main-effect path: per-variable ReLU MLP shape function (`nn_main`).
 # Optional main-effect support: raw `identity`, plus legacy XGBoost-seeded paths
 # (`xgb_bin`, `xgb_spline`) kept available for back-compat with v2 commits.
-TRANSFORMS = ("nn_main",)
+TRANSFORMS = ("identity", "nn_main")
 # Interaction engine: "nn" (v3 bivariate MLP per pair) or "xgb" (v2 rectangle indicators).
 INTERACTION_ENGINE = "nn"
 # v3 NN subnetwork hyperparameters (GAMI-Net-style, scaled down for this benchmark).

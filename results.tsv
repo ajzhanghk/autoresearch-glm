@@ -53,3 +53,4 @@ b008e11	0.779008	36	discard	ensemble 8 seeds (worse than 5)
 0adf375	0.779140	36	discard	shrink hidden to (8,8)
 9f9e8e7	0.779579	36	discard	stronger NN_ALPHA 1e-2
 cadff57	0.779722	36	discard	weaker NN_ALPHA 1e-4
+b9ed737	0.778855	27	discard	drop identity, nn_main only
