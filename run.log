@@ -274,3 +274,6 @@ num_features: 36
 
 === commit 8864178 | NN_LR=5e-4 | discard ===
 val_auc: 0.780285
+
+=== commit 814867a | NN_LR=3e-3 | discard ===
+val_auc: 0.780478
