@@ -256,3 +256,13 @@ num_features: 36
 ensemble=5 hidden=16x16 transforms=nn_main
 val_auc: 0.778855
 num_features: 27
+
+=== commit 0721e54 | INTERACTION_CAP=6 | status keep ===
+ensemble=5 hidden=16x16 cap=6
+val_auc: 0.780706
+num_features: 36
+
+=== commit b5dd279 | INTERACTION_CAP=8 | status discard ===
+ensemble=5 hidden=16x16 cap=8
+val_auc: 0.777814
+num_features: 36

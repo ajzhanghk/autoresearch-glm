@@ -54,3 +54,5 @@ b008e11	0.779008	36	discard	ensemble 8 seeds (worse than 5)
 9f9e8e7	0.779579	36	discard	stronger NN_ALPHA 1e-2
 cadff57	0.779722	36	discard	weaker NN_ALPHA 1e-4
 b9ed737	0.778855	27	discard	drop identity, nn_main only
+0721e54	0.780706	36	keep	INTERACTION_CAP=6 (marginal +1e-5)
+b5dd279	0.777814	36	discard	INTERACTION_CAP=8 (worse)
