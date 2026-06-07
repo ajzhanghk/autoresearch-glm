@@ -1355,18 +1355,21 @@ def _save_triple_miss(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray,
     }
     try:
         data = json.loads(TRIPLE_MISS_FILE.read_text()) if TRIPLE_MISS_FILE.exists() else []
-        # Pair-diversity cap: allow at most 2 entries from the same pair.
-        same_pair = [e for e in data if e.get("L1_key") == L1_key]
-        if len(same_pair) >= 2:
-            # Only replace if strictly better than the worst of this pair's entries
-            worst_same = max(same_pair, key=lambda e: e["clashes"])
-            if clashes >= worst_same["clashes"]:
-                return  # no improvement within this pair's bucket
-            data.remove(worst_same)
         data.append(entry)
         data.sort(key=lambda e: e["clashes"])
-        data = data[:5]   # keep top-5 best (lowest clashes) across all pairs
-        TRIPLE_MISS_FILE.write_text(json.dumps(data, indent=2))
+        # Pair-diversity cap enforced post-sort (handles concurrent writes):
+        # keep at most 2 entries per pair, then take top-5.
+        seen_pairs: dict = {}
+        diverse: list = []
+        for e in data:
+            k = e.get("L1_key")
+            cnt = seen_pairs.get(k, 0)
+            if cnt < 2:
+                diverse.append(e)
+                seen_pairs[k] = cnt + 1
+            if len(diverse) == 5:
+                break
+        TRIPLE_MISS_FILE.write_text(json.dumps(diverse, indent=2))
         print(f"  ★ Triple near-miss saved: clashes={clashes}  cl12={cl12}")
     except Exception:
         pass
