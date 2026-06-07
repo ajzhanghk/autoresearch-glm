@@ -1,0 +1,55 @@
+========================================================
+MOLS SAT Worker — complete L3 search via Glucose3
+seed=11111  sat_timeout=20.0s
+========================================================
+
+[Phase 1] Testing 310 existing promising pairs...
+  [  0] UNSAT  elapsed=0.04s  (so far: unsat=1)
+  [ 50] UNSAT  elapsed=0.05s  (so far: unsat=51)
+  [100] UNSAT  elapsed=0.03s  (so far: unsat=101)
+  [150] UNSAT  elapsed=0.05s  (so far: unsat=151)
+  [200] UNSAT  elapsed=0.04s  (so far: unsat=201)
+  [250] UNSAT  elapsed=0.06s  (so far: unsat=251)
+  [300] UNSAT  elapsed=0.03s  (so far: unsat=301)
+
+[Phase 1 done] pairs=310  SAT=0  UNSAT=310  TIMEOUT=0
+
+[Phase 2] Generating new MOLS pairs + SAT search...
+  trial=   20  sat=0  unsat=11  timeout=0  no_mols=9  time=22:20:44
+  trial=   40  no_mols=13  unsat=27  timeout=0  time=22:20:58
+  trial=   50  no_mols=16  unsat=34  timeout=0  time=22:21:07
+  trial=   60  no_mols=23  unsat=37  timeout=0  time=22:21:29
+  trial=   80  no_mols=30  unsat=50  timeout=0  time=22:21:51
+  trial=  100  sat=0  unsat=64  timeout=0  no_mols=36  time=22:22:10
+  trial=  110  no_mols=38  unsat=72  timeout=0  time=22:22:17
+  trial=  120  sat=0  unsat=79  timeout=0  no_mols=41  time=22:22:26
+  trial=  140  no_mols=45  unsat=95  timeout=0  time=22:22:39
+  trial=  160  sat=0  unsat=108  timeout=0  no_mols=52  time=22:23:02
+  trial=  170  no_mols=56  unsat=114  timeout=0  time=22:23:15
+  trial=  180  no_mols=62  unsat=118  timeout=0  time=22:23:33
+  trial=  200  sat=0  unsat=131  timeout=0  no_mols=69  time=22:23:55
+  trial=  220  no_mols=77  unsat=143  timeout=0  time=22:24:21
+  trial=  230  no_mols=80  unsat=150  timeout=0  time=22:24:30
+  trial=  240  no_mols=84  unsat=156  timeout=0  time=22:24:43
+  trial=  250  no_mols=89  unsat=161  timeout=0  time=22:24:58
+  trial=  260  sat=0  unsat=169  timeout=0  no_mols=91  time=22:25:06
+  trial=  270  no_mols=96  unsat=174  timeout=0  time=22:25:21
+  trial=  280  sat=0  unsat=179  timeout=0  no_mols=101  time=22:25:37
+  trial=  300  sat=0  unsat=192  timeout=0  no_mols=108  time=22:25:59
+  trial=  320  sat=0  unsat=205  timeout=0  no_mols=115  time=22:26:22
+  trial=  330  no_mols=121  unsat=209  timeout=0  time=22:26:41
+  trial=  340  sat=0  unsat=217  timeout=0  no_mols=123  time=22:26:48
+  trial=  360  sat=0  unsat=232  timeout=0  no_mols=128  time=22:27:04
+  trial=  370  no_mols=129  unsat=241  timeout=0  time=22:27:08
+  trial=  380  no_mols=131  unsat=249  timeout=0  time=22:27:14
+  trial=  390  no_mols=133  unsat=257  timeout=0  time=22:27:21
+  trial=  400  sat=0  unsat=264  timeout=0  no_mols=136  time=22:27:31
+  trial=  420  sat=0  unsat=280  timeout=0  no_mols=140  time=22:27:44
+  trial=  430  no_mols=144  unsat=286  timeout=0  time=22:27:57
+  trial=  440  sat=0  unsat=293  timeout=0  no_mols=147  time=22:28:06
+  trial=  460  no_mols=153  unsat=307  timeout=0  time=22:28:26
+  trial=  480  sat=0  unsat=320  timeout=0  no_mols=160  time=22:28:48
+  trial=  500  no_mols=166  unsat=334  timeout=0  time=22:29:07
+  trial=  520  sat=0  unsat=348  timeout=0  no_mols=172  time=22:29:26
+  trial=  530  no_mols=178  unsat=352  timeout=0  time=22:29:45
+  trial=  540  sat=0  unsat=359  timeout=0  no_mols=181  time=22:29:55

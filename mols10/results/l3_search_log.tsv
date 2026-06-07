@@ -2011,3 +2011,7 @@ ts	trial	strategy	pair_id	ct_count	max_disjoint	sa_best_clashes	elapsed_s	found	
 2026-06-07T22:29:01	11	sa_triple_pt	—	0	—	47	54.0	0	sa_frontier=37 swaps=405
 2026-06-07T22:29:02	11	sa_triple_pt	—	0	—	43	54.0	0	sa_frontier=37 swaps=378
 2026-06-07T22:29:34	11	sa_triple_pt	—	0	—	45	54.0	0	sa_frontier=37 swaps=405
+2026-06-07T22:29:38	11	sa_triple_pt	—	0	—	44	54.0	0	sa_frontier=37 swaps=406
+2026-06-07T22:29:40	12	sa_triple_pt	—	0	—	43	54.0	0	sa_frontier=37 swaps=391
+2026-06-07T22:29:55	12	sa_triple_pt	—	0	—	48	54.0	0	sa_frontier=37 swaps=398
+2026-06-07T22:29:56	12	sa_triple_pt	—	0	—	50	54.01	0	sa_frontier=37 swaps=372
