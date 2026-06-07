@@ -970,16 +970,16 @@ def sa_triple_pt(
     step          = 0
     swaps         = 0
     restarts      = 0
-    # ILS: track global stagnation (steps without any new best_E improvement).
-    # A cold-replica local stagnation counter would reset too often (resets on
-    # any local descent, not only on global best improvements).
-    global_stagnation = 0
-    ILS_THRESHOLD  = 6000   # shake cold replica after this many steps without new best
-    ILS_WARM_SHAKE = [20, 60]  # shake range for ILS perturbation on L3
+    # ILS: time-based stagnation — shake cold replica every ILS_INTERVAL seconds
+    # when no global improvement has been found. Step-based threshold is unreliable
+    # because step rate varies; time-based gives predictable shake frequency.
+    ILS_INTERVAL  = 8.0   # seconds between ILS shakes when stuck (each gets ~8s of SA)
+    ILS_WARM_SHAKE = [25, 70]  # shake range for ILS perturbation on L3
+    last_improve_time = t0
+    last_ils_time     = t0
 
     while time.time() - t0 < max_seconds:
         # ── advance each replica one step with its own RNG ─────────────────
-        improved_global = False
         for i in range(K):
             state = replicas[i]
             new_state, new_E, old_E = apply_move_to(state, rep_rngs[i])
@@ -991,7 +991,7 @@ def sa_triple_pt(
                 if new_E < best_E:
                     best_E     = new_E
                     best_state = new_state[:3]
-                    improved_global = True
+                    last_improve_time = time.time()
                     if new_E <= 52:
                         _save_triple_miss(*best_state, new_E)
                     if new_E == 0:
@@ -1003,13 +1003,10 @@ def sa_triple_pt(
                                 "elapsed_s": round(time.time() - t0, 2),
                             }
 
-        if improved_global:
-            global_stagnation = 0
-        else:
-            global_stagnation += 1
-
-        # ILS: shake L3 of cold replica when no global improvement for a long time
-        if global_stagnation >= ILS_THRESHOLD:
+        # ILS: shake L3 of cold replica when no global improvement for ILS_INTERVAL s
+        now = time.time()
+        if (now - last_improve_time >= ILS_INTERVAL and
+                now - last_ils_time >= ILS_INTERVAL):
             s = replicas[0]
             L1s, L2s, L3s, cl12s = s[0], s[1], s[2], s[3]
             n_shake = rep_rngs[0].randint(*ILS_WARM_SHAKE)
@@ -1018,7 +1015,7 @@ def sa_triple_pt(
             cl23_shk = count_clashes(L2s, L3_shk, n)
             replicas[0] = [L1s, L2s, L3_shk, cl12s, cl13_shk, cl23_shk]
             energies[0] = cl12s + cl13_shk + cl23_shk
-            global_stagnation = 0
+            last_ils_time = now
             restarts += 1
 
         step += 1
@@ -1745,16 +1742,18 @@ class L3AdaptiveSearch:
         result, stats = sa_triple_pt(n, budget, rng_seed=seed,
                                      temps=(1.0, 4.0, 16.0, 64.0, 256.0, 1024.0, 4096.0))
 
-        elapsed = stats.get("elapsed_s", budget)
-        bc      = stats.get("best_clashes", 3 * n * n)
-        best_ct = stats.get("best_ct_count", 0)
-        swaps   = stats.get("swaps", 0)
+        elapsed   = stats.get("elapsed_s", budget)
+        bc        = stats.get("best_clashes", 3 * n * n)
+        best_ct   = stats.get("best_ct_count", 0)
+        swaps     = stats.get("swaps", 0)
+        ils_kicks = stats.get("restarts", 0)
 
         if bc < self.sa_triple_best_clashes:
             self.sa_triple_best_clashes = bc
         print(f"  sa_triple_pt: best_clashes={bc}  "
               f"sa_frontier={self.sa_triple_best_clashes}  "
-              f"swaps={swaps}  best_ct_seen={best_ct}  elapsed={elapsed:.1f}s")
+              f"swaps={swaps}  ils_kicks={ils_kicks}  "
+              f"best_ct_seen={best_ct}  elapsed={elapsed:.1f}s")
 
         _log({"ts": datetime.now().isoformat(timespec="seconds"),
               "trial": self.trial, "strategy": "sa_triple_pt",
