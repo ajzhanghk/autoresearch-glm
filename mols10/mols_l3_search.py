@@ -1694,7 +1694,8 @@ class L3AdaptiveSearch:
         print(f"\ntrial={self.trial:4d}  strategy=sa_triple_pt"
               f"  budget={budget:.0f}s  best_ct_ever={self.best_ct_ever}")
 
-        result, stats = sa_triple_pt(n, budget, rng_seed=seed)
+        result, stats = sa_triple_pt(n, budget, rng_seed=seed,
+                                     temps=(1.0, 4.0, 16.0, 64.0, 256.0, 1024.0, 4096.0))
 
         elapsed = stats.get("elapsed_s", budget)
         bc      = stats.get("best_clashes", 3 * n * n)
