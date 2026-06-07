@@ -1828,3 +1828,186 @@ ts	trial	strategy	pair_id	ct_count	max_disjoint	sa_best_clashes	elapsed_s	found	
 2026-06-07T21:21:53	1	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1510
 2026-06-07T21:21:54	1	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1570
 2026-06-07T21:21:54	1	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1576
+2026-06-07T21:23:31	2	sa_triple_pt	—	0	—	51	97.2	0	sa_frontier=37 swaps=1457
+2026-06-07T21:23:31	2	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1590
+2026-06-07T21:23:31	2	sa_triple_pt	—	0	—	47	97.2	0	sa_frontier=37 swaps=1556
+2026-06-07T21:24:47	1	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1900
+2026-06-07T21:25:08	3	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1477
+2026-06-07T21:25:08	3	sa_triple_pt	—	0	—	49	97.2	0	sa_frontier=37 swaps=1471
+2026-06-07T21:25:08	3	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1503
+2026-06-07T21:26:24	2	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1905
+2026-06-07T21:26:50	4	sa_triple_pt	—	0	—	43	97.2	0	sa_frontier=37 swaps=1453
+2026-06-07T21:26:55	4	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1511
+2026-06-07T21:26:57	4	sa_triple_pt	—	0	—	46	97.2	0	sa_frontier=37 swaps=1512
+2026-06-07T21:28:01	3	sa_triple_pt	—	0	—	47	97.2	0	sa_frontier=37 swaps=1923
+2026-06-07T21:28:27	5	sa_triple_pt	—	0	—	45	97.2	0	sa_frontier=37 swaps=1451
+2026-06-07T21:28:32	5	sa_triple_pt	—	0	—	46	97.2	0	sa_frontier=37 swaps=1482
+2026-06-07T21:28:34	5	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1458
+2026-06-07T21:29:16	1	sa_triple_pt	—	0	—	37	540.0	0	sa_frontier=37 swaps=8456
+2026-06-07T21:29:39	4	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1956
+2026-06-07T21:30:04	6	sa_triple	—	0	—	57	97.2	0	sa_frontier=37
+2026-06-07T21:30:09	6	sa_triple	—	0	—	37	97.2	0	sa_frontier=37
+2026-06-07T21:30:11	6	sa_triple	—	0	—	37	97.2	0	sa_frontier=37
+2026-06-07T21:31:17	5	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1934
+2026-06-07T21:31:51	7	sa_triple	—	0	—	37	97.2	0	sa_frontier=37
+2026-06-07T21:32:07	7	sa_triple	—	0	—	37	97.2	0	sa_frontier=37
+2026-06-07T21:32:12	7	sa_triple	—	0	—	37	97.2	0	sa_frontier=37
+2026-06-07T21:32:54	6	sa_triple	—	0	—	37	97.2	0	sa_frontier=37
+2026-06-07T21:33:05	8	multi_decomp	—	2	—	—	73.96	0	tried=8
+2026-06-07T21:33:21	8	multi_decomp	—	2	—	—	73.53	0	tried=9
+2026-06-07T21:33:26	8	multi_decomp	—	2	—	—	74.41	0	tried=7
+2026-06-07T21:34:18	9	multi_decomp	—	2	—	—	73.56	0	tried=16
+2026-06-07T21:34:34	9	multi_decomp	—	2	—	—	73.67	0	tried=12
+2026-06-07T21:34:35	7	sa_triple	—	0	—	37	97.2	0	sa_frontier=37
+2026-06-07T21:34:40	9	multi_decomp	—	2	—	—	74.01	0	tried=10
+2026-06-07T21:35:49	8	multi_decomp	—	2	—	—	73.99	0	tried=14
+2026-06-07T21:35:59	10	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1466
+2026-06-07T21:36:27	10	sa_triple_pt	—	0	—	48	97.2	0	sa_frontier=37 swaps=1512
+2026-06-07T21:36:34	10	sa_triple_pt	—	0	—	49	97.2	0	sa_frontier=37 swaps=1432
+2026-06-07T21:37:03	9	multi_decomp	—	2	—	—	73.66	0	tried=6
+2026-06-07T21:37:36	11	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1477
+2026-06-07T21:39:48	1	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1494
+2026-06-07T21:39:48	1	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1515
+2026-06-07T21:39:48	1	sa_triple_pt	—	0	—	46	97.2	0	sa_frontier=46 swaps=1508
+2026-06-07T21:39:48	1	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1466
+2026-06-07T21:42:36	1	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1469
+2026-06-07T21:42:36	1	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1470
+2026-06-07T21:42:36	1	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1535
+2026-06-07T21:42:36	1	sa_triple_pt	—	0	—	46	97.2	0	sa_frontier=46 swaps=1503
+2026-06-07T21:45:08	1	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1559
+2026-06-07T21:45:08	1	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1565
+2026-06-07T21:45:09	1	sa_triple_pt	—	0	—	49	97.2	0	sa_frontier=49 swaps=1511
+2026-06-07T21:45:09	1	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1561
+2026-06-07T21:47:04	1	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1502
+2026-06-07T21:47:04	1	sa_triple_pt	—	0	—	46	97.2	0	sa_frontier=46 swaps=1502
+2026-06-07T21:47:04	1	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1531
+2026-06-07T21:47:05	1	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1520
+2026-06-07T21:48:41	2	sa_triple_pt	—	0	—	50	97.2	0	sa_frontier=37 swaps=1475
+2026-06-07T21:48:41	2	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1469
+2026-06-07T21:48:41	2	sa_triple_pt	—	0	—	48	97.2	0	sa_frontier=37 swaps=1504
+2026-06-07T21:48:42	2	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1507
+2026-06-07T21:50:19	3	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1496
+2026-06-07T21:50:19	3	sa_triple_pt	—	0	—	43	97.2	0	sa_frontier=37 swaps=1495
+2026-06-07T21:50:19	3	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1497
+2026-06-07T21:50:19	3	sa_triple_pt	—	0	—	53	97.2	0	sa_frontier=37 swaps=1549
+2026-06-07T21:51:57	4	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1499
+2026-06-07T21:52:00	4	sa_triple_pt	—	0	—	46	97.2	0	sa_frontier=37 swaps=1479
+2026-06-07T21:52:05	4	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1497
+2026-06-07T21:52:07	4	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1504
+2026-06-07T21:53:34	5	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1205
+2026-06-07T21:53:37	5	sa_triple_pt	—	0	—	46	97.2	0	sa_frontier=37 swaps=1233
+2026-06-07T21:53:42	5	sa_triple_pt	—	0	—	50	97.2	0	sa_frontier=37 swaps=1145
+2026-06-07T21:53:44	5	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1189
+2026-06-07T21:54:27	1	sa_triple_pt	—	0	—	37	540.0	0	sa_frontier=37 swaps=7887
+2026-06-07T21:55:12	6	sa_triple	—	0	—	37	97.2	0	sa_frontier=37
+2026-06-07T21:55:15	6	sa_triple	—	0	—	57	97.2	0	sa_frontier=37
+2026-06-07T21:55:20	6	sa_triple	—	0	—	37	97.2	0	sa_frontier=37
+2026-06-07T21:55:21	6	sa_triple	—	0	—	37	97.2	0	sa_frontier=37
+2026-06-07T21:56:54	7	sa_triple	—	0	—	37	97.2	0	sa_frontier=37
+2026-06-07T21:57:02	7	sa_triple	—	0	—	37	97.2	0	sa_frontier=37
+2026-06-07T21:57:22	7	sa_triple	—	0	—	37	97.2	0	sa_frontier=37
+2026-06-07T21:57:27	7	sa_triple	—	0	—	37	97.2	0	sa_frontier=37
+2026-06-07T21:58:08	8	multi_decomp	—	2	—	—	74.17	0	tried=5
+2026-06-07T21:58:16	8	multi_decomp	—	2	—	—	74.4	0	tried=6
+2026-06-07T21:58:36	8	multi_decomp	—	2	—	—	74.29	0	tried=2
+2026-06-07T21:58:41	8	multi_decomp	—	2	—	—	73.8	0	tried=5
+2026-06-07T22:00:57	1	sa_triple_pt	—	0	—	46	97.2	0	sa_frontier=46 swaps=1332
+2026-06-07T22:00:57	1	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1130
+2026-06-07T22:00:57	1	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1115
+2026-06-07T22:00:57	1	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1240
+2026-06-07T22:02:34	2	sa_triple_pt	—	0	—	43	97.2	0	sa_frontier=43 swaps=1291
+2026-06-07T22:02:34	2	sa_triple_pt	—	0	—	49	97.2	0	sa_frontier=37 swaps=1180
+2026-06-07T22:02:34	2	sa_triple_pt	—	0	—	49	97.2	0	sa_frontier=37 swaps=1163
+2026-06-07T22:02:35	2	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1300
+2026-06-07T22:04:11	3	sa_triple_pt	—	0	—	50	97.2	0	sa_frontier=43 swaps=1107
+2026-06-07T22:04:12	3	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1239
+2026-06-07T22:04:12	3	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1216
+2026-06-07T22:04:12	3	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1251
+2026-06-07T22:05:50	4	sa_triple_pt	—	0	—	43	97.2	0	sa_frontier=43 swaps=1267
+2026-06-07T22:05:55	4	sa_triple_pt	—	0	—	47	97.2	0	sa_frontier=37 swaps=1092
+2026-06-07T22:06:00	4	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1344
+2026-06-07T22:06:01	4	sa_triple_pt	—	0	—	49	97.2	0	sa_frontier=37 swaps=1281
+2026-06-07T22:07:27	5	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1229
+2026-06-07T22:07:32	5	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1272
+2026-06-07T22:07:37	5	sa_triple_pt	—	0	—	48	97.2	0	sa_frontier=37 swaps=1180
+2026-06-07T22:07:38	5	sa_triple_pt	—	0	—	43	97.2	0	sa_frontier=37 swaps=1236
+2026-06-07T22:08:20	1	sa_triple_pt	—	0	—	37	540.0	0	sa_frontier=37 swaps=7143
+2026-06-07T22:09:04	6	sa_triple	—	0	—	37	97.2	0	sa_frontier=37
+2026-06-07T22:09:09	6	sa_triple	—	0	—	57	97.2	0	sa_frontier=37
+2026-06-07T22:09:14	6	sa_triple	—	0	—	37	97.2	0	sa_frontier=37
+2026-06-07T22:09:15	6	sa_triple	—	0	—	43	97.2	0	sa_frontier=37
+2026-06-07T22:10:47	7	sa_triple	—	0	—	37	97.2	0	sa_frontier=37
+2026-06-07T22:10:56	7	sa_triple	—	0	—	43	97.2	0	sa_frontier=37
+2026-06-07T22:11:16	7	sa_triple	—	0	—	37	97.2	0	sa_frontier=37
+2026-06-07T22:11:21	7	sa_triple	—	0	—	37	97.2	0	sa_frontier=37
+2026-06-07T22:12:01	8	multi_decomp	—	2	—	—	73.93	0	tried=4
+2026-06-07T22:12:09	8	multi_decomp	—	2	—	—	73.58	0	tried=5
+2026-06-07T22:12:30	8	multi_decomp	—	2	—	—	74.04	0	tried=4
+2026-06-07T22:12:35	8	multi_decomp	—	2	—	—	73.56	0	tried=14
+2026-06-07T22:13:16	9	multi_decomp	—	2	—	—	74.62	0	tried=10
+2026-06-07T22:13:23	9	multi_decomp	—	2	—	—	73.96	0	tried=10
+2026-06-07T22:13:44	9	multi_decomp	—	2	—	—	73.42	0	tried=4
+2026-06-07T22:13:48	9	multi_decomp	—	2	—	—	73.26	0	tried=7
+2026-06-07T22:15:03	10	sa_triple_pt	—	0	—	47	97.2	0	sa_frontier=37 swaps=1285
+2026-06-07T22:15:05	10	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1202
+2026-06-07T22:15:36	10	sa_triple_pt	—	0	—	50	97.2	0	sa_frontier=37 swaps=1090
+2026-06-07T22:15:42	10	sa_triple_pt	—	0	—	45	97.2	0	sa_frontier=37 swaps=1274
+2026-06-07T22:16:41	11	sa_triple_pt	—	0	—	37	97.2	0	sa_frontier=37 swaps=1203
+2026-06-07T22:16:42	11	sa_triple_pt	—	0	—	43	97.2	0	sa_frontier=37 swaps=1134
+2026-06-07T22:17:14	11	sa_triple_pt	—	0	—	52	97.2	0	sa_frontier=37 swaps=1262
+2026-06-07T22:17:19	11	sa_triple_pt	—	0	—	46	97.2	0	sa_frontier=37 swaps=1327
+2026-06-07T22:17:20	2	sa_triple_pt	—	0	—	49	540.0	0	sa_frontier=37 swaps=7064
+2026-06-07T22:19:55	1	sa_triple_pt	—	0	—	37	54.0	0	sa_frontier=37 swaps=411
+2026-06-07T22:19:55	1	sa_triple_pt	—	0	—	37	54.01	0	sa_frontier=37 swaps=413
+2026-06-07T22:19:55	1	sa_triple_pt	—	0	—	37	54.0	0	sa_frontier=37 swaps=394
+2026-06-07T22:19:55	1	sa_triple_pt	—	0	—	46	54.01	0	sa_frontier=46 swaps=405
+2026-06-07T22:19:55	1	sa_triple_pt	—	0	—	37	54.0	0	sa_frontier=37 swaps=386
+2026-06-07T22:20:49	2	sa_triple_pt	—	0	—	48	54.0	0	sa_frontier=37 swaps=417
+2026-06-07T22:20:49	2	sa_triple_pt	—	0	—	48	54.0	0	sa_frontier=37 swaps=407
+2026-06-07T22:20:49	2	sa_triple_pt	—	0	—	49	54.0	0	sa_frontier=37 swaps=410
+2026-06-07T22:20:49	2	sa_triple_pt	—	0	—	43	54.01	0	sa_frontier=43 swaps=402
+2026-06-07T22:20:49	2	sa_triple_pt	—	0	—	43	54.0	0	sa_frontier=37 swaps=395
+2026-06-07T22:21:43	3	sa_triple_pt	—	0	—	37	54.0	0	sa_frontier=37 swaps=422
+2026-06-07T22:21:43	3	sa_triple_pt	—	0	—	37	54.0	0	sa_frontier=37 swaps=400
+2026-06-07T22:21:43	3	sa_triple_pt	—	0	—	46	54.01	0	sa_frontier=37 swaps=393
+2026-06-07T22:21:43	3	sa_triple_pt	—	0	—	50	54.0	0	sa_frontier=43 swaps=383
+2026-06-07T22:21:43	3	sa_triple_pt	—	0	—	53	54.0	0	sa_frontier=37 swaps=426
+2026-06-07T22:22:40	4	sa_triple_pt	—	0	—	43	54.0	0	sa_frontier=43 swaps=412
+2026-06-07T22:22:43	4	sa_triple_pt	—	0	—	47	54.01	0	sa_frontier=37 swaps=394
+2026-06-07T22:22:46	4	sa_triple_pt	—	0	—	47	54.0	0	sa_frontier=37 swaps=397
+2026-06-07T22:22:56	4	sa_triple_pt	—	0	—	37	54.0	0	sa_frontier=37 swaps=422
+2026-06-07T22:22:59	4	sa_triple_pt	—	0	—	47	54.01	0	sa_frontier=37 swaps=393
+2026-06-07T22:23:34	5	sa_triple_pt	—	0	—	37	54.0	0	sa_frontier=37 swaps=381
+2026-06-07T22:23:37	5	sa_triple_pt	—	0	—	49	54.0	0	sa_frontier=37 swaps=388
+2026-06-07T22:23:40	5	sa_triple_pt	—	0	—	48	54.0	0	sa_frontier=37 swaps=411
+2026-06-07T22:23:50	5	sa_triple_pt	—	0	—	50	54.0	0	sa_frontier=37 swaps=408
+2026-06-07T22:23:53	5	sa_triple_pt	—	0	—	43	54.0	0	sa_frontier=37 swaps=418
+2026-06-07T22:24:28	6	sa_triple	—	0	—	37	54.01	0	sa_frontier=37
+2026-06-07T22:24:31	6	sa_triple	—	0	—	37	54.0	0	sa_frontier=37
+2026-06-07T22:24:34	6	sa_triple	—	0	—	57	54.0	0	sa_frontier=37
+2026-06-07T22:24:44	6	sa_triple	—	0	—	37	54.0	0	sa_frontier=37
+2026-06-07T22:24:47	6	sa_triple	—	0	—	77	54.0	0	sa_frontier=37
+2026-06-07T22:25:30	7	sa_triple	—	0	—	43	54.0	0	sa_frontier=37
+2026-06-07T22:25:32	7	sa_triple	—	0	—	37	54.01	0	sa_frontier=37
+2026-06-07T22:25:46	7	sa_triple	—	0	—	43	54.0	0	sa_frontier=37
+2026-06-07T22:25:58	7	sa_triple	—	0	—	59	54.0	0	sa_frontier=37
+2026-06-07T22:26:08	7	sa_triple	—	0	—	37	54.0	0	sa_frontier=37
+2026-06-07T22:26:09	8	multi_decomp	—	2	—	—	39.42	0	tried=3
+2026-06-07T22:26:13	8	multi_decomp	—	2	—	—	40.43	0	tried=1
+2026-06-07T22:26:27	8	multi_decomp	—	2	—	—	40.62	0	tried=3
+2026-06-07T22:26:40	8	multi_decomp	—	2	—	—	41.28	0	tried=1
+2026-06-07T22:26:49	8	multi_decomp	—	2	—	—	41.46	0	tried=2
+2026-06-07T22:26:50	9	multi_decomp	—	0	—	—	41.38	0	tried=0
+2026-06-07T22:26:54	9	multi_decomp	—	2	—	—	41.43	0	tried=1
+2026-06-07T22:27:07	9	multi_decomp	—	2	—	—	40.59	0	tried=4
+2026-06-07T22:27:20	9	multi_decomp	—	2	—	—	40.28	0	tried=2
+2026-06-07T22:27:28	9	multi_decomp	—	2	—	—	39.11	0	tried=4
+2026-06-07T22:27:52	10	sa_triple_pt	—	0	—	43	54.01	0	sa_frontier=37 swaps=387
+2026-06-07T22:28:07	10	sa_triple_pt	—	0	—	48	54.0	0	sa_frontier=37 swaps=398
+2026-06-07T22:28:08	10	sa_triple_pt	—	0	—	37	54.0	0	sa_frontier=37 swaps=396
+2026-06-07T22:28:40	10	sa_triple_pt	—	0	—	50	54.01	0	sa_frontier=37 swaps=383
+2026-06-07T22:28:44	10	sa_triple_pt	—	0	—	46	54.0	0	sa_frontier=37 swaps=421
+2026-06-07T22:28:46	11	sa_triple_pt	—	0	—	37	54.01	0	sa_frontier=37 swaps=388
+2026-06-07T22:29:01	11	sa_triple_pt	—	0	—	47	54.0	0	sa_frontier=37 swaps=405
+2026-06-07T22:29:02	11	sa_triple_pt	—	0	—	43	54.0	0	sa_frontier=37 swaps=378
+2026-06-07T22:29:34	11	sa_triple_pt	—	0	—	45	54.0	0	sa_frontier=37 swaps=405
