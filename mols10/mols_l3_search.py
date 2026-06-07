@@ -814,7 +814,8 @@ def sa_triple_pt(
             sp = r.choice(_seed_pairs)
             L1_ = sp[0].copy(); L2_ = sp[1].copy()
             L1_, L2_ = isotopy_variant(L1_, L2_, n, random.Random(r.random()))
-            offset = r.randint(1, n-1)
+            valid_offsets = [k for k in range(1, n) if __import__('math').gcd(k, n) == 1]
+            offset = r.choice(valid_offsets)  # gcd(offset,n)==1 ensures valid Latin square
             L3_raw = np.array([[(i + offset*j) % n for j in range(n)] for i in range(n)],
                               dtype=np.int8)
             # Full isotopy: random row perm + col perm + symbol relabeling
@@ -1458,6 +1459,12 @@ def _save_triple_miss(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray,
     multiple basins rather than collapsing to a single pair's local minimum.
     """
     n = 10
+    # Guard against invalid Latin squares from buggy initialization modes
+    vals = list(range(n))
+    for sq, name in ((L1, "L1"), (L2, "L2"), (L3, "L3")):
+        for i in range(n):
+            if sorted(sq[i].tolist()) != vals or sorted(sq[:, i].tolist()) != vals:
+                return  # silently discard invalid square
     cl12 = count_clashes(L1, L2, n)
     L1_key = tuple(L1.ravel().tolist())  # fingerprint for pair identity
     entry = {
