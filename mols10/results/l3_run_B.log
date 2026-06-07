@@ -283,3 +283,44 @@ trial=  15  strategy=sa_triple  budget=54s  best_ct_ever=2
   Progress: trials=15  elapsed=0.26h  pool_size=43  best_ct_ever=2  sa3_best_clashes=59  N(10)≥3 not found yet
 
 trial=  16  strategy=sa_triple  budget=54s  best_ct_ever=2
+  sa_triple: best_clashes=59  sa_frontier=59  best_ct_seen=0  elapsed=54.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+  [checkpoint] Saved 34 promising pairs to disk (best ct=2)
+
+  Progress: trials=16  elapsed=0.28h  pool_size=43  best_ct_ever=2  sa3_best_clashes=59  N(10)≥3 not found yet
+
+trial=  17  strategy=sa_triple  budget=54s  best_ct_ever=2
+  sa_triple: best_clashes=70  sa_frontier=59  best_ct_seen=0  elapsed=54.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=17  elapsed=0.29h  pool_size=43  best_ct_ever=2  sa3_best_clashes=59  N(10)≥3 not found yet
+
+trial=  18  strategy=sa_ct_climb  budget=50s  best_ct_ever=2  warm=yes ct=2
+  sa_ct_climb: best_ct=2  steps=3200040  elapsed=51.1s  
+  [sa_ct_43] ct=2  max_dis=2  src=sa_ct
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+  [tv_44] ct=2  max_dis=1  src=tv
+  ★ Saved promising pair tv_44 (ct=2) → promising_pairs.json
+
+  Progress: trials=18  elapsed=0.31h  pool_size=45  best_ct_ever=2  sa3_best_clashes=59  N(10)≥3 not found yet
+
+trial=  19  strategy=multi_decomp  budget=45s  n_attempts=10  best_ct_ever=2
+  multi_decomp: best_ct=1  pairs_tried=21  elapsed=44.4s
+  [mdecomp_45] ct=1  max_dis=1  src=mdecomp
+  ★ Saved promising pair mdecomp_45 (ct=1) → promising_pairs.json
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=19  elapsed=0.32h  pool_size=46  best_ct_ever=2  sa3_best_clashes=59  N(10)≥3 not found yet
+
+trial=  20  strategy=sa_l3_pair  pair=tv_44  ct=2  budget=68s
+  sa_l3_pair: found=False  best_clashes=41  restarts=14  elapsed=67.5s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=20  elapsed=0.34h  pool_size=46  best_ct_ever=2  sa3_best_clashes=59  N(10)≥3 not found yet
+
+trial=  21  strategy=sa_l3_pair  pair=tv_10  ct=1  budget=68s
