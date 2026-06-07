@@ -123,16 +123,27 @@ The cascade has been the primary mechanism of improvement. Starting from a rando
 | Session 3 (continued) | **37** | 5-replica T=256 broke through; properly saved |
 | Session 4 (bugs introduced) | ~~22~~ ~~20~~ | **FAKE** — invalid L3 from cyclic offset=5 bug |
 | Session 5 (bugs fixed) | **37** | Restored valid pool; D5/k-scramble/super-shake running |
+| Session 6 (current) | **37** | ILS, bigscramble, reverse search, L3-diversity; E=37 holds |
 
 **Current best (verified valid):** E = 37 (cl12=0, cl13=22, cl23=15)
 
-### Current near_miss_triple.json
+### Current near_miss_triple.json (Session 6)
 
-| Entry | cl12 | cl13 | cl23 | total | source pair |
-|-------|------|------|------|-------|-------------|
-| 0-4 | 0 | 22 | 15 | **37** | 2–3 distinct MOLS pairs (5 entries) |
+| Entry | total E | cl12 | Notes |
+|-------|---------|------|-------|
+| 0–2 | **37** | 0 | 3 entries, all with distinct L3 matrices (Hamming dist 20-80) |
+| 3–4 | 43 | 0 | 2 new entries from distinct L3 warm-starts |
+| 5–7 | 46-48 | 0 | 3 further entries; all 8 have unique L3s (enforced by new save logic) |
 
-All entries have cl12=0, all squares verified as valid Latin squares.
+All entries verified: cl12=0, valid Latin squares, no duplicate L3 matrices.
+
+### Pool L3 Diversity Finding (2026-06-07 ~21:50)
+
+Discovered that 3 of 5 E=37 pool entries had IDENTICAL L3 matrices. The pair-diversity
+criterion (max 2 per L1 pair) ensures diverse L1/L2 pairs but does NOT prevent repeated L3s.
+
+**Fix**: `_save_triple_miss` now also rejects entries with L3 identical to any existing pool L3.
+Pool pruned from 8→5 unique-L3 entries, then grew back to 8 with genuinely diverse L3s.
 
 ### Critical Bug Discovery: Invalid Latin Squares in Pool (2026-06-07 ~20:00-21:30)
 
@@ -215,8 +226,12 @@ For the joint SA to find E=0, it must find a MOLS pair with CT≥10 — somethin
 
 Evidence suggests E=37 may be close to the fundamental minimum for the current class of accessible MOLS-10 pairs:
 1. L3-only SA (fixing CT=0 pair, all starting L3s) can't beat 37 in 10M+ steps
-2. Joint SA with 540s budget and T=256 hot replica can't beat 37
-3. Two independent sessions both independently converged to 37 as the cascade minimum
+2. Joint SA with 540s budget, 7 replicas (T=[1,4,16,64,256,1024,4096]), 28M+ moves/trial: still E=37
+3. Three independent sessions all independently converged to 37 as the cascade minimum
+4. k-scramble moves (3-5 row permutations, exploring 3+-step neighborhood): no improvement
+5. D5 Cayley table starts (125 intercalates, non-abelian structure): cascade back to E=37
+6. Affine L3 starts (all valid offsets explored): cascade back to E=37
+7. Super-shake (100-400 random moves from near-miss): cascade back to E=37
 
 This is consistent with (but does not prove) N(10) = 2.
 
@@ -226,21 +241,58 @@ This is consistent with (but does not prove) N(10) = 2.
 
 | Bug | Impact | Fix |
 |-----|--------|-----|
-| Concurrent JSON write | Silent save failure (workers clobber each other's writes) | Inner try-except with `data=[]` recovery |
-| Unhashable list key | ALL saves failed after pair-diversity code was added | `k = tuple(raw_k) if isinstance(raw_k, list) else raw_k` |
-| numpy `M[a],M[b]=M[b],M[a]` aliasing | Row swap corrupts Latin square (both rows get same values) | Use `M[[a,b]] = M[[b,a]]` |
-| CT=0 warm-start removed prematurely | Cascade stalled at 43 (vs 37 with CT=0 warm-starts) | Restored 15% pure near-miss mode |
-| L3-bias reduced to 50% | Cascade stalled at 43 (vs 37 with 70% bias) | Reverted to 70%/15%/15% |
+| Concurrent JSON write | Silent save failure | Inner try-except with `data=[]` recovery |
+| Unhashable list key | ALL saves failed after pair-diversity code | `k = tuple(raw_k) if isinstance(raw_k, list) else raw_k` |
+| numpy `M[a],M[b]=M[b],M[a]` aliasing | Row swap corrupts Latin square | Use `M[[a,b]] = M[[b,a]]` |
+| CT=0 warm-start removed prematurely | Cascade stalled at 43 | Restored 15% pure near-miss mode |
+| L3-bias reduced to 50% | Cascade stalled at 43 | Reverted to 70%/15%/15% |
+| Cyclic mode offset bug (session 4) | **CRITICAL**: gcd(offset,n)>1 gives invalid LS; ALL "E=22" and "E=20" results were fake | Restrict to valid_offsets = {k: gcd(k,n)==1} = {1,3,7,9} for n=10 |
+| No LS validation in save | Invalid L3 squares entered warm-start pool | Added row/column validation in _save_triple_miss and fresh_state |
+| Duplicate L3 in pool | 3/5 E=37 entries identical; warm-starts converge to same minimum | Added L3-deduplication in _save_triple_miss |
+| Dead super-shake code (session 6) | super-shake condition `roll<0.93` shadowed by D5 block; unreachable | Corrected probability chain boundaries |
+| ILS step-count threshold | Resets on local descent, rarely triggers | Switched to time-based (8s) global stagnation tracking |
+
+---
+
+## Session 6 Additions (2026-06-07)
+
+### New algorithmic features:
+- **bigscramble move (k=6-9 rows)**: Larger jumps than kscramble (k=3-5); provides escape attempts beyond the 3-5 row neighborhood.
+- **ILS (Iterated Local Search)**: Time-based stagnation trigger (8s after last best_E improvement); shakes L3 with 25-70 random moves on the cold replica. Activates ~14× per 97s trial.
+- **Reverse search worker** (`mols_reverse_search.py`): Dedicated 6th worker fixing near-miss L3, searching for compatible (L1, L2) via 7-replica PT. Best found: E=64-65 (baseline=111 for random).
+- **multi_decomp 50% random L1**: Increased from 1/3 to 1/2 to explore non-Parker L1 spaces more thoroughly (isotopy of Parker L1 is CT-invariant, so can only ever produce CT≤2 pairs).
+- **L3-diversity enforcement**: Pool now rejects entries with duplicate L3 matrices (was: 3/5 E=37 entries identical).
+
+### New negative findings:
+- Reverse search best_E=64-65 (vs. 0 needed): near-miss L3 is not compatible with any pair (L1, L2) within the SA's reach.
+- All 310 stored MOLS pairs have CT≤2 including 124 from multi_decomp random L1 starts (not just Parker-family).
+- ILS with 14 kicks per trial (fresh L3 perturbations every ~8s) also cannot break E=37.
 
 ---
 
 ## Prognosis
 
-The CT=2 ceiling across 282 tested pairs, combined with the sa_triple cascade stagnating at E=37 (cl12=0, cl13=22, cl23=15), is consistent with the expert consensus that **N(10) = 2**. The joint SA cannot push below 37 even with aggressive 5-replica parallel tempering (T_max=256, 540s budget).
+The CT=2 ceiling across 310 tested pairs (124 from random L1 starts, not just Parker), combined with the sa_triple cascade stagnating at E=37 despite:
+- 7-replica PT (T_max=4096)
+- ILS shaking (14 times/trial, 25-70 moves per shake)
+- bigscramble moves (k=6-9)
+- D5/affine/cyclic init modes + reverse search
+- Dedicated reverse search showing best (L1,L2) compatible with near-miss L3 is E=64 (vs. 0 needed)
+
+...is consistent with the expert consensus that **N(10) = 2**.
+
+**Search status (Session 6):**
+- 6 workers running continuously: 4 × 97s + 1 × 600s + 1 × 120s reverse
+- 7-replica parallel tempering T=[1,4,16,64,256,1024,4096]
+- init modes: near-miss warm-start (8%), micro-shake (10%), shake (15%), L3-transfer (17%),
+  CT=2 pair+fresh L3 (23%), cyclic Z10 (7%), affine (8%), D5 Cayley (5%), super-shake (3%),
+  reverse (2%), random (2%)
+- Moves: row/col/relabel/intercalate/kscramble(3-5)/bigscramble(6-9)
+- Pool enforces both pair-diversity (max 2 per L1) and L3-uniqueness
 
 **Still watching for:**
 1. Any pair with CT ≥ 3 (novel; CT ≥ 10 enables AlgorithmX L3 search)
-2. Total clashes < 37 (would be a new cascade record)
+2. Total clashes < 37 (would be new cascade record)
 3. Total clashes = 0 (proves N(10) ≥ 3)
 
 ---
@@ -249,9 +301,12 @@ The CT=2 ceiling across 282 tested pairs, combined with the sa_triple cascade st
 
 | File | Purpose |
 |------|---------|
-| `mols10/mols_l3_search.py` | Main search engine: sa_triple_pt, sa_ct_climb, multi_decomp |
+| `mols10/mols_l3_search.py` | Main search engine: sa_triple_pt, multi_decomp; 6-worker adaptive |
+| `mols10/mols_reverse_search.py` | Dedicated reverse-search: fix L3, find compatible (L1,L2) |
 | `mols10/mols_adaptive.py` | Core utilities: count_clashes, random_latin_square, verify_mols |
-| `mols10/results/near_miss_triple.json` | Best (L1,L2,L3) triples for warm-starts (top-8, pair-diverse) |
-| `mols10/results/promising_pairs.json` | Best (L1,L2) MOLS pairs by CT count (282 pairs, CT≤2) |
-| `mols10/results/l3_run_A/B/C/D.log` | Per-worker progress logs |
+| `mols10/results/near_miss_triple.json` | Best (L1,L2,L3) triples for warm-starts (top-8, pair+L3 diverse) |
+| `mols10/results/promising_pairs.json` | Best (L1,L2) MOLS pairs by CT count (310 pairs, CT≤2) |
+| `mols10/results/l3_v3_s{42,137,271,503}.log` | Per-worker logs (97s budget) |
+| `mols10/results/l3_longrun2.log` | Long-run worker log (600s budget) |
+| `mols10/results/l3_reverse.log` | Reverse-search worker log |
 | `mols10/docs/findings.md` | This document |
