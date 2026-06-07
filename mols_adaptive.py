@@ -459,6 +459,129 @@ def sa_find_pair(
 
 
 # ---------------------------------------------------------------------------
+# Transversal-based OLS mate finder (Algorithm X / exact cover)
+# ---------------------------------------------------------------------------
+
+def _enumerate_transversals(L: np.ndarray, n: int, max_count: int, deadline: float) -> list:
+    """Return up to max_count transversals of L as lists of (row, col) tuples."""
+    transversals: list = []
+    used_cols = [False] * n
+    used_syms = [False] * n
+
+    def _bt(row: int, current: list) -> None:
+        if time.time() >= deadline or len(transversals) >= max_count:
+            return
+        if row == n:
+            transversals.append(tuple(current))
+            return
+        for c in range(n):
+            if not used_cols[c]:
+                s = int(L[row, c])
+                if not used_syms[s]:
+                    used_cols[c] = True
+                    used_syms[s] = True
+                    current.append((row, c))
+                    _bt(row + 1, current)
+                    current.pop()
+                    used_cols[c] = False
+                    used_syms[s] = False
+
+    _bt(0, [])
+    return transversals
+
+
+def find_orth_mate_transversal(
+    L1: np.ndarray,
+    max_seconds: float,
+    rng_seed: Optional[int] = None,
+) -> Optional[np.ndarray]:
+    """Find L2 orthogonal to L1 via exact-cover over transversals.
+
+    Steps:
+      1. Enumerate all transversals of L1 (up to 50 000).
+      2. Run Algorithm X to find n disjoint transversals covering all n² cells.
+      3. Assign each transversal a distinct symbol (0..n-1) → L2.
+    """
+    n = L1.shape[0]
+    rng = random.Random(rng_seed)
+    deadline = time.time() + max_seconds
+
+    # 1. Enumerate transversals
+    enum_budget = min(max_seconds * 0.25, 5.0)
+    tvs = _enumerate_transversals(L1, n, max_count=50_000, deadline=time.time() + enum_budget)
+    if len(tvs) < n:
+        return None
+
+    # Shuffle for diversity across restarts
+    rng.shuffle(tvs)
+    tv_cells: list[frozenset] = [frozenset(tv) for tv in tvs]
+
+    # Build cell → covering-transversal-index map
+    cell_to_tvs: dict[tuple, list[int]] = {}
+    for k, cells in enumerate(tv_cells):
+        for cell in cells:
+            cell_to_tvs.setdefault(cell, []).append(k)
+
+    all_cells = set(cell_to_tvs.keys())
+    if len(all_cells) != n * n:
+        return None  # degenerate square
+
+    # 2. Algorithm X (recursive backtracking exact cover)
+    def _alg_x(remaining_cells: set, avail_tvs: set, chosen: list) -> bool:
+        if time.time() >= deadline:
+            return False
+        if not remaining_cells:
+            return True
+
+        # MRV: cell covered by fewest available transversals
+        best_cell = min(
+            remaining_cells,
+            key=lambda c: sum(1 for k in cell_to_tvs.get(c, []) if k in avail_tvs),
+        )
+        covering = [k for k in cell_to_tvs.get(best_cell, []) if k in avail_tvs]
+        if not covering:
+            return False
+
+        for k in covering:
+            if time.time() >= deadline:
+                return False
+            tv_k = tv_cells[k]
+            # Remove cells covered by tv_k from remaining
+            new_remaining = remaining_cells - tv_k
+            # Exclude transversals that conflict with tv_k
+            new_avail = avail_tvs - {j for j in avail_tvs if tv_cells[j] & tv_k}
+            chosen.append(k)
+            if _alg_x(new_remaining, new_avail, chosen):
+                return True
+            chosen.pop()
+        return False
+
+    chosen: list[int] = []
+    if not _alg_x(all_cells, set(range(len(tvs))), chosen):
+        return None
+
+    # 3. Build L2
+    L2 = np.empty((n, n), dtype=np.int8)
+    for color, k in enumerate(chosen):
+        for (i, j) in tvs[k]:
+            L2[i, j] = color
+    return L2
+
+
+def find_orth_mate_fast(
+    L1: np.ndarray,
+    max_seconds: float,
+    rng_seed: Optional[int] = None,
+) -> Optional[np.ndarray]:
+    """Try transversal-cover first (fast for squares with many transversals),
+    fall back to CSP backtracking if it fails."""
+    L2 = find_orth_mate_transversal(L1, max_seconds * 0.7, rng_seed=rng_seed)
+    if L2 is not None:
+        return L2
+    return find_orth_mate(L1, max_seconds * 0.3, rng_seed=rng_seed)
+
+
+# ---------------------------------------------------------------------------
 # Sequential orthogonal-mate CSP: find L2 given fixed L1
 # ---------------------------------------------------------------------------
 
@@ -734,6 +857,48 @@ def _luby(k: int) -> int:
         j -= (1 << t) - 1      # strip one completed block
 
 
+def transversal_find_pair(
+    n: int,
+    max_seconds: float,
+    rng_seed: Optional[int] = None,
+) -> tuple[Optional[np.ndarray], Optional[np.ndarray], dict]:
+    """
+    Find a MOLS pair via transversal exact-cover.
+
+    For each random L1:
+      1. Enumerate all transversals of L1 (up to 50 000).
+      2. Run Algorithm X to find n disjoint transversals.
+      3. Those n transversals define L2: L2[i,j] = transversal-index k.
+    Tries fresh L1 squares until success or timeout.
+    """
+    rng = random.Random(rng_seed)
+    t0  = time.time()
+    attempts = 0
+
+    while True:
+        elapsed = time.time() - t0
+        if elapsed >= max_seconds:
+            return None, None, {"attempts": attempts, "elapsed": round(elapsed, 1),
+                                 "best_clashes": n * n}
+
+        L1 = random_latin_square(n, random.Random(rng.random()))
+        remaining = max_seconds - (time.time() - t0)
+        if remaining <= 0:
+            break
+
+        L2 = find_orth_mate_transversal(L1, min(remaining, 30.0),
+                                         rng_seed=rng.randint(0, 2**31))
+        attempts += 1
+
+        if L2 is not None:
+            return L1, L2, {"attempts": attempts,
+                             "elapsed": round(time.time() - t0, 1),
+                             "best_clashes": 0}
+
+    return None, None, {"attempts": attempts, "elapsed": round(time.time() - t0, 1),
+                        "best_clashes": n * n}
+
+
 def csp_find_pair(
     n: int,
     max_seconds: float,
@@ -833,13 +998,13 @@ class AdaptiveSearch:
         self.trial        = 0
 
         # Frontier: best clashes per strategy
-        self.frontier: dict[str, int] = {"sat": n*n, "sa": n*n, "csp": n*n}
+        self.frontier: dict[str, int] = {"sat": n*n, "sa": n*n, "csp": n*n, "tv": n*n}
         self.best_cfg: dict[str, object] = {
-            "sat": SATConfig(), "sa": SAConfig(), "csp": CSPConfig()
+            "sat": SATConfig(), "sa": SAConfig(), "csp": CSPConfig(), "tv": None
         }
 
-        # Initial queue: SAT first (usually fastest), then SA, then CSP
-        self.queue: list = [SATConfig(), SAConfig(), CSPConfig()]
+        # Initial queue: transversal strategy first (fastest), then SA/SAT/CSP
+        self.queue: list = [None, SAConfig(), SATConfig(), CSPConfig()]
 
         save_dir.mkdir(parents=True, exist_ok=True)
         self.tsv_path = save_dir / "mols_adaptive_results.tsv"
@@ -862,16 +1027,21 @@ class AdaptiveSearch:
         self.trial += 1
         seed  = self.rng.randint(0, 2**31)
         budget = min(self.eval_budget, self._remaining())
-        params = asdict(cfg)
+        is_tv = cfg is None
+
+        params = {} if is_tv else asdict(cfg)
+        strategy = "tv" if is_tv else cfg.strategy
 
         print(f"\n── Trial {self.trial}"
-              f"  strategy={cfg.strategy}"
+              f"  strategy={strategy}"
               f"  budget={budget:.0f}s ──────────────────────")
         print(f"   params: {params}", flush=True)
 
         t_trial = time.time()
 
-        if cfg.strategy == "sat":
+        if is_tv:
+            L1, L2, stats = transversal_find_pair(self.n, budget, rng_seed=seed)
+        elif cfg.strategy == "sat":
             L1, L2, stats = sat_find_pair(self.n, budget, cfg, rng_seed=seed)
         elif cfg.strategy == "sa":
             L1, L2, stats = sa_find_pair(self.n, budget, cfg, rng_seed=seed)
@@ -881,18 +1051,20 @@ class AdaptiveSearch:
         elapsed  = time.time() - t_trial
         found    = L1 is not None
         clashes  = 0 if found else stats.get("best_clashes", self.n * self.n)
-        metric   = stats.get("steps", stats.get("nodes", stats.get("elapsed", 0)))
+        metric   = stats.get("steps", stats.get("nodes", stats.get("attempts",
+                             stats.get("elapsed", 0))))
 
         print(f"   result: {'FOUND' if found else f'best_clashes={clashes}'}"
               f"  elapsed={elapsed:.1f}s", flush=True)
 
         row = [self.trial, datetime.now().isoformat(timespec="seconds"),
-               cfg.strategy, json.dumps(params), clashes, metric,
+               strategy, json.dumps(params), clashes, metric,
                round(elapsed, 1), int(found)]
         with open(self.tsv_path, "a", newline="") as f:
             csv.writer(f, delimiter="\t").writerow(row)
 
-        return {"L1": L1, "L2": L2, "clashes": clashes, "found": found, "cfg": cfg}
+        return {"L1": L1, "L2": L2, "clashes": clashes, "found": found, "cfg": cfg,
+                "strategy": strategy}
 
     def run(self) -> tuple[Optional[np.ndarray], Optional[np.ndarray]]:
         print("=" * 60)
@@ -902,8 +1074,9 @@ class AdaptiveSearch:
 
         while self._budget_ok():
             if not self.queue:
-                # Replenish: mutate all frontiers
-                for s in ["sat", "sa", "csp"]:
+                # Replenish: transversal always in queue, mutate others
+                self.queue.append(None)  # tv
+                for s in ["sa", "csp"]:
                     self.queue.append(_mutate(self.best_cfg[s], self.rng))
 
             cfg = self.queue.pop(0)
@@ -915,7 +1088,12 @@ class AdaptiveSearch:
                 print("=" * 60)
                 return res["L1"], res["L2"]
 
-            strat = cfg.strategy
+            strat = res["strategy"]
+            if strat == "tv":
+                # Transversal strategy has no tunable params; just re-queue it
+                self.queue.append(None)
+                continue
+
             if res["clashes"] < self.frontier[strat]:
                 self.frontier[strat] = res["clashes"]
                 self.best_cfg[strat] = cfg
@@ -924,8 +1102,8 @@ class AdaptiveSearch:
             else:
                 self.queue.append(_mutate(self.best_cfg[strat], self.rng))
 
-            # Ensure diversity: keep all three strategies represented
-            present = {c.strategy for c in self.queue}
+            # Ensure diversity: keep all strategies represented
+            present = {(c.strategy if c is not None else "tv") for c in self.queue}
             for s, cls in [("sat", SATConfig), ("sa", SAConfig), ("csp", CSPConfig)]:
                 if s not in present:
                     self.queue.append(_mutate(self.best_cfg[s], self.rng))
@@ -953,8 +1131,9 @@ def main() -> None:
     p.add_argument("--skip-pair",   action="store_true",
                    help="Load existing mols_pair.json and jump to Phase 2")
     p.add_argument("--strategy",
-                   choices=["adaptive", "sat", "sa", "csp"],
-                   default="adaptive")
+                   choices=["adaptive", "sat", "sa", "csp", "tv"],
+                   default="tv",
+                   help="tv=transversal exact-cover (fastest), adaptive=portfolio")
     args = p.parse_args()
 
     n        = args.n
@@ -979,7 +1158,10 @@ def main() -> None:
         L1, L2 = load_pair(pair_path)
         print(f"Loaded pair from {pair_path}")
     else:
-        if args.strategy == "sat":
+        if args.strategy == "tv":
+            L1, L2, stats = transversal_find_pair(n, max_sec or 1e9, rng_seed=args.seed)
+            print(f"Transversal: {stats}")
+        elif args.strategy == "sat":
             cfg = SATConfig()
             L1, L2, stats = sat_find_pair(n, max_sec or 1e9, cfg, rng_seed=args.seed)
             if L1 is None:
