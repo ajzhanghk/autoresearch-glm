@@ -1009,12 +1009,23 @@ def sa_triple_pt(
                 now - last_ils_time >= ILS_INTERVAL):
             s = replicas[0]
             L1s, L2s, L3s, cl12s = s[0], s[1], s[2], s[3]
-            n_shake = rep_rngs[0].randint(*ILS_WARM_SHAKE)
-            L3_shk = _shake_ls(L3s, rep_rngs[0], n_shake)
-            cl13_shk = count_clashes(L1s, L3_shk, n)
-            cl23_shk = count_clashes(L2s, L3_shk, n)
-            replicas[0] = [L1s, L2s, L3_shk, cl12s, cl13_shk, cl23_shk]
-            energies[0] = cl12s + cl13_shk + cl23_shk
+            # 30% chance: pool-jump — inject a pool L3 (with tiny shake) into
+            # the cold replica while KEEPING L1/L2. Explores diverse L3 basins
+            # without disrupting a good L1/L2 configuration.
+            pool_misses = _load_triple_misses()
+            if pool_misses and len(pool_misses) >= 2 and rep_rngs[0].random() < 0.30:
+                e = rep_rngs[0].choice(pool_misses[:min(5, len(pool_misses))])
+                L3_ils = np.array(e["L3"], dtype=np.int8)
+                micro_shake = rep_rngs[0].randint(0, 15)
+                if micro_shake > 0:
+                    L3_ils = _shake_ls(L3_ils, rep_rngs[0], micro_shake)
+            else:
+                n_shake = rep_rngs[0].randint(*ILS_WARM_SHAKE)
+                L3_ils = _shake_ls(L3s, rep_rngs[0], n_shake)
+            cl13_ils = count_clashes(L1s, L3_ils, n)
+            cl23_ils = count_clashes(L2s, L3_ils, n)
+            replicas[0] = [L1s, L2s, L3_ils, cl12s, cl13_ils, cl23_ils]
+            energies[0] = cl12s + cl13_ils + cl23_ils
             last_ils_time = now
             restarts += 1
 
