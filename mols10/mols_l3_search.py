@@ -510,10 +510,14 @@ def sa_ct_climb(
             restarts += 1
             no_improve = 0
             if restarts % 4 == 0:
-                L1, L2 = fresh_pair()
-                if L1 is None:
-                    continue
-                T = 1.5
+                L1_try2, L2_try2 = fresh_pair()
+                if L1_try2 is not None:
+                    L1, L2 = L1_try2, L2_try2
+                    T = 1.5
+                else:
+                    # Fresh generation failed — fall back to perturbing best
+                    L1, L2 = best_pair[0].copy(), best_pair[1].copy()
+                    T = max(T, 0.5)
             else:
                 L1, L2 = best_pair[0].copy(), best_pair[1].copy()
                 T = max(T, 0.5)

@@ -73,3 +73,5 @@ ts	trial	strategy	pair_id	ct_count	max_disjoint	sa_best_clashes	elapsed_s	found	
 2026-06-07T07:32:46	19	sa_triple	—	0	—	76	72.0	0	sa_frontier=56
 2026-06-07T07:33:58	20	sa_triple	—	0	—	60	72.0	0	sa_frontier=56
 2026-06-07T07:36:07	1	sa_triple	—	0	—	62	72.0	0	sa_frontier=62
+2026-06-07T07:43:35	1	sa_triple	—	0	—	62	72.0	0	sa_frontier=62
+2026-06-07T07:44:48	2	sa_ct_climb	—	0	—	—	72.67	0	steps=3520044
