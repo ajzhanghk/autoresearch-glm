@@ -103,10 +103,9 @@ def random_latin_square(n: int, rng: random.Random) -> np.ndarray:
 
 def count_clashes(L1: np.ndarray, L2: np.ndarray, n: int) -> int:
     """Number of repeated (L1[i,j], L2[i,j]) pairs — 0 iff orthogonal."""
-    counts = np.zeros(n * n, dtype=np.int32)
-    idx = L1.ravel().astype(np.int32) * n + L2.ravel().astype(np.int32)
-    np.add.at(counts, idx, 1)
-    return int(np.sum(np.maximum(0, counts - 1)))
+    pairs = L1.ravel().astype(np.int32) * n + L2.ravel().astype(np.int32)
+    counts = np.bincount(pairs, minlength=n * n)
+    return int(n * n - np.count_nonzero(counts))
 
 
 def canonicalize_pair(L1: np.ndarray, L2: np.ndarray) -> tuple[np.ndarray, np.ndarray]:

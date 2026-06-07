@@ -578,6 +578,11 @@ def sa_triple_find(
             return f if f is not None else L
 
     L1, L2, L3, clashes = fresh()
+    # Track individual pairwise clashes for incremental updates (saves 1/3 of calls)
+    cl12 = count_clashes(L1, L2, n)
+    cl13 = count_clashes(L1, L3, n)
+    cl23 = count_clashes(L2, L3, n)
+    clashes = cl12 + cl13 + cl23
     T = temp_init
     best_clashes = clashes
     best_state   = (L1.copy(), L2.copy(), L3.copy())
@@ -599,7 +604,6 @@ def sa_triple_find(
         if clashes <= 6:
             rem = max_seconds - (time.time() - t0)
             if rem > 2.0:
-                # Score each pairwise combination; use the one with most CTs
                 for A, B in [(L1, L2), (L1, L3), (L2, L3)]:
                     ct12, _ = score_pair(A, B, n, budget=min(1.0, rem * 0.1))
                     if ct12 > best_ct_count:
@@ -607,36 +611,53 @@ def sa_triple_find(
                     if ct12 >= n:
                         L3_try, _ = find_L3_ct_algx(A, B, n, rem * 0.4)
                         if L3_try is not None:
-                            # Find the third square
-                            for C_name, C in [("L3", L3), ("L2", L2), ("L1", L1)]:
-                                if np.array_equal(A, L1) and np.array_equal(B, L2):
-                                    trip = (L1, L2, L3_try)
-                                elif np.array_equal(A, L1) and np.array_equal(B, L3):
-                                    trip = (L1, L3_try, L3)
-                                else:
-                                    trip = (L3_try, L2, L3)
-                                ok, _ = verify_mols(list(trip))
-                                if ok:
-                                    return trip, {
-                                        "found": True, "best_clashes": 0,
-                                        "sa_best_clashes": clashes,
-                                        "restarts": restarts,
-                                        "elapsed_s": round(time.time()-t0, 2)
-                                    }
+                            if np.array_equal(A, L1) and np.array_equal(B, L2):
+                                trip = (L1, L2, L3_try)
+                            elif np.array_equal(A, L1) and np.array_equal(B, L3):
+                                trip = (L1, L3_try, L3)
+                            else:
+                                trip = (L3_try, L2, L3)
+                            ok, _ = verify_mols(list(trip))
+                            if ok:
+                                return trip, {
+                                    "found": True, "best_clashes": 0,
+                                    "sa_best_clashes": clashes,
+                                    "restarts": restarts,
+                                    "elapsed_s": round(time.time()-t0, 2)
+                                }
 
-        # SA move — pick one of the 3 squares at random
-        tgt = rng.randint(0, 2)
-        L   = [L1, L2, L3][tgt]
-        Ln  = apply_move(L)
+        # SA move — bias toward L3 when pair (L1,L2) is nearly perfect
+        if cl12 < 5:
+            r = rng.random()
+            tgt = 2 if r < 0.70 else (0 if r < 0.85 else 1)
+        else:
+            tgt = rng.randint(0, 2)
+        L = [L1, L2, L3][tgt]
+        Ln = apply_move(L)
 
-        new_L1 = Ln if tgt == 0 else L1
-        new_L2 = Ln if tgt == 1 else L2
-        new_L3 = Ln if tgt == 2 else L3
-        new_cl = _triple_clashes(new_L1, new_L2, new_L3, n)
+        # Incremental clash update: only recompute the 2 pairs involving the moved square
+        if tgt == 0:
+            new_cl12 = count_clashes(Ln, L2, n)
+            new_cl13 = count_clashes(Ln, L3, n)
+            new_cl = new_cl12 + new_cl13 + cl23
+        elif tgt == 1:
+            new_cl12 = count_clashes(L1, Ln, n)
+            new_cl23 = count_clashes(Ln, L3, n)
+            new_cl = new_cl12 + cl13 + new_cl23
+        else:
+            new_cl13 = count_clashes(L1, Ln, n)
+            new_cl23 = count_clashes(L2, Ln, n)
+            new_cl = cl12 + new_cl13 + new_cl23
 
         delta = new_cl - clashes
         if delta < 0 or rng.random() < math.exp(-delta / max(T, 1e-9)):
-            L1, L2, L3, clashes = new_L1, new_L2, new_L3, new_cl
+            if tgt == 0:
+                L1, cl12, cl13 = Ln, new_cl12, new_cl13
+            elif tgt == 1:
+                L2, cl12, cl23 = Ln, new_cl12, new_cl23
+            else:
+                L3, cl13, cl23 = Ln, new_cl13, new_cl23
+            clashes = new_cl
             if clashes < best_clashes:
                 best_clashes = clashes
                 best_state   = (L1.copy(), L2.copy(), L3.copy())
@@ -657,8 +678,8 @@ def sa_triple_find(
 
             if ils_rounds >= 5:
                 L1, L2, L3, clashes = fresh()
-                T = temp_init
                 ils_rounds = 0
+                T = temp_init
             else:
                 # Perturb global best
                 bL1, bL2, bL3 = best_state
@@ -669,8 +690,12 @@ def sa_triple_find(
                     if tgt2 == 0:   L1 = apply_move(L1)
                     elif tgt2 == 1: L2 = apply_move(L2)
                     else:           L3 = apply_move(L3)
-                clashes = _triple_clashes(L1, L2, L3, n)
-                T = temp_init * 0.75  # Reheat to 75% of max for ILS perturb
+                T = temp_init * 0.75
+            # Recompute all pairwise clashes after restart/perturb
+            cl12 = count_clashes(L1, L2, n)
+            cl13 = count_clashes(L1, L3, n)
+            cl23 = count_clashes(L2, L3, n)
+            clashes = cl12 + cl13 + cl23
 
     return None, {
         "found": False, "best_clashes": best_clashes,
