@@ -1,0 +1,29 @@
+====================================================================
+MOLS L3 Search  — is N(10) ≥ 3?
+strategy    : adaptive
+budget      : unlimited
+eval_budget : 90.0s
+seed        : 1337
+====================================================================
+====================================================================
+N(10) ≥ 3 Adaptive Search — never-stopping
+eval_budget=90.0s  save_dir=results
+====================================================================
+
+Loading seed pairs from /home/user/autoresearch-glm/mols10/results/mols_pairs_collection.json…
+  [seed_0] ct=0  max_dis=0  src=seed
+  [seed_1] ct=0  max_dis=0  src=seed
+  [seed_2] ct=0  max_dis=0  src=seed
+  [seed_3] ct=0  max_dis=0  src=seed
+  [seed_4] ct=0  max_dis=0  src=seed
+Pool: 5 pairs.  Best CT count: 0
+
+
+trial=   1  strategy=sa_triple  budget=54s  best_ct_ever=0
+  sa_triple: best_clashes=73  sa_frontier=73  best_ct_seen=0  elapsed=54.0s
+
+  Pool best: ct=0 — all known pairs are L3-free; relying on sa_triple.
+
+  Progress: trials=1  elapsed=0.02h  pool_size=5  best_ct_ever=0  sa3_best_clashes=73  N(10)≥3 not found yet
+
+trial=   2  strategy=sa_triple  budget=54s  best_ct_ever=0
