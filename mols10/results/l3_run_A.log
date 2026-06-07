@@ -246,3 +246,41 @@ trial=  10  strategy=sa_l3_pair  pair=iso_tv_21_2  ct=2  budget=68s
   Progress: trials=10  elapsed=0.17h  pool_size=41  best_ct_ever=2  sa3_best_clashes=59  N(10)≥3 not found yet
 
 trial=  11  strategy=sa_l3_pair  pair=ic8_tv_21_1  ct=2  budget=68s
+  sa_l3_pair: found=False  best_clashes=44  restarts=10  elapsed=67.5s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+  [checkpoint] Saved 34 promising pairs to disk (best ct=2)
+
+  Progress: trials=11  elapsed=0.18h  pool_size=41  best_ct_ever=2  sa3_best_clashes=59  N(10)≥3 not found yet
+
+trial=  12  strategy=sa_l3_pair  pair=ic3_tv_21_1  ct=2  budget=68s
+  sa_l3_pair: found=False  best_clashes=44  restarts=11  elapsed=67.5s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+  [tv_41] ct=0  max_dis=0  src=tv
+
+  Progress: trials=12  elapsed=0.21h  pool_size=42  best_ct_ever=2  sa3_best_clashes=59  N(10)≥3 not found yet
+
+trial=  13  strategy=sa_l3_pair  pair=ic5_tv_21_1  ct=2  budget=68s
+  sa_l3_pair: found=False  best_clashes=43  restarts=9  elapsed=67.5s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=13  elapsed=0.22h  pool_size=42  best_ct_ever=2  sa3_best_clashes=59  N(10)≥3 not found yet
+
+trial=  14  strategy=sa_l3_pair  pair=ic12_tv_21_0  ct=2  budget=68s
+  sa_l3_pair: found=False  best_clashes=41  restarts=11  elapsed=67.5s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=14  elapsed=0.24h  pool_size=42  best_ct_ever=2  sa3_best_clashes=59  N(10)≥3 not found yet
+
+trial=  15  strategy=sa_triple  budget=54s  best_ct_ever=2
+  sa_triple: best_clashes=69  sa_frontier=59  best_ct_seen=0  elapsed=54.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+  [tv_42] ct=0  max_dis=0  src=tv
+
+  Progress: trials=15  elapsed=0.26h  pool_size=43  best_ct_ever=2  sa3_best_clashes=59  N(10)≥3 not found yet
+
+trial=  16  strategy=sa_triple  budget=54s  best_ct_ever=2

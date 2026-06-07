@@ -136,3 +136,17 @@ ts	trial	strategy	pair_id	ct_count	max_disjoint	sa_best_clashes	elapsed_s	found	
 2026-06-07T08:13:04	10	sa_l3_pair	iso_tv_21_2	2	2	42	67.5	0	restarts=10
 2026-06-07T08:13:19	10	sa_l3_pair	iso_tv_21_2	2	2	44	67.5	0	restarts=11
 2026-06-07T08:13:25	10	sa_l3_pair	iso_tv_21_2	2	2	43	67.5	0	restarts=9
+2026-06-07T08:14:11	11	sa_l3_pair	ic8_tv_21_1	2	2	44	67.5	0	restarts=10
+2026-06-07T08:14:27	11	sa_l3_pair	ic8_tv_21_1	2	2	42	67.5	0	restarts=9
+2026-06-07T08:14:33	11	sa_l3_pair	ic8_tv_21_1	2	2	41	67.5	0	restarts=9
+2026-06-07T08:15:19	12	sa_l3_pair	ic3_tv_21_1	2	2	44	67.5	0	restarts=11
+2026-06-07T08:15:34	12	sa_l3_pair	ic3_tv_21_1	2	2	43	67.5	0	restarts=13
+2026-06-07T08:15:40	12	sa_l3_pair	ic3_tv_21_1	2	2	42	67.5	0	restarts=11
+2026-06-07T08:16:36	13	sa_l3_pair	ic5_tv_21_1	2	2	43	67.5	0	restarts=9
+2026-06-07T08:16:45	13	sa_l3_pair	ic5_tv_21_1	2	2	39	67.5	0	restarts=10
+2026-06-07T08:16:53	13	sa_l3_pair	ic5_tv_21_1	2	2	41	67.5	0	restarts=8
+2026-06-07T08:17:43	14	sa_l3_pair	ic12_tv_21_0	2	2	41	67.5	0	restarts=11
+2026-06-07T08:17:52	14	sa_l3_pair	ic12_tv_21_0	2	2	43	67.5	0	restarts=11
+2026-06-07T08:18:00	14	sa_l3_pair	ic12_tv_21_0	2	2	44	67.5	0	restarts=12
+2026-06-07T08:18:37	15	sa_triple	—	0	—	69	54.0	0	sa_frontier=59
+2026-06-07T08:18:46	15	sa_triple	—	0	—	64	54.0	0	sa_frontier=59
