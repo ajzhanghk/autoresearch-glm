@@ -1,0 +1,33 @@
+ts	trial	strategy	pair_id	ct_count	max_disjoint	sa_best_clashes	elapsed_s	found	note
+2026-06-07T05:35:08	1	sa_triple	—	0	—	73	54.0	0	sa_frontier=73
+2026-06-07T05:36:02	2	sa_triple	—	0	—	76	54.0	0	sa_frontier=73
+2026-06-07T05:36:56	3	sa_triple	—	0	—	70	54.0	0	sa_frontier=70
+2026-06-07T05:38:14	4	sa_triple	—	0	—	76	54.0	0	sa_frontier=70
+2026-06-07T05:39:08	5	sa_triple	—	0	—	78	54.0	0	sa_frontier=70
+2026-06-07T05:40:02	6	sa_triple	—	0	—	76	54.0	0	sa_frontier=70
+2026-06-07T06:05:59	1	sa_triple	—	0	—	76	72.0	0	sa_frontier=76
+2026-06-07T06:07:11	2	sa_triple	—	0	—	74	72.0	0	sa_frontier=74
+2026-06-07T06:08:23	3	sa_triple	—	0	—	73	72.0	0	sa_frontier=73
+2026-06-07T06:10:19	1	sa_triple	—	0	—	55	72.0	0	sa_frontier=55
+2026-06-07T06:11:31	2	sa_triple	—	0	—	75	72.0	0	sa_frontier=55
+2026-06-07T06:12:43	3	sa_triple	—	0	—	69	72.0	0	sa_frontier=55
+2026-06-07T06:14:08	4	sa_triple	—	0	—	62	72.0	0	sa_frontier=55
+2026-06-07T06:22:29	1	sa_triple	—	0	—	59	72.0	0	sa_frontier=59
+2026-06-07T06:23:41	2	sa_triple	—	0	—	77	72.0	0	sa_frontier=59
+2026-06-07T06:24:53	3	sa_triple	—	0	—	69	72.0	0	sa_frontier=59
+2026-06-07T06:26:11	4	sa_triple	—	0	—	62	72.0	0	sa_frontier=59
+2026-06-07T06:27:23	5	sa_triple	—	0	—	75	72.0	0	sa_frontier=59
+2026-06-07T06:28:35	6	sa_triple	—	0	—	74	72.0	0	sa_frontier=59
+2026-06-07T06:29:48	7	sa_triple	—	0	—	67	72.0	0	sa_frontier=59
+2026-06-07T06:31:00	8	sa_triple	—	0	—	64	72.0	0	sa_frontier=59
+2026-06-07T06:32:12	9	sa_triple	—	0	—	58	72.0	0	sa_frontier=58
+2026-06-07T06:33:25	10	sa_triple	—	0	—	62	72.0	0	sa_frontier=58
+2026-06-07T06:34:07	11	csp_dual	tv_10	1	1	—	42.0	0	
+2026-06-07T06:35:19	12	sa_triple	—	0	—	67	72.0	0	sa_frontier=58
+2026-06-07T06:36:01	13	csp_dual	tv_10	1	1	—	42.0	0	
+2026-06-07T06:37:13	14	sa_triple	—	0	—	60	72.0	0	sa_frontier=58
+2026-06-07T06:37:55	15	csp_dual	tv_10	1	1	—	42.0	0	
+2026-06-07T06:39:09	16	sa_triple	—	0	—	70	72.0	0	sa_frontier=58
+2026-06-07T06:39:51	17	csp_dual	tv_14	2	2	—	42.0	0	
+2026-06-07T06:41:03	18	sa_triple	—	0	—	61	72.0	0	sa_frontier=58
+2026-06-07T06:41:45	19	csp_dual	tv_14	2	2	—	42.0	0	
