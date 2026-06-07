@@ -303,3 +303,65 @@ trial=   4  strategy=sa_triple  budget=39s  best_ct_ever=2
 
 trial=   5  strategy=multi_decomp  budget=42s  n_attempts=10  best_ct_ever=2
     [mdecomp] New best CT=2 (pairs_tried=1)
+  multi_decomp: best_ct=2  pairs_tried=6  elapsed=39.2s
+  [mdecomp_63] ct=2  max_dis=2  src=mdecomp
+  ★ Saved promising pair mdecomp_63 (ct=2) → promising_pairs.json
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=5  elapsed=0.05h  pool_size=64  best_ct_ever=2  sa3_best_clashes=56  N(10)≥3 not found yet
+
+trial=   6  strategy=multi_decomp  budget=42s  n_attempts=10  best_ct_ever=2
+    [mdecomp] New best CT=2 (pairs_tried=1)
+  multi_decomp: best_ct=2  pairs_tried=7  elapsed=41.3s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+  [tv_64] ct=0  max_dis=0  src=tv
+
+  Progress: trials=6  elapsed=0.07h  pool_size=65  best_ct_ever=2  sa3_best_clashes=56  N(10)≥3 not found yet
+
+trial=   7  strategy=multi_decomp  budget=42s  n_attempts=10  best_ct_ever=2
+    [mdecomp] New best CT=2 (pairs_tried=1)
+  multi_decomp: best_ct=2  pairs_tried=7  elapsed=39.1s
+  [mdecomp_65] ct=2  max_dis=2  src=mdecomp
+  ★ Saved promising pair mdecomp_65 (ct=2) → promising_pairs.json
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=7  elapsed=0.08h  pool_size=66  best_ct_ever=2  sa3_best_clashes=56  N(10)≥3 not found yet
+
+trial=   8  strategy=sa_ct_climb  budget=42s  best_ct_ever=2  warm=yes ct=2
+  sa_ct_climb: best_ct=2  steps=2633304  elapsed=42.0s  
+  [sa_ct_66] ct=2  max_dis=2  src=sa_ct
+  ★ Saved promising pair sa_ct_66 (ct=2) → promising_pairs.json
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+  [checkpoint] Saved 61 promising pairs to disk (best ct=2)
+
+  Progress: trials=8  elapsed=0.09h  pool_size=67  best_ct_ever=2  sa3_best_clashes=56  N(10)≥3 not found yet
+
+trial=   9  strategy=sa_ct_climb  budget=42s  best_ct_ever=2  warm=yes ct=2
+  sa_ct_climb: best_ct=2  steps=2617670  elapsed=42.0s  
+  [sa_ct_67] ct=2  max_dis=2  src=sa_ct
+  ★ Saved promising pair sa_ct_67 (ct=2) → promising_pairs.json
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+  [tv_68] ct=0  max_dis=0  src=tv
+
+  Progress: trials=9  elapsed=0.10h  pool_size=69  best_ct_ever=2  sa3_best_clashes=56  N(10)≥3 not found yet
+
+trial=  10  strategy=sa_triple  budget=39s  best_ct_ever=2
+  sa_triple: best_clashes=60  sa_frontier=56  best_ct_seen=0  elapsed=39.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=10  elapsed=0.11h  pool_size=69  best_ct_ever=2  sa3_best_clashes=56  N(10)≥3 not found yet
+
+trial=  11  strategy=sa_triple  budget=39s  best_ct_ever=2
+  sa_triple: best_clashes=60  sa_frontier=56  best_ct_seen=0  elapsed=39.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=11  elapsed=0.12h  pool_size=69  best_ct_ever=2  sa3_best_clashes=56  N(10)≥3 not found yet
+
+trial=  12  strategy=sa_triple  budget=39s  best_ct_ever=2
