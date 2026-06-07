@@ -57,13 +57,17 @@ Literature references
 
 from __future__ import annotations
 
+import sys
+# Force line-buffered stdout so nohup-redirected logs flush immediately
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(line_buffering=True)
+
 import argparse
 import csv
 import json
 import math
 import random
 import signal
-import sys
 import time
 from dataclasses import dataclass, field
 from datetime import datetime
