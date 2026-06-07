@@ -1363,10 +1363,13 @@ def _save_triple_miss(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray,
         data.sort(key=lambda e: e["clashes"])
         # Pair-diversity cap enforced post-sort (handles concurrent writes):
         # keep at most 2 entries per pair, then take top-5.
+        # L1_key is stored as a JSON array (list) but needs to be hashable
+        # for use as a dict key — convert to tuple on the fly.
         seen_pairs: dict = {}
         diverse: list = []
         for e in data:
-            k = e.get("L1_key")
+            raw_k = e.get("L1_key")
+            k = tuple(raw_k) if isinstance(raw_k, list) else raw_k
             cnt = seen_pairs.get(k, 0)
             if cnt < 2:
                 diverse.append(e)
