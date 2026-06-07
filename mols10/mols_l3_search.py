@@ -98,6 +98,7 @@ LOG_PATH        = RESULTS_DIR / "l3_search_log.tsv"
 PAIRS_FILE      = RESULTS_DIR / "mols_pairs_collection.json"
 POOL_FILE       = RESULTS_DIR / "l3_pool_state.json"
 PROMISING_FILE  = RESULTS_DIR / "promising_pairs.json"   # CT > 0 pairs
+NEAR_MISS_FILE  = RESULTS_DIR / "near_miss_l3.json"      # best L3 partial solutions
 LOG_COLS = ["ts", "trial", "strategy", "pair_id",
             "ct_count", "max_disjoint", "sa_best_clashes",
             "elapsed_s", "found", "note"]
@@ -250,10 +251,87 @@ def find_L3_ct_algx(
 # Strategy 0 — SA directly on L3 given a fixed verified MOLS pair
 # ===========================================================================
 
+def _targeted_repair(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray,
+                     n: int, max_seconds: float) -> tuple[Optional[np.ndarray], int]:
+    """When clashes are small, systematically try to repair each conflict.
+
+    For each conflicting cell, enumerate every valid replacement value and
+    pick the one that reduces clashes most.  Repeat until 0 or stuck.
+    Falls back to random in-row swaps to escape local optima.
+    """
+    def _clash_count(L3_):
+        return count_clashes(L1, L3_, n) + count_clashes(L2, L3_, n)
+
+    def _conflict_cells(L3_):
+        """Return cells contributing to clashes."""
+        bad = set()
+        for sq in (L1, L2):
+            seen = {}
+            for i in range(n):
+                for j in range(n):
+                    p = (int(sq[i, j]), int(L3_[i, j]))
+                    if p in seen:
+                        bad.add((i, j))
+                        bad.add(seen[p])
+                    else:
+                        seen[p] = (i, j)
+        return list(bad)
+
+    t0 = time.time()
+    L3 = L3.copy()
+    clashes = _clash_count(L3)
+    best_cl = clashes
+    best_L3 = L3.copy()
+
+    for _ in range(3000):
+        if time.time() - t0 > max_seconds:
+            break
+        if clashes == 0:
+            ok, _ = verify_mols([L1, L2, L3])
+            if ok:
+                return L3, 0
+        cells = _conflict_cells(L3)
+        if not cells:
+            break
+        # Pick a conflict cell, try swapping it with each cell in same row
+        i, j = cells[random.randrange(len(cells))]
+        best_swap = None
+        best_delta = 0
+        for j2 in range(n):
+            if j2 == j:
+                continue
+            if L3[i, j2] == L3[i, j]:
+                continue
+            L3t = L3.copy()
+            L3t[i, j], L3t[i, j2] = L3t[i, j2], L3t[i, j]
+            new_cl = _clash_count(L3t)
+            delta = new_cl - clashes
+            if delta < best_delta:
+                best_delta = delta
+                best_swap = (j2, L3t)
+        if best_swap is not None:
+            _, L3 = best_swap
+            clashes += best_delta
+            if clashes < best_cl:
+                best_cl = clashes
+                best_L3 = L3.copy()
+        else:
+            # No improvement — random in-row swap to escape
+            j2 = random.randrange(n)
+            L3[i, j], L3[i, j2] = L3[i, j2], L3[i, j]
+            clashes = _clash_count(L3)
+            if clashes < best_cl:
+                best_cl = clashes
+                best_L3 = L3.copy()
+
+    return best_L3 if best_cl < clashes else None, best_cl
+
+
 def sa_l3_given_pair(
     L1: np.ndarray, L2: np.ndarray, n: int,
     max_seconds: float,
     rng_seed: Optional[int] = None,
+    pair_id: str = "?",
 ) -> tuple[Optional[np.ndarray], dict]:
     """SA finding L3 given a fixed, verified MOLS pair (L1, L2).
 
@@ -261,9 +339,11 @@ def sa_l3_given_pair(
     Objective: minimise clashes(L1, L3) + clashes(L2, L3).
     When this reaches 0, L3 is a third MOLS.
 
-    Moves (all preserve Latin-square property of L3):
-      row-swap, col-swap, symbol-relabel, intercalate-flip, in-row-swap
-    Temperature schedule: high initial T, aggressive cooling, ILS restarts.
+    Enhancements:
+      * Loads near-miss L3 states from disk for warm-starts
+      * Saves near-miss states (clashes ≤ 20) to disk for cross-worker sharing
+      * Switches to targeted cell-repair when clashes ≤ 15
+      * ILS with 6 rounds before full restart
     """
     rng = random.Random(rng_seed)
     t0  = time.time()
@@ -275,23 +355,38 @@ def sa_l3_given_pair(
         return random_latin_square(n, random.Random(rng.random()))
 
     def _in_row_swap(L, row):
-        """Swap two entries in the same row — cheapest move that changes clashes."""
         c1, c2 = rng.sample(range(n), 2)
-        L2_ = L.copy()
-        L2_[row, c1], L2_[row, c2] = L2_[row, c2], L2_[row, c1]
-        return L2_
+        Lc = L.copy()
+        Lc[row, c1], Lc[row, c2] = Lc[row, c2], Lc[row, c1]
+        return Lc
 
-    L3 = _fresh_L3()
+    # Try to warm-start from a saved near-miss for this pair
+    near_misses = _load_near_misses()
+    pair_near = [e for e in near_misses if e["pair_id"] == pair_id]
+    if pair_near and rng.random() < 0.5:
+        e = pair_near[0]  # best (lowest clashes) for this pair
+        L3 = np.array(e["L3"], dtype=np.int8)
+        # Verify it's still a valid LS (not corrupted)
+        ok_ls = all(set(L3[i, :]) == set(range(n)) and
+                    set(L3[:, j]) == set(range(n))
+                    for i in range(n) for j in range(n)
+                    if True)
+        if not ok_ls:
+            L3 = _fresh_L3()
+    else:
+        L3 = _fresh_L3()
+
     clashes = _clashes_L3(L3)
     best_clashes = clashes
     best_L3 = L3.copy()
+    near_miss_threshold = 20
 
     T = 5.0
-    cooling = 0.9999985
+    cooling = 0.9999988
     no_improve = 0
     restarts = 0
     ils_round = 0
-    STALL = 200_000
+    STALL = 180_000
 
     while time.time() - t0 < max_seconds:
         if clashes == 0:
@@ -300,21 +395,46 @@ def sa_l3_given_pair(
                 return L3, {"found": True, "best_clashes": 0,
                             "restarts": restarts, "elapsed_s": round(time.time()-t0, 2)}
 
+        # Near-miss: save and switch to targeted repair
+        if clashes <= near_miss_threshold:
+            _save_near_miss(pair_id, L1, L2, L3, clashes)
+            near_miss_threshold = clashes  # only save strictly better
+            if clashes <= 15:
+                rem = max_seconds - (time.time() - t0)
+                if rem > 2.0:
+                    L3r, cl_r = _targeted_repair(L1, L2, L3, n, min(rem * 0.4, 8.0))
+                    if cl_r == 0:
+                        ok, _ = verify_mols([L1, L2, L3r])
+                        if ok:
+                            return L3r, {"found": True, "best_clashes": 0,
+                                         "restarts": restarts,
+                                         "elapsed_s": round(time.time()-t0, 2)}
+                    if cl_r < best_clashes:
+                        best_clashes = cl_r
+                        best_L3 = L3r.copy()
+                        L3 = L3r.copy()
+                        clashes = cl_r
+                        continue
+
         if no_improve >= STALL:
             no_improve = 0
             restarts += 1
             ils_round += 1
             if ils_round >= 6:
-                # Full restart
-                L3 = _fresh_L3()
+                # Occasionally warm-start from a near-miss
+                pair_near2 = [e for e in _load_near_misses() if e["pair_id"] == pair_id]
+                if pair_near2 and rng.random() < 0.4:
+                    L3 = np.array(pair_near2[0]["L3"], dtype=np.int8)
+                else:
+                    L3 = _fresh_L3()
                 T = 5.0
                 ils_round = 0
+                near_miss_threshold = 20
             else:
-                # ILS: perturb best_L3
                 L3 = best_L3.copy()
-                k = rng.randint(4, 12)
+                k = rng.randint(3, 10)
                 for _ in range(k):
-                    mv = rng.randint(0, 3)
+                    mv = rng.randint(0, 4)
                     if mv == 0:
                         a, b = rng.sample(range(n), 2)
                         L3 = _row_swap(L3, a, b)
@@ -324,14 +444,19 @@ def sa_l3_given_pair(
                     elif mv == 2:
                         a, b = rng.sample(range(n), 2)
                         L3 = _relabel(L3, a, b)
+                    elif mv == 3:
+                        L3 = _in_row_swap(L3, rng.randrange(n))
                     else:
-                        r = rng.randrange(n)
-                        L3 = _in_row_swap(L3, r)
-                T = max(T, 2.0)
+                        r1, r2 = rng.sample(range(n), 2)
+                        c1, c2 = rng.sample(range(n), 2)
+                        fl = _intercalate_flip(L3, r1, r2, c1, c2)
+                        if fl is not None:
+                            L3 = fl
+                T = max(T, 2.5)
             clashes = _clashes_L3(L3)
             continue
 
-        # Move
+        # SA move
         mv = rng.randint(0, 4)
         if mv == 0:
             a, b = rng.sample(range(n), 2)
@@ -349,7 +474,7 @@ def sa_l3_given_pair(
             if L3_new is None:
                 no_improve += 1
                 continue
-        else:  # mv == 4
+        else:
             L3_new = _in_row_swap(L3, rng.randrange(n))
 
         new_cl = _clashes_L3(L3_new)
@@ -865,6 +990,37 @@ def _log(row: dict) -> None:
         w.writerow({k: row.get(k, "") for k in LOG_COLS})
 
 
+def _save_near_miss(pair_id: str, L1: np.ndarray, L2: np.ndarray,
+                    L3: np.ndarray, clashes: int) -> None:
+    """Save an L3 candidate with very few clashes for cross-worker warm-starts."""
+    entry = {
+        "pair_id": pair_id, "clashes": clashes,
+        "ts": datetime.now().isoformat(timespec="seconds"),
+        "L1": L1.tolist(), "L2": L2.tolist(), "L3": L3.tolist(),
+    }
+    try:
+        data = json.loads(NEAR_MISS_FILE.read_text()) if NEAR_MISS_FILE.exists() else []
+        # Keep only best 20 near-misses, no duplicates for same pair_id+clashes
+        data = [e for e in data if not (e["pair_id"] == pair_id and e["clashes"] >= clashes)]
+        data.append(entry)
+        data.sort(key=lambda e: e["clashes"])
+        data = data[:20]
+        NEAR_MISS_FILE.write_text(json.dumps(data, indent=2))
+        print(f"  ★ Near-miss saved: pair={pair_id} clashes={clashes}")
+    except Exception:
+        pass
+
+
+def _load_near_misses() -> list[dict]:
+    """Load saved near-miss L3 candidates."""
+    if not NEAR_MISS_FILE.exists():
+        return []
+    try:
+        return json.loads(NEAR_MISS_FILE.read_text())
+    except Exception:
+        return []
+
+
 def _save_promising_pair(pair_id: str, L1: np.ndarray, L2: np.ndarray,
                          ct_count: int, max_disjoint: int, source: str) -> None:
     """Immediately persist any CT>0 pair to disk so it survives process restarts."""
@@ -1047,7 +1203,8 @@ class L3AdaptiveSearch:
         print(f"\ntrial={self.trial:4d}  strategy=sa_l3_pair"
               f"  pair={rec.pair_id}  ct={rec.ct_count}  budget={budget:.0f}s")
 
-        L3, stats = sa_l3_given_pair(rec.L1, rec.L2, n, budget, rng_seed=seed)
+        L3, stats = sa_l3_given_pair(rec.L1, rec.L2, n, budget, rng_seed=seed,
+                                      pair_id=rec.pair_id)
         elapsed = stats.get("elapsed_s", budget)
         bc = stats.get("best_clashes", 2 * n * n)
         found = stats.get("found", False)
