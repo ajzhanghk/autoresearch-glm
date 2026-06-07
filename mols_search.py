@@ -270,7 +270,7 @@ class CoupledPairState:
 
 class _BacktrackCoupled:
     """
-    MRV + FC backtracking for CoupledPairState.
+    MRV + FC + Unit Propagation backtracking for CoupledPairState.
 
     Cell types:
       • col-0 cells (i>0, j=0): L1[i,0] is forced to i (canonical form);
@@ -278,12 +278,17 @@ class _BacktrackCoupled:
       • interior cells (i>0, j>0): both a and b are searched.
         Domain = pairs_for(i,j).
 
-    Forward checking after placing (a,b) at (ci,cj):
-      Scan cells sharing the same row, col, or affected by pair_orth[a].
+    Pruning pipeline (applied in order at every node):
+      1. MRV: branch on cell with smallest domain.
+      2. Forward checking (FC): after placing, scan cells sharing row/col/pair_orth;
+         prune if any domain becomes 0.
+      3. Unit propagation (UP): after FC succeeds, find cells with domain == 1 and
+         assign them eagerly; propagate transitively until quiescence.  Eliminates
+         many forced choices from the explicit search tree and catches contradictions
+         earlier than FC alone.
 
     Value-order randomisation: if rng is provided, pairs/b-values are shuffled
-    before being tried at each node, giving each restart a genuinely different
-    search path (not just different cell ordering).
+    before being tried at each node.
     """
 
     def __init__(self, state: CoupledPairState,
@@ -302,6 +307,50 @@ class _BacktrackCoupled:
             result.append(b)
             mask &= mask - 1
         return result
+
+    def _unit_propagate(self, rest: list) -> Optional[list[tuple]]:
+        """
+        Eagerly assign all cells in *rest* that have exactly one valid option
+        (singleton propagation / unit propagation).  Repeats until quiescence.
+
+        Returns the list of (i, j, a, b) forced assignments (may be empty),
+        or None if a contradiction (domain == 0) is encountered.  On None the
+        state is fully restored to how it was before this call.
+        """
+        forced:     list[tuple] = []
+        forced_set: set         = set()
+
+        changed = True
+        while changed:
+            changed = False
+            for (ri, rj) in rest:
+                if (ri, rj) in forced_set:
+                    continue
+                # Compute domain size
+                if rj == 0:
+                    cnt = self.state.domain_count_col0(ri)
+                else:
+                    cnt = self.state.domain_count(ri, rj)
+
+                if cnt == 0:                  # contradiction — undo and signal
+                    for fi, fj, fa, fb in reversed(forced):
+                        self.state.unplace(fi, fj, fa, fb)
+                    return None
+
+                if cnt == 1:                  # forced assignment
+                    if rj == 0:
+                        b = _lsb_index(self.state.b_mask_col0(ri))
+                        a = ri
+                    else:
+                        pairs = self.state.pairs_for(ri, rj)
+                        a, b  = pairs[0]
+                    self.state.place(ri, rj, a, b)
+                    forced.append((ri, rj, a, b))
+                    forced_set.add((ri, rj))
+                    changed = True
+                    break        # restart scan with updated state
+
+        return forced
 
     # col-0 cell identifier
     @staticmethod
@@ -365,38 +414,57 @@ class _BacktrackCoupled:
         ci, cj = remaining[0]
         rest   = remaining[1:]
 
+        def _try_placement(a: int, b: int) -> Optional[bool]:
+            """Place (a,b) at (ci,cj), run FC + UP, recurse. Undoes forced UP
+            assignments after the recursive call.  Returns True/False/None."""
+            self.state.place(ci, cj, a, b)
+            if not self._forward_ok(rest, ci, cj, a):
+                self.state.unplace(ci, cj, a, b)
+                return False
+
+            forced = self._unit_propagate(rest)
+            if forced is None:                # UP found contradiction
+                self.state.unplace(ci, cj, a, b)
+                return False
+
+            # Recurse with forced cells removed from the work list
+            forced_set  = {(fi, fj) for fi, fj, _, _ in forced}
+            filtered    = [c for c in rest if c not in forced_set]
+            result      = self.search(filtered, max_time)
+
+            if result is True:
+                return True  # solution in current state — do NOT unplace
+
+            # Undo UP forced assignments (reverse order)
+            for fi, fj, fa, fb in reversed(forced):
+                self.state.unplace(fi, fj, fa, fb)
+            self.state.unplace(ci, cj, a, b)
+            return result
+
         if cj == 0:
             # col-0 cell: a=ci is forced; search over b values
             b_values = self._bits_of(self.state.b_mask_col0(ci))
             if self.rng is not None:
                 self.rng.shuffle(b_values)
             for b in b_values:
-                self.state.place(ci, cj, ci, b)
-                if self._forward_ok(rest, ci, cj, ci):
-                    result = self.search(rest, max_time)
-                    if result is True:
-                        return True
-                    if result is None:
-                        self.state.unplace(ci, cj, ci, b)
-                        remaining[0], remaining[best_idx] = remaining[best_idx], remaining[0]
-                        return None
-                self.state.unplace(ci, cj, ci, b)
+                result = _try_placement(ci, b)
+                if result is True:
+                    return True
+                if result is None:
+                    remaining[0], remaining[best_idx] = remaining[best_idx], remaining[0]
+                    return None
         else:
             # interior cell: search over all (a, b) pairs
             pairs = self.state.pairs_for(ci, cj)
             if self.rng is not None:
                 self.rng.shuffle(pairs)
             for a, b in pairs:
-                self.state.place(ci, cj, a, b)
-                if self._forward_ok(rest, ci, cj, a):
-                    result = self.search(rest, max_time)
-                    if result is True:
-                        return True
-                    if result is None:
-                        self.state.unplace(ci, cj, a, b)
-                        remaining[0], remaining[best_idx] = remaining[best_idx], remaining[0]
-                        return None
-                self.state.unplace(ci, cj, a, b)
+                result = _try_placement(a, b)
+                if result is True:
+                    return True
+                if result is None:
+                    remaining[0], remaining[best_idx] = remaining[best_idx], remaining[0]
+                    return None
 
         remaining[0], remaining[best_idx] = remaining[best_idx], remaining[0]
         return False
@@ -470,11 +538,14 @@ class DualOrthState:
 
 class _BacktrackDual:
     """
-    MRV + FC backtracking for DualOrthState.
+    MRV + FC + UP backtracking for DualOrthState.
 
     Forward check: after placing at (ci,cj), scan all unset cells sharing
     any of: same row, same col, same L1-value (pair13 affected), same L2-value
     (pair23 affected).
+
+    Unit propagation (UP): after FC succeeds, find all remaining cells with
+    domain size 1 and assign them eagerly before recursing.
     """
 
     def __init__(self, state: DualOrthState, stats: dict,
@@ -498,6 +569,32 @@ class _BacktrackDual:
                 if st.domain(ri, rj) == 0:
                     return False
         return True
+
+    def _unit_propagate(self, rest: list) -> Optional[list]:
+        """Assign all forced cells (domain == 1). Returns forced list or None on contradiction."""
+        forced:     list  = []
+        forced_set: set   = set()
+        changed = True
+        while changed:
+            changed = False
+            for (ri, rj) in rest:
+                if (ri, rj) in forced_set:
+                    continue
+                m   = self.state.domain(ri, rj)
+                cnt = _popcount(m)
+                if cnt == 0:
+                    for fi, fj, fv in reversed(forced):
+                        self.state.unplace(fi, fj, fv)
+                    return None
+                if cnt == 1:
+                    v = _lsb_index(m)
+                    self.state.place(ri, rj, v)
+                    forced.append((ri, rj, v))
+                    forced_set.add((ri, rj))
+                    self.stats["prune_domain"] += 0   # just propagation, not a prune
+                    changed = True
+                    break
+        return forced
 
     def search(self, remaining: list) -> bool:
         if self._abort:
@@ -540,8 +637,16 @@ class _BacktrackDual:
             mask &= mask - 1
             self.state.place(ci, cj, v)
             if self._forward_ok(rest, ci, cj):
-                if self.search(rest):
-                    return True
+                forced = self._unit_propagate(rest)
+                if forced is not None:
+                    forced_set = {(fi, fj) for fi, fj, _ in forced}
+                    filtered   = [c for c in rest if c not in forced_set]
+                    if self.search(filtered):
+                        return True
+                    for fi, fj, fv in reversed(forced):
+                        self.state.unplace(fi, fj, fv)
+                else:
+                    self.stats["prune_forward"] += 1
             else:
                 self.stats["prune_forward"] += 1
             self.state.unplace(ci, cj, v)
