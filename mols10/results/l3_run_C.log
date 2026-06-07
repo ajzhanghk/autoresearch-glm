@@ -204,3 +204,43 @@ trial=   5  strategy=sa_triple  budget=54s  best_ct_ever=2
   Progress: trials=5  elapsed=0.09h  pool_size=37  best_ct_ever=2  sa3_best_clashes=75  N(10)≥3 not found yet
 
 trial=   6  strategy=sa_triple  budget=54s  best_ct_ever=2
+  sa_triple: best_clashes=66  sa_frontier=66  best_ct_seen=0  elapsed=54.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+  [tv_37] ct=0  max_dis=0  src=tv
+
+  Progress: trials=6  elapsed=0.11h  pool_size=38  best_ct_ever=2  sa3_best_clashes=66  N(10)≥3 not found yet
+
+trial=   7  strategy=sa_triple  budget=54s  best_ct_ever=2
+  sa_triple: best_clashes=69  sa_frontier=66  best_ct_seen=0  elapsed=54.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=7  elapsed=0.12h  pool_size=38  best_ct_ever=2  sa3_best_clashes=66  N(10)≥3 not found yet
+
+trial=   8  strategy=sa_ct_climb  budget=50s  best_ct_ever=2  warm=yes ct=2
+  sa_ct_climb: best_ct=2  steps=3200040  elapsed=59.6s  
+  [sa_ct_38] ct=2  max_dis=2  src=sa_ct
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=8  elapsed=0.14h  pool_size=39  best_ct_ever=2  sa3_best_clashes=66  N(10)≥3 not found yet
+
+trial=   9  strategy=multi_decomp  budget=45s  n_attempts=10  best_ct_ever=2
+  multi_decomp: best_ct=1  pairs_tried=13  elapsed=44.5s
+  [mdecomp_39] ct=1  max_dis=1  src=mdecomp
+  ★ Saved promising pair mdecomp_39 (ct=1) → promising_pairs.json
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+  [tv_40] ct=0  max_dis=0  src=tv
+
+  Progress: trials=9  elapsed=0.15h  pool_size=41  best_ct_ever=2  sa3_best_clashes=66  N(10)≥3 not found yet
+
+trial=  10  strategy=sa_l3_pair  pair=iso_tv_21_2  ct=2  budget=68s
+  sa_l3_pair: found=False  best_clashes=43  restarts=9  elapsed=67.5s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=10  elapsed=0.17h  pool_size=41  best_ct_ever=2  sa3_best_clashes=66  N(10)≥3 not found yet
+
+trial=  11  strategy=sa_l3_pair  pair=ic8_tv_21_1  ct=2  budget=68s
