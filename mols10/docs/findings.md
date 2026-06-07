@@ -35,13 +35,13 @@ Every single MOLS(10) pair tested has CT_count ≤ 2:
 | CT Count | Pairs in pool |
 |----------|--------------|
 | 0        | (filtered out) |
-| 1        | 26 |
-| 2        | 36 |
-| **≥ 3**  | **0** (never found) |
+| 1        | 47 |
+| 2        | 209 |
+| **≥ 3**  | **0** (never found after 282 pairs tried) |
 
 - TV_21 (Parker 1960 construction): exactly CT = 2, exhaustively verified.
 - 12 different L2 mates of TV_21's L1: all have CT = 2.
-- 62 total pairs screened across multiple construction methods: max CT = 2.
+- 282 total pairs screened across multiple construction methods: max CT = 2.
 
 **Consequence:** Direct L3 search (`sa_l3_pair`) is mathematically futile for all known pairs. The search must either find a new pair with CT ≥ 10 or use a CT-free joint search.
 
@@ -49,19 +49,29 @@ Every single MOLS(10) pair tested has CT_count ≤ 2:
 
 ## Search Architecture
 
-Three parallel workers run indefinitely using an adaptive portfolio:
+Four parallel workers run indefinitely using an adaptive portfolio:
 
 | Strategy | Budget allocation | Purpose |
 |---|---|---|
-| `sa_triple` | 50% | Joint SA over (L1, L2, L3); minimises Σ clashes(Li, Lj). CT-free — can find any valid triple. **Primary strategy.** |
-| `multi_decomp` | 30% | High-throughput screening via transversal enumeration + AlgorithmX to find pairs with CT > 2. |
+| `sa_triple_pt` | 40% | **Primary.** Parallel-tempering SA with 5 replicas at T=[1,4,16,64,256]. Joint optimization over (L1, L2, L3). CT-free — can find any valid triple. |
+| `sa_triple` | 20% | Single-chain SA for diversity. |
+| `multi_decomp` | 20% | High-throughput pair screening via transversal enumeration + AlgorithmX. Finds pairs with CT > 0. |
 | `sa_ct_climb` | 20% | SA attempting to push CT above 2 via intercalate flips on known pairs. |
-| `sa_l3_pair` | 0% (conditional) | AlgorithmX exact-cover search for L3; activates only if a CT ≥ 10 pair is ever found. |
+| `sa_l3_pair` | 0% (conditional) | AlgorithmX exact-cover; activates only if a CT ≥ 10 pair is found. |
 
-### Near-Miss Sharing
+### Near-Miss Cascade
 
-- `near_miss_l3.json`: Best partial L3 states (clashes ≤ 20) saved for cross-worker warm-starts on `sa_l3_pair`.
-- `near_miss_triple.json`: Best (L1,L2,L3) triple states (total clashes ≤ 40) saved for cross-worker warm-starts on `sa_triple`. *(Not yet triggered — requires ≤ 40 total clashes.)*
+`near_miss_triple.json` stores the best (L1,L2,L3) triples found, with pair diversity (max 2 per pair, top-8 total). Each new trial can warm-start from these states, allowing the cascade to build progressively better states.
+
+**Fresh-start probabilities for each replica:**
+| Mode | Probability | Description |
+|------|-------------|-------------|
+| Pure near-miss | 8% | Exact copy of saved best state (cascade preservation) |
+| Micro-shake | 10% | Near-miss L3 + 1-10 random moves (tight diversity) |
+| Shake | 15% | Near-miss L3 + 15-80 random moves (broad escape) |
+| L3-transfer | 17% | CT=2 seed pair + near-miss L3 (cross-pair exploration) |
+| CT=2 + fresh L3 | 30% | Known MOLS pair + random L3 |
+| Fully random | 20% | All 3 squares random |
 
 ---
 
@@ -85,91 +95,123 @@ counts = np.bincount(pairs, minlength=n * n)
 return int(n * n - np.count_nonzero(counts))
 ```
 
-### Incremental pairwise clash tracking in sa_triple
-**File:** `mols10/mols_l3_search.py`
+### Incremental pairwise clash tracking
+Track `cl12`, `cl13`, `cl23` individually. When a move targets square `i`, only recompute the 2 pairs involving that square.
 
-Track `cl12`, `cl13`, `cl23` individually. When a move targets square `i`, only recompute the 2 pairs involving that square (saves 1 of 3 clash computations per step):
-
-```python
-if tgt == 0:   # moved L1
-    new_cl = count_clashes(Ln, L2) + count_clashes(Ln, L3) + cl23
-elif tgt == 1: # moved L2
-    new_cl = count_clashes(L1, Ln) + cl13 + count_clashes(Ln, L3)
-else:          # moved L3
-    new_cl = cl12 + count_clashes(L1, Ln) + count_clashes(L2, Ln)
-```
+### Parallel Tempering (5 replicas, T=[1,4,16,64,256])
+Hot replica at T=256 accepts ΔE≈177 moves with P=0.5, enabling escape from deep local minima. Replicas exchange states every 2000 outer steps, laddering good states from hot to cold.
 
 ### L3-biased moves
-When `cl12 < 5` (pair is nearly perfect), 70% of moves target L3, 15% L1, 15% L2. This preserves a good pair while aggressively searching for L3.
+When `cl12 < 5`, 70% of moves target L3, 15% each for L1/L2. Preserves good MOLS pairs while aggressively searching for compatible L3.
 
-### Net performance improvement
-| Metric | Before | After |
-|--------|--------|-------|
-| count_clashes | 56K/s | 253K/s |
-| SA steps/s (sa_triple) | ~16K | ~63K |
-| Steps per 39s trial | ~625K | ~2.46M |
-| **Speedup** | — | **~4×** |
+### Shake/Micro-shake warm-starts
+Perturbations of 1-10 moves (micro-shake) and 15-80 moves (shake) create diverse starting L3 candidates from the near-miss pool, helping escape local basins.
 
 ---
 
 ## Results
 
-### sa_triple frontier (total clashes = clashes(L1,L2) + clashes(L1,L3) + clashes(L2,L3))
+### Near-Miss Cascade Progress
 
-| Session | Best total clashes | Notes |
-|---------|-------------------|-------|
-| Previous session | 51 | Pre-optimization |
-| Current session (pre-opt) | 58 | Workers A, B, C |
-| Current session (post-opt) | **56** | Worker B, trial 2 after 4× speedup |
-| **Target** | **0** | Proves N(10) ≥ 3 |
+The cascade has been the primary mechanism of improvement. Starting from a random triple (E≈270), progressive warm-starting from saved near-miss states drives the energy down:
 
-When warm-starting from a known MOLS pair (clashes(L1,L2)=0), total clashes = clashes(L1,L3) + clashes(L2,L3). Getting this to 0 while also having L1,L2 orthogonal would prove N(10) ≥ 3.
+| Session | Best E | Notes |
+|---------|--------|-------|
+| Session 1 (pre-optimization) | ~51 | No warm-start infrastructure |
+| Session 2 (bugs present) | 37 | Lost due to JSON save bugs (concurrent writes, unhashable key) |
+| Session 3 (bugs fixed) | **39** | First properly-saved near-miss, pair-diversity cap |
+| Session 3 (continued) | **37** | 5-replica T=256 broke through; properly saved |
 
-### Bugs Discovered and Fixed
+**Current best:** E = 37 (cl12=0, cl13=22, cl23=15)
+
+### Current near_miss_triple.json
+
+| Entry | cl12 | cl13 | cl23 | total | source pair |
+|-------|------|------|------|-------|-------------|
+| 0-5 | 0 | 22 | 15 | **37** | 3 distinct MOLS pairs |
+| 6-7 | 0 | — | — | 44 | 2 additional pairs |
+
+All entries have cl12=0 (the (L1,L2) component is always a valid MOLS pair).
+
+### Key Negative Finding
+
+Pure L3 search (fixing L1,L2, only varying L3) on the best near-miss pair with 20 restarts × 500K steps achieves **minimum cl13+cl23 = 37**. This confirms:
+- For the specific CT=0 pairs in the near-miss file, E=37 is the local minimum for L3
+- The joint SA achieves 37 by finding a specific L3 configuration for specific MOLS pairs
+- To push below E=37, the joint SA must explore different (L1,L2) pairs
+
+Even with 540s budget and 8649 swap events (5-replica parallel tempering), the joint SA cannot break below E=37. This is a strong indication of a deep basin.
+
+### Cascade Chronology (2026-06-07)
+
+```
+16:00  Workers start, pool rebuilt (215+ pairs)
+17:36  First near-miss saved at E=39 (after fixing JSON save bugs)
+18:36  5-replica T=256 breaks cascade: E=39→38
+18:41  Cascade continues: E=38→37 (two new entries)
+18:49  4 entries at E=37, from 2 distinct pairs
+19:24  Pool expanded to 8 entries; 6 at E=37 from 3 pairs
+20:00  540s Worker D trial: still E=37 (8649 swaps)
+```
+
+---
+
+## Analysis: Why E=37?
+
+### The "Random Baseline" Coincidence
+
+For two independent random Latin squares A, B of order 10, the expected number of missing pairs:
+E[clashes(A,B)] ≈ n² × P(pair missing) = 100 × (1 - e^{-1}) ≈ 36.8 ≈ 37
+
+Our best triple has cl13=22, cl23=15 (both well below 37 individually). Their sum = 37 equals the "random baseline" — a coincidence that suggests we're in a regime where joint optimization has pushed both terms to an equilibrium.
+
+### CT=0 Pairs and L3 Impossibility
+
+All 282 tested MOLS pairs have CT≤2. The CT theorem guarantees: for CT=0, **no L3 exists for that fixed (L1,L2) pair**. The joint SA finds E=37 states where cl12=0 but the pair has CT=0. L3 cannot be made orthogonal to this fixed pair.
+
+For the joint SA to find E=0, it must find a MOLS pair with CT≥10 — something that has never been observed in this search or in prior literature.
+
+### Is 37 a Fundamental Barrier?
+
+Evidence suggests E=37 may be close to the fundamental minimum for the current class of accessible MOLS-10 pairs:
+1. L3-only SA (fixing CT=0 pair, all starting L3s) can't beat 37 in 10M+ steps
+2. Joint SA with 540s budget and T=256 hot replica can't beat 37
+3. Two independent sessions both independently converged to 37 as the cascade minimum
+
+This is consistent with (but does not prove) N(10) = 2.
+
+---
+
+## Bugs Discovered and Fixed
 
 | Bug | Impact | Fix |
 |-----|--------|-----|
-| `_in_row_swap` swaps within a row, breaking column uniqueness | SA explored non-Latin states; "10 clashes" result from early session was for a non-Latin L3 | Removed from SA entirely |
-| `multi_decomp` returning CT=-1 | Random L1s often have no OLS mate | Bias toward known good L1 from pool |
-| `sa_l3_pair` allocated 50% compute on CT<10 pairs | Mathematically futile | Redesigned portfolio; sa_l3_pair only runs if CT≥10 |
+| Concurrent JSON write | Silent save failure (workers clobber each other's writes) | Inner try-except with `data=[]` recovery |
+| Unhashable list key | ALL saves failed after pair-diversity code was added | `k = tuple(raw_k) if isinstance(raw_k, list) else raw_k` |
+| numpy `M[a],M[b]=M[b],M[a]` aliasing | Row swap corrupts Latin square (both rows get same values) | Use `M[[a,b]] = M[[b,a]]` |
+| CT=0 warm-start removed prematurely | Cascade stalled at 43 (vs 37 with CT=0 warm-starts) | Restored 15% pure near-miss mode |
+| L3-bias reduced to 50% | Cascade stalled at 43 (vs 37 with 70% bias) | Reverted to 70%/15%/15% |
 
 ---
 
 ## Prognosis
 
-The CT=2 ceiling across 62 tested pairs, combined with `sa_triple` stagnating at 55–60 total clashes, is consistent with the expert consensus that **N(10) = 2** (no third MOLS exists). The search continues as directed — any further progress would be a genuine mathematical result.
+The CT=2 ceiling across 282 tested pairs, combined with the sa_triple cascade stagnating at E=37 (cl12=0, cl13=22, cl23=15), is consistent with the expert consensus that **N(10) = 2**. The joint SA cannot push below 37 even with aggressive 5-replica parallel tempering (T_max=256, 540s budget).
 
-**Watching for:**
-1. Any pair with CT ≥ 3 (would be novel; CT ≥ 10 would enable AlgorithmX L3 search)
-2. `near_miss_triple.json` creation (total clashes ≤ 40 triggers cross-worker sharing)
+**Still watching for:**
+1. Any pair with CT ≥ 3 (novel; CT ≥ 10 enables AlgorithmX L3 search)
+2. Total clashes < 37 (would be a new cascade record)
 3. Total clashes = 0 (proves N(10) ≥ 3)
 
 ---
 
 ## File Map
 
-```
-mols10/
-├── mols_l3_search.py          # Primary search engine (adaptive portfolio)
-├── mols_adaptive.py           # Latin square primitives, count_clashes
-├── mols_search.py             # AlgorithmX, CSP, verify_mols
-├── verify_results.py          # Standalone JSON result verifier
-├── docs/
-│   └── findings.md            # This file
-└── results/
-    ├── l3_run_A.log           # Worker A log (seed 11111)
-    ├── l3_run_B.log           # Worker B log (seed 22222)
-    ├── l3_run_C.log           # Worker C log (seed 33333)
-    ├── l3_search_log.tsv      # Structured per-trial log
-    ├── promising_pairs.json   # CT > 0 pairs pool (62 pairs, max CT=2)
-    ├── near_miss_l3.json      # Best partial L3 states (not yet created)
-    └── near_miss_triple.json  # Best triple states (not yet created)
-```
-
-## References
-
-- Parker, E.T. (1960). Orthogonal Latin squares. *Proc. Natl. Acad. Sci. USA*, 47, 859–862.
-- Hall, M. & Paige, L.J. (1955). Complete mappings of finite groups. *Pacific J. Math.*, 5, 541–549.
-- Lam, C.W.H., Thiel, L. & Swiercz, S. (1989). The non-existence of finite projective planes of order 10. *Canad. J. Math.*, 41, 1117–1123.
-- Wanless, I.M. & Webb, B.S. (2011). The existence of latin squares without orthogonal mates. *Des. Codes Cryptogr.*, 40, 131–135.
-- McKay, B.D., Meynert, A. & Myrvold, W. (2007). Small Latin squares, quasigroups, and loops. *J. Combin. Des.*, 15, 98–119.
+| File | Purpose |
+|------|---------|
+| `mols10/mols_l3_search.py` | Main search engine: sa_triple_pt, sa_ct_climb, multi_decomp |
+| `mols10/mols_adaptive.py` | Core utilities: count_clashes, random_latin_square, verify_mols |
+| `mols10/results/near_miss_triple.json` | Best (L1,L2,L3) triples for warm-starts (top-8, pair-diverse) |
+| `mols10/results/promising_pairs.json` | Best (L1,L2) MOLS pairs by CT count (282 pairs, CT≤2) |
+| `mols10/results/l3_run_A/B/C/D.log` | Per-worker progress logs |
+| `mols10/docs/findings.md` | This document |
