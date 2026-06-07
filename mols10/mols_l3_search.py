@@ -1539,19 +1539,26 @@ def _save_triple_miss(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray,
             data = []   # recover gracefully; we'll add the new entry below
         data.append(entry)
         data.sort(key=lambda e: e["clashes"])
-        # Pair-diversity cap enforced post-sort (handles concurrent writes):
-        # keep at most 2 entries per pair, then take top-8.
-        # L1_key is stored as a JSON array (list) but needs to be hashable
-        # for use as a dict key — convert to tuple on the fly.
+        # Pair-diversity + L3-diversity cap enforced post-sort:
+        # (a) at most 2 entries per L1 pair-fingerprint
+        # (b) no two entries with identical L3 matrices (Hamming distance > 0)
+        # This prevents identical L3s from dominating the warm-start pool.
         seen_pairs: dict = {}
+        seen_l3: list = []   # list of L3 arrays already accepted
         diverse: list = []
         for e in data:
             raw_k = e.get("L1_key")
             k = tuple(raw_k) if isinstance(raw_k, list) else raw_k
             cnt = seen_pairs.get(k, 0)
-            if cnt < 2:
-                diverse.append(e)
-                seen_pairs[k] = cnt + 1
+            if cnt >= 2:
+                continue
+            # Check L3 uniqueness: reject if this L3 is identical to an existing one
+            l3_arr = np.array(e["L3"], dtype=np.int8)
+            if any(np.array_equal(l3_arr, prev) for prev in seen_l3):
+                continue
+            diverse.append(e)
+            seen_pairs[k] = cnt + 1
+            seen_l3.append(l3_arr)
             if len(diverse) == 8:
                 break
         TRIPLE_MISS_FILE.write_text(json.dumps(diverse, indent=2))
