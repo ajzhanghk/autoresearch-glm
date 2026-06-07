@@ -87,22 +87,21 @@ FULL_MASK      = (1 << N) - 1   # 0b1111111111 = 1023
 CHECKPOINT_INTERVAL = 300       # seconds between progress saves
 
 # ---------------------------------------------------------------------------
-# Numba-compilable inner helpers
+# Bit-manipulation helpers
+#
+# These are called from Python-level loops, so Python's native built-ins
+# (bin().count / int.bit_length) are faster than Numba JIT functions called
+# across the Python-C boundary.  Numba is kept as optional for completeness
+# but the @_njit decoration is intentionally NOT applied here.
 # ---------------------------------------------------------------------------
 
-@_njit
 def _popcount(x: int) -> int:
-    """Count set bits."""
-    c = 0
-    while x:
-        x &= x - 1
-        c += 1
-    return c
+    """Count set bits using Python's fast native string method."""
+    return bin(x).count('1')
 
 
-@_njit
 def _lsb_index(x: int) -> int:
-    """Index of the lowest set bit (0-based)."""
+    """Index of the lowest set bit (0-based) using Python's native bit_length."""
     return (x & -x).bit_length() - 1
 
 
@@ -229,9 +228,15 @@ class CoupledPairState:
         return count
 
     def domain_count_col0(self, i: int) -> int:
-        """Count valid b-values for col-0 cell (i,0) where L1[i,0] is forced to i."""
-        B = self._b_mask(i, 0)
-        return _popcount(B & self.pair_orth[i])
+        """Count valid b-values for col-0 cell (i,0) where L1[i,0] is forced to i.
+
+        Also checks that the forced L1 value 'i' is still available in row i
+        and col 0 (another cell in row i might have already taken value i).
+        """
+        bit_i = 1 << i
+        if not (self.row1[i] & bit_i and self.col1[0] & bit_i):
+            return 0   # forced L1 value no longer available → infeasible
+        return _popcount(self._b_mask(i, 0) & self.pair_orth[i])
 
     def pairs_for(self, i: int, j: int) -> list[tuple[int, int]]:
         """List of valid (a,b) pairs for free interior cell (i,j)."""
@@ -250,7 +255,12 @@ class CoupledPairState:
         return out
 
     def b_mask_col0(self, i: int) -> int:
-        """Bitmask of valid b-values for col-0 cell (i,0) [a=i is forced]."""
+        """Bitmask of valid b-values for col-0 cell (i,0) [a=i is forced].
+        Returns 0 if the forced a-value 'i' is no longer available.
+        """
+        bit_i = 1 << i
+        if not (self.row1[i] & bit_i and self.col1[0] & bit_i):
+            return 0
         return self._b_mask(i, 0) & self.pair_orth[i]
 
 
