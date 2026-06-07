@@ -869,8 +869,8 @@ def sa_triple_pt(
             sym_p = list(range(n)); r.shuffle(sym_p)
             L3_ = np.array([[sym_p[int(L3_raw[row_p[i], col_p[j]])] for j in range(n)]
                              for i in range(n)], dtype=np.int8)
-        elif triple_misses and roll < 0.93:
-            # Super-shake (5%): near-miss L3 + 100-400 random moves.
+        elif triple_misses and roll < 0.96:
+            # Super-shake (3%): near-miss L3 + 100-400 random moves.
             e = r.choice(triple_misses[:5])
             sp = r.choice(_seed_pairs) if _seed_pairs else None
             if sp and r.random() < 0.5:
@@ -881,7 +881,7 @@ def sa_triple_pt(
                 L2_ = np.array(e["L2"], dtype=np.int8)
             L3_ = _shake_ls(np.array(e["L3"], dtype=np.int8), r, r.randint(100, 400))
         elif triple_misses and roll < 0.98:
-            # Reverse search (5%): fix near-miss L3, search for compatible (L1, L2).
+            # Reverse search (2%): fix near-miss L3, search for compatible (L1, L2).
             # The near-miss L3 might be a valid third MOLS square for some pair
             # that SA can find if we fix L3 and optimize L1/L2 jointly.
             e = r.choice(triple_misses[:5])
