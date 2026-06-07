@@ -60,17 +60,45 @@ from mols_search import (
 # ---------------------------------------------------------------------------
 
 def random_latin_square(n: int, rng: random.Random) -> np.ndarray:
-    """Random Latin square via cyclic base + random row/col/symbol permutations."""
-    L = np.array([[(i + j) % n for j in range(n)] for i in range(n)], dtype=np.int8)
-    rows = list(range(n)); rng.shuffle(rows)
-    L = L[rows]
-    cols = list(range(n)); rng.shuffle(cols)
-    L = L[:, cols]
-    perm = list(range(n)); rng.shuffle(perm)
-    out = np.empty_like(L)
-    for old, new_sym in enumerate(perm):
-        out[L == old] = new_sym
-    return out
+    """Generate a uniformly random Latin square via random backtracking.
+
+    Fills cells row-by-row choosing a random available symbol at each step.
+    Back-tracks on failure (rare for small n).  The result is NOT derived
+    from a cyclic or group base, so it is NOT constrained to group-isotopy
+    classes.  This is essential for n=10: every group of order 10 (Z₁₀ and
+    D₅) fails the Hall-Paige condition (cyclic Sylow-2 subgroup not in the
+    commutator), so their Cayley tables have no OLS mates.  Random backtrack
+    produces genuinely generic Latin squares, most of which DO have mates.
+    """
+    while True:
+        L = -np.ones((n, n), dtype=np.int8)
+        row_avail = [(1 << n) - 1] * n
+        col_avail = [(1 << n) - 1] * n
+
+        failed = False
+        for i in range(n):
+            for j in range(n):
+                avail = row_avail[i] & col_avail[j]
+                if not avail:
+                    failed = True
+                    break
+                # Extract available values and pick one randomly
+                vals = []
+                mask = avail
+                while mask:
+                    b = mask & -mask
+                    vals.append(b.bit_length() - 1)
+                    mask &= mask - 1
+                v = rng.choice(vals)
+                L[i, j] = v
+                row_avail[i] &= ~(1 << v)
+                col_avail[j] &= ~(1 << v)
+            if failed:
+                break
+
+        if not failed:
+            return L
+        # Very rarely we get stuck; just try again
 
 
 def count_clashes(L1: np.ndarray, L2: np.ndarray, n: int) -> int:
