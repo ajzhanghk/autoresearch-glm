@@ -545,9 +545,15 @@ def sa_triple_find(
     def fresh():
         triple_misses = _load_triple_misses()
         roll = rng.random()
+        if triple_misses and roll < 0.15:
+            # Pure near-miss (15%): continue cascade from best triple state.
+            e = rng.choice(triple_misses[:3])
+            L1_ = np.array(e["L1"], dtype=np.int8)
+            L2_ = np.array(e["L2"], dtype=np.int8)
+            L3_ = np.array(e["L3"], dtype=np.int8)
+            return L1_, L2_, L3_, _triple_clashes(L1_, L2_, L3_, n)
         if triple_misses and _seed_pairs and roll < 0.45:
-            # L3-transfer (45%): CT=2 seed pair + near-miss L3.
-            # Always use CT=2 seed pairs to avoid CT=0 dead-ends.
+            # L3-transfer (30%): CT=2 seed pair + near-miss L3.
             e = rng.choice(triple_misses[:3])
             sp = rng.choice(_seed_pairs)
             L1_ = sp[0].copy(); L2_ = sp[1].copy()
@@ -627,10 +633,10 @@ def sa_triple_find(
                                     "elapsed_s": round(time.time()-t0, 2)
                                 }
 
-        # SA move — bias toward L3 when pair (L1,L2) is nearly perfect
+        # SA move — mild L3 bias when pair is nearly perfect (50% vs 25%/25%)
         if cl12 < 5:
             r = rng.random()
-            tgt = 2 if r < 0.70 else (0 if r < 0.85 else 1)
+            tgt = 2 if r < 0.50 else (0 if r < 0.75 else 1)
         else:
             tgt = rng.randint(0, 2)
         L = [L1, L2, L3][tgt]
@@ -740,11 +746,20 @@ def sa_triple_pt(
     def fresh_state(r):
         triple_misses = _load_triple_misses()
         roll = r.random()
-        if triple_misses and _seed_pairs and roll < 0.45:
-            # L3-transfer (45%): CT=2 seed pair + near-miss L3.
-            # The near-miss L3 comes from CT=0 pair territory, but L3
-            # generalises — it gives the SA a head-start over random L3.
-            # Always use CT=2 seed pairs to avoid CT=0 dead-ends.
+        if triple_misses and roll < 0.15:
+            # Pure near-miss (15%): exact warm-start from best triple found.
+            # Preserves the cascade: if SA found (L1,L2,L3) with E=37, the
+            # next trial continues from that basin.  Even CT=0 pairs are
+            # useful here because the SA can drift to a new pair via 50%
+            # L1/L2 moves (see apply_move_to), potentially finding CT>0.
+            e = r.choice(triple_misses[:3])
+            L1_ = np.array(e["L1"], dtype=np.int8)
+            L2_ = np.array(e["L2"], dtype=np.int8)
+            L3_ = np.array(e["L3"], dtype=np.int8)
+        elif triple_misses and _seed_pairs and roll < 0.45:
+            # L3-transfer (30%): CT=2 seed pair + near-miss L3.
+            # Near-miss L3 is partially specific to its original pair but
+            # still gives cl13+cl23≈72 vs ≈80 for random (marginal gain).
             e = r.choice(triple_misses[:3])
             sp = r.choice(_seed_pairs)
             L1_ = sp[0].copy(); L2_ = sp[1].copy()
@@ -770,7 +785,9 @@ def sa_triple_pt(
         L1_, L2_, L3_, cl12_, cl13_, cl23_ = state
         if cl12_ < 5:
             rv = r.random()
-            tgt = 2 if rv < 0.70 else (0 if rv < 0.85 else 1)
+            # Reduced L3-bias 70%→50%: more pair exploration when cl12≈0.
+            # Allows SA to drift from CT=0 pairs to potentially CT>0 ones.
+            tgt = 2 if rv < 0.50 else (0 if rv < 0.75 else 1)
         else:
             tgt = r.randint(0, 2)
         L = [L1_, L2_, L3_][tgt]
@@ -1323,20 +1340,9 @@ def _load_near_misses() -> list[dict]:
 
 def _save_triple_miss(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray,
                       clashes: int) -> None:
-    """Save a low-clash (L1,L2,L3) triple state for sa_triple warm-starts.
-
-    Only saves states useful for future warm-starts:
-      - cl12 > 0: joint optimisation still has room to improve the pair
-      - cl12 == 0 AND CT > 0: valid MOLS pair with ≥1 CT (L3 search viable)
-    States with cl12==0 and CT==0 are CT=0 dead-ends and are NOT saved.
-    """
+    """Save a low-clash (L1,L2,L3) triple state for sa_triple warm-starts."""
     n = 10
     cl12 = count_clashes(L1, L2, n)
-    if cl12 == 0:
-        # Quick CT check (≈11ms) — don't save CT=0 dead-ends
-        cts = enumerate_common_transversals(L1, L2, n, max_count=1, deadline=time.time() + 0.5)
-        if not cts:
-            return  # CT=0 pair: L3 provably impossible, skip
     entry = {
         "clashes": clashes, "cl12": cl12,
         "ts": datetime.now().isoformat(timespec="seconds"),
