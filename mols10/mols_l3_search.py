@@ -737,7 +737,7 @@ def sa_triple_pt(
     rng  = random.Random(rng_seed)
     t0   = time.time()
     K    = len(temps)
-    move_names = ["row", "col", "relabel", "intercalate", "kscramble"]
+    move_names = ["row", "col", "relabel", "intercalate", "kscramble", "bigscramble"]
     # Each replica gets its own independent RNG
     rep_rngs = [random.Random(rng.random()) for _ in range(K)]
 
@@ -756,6 +756,12 @@ def sa_triple_pt(
                 a, b = r.sample(range(n), 2); L = _relabel(L, a, b)
             elif mv == "kscramble":
                 k = r.randint(3, 5)
+                rows = r.sample(range(n), k)
+                perm = rows[:]
+                r.shuffle(perm)
+                L[rows] = L[perm].copy()
+            elif mv == "bigscramble":
+                k = r.randint(6, n - 1)
                 rows = r.sample(range(n), k)
                 perm = rows[:]
                 r.shuffle(perm)
@@ -863,9 +869,8 @@ def sa_triple_pt(
             sym_p = list(range(n)); r.shuffle(sym_p)
             L3_ = np.array([[sym_p[int(L3_raw[row_p[i], col_p[j]])] for j in range(n)]
                              for i in range(n)], dtype=np.int8)
-        elif triple_misses and roll < 0.98:
-            # Super-shake (7%): near-miss L3 + 100-400 random moves.
-            # Escapes the E=22 basin more aggressively than normal shake (15-80 moves).
+        elif triple_misses and roll < 0.93:
+            # Super-shake (5%): near-miss L3 + 100-400 random moves.
             e = r.choice(triple_misses[:5])
             sp = r.choice(_seed_pairs) if _seed_pairs else None
             if sp and r.random() < 0.5:
@@ -875,8 +880,16 @@ def sa_triple_pt(
                 L1_ = np.array(e["L1"], dtype=np.int8)
                 L2_ = np.array(e["L2"], dtype=np.int8)
             L3_ = _shake_ls(np.array(e["L3"], dtype=np.int8), r, r.randint(100, 400))
+        elif triple_misses and roll < 0.98:
+            # Reverse search (5%): fix near-miss L3, search for compatible (L1, L2).
+            # The near-miss L3 might be a valid third MOLS square for some pair
+            # that SA can find if we fix L3 and optimize L1/L2 jointly.
+            e = r.choice(triple_misses[:5])
+            L3_ = np.array(e["L3"], dtype=np.int8)
+            L1_ = random_latin_square(n, random.Random(r.random()))
+            L2_ = random_latin_square(n, random.Random(r.random()))
         else:
-            # Fully random (5%)
+            # Fully random (2%)
             L1_ = random_latin_square(n, random.Random(r.random()))
             L2_ = random_latin_square(n, random.Random(r.random()))
             L3_ = random_latin_square(n, random.Random(r.random()))
@@ -923,6 +936,14 @@ def sa_triple_pt(
             perm = rows[:]
             r.shuffle(perm)
             Ln[rows] = L[perm]
+        elif mv == "bigscramble":
+            # bigscramble: permute k=6..n-1 rows — very large jump.
+            k = r.randint(6, n - 1)
+            rows = r.sample(range(n), k)
+            Ln = L.copy()
+            perm = rows[:]
+            r.shuffle(perm)
+            Ln[rows] = L[perm]
         else:
             r1, r2 = r.sample(range(n), 2); c1, c2 = r.sample(range(n), 2)
             fl = _intercalate_flip(L, r1, r2, c1, c2)
@@ -949,6 +970,10 @@ def sa_triple_pt(
     step       = 0
     swaps      = 0
     restarts   = 0
+    # ILS stagnation counters per replica: track steps since last improvement
+    stagnation = [0] * K
+    ILS_THRESHOLD = 8000   # shake cold replica after this many no-improvement steps
+    ILS_WARM_SHAKE = [20, 50]  # shake range for ILS perturbation
 
     while time.time() - t0 < max_seconds:
         # ── advance each replica one step with its own RNG ─────────────────
@@ -960,6 +985,10 @@ def sa_triple_pt(
             if delta < 0 or rep_rngs[i].random() < math.exp(-delta / T):
                 replicas[i] = new_state
                 energies[i] = new_E
+                if delta < 0:
+                    stagnation[i] = 0
+                else:
+                    stagnation[i] += 1
                 if new_E < best_E:
                     best_E     = new_E
                     best_state = new_state[:3]
@@ -973,6 +1002,21 @@ def sa_triple_pt(
                                 "restarts": restarts, "swaps": swaps,
                                 "elapsed_s": round(time.time() - t0, 2),
                             }
+            else:
+                stagnation[i] += 1
+
+            # ILS: shake L3 of cold replica when deeply stagnated
+            if i == 0 and stagnation[0] >= ILS_THRESHOLD:
+                s = replicas[0]
+                L1s, L2s, L3s, cl12s = s[0], s[1], s[2], s[3]
+                L3_shk = _shake_ls(L3s, rep_rngs[0],
+                                   rep_rngs[0].randint(*ILS_WARM_SHAKE))
+                cl13_shk = count_clashes(L1s, L3_shk, n)
+                cl23_shk = count_clashes(L2s, L3_shk, n)
+                replicas[0] = [L1s, L2s, L3_shk, cl12s, cl13_shk, cl23_shk]
+                energies[0] = cl12s + cl13_shk + cl23_shk
+                stagnation[0] = 0
+                restarts += 1
 
         step += 1
 
@@ -1273,8 +1317,9 @@ def multi_decomp_ct_search(
         if rem < 3.0:
             break
 
-        # Choose L1: alternate seed (known good, isotopy-varied) vs fresh random
-        if seed_L1 is not None and l1_batch % 3 != 2:
+        # Choose L1: 50% random (broader exploration), 50% seed isotopy-variant.
+        # Isotopy of the Parker L1 always gives CT≤2; random L1 may differ.
+        if seed_L1 is not None and l1_batch % 2 == 0:
             L1 = seed_L1.copy()
             L1, _ = isotopy_variant(L1, L1, n, random.Random(rng.random()))
         else:
