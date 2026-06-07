@@ -365,3 +365,67 @@ ts	trial	strategy	pair_id	ct_count	max_disjoint	sa_best_clashes	elapsed_s	found	
 2026-06-07T10:33:00	11	sa_triple	—	0	—	60	39.0	0	sa_frontier=56
 2026-06-07T10:33:14	11	sa_triple	—	0	—	60	39.0	0	sa_frontier=57
 2026-06-07T10:33:21	11	sa_triple	—	0	—	59	39.0	0	sa_frontier=55
+2026-06-07T14:21:44	1	sa_triple_pt	—	0	—	47	39.0	0	sa_frontier=47 swaps=546
+2026-06-07T14:21:44	1	sa_triple_pt	—	0	—	50	39.0	0	sa_frontier=50 swaps=550
+2026-06-07T14:21:44	1	sa_triple_pt	—	0	—	52	39.0	0	sa_frontier=52 swaps=530
+2026-06-07T14:22:23	2	sa_triple_pt	—	0	—	56	39.0	0	sa_frontier=47 swaps=551
+2026-06-07T14:22:23	2	sa_triple_pt	—	0	—	55	39.0	0	sa_frontier=50 swaps=532
+2026-06-07T14:22:23	2	sa_triple_pt	—	0	—	48	39.0	0	sa_frontier=48 swaps=497
+2026-06-07T14:23:02	3	sa_triple	—	0	—	58	39.0	0	sa_frontier=47
+2026-06-07T14:23:02	3	sa_triple	—	0	—	72	39.0	0	sa_frontier=50
+2026-06-07T14:23:02	3	sa_triple	—	0	—	61	39.0	0	sa_frontier=48
+2026-06-07T14:23:42	4	sa_triple	—	0	—	56	39.0	0	sa_frontier=47
+2026-06-07T14:23:45	4	sa_triple	—	0	—	60	39.0	0	sa_frontier=48
+2026-06-07T14:23:46	4	sa_triple	—	0	—	57	39.0	0	sa_frontier=50
+2026-06-07T14:24:22	5	multi_decomp	—	2	—	—	40.16	0	tried=7
+2026-06-07T14:24:26	5	multi_decomp	—	2	—	—	41.16	0	tried=8
+2026-06-07T14:24:28	5	multi_decomp	—	2	—	—	41.18	0	tried=11
+2026-06-07T14:25:02	6	multi_decomp	—	2	—	—	39.63	0	tried=7
+2026-06-07T14:25:07	6	multi_decomp	—	2	—	—	41.21	0	tried=6
+2026-06-07T14:25:08	6	multi_decomp	—	2	—	—	40.15	0	tried=10
+2026-06-07T14:25:45	7	multi_decomp	—	2	—	—	40.19	0	tried=7
+2026-06-07T14:25:49	7	multi_decomp	—	2	—	—	39.65	0	tried=12
+2026-06-07T14:25:52	7	multi_decomp	—	2	—	—	39.82	0	tried=7
+2026-06-07T14:26:32	8	sa_ct_climb	—	2	—	—	46.55	0	steps=2880036
+2026-06-07T14:26:34	8	sa_ct_climb	—	2	—	—	45.93	0	steps=2240028
+2026-06-07T14:26:38	8	sa_ct_climb	—	2	—	—	46.5	0	steps=2880036
+2026-06-07T14:27:17	9	sa_ct_climb	—	2	—	—	42.99	0	steps=2880036
+2026-06-07T14:27:18	9	sa_ct_climb	—	2	—	—	46.28	0	steps=3200040
+2026-06-07T14:27:25	9	sa_ct_climb	—	2	—	—	47.03	0	steps=1920024
+2026-06-07T14:27:57	10	sa_triple_pt	—	0	—	60	39.0	0	sa_frontier=47 swaps=540
+2026-06-07T14:28:09	10	sa_triple_pt	—	0	—	64	39.0	0	sa_frontier=50 swaps=556
+2026-06-07T14:28:10	10	sa_triple_pt	—	0	—	49	39.0	0	sa_frontier=48 swaps=539
+2026-06-07T14:28:36	11	sa_triple_pt	—	0	—	50	39.0	0	sa_frontier=47 swaps=524
+2026-06-07T14:28:48	11	sa_triple_pt	—	0	—	54	39.0	0	sa_frontier=50 swaps=542
+2026-06-07T14:28:49	11	sa_triple_pt	—	0	—	49	39.0	0	sa_frontier=48 swaps=534
+2026-06-07T14:29:15	12	sa_triple_pt	—	0	—	52	39.0	0	sa_frontier=47 swaps=543
+2026-06-07T14:29:27	12	sa_triple_pt	—	0	—	51	39.0	0	sa_frontier=50 swaps=531
+2026-06-07T14:29:28	12	sa_triple_pt	—	0	—	52	39.0	0	sa_frontier=48 swaps=534
+2026-06-07T14:30:04	13	sa_triple	—	0	—	60	39.0	0	sa_frontier=47
+2026-06-07T14:30:10	13	sa_triple	—	0	—	56	39.0	0	sa_frontier=48
+2026-06-07T14:30:11	13	sa_triple	—	0	—	63	39.0	0	sa_frontier=50
+2026-06-07T14:30:43	14	sa_triple	—	0	—	61	39.0	0	sa_frontier=47
+2026-06-07T14:30:49	14	sa_triple	—	0	—	56	39.0	0	sa_frontier=48
+2026-06-07T14:30:50	14	sa_triple	—	0	—	53	39.0	0	sa_frontier=50
+2026-06-07T14:31:24	15	multi_decomp	—	2	—	—	41.18	0	tried=7
+2026-06-07T14:31:29	15	multi_decomp	—	2	—	—	39.89	0	tried=12
+2026-06-07T14:31:29	15	multi_decomp	—	2	—	—	39.07	0	tried=8
+2026-06-07T14:32:10	16	multi_decomp	—	2	—	—	40.11	0	tried=8
+2026-06-07T14:32:11	16	multi_decomp	—	2	—	—	40.58	0	tried=4
+2026-06-07T14:32:12	16	multi_decomp	—	2	—	—	40.19	0	tried=13
+2026-06-07T14:32:51	17	multi_decomp	—	2	—	—	41.25	0	tried=8
+2026-06-07T14:32:52	17	multi_decomp	—	2	—	—	39.51	0	tried=3
+2026-06-07T14:32:52	17	multi_decomp	—	2	—	—	41.44	0	tried=7
+2026-06-07T14:33:36	18	sa_ct_climb	—	2	—	—	44.37	0	steps=1600020
+2026-06-07T14:33:39	18	sa_ct_climb	—	2	—	—	47.23	0	steps=2240028
+2026-06-07T14:33:39	18	sa_ct_climb	—	2	—	—	47.29	0	steps=1600020
+2026-06-07T14:34:25	19	sa_ct_climb	—	2	—	—	44.67	0	steps=1920024
+2026-06-07T14:34:27	19	sa_ct_climb	—	2	—	—	46.99	0	steps=1280016
+2026-06-07T14:34:29	19	sa_ct_climb	—	2	—	—	44.48	0	steps=2560032
+2026-06-07T14:35:04	20	sa_triple_pt	—	0	—	62	39.0	0	sa_frontier=50 swaps=523
+2026-06-07T14:35:06	20	sa_triple_pt	—	0	—	57	39.0	0	sa_frontier=48 swaps=532
+2026-06-07T14:35:08	20	sa_triple_pt	—	0	—	64	39.0	0	sa_frontier=47 swaps=520
+2026-06-07T14:35:43	21	sa_triple_pt	—	0	—	62	39.0	0	sa_frontier=50 swaps=510
+2026-06-07T14:35:45	21	sa_triple_pt	—	0	—	51	39.0	0	sa_frontier=48 swaps=533
+2026-06-07T14:35:47	21	sa_triple_pt	—	0	—	51	39.0	0	sa_frontier=47 swaps=526
+2026-06-07T14:36:31	22	sa_triple_pt	—	0	—	52	39.0	0	sa_frontier=50 swaps=485

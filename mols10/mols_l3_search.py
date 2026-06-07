@@ -543,10 +543,9 @@ def sa_triple_find(
     _seed_pairs = _load_pairs()
 
     def fresh():
-        # 30% chance: warm-start from best saved triple near-miss state
         triple_misses = _load_triple_misses()
-        if triple_misses and rng.random() < 0.30:
-            e = triple_misses[0]
+        if triple_misses and rng.random() < 0.55:
+            e = rng.choice(triple_misses[:3])  # pick among top-3 for diversity
             L1_ = np.array(e["L1"], dtype=np.int8)
             L2_ = np.array(e["L2"], dtype=np.int8)
             L3_ = np.array(e["L3"], dtype=np.int8)
@@ -662,7 +661,7 @@ def sa_triple_find(
                 best_clashes = clashes
                 best_state   = (L1.copy(), L2.copy(), L3.copy())
                 no_improve   = 0
-                if clashes <= 40:
+                if clashes <= 52:
                     _save_triple_miss(L1, L2, L3, clashes)
             else:
                 no_improve += 1
@@ -713,7 +712,7 @@ def sa_triple_find(
 def sa_triple_pt(
     n: int,
     max_seconds: float,
-    temps: tuple = (1.5, 5.0, 15.0, 45.0),
+    temps: tuple = (1.0, 4.0, 16.0, 64.0),
     swap_every: int = 2000,
     rng_seed: Optional[int] = None,
 ) -> tuple[Optional[tuple], dict]:
@@ -738,8 +737,8 @@ def sa_triple_pt(
 
     def fresh_state(r):
         triple_misses = _load_triple_misses()
-        if triple_misses and r.random() < 0.30:
-            e = triple_misses[0]
+        if triple_misses and r.random() < 0.55:
+            e = r.choice(triple_misses[:3])  # pick among top-3 for diversity
             L1_ = np.array(e["L1"], dtype=np.int8)
             L2_ = np.array(e["L2"], dtype=np.int8)
             L3_ = np.array(e["L3"], dtype=np.int8)
@@ -812,7 +811,7 @@ def sa_triple_pt(
                 if new_E < best_E:
                     best_E     = new_E
                     best_state = new_state[:3]
-                    if new_E <= 40:
+                    if new_E <= 52:
                         _save_triple_miss(*best_state, new_E)
                     if new_E == 0:
                         ok, _ = verify_mols(list(best_state))
@@ -1321,10 +1320,9 @@ def _save_triple_miss(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray,
     }
     try:
         data = json.loads(TRIPLE_MISS_FILE.read_text()) if TRIPLE_MISS_FILE.exists() else []
-        data = [e for e in data if e["clashes"] > clashes]  # drop any with higher clashes
         data.append(entry)
         data.sort(key=lambda e: e["clashes"])
-        data = data[:5]  # keep top 5 best
+        data = data[:5]   # keep top-5 best (lowest clashes)
         TRIPLE_MISS_FILE.write_text(json.dumps(data, indent=2))
         print(f"  ★ Triple near-miss saved: clashes={clashes}")
     except Exception:
@@ -1832,12 +1830,12 @@ class L3AdaptiveSearch:
                 if result is not None:
                     return result
             elif phase in (0, 1, 2):
-                triple = self._run_sa_triple_pt(budget * 0.65)
+                triple = self._run_sa_triple_pt(budget * 0.90)
                 if triple is not None:
                     L1t, L2t, L3t = triple
                     return self._success(L1t, L2t, L3t)
             elif phase in (3, 4):
-                triple = self._run_sa_triple(budget * 0.65)
+                triple = self._run_sa_triple(budget * 0.90)
                 if triple is not None:
                     L1t, L2t, L3t = triple
                     return self._success(L1t, L2t, L3t)
