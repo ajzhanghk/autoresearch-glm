@@ -547,14 +547,14 @@ def sa_triple_find(
         roll = rng.random()
         if triple_misses and roll < 0.15:
             # Pure near-miss (15%): continue cascade from best triple state.
-            e = rng.choice(triple_misses[:3])
+            e = rng.choice(triple_misses[:5])
             L1_ = np.array(e["L1"], dtype=np.int8)
             L2_ = np.array(e["L2"], dtype=np.int8)
             L3_ = np.array(e["L3"], dtype=np.int8)
             return L1_, L2_, L3_, _triple_clashes(L1_, L2_, L3_, n)
         if triple_misses and _seed_pairs and roll < 0.45:
             # L3-transfer (30%): CT=2 seed pair + near-miss L3.
-            e = rng.choice(triple_misses[:3])
+            e = rng.choice(triple_misses[:5])
             sp = rng.choice(_seed_pairs)
             L1_ = sp[0].copy(); L2_ = sp[1].copy()
             L1_, L2_ = isotopy_variant(L1_, L2_, n, random.Random(rng.random()))
@@ -765,14 +765,14 @@ def sa_triple_pt(
         roll = r.random()
         if triple_misses and roll < 0.10:
             # Pure near-miss (10%): exact warm-start to preserve cascade.
-            e = r.choice(triple_misses[:3])
+            e = r.choice(triple_misses[:5])
             L1_ = np.array(e["L1"], dtype=np.int8)
             L2_ = np.array(e["L2"], dtype=np.int8)
             L3_ = np.array(e["L3"], dtype=np.int8)
         elif triple_misses and roll < 0.25:
             # Shake (15%): near-miss L3 perturbed by random moves to escape
             # the current local basin. Use seed pair or near-miss L1/L2.
-            e = r.choice(triple_misses[:3])
+            e = r.choice(triple_misses[:5])
             if _seed_pairs and r.random() < 0.5:
                 sp = r.choice(_seed_pairs)
                 L1_ = sp[0].copy(); L2_ = sp[1].copy()
@@ -784,7 +784,7 @@ def sa_triple_pt(
             L3_ = _shake_ls(L3_raw, r, r.randint(15, 80))
         elif triple_misses and _seed_pairs and roll < 0.50:
             # L3-transfer (25%): CT=2 seed pair + near-miss L3.
-            e = r.choice(triple_misses[:3])
+            e = r.choice(triple_misses[:5])
             sp = r.choice(_seed_pairs)
             L1_ = sp[0].copy(); L2_ = sp[1].copy()
             L1_, L2_ = isotopy_variant(L1_, L2_, n, random.Random(r.random()))
@@ -1386,7 +1386,7 @@ def _save_triple_miss(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray,
         data.append(entry)
         data.sort(key=lambda e: e["clashes"])
         # Pair-diversity cap enforced post-sort (handles concurrent writes):
-        # keep at most 2 entries per pair, then take top-5.
+        # keep at most 2 entries per pair, then take top-8.
         # L1_key is stored as a JSON array (list) but needs to be hashable
         # for use as a dict key — convert to tuple on the fly.
         seen_pairs: dict = {}
@@ -1398,7 +1398,7 @@ def _save_triple_miss(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray,
             if cnt < 2:
                 diverse.append(e)
                 seen_pairs[k] = cnt + 1
-            if len(diverse) == 5:
+            if len(diverse) == 8:
                 break
         TRIPLE_MISS_FILE.write_text(json.dumps(diverse, indent=2))
         print(f"  ★ Triple near-miss saved: clashes={clashes}  cl12={cl12}")
