@@ -720,7 +720,7 @@ def sa_triple_find(
 def sa_triple_pt(
     n: int,
     max_seconds: float,
-    temps: tuple = (1.0, 4.0, 16.0, 64.0),
+    temps: tuple = (1.0, 4.0, 16.0, 64.0, 256.0),
     swap_every: int = 2000,
     rng_seed: Optional[int] = None,
 ) -> tuple[Optional[tuple], dict]:
@@ -743,30 +743,54 @@ def sa_triple_pt(
 
     _seed_pairs = _load_pairs()
 
+    def _shake_ls(L, r, n_moves):
+        """Apply n_moves random LS-preserving moves to create a diverse variant."""
+        L = L.copy()
+        for _ in range(n_moves):
+            mv = r.choice(move_names)
+            if mv == "row":
+                a, b = r.sample(range(n), 2); L = _row_swap(L, a, b)
+            elif mv == "col":
+                a, b = r.sample(range(n), 2); L = _col_swap(L, a, b)
+            elif mv == "relabel":
+                a, b = r.sample(range(n), 2); L = _relabel(L, a, b)
+            else:
+                r1, r2 = r.sample(range(n), 2); c1, c2 = r.sample(range(n), 2)
+                fl = _intercalate_flip(L, r1, r2, c1, c2)
+                if fl is not None: L = fl
+        return L
+
     def fresh_state(r):
         triple_misses = _load_triple_misses()
         roll = r.random()
-        if triple_misses and roll < 0.15:
-            # Pure near-miss (15%): exact warm-start from best triple found.
-            # Preserves the cascade: if SA found (L1,L2,L3) with E=37, the
-            # next trial continues from that basin.  Even CT=0 pairs are
-            # useful here because the SA can drift to a new pair via 50%
-            # L1/L2 moves (see apply_move_to), potentially finding CT>0.
+        if triple_misses and roll < 0.10:
+            # Pure near-miss (10%): exact warm-start to preserve cascade.
             e = r.choice(triple_misses[:3])
             L1_ = np.array(e["L1"], dtype=np.int8)
             L2_ = np.array(e["L2"], dtype=np.int8)
             L3_ = np.array(e["L3"], dtype=np.int8)
-        elif triple_misses and _seed_pairs and roll < 0.45:
-            # L3-transfer (30%): CT=2 seed pair + near-miss L3.
-            # Near-miss L3 is partially specific to its original pair but
-            # still gives cl13+cl23≈72 vs ≈80 for random (marginal gain).
+        elif triple_misses and roll < 0.25:
+            # Shake (15%): near-miss L3 perturbed by random moves to escape
+            # the current local basin. Use seed pair or near-miss L1/L2.
+            e = r.choice(triple_misses[:3])
+            if _seed_pairs and r.random() < 0.5:
+                sp = r.choice(_seed_pairs)
+                L1_ = sp[0].copy(); L2_ = sp[1].copy()
+                L1_, L2_ = isotopy_variant(L1_, L2_, n, random.Random(r.random()))
+            else:
+                L1_ = np.array(e["L1"], dtype=np.int8)
+                L2_ = np.array(e["L2"], dtype=np.int8)
+            L3_raw = np.array(e["L3"], dtype=np.int8)
+            L3_ = _shake_ls(L3_raw, r, r.randint(15, 80))
+        elif triple_misses and _seed_pairs and roll < 0.50:
+            # L3-transfer (25%): CT=2 seed pair + near-miss L3.
             e = r.choice(triple_misses[:3])
             sp = r.choice(_seed_pairs)
             L1_ = sp[0].copy(); L2_ = sp[1].copy()
             L1_, L2_ = isotopy_variant(L1_, L2_, n, random.Random(r.random()))
             L3_ = np.array(e["L3"], dtype=np.int8)
         elif _seed_pairs and roll < 0.80:
-            # Known MOLS pair (CT=2) + fresh L3 (35%)
+            # Known MOLS pair (CT=2) + fresh L3 (30%)
             sp = r.choice(_seed_pairs)
             L1_ = sp[0].copy(); L2_ = sp[1].copy()
             L1_, L2_ = isotopy_variant(L1_, L2_, n, random.Random(r.random()))
@@ -1869,9 +1893,9 @@ class L3AdaptiveSearch:
 
             # ── Strategy portfolio ─────────────────────────────────────────
             # Portfolio (10 phases):
-            #  0,1,2   → sa_triple_pt (30%): parallel-tempering 4-replica search
-            #  3,4     → sa_triple    (20%): single-chain SA (diversity)
-            #  5,6,7   → multi_decomp (30%): high-throughput pair screening
+            #  0,1,2,3 → sa_triple_pt (40%): parallel-tempering 5-replica search
+            #  4,5     → sa_triple    (20%): single-chain SA (diversity)
+            #  6,7     → multi_decomp (20%): high-throughput pair screening
             #  8,9     → sa_ct_climb  (20%): attempt CT > 2
             #  special: sa_l3_pair ONLY when CT >= 10
             phase = outer_iter % 10
@@ -1882,17 +1906,17 @@ class L3AdaptiveSearch:
                 result = self._run_sa_l3_given_pair(budget * 0.90)
                 if result is not None:
                     return result
-            elif phase in (0, 1, 2):
+            elif phase in (0, 1, 2, 3):
                 triple = self._run_sa_triple_pt(budget * 0.90)
                 if triple is not None:
                     L1t, L2t, L3t = triple
                     return self._success(L1t, L2t, L3t)
-            elif phase in (3, 4):
+            elif phase in (4, 5):
                 triple = self._run_sa_triple(budget * 0.90)
                 if triple is not None:
                     L1t, L2t, L3t = triple
                     return self._success(L1t, L2t, L3t)
-            elif phase in (5, 6, 7):
+            elif phase in (6, 7):
                 self._run_multi_decomp(budget * 0.70)
             else:  # phase 8,9
                 self._run_sa_ct_climb(budget * 0.70)
