@@ -707,6 +707,172 @@ def sa_triple_find(
 
 
 # ===========================================================================
+# Strategy 1b — Parallel Tempering on 3-way space
+# ===========================================================================
+
+def sa_triple_pt(
+    n: int,
+    max_seconds: float,
+    temps: tuple = (1.5, 5.0, 15.0, 45.0),
+    swap_every: int = 2000,
+    rng_seed: Optional[int] = None,
+) -> tuple[Optional[tuple], dict]:
+    """Parallel tempering (replica-exchange SA) over the (L1, L2, L3) space.
+
+    Runs K=4 replicas at fixed temperatures T_0 < T_1 < T_2 < T_3.
+    Every `swap_every` steps, adjacent replicas i and i+1 attempt a swap:
+        P_swap = min(1, exp((E_i - E_{i+1}) * (1/T_i - 1/T_{i+1})))
+    The hot replica (T=45) crosses energy barriers freely; the cold one
+    (T=1.5) refines local minima.  Swaps transport good states from hot
+    to cold regions, escaping barriers single-chain SA cannot cross.
+    Each replica has its own RNG for full independence.
+    """
+    rng  = random.Random(rng_seed)
+    t0   = time.time()
+    K    = len(temps)
+    move_names = ["row", "col", "relabel", "intercalate"]
+    # Each replica gets its own independent RNG
+    rep_rngs = [random.Random(rng.random()) for _ in range(K)]
+
+    _seed_pairs = _load_pairs()
+
+    def fresh_state(r):
+        triple_misses = _load_triple_misses()
+        if triple_misses and r.random() < 0.30:
+            e = triple_misses[0]
+            L1_ = np.array(e["L1"], dtype=np.int8)
+            L2_ = np.array(e["L2"], dtype=np.int8)
+            L3_ = np.array(e["L3"], dtype=np.int8)
+        elif _seed_pairs and r.random() < 0.6:
+            sp = r.choice(_seed_pairs)
+            L1_ = sp[0].copy(); L2_ = sp[1].copy()
+            L1_, L2_ = isotopy_variant(L1_, L2_, n, random.Random(r.random()))
+            L3_ = random_latin_square(n, random.Random(r.random()))
+        else:
+            L1_ = random_latin_square(n, random.Random(r.random()))
+            L2_ = random_latin_square(n, random.Random(r.random()))
+            L3_ = random_latin_square(n, random.Random(r.random()))
+        cl12 = count_clashes(L1_, L2_, n)
+        cl13 = count_clashes(L1_, L3_, n)
+        cl23 = count_clashes(L2_, L3_, n)
+        return [L1_, L2_, L3_, cl12, cl13, cl23]
+
+    def apply_move_to(state, r):
+        L1_, L2_, L3_, cl12_, cl13_, cl23_ = state
+        if cl12_ < 5:
+            rv = r.random()
+            tgt = 2 if rv < 0.70 else (0 if rv < 0.85 else 1)
+        else:
+            tgt = r.randint(0, 2)
+        L = [L1_, L2_, L3_][tgt]
+        mv = r.choice(move_names)
+        if mv == "row":
+            a, b = r.sample(range(n), 2); Ln = _row_swap(L, a, b)
+        elif mv == "col":
+            a, b = r.sample(range(n), 2); Ln = _col_swap(L, a, b)
+        elif mv == "relabel":
+            a, b = r.sample(range(n), 2); Ln = _relabel(L, a, b)
+        else:
+            r1, r2 = r.sample(range(n), 2); c1, c2 = r.sample(range(n), 2)
+            fl = _intercalate_flip(L, r1, r2, c1, c2)
+            Ln = fl if fl is not None else L
+        if tgt == 0:
+            ncl12 = count_clashes(Ln, L2_, n); ncl13 = count_clashes(Ln, L3_, n)
+            new_E = ncl12 + ncl13 + cl23_
+            return [Ln, L2_, L3_, ncl12, ncl13, cl23_], new_E, cl12_ + cl13_ + cl23_
+        elif tgt == 1:
+            ncl12 = count_clashes(L1_, Ln, n); ncl23 = count_clashes(Ln, L3_, n)
+            new_E = ncl12 + cl13_ + ncl23
+            return [L1_, Ln, L3_, ncl12, cl13_, ncl23], new_E, cl12_ + cl13_ + cl23_
+        else:
+            ncl13 = count_clashes(L1_, Ln, n); ncl23 = count_clashes(L2_, Ln, n)
+            new_E = cl12_ + ncl13 + ncl23
+            return [L1_, L2_, Ln, cl12_, ncl13, ncl23], new_E, cl12_ + cl13_ + cl23_
+
+    # Initialise replicas (warm-start each independently)
+    replicas   = [fresh_state(rep_rngs[i]) for i in range(K)]
+    energies   = [r[3] + r[4] + r[5] for r in replicas]
+    best_E     = min(energies)
+    best_state = replicas[energies.index(best_E)][:3]
+    best_ct    = 0
+    step       = 0
+    swaps      = 0
+    restarts   = 0
+
+    while time.time() - t0 < max_seconds:
+        # ── advance each replica one step with its own RNG ─────────────────
+        for i in range(K):
+            state = replicas[i]
+            new_state, new_E, old_E = apply_move_to(state, rep_rngs[i])
+            delta = new_E - old_E
+            T = temps[i]
+            if delta < 0 or rep_rngs[i].random() < math.exp(-delta / T):
+                replicas[i] = new_state
+                energies[i] = new_E
+                if new_E < best_E:
+                    best_E     = new_E
+                    best_state = new_state[:3]
+                    if new_E <= 40:
+                        _save_triple_miss(*best_state, new_E)
+                    if new_E == 0:
+                        ok, _ = verify_mols(list(best_state))
+                        if ok:
+                            return tuple(best_state), {
+                                "found": True, "best_clashes": 0,
+                                "restarts": restarts, "swaps": swaps,
+                                "elapsed_s": round(time.time() - t0, 2),
+                            }
+
+        step += 1
+
+        # ── replica swaps every swap_every outer steps ─────────────────────
+        if step % swap_every == 0:
+            for i in range(K - 1):
+                Ei, Ej = energies[i], energies[i + 1]
+                Ti, Tj = temps[i], temps[i + 1]
+                log_prob = (Ei - Ej) * (1.0 / Ti - 1.0 / Tj)
+                if log_prob >= 0 or rng.random() < math.exp(log_prob):
+                    replicas[i], replicas[i + 1] = replicas[i + 1], replicas[i]
+                    energies[i], energies[i + 1] = Ej, Ei
+                    swaps += 1
+
+        # ── periodic full reinit of hottest replica to avoid stagnation ────
+        if step % (swap_every * 100) == 0:
+            replicas[-1] = fresh_state()
+            energies[-1] = replicas[-1][3] + replicas[-1][4] + replicas[-1][5]
+            restarts += 1
+
+        # ── CT-AlgX when any replica is very close ─────────────────────────
+        if best_E <= 6:
+            rem = max_seconds - (time.time() - t0)
+            if rem > 2.0:
+                bL1, bL2, bL3 = best_state
+                for A, B in [(bL1, bL2), (bL1, bL3), (bL2, bL3)]:
+                    ct_val, _ = score_pair(A, B, n, budget=min(1.0, rem * 0.1))
+                    if ct_val > best_ct:
+                        best_ct = ct_val
+                    if ct_val >= n:
+                        L3t, _ = find_L3_ct_algx(A, B, n, rem * 0.4)
+                        if L3t is not None:
+                            trip = (A, B, L3t) if not np.array_equal(A, bL3) else (bL1, L3t, bL3)
+                            ok, _ = verify_mols(list(trip))
+                            if ok:
+                                return trip, {
+                                    "found": True, "best_clashes": 0,
+                                    "restarts": restarts, "swaps": swaps,
+                                    "elapsed_s": round(time.time() - t0, 2),
+                                }
+
+    return None, {
+        "found": False, "best_clashes": best_E,
+        "sa_best_clashes": best_E,
+        "best_ct_count": best_ct,
+        "restarts": restarts, "swaps": swaps,
+        "elapsed_s": round(time.time() - t0, 2),
+    }
+
+
+# ===========================================================================
 # Strategy 2 — CT-AlgX (for pairs with CT_count ≥ n)
 # ===========================================================================
 # Already defined above: find_L3_ct_algx()
@@ -1335,6 +1501,40 @@ class L3AdaptiveSearch:
             return L1, L2, L3
         return None
 
+    def _run_sa_triple_pt(self, budget: float) -> Optional[tuple]:
+        """Run parallel-tempering sa_triple_pt; return triple if found."""
+        seed = self.rng.randint(0, 2**31)
+        self.trial += 1
+        n = self.n
+
+        print(f"\ntrial={self.trial:4d}  strategy=sa_triple_pt"
+              f"  budget={budget:.0f}s  best_ct_ever={self.best_ct_ever}")
+
+        result, stats = sa_triple_pt(n, budget, rng_seed=seed)
+
+        elapsed = stats.get("elapsed_s", budget)
+        bc      = stats.get("best_clashes", 3 * n * n)
+        best_ct = stats.get("best_ct_count", 0)
+        swaps   = stats.get("swaps", 0)
+
+        if bc < self.sa_triple_best_clashes:
+            self.sa_triple_best_clashes = bc
+        print(f"  sa_triple_pt: best_clashes={bc}  "
+              f"sa_frontier={self.sa_triple_best_clashes}  "
+              f"swaps={swaps}  best_ct_seen={best_ct}  elapsed={elapsed:.1f}s")
+
+        _log({"ts": datetime.now().isoformat(timespec="seconds"),
+              "trial": self.trial, "strategy": "sa_triple_pt",
+              "pair_id": "—", "ct_count": best_ct, "max_disjoint": "—",
+              "sa_best_clashes": bc, "elapsed_s": elapsed,
+              "found": int(result is not None),
+              "note": f"sa_frontier={self.sa_triple_best_clashes} swaps={swaps}"})
+
+        if result is not None:
+            L1, L2, L3 = result
+            return L1, L2, L3
+        return None
+
     def _run_sa_l3_given_pair(self, budget: float) -> Optional[tuple]:
         """Run sa_l3_given_pair on the best CT>0 pool pair; rotate through all CT>0 pairs."""
         if not self.pool:
@@ -1617,13 +1817,11 @@ class L3AdaptiveSearch:
                 break
 
             # ── Strategy portfolio ─────────────────────────────────────────
-            # Key insight: L3 exists for pair (L1,L2) iff CT_count(L1,L2) >= n=10.
-            # Current best CT = 2; sa_l3_pair is futile until CT >= 10.
-            # sa_triple bypasses the CT requirement (searches all 3 simultaneously).
             # Portfolio (10 phases):
-            #  0,1,2,3,4 → sa_triple  (50%): primary search (CT-free 3-way search)
-            #  5,6,7     → multi_decomp(30%): high-throughput screening of fresh pairs
-            #  8,9       → sa_ct_climb(20%): attempt to climb CT beyond 2
+            #  0,1,2   → sa_triple_pt (30%): parallel-tempering 4-replica search
+            #  3,4     → sa_triple    (20%): single-chain SA (diversity)
+            #  5,6,7   → multi_decomp (30%): high-throughput pair screening
+            #  8,9     → sa_ct_climb  (20%): attempt CT > 2
             #  special: sa_l3_pair ONLY when CT >= 10
             phase = outer_iter % 10
 
@@ -1633,7 +1831,12 @@ class L3AdaptiveSearch:
                 result = self._run_sa_l3_given_pair(budget * 0.90)
                 if result is not None:
                     return result
-            elif phase in (0, 1, 2, 3, 4):
+            elif phase in (0, 1, 2):
+                triple = self._run_sa_triple_pt(budget * 0.65)
+                if triple is not None:
+                    L1t, L2t, L3t = triple
+                    return self._success(L1t, L2t, L3t)
+            elif phase in (3, 4):
                 triple = self._run_sa_triple(budget * 0.65)
                 if triple is not None:
                     L1t, L2t, L3t = triple
