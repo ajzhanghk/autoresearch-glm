@@ -281,14 +281,16 @@ The CT=2 ceiling across 310 tested pairs (124 from random L1 starts, not just Pa
 
 ...is consistent with the expert consensus that **N(10) = 2**.
 
-**Search status (Session 6):**
-- 6 workers running continuously: 4 × 97s + 1 × 600s + 1 × 120s reverse
+**Search status (Session 7):**
+- 7 workers running continuously: 5 × adaptive + 1 × 120s reverse + 1 × SAT worker
 - 7-replica parallel tempering T=[1,4,16,64,256,1024,4096]
-- init modes: near-miss warm-start (8%), micro-shake (10%), shake (15%), L3-transfer (17%),
-  CT=2 pair+fresh L3 (23%), cyclic Z10 (7%), affine (8%), D5 Cayley (5%), super-shake (3%),
-  reverse (2%), random (2%)
-- Moves: row/col/relabel/intercalate/kscramble(3-5)/bigscramble(6-9)
-- Pool enforces both pair-diversity (max 2 per L1) and L3-uniqueness
+- Pool-jump ILS (new): during ILS stagnation, 30% chance to inject a different pool L3
+  into cold replica while keeping current L1/L2. Explores diverse L3 basins.
+- SAT worker (new): Glucose3 CNF encoding, 1000 vars, ~23k clauses per pair. Phase 1
+  confirmed ALL 310 promising pairs are definitively UNSAT (no L3 in ~40ms each). Phase 2
+  continuously generates new pairs via isotopy+random SA and SAT-tests them.
+- Reverse search: consistent best_E=63 after 11+ trials — near-miss L3s are NOT compatible
+  with any (L1,L2) pair (expected best_E=0 if they were). Strong N(10)=2 indicator.
 
 **Still watching for:**
 1. Any pair with CT ≥ 3 (novel; CT ≥ 10 enables AlgorithmX L3 search)
@@ -309,4 +311,6 @@ The CT=2 ceiling across 310 tested pairs (124 from random L1 starts, not just Pa
 | `mols10/results/l3_v3_s{42,137,271,503}.log` | Per-worker logs (97s budget) |
 | `mols10/results/l3_longrun2.log` | Long-run worker log (600s budget) |
 | `mols10/results/l3_reverse.log` | Reverse-search worker log |
+| `mols10/mols_sat_worker.py` | SAT worker: Glucose3 exact L3 search; Phase 1 UNSAT proof for 310 pairs |
+| `mols10/results/l3_sat.log` | SAT worker log |
 | `mols10/docs/findings.md` | This document |
