@@ -2,127 +2,12 @@
 MOLS L3 Search  — is N(10) ≥ 3?
 strategy    : adaptive
 budget      : unlimited
-eval_budget : 90.0s
+eval_budget : 60.0s
 seed        : 33333
 ====================================================================
 ====================================================================
 N(10) ≥ 3 Adaptive Search — never-stopping
-eval_budget=90.0s  save_dir=results
-====================================================================
-
-Loading seed pairs from /home/user/autoresearch-glm/mols10/results/mols_pairs_collection.json…
-  [seed_0] ct=0  max_dis=0  src=seed
-  [seed_1] ct=0  max_dis=0  src=seed
-  [seed_2] ct=0  max_dis=0  src=seed
-  [seed_3] ct=0  max_dis=0  src=seed
-  [seed_4] ct=0  max_dis=0  src=seed
-Loading promising pairs from promising_pairs.json…
-  [resume] tv_21 ct=2
-  [resume] ic2_tv_21_0 ct=2
-  [resume] ic3_tv_21_0 ct=2
-  [resume] ic5_tv_21_0 ct=2
-  [resume] ic8_tv_21_0 ct=2
-  [resume] ic1_3_tv_21 ct=2
-  [resume] ic1_5_tv_21 ct=2
-  [resume] iso_tv_21_0 ct=2
-  [resume] iso_tv_21_1 ct=2
-  [resume] iso_tv_21_2 ct=2
-  [resume] ic8_tv_21_1 ct=2
-  [resume] ic3_tv_21_1 ct=2
-  [resume] ic5_tv_21_1 ct=2
-  [resume] ic12_tv_21_0 ct=2
-  [resume] ic2_tv_21_1 ct=2
-  [resume] tv_10 ct=1
-  [resume] ic2_tv_10_0 ct=1
-  [resume] ic3_tv_10_0 ct=1
-  [resume] ic5_tv_10_0 ct=1
-  [resume] ic8_tv_10_0 ct=1
-  [resume] ic1_3_tv_10 ct=1
-  [resume] ic1_5_tv_10 ct=1
-  [resume] ic5_tv_10_1 ct=1
-  [resume] iso_tv_10_0 ct=1
-  [resume] iso_tv_10_1 ct=1
-  [resume] iso_tv_10_2 ct=1
-  [resume] tv_29 ct=1
-  [resume] tv_32 ct=1
-Pool: 33 pairs.  Best CT count: 2
-
-
-trial=   1  strategy=sa_l3_pair  pair=tv_21  ct=2  budget=68s
-  sa_l3_pair: found=False  best_clashes=41  restarts=10  elapsed=67.5s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-
-  Progress: trials=1  elapsed=0.02h  pool_size=33  best_ct_ever=2  sa3_best_clashes=300  N(10)≥3 not found yet
-
-trial=   2  strategy=sa_l3_pair  pair=ic2_tv_21_0  ct=2  budget=68s
-  sa_l3_pair: found=False  best_clashes=37  restarts=9  elapsed=67.5s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-
-  Progress: trials=2  elapsed=0.04h  pool_size=33  best_ct_ever=2  sa3_best_clashes=300  N(10)≥3 not found yet
-
-trial=   3  strategy=sa_l3_pair  pair=ic3_tv_21_0  ct=2  budget=68s
-  sa_l3_pair: found=False  best_clashes=25  restarts=5  elapsed=67.5s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-  [tv_33] ct=0  max_dis=0  src=tv
-
-  Progress: trials=3  elapsed=0.06h  pool_size=34  best_ct_ever=2  sa3_best_clashes=300  N(10)≥3 not found yet
-
-trial=   4  strategy=sa_l3_pair  pair=ic5_tv_21_0  ct=2  budget=68s
-  sa_l3_pair: found=False  best_clashes=38  restarts=9  elapsed=67.5s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-
-  Progress: trials=4  elapsed=0.08h  pool_size=34  best_ct_ever=2  sa3_best_clashes=300  N(10)≥3 not found yet
-
-trial=   5  strategy=sa_triple  budget=54s  best_ct_ever=2
-  sa_triple: best_clashes=75  sa_frontier=75  best_ct_seen=0  elapsed=54.0s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-  [reload] ic12_tv_21_1 ct=2 from disk
-  [checkpoint] Saved 29 promising pairs to disk (best ct=2)
-
-  Progress: trials=5  elapsed=0.09h  pool_size=35  best_ct_ever=2  sa3_best_clashes=75  N(10)≥3 not found yet
-
-trial=   6  strategy=sa_triple  budget=54s  best_ct_ever=2
-  sa_triple: best_clashes=63  sa_frontier=63  best_ct_seen=0  elapsed=54.0s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-  [tv_35] ct=0  max_dis=0  src=tv
-
-  Progress: trials=6  elapsed=0.11h  pool_size=36  best_ct_ever=2  sa3_best_clashes=63  N(10)≥3 not found yet
-
-trial=   7  strategy=sa_triple  budget=54s  best_ct_ever=2
-  sa_triple: best_clashes=69  sa_frontier=63  best_ct_seen=0  elapsed=54.0s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-
-  Progress: trials=7  elapsed=0.12h  pool_size=36  best_ct_ever=2  sa3_best_clashes=63  N(10)≥3 not found yet
-
-trial=   8  strategy=sa_ct_climb  budget=50s  best_ct_ever=2  warm=yes ct=2
-  sa_ct_climb: best_ct=2  steps=3200040  elapsed=59.7s  
-  [sa_ct_36] ct=2  max_dis=2  src=sa_ct
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-
-  Progress: trials=8  elapsed=0.14h  pool_size=37  best_ct_ever=2  sa3_best_clashes=63  N(10)≥3 not found yet
-
-trial=   9  strategy=multi_decomp  budget=45s  n_attempts=10  best_ct_ever=2
-
-[SIGTERM] Saving pool state before exit…
-  [checkpoint] Saved 31 promising pairs to disk (best ct=2)
-====================================================================
-MOLS L3 Search  — is N(10) ≥ 3?
-strategy    : adaptive
-budget      : unlimited
-eval_budget : 90.0s
-seed        : 33333
-====================================================================
-====================================================================
-N(10) ≥ 3 Adaptive Search — never-stopping
-eval_budget=90.0s  save_dir=results
+eval_budget=60.0s  save_dir=/home/user/autoresearch-glm/mols10/results
 ====================================================================
 
 Loading seed pairs from /home/user/autoresearch-glm/mols10/results/mols_pairs_collection.json…
@@ -149,6 +34,9 @@ Loading promising pairs from promising_pairs.json…
   [resume] ic2_tv_21_1 ct=2
   [resume] ic12_tv_21_1 ct=2
   [resume] sa_ct_36 ct=2
+  [resume] sa_ct_38 ct=2
+  [resume] sa_ct_43 ct=2
+  [resume] tv_44 ct=2
   [resume] tv_10 ct=1
   [resume] ic2_tv_10_0 ct=1
   [resume] ic3_tv_10_0 ct=1
@@ -163,161 +51,12 @@ Loading promising pairs from promising_pairs.json…
   [resume] tv_29 ct=1
   [resume] tv_32 ct=1
   [resume] tv_35 ct=1
-Pool: 36 pairs.  Best CT count: 2
+  [resume] tv_37 ct=1
+  [resume] mdecomp_39 ct=1
+  [resume] mdecomp_45 ct=1
+  [resume] tv_42 ct=1
+  [resume] tv_43 ct=1
+Pool: 44 pairs.  Best CT count: 2
 
 
-trial=   1  strategy=sa_l3_pair  pair=tv_21  ct=2  budget=68s
-  sa_l3_pair: found=False  best_clashes=43  restarts=10  elapsed=67.5s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-
-  Progress: trials=1  elapsed=0.02h  pool_size=36  best_ct_ever=2  sa3_best_clashes=300  N(10)≥3 not found yet
-
-trial=   2  strategy=sa_l3_pair  pair=ic2_tv_21_0  ct=2  budget=68s
-  sa_l3_pair: found=False  best_clashes=43  restarts=10  elapsed=67.5s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-
-  Progress: trials=2  elapsed=0.04h  pool_size=36  best_ct_ever=2  sa3_best_clashes=300  N(10)≥3 not found yet
-
-trial=   3  strategy=sa_l3_pair  pair=ic3_tv_21_0  ct=2  budget=68s
-  sa_l3_pair: found=False  best_clashes=41  restarts=10  elapsed=67.5s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-  [tv_36] ct=0  max_dis=0  src=tv
-
-  Progress: trials=3  elapsed=0.06h  pool_size=37  best_ct_ever=2  sa3_best_clashes=300  N(10)≥3 not found yet
-
-trial=   4  strategy=sa_l3_pair  pair=ic5_tv_21_0  ct=2  budget=68s
-  sa_l3_pair: found=False  best_clashes=42  restarts=12  elapsed=67.5s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-
-  Progress: trials=4  elapsed=0.08h  pool_size=37  best_ct_ever=2  sa3_best_clashes=300  N(10)≥3 not found yet
-
-trial=   5  strategy=sa_triple  budget=54s  best_ct_ever=2
-  sa_triple: best_clashes=75  sa_frontier=75  best_ct_seen=0  elapsed=54.0s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-  [checkpoint] Saved 31 promising pairs to disk (best ct=2)
-
-  Progress: trials=5  elapsed=0.09h  pool_size=37  best_ct_ever=2  sa3_best_clashes=75  N(10)≥3 not found yet
-
-trial=   6  strategy=sa_triple  budget=54s  best_ct_ever=2
-  sa_triple: best_clashes=66  sa_frontier=66  best_ct_seen=0  elapsed=54.0s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-  [tv_37] ct=0  max_dis=0  src=tv
-
-  Progress: trials=6  elapsed=0.11h  pool_size=38  best_ct_ever=2  sa3_best_clashes=66  N(10)≥3 not found yet
-
-trial=   7  strategy=sa_triple  budget=54s  best_ct_ever=2
-  sa_triple: best_clashes=69  sa_frontier=66  best_ct_seen=0  elapsed=54.0s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-
-  Progress: trials=7  elapsed=0.12h  pool_size=38  best_ct_ever=2  sa3_best_clashes=66  N(10)≥3 not found yet
-
-trial=   8  strategy=sa_ct_climb  budget=50s  best_ct_ever=2  warm=yes ct=2
-  sa_ct_climb: best_ct=2  steps=3200040  elapsed=59.6s  
-  [sa_ct_38] ct=2  max_dis=2  src=sa_ct
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-
-  Progress: trials=8  elapsed=0.14h  pool_size=39  best_ct_ever=2  sa3_best_clashes=66  N(10)≥3 not found yet
-
-trial=   9  strategy=multi_decomp  budget=45s  n_attempts=10  best_ct_ever=2
-  multi_decomp: best_ct=1  pairs_tried=13  elapsed=44.5s
-  [mdecomp_39] ct=1  max_dis=1  src=mdecomp
-  ★ Saved promising pair mdecomp_39 (ct=1) → promising_pairs.json
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-  [tv_40] ct=0  max_dis=0  src=tv
-
-  Progress: trials=9  elapsed=0.15h  pool_size=41  best_ct_ever=2  sa3_best_clashes=66  N(10)≥3 not found yet
-
-trial=  10  strategy=sa_l3_pair  pair=iso_tv_21_2  ct=2  budget=68s
-  sa_l3_pair: found=False  best_clashes=43  restarts=9  elapsed=67.5s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-
-  Progress: trials=10  elapsed=0.17h  pool_size=41  best_ct_ever=2  sa3_best_clashes=66  N(10)≥3 not found yet
-
-trial=  11  strategy=sa_l3_pair  pair=ic8_tv_21_1  ct=2  budget=68s
-  sa_l3_pair: found=False  best_clashes=41  restarts=9  elapsed=67.5s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-  [checkpoint] Saved 34 promising pairs to disk (best ct=2)
-
-  Progress: trials=11  elapsed=0.19h  pool_size=41  best_ct_ever=2  sa3_best_clashes=66  N(10)≥3 not found yet
-
-trial=  12  strategy=sa_l3_pair  pair=ic3_tv_21_1  ct=2  budget=68s
-  sa_l3_pair: found=False  best_clashes=42  restarts=11  elapsed=67.5s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-  [tv_41] ct=0  max_dis=0  src=tv
-
-  Progress: trials=12  elapsed=0.21h  pool_size=42  best_ct_ever=2  sa3_best_clashes=66  N(10)≥3 not found yet
-
-trial=  13  strategy=sa_l3_pair  pair=ic5_tv_21_1  ct=2  budget=68s
-  sa_l3_pair: found=False  best_clashes=41  restarts=8  elapsed=67.5s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-
-  Progress: trials=13  elapsed=0.23h  pool_size=42  best_ct_ever=2  sa3_best_clashes=66  N(10)≥3 not found yet
-
-trial=  14  strategy=sa_l3_pair  pair=ic12_tv_21_0  ct=2  budget=68s
-  sa_l3_pair: found=False  best_clashes=44  restarts=12  elapsed=67.5s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-
-  Progress: trials=14  elapsed=0.25h  pool_size=42  best_ct_ever=2  sa3_best_clashes=66  N(10)≥3 not found yet
-
-trial=  15  strategy=sa_triple  budget=54s  best_ct_ever=2
-  sa_triple: best_clashes=51  sa_frontier=51  best_ct_seen=0  elapsed=54.0s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-  [tv_42] ct=0  max_dis=0  src=tv
-
-  Progress: trials=15  elapsed=0.26h  pool_size=43  best_ct_ever=2  sa3_best_clashes=51  N(10)≥3 not found yet
-
-trial=  16  strategy=sa_triple  budget=54s  best_ct_ever=2
-  sa_triple: best_clashes=61  sa_frontier=51  best_ct_seen=0  elapsed=54.0s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-  [checkpoint] Saved 34 promising pairs to disk (best ct=2)
-
-  Progress: trials=16  elapsed=0.28h  pool_size=43  best_ct_ever=2  sa3_best_clashes=51  N(10)≥3 not found yet
-
-trial=  17  strategy=sa_triple  budget=54s  best_ct_ever=2
-  sa_triple: best_clashes=77  sa_frontier=51  best_ct_seen=0  elapsed=54.0s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-
-  Progress: trials=17  elapsed=0.29h  pool_size=43  best_ct_ever=2  sa3_best_clashes=51  N(10)≥3 not found yet
-
-trial=  18  strategy=sa_ct_climb  budget=50s  best_ct_ever=2  warm=yes ct=2
-  sa_ct_climb: best_ct=2  steps=1920024  elapsed=57.2s  
-  [sa_ct_43] ct=2  max_dis=2  src=sa_ct
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-  [tv_44] ct=0  max_dis=0  src=tv
-
-  Progress: trials=18  elapsed=0.31h  pool_size=45  best_ct_ever=2  sa3_best_clashes=51  N(10)≥3 not found yet
-
-trial=  19  strategy=multi_decomp  budget=45s  n_attempts=10  best_ct_ever=2
-  multi_decomp: best_ct=0  pairs_tried=19  elapsed=44.3s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-
-  Progress: trials=19  elapsed=0.32h  pool_size=45  best_ct_ever=2  sa3_best_clashes=51  N(10)≥3 not found yet
-
-trial=  20  strategy=sa_l3_pair  pair=tv_10  ct=1  budget=68s
-  sa_l3_pair: found=False  best_clashes=43  restarts=10  elapsed=67.5s
-
-  ct=2 (0<ct<10): injecting intercalate variants of tv_21
-  [reload] mdecomp_45 ct=1 from disk
-
-  Progress: trials=20  elapsed=0.34h  pool_size=46  best_ct_ever=2  sa3_best_clashes=51  N(10)≥3 not found yet
-
-trial=  21  strategy=sa_l3_pair  pair=ic2_tv_10_0  ct=1  budget=68s
+trial=   1  strategy=sa_l3_pair  pair=tv_21  ct=2  budget=45s

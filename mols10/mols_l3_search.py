@@ -359,21 +359,6 @@ def sa_l3_given_pair(
     def _fresh_L3():
         return random_latin_square(n, random.Random(rng.random()))
 
-    def _in_row_swap(L, row):
-        """Swap two elements within a row (exploration move; may break Latin property)."""
-        c1, c2 = rng.sample(range(n), 2)
-        Lc = L.copy()
-        Lc[row, c1], Lc[row, c2] = Lc[row, c2], Lc[row, c1]
-        return Lc
-
-    def _is_latin(L):
-        for i in range(n):
-            if len(set(L[i, :].tolist())) != n:
-                return False
-            if len(set(L[:, i].tolist())) != n:
-                return False
-        return True
-
     # Try to warm-start from a saved near-miss for this pair
     near_misses = _load_near_misses()
     pair_near = [e for e in near_misses if e["pair_id"] == pair_id]
@@ -393,17 +378,14 @@ def sa_l3_given_pair(
     clashes = _clashes_L3(L3)
     best_clashes = clashes
     best_L3 = L3.copy()
-    # Track best *valid Latin* L3 separately (in_row_swap may create non-Latin states)
-    best_latin_clashes = clashes  # L3 from _fresh_L3 is always valid Latin
-    best_latin_L3 = L3.copy()
     near_miss_threshold = 20
 
-    T = 5.0
-    cooling = 0.9999988
+    T = 8.0       # Higher start for more initial exploration
+    cooling = 0.9999980   # Slower cooling → more time per temperature level
     no_improve = 0
     restarts = 0
     ils_round = 0
-    STALL = 180_000
+    STALL = 250_000   # Longer stall before restart
 
     while time.time() - t0 < max_seconds:
         if clashes == 0:
@@ -412,28 +394,22 @@ def sa_l3_given_pair(
                 return L3, {"found": True, "best_clashes": 0,
                             "restarts": restarts, "elapsed_s": round(time.time()-t0, 2)}
 
-        # Near-miss: track best valid Latin L3 and save it
-        if _is_latin(L3) and clashes < best_latin_clashes:
-            best_latin_clashes = clashes
-            best_latin_L3 = L3.copy()
-        if best_latin_clashes <= near_miss_threshold:
-            _save_near_miss(pair_id, L1, L2, best_latin_L3, best_latin_clashes)
-            near_miss_threshold = best_latin_clashes
-            if best_latin_clashes <= 15:
+        # Near-miss: all states are valid Latin (no in_row_swap); track and save best
+        if clashes <= near_miss_threshold:
+            _save_near_miss(pair_id, L1, L2, L3, clashes)
+            near_miss_threshold = clashes
+            if clashes <= 15:
                 rem = max_seconds - (time.time() - t0)
                 if rem > 2.0:
-                    L3r, cl_r = _targeted_repair(L1, L2, best_latin_L3, n,
-                                                 min(rem * 0.4, 8.0))
+                    L3r, cl_r = _targeted_repair(L1, L2, L3, n, min(rem * 0.4, 8.0))
                     if cl_r == 0:
                         ok, _ = verify_mols([L1, L2, L3r])
                         if ok:
                             return L3r, {"found": True, "best_clashes": 0,
                                          "restarts": restarts,
                                          "elapsed_s": round(time.time()-t0, 2)}
-                    if cl_r < best_latin_clashes:
-                        best_latin_clashes = cl_r
-                        best_latin_L3 = L3r.copy()
-                        best_clashes = min(best_clashes, cl_r)
+                    if cl_r < best_clashes:
+                        best_clashes = cl_r
                         best_L3 = L3r.copy()
                         L3 = L3r.copy()
                         clashes = cl_r
@@ -467,15 +443,13 @@ def sa_l3_given_pair(
                     elif mv == 2:
                         a, b = rng.sample(range(n), 2)
                         L3 = _relabel(L3, a, b)
-                    elif mv == 3:
-                        L3 = _in_row_swap(L3, rng.randrange(n))
                     else:
                         r1, r2 = rng.sample(range(n), 2)
                         c1, c2 = rng.sample(range(n), 2)
                         fl = _intercalate_flip(L3, r1, r2, c1, c2)
                         if fl is not None:
                             L3 = fl
-                T = max(T, 2.5)
+                T = max(T, 4.0)   # Reheat more aggressively after ILS
             clashes = _clashes_L3(L3)
             continue
 
@@ -498,8 +472,13 @@ def sa_l3_given_pair(
                 no_improve += 1
                 continue
         else:
-            # in_row_swap: swap 2 cells in same row (exploration; may create non-Latin state)
-            L3_new = _in_row_swap(L3, rng.randrange(n))
+            # Extra intercalate attempt for finer local search
+            r1, r2 = rng.sample(range(n), 2)
+            c1, c2 = rng.sample(range(n), 2)
+            L3_new = _intercalate_flip(L3, r1, r2, c1, c2)
+            if L3_new is None:
+                no_improve += 1
+                continue
 
         new_cl = _clashes_L3(L3_new)
         delta = new_cl - clashes
@@ -515,12 +494,12 @@ def sa_l3_given_pair(
             no_improve += 1
         T *= cooling
 
-    # Save the best VALID Latin L3 found this trial for cross-worker warm-starts
-    if best_latin_clashes <= 20:
-        _save_near_miss(pair_id, L1, L2, best_latin_L3, best_latin_clashes)
+    # Save best valid Latin L3 for cross-worker warm-starts
+    if best_clashes <= 20:
+        _save_near_miss(pair_id, L1, L2, best_L3, best_clashes)
 
     return None, {
-        "found": False, "best_clashes": best_latin_clashes,
+        "found": False, "best_clashes": best_clashes,
         "restarts": restarts, "elapsed_s": round(time.time() - t0, 2),
     }
 
@@ -862,52 +841,64 @@ def multi_decomp_ct_search(
     max_seconds: float,
     n_attempts: int = 30,
     rng_seed: Optional[int] = None,
+    seed_L1: Optional[np.ndarray] = None,
 ) -> tuple[Optional[tuple], dict]:
     """For a fixed L1, try many Algorithm X restarts to find the mate with max CT.
 
-    Key insight: find_orth_mate_transversal shuffles the transversal list before
-    AlgX, so different rng_seeds give genuinely different L2 mates of the same L1.
-    Among all mates of a fixed L1, SOME may have much higher CT_count.
-
-    Steps:
-      1. Enumerate transversals of a random L1 (up to 3000, shared across attempts).
-      2. Try n_attempts different AlgX shuffles → n_attempts different L2 mates.
-      3. Score each L2 by CT_count(L1, L2).
-      4. Return the pair with highest CT.
+    Uses a known-good seed_L1 (from pool) to guarantee OLS mates can be found,
+    while also exploring fresh random L1s periodically.
     """
     rng = random.Random(rng_seed)
     t0  = time.time()
-    budget_per = (max_seconds * 0.85) / max(n_attempts, 1)
+    budget_per = max(1.5, (max_seconds * 0.6) / max(n_attempts, 1))
 
     best_ct   = -1
     best_pair: Optional[tuple] = None
     pairs_tried = 0
+    l1_batch = 0
 
     while time.time() - t0 < max_seconds * 0.95:
-        # Fresh L1 every n_attempts mates
-        if pairs_tried % n_attempts == 0:
-            L1 = random_latin_square(n, random.Random(rng.random()))
-
-        seed2 = rng.randint(0, 2**31)
         rem = max_seconds - (time.time() - t0)
         if rem < 2.0:
             break
-        L2 = find_orth_mate_transversal(L1, min(budget_per, rem * 0.8), rng_seed=seed2)
-        if L2 is None:
-            pairs_tried += 1
-            continue
 
-        pairs_tried += 1
-        rem2 = max_seconds - (time.time() - t0)
-        cts = enumerate_common_transversals(
-            L1, L2, n, max_count=200, deadline=time.time() + min(0.5, rem2 * 0.3)
-        )
-        ct = len(cts)
-        if ct > best_ct:
-            best_ct = ct
-            best_pair = (L1.copy(), L2.copy())
-            if best_ct >= n:
+        # Alternate between seed L1 (known good) and fresh random L1
+        if seed_L1 is not None and l1_batch % 3 != 2:
+            L1 = seed_L1.copy()
+            # Apply random isotopy to diversify while keeping OLS mates findable
+            L1, _ = isotopy_variant(L1, L1, n, random.Random(rng.random()))
+        else:
+            L1 = random_latin_square(n, random.Random(rng.random()))
+
+        # Try n_attempts mates for this L1
+        found_any = False
+        for _ in range(n_attempts):
+            rem2 = max_seconds - (time.time() - t0)
+            if rem2 < 1.5:
                 break
+            seed2 = rng.randint(0, 2**31)
+            L2 = find_orth_mate_transversal(L1, min(budget_per, rem2 * 0.8), rng_seed=seed2)
+            if L2 is None:
+                if not found_any:
+                    break  # This L1 has no mates — move on quickly
+                continue
+
+            pairs_tried += 1
+            found_any = True
+            rem3 = max_seconds - (time.time() - t0)
+            cts = enumerate_common_transversals(
+                L1, L2, n, max_count=200, deadline=time.time() + min(0.5, rem3 * 0.15)
+            )
+            ct = len(cts)
+            if ct > best_ct:
+                best_ct = ct
+                best_pair = (L1.copy(), L2.copy())
+                if best_ct >= n:
+                    elapsed = round(time.time() - t0, 2)
+                    return best_pair, {"best_ct": best_ct, "pairs_tried": pairs_tried,
+                                       "elapsed_s": elapsed}
+
+        l1_batch += 1
 
     elapsed = round(time.time() - t0, 2)
     return best_pair, {"best_ct": best_ct, "pairs_tried": pairs_tried, "elapsed_s": elapsed}
@@ -1299,11 +1290,16 @@ class L3AdaptiveSearch:
         self.trial += 1
         n = self.n
 
-        n_attempts = max(10, int(budget / 6))  # ~6s per attempt
+        n_attempts = max(10, int(budget / 4))  # More attempts per budget
+        # Use best pool pair's L1 as seed for guaranteed OLS mate finding
+        ct_recs = [r for r in self.pool if r.ct_count > 0]
+        seed_L1 = ct_recs[0].L1 if ct_recs else None
+
         print(f"\ntrial={self.trial:4d}  strategy=multi_decomp"
               f"  budget={budget:.0f}s  n_attempts={n_attempts}  best_ct_ever={self.best_ct_ever}")
 
-        pair, stats = multi_decomp_ct_search(n, budget, n_attempts=n_attempts, rng_seed=seed)
+        pair, stats = multi_decomp_ct_search(n, budget, n_attempts=n_attempts,
+                                             rng_seed=seed, seed_L1=seed_L1)
         elapsed = stats.get("elapsed_s", budget)
         bc = stats.get("best_ct", -1)
         tried = stats.get("pairs_tried", 0)
