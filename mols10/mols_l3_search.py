@@ -737,7 +737,7 @@ def sa_triple_pt(
     rng  = random.Random(rng_seed)
     t0   = time.time()
     K    = len(temps)
-    move_names = ["row", "col", "relabel", "intercalate"]
+    move_names = ["row", "col", "relabel", "intercalate", "kscramble"]
     # Each replica gets its own independent RNG
     rep_rngs = [random.Random(rng.random()) for _ in range(K)]
 
@@ -754,6 +754,12 @@ def sa_triple_pt(
                 a, b = r.sample(range(n), 2); L = _col_swap(L, a, b)
             elif mv == "relabel":
                 a, b = r.sample(range(n), 2); L = _relabel(L, a, b)
+            elif mv == "kscramble":
+                k = r.randint(3, 5)
+                rows = r.sample(range(n), k)
+                perm = rows[:]
+                r.shuffle(perm)
+                L[rows] = L[perm].copy()
             else:
                 r1, r2 = r.sample(range(n), 2); c1, c2 = r.sample(range(n), 2)
                 fl = _intercalate_flip(L, r1, r2, c1, c2)
@@ -802,18 +808,74 @@ def sa_triple_pt(
             L1_, L2_ = isotopy_variant(L1_, L2_, n, random.Random(r.random()))
             L3_ = random_latin_square(n, random.Random(r.random()))
         elif _seed_pairs and roll < 0.80:
-            # Cyclic L3 (7%): high-intercalate L3[i,j]=(i+offset*j)%n (isotopy variant).
-            # Cyclic LS has ~2025 intercalates (max) vs ~24 in near-miss; explores
-            # different region of LS space inaccessible to low-intercalate warm-starts.
+            # Cyclic L3 (7%): high-intercalate L3[i,j]=(i+offset*j)%n with FULL isotopy.
+            # Full isotopy (row+col+symbol permutation) preserves all ~2025 intercalates
+            # and explores the entire isotopy class — much richer than small shake.
             sp = r.choice(_seed_pairs)
             L1_ = sp[0].copy(); L2_ = sp[1].copy()
             L1_, L2_ = isotopy_variant(L1_, L2_, n, random.Random(r.random()))
             offset = r.randint(1, n-1)
-            L3_ = np.array([[(i + offset*j) % n for j in range(n)] for i in range(n)],
-                           dtype=np.int8)
-            L3_ = _shake_ls(L3_, r, r.randint(0, 5))  # small perturbation
+            L3_raw = np.array([[(i + offset*j) % n for j in range(n)] for i in range(n)],
+                              dtype=np.int8)
+            # Full isotopy: random row perm + col perm + symbol relabeling
+            row_p = list(range(n)); r.shuffle(row_p)
+            col_p = list(range(n)); r.shuffle(col_p)
+            sym_p = list(range(n)); r.shuffle(sym_p)
+            L3_ = np.array([[sym_p[int(L3_raw[row_p[i], col_p[j]])] for j in range(n)]
+                             for i in range(n)], dtype=np.int8)
+        elif _seed_pairs and roll < 0.88:
+            # Affine L3 (8%): L[i,j]=(a*i+b*j)%n with full isotopy.
+            # Explores the affine family — a broader class than pure cyclic (offset=1,b=1).
+            # Valid when gcd(a,n)==1 and gcd(b,n)==1 to ensure it's a Latin square.
+            sp = r.choice(_seed_pairs)
+            L1_ = sp[0].copy(); L2_ = sp[1].copy()
+            L1_, L2_ = isotopy_variant(L1_, L2_, n, random.Random(r.random()))
+            valid_coefs = [c for c in range(1, n) if __import__('math').gcd(c, n) == 1]
+            a = r.choice(valid_coefs); b = r.choice(valid_coefs)
+            L3_raw = np.array([[(a*i + b*j) % n for j in range(n)] for i in range(n)],
+                              dtype=np.int8)
+            row_p = list(range(n)); r.shuffle(row_p)
+            col_p = list(range(n)); r.shuffle(col_p)
+            sym_p = list(range(n)); r.shuffle(sym_p)
+            L3_ = np.array([[sym_p[int(L3_raw[row_p[i], col_p[j]])] for j in range(n)]
+                             for i in range(n)], dtype=np.int8)
+        elif _seed_pairs and roll < 0.93:
+            # D5 Cayley table (5%): Cayley table of the dihedral group D_5 (order 10).
+            # D_5 is the only non-abelian group of order 10; its Cayley table is a LS
+            # with fundamentally different intercalate structure than cyclic/affine squares.
+            # Element (a, f): a in Z_5, f in Z_2. Multiplication: (a,f)*(b,g)=(a+(-1)^f*b mod 5, f+g mod 2)
+            # Index mapping: index = 5*f + a.
+            sp = r.choice(_seed_pairs)
+            L1_ = sp[0].copy(); L2_ = sp[1].copy()
+            L1_, L2_ = isotopy_variant(L1_, L2_, n, random.Random(r.random()))
+            L3_raw = np.zeros((n, n), dtype=np.int8)
+            for i in range(n):
+                a, f = i % 5, i // 5
+                for j in range(n):
+                    b, g = j % 5, j // 5
+                    c = (a + ((-1)**f) * b) % 5
+                    h = (f + g) % 2
+                    L3_raw[i, j] = 5 * h + c
+            # Full isotopy: random row perm + col perm + symbol relabeling
+            row_p = list(range(n)); r.shuffle(row_p)
+            col_p = list(range(n)); r.shuffle(col_p)
+            sym_p = list(range(n)); r.shuffle(sym_p)
+            L3_ = np.array([[sym_p[int(L3_raw[row_p[i], col_p[j]])] for j in range(n)]
+                             for i in range(n)], dtype=np.int8)
+        elif triple_misses and roll < 0.98:
+            # Super-shake (7%): near-miss L3 + 100-400 random moves.
+            # Escapes the E=22 basin more aggressively than normal shake (15-80 moves).
+            e = r.choice(triple_misses[:5])
+            sp = r.choice(_seed_pairs) if _seed_pairs else None
+            if sp and r.random() < 0.5:
+                L1_ = sp[0].copy(); L2_ = sp[1].copy()
+                L1_, L2_ = isotopy_variant(L1_, L2_, n, random.Random(r.random()))
+            else:
+                L1_ = np.array(e["L1"], dtype=np.int8)
+                L2_ = np.array(e["L2"], dtype=np.int8)
+            L3_ = _shake_ls(np.array(e["L3"], dtype=np.int8), r, r.randint(100, 400))
         else:
-            # Fully random (20%)
+            # Fully random (5%)
             L1_ = random_latin_square(n, random.Random(r.random()))
             L2_ = random_latin_square(n, random.Random(r.random()))
             L3_ = random_latin_square(n, random.Random(r.random()))
@@ -837,6 +899,16 @@ def sa_triple_pt(
             a, b = r.sample(range(n), 2); Ln = _col_swap(L, a, b)
         elif mv == "relabel":
             a, b = r.sample(range(n), 2); Ln = _relabel(L, a, b)
+        elif mv == "kscramble":
+            # k-scramble: permute k randomly chosen rows (k=3..5).
+            # Always valid (row permutation preserves Latin square property).
+            # Makes larger jumps than pairwise row swaps.
+            k = r.randint(3, 5)
+            rows = r.sample(range(n), k)
+            Ln = L.copy()
+            perm = rows[:]
+            r.shuffle(perm)
+            Ln[rows] = L[perm]
         else:
             r1, r2 = r.sample(range(n), 2); c1, c2 = r.sample(range(n), 2)
             fl = _intercalate_flip(L, r1, r2, c1, c2)
