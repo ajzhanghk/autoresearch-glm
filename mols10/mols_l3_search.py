@@ -880,6 +880,19 @@ def sa_triple_pt(
             L1_ = random_latin_square(n, random.Random(r.random()))
             L2_ = random_latin_square(n, random.Random(r.random()))
             L3_ = random_latin_square(n, random.Random(r.random()))
+        # Validate all three squares are proper Latin squares before using
+        _vals = list(range(n))
+        for sq in (L1_, L2_, L3_):
+            for i in range(n):
+                if sorted(sq[i].tolist()) != _vals or sorted(sq[:, i].tolist()) != _vals:
+                    # Fall back to random valid LS
+                    L1_ = random_latin_square(n, random.Random(r.random()))
+                    L2_ = random_latin_square(n, random.Random(r.random()))
+                    L3_ = random_latin_square(n, random.Random(r.random()))
+                    break
+            else:
+                continue
+            break
         cl12 = count_clashes(L1_, L2_, n)
         cl13 = count_clashes(L1_, L3_, n)
         cl23 = count_clashes(L2_, L3_, n)

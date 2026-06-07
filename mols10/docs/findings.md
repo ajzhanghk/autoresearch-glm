@@ -121,16 +121,30 @@ The cascade has been the primary mechanism of improvement. Starting from a rando
 | Session 2 (bugs present) | 37 | Lost due to JSON save bugs (concurrent writes, unhashable key) |
 | Session 3 (bugs fixed) | **39** | First properly-saved near-miss, pair-diversity cap |
 | Session 3 (continued) | **37** | 5-replica T=256 broke through; properly saved |
+| Session 4 (bugs introduced) | ~~22~~ ~~20~~ | **FAKE** — invalid L3 from cyclic offset=5 bug |
+| Session 5 (bugs fixed) | **37** | Restored valid pool; D5/k-scramble/super-shake running |
 
-**Current best:** E = 37 (cl12=0, cl13=22, cl23=15)
+**Current best (verified valid):** E = 37 (cl12=0, cl13=22, cl23=15)
 
 ### Current near_miss_triple.json
 
 | Entry | cl12 | cl13 | cl23 | total | source pair |
 |-------|------|------|------|-------|-------------|
-| 0-7 | 0 | 22 | 15 | **37** | 4 distinct MOLS pairs (8 entries) |
+| 0-4 | 0 | 22 | 15 | **37** | 2–3 distinct MOLS pairs (5 entries) |
 
-All entries have cl12=0 (the (L1,L2) component is always a valid MOLS pair).
+All entries have cl12=0, all squares verified as valid Latin squares.
+
+### Critical Bug Discovery: Invalid Latin Squares in Pool (2026-06-07 ~20:00-21:30)
+
+The cyclic L3 init code used `r.randint(1, n-1)` which picks offsets with gcd(offset,n)>1.
+For n=10, offset=5 gives L[i,j]=(i+5j)%10 which has rows with only 2 distinct values — NOT a Latin square.
+
+The SA with an invalid L3 still runs and finds "low clash" states, but the clash counts are meaningless (the count_clashes function also compares against an invalid square). All 8 entries saved as "E=22" and "E=20" had invalid L3 squares. The LS validity check was missing from `_save_triple_miss`.
+
+**Fixes applied:**
+- Cyclic mode: `valid_offsets = [k for k in range(1, n) if gcd(k, n) == 1]` (only offsets 1,3,7,9 for n=10)
+- `_save_triple_miss`: validates all rows and columns of L1, L2, L3 before saving
+- `fresh_state`: validates initial triple, falls back to random LS if invalid
 
 ### Key Negative Finding: E=37 is a Strict Local Minimum
 
@@ -140,16 +154,19 @@ Exhaustive 1-neighborhood search over ALL possible single moves on L3 (45 row sw
 
 Moreover, 2-step exhaustive search (all 2025 pairs of row swaps) also finds best=37. This means the basin extends at least 2 steps deep.
 
-**Intercalate counts of near-miss Latin squares** (expected ~2000 for random order-10 LS):
-| Square | Intercalates |
-|--------|-------------|
-| L1 | 23 |
-| L2 | 27 |
-| L3 | 24 |
+**Intercalate counts of near-miss Latin squares** (actual computation for n=10):
+| Square | Intercalates | Notes |
+|--------|-------------|-------|
+| L1 | 23 | Near-miss at E=37 |
+| L2 | 27 | Near-miss at E=37 |
+| L3 (near-miss E=37) | 24 | Very restricted neighborhood |
+| Cyclic Z10 (offsets 1,3,7,9) | 25 | Valid algebraic starts |
+| D5 Cayley table (dihedral group) | 125 | Non-abelian, much richer |
+| Affine (a*i+b*j)%10, valid (a,b) | 25 | Same family as cyclic |
 
-The SA is gravitating to a special class of "low-intercalate" Latin squares with only ~1% of the typical intercalate count. This drastically restricts the neighborhood: instead of ~2000 intercalate moves, only 24 are possible for L3.
+Note: "~2000 intercalates for random LS" figure in earlier notes was incorrect. All valid cyclic/affine squares of order 10 have exactly 25 intercalates.
 
-This structural finding is key: the SA has found Latin squares with very few intercalates, which are the "right type" for MOLS construction (high structure), but these specific squares are provably L3-free (CT=0). Escaping requires finding different high-structure squares.
+**New structural innovation (Session 5):** D5 Cayley table has 125 intercalates, giving the SA a much richer 125-move intercalate neighborhood vs. 24 for near-miss. Combined with k-scramble moves (3-5 row permutations), super-shake (100-400 moves from near-miss), and full isotopy for all algebraic init modes, this explores regions inaccessible to prior 1-2 step searches.
 
 ### Pure L3 and Reverse Search Results
 
@@ -168,7 +185,11 @@ This structural finding is key: the SA has found Latin squares with very few int
 19:24  Pool expanded to 8 entries; all at E=37 from 3+ pairs
 20:00  540s Worker D trial: still E=37 (8649 swaps)
 20:30  Exhaustive check confirms E=37 is strict 1-step local minimum
-20:30  Low-intercalate structure discovered (L1/L2/L3: 23/27/24 intercalates)
+20:30  Low-intercalate structure (L1/L2/L3: 23/27/24 intercalates) identified
+~20:30 Cyclic L3 mode introduced (BUG: invalid offset=5 allowed → fake "cascade")
+~20:57 FAKE E=22 and E=20 "discoveries" — all invalid L3s (2 distinct values/row)
+21:30  Bug discovered; all fake entries purged; valid pool (E=37) restored
+21:30  Bug fixes: valid_offsets, LS validation in save/init, D5 mode, k-scramble
 ```
 
 ---
