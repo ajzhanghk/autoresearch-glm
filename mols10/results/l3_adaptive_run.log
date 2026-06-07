@@ -27,3 +27,65 @@ trial=   1  strategy=sa_triple  budget=54s  best_ct_ever=0
   Progress: trials=1  elapsed=0.02h  pool_size=5  best_ct_ever=0  sa3_best_clashes=73  N(10)≥3 not found yet
 
 trial=   2  strategy=sa_triple  budget=54s  best_ct_ever=0
+  sa_triple: best_clashes=76  sa_frontier=73  best_ct_seen=0  elapsed=54.0s
+
+  Pool best: ct=0 — all known pairs are L3-free; relying on sa_triple.
+
+  Progress: trials=2  elapsed=0.03h  pool_size=5  best_ct_ever=0  sa3_best_clashes=73  N(10)≥3 not found yet
+
+trial=   3  strategy=sa_triple  budget=54s  best_ct_ever=0
+  sa_triple: best_clashes=70  sa_frontier=70  best_ct_seen=0  elapsed=54.0s
+
+  Pool best: ct=0 — all known pairs are L3-free; relying on sa_triple.
+  [iso_seed_0_0] ct=0  max_dis=0  src=iso
+  [iso_seed_0_1] ct=0  max_dis=0  src=iso
+  [iso_seed_0_2] ct=0  max_dis=0  src=iso
+  [tv_8] ct=0  max_dis=0  src=tv
+
+  Progress: trials=3  elapsed=0.05h  pool_size=9  best_ct_ever=0  sa3_best_clashes=70  N(10)≥3 not found yet
+
+trial=   4  strategy=sa_triple  budget=54s  best_ct_ever=0
+  sa_triple: best_clashes=76  sa_frontier=70  best_ct_seen=0  elapsed=54.0s
+
+  Pool best: ct=0 — all known pairs are L3-free; relying on sa_triple.
+
+  Progress: trials=4  elapsed=0.07h  pool_size=9  best_ct_ever=0  sa3_best_clashes=70  N(10)≥3 not found yet
+
+trial=   5  strategy=sa_triple  budget=54s  best_ct_ever=0
+  sa_triple: best_clashes=78  sa_frontier=70  best_ct_seen=0  elapsed=54.0s
+
+  Pool best: ct=0 — all known pairs are L3-free; relying on sa_triple.
+
+  Progress: trials=5  elapsed=0.08h  pool_size=9  best_ct_ever=0  sa3_best_clashes=70  N(10)≥3 not found yet
+
+trial=   6  strategy=sa_triple  budget=54s  best_ct_ever=0
+  sa_triple: best_clashes=76  sa_frontier=70  best_ct_seen=0  elapsed=54.0s
+
+  Pool best: ct=0 — all known pairs are L3-free; relying on sa_triple.
+  [tv_9] ct=0  max_dis=0  src=tv
+
+  Progress: trials=6  elapsed=0.10h  pool_size=10  best_ct_ever=0  sa3_best_clashes=70  N(10)≥3 not found yet
+
+trial=   7  strategy=sa_triple  budget=54s  best_ct_ever=0
+====================================================================
+MOLS L3 Search  — is N(10) ≥ 3?
+strategy    : adaptive
+budget      : unlimited
+eval_budget : 120.0s
+seed        : 9999
+====================================================================
+====================================================================
+N(10) ≥ 3 Adaptive Search — never-stopping
+eval_budget=120.0s  save_dir=results
+====================================================================
+
+Loading seed pairs from /home/user/autoresearch-glm/mols10/results/mols_pairs_collection.json…
+  [seed_0] ct=0  max_dis=0  src=seed
+  [seed_1] ct=0  max_dis=0  src=seed
+  [seed_2] ct=0  max_dis=0  src=seed
+  [seed_3] ct=0  max_dis=0  src=seed
+  [seed_4] ct=0  max_dis=0  src=seed
+Pool: 5 pairs.  Best CT count: 0
+
+
+trial=   1  strategy=sa_triple  budget=72s  best_ct_ever=0
