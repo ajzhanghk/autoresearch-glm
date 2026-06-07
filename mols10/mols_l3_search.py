@@ -99,6 +99,7 @@ PAIRS_FILE      = RESULTS_DIR / "mols_pairs_collection.json"
 POOL_FILE       = RESULTS_DIR / "l3_pool_state.json"
 PROMISING_FILE  = RESULTS_DIR / "promising_pairs.json"   # CT > 0 pairs
 NEAR_MISS_FILE  = RESULTS_DIR / "near_miss_l3.json"      # best L3 partial solutions
+TRIPLE_MISS_FILE = RESULTS_DIR / "near_miss_triple.json"  # best 3-way sa_triple states
 LOG_COLS = ["ts", "trial", "strategy", "pair_id",
             "ct_count", "max_disjoint", "sa_best_clashes",
             "elapsed_s", "found", "note"]
@@ -542,12 +543,19 @@ def sa_triple_find(
     _seed_pairs = _load_pairs()
 
     def fresh():
-        if _seed_pairs and rng.random() < 0.5:
+        # 30% chance: warm-start from best saved triple near-miss state
+        triple_misses = _load_triple_misses()
+        if triple_misses and rng.random() < 0.30:
+            e = triple_misses[0]
+            L1_ = np.array(e["L1"], dtype=np.int8)
+            L2_ = np.array(e["L2"], dtype=np.int8)
+            L3_ = np.array(e["L3"], dtype=np.int8)
+            return L1_, L2_, L3_, _triple_clashes(L1_, L2_, L3_, n)
+        if _seed_pairs and rng.random() < 0.6:
             # Warm start: known MOLS pair + fresh L3 → total clashes ≈ 40-50
             sp = rng.choice(_seed_pairs)
             L1_ = sp[0].copy()
             L2_ = sp[1].copy()
-            # Apply random isotopy to diversify
             L1_, L2_ = isotopy_variant(L1_, L2_, n, random.Random(rng.random()))
         else:
             L1_ = random_latin_square(n, random.Random(rng.random()))
@@ -633,6 +641,8 @@ def sa_triple_find(
                 best_clashes = clashes
                 best_state   = (L1.copy(), L2.copy(), L3.copy())
                 no_improve   = 0
+                if clashes <= 30:
+                    _save_triple_miss(L1, L2, L3, clashes)
             else:
                 no_improve += 1
         else:
@@ -1107,6 +1117,34 @@ def _load_near_misses() -> list[dict]:
         return []
     try:
         return json.loads(NEAR_MISS_FILE.read_text())
+    except Exception:
+        return []
+
+
+def _save_triple_miss(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray,
+                      clashes: int) -> None:
+    """Save a low-clash (L1,L2,L3) triple state for sa_triple warm-starts."""
+    entry = {
+        "clashes": clashes, "ts": datetime.now().isoformat(timespec="seconds"),
+        "L1": L1.tolist(), "L2": L2.tolist(), "L3": L3.tolist(),
+    }
+    try:
+        data = json.loads(TRIPLE_MISS_FILE.read_text()) if TRIPLE_MISS_FILE.exists() else []
+        data = [e for e in data if e["clashes"] > clashes]  # drop any with higher clashes
+        data.append(entry)
+        data.sort(key=lambda e: e["clashes"])
+        data = data[:5]  # keep top 5 best
+        TRIPLE_MISS_FILE.write_text(json.dumps(data, indent=2))
+        print(f"  ★ Triple near-miss saved: clashes={clashes}")
+    except Exception:
+        pass
+
+
+def _load_triple_misses() -> list[dict]:
+    if not TRIPLE_MISS_FILE.exists():
+        return []
+    try:
+        return json.loads(TRIPLE_MISS_FILE.read_text())
     except Exception:
         return []
 
