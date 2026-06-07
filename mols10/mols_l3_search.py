@@ -2005,8 +2005,9 @@ class L3AdaptiveSearch:
             # Portfolio (10 phases):
             #  0-5     → sa_triple_pt (60%): parallel-tempering 6-replica search
             #  6,7     → sa_triple    (20%): single-chain SA (diversity)
-            #  8       → multi_decomp (10%): high-throughput pair screening
-            #  9       → sa_ct_climb  (10%): attempt CT > 2
+            #  0-5     → sa_triple_pt (60%): parallel-tempering 7-replica search
+            #  6,7     → sa_triple    (20%): single-chain SA (diversity)
+            #  8,9     → multi_decomp (20%): high-throughput pair screening (doubled)
             #  special: sa_l3_pair ONLY when CT >= 10
             phase = outer_iter % 10
 
@@ -2026,10 +2027,8 @@ class L3AdaptiveSearch:
                 if triple is not None:
                     L1t, L2t, L3t = triple
                     return self._success(L1t, L2t, L3t)
-            elif phase == 8:
+            elif phase in (8, 9):
                 self._run_multi_decomp(budget * 0.70)
-            else:  # phase 9
-                self._run_sa_ct_climb(budget * 0.70)
 
             # ── pair-based strategies for pool top ─────────────────────────
             if self.pool:
