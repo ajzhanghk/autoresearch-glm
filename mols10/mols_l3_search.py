@@ -1354,7 +1354,11 @@ def _save_triple_miss(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray,
         "L1": L1.tolist(), "L2": L2.tolist(), "L3": L3.tolist(),
     }
     try:
-        data = json.loads(TRIPLE_MISS_FILE.read_text()) if TRIPLE_MISS_FILE.exists() else []
+        # Guard against JSON corruption from concurrent writes by multiple workers
+        try:
+            data = json.loads(TRIPLE_MISS_FILE.read_text()) if TRIPLE_MISS_FILE.exists() else []
+        except (json.JSONDecodeError, OSError):
+            data = []   # recover gracefully; we'll add the new entry below
         data.append(entry)
         data.sort(key=lambda e: e["clashes"])
         # Pair-diversity cap enforced post-sort (handles concurrent writes):
