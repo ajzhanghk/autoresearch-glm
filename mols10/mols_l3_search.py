@@ -1338,19 +1338,34 @@ def _load_near_misses() -> list[dict]:
 
 def _save_triple_miss(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray,
                       clashes: int) -> None:
-    """Save a low-clash (L1,L2,L3) triple state for sa_triple warm-starts."""
+    """Save a low-clash (L1,L2,L3) triple state for sa_triple warm-starts.
+
+    Maintains a top-5 list with pair diversity: at most 2 entries from the
+    same pair (identified by L1 fingerprint), so the cascade explores
+    multiple basins rather than collapsing to a single pair's local minimum.
+    """
     n = 10
     cl12 = count_clashes(L1, L2, n)
+    L1_key = tuple(L1.ravel().tolist())  # fingerprint for pair identity
     entry = {
         "clashes": clashes, "cl12": cl12,
+        "L1_key": L1_key,
         "ts": datetime.now().isoformat(timespec="seconds"),
         "L1": L1.tolist(), "L2": L2.tolist(), "L3": L3.tolist(),
     }
     try:
         data = json.loads(TRIPLE_MISS_FILE.read_text()) if TRIPLE_MISS_FILE.exists() else []
+        # Pair-diversity cap: allow at most 2 entries from the same pair.
+        same_pair = [e for e in data if e.get("L1_key") == L1_key]
+        if len(same_pair) >= 2:
+            # Only replace if strictly better than the worst of this pair's entries
+            worst_same = max(same_pair, key=lambda e: e["clashes"])
+            if clashes >= worst_same["clashes"]:
+                return  # no improvement within this pair's bucket
+            data.remove(worst_same)
         data.append(entry)
         data.sort(key=lambda e: e["clashes"])
-        data = data[:5]   # keep top-5 best (lowest clashes)
+        data = data[:5]   # keep top-5 best (lowest clashes) across all pairs
         TRIPLE_MISS_FILE.write_text(json.dumps(data, indent=2))
         print(f"  ★ Triple near-miss saved: clashes={clashes}  cl12={cl12}")
     except Exception:
