@@ -380,12 +380,12 @@ def sa_l3_given_pair(
     best_L3 = L3.copy()
     near_miss_threshold = 20
 
-    T = 8.0       # Higher start for more initial exploration
-    cooling = 0.9999980   # Slower cooling → more time per temperature level
+    T = 6.0
+    cooling = 0.9999975   # Slow cooling for good temperature-level coverage
     no_improve = 0
     restarts = 0
     ils_round = 0
-    STALL = 250_000   # Longer stall before restart
+    STALL = 150_000   # Faster restart cycle (more diverse restarts per trial)
 
     while time.time() - t0 < max_seconds:
         if clashes == 0:
@@ -1483,27 +1483,30 @@ class L3AdaptiveSearch:
                 break
 
             # ── Strategy portfolio ─────────────────────────────────────────
-            # Priority: sa_l3_pair is our best direct L3 finder.
-            # Phase cycle (10 steps):
-            #  0,1,2,3,4 → sa_l3_pair (50%): directly hunts L3 on best pairs
-            #  5,6,7     → sa_triple   (30%): finds new pairs, may stumble on L3
-            #  8         → sa_ct_climb (10%): maximises CT on MOLS pair
-            #  9         → multi_decomp(10%): diversifies mates of same L1
+            # Key insight: L3 exists for pair (L1,L2) iff CT_count(L1,L2) >= n.
+            # Current best CT = 2. sa_l3_pair is FUTILE until CT >= 10.
+            # Portfolio (10 phases):
+            #  0,1,2,3 → sa_ct_climb (40%): find pairs with CT > 2 (primary goal)
+            #  4,5,6   → multi_decomp (30%): try many L2 mates for best L1
+            #  7,8,9   → sa_triple   (30%): 3-way joint search (CT-free)
+            #  special: sa_l3_pair ONLY when CT >= 10
             phase = outer_iter % 10
 
-            if phase in (0, 1, 2, 3, 4):
-                result = self._run_sa_l3_given_pair(budget * 0.75)
+            # Check if any pair has reached CT >= n → run AlgorithmX directly
+            high_ct_recs = [r for r in self.pool if r.ct_count >= n]
+            if high_ct_recs:
+                result = self._run_sa_l3_given_pair(budget * 0.90)
                 if result is not None:
                     return result
-            elif phase in (5, 6, 7):
+            elif phase in (0, 1, 2, 3):
+                self._run_sa_ct_climb(budget * 0.70)
+            elif phase in (4, 5, 6):
+                self._run_multi_decomp(budget * 0.70)
+            else:  # phase 7,8,9
                 triple = self._run_sa_triple(budget * 0.60)
                 if triple is not None:
                     L1t, L2t, L3t = triple
                     return self._success(L1t, L2t, L3t)
-            elif phase == 8:
-                self._run_sa_ct_climb(budget * 0.55)
-            else:  # phase == 9
-                self._run_multi_decomp(budget * 0.50)
 
             # ── pair-based strategies for pool top ─────────────────────────
             if self.pool:
