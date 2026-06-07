@@ -37,6 +37,15 @@ Loading promising pairs from promising_pairs.json…
   [resume] sa_ct_38 ct=2
   [resume] sa_ct_43 ct=2
   [resume] tv_44 ct=2
+  [resume] sa_ct_44 ct=2
+  [resume] sa_ct_45 ct=2
+  [resume] sa_ct_46 ct=2
+  [resume] mdecomp_48 ct=2
+  [resume] mdecomp_49 ct=2
+  [resume] mdecomp_50 ct=2
+  [resume] sa_ct_53 ct=2
+  [resume] sa_ct_54 ct=2
+  [resume] sa_ct_55 ct=2
   [resume] tv_10 ct=1
   [resume] ic2_tv_10_0 ct=1
   [resume] ic3_tv_10_0 ct=1
@@ -56,7 +65,8 @@ Loading promising pairs from promising_pairs.json…
   [resume] mdecomp_45 ct=1
   [resume] tv_42 ct=1
   [resume] tv_43 ct=1
-Pool: 44 pairs.  Best CT count: 2
+  [resume] tv_51 ct=1
+Pool: 54 pairs.  Best CT count: 2
 
 
-trial=   1  strategy=sa_ct_climb  budget=42s  best_ct_ever=2  warm=yes ct=2
+trial=   1  strategy=sa_triple  budget=39s  best_ct_ever=2

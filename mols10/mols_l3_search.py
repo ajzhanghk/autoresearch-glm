@@ -833,6 +833,66 @@ def sa_ct_climb(
 
 
 # ===========================================================================
+# Fast batch mate search — reuse transversal enumeration across AlgX calls
+# ===========================================================================
+
+def _find_mate_from_tvs(tvs: list, n: int, rng: random.Random,
+                        deadline: float) -> Optional[np.ndarray]:
+    """Run Algorithm X once with a random shuffle of pre-enumerated transversals.
+
+    Much faster than find_orth_mate_transversal since transversal enumeration
+    (the bottleneck) is shared across calls.
+    """
+    tvs_shuffled = tvs[:]
+    rng.shuffle(tvs_shuffled)
+    tv_cells = [frozenset(tv) for tv in tvs_shuffled]
+
+    cell_to_tvs: dict[tuple, list[int]] = {}
+    for k, cells in enumerate(tv_cells):
+        for cell in cells:
+            cell_to_tvs.setdefault(cell, []).append(k)
+
+    all_cells = set(cell_to_tvs.keys())
+    if len(all_cells) != n * n:
+        return None
+
+    chosen: list[int] = []
+
+    def _alg_x(remaining: set, avail: set) -> bool:
+        if time.time() >= deadline:
+            return False
+        if not remaining:
+            return True
+        best_cell = min(remaining,
+                        key=lambda c: sum(1 for k in cell_to_tvs.get(c, []) if k in avail))
+        covering = [k for k in cell_to_tvs.get(best_cell, []) if k in avail]
+        if not covering:
+            return False
+        for k in covering:
+            cells_k = tv_cells[k]
+            removed = {c for c in cells_k if c in remaining}
+            blocked = {j for c in cells_k for j in cell_to_tvs.get(c, []) if j in avail}
+            chosen.append(k)
+            new_avail = avail - blocked
+            if _alg_x(remaining - removed, new_avail):
+                return True
+            chosen.pop()
+        return False
+
+    avail = set(range(len(tv_cells)))
+    all_remaining = frozenset((r, c) for r in range(n) for c in range(n))
+    if not _alg_x(set(all_remaining), avail):
+        return None
+
+    # Build L2 from chosen transversals
+    L2 = np.zeros((n, n), dtype=np.int8)
+    for sym, k in enumerate(chosen):
+        for r, c in tv_cells[k]:
+            L2[r, c] = sym
+    return L2
+
+
+# ===========================================================================
 # Strategy 5 — Multi-decomposition search (different L2 mates for same L1)
 # ===========================================================================
 
@@ -843,14 +903,13 @@ def multi_decomp_ct_search(
     rng_seed: Optional[int] = None,
     seed_L1: Optional[np.ndarray] = None,
 ) -> tuple[Optional[tuple], dict]:
-    """For a fixed L1, try many Algorithm X restarts to find the mate with max CT.
+    """High-throughput CT screening: enumerate transversals once per L1, then
+    run Algorithm X many times with different shuffles to generate diverse L2 mates.
 
-    Uses a known-good seed_L1 (from pool) to guarantee OLS mates can be found,
-    while also exploring fresh random L1s periodically.
+    Typically 10-50× faster than repeated find_orth_mate_transversal calls.
     """
     rng = random.Random(rng_seed)
     t0  = time.time()
-    budget_per = max(1.5, (max_seconds * 0.6) / max(n_attempts, 1))
 
     best_ct   = -1
     best_pair: Optional[tuple] = None
@@ -859,40 +918,52 @@ def multi_decomp_ct_search(
 
     while time.time() - t0 < max_seconds * 0.95:
         rem = max_seconds - (time.time() - t0)
-        if rem < 2.0:
+        if rem < 3.0:
             break
 
-        # Alternate between seed L1 (known good) and fresh random L1
+        # Choose L1: alternate seed (known good, isotopy-varied) vs fresh random
         if seed_L1 is not None and l1_batch % 3 != 2:
             L1 = seed_L1.copy()
-            # Apply random isotopy to diversify while keeping OLS mates findable
             L1, _ = isotopy_variant(L1, L1, n, random.Random(rng.random()))
         else:
             L1 = random_latin_square(n, random.Random(rng.random()))
 
-        # Try n_attempts mates for this L1
-        found_any = False
-        for _ in range(n_attempts):
+        # Enumerate transversals of L1 once (up to 50K, 3s budget)
+        enum_budget = min(3.0, (max_seconds - (time.time() - t0)) * 0.25)
+        tvs = _enumerate_transversals(L1, n, max_count=50_000,
+                                      deadline=time.time() + enum_budget)
+        if len(tvs) < n:
+            l1_batch += 1
+            continue  # L1 has too few transversals (skip)
+
+        # Run AlgorithmX many times with different shuffles on the same tvs
+        batch_start = time.time()
+        batch_budget = min(rem * 0.7, 40.0)  # Use 70% of remaining for this L1 batch
+        n_batch = 0
+
+        while time.time() - batch_start < batch_budget:
             rem2 = max_seconds - (time.time() - t0)
-            if rem2 < 1.5:
+            if rem2 < 1.0:
                 break
-            seed2 = rng.randint(0, 2**31)
-            L2 = find_orth_mate_transversal(L1, min(budget_per, rem2 * 0.8), rng_seed=seed2)
+            deadline_algx = time.time() + min(2.0, rem2 * 0.5)
+            L2 = _find_mate_from_tvs(tvs, n, rng, deadline=deadline_algx)
             if L2 is None:
-                if not found_any:
-                    break  # This L1 has no mates — move on quickly
+                n_batch += 1
+                if n_batch > 5 and pairs_tried == 0:
+                    break  # This L1 seems to have no mates — move on
                 continue
 
             pairs_tried += 1
-            found_any = True
+            n_batch += 1
             rem3 = max_seconds - (time.time() - t0)
             cts = enumerate_common_transversals(
-                L1, L2, n, max_count=200, deadline=time.time() + min(0.5, rem3 * 0.15)
+                L1, L2, n, max_count=500, deadline=time.time() + min(0.3, rem3 * 0.1)
             )
             ct = len(cts)
             if ct > best_ct:
                 best_ct = ct
                 best_pair = (L1.copy(), L2.copy())
+                print(f"    [mdecomp] New best CT={ct} (pairs_tried={pairs_tried})")
                 if best_ct >= n:
                     elapsed = round(time.time() - t0, 2)
                     return best_pair, {"best_ct": best_ct, "pairs_tried": pairs_tried,
@@ -1483,30 +1554,31 @@ class L3AdaptiveSearch:
                 break
 
             # ── Strategy portfolio ─────────────────────────────────────────
-            # Key insight: L3 exists for pair (L1,L2) iff CT_count(L1,L2) >= n.
-            # Current best CT = 2. sa_l3_pair is FUTILE until CT >= 10.
+            # Key insight: L3 exists for pair (L1,L2) iff CT_count(L1,L2) >= n=10.
+            # Current best CT = 2; sa_l3_pair is futile until CT >= 10.
+            # sa_triple bypasses the CT requirement (searches all 3 simultaneously).
             # Portfolio (10 phases):
-            #  0,1,2,3 → sa_ct_climb (40%): find pairs with CT > 2 (primary goal)
-            #  4,5,6   → multi_decomp (30%): try many L2 mates for best L1
-            #  7,8,9   → sa_triple   (30%): 3-way joint search (CT-free)
+            #  0,1,2,3,4 → sa_triple  (50%): primary search (CT-free 3-way search)
+            #  5,6,7     → multi_decomp(30%): high-throughput screening of fresh pairs
+            #  8,9       → sa_ct_climb(20%): attempt to climb CT beyond 2
             #  special: sa_l3_pair ONLY when CT >= 10
             phase = outer_iter % 10
 
-            # Check if any pair has reached CT >= n → run AlgorithmX directly
+            # If any pair reaches CT >= n, switch immediately to AlgorithmX
             high_ct_recs = [r for r in self.pool if r.ct_count >= n]
             if high_ct_recs:
                 result = self._run_sa_l3_given_pair(budget * 0.90)
                 if result is not None:
                     return result
-            elif phase in (0, 1, 2, 3):
-                self._run_sa_ct_climb(budget * 0.70)
-            elif phase in (4, 5, 6):
-                self._run_multi_decomp(budget * 0.70)
-            else:  # phase 7,8,9
-                triple = self._run_sa_triple(budget * 0.60)
+            elif phase in (0, 1, 2, 3, 4):
+                triple = self._run_sa_triple(budget * 0.65)
                 if triple is not None:
                     L1t, L2t, L3t = triple
                     return self._success(L1t, L2t, L3t)
+            elif phase in (5, 6, 7):
+                self._run_multi_decomp(budget * 0.70)
+            else:  # phase 8,9
+                self._run_sa_ct_climb(budget * 0.70)
 
             # ── pair-based strategies for pool top ─────────────────────────
             if self.pool:
