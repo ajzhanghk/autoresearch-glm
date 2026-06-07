@@ -429,3 +429,18 @@ ts	trial	strategy	pair_id	ct_count	max_disjoint	sa_best_clashes	elapsed_s	found	
 2026-06-07T14:35:45	21	sa_triple_pt	—	0	—	51	39.0	0	sa_frontier=48 swaps=533
 2026-06-07T14:35:47	21	sa_triple_pt	—	0	—	51	39.0	0	sa_frontier=47 swaps=526
 2026-06-07T14:36:31	22	sa_triple_pt	—	0	—	52	39.0	0	sa_frontier=50 swaps=485
+2026-06-07T14:37:30	1	sa_triple_pt	—	0	—	46	54.0	0	sa_frontier=46 swaps=648
+2026-06-07T14:37:30	1	sa_triple_pt	—	0	—	46	54.0	0	sa_frontier=46 swaps=644
+2026-06-07T14:37:30	1	sa_triple_pt	—	0	—	46	54.0	0	sa_frontier=46 swaps=645
+2026-06-07T14:38:24	2	sa_triple_pt	—	0	—	46	54.0	0	sa_frontier=46 swaps=629
+2026-06-07T14:38:24	2	sa_triple_pt	—	0	—	46	54.0	0	sa_frontier=46 swaps=628
+2026-06-07T14:38:24	2	sa_triple_pt	—	0	—	45	54.0	0	sa_frontier=45 swaps=637
+2026-06-07T14:39:18	3	sa_triple	—	0	—	45	54.0	0	sa_frontier=45
+2026-06-07T14:39:18	3	sa_triple	—	0	—	46	54.0	0	sa_frontier=46
+2026-06-07T14:39:18	3	sa_triple	—	0	—	45	54.0	0	sa_frontier=45
+2026-06-07T14:40:13	4	sa_triple	—	0	—	45	54.0	0	sa_frontier=45
+2026-06-07T14:40:16	4	sa_triple	—	0	—	45	54.0	0	sa_frontier=45
+2026-06-07T14:40:18	4	sa_triple	—	0	—	45	54.0	0	sa_frontier=45
+2026-06-07T14:40:53	5	multi_decomp	—	2	—	—	40.11	0	tried=9
+2026-06-07T14:40:56	5	multi_decomp	—	2	—	—	40.22	0	tried=8
+2026-06-07T14:40:59	5	multi_decomp	—	2	—	—	41.19	0	tried=11

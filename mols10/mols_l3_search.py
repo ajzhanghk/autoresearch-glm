@@ -544,17 +544,24 @@ def sa_triple_find(
 
     def fresh():
         triple_misses = _load_triple_misses()
-        if triple_misses and rng.random() < 0.55:
-            e = rng.choice(triple_misses[:3])  # pick among top-3 for diversity
+        roll = rng.random()
+        if triple_misses and roll < 0.20:
+            e = rng.choice(triple_misses[:3])
             L1_ = np.array(e["L1"], dtype=np.int8)
             L2_ = np.array(e["L2"], dtype=np.int8)
             L3_ = np.array(e["L3"], dtype=np.int8)
             return L1_, L2_, L3_, _triple_clashes(L1_, L2_, L3_, n)
-        if _seed_pairs and rng.random() < 0.6:
-            # Warm start: known MOLS pair + fresh L3 → total clashes ≈ 40-50
+        if triple_misses and _seed_pairs and roll < 0.45:
+            # L3-transfer: known CT=2 pair + near-miss L3
+            e = rng.choice(triple_misses[:3])
             sp = rng.choice(_seed_pairs)
-            L1_ = sp[0].copy()
-            L2_ = sp[1].copy()
+            L1_ = sp[0].copy(); L2_ = sp[1].copy()
+            L1_, L2_ = isotopy_variant(L1_, L2_, n, random.Random(rng.random()))
+            L3_ = np.array(e["L3"], dtype=np.int8)
+            return L1_, L2_, L3_, _triple_clashes(L1_, L2_, L3_, n)
+        if _seed_pairs and roll < 0.80:
+            sp = rng.choice(_seed_pairs)
+            L1_ = sp[0].copy(); L2_ = sp[1].copy()
             L1_, L2_ = isotopy_variant(L1_, L2_, n, random.Random(rng.random()))
         else:
             L1_ = random_latin_square(n, random.Random(rng.random()))
@@ -737,17 +744,28 @@ def sa_triple_pt(
 
     def fresh_state(r):
         triple_misses = _load_triple_misses()
-        if triple_misses and r.random() < 0.55:
-            e = r.choice(triple_misses[:3])  # pick among top-3 for diversity
+        roll = r.random()
+        if triple_misses and roll < 0.20:
+            # Pure near-miss warm-start (20%): explore region around best found
+            e = r.choice(triple_misses[:3])
             L1_ = np.array(e["L1"], dtype=np.int8)
             L2_ = np.array(e["L2"], dtype=np.int8)
             L3_ = np.array(e["L3"], dtype=np.int8)
-        elif _seed_pairs and r.random() < 0.6:
+        elif triple_misses and _seed_pairs and roll < 0.45:
+            # L3-transfer (25%): known CT=2 pair + near-miss L3 (better start than random L3)
+            e = r.choice(triple_misses[:3])
+            sp = r.choice(_seed_pairs)
+            L1_ = sp[0].copy(); L2_ = sp[1].copy()
+            L1_, L2_ = isotopy_variant(L1_, L2_, n, random.Random(r.random()))
+            L3_ = np.array(e["L3"], dtype=np.int8)
+        elif _seed_pairs and roll < 0.80:
+            # Known MOLS pair (CT=2) + fresh L3 (35%)
             sp = r.choice(_seed_pairs)
             L1_ = sp[0].copy(); L2_ = sp[1].copy()
             L1_, L2_ = isotopy_variant(L1_, L2_, n, random.Random(r.random()))
             L3_ = random_latin_square(n, random.Random(r.random()))
         else:
+            # Fully random (20%)
             L1_ = random_latin_square(n, random.Random(r.random()))
             L2_ = random_latin_square(n, random.Random(r.random()))
             L3_ = random_latin_square(n, random.Random(r.random()))
