@@ -720,7 +720,7 @@ def sa_triple_find(
 def sa_triple_pt(
     n: int,
     max_seconds: float,
-    temps: tuple = (1.0, 4.0, 16.0, 64.0, 256.0),
+    temps: tuple = (1.0, 4.0, 16.0, 64.0, 256.0, 1024.0),
     swap_every: int = 2000,
     rng_seed: Optional[int] = None,
 ) -> tuple[Optional[tuple], dict]:
@@ -1899,10 +1899,10 @@ class L3AdaptiveSearch:
 
             # ── Strategy portfolio ─────────────────────────────────────────
             # Portfolio (10 phases):
-            #  0,1,2,3 → sa_triple_pt (40%): parallel-tempering 5-replica search
-            #  4,5     → sa_triple    (20%): single-chain SA (diversity)
-            #  6,7     → multi_decomp (20%): high-throughput pair screening
-            #  8,9     → sa_ct_climb  (20%): attempt CT > 2
+            #  0-5     → sa_triple_pt (60%): parallel-tempering 6-replica search
+            #  6,7     → sa_triple    (20%): single-chain SA (diversity)
+            #  8       → multi_decomp (10%): high-throughput pair screening
+            #  9       → sa_ct_climb  (10%): attempt CT > 2
             #  special: sa_l3_pair ONLY when CT >= 10
             phase = outer_iter % 10
 
@@ -1912,19 +1912,19 @@ class L3AdaptiveSearch:
                 result = self._run_sa_l3_given_pair(budget * 0.90)
                 if result is not None:
                     return result
-            elif phase in (0, 1, 2, 3):
+            elif phase in (0, 1, 2, 3, 4, 5):
                 triple = self._run_sa_triple_pt(budget * 0.90)
                 if triple is not None:
                     L1t, L2t, L3t = triple
                     return self._success(L1t, L2t, L3t)
-            elif phase in (4, 5):
+            elif phase in (6, 7):
                 triple = self._run_sa_triple(budget * 0.90)
                 if triple is not None:
                     L1t, L2t, L3t = triple
                     return self._success(L1t, L2t, L3t)
-            elif phase in (6, 7):
+            elif phase == 8:
                 self._run_multi_decomp(budget * 0.70)
-            else:  # phase 8,9
+            else:  # phase 9
                 self._run_sa_ct_climb(budget * 0.70)
 
             # ── pair-based strategies for pool top ─────────────────────────
