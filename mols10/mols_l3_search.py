@@ -545,14 +545,9 @@ def sa_triple_find(
     def fresh():
         triple_misses = _load_triple_misses()
         roll = rng.random()
-        if triple_misses and roll < 0.20:
-            e = rng.choice(triple_misses[:3])
-            L1_ = np.array(e["L1"], dtype=np.int8)
-            L2_ = np.array(e["L2"], dtype=np.int8)
-            L3_ = np.array(e["L3"], dtype=np.int8)
-            return L1_, L2_, L3_, _triple_clashes(L1_, L2_, L3_, n)
         if triple_misses and _seed_pairs and roll < 0.45:
-            # L3-transfer: known CT=2 pair + near-miss L3
+            # L3-transfer (45%): CT=2 seed pair + near-miss L3.
+            # Always use CT=2 seed pairs to avoid CT=0 dead-ends.
             e = rng.choice(triple_misses[:3])
             sp = rng.choice(_seed_pairs)
             L1_ = sp[0].copy(); L2_ = sp[1].copy()
@@ -745,14 +740,11 @@ def sa_triple_pt(
     def fresh_state(r):
         triple_misses = _load_triple_misses()
         roll = r.random()
-        if triple_misses and roll < 0.20:
-            # Pure near-miss warm-start (20%): explore region around best found
-            e = r.choice(triple_misses[:3])
-            L1_ = np.array(e["L1"], dtype=np.int8)
-            L2_ = np.array(e["L2"], dtype=np.int8)
-            L3_ = np.array(e["L3"], dtype=np.int8)
-        elif triple_misses and _seed_pairs and roll < 0.45:
-            # L3-transfer (25%): known CT=2 pair + near-miss L3 (better start than random L3)
+        if triple_misses and _seed_pairs and roll < 0.45:
+            # L3-transfer (45%): CT=2 seed pair + near-miss L3.
+            # The near-miss L3 comes from CT=0 pair territory, but L3
+            # generalises — it gives the SA a head-start over random L3.
+            # Always use CT=2 seed pairs to avoid CT=0 dead-ends.
             e = r.choice(triple_misses[:3])
             sp = r.choice(_seed_pairs)
             L1_ = sp[0].copy(); L2_ = sp[1].copy()
@@ -1331,9 +1323,23 @@ def _load_near_misses() -> list[dict]:
 
 def _save_triple_miss(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray,
                       clashes: int) -> None:
-    """Save a low-clash (L1,L2,L3) triple state for sa_triple warm-starts."""
+    """Save a low-clash (L1,L2,L3) triple state for sa_triple warm-starts.
+
+    Only saves states useful for future warm-starts:
+      - cl12 > 0: joint optimisation still has room to improve the pair
+      - cl12 == 0 AND CT > 0: valid MOLS pair with ≥1 CT (L3 search viable)
+    States with cl12==0 and CT==0 are CT=0 dead-ends and are NOT saved.
+    """
+    n = 10
+    cl12 = count_clashes(L1, L2, n)
+    if cl12 == 0:
+        # Quick CT check (≈11ms) — don't save CT=0 dead-ends
+        cts = enumerate_common_transversals(L1, L2, n, max_count=1, deadline=time.time() + 0.5)
+        if not cts:
+            return  # CT=0 pair: L3 provably impossible, skip
     entry = {
-        "clashes": clashes, "ts": datetime.now().isoformat(timespec="seconds"),
+        "clashes": clashes, "cl12": cl12,
+        "ts": datetime.now().isoformat(timespec="seconds"),
         "L1": L1.tolist(), "L2": L2.tolist(), "L3": L3.tolist(),
     }
     try:
@@ -1342,7 +1348,7 @@ def _save_triple_miss(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray,
         data.sort(key=lambda e: e["clashes"])
         data = data[:5]   # keep top-5 best (lowest clashes)
         TRIPLE_MISS_FILE.write_text(json.dumps(data, indent=2))
-        print(f"  ★ Triple near-miss saved: clashes={clashes}")
+        print(f"  ★ Triple near-miss saved: clashes={clashes}  cl12={cl12}")
     except Exception:
         pass
 
