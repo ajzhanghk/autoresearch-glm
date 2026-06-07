@@ -142,6 +142,89 @@ def _intercalate_flip(L: np.ndarray, r1: int, r2: int, c1: int, c2: int) -> Opti
 
 
 # ---------------------------------------------------------------------------
+# Targeted exhaustive repair for low-clash states
+# ---------------------------------------------------------------------------
+
+def _all_single_moves(n: int) -> list:
+    """Pre-compute list of all (move_type, target, x, y) single moves for order-n squares."""
+    moves = []
+    for r1 in range(n):
+        for r2 in range(r1 + 1, n):
+            moves.append(("row", 1, r1, r2))
+            moves.append(("row", 2, r1, r2))
+    for c1 in range(n):
+        for c2 in range(c1 + 1, n):
+            moves.append(("col", 1, c1, c2))
+            moves.append(("col", 2, c1, c2))
+    for a in range(n):
+        for b in range(a + 1, n):
+            moves.append(("rel", 1, a, b))
+            moves.append(("rel", 2, a, b))
+    return moves
+
+
+def _apply_single(L1: np.ndarray, L2: np.ndarray, m: tuple) -> tuple:
+    mt, tgt, x, y = m
+    L = L1 if tgt == 1 else L2
+    if mt == "row":   L2_ = _row_swap(L, x, y)
+    elif mt == "col": L2_ = _col_swap(L, x, y)
+    else:             L2_ = _relabel(L, x, y)
+    return (L2_, L2.copy()) if tgt == 1 else (L1.copy(), L2_)
+
+
+_MOVE_CACHE: dict[int, list] = {}
+
+def exhaustive_repair(
+    L1: np.ndarray, L2: np.ndarray, n: int, max_clashes: int = 2
+) -> Optional[tuple[np.ndarray, np.ndarray]]:
+    """
+    Exhaustively try all single-move repairs when clashes ≤ max_clashes.
+    Complexity: O(n²) moves × O(n²) clash-count = O(n⁴) ≈ 7,000 ops for n=10.
+    """
+    if count_clashes(L1, L2, n) > max_clashes:
+        return None
+
+    if n not in _MOVE_CACHE:
+        _MOVE_CACHE[n] = _all_single_moves(n)
+    for m in _MOVE_CACHE[n]:
+        L1a, L2a = _apply_single(L1, L2, m)
+        if count_clashes(L1a, L2a, n) == 0:
+            return L1a, L2a
+
+    return None
+
+
+def two_opt_repair(
+    L1: np.ndarray, L2: np.ndarray, n: int, max_clashes: int = 2
+) -> Optional[tuple[np.ndarray, np.ndarray]]:
+    """
+    Try all pairs of single moves from a low-clash state.
+    Complexity: O(n²)² pairs × O(n²) = O(n⁶) ≈ 7.3M ops for n=10 (~30s Python).
+    Only invoked when clashes ≤ max_clashes and 1-opt already failed.
+    """
+    if count_clashes(L1, L2, n) > max_clashes:
+        return None
+
+    if n not in _MOVE_CACHE:
+        _MOVE_CACHE[n] = _all_single_moves(n)
+    moves = _MOVE_CACHE[n]
+
+    for m1 in moves:
+        L1a, L2a = _apply_single(L1, L2, m1)
+        ca = count_clashes(L1a, L2a, n)
+        if ca == 0:
+            return L1a, L2a
+        # Try second move regardless of intermediate clash count —
+        # valid 2-opt paths may temporarily increase clashes.
+        for m2 in moves:
+            L1b, L2b = _apply_single(L1a, L2a, m2)
+            if count_clashes(L1b, L2b, n) == 0:
+                return L1b, L2b
+
+    return None
+
+
+# ---------------------------------------------------------------------------
 # Strategy 1: Simulated annealing
 # ---------------------------------------------------------------------------
 
@@ -164,48 +247,110 @@ def sa_find_pair(
     rng_seed: Optional[int] = None,
 ) -> tuple[Optional[np.ndarray], Optional[np.ndarray], dict]:
     """
-    Minimise count_clashes(L1, L2) via simulated annealing.
-    Moves: row-swap, col-swap, global symbol relabel, intercalate flip.
-    All moves keep both L1 and L2 as valid Latin squares.
-    Returns (L1_canonical, L2_canonical, stats) on success, else (None, None, stats).
+    Iterated Local Search + Simulated Annealing for MOLS pair finding.
+
+    Strategy:
+      1. SA reduces clashes from ~63 (random) toward 0.
+      2. When no improvement for restart_after steps, instead of a full random
+         restart we apply a *perturbation* (k random moves) to the best-seen
+         state and reheat partially.  This is Iterated Local Search (ILS):
+         it keeps the useful structure accumulated so far while escaping the
+         local minimum basin.
+      3. Every 5 ILS iterations without a clash improvement, fall back to a
+         full random restart to maintain exploration diversity.
+
+    Moves (all preserve Latin square property):
+      row-swap, col-swap, global relabel, intercalate flip.
     """
     rng = random.Random(rng_seed)
     t0  = time.time()
 
-    total_w   = cfg.row_w + cfg.col_w + cfg.relabel_w + cfg.intercalate_w
-    move_ws   = [cfg.row_w / total_w, cfg.col_w / total_w,
-                 cfg.relabel_w / total_w, cfg.intercalate_w / total_w]
+    total_w    = cfg.row_w + cfg.col_w + cfg.relabel_w + cfg.intercalate_w
+    move_ws    = [cfg.row_w / total_w, cfg.col_w / total_w,
+                  cfg.relabel_w / total_w, cfg.intercalate_w / total_w]
     move_names = ["row", "col", "relabel", "intercalate"]
 
-    best_clashes = n * n
+    global_best_clashes = n * n
+    global_best_L1 = global_best_L2 = None
     total_steps  = 0
     restarts     = 0
+    ils_no_global_improve = 0
 
     def fresh_start() -> tuple:
         L1_ = random_latin_square(n, random.Random(rng.random()))
         L2_ = random_latin_square(n, random.Random(rng.random()))
         return L1_, L2_, count_clashes(L1_, L2_, n), cfg.temp_init
 
+    def perturb(L1_: np.ndarray, L2_: np.ndarray, k: int) -> tuple:
+        """Apply k random large moves to escape the local minimum."""
+        for _ in range(k):
+            move_ = rng.choice(["row", "col", "relabel"])
+            tgt   = rng.randint(1, 2)
+            L_    = L1_.copy() if tgt == 1 else L2_.copy()
+            if move_ == "row":
+                r1_, r2_ = rng.sample(range(n), 2)
+                L_ = _row_swap(L_, r1_, r2_)
+            elif move_ == "col":
+                c1_, c2_ = rng.sample(range(n), 2)
+                L_ = _col_swap(L_, c1_, c2_)
+            else:
+                a_, b_ = rng.sample(range(n), 2)
+                L_ = _relabel(L_, a_, b_)
+            if tgt == 1: L1_ = L_
+            else:        L2_ = L_
+        return L1_, L2_, count_clashes(L1_, L2_, n)
+
     L1, L2, clashes, T = fresh_start()
+    phase_best = clashes
+    phase_best_L1, phase_best_L2 = L1.copy(), L2.copy()
     no_improve = 0
 
     while True:
         if time.time() - t0 >= max_seconds:
             return None, None, {
                 "steps": total_steps, "restarts": restarts,
-                "best_clashes": best_clashes, "elapsed": round(time.time()-t0, 1)
+                "best_clashes": global_best_clashes,
+                "elapsed": round(time.time() - t0, 1),
             }
 
         if clashes == 0:
             L1c, L2c = canonicalize_pair(L1, L2)
             return L1c, L2c, {
                 "steps": total_steps, "restarts": restarts,
-                "best_clashes": 0, "elapsed": round(time.time()-t0, 1)
+                "best_clashes": 0,
+                "elapsed": round(time.time() - t0, 1),
             }
 
-        move = rng.choices(move_names, weights=move_ws)[0]
+        # When very close (≤2 clashes), try 1-opt then 2-opt exhaustive repair
+        if clashes <= 2 and total_steps % 1_000 == 0:
+            fix = exhaustive_repair(L1, L2, n, max_clashes=2)
+            if fix is None:
+                fix = two_opt_repair(L1, L2, n, max_clashes=2)
+            if fix is not None:
+                L1c, L2c = canonicalize_pair(fix[0], fix[1])
+                return L1c, L2c, {
+                    "steps": total_steps, "restarts": restarts,
+                    "best_clashes": 0,
+                    "elapsed": round(time.time() - t0, 1),
+                }
+
+        # When close (≤3 clashes), try CSP mate-finder on current L1
+        if clashes <= 3 and total_steps % 5_000 == 0:
+            L1_can, _ = canonicalize_pair(L1, L2)
+            rem = max_seconds - (time.time() - t0)
+            if rem > 5.0:
+                L2_mate = find_orth_mate(L1_can, min(10.0, rem * 0.2),
+                                         rng_seed=rng.randint(0, 2**31))
+                if L2_mate is not None:
+                    return L1_can, L2_mate, {
+                        "steps": total_steps, "restarts": restarts,
+                        "best_clashes": 0,
+                        "elapsed": round(time.time() - t0, 1),
+                    }
+
+        move   = rng.choices(move_names, weights=move_ws)[0]
         target = rng.randint(1, 2)
-        L = L1 if target == 1 else L2
+        L      = L1 if target == 1 else L2
 
         if move == "row":
             r1, r2 = rng.sample(range(n), 2)
@@ -232,21 +377,168 @@ def sa_find_pair(
             if target == 1: L1 = L_new
             else:           L2 = L_new
             clashes = new_clashes
-            if clashes < best_clashes:
-                best_clashes = clashes
+
+            if clashes < phase_best:
+                phase_best = clashes
+                phase_best_L1, phase_best_L2 = L1.copy(), L2.copy()
                 no_improve = 0
             else:
                 no_improve += 1
+            if clashes < global_best_clashes:
+                global_best_clashes = clashes
+                global_best_L1, global_best_L2 = L1.copy(), L2.copy()
+                ils_no_global_improve = 0
         else:
             no_improve += 1
 
         T *= cfg.cooling
         total_steps += 1
 
+        # ILS restart: when stuck, perturb from phase-best (not full random)
         if no_improve >= cfg.restart_after:
             restarts += 1
-            L1, L2, clashes, T = fresh_start()
+            ils_no_global_improve += 1
+
+            # Attempt exhaustive + 2-opt repair at the global-best before perturbing
+            if global_best_L1 is not None and global_best_clashes <= 2:
+                fix = exhaustive_repair(global_best_L1, global_best_L2, n)
+                if fix is None:
+                    fix = two_opt_repair(global_best_L1, global_best_L2, n)
+                if fix is not None:
+                    L1c, L2c = canonicalize_pair(fix[0], fix[1])
+                    return L1c, L2c, {
+                        "steps": total_steps, "restarts": restarts,
+                        "best_clashes": 0,
+                        "elapsed": round(time.time() - t0, 1),
+                    }
+
+            if ils_no_global_improve >= 5 or global_best_L1 is None:
+                # Every 5 ILS rounds without global improvement: full fresh start
+                L1, L2, clashes, T = fresh_start()
+                ils_no_global_improve = 0
+            else:
+                # ILS: perturb the global-best and partially reheat
+                # Use larger kicks when very close to solution
+                k_lo = 5 if global_best_clashes <= 2 else 2
+                k_hi = 12 if global_best_clashes <= 2 else min(6, n)
+                k_perturb = rng.randint(k_lo, k_hi)
+                L1, L2, clashes = perturb(global_best_L1, global_best_L2, k_perturb)
+                T = cfg.temp_init * (0.5 if global_best_clashes <= 2 else 0.3)
+
+            phase_best = clashes
+            phase_best_L1, phase_best_L2 = L1.copy(), L2.copy()
             no_improve = 0
+
+
+# ---------------------------------------------------------------------------
+# Sequential orthogonal-mate CSP: find L2 given fixed L1
+# ---------------------------------------------------------------------------
+
+class _OrthMateState:
+    """Find L2 orthogonal to a given fixed L1 (no second partner constraint).
+
+    Domain of L2[i,j] = row_avail[i] & col_avail[j] & pair_orth[L1[i,j]]
+    """
+    __slots__ = ("n", "L1", "L2", "row_avail", "col_avail", "pair_orth")
+
+    def __init__(self, n: int, L1: np.ndarray) -> None:
+        self.n = n
+        self.L1 = L1
+        self.L2 = -np.ones((n, n), dtype=np.int8)
+        full = (1 << n) - 1
+        self.row_avail = [full] * n
+        self.col_avail = [full] * n
+        self.pair_orth = [full] * n
+
+    def domain(self, i: int, j: int) -> int:
+        a = int(self.L1[i, j])
+        return self.row_avail[i] & self.col_avail[j] & self.pair_orth[a]
+
+    def place(self, i: int, j: int, v: int) -> None:
+        self.L2[i, j] = v
+        bit = 1 << v
+        self.row_avail[i] &= ~bit
+        self.col_avail[j] &= ~bit
+        self.pair_orth[int(self.L1[i, j])] &= ~bit
+
+    def unplace(self, i: int, j: int, v: int) -> None:
+        self.L2[i, j] = -1
+        bit = 1 << v
+        self.row_avail[i] |= bit
+        self.col_avail[j] |= bit
+        self.pair_orth[int(self.L1[i, j])] |= bit
+
+
+def _backtrack_mate(state: _OrthMateState, remaining: list,
+                    deadline: float) -> bool:
+    """MRV + FC backtracking for _OrthMateState.  Returns True on success."""
+    from mols_search import _popcount, _lsb_index
+
+    if not remaining:
+        return True
+    if time.time() >= deadline:
+        return False
+
+    # MRV
+    best_idx, best_cnt, best_mask = 0, state.n + 2, 0
+    for k, (i, j) in enumerate(remaining):
+        m = state.domain(i, j)
+        c = _popcount(m)
+        if c == 0:
+            return False
+        if c < best_cnt:
+            best_cnt, best_idx, best_mask = c, k, m
+
+    remaining[0], remaining[best_idx] = remaining[best_idx], remaining[0]
+    ci, cj = remaining[0]
+    rest = remaining[1:]
+
+    mask = best_mask
+    while mask:
+        v    = _lsb_index(mask)
+        mask &= mask - 1
+        state.place(ci, cj, v)
+        # Forward check
+        l1v = int(state.L1[ci, cj])
+        ok = all(
+            state.domain(ri, rj) != 0
+            for ri, rj in rest
+            if ri == ci or rj == cj or int(state.L1[ri, rj]) == l1v
+        )
+        if ok and _backtrack_mate(state, rest, deadline):
+            return True
+        state.unplace(ci, cj, v)
+
+    remaining[0], remaining[best_idx] = remaining[best_idx], remaining[0]
+    return False
+
+
+def find_orth_mate(
+    L1: np.ndarray,
+    max_seconds: float,
+    rng_seed: Optional[int] = None,
+) -> Optional[np.ndarray]:
+    """
+    Given a fully-reduced Latin square L1, search for L2 orthogonal to it.
+    L2's first row is fixed to 0..n-1 (symbol normalisation).
+    Returns L2 or None on timeout / no solution found.
+    """
+    n   = L1.shape[0]
+    rng = random.Random(rng_seed)
+    t0  = time.time()
+
+    while time.time() - t0 < max_seconds:
+        st = _OrthMateState(n, L1)
+        # Fix row 0 of L2 to 0..n-1
+        for j in range(n):
+            st.place(0, j, j)
+        cells = [(i, j) for i in range(1, n) for j in range(n)]
+        rng.shuffle(cells)
+        deadline = min(time.time() + 30.0, t0 + max_seconds)
+        if _backtrack_mate(st, cells, deadline):
+            return st.L2.copy()
+
+    return None
 
 
 # ---------------------------------------------------------------------------
@@ -398,14 +690,20 @@ class CSPConfig:
 
 
 def _luby(k: int) -> int:
-    """k-th term (0-indexed) of the Luby restart sequence."""
-    if k == 0:
-        return 1
-    t = 1
-    while t < k + 1:
-        t <<= 1
-    t >>= 1
-    return t >> 1 if k + 1 == t else _luby(k - t + 1)
+    """k-th value of the Luby restart sequence (0-indexed), iterative O(log k).
+
+    Sequence: 1, 1, 2, 1, 1, 2, 4, 1, 1, 2, 1, 1, 2, 4, 8, ...
+    Formula:  r(j) where j = k+1 (1-indexed).
+    If j = 2^t - 1: r = 2^(t-1).
+    Else: subtract previous block size and repeat.
+    """
+    j = k + 1                   # 1-indexed
+    while True:
+        t = j.bit_length() - 1  # floor(log2(j))
+        # Check if j == 2^(t+1) - 1  (end of block)
+        if j == (1 << (t + 1)) - 1:
+            return 1 << t       # 2^t = block maximum
+        j -= (1 << t) - 1      # strip one completed block
 
 
 def csp_find_pair(
