@@ -966,17 +966,20 @@ def sa_triple_pt(
     energies   = [r[3] + r[4] + r[5] for r in replicas]
     best_E     = min(energies)
     best_state = replicas[energies.index(best_E)][:3]
-    best_ct    = 0
-    step       = 0
-    swaps      = 0
-    restarts   = 0
-    # ILS stagnation counters per replica: track steps since last improvement
-    stagnation = [0] * K
-    ILS_THRESHOLD = 8000   # shake cold replica after this many no-improvement steps
-    ILS_WARM_SHAKE = [20, 50]  # shake range for ILS perturbation
+    best_ct       = 0
+    step          = 0
+    swaps         = 0
+    restarts      = 0
+    # ILS: track global stagnation (steps without any new best_E improvement).
+    # A cold-replica local stagnation counter would reset too often (resets on
+    # any local descent, not only on global best improvements).
+    global_stagnation = 0
+    ILS_THRESHOLD  = 6000   # shake cold replica after this many steps without new best
+    ILS_WARM_SHAKE = [20, 60]  # shake range for ILS perturbation on L3
 
     while time.time() - t0 < max_seconds:
         # ── advance each replica one step with its own RNG ─────────────────
+        improved_global = False
         for i in range(K):
             state = replicas[i]
             new_state, new_E, old_E = apply_move_to(state, rep_rngs[i])
@@ -985,13 +988,10 @@ def sa_triple_pt(
             if delta < 0 or rep_rngs[i].random() < math.exp(-delta / T):
                 replicas[i] = new_state
                 energies[i] = new_E
-                if delta < 0:
-                    stagnation[i] = 0
-                else:
-                    stagnation[i] += 1
                 if new_E < best_E:
                     best_E     = new_E
                     best_state = new_state[:3]
+                    improved_global = True
                     if new_E <= 52:
                         _save_triple_miss(*best_state, new_E)
                     if new_E == 0:
@@ -1002,21 +1002,24 @@ def sa_triple_pt(
                                 "restarts": restarts, "swaps": swaps,
                                 "elapsed_s": round(time.time() - t0, 2),
                             }
-            else:
-                stagnation[i] += 1
 
-            # ILS: shake L3 of cold replica when deeply stagnated
-            if i == 0 and stagnation[0] >= ILS_THRESHOLD:
-                s = replicas[0]
-                L1s, L2s, L3s, cl12s = s[0], s[1], s[2], s[3]
-                L3_shk = _shake_ls(L3s, rep_rngs[0],
-                                   rep_rngs[0].randint(*ILS_WARM_SHAKE))
-                cl13_shk = count_clashes(L1s, L3_shk, n)
-                cl23_shk = count_clashes(L2s, L3_shk, n)
-                replicas[0] = [L1s, L2s, L3_shk, cl12s, cl13_shk, cl23_shk]
-                energies[0] = cl12s + cl13_shk + cl23_shk
-                stagnation[0] = 0
-                restarts += 1
+        if improved_global:
+            global_stagnation = 0
+        else:
+            global_stagnation += 1
+
+        # ILS: shake L3 of cold replica when no global improvement for a long time
+        if global_stagnation >= ILS_THRESHOLD:
+            s = replicas[0]
+            L1s, L2s, L3s, cl12s = s[0], s[1], s[2], s[3]
+            n_shake = rep_rngs[0].randint(*ILS_WARM_SHAKE)
+            L3_shk = _shake_ls(L3s, rep_rngs[0], n_shake)
+            cl13_shk = count_clashes(L1s, L3_shk, n)
+            cl23_shk = count_clashes(L2s, L3_shk, n)
+            replicas[0] = [L1s, L2s, L3_shk, cl12s, cl13_shk, cl23_shk]
+            energies[0] = cl12s + cl13_shk + cl23_shk
+            global_stagnation = 0
+            restarts += 1
 
         step += 1
 
