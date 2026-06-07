@@ -795,12 +795,23 @@ def sa_triple_pt(
             L1_ = sp[0].copy(); L2_ = sp[1].copy()
             L1_, L2_ = isotopy_variant(L1_, L2_, n, random.Random(r.random()))
             L3_ = np.array(e["L3"], dtype=np.int8)
-        elif _seed_pairs and roll < 0.80:
-            # Known MOLS pair (CT=2) + fresh L3 (30%)
+        elif _seed_pairs and roll < 0.73:
+            # Known MOLS pair (CT=2) + fresh L3 (23%)
             sp = r.choice(_seed_pairs)
             L1_ = sp[0].copy(); L2_ = sp[1].copy()
             L1_, L2_ = isotopy_variant(L1_, L2_, n, random.Random(r.random()))
             L3_ = random_latin_square(n, random.Random(r.random()))
+        elif _seed_pairs and roll < 0.80:
+            # Cyclic L3 (7%): high-intercalate L3[i,j]=(i+offset*j)%n (isotopy variant).
+            # Cyclic LS has ~2025 intercalates (max) vs ~24 in near-miss; explores
+            # different region of LS space inaccessible to low-intercalate warm-starts.
+            sp = r.choice(_seed_pairs)
+            L1_ = sp[0].copy(); L2_ = sp[1].copy()
+            L1_, L2_ = isotopy_variant(L1_, L2_, n, random.Random(r.random()))
+            offset = r.randint(1, n-1)
+            L3_ = np.array([[(i + offset*j) % n for j in range(n)] for i in range(n)],
+                           dtype=np.int8)
+            L3_ = _shake_ls(L3_, r, r.randint(0, 5))  # small perturbation
         else:
             # Fully random (20%)
             L1_ = random_latin_square(n, random.Random(r.random()))
