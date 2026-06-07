@@ -633,10 +633,10 @@ def sa_triple_find(
                                     "elapsed_s": round(time.time()-t0, 2)
                                 }
 
-        # SA move — mild L3 bias when pair is nearly perfect (50% vs 25%/25%)
+        # SA move — bias toward L3 when pair is nearly perfect (70%/15%/15%)
         if cl12 < 5:
             r = rng.random()
-            tgt = 2 if r < 0.50 else (0 if r < 0.75 else 1)
+            tgt = 2 if r < 0.70 else (0 if r < 0.85 else 1)
         else:
             tgt = rng.randint(0, 2)
         L = [L1, L2, L3][tgt]
@@ -785,9 +785,7 @@ def sa_triple_pt(
         L1_, L2_, L3_, cl12_, cl13_, cl23_ = state
         if cl12_ < 5:
             rv = r.random()
-            # Reduced L3-bias 70%→50%: more pair exploration when cl12≈0.
-            # Allows SA to drift from CT=0 pairs to potentially CT>0 ones.
-            tgt = 2 if rv < 0.50 else (0 if rv < 0.75 else 1)
+            tgt = 2 if rv < 0.70 else (0 if rv < 0.85 else 1)
         else:
             tgt = r.randint(0, 2)
         L = [L1_, L2_, L3_][tgt]
