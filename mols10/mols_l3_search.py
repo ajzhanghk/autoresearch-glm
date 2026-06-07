@@ -271,9 +271,21 @@ def sa_triple_find(
     t0  = time.time()
     move_names = ["row", "col", "relabel", "intercalate"]
 
+    # Seed pool for warm starts: known MOLS pairs give clashes(L1,L2)=0,
+    # halving the initial total clashes vs. 3 fully random squares.
+    _seed_pairs = _load_pairs()
+
     def fresh():
-        L1_ = random_latin_square(n, random.Random(rng.random()))
-        L2_ = random_latin_square(n, random.Random(rng.random()))
+        if _seed_pairs and rng.random() < 0.5:
+            # Warm start: known MOLS pair + fresh L3 → total clashes ≈ 40-50
+            sp = rng.choice(_seed_pairs)
+            L1_ = sp[0].copy()
+            L2_ = sp[1].copy()
+            # Apply random isotopy to diversify
+            L1_, L2_ = isotopy_variant(L1_, L2_, n, random.Random(rng.random()))
+        else:
+            L1_ = random_latin_square(n, random.Random(rng.random()))
+            L2_ = random_latin_square(n, random.Random(rng.random()))
         L3_ = random_latin_square(n, random.Random(rng.random()))
         return L1_, L2_, L3_, _triple_clashes(L1_, L2_, L3_, n)
 
