@@ -293,36 +293,41 @@ def _targeted_repair(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray,
         cells = _conflict_cells(L3)
         if not cells:
             break
-        # Pick a conflict cell, try swapping it with each cell in same row
+        # Pick a conflict cell; try all intercalate flips involving it
         i, j = cells[random.randrange(len(cells))]
-        best_swap = None
+        best_flip = None
         best_delta = 0
-        for j2 in range(n):
-            if j2 == j:
+        for i2 in range(n):
+            if i2 == i:
                 continue
-            if L3[i, j2] == L3[i, j]:
-                continue
-            L3t = L3.copy()
-            L3t[i, j], L3t[i, j2] = L3t[i, j2], L3t[i, j]
-            new_cl = _clash_count(L3t)
-            delta = new_cl - clashes
-            if delta < best_delta:
-                best_delta = delta
-                best_swap = (j2, L3t)
-        if best_swap is not None:
-            _, L3 = best_swap
+            for j2 in range(n):
+                if j2 == j:
+                    continue
+                fl = _intercalate_flip(L3, i, i2, j, j2)
+                if fl is None:
+                    continue
+                new_cl = _clash_count(fl)
+                delta = new_cl - clashes
+                if delta < best_delta:
+                    best_delta = delta
+                    best_flip = fl
+        if best_flip is not None:
+            L3 = best_flip
             clashes += best_delta
             if clashes < best_cl:
                 best_cl = clashes
                 best_L3 = L3.copy()
         else:
-            # No improvement — random in-row swap to escape
+            # No improving intercalate flip — random intercalate to escape
+            i2 = random.choice([x for x in range(n) if x != i])
             j2 = random.randrange(n)
-            L3[i, j], L3[i, j2] = L3[i, j2], L3[i, j]
-            clashes = _clash_count(L3)
-            if clashes < best_cl:
-                best_cl = clashes
-                best_L3 = L3.copy()
+            fl = _intercalate_flip(L3, i, i2, j, j2)
+            if fl is not None:
+                L3 = fl
+                clashes = _clash_count(L3)
+                if clashes < best_cl:
+                    best_cl = clashes
+                    best_L3 = L3.copy()
 
     return best_L3 if best_cl < clashes else None, best_cl
 
@@ -355,10 +360,19 @@ def sa_l3_given_pair(
         return random_latin_square(n, random.Random(rng.random()))
 
     def _in_row_swap(L, row):
+        """Swap two elements within a row (exploration move; may break Latin property)."""
         c1, c2 = rng.sample(range(n), 2)
         Lc = L.copy()
         Lc[row, c1], Lc[row, c2] = Lc[row, c2], Lc[row, c1]
         return Lc
+
+    def _is_latin(L):
+        for i in range(n):
+            if len(set(L[i, :].tolist())) != n:
+                return False
+            if len(set(L[:, i].tolist())) != n:
+                return False
+        return True
 
     # Try to warm-start from a saved near-miss for this pair
     near_misses = _load_near_misses()
@@ -379,6 +393,9 @@ def sa_l3_given_pair(
     clashes = _clashes_L3(L3)
     best_clashes = clashes
     best_L3 = L3.copy()
+    # Track best *valid Latin* L3 separately (in_row_swap may create non-Latin states)
+    best_latin_clashes = clashes  # L3 from _fresh_L3 is always valid Latin
+    best_latin_L3 = L3.copy()
     near_miss_threshold = 20
 
     T = 5.0
@@ -395,22 +412,28 @@ def sa_l3_given_pair(
                 return L3, {"found": True, "best_clashes": 0,
                             "restarts": restarts, "elapsed_s": round(time.time()-t0, 2)}
 
-        # Near-miss: save and switch to targeted repair
-        if clashes <= near_miss_threshold:
-            _save_near_miss(pair_id, L1, L2, L3, clashes)
-            near_miss_threshold = clashes  # only save strictly better
-            if clashes <= 15:
+        # Near-miss: track best valid Latin L3 and save it
+        if _is_latin(L3) and clashes < best_latin_clashes:
+            best_latin_clashes = clashes
+            best_latin_L3 = L3.copy()
+        if best_latin_clashes <= near_miss_threshold:
+            _save_near_miss(pair_id, L1, L2, best_latin_L3, best_latin_clashes)
+            near_miss_threshold = best_latin_clashes
+            if best_latin_clashes <= 15:
                 rem = max_seconds - (time.time() - t0)
                 if rem > 2.0:
-                    L3r, cl_r = _targeted_repair(L1, L2, L3, n, min(rem * 0.4, 8.0))
+                    L3r, cl_r = _targeted_repair(L1, L2, best_latin_L3, n,
+                                                 min(rem * 0.4, 8.0))
                     if cl_r == 0:
                         ok, _ = verify_mols([L1, L2, L3r])
                         if ok:
                             return L3r, {"found": True, "best_clashes": 0,
                                          "restarts": restarts,
                                          "elapsed_s": round(time.time()-t0, 2)}
-                    if cl_r < best_clashes:
-                        best_clashes = cl_r
+                    if cl_r < best_latin_clashes:
+                        best_latin_clashes = cl_r
+                        best_latin_L3 = L3r.copy()
+                        best_clashes = min(best_clashes, cl_r)
                         best_L3 = L3r.copy()
                         L3 = L3r.copy()
                         clashes = cl_r
@@ -475,6 +498,7 @@ def sa_l3_given_pair(
                 no_improve += 1
                 continue
         else:
+            # in_row_swap: swap 2 cells in same row (exploration; may create non-Latin state)
             L3_new = _in_row_swap(L3, rng.randrange(n))
 
         new_cl = _clashes_L3(L3_new)
@@ -491,8 +515,12 @@ def sa_l3_given_pair(
             no_improve += 1
         T *= cooling
 
+    # Save the best VALID Latin L3 found this trial for cross-worker warm-starts
+    if best_latin_clashes <= 20:
+        _save_near_miss(pair_id, L1, L2, best_latin_L3, best_latin_clashes)
+
     return None, {
-        "found": False, "best_clashes": best_clashes,
+        "found": False, "best_clashes": best_latin_clashes,
         "restarts": restarts, "elapsed_s": round(time.time() - t0, 2),
     }
 
@@ -1186,15 +1214,20 @@ class L3AdaptiveSearch:
         """Run sa_l3_given_pair on the best CT>0 pool pair; rotate through all CT>0 pairs."""
         if not self.pool:
             return None
-        # Use the top pair with highest CT (or rotate if all tried recently)
+        # Prefer highest-CT pairs; within same CT, round-robin
         ct_recs = [r for r in self.pool if r.ct_count > 0]
         if not ct_recs:
-            # No CT>0 pair yet — use top pair anyway (fewer wasted moves than nothing)
             rec = self.pool[0]
         else:
-            # Round-robin across CT>0 pairs to avoid over-focusing on one
-            idx = self.trial % len(ct_recs)
-            rec = ct_recs[idx]
+            # Use top-CT pairs 70% of time, full pool 30%
+            top_ct = max(r.ct_count for r in ct_recs)
+            best_recs = [r for r in ct_recs if r.ct_count == top_ct]
+            if self.rng.random() < 0.70:
+                idx = self.trial % len(best_recs)
+                rec = best_recs[idx]
+            else:
+                idx = self.trial % len(ct_recs)
+                rec = ct_recs[idx]
 
         seed = self.rng.randint(0, 2**31)
         self.trial += 1
