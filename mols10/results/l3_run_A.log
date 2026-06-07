@@ -1,0 +1,51 @@
+====================================================================
+MOLS L3 Search  — is N(10) ≥ 3?
+strategy    : adaptive
+budget      : unlimited
+eval_budget : 90.0s
+seed        : 11111
+====================================================================
+====================================================================
+N(10) ≥ 3 Adaptive Search — never-stopping
+eval_budget=90.0s  save_dir=results
+====================================================================
+
+Loading seed pairs from /home/user/autoresearch-glm/mols10/results/mols_pairs_collection.json…
+  [seed_0] ct=0  max_dis=0  src=seed
+  [seed_1] ct=0  max_dis=0  src=seed
+  [seed_2] ct=0  max_dis=0  src=seed
+  [seed_3] ct=0  max_dis=0  src=seed
+  [seed_4] ct=0  max_dis=0  src=seed
+Loading promising pairs from promising_pairs.json…
+  [resume] tv_21 ct=2
+  [resume] ic2_tv_21_0 ct=2
+  [resume] ic3_tv_21_0 ct=2
+  [resume] ic5_tv_21_0 ct=2
+  [resume] ic8_tv_21_0 ct=2
+  [resume] ic1_3_tv_21 ct=2
+  [resume] ic1_5_tv_21 ct=2
+  [resume] iso_tv_21_0 ct=2
+  [resume] iso_tv_21_1 ct=2
+  [resume] iso_tv_21_2 ct=2
+  [resume] ic8_tv_21_1 ct=2
+  [resume] ic3_tv_21_1 ct=2
+  [resume] ic5_tv_21_1 ct=2
+  [resume] ic12_tv_21_0 ct=2
+  [resume] ic2_tv_21_1 ct=2
+  [resume] tv_10 ct=1
+  [resume] ic2_tv_10_0 ct=1
+  [resume] ic3_tv_10_0 ct=1
+  [resume] ic5_tv_10_0 ct=1
+  [resume] ic8_tv_10_0 ct=1
+  [resume] ic1_3_tv_10 ct=1
+  [resume] ic1_5_tv_10 ct=1
+  [resume] ic5_tv_10_1 ct=1
+  [resume] iso_tv_10_0 ct=1
+  [resume] iso_tv_10_1 ct=1
+  [resume] iso_tv_10_2 ct=1
+  [resume] tv_29 ct=1
+  [resume] tv_32 ct=1
+Pool: 33 pairs.  Best CT count: 2
+
+
+trial=   1  strategy=sa_l3_pair  pair=tv_21  ct=2  budget=68s

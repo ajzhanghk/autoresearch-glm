@@ -247,6 +247,132 @@ def find_L3_ct_algx(
 
 
 # ===========================================================================
+# Strategy 0 — SA directly on L3 given a fixed verified MOLS pair
+# ===========================================================================
+
+def sa_l3_given_pair(
+    L1: np.ndarray, L2: np.ndarray, n: int,
+    max_seconds: float,
+    rng_seed: Optional[int] = None,
+) -> tuple[Optional[np.ndarray], dict]:
+    """SA finding L3 given a fixed, verified MOLS pair (L1, L2).
+
+    Most focused strategy: L1 and L2 are FIXED.  We only move L3.
+    Objective: minimise clashes(L1, L3) + clashes(L2, L3).
+    When this reaches 0, L3 is a third MOLS.
+
+    Moves (all preserve Latin-square property of L3):
+      row-swap, col-swap, symbol-relabel, intercalate-flip, in-row-swap
+    Temperature schedule: high initial T, aggressive cooling, ILS restarts.
+    """
+    rng = random.Random(rng_seed)
+    t0  = time.time()
+
+    def _clashes_L3(L3_):
+        return count_clashes(L1, L3_, n) + count_clashes(L2, L3_, n)
+
+    def _fresh_L3():
+        return random_latin_square(n, random.Random(rng.random()))
+
+    def _in_row_swap(L, row):
+        """Swap two entries in the same row — cheapest move that changes clashes."""
+        c1, c2 = rng.sample(range(n), 2)
+        L2_ = L.copy()
+        L2_[row, c1], L2_[row, c2] = L2_[row, c2], L2_[row, c1]
+        return L2_
+
+    L3 = _fresh_L3()
+    clashes = _clashes_L3(L3)
+    best_clashes = clashes
+    best_L3 = L3.copy()
+
+    T = 5.0
+    cooling = 0.9999985
+    no_improve = 0
+    restarts = 0
+    ils_round = 0
+    STALL = 200_000
+
+    while time.time() - t0 < max_seconds:
+        if clashes == 0:
+            ok, _ = verify_mols([L1, L2, L3])
+            if ok:
+                return L3, {"found": True, "best_clashes": 0,
+                            "restarts": restarts, "elapsed_s": round(time.time()-t0, 2)}
+
+        if no_improve >= STALL:
+            no_improve = 0
+            restarts += 1
+            ils_round += 1
+            if ils_round >= 6:
+                # Full restart
+                L3 = _fresh_L3()
+                T = 5.0
+                ils_round = 0
+            else:
+                # ILS: perturb best_L3
+                L3 = best_L3.copy()
+                k = rng.randint(4, 12)
+                for _ in range(k):
+                    mv = rng.randint(0, 3)
+                    if mv == 0:
+                        a, b = rng.sample(range(n), 2)
+                        L3 = _row_swap(L3, a, b)
+                    elif mv == 1:
+                        a, b = rng.sample(range(n), 2)
+                        L3 = _col_swap(L3, a, b)
+                    elif mv == 2:
+                        a, b = rng.sample(range(n), 2)
+                        L3 = _relabel(L3, a, b)
+                    else:
+                        r = rng.randrange(n)
+                        L3 = _in_row_swap(L3, r)
+                T = max(T, 2.0)
+            clashes = _clashes_L3(L3)
+            continue
+
+        # Move
+        mv = rng.randint(0, 4)
+        if mv == 0:
+            a, b = rng.sample(range(n), 2)
+            L3_new = _row_swap(L3, a, b)
+        elif mv == 1:
+            a, b = rng.sample(range(n), 2)
+            L3_new = _col_swap(L3, a, b)
+        elif mv == 2:
+            a, b = rng.sample(range(n), 2)
+            L3_new = _relabel(L3, a, b)
+        elif mv == 3:
+            r1, r2 = rng.sample(range(n), 2)
+            c1, c2 = rng.sample(range(n), 2)
+            L3_new = _intercalate_flip(L3, r1, r2, c1, c2)
+            if L3_new is None:
+                no_improve += 1
+                continue
+        else:  # mv == 4
+            L3_new = _in_row_swap(L3, rng.randrange(n))
+
+        new_cl = _clashes_L3(L3_new)
+        delta = new_cl - clashes
+        if delta < 0 or rng.random() < math.exp(-delta / max(T, 1e-9)):
+            L3, clashes = L3_new, new_cl
+            if clashes < best_clashes:
+                best_clashes = clashes
+                best_L3 = L3.copy()
+                no_improve = 0
+            else:
+                no_improve += 1
+        else:
+            no_improve += 1
+        T *= cooling
+
+    return None, {
+        "found": False, "best_clashes": best_clashes,
+        "restarts": restarts, "elapsed_s": round(time.time() - t0, 2),
+    }
+
+
+# ===========================================================================
 # Strategy 1 — 3-way SA (no fixed pair)
 # ===========================================================================
 
@@ -451,6 +577,8 @@ def sa_ct_climb(
     max_seconds: float,
     rng_seed: Optional[int] = None,
     ct_cap: int = 60,
+    warm_L1: Optional[np.ndarray] = None,
+    warm_L2: Optional[np.ndarray] = None,
 ) -> tuple[Optional[tuple], dict]:
     """SA on a MOLS pair (L1, L2) that directly maximises CT_count(L1, L2).
 
@@ -486,7 +614,11 @@ def sa_ct_climb(
         L1_, L2_, _ = transversal_find_pair(n, 15.0, rng_seed=seed2)
         return L1_, L2_
 
-    L1, L2 = fresh_pair()
+    # Start from warm pair if provided, else generate fresh
+    if warm_L1 is not None and warm_L2 is not None:
+        L1, L2 = warm_L1.copy(), warm_L2.copy()
+    else:
+        L1, L2 = fresh_pair()
     if L1 is None:
         return None, {"note": "failed to generate initial pair"}
 
@@ -894,16 +1026,62 @@ class L3AdaptiveSearch:
             return L1, L2, L3
         return None
 
-    def _run_sa_ct_climb(self, budget: float) -> None:
-        """Run sa_ct_climb; add any new best-CT pair to pool."""
+    def _run_sa_l3_given_pair(self, budget: float) -> Optional[tuple]:
+        """Run sa_l3_given_pair on the best CT>0 pool pair; rotate through all CT>0 pairs."""
+        if not self.pool:
+            return None
+        # Use the top pair with highest CT (or rotate if all tried recently)
+        ct_recs = [r for r in self.pool if r.ct_count > 0]
+        if not ct_recs:
+            # No CT>0 pair yet — use top pair anyway (fewer wasted moves than nothing)
+            rec = self.pool[0]
+        else:
+            # Round-robin across CT>0 pairs to avoid over-focusing on one
+            idx = self.trial % len(ct_recs)
+            rec = ct_recs[idx]
+
         seed = self.rng.randint(0, 2**31)
         self.trial += 1
         n = self.n
 
-        print(f"\ntrial={self.trial:4d}  strategy=sa_ct_climb"
-              f"  budget={budget:.0f}s  best_ct_ever={self.best_ct_ever}")
+        print(f"\ntrial={self.trial:4d}  strategy=sa_l3_pair"
+              f"  pair={rec.pair_id}  ct={rec.ct_count}  budget={budget:.0f}s")
 
-        pair, stats = sa_ct_climb(n, budget, rng_seed=seed)
+        L3, stats = sa_l3_given_pair(rec.L1, rec.L2, n, budget, rng_seed=seed)
+        elapsed = stats.get("elapsed_s", budget)
+        bc = stats.get("best_clashes", 2 * n * n)
+        found = stats.get("found", False)
+        restarts = stats.get("restarts", 0)
+
+        print(f"  sa_l3_pair: found={found}  best_clashes={bc}"
+              f"  restarts={restarts}  elapsed={elapsed:.1f}s")
+        _log({"ts": datetime.now().isoformat(timespec="seconds"),
+              "trial": self.trial, "strategy": "sa_l3_pair",
+              "pair_id": rec.pair_id, "ct_count": rec.ct_count,
+              "max_disjoint": rec.max_disjoint, "sa_best_clashes": bc,
+              "elapsed_s": elapsed, "found": int(found), "note": f"restarts={restarts}"})
+
+        if found and L3 is not None:
+            return self._success(rec.L1, rec.L2, L3)
+        return None
+
+    def _run_sa_ct_climb(self, budget: float) -> None:
+        """Run sa_ct_climb; initialise from best pool pair when CT>0."""
+        seed = self.rng.randint(0, 2**31)
+        self.trial += 1
+        n = self.n
+
+        # Inject best CT>0 pair as warm-start into sa_ct_climb
+        ct_recs = [r for r in self.pool if r.ct_count > 0]
+        warm_L1 = ct_recs[0].L1 if ct_recs else None
+        warm_L2 = ct_recs[0].L2 if ct_recs else None
+
+        print(f"\ntrial={self.trial:4d}  strategy=sa_ct_climb"
+              f"  budget={budget:.0f}s  best_ct_ever={self.best_ct_ever}"
+              f"  warm={'yes ct='+str(ct_recs[0].ct_count) if ct_recs else 'no'}")
+
+        pair, stats = sa_ct_climb(n, budget, rng_seed=seed,
+                                    warm_L1=warm_L1, warm_L2=warm_L2)
         elapsed = stats.get("elapsed_s", budget)
         bc = stats.get("best_ct", 0)
         steps = stats.get("steps", 0)
@@ -1118,22 +1296,27 @@ class L3AdaptiveSearch:
             if budget < 1.0:
                 break
 
-            # ── Strategy portfolio: rotate based on outer_iter ─────────────
-            # Cycle: sa_triple(60%) → sa_ct_climb(25%) → multi_decomp(15%)
-            # with pair-based handling interleaved.
-            phase = outer_iter % 5  # 0,1,2,3,4
+            # ── Strategy portfolio ─────────────────────────────────────────
+            # Priority: sa_l3_pair is our best direct L3 finder.
+            # Phase cycle (10 steps):
+            #  0,1,2,3,4 → sa_l3_pair (50%): directly hunts L3 on best pairs
+            #  5,6,7     → sa_triple   (30%): finds new pairs, may stumble on L3
+            #  8         → sa_ct_climb (10%): maximises CT on MOLS pair
+            #  9         → multi_decomp(10%): diversifies mates of same L1
+            phase = outer_iter % 10
 
-            if phase in (0, 1, 3):
-                # sa_triple: explores full (L1,L2,L3) space
+            if phase in (0, 1, 2, 3, 4):
+                result = self._run_sa_l3_given_pair(budget * 0.75)
+                if result is not None:
+                    return result
+            elif phase in (5, 6, 7):
                 triple = self._run_sa_triple(budget * 0.60)
                 if triple is not None:
-                    L1, L2, L3 = triple
-                    return self._success(L1, L2, L3)
-            elif phase == 2:
-                # sa_ct_climb: SA maximising CT on MOLS pair directly
+                    L1t, L2t, L3t = triple
+                    return self._success(L1t, L2t, L3t)
+            elif phase == 8:
                 self._run_sa_ct_climb(budget * 0.55)
-            else:  # phase == 4
-                # multi_decomp: many AlgX mates of same L1, pick highest CT
+            else:  # phase == 9
                 self._run_multi_decomp(budget * 0.50)
 
             # ── pair-based strategies for pool top ─────────────────────────
