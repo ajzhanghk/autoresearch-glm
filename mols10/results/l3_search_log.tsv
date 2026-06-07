@@ -31,3 +31,4 @@ ts	trial	strategy	pair_id	ct_count	max_disjoint	sa_best_clashes	elapsed_s	found	
 2026-06-07T06:39:51	17	csp_dual	tv_14	2	2	—	42.0	0	
 2026-06-07T06:41:03	18	sa_triple	—	0	—	61	72.0	0	sa_frontier=58
 2026-06-07T06:41:45	19	csp_dual	tv_14	2	2	—	42.0	0	
+2026-06-07T06:44:12	1	sa_triple	—	0	—	59	72.0	0	sa_frontier=59
