@@ -453,3 +453,133 @@ trial=  10  strategy=sa_triple  budget=72s  best_ct_ever=2
   Progress: trials=10  elapsed=0.20h  pool_size=31  best_ct_ever=2  sa3_best_clashes=56  N(10)≥3 not found yet
 
 trial=  11  strategy=sa_triple  budget=72s  best_ct_ever=2
+  sa_triple: best_clashes=57  sa_frontier=56  best_ct_seen=0  elapsed=72.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=11  elapsed=0.22h  pool_size=31  best_ct_ever=2  sa3_best_clashes=56  N(10)≥3 not found yet
+
+trial=  12  strategy=sa_triple  budget=72s  best_ct_ever=2
+  sa_triple: best_clashes=69  sa_frontier=56  best_ct_seen=0  elapsed=72.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+  [tv_31] ct=0  max_dis=0  src=tv
+
+  Progress: trials=12  elapsed=0.24h  pool_size=32  best_ct_ever=2  sa3_best_clashes=56  N(10)≥3 not found yet
+
+trial=  13  strategy=sa_triple  budget=72s  best_ct_ever=2
+  sa_triple: best_clashes=57  sa_frontier=56  best_ct_seen=0  elapsed=72.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=13  elapsed=0.26h  pool_size=32  best_ct_ever=2  sa3_best_clashes=56  N(10)≥3 not found yet
+
+trial=  14  strategy=sa_triple  budget=72s  best_ct_ever=2
+  sa_triple: best_clashes=66  sa_frontier=56  best_ct_seen=0  elapsed=72.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=14  elapsed=0.28h  pool_size=32  best_ct_ever=2  sa3_best_clashes=56  N(10)≥3 not found yet
+
+trial=  15  strategy=sa_triple  budget=72s  best_ct_ever=2
+  sa_triple: best_clashes=60  sa_frontier=56  best_ct_seen=0  elapsed=72.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+  [tv_32] ct=1  max_dis=1  src=tv
+  ★ Saved promising pair tv_32 (ct=1) → promising_pairs.json
+  [checkpoint] Saved 25 promising pairs to disk (best ct=2)
+
+  Progress: trials=15  elapsed=0.30h  pool_size=33  best_ct_ever=2  sa3_best_clashes=56  N(10)≥3 not found yet
+
+trial=  16  strategy=sa_triple  budget=72s  best_ct_ever=2
+  sa_triple: best_clashes=60  sa_frontier=56  best_ct_seen=0  elapsed=72.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=16  elapsed=0.32h  pool_size=33  best_ct_ever=2  sa3_best_clashes=56  N(10)≥3 not found yet
+
+trial=  17  strategy=sa_triple  budget=72s  best_ct_ever=2
+  sa_triple: best_clashes=76  sa_frontier=56  best_ct_seen=0  elapsed=72.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=17  elapsed=0.34h  pool_size=33  best_ct_ever=2  sa3_best_clashes=56  N(10)≥3 not found yet
+
+trial=  18  strategy=sa_triple  budget=72s  best_ct_ever=2
+  sa_triple: best_clashes=65  sa_frontier=56  best_ct_seen=0  elapsed=72.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+  [tv_33] ct=0  max_dis=0  src=tv
+
+  Progress: trials=18  elapsed=0.36h  pool_size=34  best_ct_ever=2  sa3_best_clashes=56  N(10)≥3 not found yet
+
+trial=  19  strategy=sa_triple  budget=72s  best_ct_ever=2
+  sa_triple: best_clashes=76  sa_frontier=56  best_ct_seen=0  elapsed=72.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+  [ic5_tv_21_1] ct=2  max_dis=2  src=ic5
+  ★ Saved promising pair ic5_tv_21_1 (ct=2) → promising_pairs.json
+
+  Progress: trials=19  elapsed=0.38h  pool_size=35  best_ct_ever=2  sa3_best_clashes=56  N(10)≥3 not found yet
+
+trial=  20  strategy=sa_triple  budget=72s  best_ct_ever=2
+  sa_triple: best_clashes=60  sa_frontier=56  best_ct_seen=0  elapsed=72.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+  [checkpoint] Saved 26 promising pairs to disk (best ct=2)
+
+  Progress: trials=20  elapsed=0.40h  pool_size=35  best_ct_ever=2  sa3_best_clashes=56  N(10)≥3 not found yet
+
+trial=  21  strategy=sa_triple  budget=72s  best_ct_ever=2
+
+[SIGTERM] Saving pool state before exit…
+  [checkpoint] Saved 26 promising pairs to disk (best ct=2)
+====================================================================
+MOLS L3 Search  — is N(10) ≥ 3?
+strategy    : adaptive
+budget      : unlimited
+eval_budget : 120.0s
+seed        : 31337
+====================================================================
+====================================================================
+N(10) ≥ 3 Adaptive Search — never-stopping
+eval_budget=120.0s  save_dir=results
+====================================================================
+
+Loading seed pairs from /home/user/autoresearch-glm/mols10/results/mols_pairs_collection.json…
+  [seed_0] ct=0  max_dis=0  src=seed
+  [seed_1] ct=0  max_dis=0  src=seed
+  [seed_2] ct=0  max_dis=0  src=seed
+  [seed_3] ct=0  max_dis=0  src=seed
+  [seed_4] ct=0  max_dis=0  src=seed
+Loading promising pairs from promising_pairs.json…
+  [resume] tv_21 ct=2
+  [resume] ic2_tv_21_0 ct=2
+  [resume] ic3_tv_21_0 ct=2
+  [resume] ic5_tv_21_0 ct=2
+  [resume] ic8_tv_21_0 ct=2
+  [resume] ic1_3_tv_21 ct=2
+  [resume] ic1_5_tv_21 ct=2
+  [resume] iso_tv_21_0 ct=2
+  [resume] iso_tv_21_1 ct=2
+  [resume] iso_tv_21_2 ct=2
+  [resume] ic8_tv_21_1 ct=2
+  [resume] ic3_tv_21_1 ct=2
+  [resume] ic5_tv_21_1 ct=2
+  [resume] tv_10 ct=1
+  [resume] ic2_tv_10_0 ct=1
+  [resume] ic3_tv_10_0 ct=1
+  [resume] ic5_tv_10_0 ct=1
+  [resume] ic8_tv_10_0 ct=1
+  [resume] ic1_3_tv_10 ct=1
+  [resume] ic1_5_tv_10 ct=1
+  [resume] ic5_tv_10_1 ct=1
+  [resume] iso_tv_10_0 ct=1
+  [resume] iso_tv_10_1 ct=1
+  [resume] iso_tv_10_2 ct=1
+  [resume] tv_29 ct=1
+  [resume] tv_32 ct=1
+Pool: 31 pairs.  Best CT count: 2
+
+
+trial=   1  strategy=sa_triple  budget=72s  best_ct_ever=2

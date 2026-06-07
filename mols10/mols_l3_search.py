@@ -82,6 +82,8 @@ from mols_adaptive import (
     transversal_find_pair,
     count_clashes,
     _row_swap, _col_swap, _relabel, _intercalate_flip,
+    _enumerate_transversals,
+    find_orth_mate_transversal,
 )
 from mols_search import (
     verify_mols,
@@ -441,6 +443,188 @@ def csp_dual_find_L3(
 
 
 # ===========================================================================
+# Strategy 4 — SA directly maximising CT_count on a MOLS pair
+# ===========================================================================
+
+def sa_ct_climb(
+    n: int,
+    max_seconds: float,
+    rng_seed: Optional[int] = None,
+    ct_cap: int = 60,
+) -> tuple[Optional[tuple], dict]:
+    """SA on a MOLS pair (L1, L2) that directly maximises CT_count(L1, L2).
+
+    This is fundamentally different from sa_triple:
+      * sa_triple explores (L1, L2, L3) minimising clashes.
+      * sa_ct_climb fixes L1, keeps MOLS(L1, L2) guaranteed, and
+        maximises CT_count(L1, L2) via intercalate moves on L2.
+
+    Moves that keep MOLS whilst potentially changing CT:
+      a) Intercalate flip on L2 only  → if count_clashes(L1, L2') = 0: valid.
+      b) Intercalate flip on L1 only  → if count_clashes(L1', L2) = 0: valid.
+         (Very rare; included for diversity.)
+      c) Full restart: new L1+L2 pair from transversal exact-cover.
+
+    CT evaluation uses a fast capped enumeration (max ct_cap transversals,
+    0.15 s budget) so each SA step is cheap.
+
+    If CT_count ≥ n (= 10) is reached, returns the pair immediately (L3 may
+    exist — try Algorithm X).
+    """
+    rng = random.Random(rng_seed)
+    t0  = time.time()
+
+    def fast_ct(L1_, L2_, budget=0.15, cap=None):
+        cap_ = cap if cap is not None else ct_cap
+        cts = enumerate_common_transversals(
+            L1_, L2_, n, max_count=cap_, deadline=time.time() + budget
+        )
+        return len(cts), cts
+
+    def fresh_pair():
+        seed2 = rng.randint(0, 2**31)
+        L1_, L2_, _ = transversal_find_pair(n, 15.0, rng_seed=seed2)
+        return L1_, L2_
+
+    L1, L2 = fresh_pair()
+    if L1 is None:
+        return None, {"note": "failed to generate initial pair"}
+
+    ct, _ = fast_ct(L1, L2)
+    best_ct = ct
+    best_pair = (L1.copy(), L2.copy())
+
+    T = 1.5           # SA temperature: controls acceptance of CT-degrading moves
+    cooling = 0.99998
+    steps = 0
+    restarts = 0
+    no_improve = 0
+    MAX_NO_IMPROVE = 80_000
+
+    while time.time() - t0 < max_seconds:
+        steps += 1
+        T *= cooling
+
+        if no_improve >= MAX_NO_IMPROVE:
+            # Restart from best, then occasionally fully fresh
+            restarts += 1
+            no_improve = 0
+            if restarts % 4 == 0:
+                L1, L2 = fresh_pair()
+                if L1 is None:
+                    continue
+                T = 1.5
+            else:
+                L1, L2 = best_pair[0].copy(), best_pair[1].copy()
+                T = max(T, 0.5)
+            ct, _ = fast_ct(L1, L2)
+            continue
+
+        # Choose move: mostly flip L2, occasionally flip L1
+        flip_L1 = rng.random() < 0.15
+        r1, r2 = rng.sample(range(n), 2)
+        c1, c2 = rng.sample(range(n), 2)
+
+        if flip_L1:
+            L1_try = _intercalate_flip(L1, r1, r2, c1, c2)
+            if L1_try is None or count_clashes(L1_try, L2, n) != 0:
+                no_improve += 1
+                continue
+            L1_new, L2_new = L1_try, L2
+        else:
+            L2_try = _intercalate_flip(L2, r1, r2, c1, c2)
+            if L2_try is None or count_clashes(L1, L2_try, n) != 0:
+                no_improve += 1
+                continue
+            L1_new, L2_new = L1, L2_try
+
+        new_ct, _ = fast_ct(L1_new, L2_new)
+        delta = new_ct - ct  # positive = better
+
+        if delta > 0 or rng.random() < math.exp(delta / max(T, 1e-9)):
+            L1, L2, ct = L1_new, L2_new, new_ct
+            if ct > best_ct:
+                best_ct = ct
+                best_pair = (L1.copy(), L2.copy())
+                no_improve = 0
+                if best_ct >= n:
+                    return best_pair, {
+                        "best_ct": best_ct, "steps": steps,
+                        "restarts": restarts, "elapsed_s": round(time.time()-t0, 2),
+                        "note": f"CT≥n reached after {steps} steps"
+                    }
+            else:
+                no_improve += 1
+        else:
+            no_improve += 1
+
+    return best_pair, {
+        "best_ct": best_ct, "steps": steps, "restarts": restarts,
+        "elapsed_s": round(time.time() - t0, 2),
+    }
+
+
+# ===========================================================================
+# Strategy 5 — Multi-decomposition search (different L2 mates for same L1)
+# ===========================================================================
+
+def multi_decomp_ct_search(
+    n: int,
+    max_seconds: float,
+    n_attempts: int = 30,
+    rng_seed: Optional[int] = None,
+) -> tuple[Optional[tuple], dict]:
+    """For a fixed L1, try many Algorithm X restarts to find the mate with max CT.
+
+    Key insight: find_orth_mate_transversal shuffles the transversal list before
+    AlgX, so different rng_seeds give genuinely different L2 mates of the same L1.
+    Among all mates of a fixed L1, SOME may have much higher CT_count.
+
+    Steps:
+      1. Enumerate transversals of a random L1 (up to 3000, shared across attempts).
+      2. Try n_attempts different AlgX shuffles → n_attempts different L2 mates.
+      3. Score each L2 by CT_count(L1, L2).
+      4. Return the pair with highest CT.
+    """
+    rng = random.Random(rng_seed)
+    t0  = time.time()
+    budget_per = (max_seconds * 0.85) / max(n_attempts, 1)
+
+    best_ct   = -1
+    best_pair: Optional[tuple] = None
+    pairs_tried = 0
+
+    while time.time() - t0 < max_seconds * 0.95:
+        # Fresh L1 every n_attempts mates
+        if pairs_tried % n_attempts == 0:
+            L1 = random_latin_square(n, random.Random(rng.random()))
+
+        seed2 = rng.randint(0, 2**31)
+        rem = max_seconds - (time.time() - t0)
+        if rem < 2.0:
+            break
+        L2 = find_orth_mate_transversal(L1, min(budget_per, rem * 0.8), rng_seed=seed2)
+        if L2 is None:
+            pairs_tried += 1
+            continue
+
+        pairs_tried += 1
+        rem2 = max_seconds - (time.time() - t0)
+        cts = enumerate_common_transversals(
+            L1, L2, n, max_count=200, deadline=time.time() + min(0.5, rem2 * 0.3)
+        )
+        ct = len(cts)
+        if ct > best_ct:
+            best_ct = ct
+            best_pair = (L1.copy(), L2.copy())
+            if best_ct >= n:
+                break
+
+    elapsed = round(time.time() - t0, 2)
+    return best_pair, {"best_ct": best_ct, "pairs_tried": pairs_tried, "elapsed_s": elapsed}
+
+
+# ===========================================================================
 # Isotopy variant generation
 # ===========================================================================
 
@@ -706,6 +890,62 @@ class L3AdaptiveSearch:
             return L1, L2, L3
         return None
 
+    def _run_sa_ct_climb(self, budget: float) -> None:
+        """Run sa_ct_climb; add any new best-CT pair to pool."""
+        seed = self.rng.randint(0, 2**31)
+        self.trial += 1
+        n = self.n
+
+        print(f"\ntrial={self.trial:4d}  strategy=sa_ct_climb"
+              f"  budget={budget:.0f}s  best_ct_ever={self.best_ct_ever}")
+
+        pair, stats = sa_ct_climb(n, budget, rng_seed=seed)
+        elapsed = stats.get("elapsed_s", budget)
+        bc = stats.get("best_ct", 0)
+        steps = stats.get("steps", 0)
+        note = stats.get("note", "")
+
+        print(f"  sa_ct_climb: best_ct={bc}  steps={steps}  elapsed={elapsed:.1f}s  {note}")
+        _log({"ts": datetime.now().isoformat(timespec="seconds"),
+              "trial": self.trial, "strategy": "sa_ct_climb",
+              "pair_id": "—", "ct_count": bc, "max_disjoint": "—",
+              "sa_best_clashes": "—", "elapsed_s": elapsed,
+              "found": 0, "note": note or f"steps={steps}"})
+
+        if pair is not None and bc > 0:
+            self._add_pair(pair[0], pair[1], source="sa_ct")
+
+        if pair is not None and bc >= n:
+            # CT≥10! Try Algorithm X immediately
+            L3, algx_stats = find_L3_ct_algx(pair[0], pair[1], n, budget * 0.5)
+            if L3 is not None:
+                self._success(pair[0], pair[1], L3)
+
+    def _run_multi_decomp(self, budget: float) -> None:
+        """Try many Algorithm X restarts on a fresh L1 — find the mate with max CT."""
+        seed = self.rng.randint(0, 2**31)
+        self.trial += 1
+        n = self.n
+
+        n_attempts = max(10, int(budget / 6))  # ~6s per attempt
+        print(f"\ntrial={self.trial:4d}  strategy=multi_decomp"
+              f"  budget={budget:.0f}s  n_attempts={n_attempts}  best_ct_ever={self.best_ct_ever}")
+
+        pair, stats = multi_decomp_ct_search(n, budget, n_attempts=n_attempts, rng_seed=seed)
+        elapsed = stats.get("elapsed_s", budget)
+        bc = stats.get("best_ct", -1)
+        tried = stats.get("pairs_tried", 0)
+
+        print(f"  multi_decomp: best_ct={bc}  pairs_tried={tried}  elapsed={elapsed:.1f}s")
+        _log({"ts": datetime.now().isoformat(timespec="seconds"),
+              "trial": self.trial, "strategy": "multi_decomp",
+              "pair_id": "—", "ct_count": max(bc, 0), "max_disjoint": "—",
+              "sa_best_clashes": "—", "elapsed_s": elapsed,
+              "found": 0, "note": f"tried={tried}"})
+
+        if pair is not None and bc > 0:
+            self._add_pair(pair[0], pair[1], source="mdecomp")
+
     def _run_pair_strategy(
         self, rec: PairRecord, strategy: str, budget: float
     ) -> Optional[np.ndarray]:
@@ -874,40 +1114,47 @@ class L3AdaptiveSearch:
             if budget < 1.0:
                 break
 
-            # ── sa_triple runs every iteration ─────────────────────────────
-            triple = self._run_sa_triple(budget * 0.6)
-            if triple is not None:
-                L1, L2, L3 = triple
-                return self._success(L1, L2, L3)
+            # ── Strategy portfolio: rotate based on outer_iter ─────────────
+            # Cycle: sa_triple(60%) → sa_ct_climb(25%) → multi_decomp(15%)
+            # with pair-based handling interleaved.
+            phase = outer_iter % 5  # 0,1,2,3,4
+
+            if phase in (0, 1, 3):
+                # sa_triple: explores full (L1,L2,L3) space
+                triple = self._run_sa_triple(budget * 0.60)
+                if triple is not None:
+                    L1, L2, L3 = triple
+                    return self._success(L1, L2, L3)
+            elif phase == 2:
+                # sa_ct_climb: SA maximising CT on MOLS pair directly
+                self._run_sa_ct_climb(budget * 0.55)
+            else:  # phase == 4
+                # multi_decomp: many AlgX mates of same L1, pick highest CT
+                self._run_multi_decomp(budget * 0.50)
 
             # ── pair-based strategies for pool top ─────────────────────────
             if self.pool:
                 best_rec = self.pool[0]
                 if best_rec.ct_count >= n:
-                    # Full Algorithm X — this pair might have L3!
                     print(f"\n  ★ ct_count={best_rec.ct_count} ≥ {n}:"
                           f" running AlgX on pair {best_rec.pair_id}")
                     L3 = self._run_pair_strategy(best_rec, "ct_algx", budget * 0.4)
                     if L3 is not None:
                         return self._success(best_rec.L1, best_rec.L2, L3)
                 elif best_rec.ct_count > 0:
-                    # CT>0 but <n: cannot find L3 for this FIXED pair (proven),
-                    # but we can try to mutate it into a pair with higher CT.
-                    # Run aggressive intercalate variants instead of pointless CSP.
                     print(f"\n  ct={best_rec.ct_count} (0<ct<{n}):"
                           f" injecting intercalate variants of {best_rec.pair_id}")
-                    self._inject_intercalate_variants(best_rec, k_list=[2, 3, 5, 8])
+                    self._inject_intercalate_variants(best_rec, k_list=[2, 3, 5, 8, 12])
                 else:
                     print(f"\n  Pool best: ct={best_rec.ct_count} — "
-                          f"all known pairs are L3-free; relying on sa_triple.")
+                          f"all known pairs are L3-free; relying on portfolio.")
 
             # ── diversification ─────────────────────────────────────────────
             if outer_iter % 3 == 0:
                 if self.pool:
                     self._inject_variants(self.pool[0])
                 self._inject_fresh_pair()
-            if outer_iter % 5 == 0 and self.best_ct_ever > 0:
-                # Reload promising pairs from disk and inject (handles restarts)
+            if outer_iter % 5 == 0:
                 self._reload_promising_pairs()
 
             # ── periodic checkpoint every 5 minutes ─────────────────────────
