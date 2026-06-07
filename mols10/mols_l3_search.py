@@ -838,7 +838,7 @@ def sa_triple_pt(
 
         # ── periodic full reinit of hottest replica to avoid stagnation ────
         if step % (swap_every * 100) == 0:
-            replicas[-1] = fresh_state()
+            replicas[-1] = fresh_state(rep_rngs[-1])
             energies[-1] = replicas[-1][3] + replicas[-1][4] + replicas[-1][5]
             restarts += 1
 
