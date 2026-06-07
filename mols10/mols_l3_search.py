@@ -641,7 +641,7 @@ def sa_triple_find(
                 best_clashes = clashes
                 best_state   = (L1.copy(), L2.copy(), L3.copy())
                 no_improve   = 0
-                if clashes <= 30:
+                if clashes <= 40:
                     _save_triple_miss(L1, L2, L3, clashes)
             else:
                 no_improve += 1
@@ -670,7 +670,7 @@ def sa_triple_find(
                     elif tgt2 == 1: L2 = apply_move(L2)
                     else:           L3 = apply_move(L3)
                 clashes = _triple_clashes(L1, L2, L3, n)
-                T = temp_init * 0.5
+                T = temp_init * 0.75  # Reheat to 75% of max for ILS perturb
 
     return None, {
         "found": False, "best_clashes": best_clashes,
