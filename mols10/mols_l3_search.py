@@ -763,13 +763,19 @@ def sa_triple_pt(
     def fresh_state(r):
         triple_misses = _load_triple_misses()
         roll = r.random()
-        if triple_misses and roll < 0.10:
-            # Pure near-miss (10%): exact warm-start to preserve cascade.
+        if triple_misses and roll < 0.08:
+            # Pure near-miss (8%): exact warm-start to preserve cascade.
             e = r.choice(triple_misses[:5])
             L1_ = np.array(e["L1"], dtype=np.int8)
             L2_ = np.array(e["L2"], dtype=np.int8)
             L3_ = np.array(e["L3"], dtype=np.int8)
-        elif triple_misses and roll < 0.25:
+        elif triple_misses and roll < 0.18:
+            # Micro-shake (10%): near-miss with 1-10 moves for tight diversity.
+            e = r.choice(triple_misses[:5])
+            L1_ = np.array(e["L1"], dtype=np.int8)
+            L2_ = np.array(e["L2"], dtype=np.int8)
+            L3_ = _shake_ls(np.array(e["L3"], dtype=np.int8), r, r.randint(1, 10))
+        elif triple_misses and roll < 0.33:
             # Shake (15%): near-miss L3 perturbed by random moves to escape
             # the current local basin. Use seed pair or near-miss L1/L2.
             e = r.choice(triple_misses[:5])
