@@ -233,7 +233,10 @@ def main():
                 time.sleep(30)
                 continue
 
-            entry = rng.choice(pool)
+            # Prefer best pool entries for proof: pick from top-3 (80% of time)
+            pool_sorted = sorted(pool, key=lambda e: e["clashes"])
+            top_k = pool_sorted[:min(3, len(pool_sorted))]
+            entry = rng.choice(top_k) if rng.random() < 0.8 else rng.choice(pool)
             L1 = np.array(entry["L1"], dtype=np.int8).reshape(N, N)
             L2 = np.array(entry["L2"], dtype=np.int8).reshape(N, N)
             hint_L3 = np.array(entry["L3"], dtype=np.int8).reshape(N, N)
