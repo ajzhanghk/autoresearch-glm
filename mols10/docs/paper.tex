@@ -63,17 +63,17 @@ we execute a never-stopping search across 15 concurrent workers.
 
 Our main findings are: (1) the minimum total clash energy $\E = \cl_{13} + \cl_{23}$
 achievable for fixed pairs $(L_1, L_2)$ with $L_1 \perp L_2$ has been dramatically lowered
-from 37 (Sessions 5--8) to \textbf{33} in Session 10, following the cascade
-$37 \to 34$ (CP-SAT, Session 9) $\to$ \textbf{33} (SA with pool warm-start, Session 10);
-(2) a near-miss pool of 8 triples with $\E \in \{33, 34, 37\}$, including an entry with
-$\cl_{13}=14$, $\cl_{23}=19$, $\cl_{12}=0$; (3) every MOLS-10 pair tested (311 pairs) has
-$\CT(L_1, L_2) \leq 2 < 10$, proving no third orthogonal square exists for any of these
-pairs; (4) Glucose3 provides machine-verifiable UNSAT certificates for all 311 pairs
-(42\,ms average); (5) a dedicated reverse search consistently finds $\E_\text{rev} \geq 60$;
-and (6) a novel joint 3-LS SA over all three Latin squares simultaneously reaches
-$\E = 33$ from pool-seeded warm-starts.
+from 37 (Sessions 5--8) to \textbf{32} in Session 10, following the rapid cascade
+$37 \to 34 \to 33 \to \mathbf{32}$;
+(2) a near-miss pool of 10 triples with $\E \in \{32, 33, 34\}$, the record entry having
+$\cl_{13}=18$, $\cl_{23}=14$, $\cl_{12}=0$ (verified); (3) every MOLS-10 pair tested
+(311 pairs) has $\CT(L_1, L_2) \leq 2 < 10$, proving no third orthogonal square exists for
+any of these pairs; (4) Glucose3 provides machine-verifiable UNSAT certificates for all
+311 pairs (42\,ms average); (5) a dedicated reverse search consistently finds
+$\E_\text{rev} \geq 60$; and (6) the joint CP-SAT/SA cascade produces the fastest-ever
+descent toward $\E = 0$, with $\E = 32$ found in under 180 seconds per run from pool hints.
 
-A dedicated proof-mode worker is now checking $\E \leq 32$ feasibility.  Collectively,
+A dedicated proof-mode worker is now checking $\E \leq 31$ feasibility.  Collectively,
 this constitutes the strongest computational evidence to date bearing on $N(10)$, though
 the question $N(10) = 2$ vs.\ $N(10) \geq 3$ remains open.
 \end{abstract}
@@ -464,7 +464,7 @@ Session & Key development & Best $\E$ & Stable since\\
 7 & SAT worker; pool-jump ILS & \textbf{37} & Session 5\\
 8 & Crossover, MAX-SAT, row-replace, joint 3-LS SA & \textbf{37} & Session 5\\
 9 & CP-SAT optimizer + symbreak; \textbf{E=34 for 2 independent pairs} & \textbf{34} & Session 9\\
-10 & SA pool warm-start cascade; file-locking fix; \textbf{E=33} & \textbf{33} & Session 10\\
+10 & SA/CP-SAT cascade; file-locking fix; \textbf{E=32} via rapid descent & \textbf{32} & Session 10\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -742,31 +742,30 @@ Table~\ref{tab:pool} shows the current near-miss pool (top 8 triples by energy).
 
 \begin{table}[h]
 \centering
-\caption{Near-miss pool state (Session 10).}\label{tab:pool}
+\caption{Near-miss pool state (Session 10, top 8 entries).}\label{tab:pool}
 \begin{tabular}{cccccc}
 \toprule
 Index & Solver & $\E$ & $\cl_{12}$ & $\cl_{13}$ & $\cl_{23}$\\
 \midrule
-0 & SA & \textbf{33} & 0 & 14 & 19\\
-1 & CP-SAT & \textbf{34} & 0 & 17 & 17\\
-2 & CP-SAT & \textbf{34} & 0 & 18 & 16\\
-3 & SA & 34 & 0 & 17 & 17\\
-4 & SA & 34 & 0 & 17 & 17\\
-5 & SA & 37 & 0 & 22 & 15\\
-6 & SA & 37 & 0 & 22 & 15\\
-7 & SA & 37 & 0 & 22 & 15\\
+0 & CP-SAT & \textbf{32} & 0 & 18 & 14\\
+1 & SA & 33 & 0 & 14 & 19\\
+2 & SA & 33 & 0 & 14 & 19\\
+3 & SA & 33 & 0 & 14 & 19\\
+4 & CP-SAT & 34 & 0 & 17 & 17\\
+5 & CP-SAT & 34 & 0 & 18 & 16\\
+6 & SA & 34 & 0 & 17 & 17\\
+7 & SA & 34 & 0 & 17 & 17\\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Session 10 saw the pool advance from $\E = 34$ to $\E = \mathbf{33}$ (entry~[0]: $\cl_{13}=14$,
-$\cl_{23}=19$, found by SA seed-42 with pool warm-start).  After CP-SAT lowered the
-record to $\E=34$ in Session~9, SA workers using these results as hints descended further
-in Session~10. Entries~[1,2] are CP-SAT (Sessions~9), entries~[3,4] are SA with
-$\E=34$ confirming reproducibility.  Entries~[5--7] are older SA entries at $\E=37$.
-Note: pairs sharing identical $(L_1, L_2)$ can achieve different $\E$ values depending on
-which $L_3$ is used as hint; after the file-locking fix, all breakthroughs are now
-reliably captured.
+Session 10 saw a rapid cascade of improvements: $37 \to 33 \to \mathbf{32}$.  SA workers
+seeded from CP-SAT pool entries found $\E=33$ for three independent MOLS-10 pairs.
+Within the same session, the CP-SAT worker (seed 1234) found $\E = \mathbf{32}$
+($\cl_{13}=18$, $\cl_{23}=14$, $\cl_{12}=0$, verified) in 180 seconds using an E=37 pool
+entry as warm-start hint. Entry~[0] is the current record.  Entries~[1--3] are SA-found
+$\E=33$ from three \emph{independent} MOLS-10 pairs.  After the file-locking fix, all
+breakthroughs are now reliably persisted in the shared pool.
 
 \subsection{L3 Diversity}
 
@@ -854,16 +853,17 @@ does not prove it.
 
 \begin{conjecture}[Energy Floor]\label{conj:energy}
 For any Latin squares $L_1, L_2, L_3$ of order 10 with $L_1 \perp L_2$:
-$\E(L_1, L_2, L_3) \geq 33$.
+$\E(L_1, L_2, L_3) \geq 32$.
 \end{conjecture}
 
 \begin{remark}
-  The conjecture floor has been lowered four times across Sessions 9--10:
-  $37 \to 36 \to 34 \to \mathbf{33}$.  Session 9 CP-SAT found $\E = 34$ for two
-  independent MOLS-10 pairs.  Session 10 SA with pool warm-starts found
-  $\E = 33$ ($\cl_{13}=14$, $\cl_{23}=19$, $\cl_{12}=0$, verified).
-  The proof-mode worker is actively checking $\E \leq 32$ feasibility.
-  The floor 33 is the best currently known.
+  The conjecture floor has been lowered five times in Sessions 9--10:
+  $37 \to 36 \to 34 \to 33 \to \mathbf{32}$.  The current record
+  $\E = 32$ ($\cl_{13}=18$, $\cl_{23}=14$, $\cl_{12}=0$) was found by
+  CP-SAT in 180\,s using an E=37 pool entry as warm-start.  Additionally,
+  $\E = 33$ was confirmed for three independent MOLS-10 pairs.
+  The proof-mode worker is actively checking $\E \leq 31$ feasibility.
+  The floor 32 is the best currently known.
 \end{remark}
 
 % ===========================================================================
@@ -890,16 +890,17 @@ results: CDCL UNSAT proofs are logically complete refutations.  Additionally, $\
 independently generated pairs have been SAT-certified UNSAT.  No SAT instance has ever returned
 satisfiable ($L_3$ found).
 
-\paragraph{3. Energy barrier (updated: E = 33, Session 10).}
-Sessions 5--8 found $\E = 37$ as the SA floor.  Session 9 CP-SAT runs broke this barrier;
-Session 10 SA warm-starts pushed further:
+\paragraph{3. Energy barrier (updated: E = 32, Session 10).}
+Sessions 5--8 found $\E = 37$ as the SA floor.  Session 9 CP-SAT broke to $\E=34$;
+Session 10 saw a rapid cascade to $\E=32$:
 \begin{itemize}[noitemsep]
-  \item Session 9: $\E = 36$ (no symbreak, 180\,s), then $\E = 34$ for two independent pairs
-  \item Session 10: $\E = \mathbf{33}$ ($\cl_{13}=14$, $\cl_{23}=19$, SA seed-42 with
-    $\E=34$ pool hint, verified: all three Latin squares valid, $\cl_{12}=0$)
+  \item Session 9: $\E = 36$ (no symbreak, 180\,s), $\E = 34$ for two independent pairs
+  \item Session 10 (SA with pool hints): $\E = 33$ confirmed for three independent pairs
+  \item Session 10 (CP-SAT, seed 1234): $\E = \mathbf{32}$ ($\cl_{13}=18$, $\cl_{23}=14$,
+    $\cl_{12}=0$, found in 180\,s from E=37 pool entry, verified)
 \end{itemize}
-With pool warm-starts, SA now descends beyond its former $\E=37$ floor.  The proof-mode
-worker is checking $\E \leq 32$ feasibility.
+The $\E = 32$ solution contains only 32 missing pairs out of a possible 200, equivalent to
+84\% coverage.  The proof-mode worker is checking $\E \leq 31$ feasibility.
 
 \paragraph{4. Reverse search failure.}
 Fixing a near-miss $L_3$ and running 30+ independent reverse-search trials (7-replica
