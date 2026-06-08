@@ -61,7 +61,7 @@ def save_found(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray, seed: int):
     FOUND_FILE.write_text(json.dumps(result, indent=2))
 
 
-POOL_LOCK = RESULTS_DIR / "pool.lock"
+POOL_LOCK = RESULTS_DIR / "triple_miss.lock"
 
 
 def save_to_pool(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray,
@@ -116,6 +116,7 @@ def build_and_solve(L1: np.ndarray, L2: np.ndarray, n: int = N,
                     timeout_s: float = 120.0,
                     num_workers: int = 4,
                     symbreak: bool = True,
+                    random_seed: int | None = None,
                     ) -> tuple[int, np.ndarray | None, bool]:
     """
     CP-SAT model for min cl13 + cl23 with fixed L1, L2 (cl12=0).
@@ -198,6 +199,8 @@ def build_and_solve(L1: np.ndarray, L2: np.ndarray, n: int = N,
     solver.parameters.max_time_in_seconds = timeout_s
     solver.parameters.num_search_workers = num_workers
     solver.parameters.log_search_progress = False
+    if hasattr(solver.parameters, 'random_seed') and random_seed is not None:
+        solver.parameters.random_seed = random_seed
 
     status = solver.solve(model)
     timed_out = (status == cp_model.UNKNOWN)
@@ -227,6 +230,8 @@ def main():
                         help="CP-SAT parallel search workers")
     parser.add_argument("--save-threshold", type=int, default=37,
                         help="Save solutions with E <= this value to pool")
+    parser.add_argument("--solver-seed", type=int, default=None,
+                        help="Random seed for CP-SAT solver (for reproducibility)")
     args = parser.parse_args()
 
     rng = random.Random(args.seed)
@@ -261,7 +266,8 @@ def main():
 
             t0 = time.time()
             result = build_and_solve(L1, L2, N, hint_L3=hint_L3,
-                                     timeout_s=args.timeout, num_workers=args.workers)
+                                     timeout_s=args.timeout, num_workers=args.workers,
+                                     random_seed=args.solver_seed)
             elapsed = time.time() - t0
             best_obj, L3_sol, timed_out, is_optimal = result
 

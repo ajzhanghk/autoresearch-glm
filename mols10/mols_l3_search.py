@@ -1554,14 +1554,19 @@ def _load_near_misses() -> list[dict]:
         return []
 
 
+_TRIPLE_MISS_LOCK = RESULTS_DIR / "triple_miss.lock"
+
+
 def _save_triple_miss(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray,
                       clashes: int) -> None:
     """Save a low-clash (L1,L2,L3) triple state for sa_triple warm-starts.
 
-    Maintains a top-5 list with pair diversity: at most 2 entries from the
+    Maintains a top-8 list with pair diversity: at most 2 entries from the
     same pair (identified by L1 fingerprint), so the cascade explores
     multiple basins rather than collapsing to a single pair's local minimum.
+    Uses file locking to prevent concurrent-write race conditions.
     """
+    import fcntl
     n = 10
     # Guard against invalid Latin squares from buggy initialization modes
     vals = list(range(n))
@@ -1577,20 +1582,20 @@ def _save_triple_miss(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray,
         "ts": datetime.now().isoformat(timespec="seconds"),
         "L1": L1.tolist(), "L2": L2.tolist(), "L3": L3.tolist(),
     }
+    lock_fd = open(_TRIPLE_MISS_LOCK, "w")
     try:
-        # Guard against JSON corruption from concurrent writes by multiple workers
+        fcntl.flock(lock_fd, fcntl.LOCK_EX)
         try:
             data = json.loads(TRIPLE_MISS_FILE.read_text()) if TRIPLE_MISS_FILE.exists() else []
         except (json.JSONDecodeError, OSError):
-            data = []   # recover gracefully; we'll add the new entry below
+            data = []
         data.append(entry)
         data.sort(key=lambda e: e["clashes"])
         # Pair-diversity + L3-diversity cap enforced post-sort:
         # (a) at most 2 entries per L1 pair-fingerprint
         # (b) no two entries with identical L3 matrices (Hamming distance > 0)
-        # This prevents identical L3s from dominating the warm-start pool.
         seen_pairs: dict = {}
-        seen_l3: list = []   # list of L3 arrays already accepted
+        seen_l3: list = []
         diverse: list = []
         for e in data:
             raw_k = e.get("L1_key")
@@ -1598,19 +1603,21 @@ def _save_triple_miss(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray,
             cnt = seen_pairs.get(k, 0)
             if cnt >= 2:
                 continue
-            # Check L3 uniqueness: reject if this L3 is identical to an existing one
             l3_arr = np.array(e["L3"], dtype=np.int8)
             if any(np.array_equal(l3_arr, prev) for prev in seen_l3):
                 continue
             diverse.append(e)
             seen_pairs[k] = cnt + 1
             seen_l3.append(l3_arr)
-            if len(diverse) == 8:
+            if len(diverse) == 16:
                 break
         TRIPLE_MISS_FILE.write_text(json.dumps(diverse, indent=2))
         print(f"  ★ Triple near-miss saved: clashes={clashes}  cl12={cl12}")
     except Exception:
         pass
+    finally:
+        fcntl.flock(lock_fd, fcntl.LOCK_UN)
+        lock_fd.close()
 
 
 def _load_triple_misses() -> list[dict]:

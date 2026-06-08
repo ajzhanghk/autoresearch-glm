@@ -33,7 +33,7 @@ RESULTS_DIR = SCRIPT_DIR / "results"
 TRIPLE_MISS_FILE = RESULTS_DIR / "near_miss_triple.json"
 FOUND_FILE       = RESULTS_DIR / "MOLS10_FOUND.json"
 LOG_FILE         = RESULTS_DIR / "l3_cpsat_proof.log"
-POOL_LOCK        = RESULTS_DIR / "pool.lock"
+POOL_LOCK        = RESULTS_DIR / "triple_miss.lock"
 N = 10
 
 
