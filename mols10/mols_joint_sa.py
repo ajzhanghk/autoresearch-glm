@@ -27,6 +27,7 @@ import numpy as np
 SCRIPT_DIR = Path(__file__).parent
 RESULTS_DIR = SCRIPT_DIR / "results"
 TRIPLE_MISS_FILE = RESULTS_DIR / "near_miss_triple.json"
+PROMISING_FILE   = RESULTS_DIR / "promising_pairs.json"
 FOUND_FILE       = RESULTS_DIR / "MOLS10_FOUND.json"
 LOG_FILE         = RESULTS_DIR / "l3_joint_sa.log"
 N = 10
@@ -61,10 +62,54 @@ def load_pool() -> list[dict]:
         return []
 
 
+def load_promising() -> list[dict]:
+    try:
+        return json.loads(PROMISING_FILE.read_text()) if PROMISING_FILE.exists() else []
+    except (json.JSONDecodeError, OSError):
+        return []
+
+
 def pool_entry_to_matrices(entry: dict, n: int = N) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     def to_arr(key):
         return np.array(entry[key], dtype=np.int8).reshape(n, n)
     return to_arr("L1"), to_arr("L2"), to_arr("L3")
+
+
+def random_ls(n: int, rng: random.Random) -> np.ndarray:
+    """Generate a random Latin square of order n."""
+    L = np.zeros((n, n), dtype=np.int8)
+    for i in range(n):
+        row = list(range(n))
+        for attempt in range(200):
+            rng.shuffle(row)
+            if all(row[j] not in {int(L[k, j]) for k in range(i)} for j in range(n)):
+                L[i] = row
+                break
+        else:
+            # Fallback: use cyclic shift
+            L[i] = [(i + j) % n for j in range(n)]
+    return L
+
+
+def random_start_triple(promising: list[dict], n: int, rng: random.Random,
+                        ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Build a starting triple from a promising pair + random L3."""
+    if not promising:
+        L1 = random_ls(n, rng)
+        L2 = random_ls(n, rng)
+        L3 = random_ls(n, rng)
+        return L1, L2, L3
+    entry = rng.choice(promising)
+    L1 = np.array(entry["L1"], dtype=np.int8).reshape(n, n)
+    L2 = np.array(entry["L2"], dtype=np.int8).reshape(n, n)
+    L3 = random_ls(n, rng)
+    # Apply random permutations to diversify
+    perm_r = list(range(n)); rng.shuffle(perm_r)
+    perm_c = list(range(n)); rng.shuffle(perm_c)
+    L1 = L1[perm_r, :][:, perm_c]
+    L2 = L2[perm_r, :][:, perm_c]
+    L3 = L3[perm_r, :][:, perm_c]
+    return L1, L2, L3
 
 
 def save_found(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray, seed: int):
@@ -126,6 +171,22 @@ def random_valid_row(L: np.ndarray, row_idx: int, n: int, rng: random.Random) ->
     return new_row
 
 
+def random_valid_col(L: np.ndarray, col_idx: int, n: int, rng: random.Random) -> np.ndarray | None:
+    """SDR-based random replacement for one column of L."""
+    available = []
+    for i in range(n):
+        used = {int(L[i, k]) for k in range(n) if k != col_idx}
+        available.append([s for s in range(n) if s not in used])
+    rows = list(range(n)); rng.shuffle(rows)
+    new_col = np.zeros(n, dtype=np.int8)
+    used_syms: set[int] = set()
+    for i in rows:
+        choices = [s for s in available[i] if s not in used_syms]
+        if not choices: return None
+        s = rng.choice(choices); new_col[i] = s; used_syms.add(s)
+    return new_col
+
+
 # ---------------------------------------------------------------------------
 # Joint SA over (L1, L2, L3)
 # ---------------------------------------------------------------------------
@@ -154,10 +215,11 @@ def joint_sa(L1_init: np.ndarray, L2_init: np.ndarray, L3_init: np.ndarray,
         (0, "row_swap"), (0, "col_swap"), (0, "relabel"), (0, "intercalate"),
         (1, "row_swap"), (1, "col_swap"), (1, "relabel"), (1, "intercalate"),
         (2, "row_swap"), (2, "col_swap"), (2, "relabel"), (2, "intercalate"),
-        (2, "row_replace"),  # SDR-based large jump, only for L3
+        (2, "row_replace"),  # SDR-based large row jump
+        (2, "col_replace"),  # SDR-based large col jump
     ]
     # Bias toward L3 moves (easier search axis) and larger moves
-    WEIGHTS = [2, 2, 3, 2,  2, 2, 3, 2,  3, 3, 4, 3, 5]
+    WEIGHTS = [2, 2, 3, 2,  2, 2, 3, 2,  3, 3, 4, 3, 5, 5]
 
     elapsed = 0.0
     while elapsed < budget_s:
@@ -187,11 +249,17 @@ def joint_sa(L1_init: np.ndarray, L2_init: np.ndarray, L3_init: np.ndarray,
                 continue
         elif mv == "row_replace":
             ri = rng.randint(0, n - 1)
-            Ln = apply_row_swap(LS, ri, ri)  # placeholder
             nr = random_valid_row(L3, ri, n, rng)
             if nr is None:
                 continue
             Ln = L3.copy(); Ln[ri] = nr
+
+        elif mv == "col_replace":
+            ci = rng.randint(0, n - 1)
+            nc = random_valid_col(L3, ci, n, rng)
+            if nc is None:
+                continue
+            Ln = L3.copy(); Ln[:, ci] = nc
 
         if Ln is None:
             continue
@@ -290,29 +358,47 @@ def main():
 
         trial = 0
         session_best = 999
+        promising = load_promising()
 
         while True:
             trial += 1
 
             pool = load_pool()
-            if not pool:
-                log(f"trial={trial:4d}  no pool entries, sleeping 30s", lfp)
-                time.sleep(30)
-                continue
 
-            entry = rng.choice(pool)
-            L1_init, L2_init, L3_init = pool_entry_to_matrices(entry, N)
+            # Strategy selection:
+            # - Trial 1, every 4th: random start from promising_pairs (new territory)
+            # - Every 3rd: heavy perturbation of pool entry
+            # - Others: pool entry with mild perturbation
+            t_mod = trial % 4
 
-            # ILS-style: every 3rd trial perturb L1/L2 to explore new territory
-            if trial % 3 == 0 and trial > 1:
+            if t_mod == 1 or not pool:
+                # Random start: pick from promising pairs with random L3
+                L1_init, L2_init, L3_init = random_start_triple(promising, N, rng)
+                strategy_name = "random_start"
+                T_init = 25.0  # Higher T for random starts
+            elif t_mod == 3 and pool:
+                # Heavy perturbation of pool entry
+                entry = rng.choice(pool)
+                L1_init, L2_init, L3_init = pool_entry_to_matrices(entry, N)
                 L1_init, L2_init, L3_init = ils_perturb(
-                    L1_init, L2_init, L3_init, N, rng, strength=rng.randint(2, 6))
+                    L1_init, L2_init, L3_init, N, rng, strength=rng.randint(4, 10))
+                strategy_name = "heavy_perturb"
+                T_init = 20.0
+            else:
+                # Mild perturbation of pool entry
+                entry = rng.choice(pool)
+                L1_init, L2_init, L3_init = pool_entry_to_matrices(entry, N)
+                L1_init, L2_init, L3_init = ils_perturb(
+                    L1_init, L2_init, L3_init, N, rng, strength=rng.randint(1, 3))
+                strategy_name = "pool_start"
+                T_init = 15.0
 
             init_E = (count_clashes(L1_init, L2_init) + count_clashes(L1_init, L3_init)
                       + count_clashes(L2_init, L3_init))
 
-            log(f"trial={trial:4d}  strategy=joint_sa  init_E={init_E}  "
-                f"budget={args.budget}s  time={datetime.now().strftime('%H:%M:%S')}", lfp)
+            log(f"trial={trial:4d}  strategy={strategy_name}  init_E={init_E}  "
+                f"T_init={T_init}  budget={args.budget}s  "
+                f"time={datetime.now().strftime('%H:%M:%S')}", lfp)
 
             def log_imp(msg): log(msg, lfp)
 
@@ -320,7 +406,7 @@ def main():
             L1, L2, L3, best_E = joint_sa(
                 L1_init, L2_init, L3_init, N,
                 budget_s=args.budget, rng=rng,
-                T_init=15.0, T_min=0.01, log_fn=log_imp,
+                T_init=T_init, T_min=0.01, log_fn=log_imp,
             )
             elapsed = time.time() - t0
 

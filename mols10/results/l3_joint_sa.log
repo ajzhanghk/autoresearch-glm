@@ -37,3 +37,94 @@
 [07:45:57] ============================================================
 [07:45:57] trial=   1  strategy=joint_sa  init_E=37  budget=180.0s  time=07:45:57
 [07:45:57] trial=   1  strategy=joint_sa  init_E=37  budget=180.0s  time=07:45:57
+[07:48:57]   steps=5536952 (30761/s)
+[07:48:57]   steps=5536952 (30761/s)
+[07:48:57]   done: best_E=37  cl12=0  cl13=22  cl23=15  session_best=37  elapsed=180.0s
+[07:48:57]   done: best_E=37  cl12=0  cl13=22  cl23=15  session_best=37  elapsed=180.0s
+[07:48:57] trial=   2  strategy=joint_sa  init_E=37  budget=180.0s  time=07:48:57
+[07:48:57] trial=   2  strategy=joint_sa  init_E=37  budget=180.0s  time=07:48:57
+[07:48:57]   steps=5785151 (32140/s)
+[07:48:57]   steps=5785151 (32140/s)
+[07:48:57]   done: best_E=37  cl12=0  cl13=22  cl23=15  session_best=37  elapsed=180.0s
+[07:48:57]   done: best_E=37  cl12=0  cl13=22  cl23=15  session_best=37  elapsed=180.0s
+[07:48:57] trial=   2  strategy=joint_sa  init_E=37  budget=180.0s  time=07:48:57
+[07:48:57] trial=   2  strategy=joint_sa  init_E=37  budget=180.0s  time=07:48:57
+[07:51:48] ============================================================
+[07:51:48] Joint 3-LS SA — seed=9999  budget_per_trial=10.0s
+[07:51:48] ============================================================
+[07:51:48] trial=   1  strategy=random_start  init_E=79  T_init=25.0  budget=10.0s  time=07:51:48
+[07:51:48]   new_best E=74 cl12=0 cl13=36 cl23=38 t=0.0s T=24.996
+[07:51:53]   new_best E=72 cl12=25 cl13=23 cl23=24 t=5.2s T=0.428
+[07:51:54]   new_best E=69 cl12=25 cl13=20 cl23=24 t=5.6s T=0.320
+[07:51:54]   new_best E=68 cl12=23 cl13=20 cl23=25 t=6.3s T=0.176
+[07:51:55]   new_best E=67 cl12=23 cl13=20 cl23=24 t=6.6s T=0.140
+[07:51:57]   new_best E=65 cl12=22 cl13=19 cl23=24 t=8.6s T=0.031
+[07:51:57]   steps=5618821 (31216/s)
+[07:51:57]   steps=5618821 (31216/s)
+[07:51:57]   done: best_E=37  cl12=0  cl13=22  cl23=15  session_best=37  elapsed=180.0s
+[07:51:57]   done: best_E=37  cl12=0  cl13=22  cl23=15  session_best=37  elapsed=180.0s
+[07:51:57] trial=   3  strategy=joint_sa  init_E=97  budget=180.0s  time=07:51:57
+[07:51:57] trial=   3  strategy=joint_sa  init_E=97  budget=180.0s  time=07:51:57
+[07:51:57]   new_best E=92 cl12=31 cl13=31 cl23=30 t=0.0s T=14.997
+[07:51:57]   new_best E=92 cl12=31 cl13=31 cl23=30 t=0.0s T=14.997
+[07:51:57]   new_best E=64 cl12=22 cl13=19 cl23=23 t=8.7s T=0.028
+[07:51:57]   new_best E=90 cl12=30 cl13=27 cl23=33 t=0.1s T=14.935
+[07:51:57]   new_best E=90 cl12=30 cl13=27 cl23=33 t=0.1s T=14.935
+[07:51:57]   new_best E=87 cl12=28 cl13=33 cl23=26 t=0.6s T=14.644
+[07:51:57]   new_best E=87 cl12=28 cl13=33 cl23=26 t=0.6s T=14.644
+[07:51:57]   steps=5473743 (30410/s)
+[07:51:57]   steps=5473743 (30410/s)
+[07:51:57]   done: best_E=37  cl12=0  cl13=22  cl23=15  session_best=37  elapsed=180.0s
+[07:51:57]   done: best_E=37  cl12=0  cl13=22  cl23=15  session_best=37  elapsed=180.0s
+[07:51:57] trial=   3  strategy=joint_sa  init_E=95  budget=180.0s  time=07:51:57
+[07:51:57] trial=   3  strategy=joint_sa  init_E=95  budget=180.0s  time=07:51:57
+[07:51:57]   new_best E=94 cl12=28 cl13=32 cl23=34 t=0.0s T=14.987
+[07:51:57]   new_best E=94 cl12=28 cl13=32 cl23=34 t=0.0s T=14.987
+[07:51:57]   new_best E=84 cl12=28 cl13=27 cl23=29 t=0.1s T=14.947
+[07:51:57]   new_best E=84 cl12=28 cl13=27 cl23=29 t=0.1s T=14.947
+[07:51:58]   steps=276156 (27616/s)
+[07:51:58]   done: best_E=64  cl12=22  cl13=19  cl23=23  session_best=64  elapsed=10.0s
+[07:51:58] trial=   2  strategy=pool_start  init_E=37  T_init=15.0  budget=10.0s  time=07:51:58
+[07:52:00]   new_best E=86 cl12=29 cl13=30 cl23=27 t=3.7s T=12.907
+[07:52:00]   new_best E=86 cl12=29 cl13=30 cl23=27 t=3.7s T=12.907
+[07:52:02]   new_best E=85 cl12=26 cl13=33 cl23=26 t=5.3s T=12.114
+[07:52:02]   new_best E=85 cl12=26 cl13=33 cl23=26 t=5.3s T=12.114
+[07:52:06]   new_best E=83 cl12=28 cl13=28 cl23=27 t=8.6s T=10.583
+[07:52:06]   new_best E=83 cl12=28 cl13=28 cl23=27 t=8.6s T=10.583
+[07:52:08]   steps=300797 (30080/s)
+[07:52:08]   done: best_E=37  cl12=0  cl13=22  cl23=15  session_best=37  elapsed=10.0s
+[07:52:08] trial=   3  strategy=heavy_perturb  init_E=101  T_init=20.0  budget=10.0s  time=07:52:08
+[07:52:08]   new_best E=95 cl12=36 cl13=27 cl23=32 t=0.0s T=19.999
+[07:52:08]   new_best E=94 cl12=32 cl13=25 cl23=37 t=0.0s T=19.933
+[07:52:08]   new_best E=90 cl12=31 cl13=29 cl23=30 t=0.0s T=19.843
+[07:52:08]   new_best E=89 cl12=30 cl13=33 cl23=26 t=0.1s T=19.119
+[07:52:08]   new_best E=85 cl12=30 cl13=28 cl23=27 t=0.1s T=18.281
+[07:52:08]   new_best E=82 cl12=29 cl13=21 cl23=32 t=10.9s T=9.623
+[07:52:08]   new_best E=82 cl12=29 cl13=21 cl23=32 t=10.9s T=9.623
+[07:52:10]   new_best E=83 cl12=29 cl13=30 cl23=24 t=1.9s T=4.777
+[07:52:11]   new_best E=81 cl12=23 cl13=29 cl23=29 t=2.6s T=2.767
+[07:52:12]   new_best E=79 cl12=25 cl13=27 cl23=27 t=3.6s T=1.328
+[07:52:15]   new_best E=84 cl12=32 cl13=24 cl23=28 t=18.2s T=7.169
+[07:52:15]   new_best E=84 cl12=32 cl13=24 cl23=28 t=18.2s T=7.169
+[07:52:24]   new_best E=82 cl12=26 cl13=31 cl23=25 t=27.4s T=4.936
+[07:52:24]   new_best E=82 cl12=26 cl13=31 cl23=25 t=27.4s T=4.936
+[07:52:24]   new_best E=80 cl12=26 cl13=27 cl23=27 t=27.4s T=4.935
+[07:52:24]   new_best E=80 cl12=26 cl13=27 cl23=27 t=27.4s T=4.935
+[07:52:30] ============================================================
+[07:52:30] ============================================================
+[07:52:30] Joint 3-LS SA — seed=2023  budget_per_trial=180.0s
+[07:52:30] Joint 3-LS SA — seed=2023  budget_per_trial=180.0s
+[07:52:30] ============================================================
+[07:52:30] ============================================================
+[07:52:30] trial=   1  strategy=random_start  init_E=79  T_init=25.0  budget=180.0s  time=07:52:30
+[07:52:30] trial=   1  strategy=random_start  init_E=79  T_init=25.0  budget=180.0s  time=07:52:30
+[07:52:30]   new_best E=78 cl12=0 cl13=39 cl23=39 t=0.0s T=25.000
+[07:52:30]   new_best E=78 cl12=0 cl13=39 cl23=39 t=0.0s T=25.000
+[07:52:30] ============================================================
+[07:52:30] ============================================================
+[07:52:30] Joint 3-LS SA — seed=3141  budget_per_trial=180.0s
+[07:52:30] Joint 3-LS SA — seed=3141  budget_per_trial=180.0s
+[07:52:30] ============================================================
+[07:52:30] ============================================================
+[07:52:30] trial=   1  strategy=random_start  init_E=78  T_init=25.0  budget=180.0s  time=07:52:30
+[07:52:30] trial=   1  strategy=random_start  init_E=78  T_init=25.0  budget=180.0s  time=07:52:30
