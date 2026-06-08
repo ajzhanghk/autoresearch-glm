@@ -80,9 +80,11 @@ def save_to_pool(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray,
         fcntl.flock(lock_fd, fcntl.LOCK_EX)
         pool = json.loads(TRIPLE_MISS_FILE.read_text()) if TRIPLE_MISS_FILE.exists() else []
         best_in_pool = min((p["clashes"] for p in pool), default=999)
-        if E > best_in_pool:
-            return False  # Don't add worse entries
+        if E > best_in_pool + 2:
+            return False  # Don't add entries much worse than best
         pool.append(entry)
+        pool.sort(key=lambda e: e["clashes"])
+        pool = pool[:16]  # keep top 16
         TRIPLE_MISS_FILE.write_text(json.dumps(pool, indent=2))
         return True
     finally:
@@ -256,7 +258,10 @@ def main():
                 time.sleep(30)
                 continue
 
-            entry = rng.choice(pool)
+            # Prefer better entries: 70% of time pick from top-3, 30% random
+            pool_sorted = sorted(pool, key=lambda e: e["clashes"])
+            top_k = pool_sorted[:min(3, len(pool_sorted))]
+            entry = rng.choice(top_k) if rng.random() < 0.7 else rng.choice(pool)
             L1 = np.array(entry["L1"], dtype=np.int8).reshape(N, N)
             L2 = np.array(entry["L2"], dtype=np.int8).reshape(N, N)
             hint_L3 = np.array(entry["L3"], dtype=np.int8).reshape(N, N)
