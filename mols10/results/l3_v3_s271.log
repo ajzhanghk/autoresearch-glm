@@ -3230,3 +3230,40 @@ trial=  10  strategy=sa_triple_pt  budget=54s  best_ct_ever=2
   ★ Triple near-miss saved: clashes=50  cl12=0
   ★ Triple near-miss saved: clashes=49  cl12=0
   ★ Triple near-miss saved: clashes=48  cl12=0
+  sa_triple_pt: best_clashes=48  sa_frontier=37  swaps=376  ils_kicks=5  best_ct_seen=0  elapsed=54.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=10  elapsed=0.16h  pool_size=316  best_ct_ever=2  sa3_best_clashes=37  N(10)≥3 not found yet
+
+trial=  11  strategy=sa_triple_pt  budget=54s  best_ct_ever=2
+  ★ Triple near-miss saved: clashes=52  cl12=0
+  ★ Triple near-miss saved: clashes=51  cl12=0
+  sa_triple_pt: best_clashes=51  sa_frontier=37  swaps=386  ils_kicks=6  best_ct_seen=0  elapsed=54.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=11  elapsed=0.18h  pool_size=316  best_ct_ever=2  sa3_best_clashes=37  N(10)≥3 not found yet
+
+trial=  12  strategy=sa_triple_pt  budget=54s  best_ct_ever=2
+  sa_triple_pt: best_clashes=61  sa_frontier=37  swaps=366  ils_kicks=6  best_ct_seen=0  elapsed=54.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+  [checkpoint] Saved 311 promising pairs to disk (best ct=2)
+
+  Progress: trials=12  elapsed=0.20h  pool_size=316  best_ct_ever=2  sa3_best_clashes=37  N(10)≥3 not found yet
+
+trial=  13  strategy=sa_triple_pt  budget=54s  best_ct_ever=2
+  ★ Triple near-miss saved: clashes=52  cl12=0
+  ★ Triple near-miss saved: clashes=51  cl12=0
+  ★ Triple near-miss saved: clashes=49  cl12=0
+  ★ Triple near-miss saved: clashes=44  cl12=0
+  sa_triple_pt: best_clashes=44  sa_frontier=37  swaps=327  ils_kicks=4  best_ct_seen=0  elapsed=54.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=13  elapsed=0.22h  pool_size=316  best_ct_ever=2  sa3_best_clashes=37  N(10)≥3 not found yet
+
+trial=  14  strategy=sa_triple_pt  budget=54s  best_ct_ever=2
+  ★ Triple near-miss saved: clashes=52  cl12=0
+  ★ Triple near-miss saved: clashes=49  cl12=0
