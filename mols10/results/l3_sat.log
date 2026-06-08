@@ -77,3 +77,28 @@ seed=11111  sat_timeout=20.0s
   trial=  860  no_mols=271  unsat=589  timeout=0  time=22:34:46
   trial=  870  no_mols=274  unsat=596  timeout=0  time=22:34:55
   trial=  880  sat=0  unsat=604  timeout=0  no_mols=276  time=22:35:02
+========================================================
+MOLS SAT Worker — complete L3 search via Glucose3
+seed=11111  sat_timeout=20.0s
+========================================================
+
+[Phase 1] Testing 311 existing promising pairs...
+  [  0] UNSAT  elapsed=0.15s  (so far: unsat=1)
+  [ 50] UNSAT  elapsed=0.14s  (so far: unsat=51)
+  [100] UNSAT  elapsed=0.10s  (so far: unsat=101)
+  [150] UNSAT  elapsed=0.10s  (so far: unsat=151)
+  [200] UNSAT  elapsed=0.16s  (so far: unsat=201)
+  [250] UNSAT  elapsed=0.09s  (so far: unsat=251)
+  [300] UNSAT  elapsed=0.10s  (so far: unsat=301)
+
+[Phase 1 done] pairs=311  SAT=0  UNSAT=311  TIMEOUT=0
+
+[Phase 2] Generating new MOLS pairs + SAT search...
+  trial=   20  sat=0  unsat=11  timeout=0  no_mols=9  time=02:36:42
+  trial=   40  no_mols=13  unsat=27  timeout=0  time=02:37:29
+  trial=   50  no_mols=16  unsat=34  timeout=0  time=02:37:59
+  trial=   60  no_mols=23  unsat=37  timeout=0  time=02:39:11
+  trial=   80  no_mols=30  unsat=50  timeout=0  time=02:40:42
+  trial=  100  sat=0  unsat=64  timeout=0  no_mols=36  time=02:41:51
+  trial=  110  no_mols=38  unsat=72  timeout=0  time=02:42:15
+  trial=  120  sat=0  unsat=79  timeout=0  no_mols=41  time=02:42:43
