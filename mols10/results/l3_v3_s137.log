@@ -3184,3 +3184,10 @@ trial=   9  strategy=multi_decomp  budget=42s  n_attempts=10  best_ct_ever=2
   multi_decomp: best_ct=2  pairs_tried=4  elapsed=40.0s
 
   ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=9  elapsed=0.15h  pool_size=316  best_ct_ever=2  sa3_best_clashes=37  N(10)≥3 not found yet
+
+trial=  10  strategy=sa_triple_pt  budget=54s  best_ct_ever=2
+  ★ Triple near-miss saved: clashes=52  cl12=0
+  ★ Triple near-miss saved: clashes=51  cl12=0
+  ★ Triple near-miss saved: clashes=50  cl12=0
