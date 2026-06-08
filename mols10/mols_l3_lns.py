@@ -154,6 +154,33 @@ def lns_solve(L1, L2, L3_hint, free_rows, timeout_s, num_workers, rseed):
     return None
 
 
+def perturb_L3(L3, rng, n_moves):
+    """Apply n_moves random LS-preserving moves to create a diverse variant."""
+    L = L3.copy()
+    for _ in range(n_moves):
+        op = rng.randint(0, 3)
+        if op == 0:  # row swap
+            r1, r2 = rng.sample(range(N), 2)
+            L[r1], L[r2] = L[r2].copy(), L[r1].copy()
+        elif op == 1:  # col swap
+            c1, c2 = rng.sample(range(N), 2)
+            L[:, c1], L[:, c2] = L[:, c2].copy(), L[:, c1].copy()
+        elif op == 2:  # symbol relabel
+            s1, s2 = rng.sample(range(N), 2)
+            tmp = L.copy()
+            L[tmp == s1] = s2
+            L[tmp == s2] = s1
+        else:  # intercalate flip
+            r1, r2 = rng.sample(range(N), 2)
+            c1, c2 = rng.sample(range(N), 2)
+            v11, v12 = int(L[r1, c1]), int(L[r1, c2])
+            v21, v22 = int(L[r2, c1]), int(L[r2, c2])
+            if v11 == v22 and v12 == v21:
+                L[r1, c1], L[r1, c2] = v21, v22
+                L[r2, c1], L[r2, c2] = v11, v12
+    return L
+
+
 def main():
     rng = random.Random(args.seed)
     log("=" * 60)
@@ -187,9 +214,14 @@ def main():
         free_rows = sorted(rng.sample(range(N), args.free_rows))
         rseed = rng.randint(0, 2 ** 31)
 
-        log(f"trial={trial} best={session_best} free={free_rows}")
+        # Perturb the hint to diversify the fixed-row region
+        # Apply 5-30 random moves to get a different "basis" for fixed rows
+        n_perturb = rng.randint(5, 30)
+        perturbed_hint = perturb_L3(hint, rng, n_perturb)
+
+        log(f"trial={trial} best={session_best} free={free_rows} perturb={n_perturb}")
         t0 = time.time()
-        L3_sol = lns_solve(L1, L2, hint, free_rows, args.timeout, args.workers, rseed)
+        L3_sol = lns_solve(L1, L2, perturbed_hint, free_rows, args.timeout, args.workers, rseed)
         elapsed = time.time() - t0
 
         if L3_sol is not None:

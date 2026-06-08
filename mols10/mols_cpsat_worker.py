@@ -144,52 +144,79 @@ def build_and_solve(L1: np.ndarray, L2: np.ndarray, n: int = N,
         for j in range(n):
             model.add(L3v[0][j] == j)
 
-    # Warm start from near-miss hint (relabeled to canonical form)
+    # Precompute: for each symbol a, which column in each row contains a
+    col_of_1 = build_col_index(L1, n)  # col_of_1[a][i] = j with L1[i,j]=a
+    col_of_2 = build_col_index(L2, n)  # col_of_2[a][i] = j with L2[i,j]=a
+
+    # Warm start: relabel hint to canonical form and precompute derived values
+    hint_canon = None
     if hint_L3 is not None:
         hint_canon = relabel_L3_canonical(hint_L3, n)
         for i in range(n):
             for j in range(n):
                 model.add_hint(L3v[i][j], int(hint_canon[i, j]))
 
-    # Precompute: for each symbol a, which column in each row contains a
-    col_of_1 = build_col_index(L1, n)  # col_of_1[a][i] = j with L1[i,j]=a
-    col_of_2 = build_col_index(L2, n)  # col_of_2[a][i] = j with L2[i,j]=a
-
     # Coverage variables and constraints (efficient: only n cells per pair)
     covered13 = []  # one bool per (a,b): is pair (a,b) in L1⊕L3?
     covered23 = []
+    # Track indicator lists for setting hints on derived booleans
+    all_ind13: list = []  # list of (indicator_var, hint_value) pairs
+    all_ind23: list = []
+    all_cov13: list = []  # list of (cov_var, hint_value) pairs
+    all_cov23: list = []
 
     for a in range(n):
         for b in range(n):
             # L1⊕L3 pair (a,b): exists row i with L3[i, col_of_1[a,i]] = b
             cov = model.new_bool_var(f"c13_{a}_{b}")
             indicators = []
+            any_covered = False
             for i in range(n):
                 j = int(col_of_1[a, i])
                 ind = model.new_bool_var(f"i13_{a}_{b}_{i}")
                 model.add(L3v[i][j] == b).only_enforce_if(ind)
                 model.add(L3v[i][j] != b).only_enforce_if(ind.negated())
                 indicators.append(ind)
+                if hint_canon is not None:
+                    ind_val = 1 if int(hint_canon[i, j]) == b else 0
+                    all_ind13.append((ind, ind_val))
+                    if ind_val: any_covered = True
             # cov = OR(indicators)
             model.add_bool_or(indicators).only_enforce_if(cov)
             model.add_bool_and([x.negated() for x in indicators]).only_enforce_if(
                 cov.negated())
             covered13.append(cov)
+            if hint_canon is not None:
+                all_cov13.append((cov, 1 if any_covered else 0))
 
     for a in range(n):
         for b in range(n):
             cov = model.new_bool_var(f"c23_{a}_{b}")
             indicators = []
+            any_covered = False
             for i in range(n):
                 j = int(col_of_2[a, i])
                 ind = model.new_bool_var(f"i23_{a}_{b}_{i}")
                 model.add(L3v[i][j] == b).only_enforce_if(ind)
                 model.add(L3v[i][j] != b).only_enforce_if(ind.negated())
                 indicators.append(ind)
+                if hint_canon is not None:
+                    ind_val = 1 if int(hint_canon[i, j]) == b else 0
+                    all_ind23.append((ind, ind_val))
+                    if ind_val: any_covered = True
             model.add_bool_or(indicators).only_enforce_if(cov)
             model.add_bool_and([x.negated() for x in indicators]).only_enforce_if(
                 cov.negated())
             covered23.append(cov)
+            if hint_canon is not None:
+                all_cov23.append((cov, 1 if any_covered else 0))
+
+    # Set hints for all derived boolean variables to establish E=hint as initial incumbent
+    if hint_canon is not None:
+        for ind, val in all_ind13 + all_ind23:
+            model.add_hint(ind, val)
+        for cov, val in all_cov13 + all_cov23:
+            model.add_hint(cov, val)
 
     # Objective: minimize uncovered pairs (missing pairs = clashes)
     uncovered = [x.negated() for x in covered13] + [x.negated() for x in covered23]
