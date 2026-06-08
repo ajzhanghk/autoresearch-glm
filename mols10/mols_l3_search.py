@@ -737,11 +737,29 @@ def sa_triple_pt(
     rng  = random.Random(rng_seed)
     t0   = time.time()
     K    = len(temps)
-    move_names = ["row", "col", "relabel", "intercalate", "kscramble", "bigscramble"]
+    move_names = ["row", "col", "relabel", "intercalate", "kscramble", "bigscramble", "row_replace"]
     # Each replica gets its own independent RNG
     rep_rngs = [random.Random(rng.random()) for _ in range(K)]
 
     _seed_pairs = _load_pairs()
+
+    def _random_valid_row(L, row_idx, r):
+        """Sample a random valid replacement for row row_idx (10-cell SDR move)."""
+        avail = [
+            [s for s in range(n) if s not in {int(L[i, j]) for i in range(n) if i != row_idx}]
+            for j in range(n)
+        ]
+        cols = list(range(n)); r.shuffle(cols)
+        new_row = np.empty(n, dtype=np.int8)
+        used: set = set()
+        for j in cols:
+            choices = [s for s in avail[j] if s not in used]
+            if not choices:
+                return None
+            s = r.choice(choices)
+            new_row[j] = s
+            used.add(s)
+        return new_row
 
     def _shake_ls(L, r, n_moves):
         """Apply n_moves random LS-preserving moves to create a diverse variant."""
@@ -766,6 +784,11 @@ def sa_triple_pt(
                 perm = rows[:]
                 r.shuffle(perm)
                 L[rows] = L[perm].copy()
+            elif mv == "row_replace":
+                ri = r.randint(0, n - 1)
+                nr = _random_valid_row(L, ri, r)
+                if nr is not None:
+                    L[ri] = nr
             else:
                 r1, r2 = r.sample(range(n), 2); c1, c2 = r.sample(range(n), 2)
                 fl = _intercalate_flip(L, r1, r2, c1, c2)
@@ -944,6 +967,18 @@ def sa_triple_pt(
             perm = rows[:]
             r.shuffle(perm)
             Ln[rows] = L[perm]
+        elif mv == "row_replace":
+            # Replace entire row of L3 with random SDR — 10-cell jump.
+            # Only applied to L3 (tgt=2); for L1/L2 fall back to row swap.
+            if tgt == 2:
+                ri = r.randint(0, n - 1)
+                nr = _random_valid_row(L, ri, r)
+                if nr is not None:
+                    Ln = L.copy(); Ln[ri] = nr
+                else:
+                    a, b = r.sample(range(n), 2); Ln = _row_swap(L, a, b)
+            else:
+                a, b = r.sample(range(n), 2); Ln = _row_swap(L, a, b)
         else:
             r1, r2 = r.sample(range(n), 2); c1, c2 = r.sample(range(n), 2)
             fl = _intercalate_flip(L, r1, r2, c1, c2)

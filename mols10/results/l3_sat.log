@@ -107,3 +107,46 @@ seed=11111  sat_timeout=20.0s
   trial=  170  no_mols=56  unsat=114  timeout=0  time=02:45:16
   trial=  180  no_mols=62  unsat=118  timeout=0  time=02:46:22
   trial=  200  sat=0  unsat=131  timeout=0  no_mols=69  time=02:47:44
+========================================================
+MOLS SAT Worker — complete L3 search via Glucose3
+seed=11111  sat_timeout=20.0s
+========================================================
+
+[Phase 1] Testing 311 existing promising pairs...
+  [  0] UNSAT  elapsed=0.08s  (so far: unsat=1)
+  [ 50] UNSAT  elapsed=0.11s  (so far: unsat=51)
+  [100] UNSAT  elapsed=0.09s  (so far: unsat=101)
+  [150] UNSAT  elapsed=0.11s  (so far: unsat=151)
+  [200] UNSAT  elapsed=0.05s  (so far: unsat=201)
+  [250] UNSAT  elapsed=0.11s  (so far: unsat=251)
+  [300] UNSAT  elapsed=0.09s  (so far: unsat=301)
+
+[Phase 1 done] pairs=311  SAT=0  UNSAT=311  TIMEOUT=0
+
+[Phase 2] Generating new MOLS pairs + SAT search...
+  trial=   20  sat=0  unsat=11  timeout=0  no_mols=9  time=03:14:08
+  trial=   40  no_mols=13  unsat=27  timeout=0  time=03:14:46
+  trial=   50  no_mols=16  unsat=34  timeout=0  time=03:15:15
+  trial=   60  no_mols=23  unsat=37  timeout=0  time=03:16:11
+  trial=   80  no_mols=30  unsat=50  timeout=0  time=03:17:16
+  trial=  100  sat=0  unsat=64  timeout=0  no_mols=36  time=03:18:12
+  trial=  110  no_mols=38  unsat=72  timeout=0  time=03:18:33
+  trial=  120  sat=0  unsat=79  timeout=0  no_mols=41  time=03:19:04
+========================================================
+MOLS SAT Worker — complete L3 search via Glucose3
+seed=11111  sat_timeout=20.0s
+========================================================
+
+[Phase 1] Testing 311 existing promising pairs...
+  [  0] UNSAT  elapsed=0.33s  (so far: unsat=1)
+  [ 50] UNSAT  elapsed=0.18s  (so far: unsat=51)
+========================================================
+MOLS SAT Worker — complete L3 search via Glucose3
+seed=11111  sat_timeout=20.0s
+========================================================
+
+[Phase 1] Testing 311 existing promising pairs...
+  [  0] UNSAT  elapsed=0.29s  (so far: unsat=1)
+  [ 50] UNSAT  elapsed=0.11s  (so far: unsat=51)
+  [100] UNSAT  elapsed=0.08s  (so far: unsat=101)
+  [150] UNSAT  elapsed=0.12s  (so far: unsat=151)
