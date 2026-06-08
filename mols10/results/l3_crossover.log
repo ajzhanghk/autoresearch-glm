@@ -34,3 +34,19 @@
 [04:00:14] trial=   4  strategy=row_replace_sa        E=37  session_best=37  elapsed=90.0s
 [04:00:14] trial=   4  strategy=row_replace_sa        E=37  session_best=37  elapsed=90.0s
 [04:00:14] trial=   4  strategy=row_replace_sa        E=37  session_best=37  elapsed=90.0s
+[04:01:44] trial=   5  strategy=crossover             E=37  session_best=37  elapsed=90.0s
+[04:01:44] trial=   5  strategy=crossover             E=37  session_best=37  elapsed=90.0s
+[04:01:44] trial=   5  strategy=partial_completion    E=37  session_best=37  elapsed=90.0s
+[04:01:44] trial=   5  strategy=partial_completion    E=37  session_best=37  elapsed=90.0s
+[04:03:11] crossover_search started: seed=4242 budget=90.0s
+[04:03:11] crossover_search started: seed=4242 budget=90.0s
+[04:03:11] crossover_search started: seed=8888 budget=90.0s
+[04:03:11] crossover_search started: seed=8888 budget=90.0s
+[04:03:42] crossover_search started: seed=4242 budget=90.0s
+[04:03:42] crossover_search started: seed=4242 budget=90.0s
+[04:03:42] crossover_search started: seed=8888 budget=90.0s
+[04:03:42] crossover_search started: seed=8888 budget=90.0s
+[04:04:25] crossover_search started: seed=4242 budget=90.0s
+[04:04:25] crossover_search started: seed=4242 budget=90.0s
+[04:04:25] crossover_search started: seed=8888 budget=90.0s
+[04:04:25] crossover_search started: seed=8888 budget=90.0s

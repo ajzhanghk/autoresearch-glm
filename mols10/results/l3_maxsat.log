@@ -19,3 +19,15 @@
 [04:01:20] trial=   1  guided_maxsat    E=53  cl13=24  cl23=29  cost=14  session_best=53  timed_out=False  elapsed=1.8s
 [04:01:22] trial=   2  guided_maxsat    E=53  cl13=24  cl23=29  cost=14  session_best=53  timed_out=False  elapsed=1.7s
 [04:01:22] trial=   2  guided_maxsat    E=53  cl13=24  cl23=29  cost=14  session_best=53  timed_out=False  elapsed=1.7s
+[04:02:35] trial=   3  full_maxsat  no valid L3 (timed_out=True)  73.3s
+[04:02:35] trial=   3  full_maxsat  no valid L3 (timed_out=True)  73.3s
+[04:03:12] maxsat_search started: seed=1337 timeout=60.0s/trial
+[04:03:12] maxsat_search started: seed=1337 timeout=60.0s/trial
+[04:03:21] trial=   1  guided_maxsat    E=53  cl13=24  cl23=29  cost=14  session_best=53  timed_out=False  elapsed=9.1s
+[04:03:21] trial=   1  guided_maxsat    E=53  cl13=24  cl23=29  cost=14  session_best=53  timed_out=False  elapsed=9.1s
+[04:03:29] trial=   2  guided_maxsat    E=53  cl13=24  cl23=29  cost=14  session_best=53  timed_out=False  elapsed=8.7s
+[04:03:29] trial=   2  guided_maxsat    E=53  cl13=24  cl23=29  cost=14  session_best=53  timed_out=False  elapsed=8.7s
+[04:04:25] maxsat_search started: seed=1337 timeout=60.0s/trial
+[04:04:25] maxsat_search started: seed=1337 timeout=60.0s/trial
+[04:04:30] trial=   1  guided_maxsat    E=53  cl13=24  cl23=29  cost=14  session_best=53  timed_out=False  elapsed=4.6s
+[04:04:30] trial=   1  guided_maxsat    E=53  cl13=24  cl23=29  cost=14  session_best=53  timed_out=False  elapsed=4.6s
