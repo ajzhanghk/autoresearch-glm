@@ -185,3 +185,52 @@ seed=11111  sat_timeout=20.0s
   trial=  100  sat=0  unsat=64  timeout=0  no_mols=36  time=04:00:32
   trial=  110  no_mols=38  unsat=72  timeout=0  time=04:00:55
   trial=  120  sat=0  unsat=79  timeout=0  no_mols=41  time=04:01:34
+========================================================
+MOLS SAT Worker — complete L3 search via Glucose3
+seed=11111  sat_timeout=20.0s
+========================================================
+
+[Phase 1] Testing 311 existing promising pairs...
+  [  0] UNSAT  elapsed=0.05s  (so far: unsat=1)
+  [ 50] UNSAT  elapsed=0.05s  (so far: unsat=51)
+  [100] UNSAT  elapsed=0.04s  (so far: unsat=101)
+  [150] UNSAT  elapsed=0.06s  (so far: unsat=151)
+========================================================
+MOLS SAT Worker — complete L3 search via Glucose3
+seed=11111  sat_timeout=20.0s
+========================================================
+
+[Phase 1] Testing 311 existing promising pairs...
+  [  0] UNSAT  elapsed=0.26s  (so far: unsat=1)
+  [200] UNSAT  elapsed=0.09s  (so far: unsat=201)
+  [250] UNSAT  elapsed=0.07s  (so far: unsat=251)
+  [ 50] UNSAT  elapsed=0.20s  (so far: unsat=51)
+  [300] UNSAT  elapsed=0.07s  (so far: unsat=301)
+
+[Phase 1 done] pairs=311  SAT=0  UNSAT=311  TIMEOUT=0
+
+[Phase 2] Generating new MOLS pairs + SAT search...
+========================================================
+MOLS SAT Worker — complete L3 search via Glucose3
+seed=11111  sat_timeout=20.0s
+========================================================
+
+[Phase 1] Testing 311 existing promising pairs...
+  [  0] UNSAT  elapsed=0.10s  (so far: unsat=1)
+========================================================
+MOLS SAT Worker — complete L3 search via Glucose3
+seed=11111  sat_timeout=20.0s
+========================================================
+
+[Phase 1] Testing 311 existing promising pairs...
+  [  0] UNSAT  elapsed=0.14s  (so far: unsat=1)
+  [ 50] UNSAT  elapsed=0.14s  (so far: unsat=51)
+  [100] UNSAT  elapsed=0.05s  (so far: unsat=101)
+  [150] UNSAT  elapsed=0.05s  (so far: unsat=151)
+  [200] UNSAT  elapsed=0.13s  (so far: unsat=201)
+  [250] UNSAT  elapsed=0.10s  (so far: unsat=251)
+  [300] UNSAT  elapsed=0.12s  (so far: unsat=301)
+
+[Phase 1 done] pairs=311  SAT=0  UNSAT=311  TIMEOUT=0
+
+[Phase 2] Generating new MOLS pairs + SAT search...

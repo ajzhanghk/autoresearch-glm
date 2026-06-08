@@ -31,3 +31,5 @@
 [04:04:25] maxsat_search started: seed=1337 timeout=60.0s/trial
 [04:04:30] trial=   1  guided_maxsat    E=53  cl13=24  cl23=29  cost=14  session_best=53  timed_out=False  elapsed=4.6s
 [04:04:30] trial=   1  guided_maxsat    E=53  cl13=24  cl23=29  cost=14  session_best=53  timed_out=False  elapsed=4.6s
+[04:04:35] trial=   2  guided_maxsat    E=53  cl13=24  cl23=29  cost=14  session_best=53  timed_out=False  elapsed=4.9s
+[04:04:35] trial=   2  guided_maxsat    E=53  cl13=24  cl23=29  cost=14  session_best=53  timed_out=False  elapsed=4.9s
