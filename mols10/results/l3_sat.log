@@ -268,3 +268,10 @@ seed=11111  sat_timeout=20.0s
   trial=  170  no_mols=56  unsat=114  timeout=0  time=07:43:52
   trial=  180  no_mols=62  unsat=118  timeout=0  time=07:44:55
   trial=  200  sat=0  unsat=131  timeout=0  no_mols=69  time=07:46:38
+  trial=  220  no_mols=77  unsat=143  timeout=0  time=07:49:12
+  trial=  230  no_mols=80  unsat=150  timeout=0  time=07:50:11
+  trial=  240  no_mols=84  unsat=156  timeout=0  time=07:51:25
+  trial=  250  no_mols=89  unsat=161  timeout=0  time=07:53:06
+  trial=  260  sat=0  unsat=169  timeout=0  no_mols=91  time=07:53:46
+  trial=  270  no_mols=96  unsat=174  timeout=0  time=07:55:24
+  trial=  280  sat=0  unsat=179  timeout=0  no_mols=101  time=07:56:59
