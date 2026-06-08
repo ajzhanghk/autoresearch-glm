@@ -467,6 +467,7 @@ Session & Key development & Best $\E$ & Stable since\\
 10 & SA/CP-SAT cascade; file-locking fix; \textbf{E=32} via rapid descent & \textbf{32} & Session 10\\
 11 & Long-duration 8w (900\,s) CP-SAT breaks to \textbf{E=31}; cascade $32\to31$ & \textbf{31} & Session 11\\
 12 & L3-only SA (cell-swap bug found/fixed); 12 parallel 900\,s CP-SAT sweeps; E=31 holds & \textbf{31} & Session 11\\
+13 & Second distinct E=31 pair found (joint SA); proof workers probe $\E\leq30$; E=31 holds & \textbf{31} & Session 13\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -905,11 +906,14 @@ Session 10 saw a rapid cascade to $\E=32$; Session 11 continues the cascade to $
     ($\cl_{13}=19$, $\cl_{23}=12$, $\cl_{12}=0$, verified), breaking $\E=32$ record
   \item Session 12 (CP-SAT, 12 parallel 900\,s sweeps, seeds 0--400 and 2001--2100):
     1200\,s seeds 3001/3002 found only $\E=37$--$39$; E=31 holds as current best
+  \item Session 13 (joint 3-LS SA blitz, 300\,s trials): a \textbf{second distinct} $(L_1,L_2)$ pair
+    achieving $\E=31$ ($\cl_{13}=19$, $\cl_{23}=12$, $\cl_{12}=0$) was found independently,
+    confirming that E=31 is not a pair-specific artifact.  CP-SAT proof workers with target $\E\leq30$
+    are inconclusive after 600\,s.
 \end{itemize}
 The $\E = 31$ solution covers 169 out of 200 possible orthogonal-triple symbol pairs,
-equivalent to 84.5\% coverage.  Session 12 operates 50+ parallel workers targeting
-$\E \leq 30$: 12 parallel 900\,s CP-SAT sweeps, L3-only SA with intercalate moves,
-and long-duration 1200--1800\,s attacks.
+equivalent to 84.5\% coverage.  Session 13 discovers a second distinct $(L_1,L_2)$ pair at
+$\E=31$, strengthening the near-miss evidence.  CP-SAT proof workers now probe $\E\leq30$.
 
 \paragraph{4. Reverse search failure.}
 Fixing a near-miss $L_3$ and running 30+ independent reverse-search trials (7-replica
@@ -939,8 +943,9 @@ No positive evidence for $N(10) \geq 3$ has been found:
     \sout{Best known energy is $\E = 32$.}
     Best known energy is $\E = \mathbf{31}$ ($\cl_{12}=0$, $\cl_{13}=19$, $\cl_{23}=12$,
     verified, Session 11); this is a 84.5\%-coverage near-miss.
-  \item Session 12: 12 parallel 900\,s CP-SAT sweeps (seeds 0--400 and 2001--2100),
+  \item Session 12--13: 12 parallel 900\,s CP-SAT sweeps (seeds 0--400 and 2001--2100),
     L3-only SA (fixed), 50+ workers are ongoing targeting $\E \leq 30$.
+    Session 13 finds a \textbf{second distinct} $(L_1,L_2)$ pair at $\E=31$.
   \item Reverse search has never found a triple with $\E_\text{rev} < 60$.
 \end{itemize}
 
@@ -955,7 +960,10 @@ The $\E=31$ near-miss triple (Session 11) is the best known approximation to a 3
 surpassing the previous $\E=32$ record set in Session 10.  The cascade $37\to36\to34\to33\to32\to31$
 spans Sessions 5--11.  Session 12 discovers and fixes a Latin-square-validity bug in the L3-only SA
 (the ``cell-swap'' move broke column uniqueness), and deploys 12 parallel 900\,s CP-SAT sweeps with
-50+ workers; the E=31 record holds through these attacks.  No path toward $N(10) \geq 3$ has been found.
+50+ workers; the E=31 record holds.  Session 13 further confirms $\E=31$ by finding a \textbf{second
+distinct} $(L_1,L_2)$ pair achieving the same energy (joint SA blitz, 300\,s trial), ruling out
+pair-specific artifact.  CP-SAT proof workers now probe $\E\leq30$ as the next target.  No path toward
+$N(10) \geq 3$ has been found.
 
 % ===========================================================================
 \section{Conclusions and Future Work}\label{sec:conclusions}

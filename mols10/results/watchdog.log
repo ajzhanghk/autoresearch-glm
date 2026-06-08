@@ -30,3 +30,125 @@
 [04:04:25] Watchdog started (PID=13962). Grace period 30s...
 [07:33:28] Watchdog started (PID=1751). Grace period 30s...
 [07:33:28] Watchdog started (PID=1751). Grace period 30s...
+[09:05:41] DEAD seed=137 — restarting: mols10/mols_l3_search.py --seed 137 >> mols10/results/l3_v3_s137.log 2>&1
+[09:05:41] DEAD seed=137 — restarting: mols10/mols_l3_search.py --seed 137 >> mols10/results/l3_v3_s137.log 2>&1
+[09:05:41]   Restarted PID 14909
+[09:05:41]   Restarted PID 14909
+[09:05:41] DEAD seed=503 — restarting: mols10/mols_l3_search.py --seed 503 >> mols10/results/l3_v3_s503.log 2>&1
+[09:05:41] DEAD seed=503 — restarting: mols10/mols_l3_search.py --seed 503 >> mols10/results/l3_v3_s503.log 2>&1
+[09:05:41]   Restarted PID 14919
+[09:05:41]   Restarted PID 14919
+[09:05:42] DEAD seed=271 — restarting: mols10/mols_l3_search.py --seed 271 >> mols10/results/l3_v3_s271.log 2>&1
+[09:05:42] DEAD seed=271 — restarting: mols10/mols_l3_search.py --seed 271 >> mols10/results/l3_v3_s271.log 2>&1
+[09:05:42]   Restarted PID 14927
+[09:05:42]   Restarted PID 14927
+[09:16:11] DEAD seed=11111 — restarting: mols10/mols_sat_worker.py --seed 11111 --timeout 20 >> mols10/results/l3_sat.log 2>&1
+[09:16:11] DEAD seed=11111 — restarting: mols10/mols_sat_worker.py --seed 11111 --timeout 20 >> mols10/results/l3_sat.log 2>&1
+[09:16:11]   Restarted PID 29928
+[09:16:11]   Restarted PID 29928
+[17:51:25] Watchdog started (PID=6051). Grace period 30s...
+[17:51:25] Watchdog started (PID=6051). Grace period 30s...
+[17:51:55] DEAD seed=7001 — restarting: mols10/mols_l3_search.py --seed 7001 >> mols10/results/l3_run_A.log 2>&1
+[17:51:55] DEAD seed=7001 — restarting: mols10/mols_l3_search.py --seed 7001 >> mols10/results/l3_run_A.log 2>&1
+[17:51:55]   Restarted PID 6443
+[17:51:55]   Restarted PID 6443
+[17:51:55] DEAD seed=7002 — restarting: mols10/mols_l3_search.py --seed 7002 >> mols10/results/l3_run_B.log 2>&1
+[17:51:55] DEAD seed=7002 — restarting: mols10/mols_l3_search.py --seed 7002 >> mols10/results/l3_run_B.log 2>&1
+[17:51:55]   Restarted PID 6451
+[17:51:55]   Restarted PID 6451
+[17:51:55] DEAD seed=7003 — restarting: mols10/mols_l3_search.py --seed 7003 >> mols10/results/l3_run_C.log 2>&1
+[17:51:55] DEAD seed=7003 — restarting: mols10/mols_l3_search.py --seed 7003 >> mols10/results/l3_run_C.log 2>&1
+[17:51:55]   Restarted PID 6459
+[17:51:55]   Restarted PID 6459
+[17:51:55] DEAD seed=7004 — restarting: mols10/mols_l3_search.py --seed 7004 >> mols10/results/l3_run_D.log 2>&1
+[17:51:55] DEAD seed=7004 — restarting: mols10/mols_l3_search.py --seed 7004 >> mols10/results/l3_run_D.log 2>&1
+[17:51:55]   Restarted PID 6467
+[17:51:55]   Restarted PID 6467
+[17:51:55] DEAD seed=4242 — restarting: mols10/mols_crossover_search.py --seed 4242 --budget 90 >> mols10/results/l3_crossover.log 2>&1
+[17:51:55] DEAD seed=4242 — restarting: mols10/mols_crossover_search.py --seed 4242 --budget 90 >> mols10/results/l3_crossover.log 2>&1
+[17:51:55]   Restarted PID 6478
+[17:51:55]   Restarted PID 6478
+[17:51:55] DEAD seed=7777 — restarting: mols10/mols_reverse_search.py --seed 7777 --budget 120 >> mols10/results/l3_reverse.log 2>&1
+[17:51:55] DEAD seed=7777 — restarting: mols10/mols_reverse_search.py --seed 7777 --budget 120 >> mols10/results/l3_reverse.log 2>&1
+[17:51:55]   Restarted PID 6486
+[17:51:55]   Restarted PID 6486
+[17:51:55] DEAD seed=11111 — restarting: mols10/mols_sat_worker.py --seed 11111 --timeout 20 >> mols10/results/l3_sat.log 2>&1
+[17:51:55] DEAD seed=11111 — restarting: mols10/mols_sat_worker.py --seed 11111 --timeout 20 >> mols10/results/l3_sat.log 2>&1
+[17:51:55]   Restarted PID 6497
+[17:51:55]   Restarted PID 6497
+[17:51:55] DEAD seed=5678 — restarting: mols10/mols_cpsat_worker.py --seed 5678 --timeout 180 --workers 2 >> mols10/results/l3_cpsat.log 2>&1
+[17:51:55] DEAD seed=5678 — restarting: mols10/mols_cpsat_worker.py --seed 5678 --timeout 180 --workers 2 >> mols10/results/l3_cpsat.log 2>&1
+[17:51:55]   Restarted PID 6508
+[17:51:55]   Restarted PID 6508
+[17:51:55] DEAD seed=137 — restarting: mols10/mols_l3_search.py --seed 137 >> mols10/results/l3_v3_s137.log 2>&1
+[17:51:55] DEAD seed=137 — restarting: mols10/mols_l3_search.py --seed 137 >> mols10/results/l3_v3_s137.log 2>&1
+[17:51:55]   Restarted PID 6519
+[17:51:55]   Restarted PID 6519
+[17:51:55] DEAD seed=8765 — restarting: mols10/mols_cpsat_proof.py --seed 8765 --timeout 300 --workers 2 --target 32 >> mols10/results/l3_cpsat_proof36.log 2>&1
+[17:51:55] DEAD seed=8765 — restarting: mols10/mols_cpsat_proof.py --seed 8765 --timeout 300 --workers 2 --target 32 >> mols10/results/l3_cpsat_proof36.log 2>&1
+[17:51:56]   Restarted PID 6530
+[17:51:56]   Restarted PID 6530
+[17:51:56] DEAD seed=1337 — restarting: mols10/mols_maxsat_search.py --seed 1337 --timeout 60 >> mols10/results/l3_maxsat.log 2>&1
+[17:51:56] DEAD seed=1337 — restarting: mols10/mols_maxsat_search.py --seed 1337 --timeout 60 >> mols10/results/l3_maxsat.log 2>&1
+[17:51:56]   Restarted PID 6547
+[17:51:56]   Restarted PID 6547
+[17:51:56] DEAD seed=3141 — restarting: mols10/mols_joint_sa.py --seed 3141 --budget 180 >> mols10/results/l3_joint_sa.log 2>&1
+[17:51:56] DEAD seed=3141 — restarting: mols10/mols_joint_sa.py --seed 3141 --budget 180 >> mols10/results/l3_joint_sa.log 2>&1
+[17:51:56]   Restarted PID 6556
+[17:51:56]   Restarted PID 6556
+[17:51:56] DEAD seed=1234 — restarting: mols10/mols_cpsat_worker.py --seed 1234 --timeout 180 --workers 2 >> mols10/results/l3_cpsat2.log 2>&1
+[17:51:56] DEAD seed=1234 — restarting: mols10/mols_cpsat_worker.py --seed 1234 --timeout 180 --workers 2 >> mols10/results/l3_cpsat2.log 2>&1
+[17:51:56]   Restarted PID 6565
+[17:51:56]   Restarted PID 6565
+[17:51:56] DEAD seed=503 — restarting: mols10/mols_l3_search.py --seed 503 >> mols10/results/l3_v3_s503.log 2>&1
+[17:51:56] DEAD seed=503 — restarting: mols10/mols_l3_search.py --seed 503 >> mols10/results/l3_v3_s503.log 2>&1
+[17:51:56]   Restarted PID 6575
+[17:51:56]   Restarted PID 6575
+[17:51:56] DEAD seed=2023 — restarting: mols10/mols_joint_sa.py --seed 2023 --budget 180 >> mols10/results/l3_joint_sa.log 2>&1
+[17:51:56] DEAD seed=2023 — restarting: mols10/mols_joint_sa.py --seed 2023 --budget 180 >> mols10/results/l3_joint_sa.log 2>&1
+[17:51:56]   Restarted PID 6585
+[17:51:56]   Restarted PID 6585
+[17:51:56] DEAD seed=271 — restarting: mols10/mols_l3_search.py --seed 271 >> mols10/results/l3_v3_s271.log 2>&1
+[17:51:56] DEAD seed=271 — restarting: mols10/mols_l3_search.py --seed 271 >> mols10/results/l3_v3_s271.log 2>&1
+[17:51:56]   Restarted PID 6600
+[17:51:56]   Restarted PID 6600
+[17:51:57] DEAD seed=8888 — restarting: mols10/mols_crossover_search.py --seed 8888 --budget 90 >> mols10/results/l3_crossover.log 2>&1
+[17:51:57] DEAD seed=8888 — restarting: mols10/mols_crossover_search.py --seed 8888 --budget 90 >> mols10/results/l3_crossover.log 2>&1
+[17:51:57]   Restarted PID 6611
+[17:51:57]   Restarted PID 6611
+[17:51:57] DEAD seed=999 — restarting: mols10/mols_l3_search.py --seed 999 >> mols10/results/l3_longrun2.log 2>&1
+[17:51:57] DEAD seed=999 — restarting: mols10/mols_l3_search.py --seed 999 >> mols10/results/l3_longrun2.log 2>&1
+[17:51:57]   Restarted PID 6620
+[17:51:57]   Restarted PID 6620
+[17:51:57] DEAD seed=9999 — restarting: mols10/mols_cpsat_proof.py --seed 9999 --timeout 600 --workers 4 --target 31 >> mols10/results/l3_cpsat_proof.log 2>&1
+[17:51:57] DEAD seed=9999 — restarting: mols10/mols_cpsat_proof.py --seed 9999 --timeout 600 --workers 4 --target 31 >> mols10/results/l3_cpsat_proof.log 2>&1
+[17:51:57]   Restarted PID 6631
+[17:51:57]   Restarted PID 6631
+[18:04:50] Watchdog started (PID=24244). Grace period 30s...
+[18:04:50] Watchdog started (PID=24244). Grace period 30s...
+[18:45:58] DEAD seed=8765 — restarting: mols10/mols_cpsat_proof.py --seed 8765 --timeout 300 --workers 2 --target 32 >> mols10/results/l3_cpsat_proof36.log 2>&1
+[18:45:58] DEAD seed=8765 — restarting: mols10/mols_cpsat_proof.py --seed 8765 --timeout 300 --workers 2 --target 32 >> mols10/results/l3_cpsat_proof36.log 2>&1
+[18:45:58]   Restarted PID 16280
+[18:45:58]   Restarted PID 16280
+[18:45:58] DEAD seed=9999 — restarting: mols10/mols_cpsat_proof.py --seed 9999 --timeout 600 --workers 4 --target 31 >> mols10/results/l3_cpsat_proof.log 2>&1
+[18:45:58] DEAD seed=9999 — restarting: mols10/mols_cpsat_proof.py --seed 9999 --timeout 600 --workers 4 --target 31 >> mols10/results/l3_cpsat_proof.log 2>&1
+[18:45:58]   Restarted PID 16303
+[18:45:58]   Restarted PID 16303
+[18:58:36] DEAD seed=8765 — restarting: mols10/mols_cpsat_proof.py --seed 8765 --timeout 300 --workers 2 --target 32 >> mols10/results/l3_cpsat_proof36.log 2>&1
+[18:58:36] DEAD seed=8765 — restarting: mols10/mols_cpsat_proof.py --seed 8765 --timeout 300 --workers 2 --target 32 >> mols10/results/l3_cpsat_proof36.log 2>&1
+[18:58:36]   Restarted PID 31219
+[18:58:36]   Restarted PID 31219
+[18:58:37] DEAD seed=9999 — restarting: mols10/mols_cpsat_proof.py --seed 9999 --timeout 600 --workers 4 --target 31 >> mols10/results/l3_cpsat_proof.log 2>&1
+[18:58:37] DEAD seed=9999 — restarting: mols10/mols_cpsat_proof.py --seed 9999 --timeout 600 --workers 4 --target 31 >> mols10/results/l3_cpsat_proof.log 2>&1
+[18:58:37]   Restarted PID 31242
+[18:58:37]   Restarted PID 31242
+[19:00:07] Watchdog started (PID=1746). Grace period 30s...
+[19:00:07] Watchdog started (PID=1746). Grace period 30s...
+[19:00:37] DEAD seed=8765 — restarting: mols10/mols_cpsat_proof.py --seed 8765 --timeout 600 --workers 4 --target 30 >> mols10/results/l3_cpsat_proof36.log 2>&1
+[19:00:37] DEAD seed=8765 — restarting: mols10/mols_cpsat_proof.py --seed 8765 --timeout 600 --workers 4 --target 30 >> mols10/results/l3_cpsat_proof36.log 2>&1
+[19:00:37]   Restarted PID 2126
+[19:00:37]   Restarted PID 2126
+[19:00:38] DEAD seed=9999 — restarting: mols10/mols_cpsat_proof.py --seed 9999 --timeout 600 --workers 4 --target 30 >> mols10/results/l3_cpsat_proof.log 2>&1
+[19:00:38] DEAD seed=9999 — restarting: mols10/mols_cpsat_proof.py --seed 9999 --timeout 600 --workers 4 --target 30 >> mols10/results/l3_cpsat_proof.log 2>&1
+[19:00:38]   Restarted PID 2149
+[19:00:38]   Restarted PID 2149
