@@ -8,3 +8,39 @@
 [08:15:58] ============================================================
 [08:15:58] trial=   1  pool_E=37  target=35  timeout=300.0s  time=08:15:58
 [08:15:58] trial=   1  pool_E=37  target=35  timeout=300.0s  time=08:15:58
+[08:20:59]   TIMEOUT: inconclusive  elapsed=300.1s
+[08:20:59]   TIMEOUT: inconclusive  elapsed=300.1s
+[08:20:59] trial=   2  pool_E=37  target=35  timeout=300.0s  time=08:20:59
+[08:20:59] trial=   2  pool_E=37  target=35  timeout=300.0s  time=08:20:59
+[08:21:42] ============================================================
+[08:21:42] CP-SAT proof mode — seed=8765  timeout=300.0s  workers=2  target=36
+[08:21:42] Checking: does there exist L3 with cl13+cl23 <= 36?
+[08:21:42] ============================================================
+[08:21:42] trial=   1  pool_E=37  target=36  timeout=300.0s  time=08:21:42
+[08:21:43] ============================================================
+[08:21:43] ============================================================
+[08:21:43] CP-SAT proof mode — seed=9999  timeout=600.0s  workers=4  target=35
+[08:21:43] CP-SAT proof mode — seed=9999  timeout=600.0s  workers=4  target=35
+[08:21:43] Checking: does there exist L3 with cl13+cl23 <= 35?
+[08:21:43] Checking: does there exist L3 with cl13+cl23 <= 35?
+[08:21:43] ============================================================
+[08:21:43] ============================================================
+[08:21:43] trial=   1  pool_E=37  target=35  timeout=600.0s  time=08:21:43
+[08:21:43] trial=   1  pool_E=37  target=35  timeout=600.0s  time=08:21:43
+[08:24:40] ============================================================
+[08:24:40] CP-SAT proof mode — seed=8765  timeout=300.0s  workers=2  target=36
+[08:24:40] Checking: does there exist L3 with cl13+cl23 <= 36?
+[08:24:40] ============================================================
+[08:24:40] trial=   1  pool_E=37  target=36  timeout=300.0s  time=08:24:40
+[08:24:40] ============================================================
+[08:24:40] ============================================================
+[08:24:40] CP-SAT proof mode — seed=9999  timeout=600.0s  workers=4  target=35
+[08:24:40] CP-SAT proof mode — seed=9999  timeout=600.0s  workers=4  target=35
+[08:24:40] Checking: does there exist L3 with cl13+cl23 <= 35?
+[08:24:40] Checking: does there exist L3 with cl13+cl23 <= 35?
+[08:24:40] ============================================================
+[08:24:40] ============================================================
+[08:24:40] trial=   1  pool_E=37  target=35  timeout=600.0s  time=08:24:40
+[08:24:40] trial=   1  pool_E=37  target=35  timeout=600.0s  time=08:24:40
+[08:29:40]   TIMEOUT: inconclusive  elapsed=300.1s
+[08:29:40] trial=   2  pool_E=37  target=36  timeout=300.0s  time=08:29:40

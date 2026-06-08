@@ -1,0 +1,4 @@
+[08:30:27] Targeted proof on pool entry 0
+  L1[0]: [4, 7, 3, 2, 8, 9, 5, 1, 0, 6]
+
+[08:30:27] target=36  timeout=300s  workers=4  symbreak=True

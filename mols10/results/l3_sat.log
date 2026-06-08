@@ -287,3 +287,5 @@ seed=11111  sat_timeout=20.0s
   trial=  420  sat=0  unsat=280  timeout=0  no_mols=140  time=08:14:36
   trial=  430  no_mols=144  unsat=286  timeout=0  time=08:16:49
   trial=  440  sat=0  unsat=293  timeout=0  no_mols=147  time=08:18:39
+  trial=  460  no_mols=153  unsat=307  timeout=0  time=08:22:26
+  trial=  480  sat=0  unsat=320  timeout=0  no_mols=160  time=08:27:19

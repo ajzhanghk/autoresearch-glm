@@ -4,3 +4,13 @@
 [08:15:59] trial=   1  pool_E=37  timeout=180.0s  time=08:15:59
 [08:18:59]   FEASIBLE: E=42  cl13=20  cl23=22  session_best=42  optimal_proven=False  elapsed=180.1s
 [08:18:59] trial=   2  pool_E=37  timeout=180.0s  time=08:18:59
+[08:21:59]   FEASIBLE: E=39  cl13=18  cl23=21  session_best=39  optimal_proven=False  elapsed=180.2s
+[08:21:59] trial=   3  pool_E=37  timeout=180.0s  time=08:21:59
+[08:24:40] ============================================================
+[08:24:40] CP-SAT L3 optimizer — seed=1234  timeout=180.0s  workers=2
+[08:24:40] ============================================================
+[08:24:40] trial=   1  pool_E=37  timeout=180.0s  time=08:24:40
+[08:27:40]   FEASIBLE: E=38  cl13=21  cl23=17  session_best=38  optimal_proven=False  elapsed=180.2s
+[08:27:40] trial=   2  pool_E=37  timeout=180.0s  time=08:27:40
+[08:30:40]   FEASIBLE: E=42  cl13=20  cl23=22  session_best=38  optimal_proven=False  elapsed=180.3s
+[08:30:40] trial=   3  pool_E=37  timeout=180.0s  time=08:30:40

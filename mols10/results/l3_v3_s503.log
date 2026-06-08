@@ -6790,3 +6790,81 @@ trial=  48  strategy=multi_decomp  budget=42s  n_attempts=10  best_ct_ever=2
   multi_decomp: best_ct=-1  pairs_tried=0  elapsed=40.0s
 
   ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=48  elapsed=0.79h  pool_size=316  best_ct_ever=2  sa3_best_clashes=37  N(10)≥3 not found yet
+
+trial=  49  strategy=multi_decomp  budget=42s  n_attempts=10  best_ct_ever=2
+  multi_decomp: best_ct=-1  pairs_tried=0  elapsed=39.6s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=49  elapsed=0.80h  pool_size=316  best_ct_ever=2  sa3_best_clashes=37  N(10)≥3 not found yet
+
+trial=  50  strategy=sa_triple_pt  budget=54s  best_ct_ever=2
+  sa_triple_pt: best_clashes=37  sa_frontier=37  swaps=41  ils_kicks=6  best_ct_seen=0  elapsed=54.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=50  elapsed=0.81h  pool_size=316  best_ct_ever=2  sa3_best_clashes=37  N(10)≥3 not found yet
+
+trial=  51  strategy=sa_triple_pt  budget=54s  best_ct_ever=2
+  sa_triple_pt: best_clashes=37  sa_frontier=37  swaps=39  ils_kicks=6  best_ct_seen=0  elapsed=54.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+  [checkpoint] Saved 311 promising pairs to disk (best ct=2)
+
+  Progress: trials=51  elapsed=0.84h  pool_size=316  best_ct_ever=2  sa3_best_clashes=37  N(10)≥3 not found yet
+
+trial=  52  strategy=sa_triple_pt  budget=54s  best_ct_ever=2
+  ★ Triple near-miss saved: clashes=52  cl12=0
+  ★ Triple near-miss saved: clashes=50  cl12=0
+  sa_triple_pt: best_clashes=50  sa_frontier=37  swaps=45  ils_kicks=5  best_ct_seen=0  elapsed=54.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=52  elapsed=0.85h  pool_size=316  best_ct_ever=2  sa3_best_clashes=37  N(10)≥3 not found yet
+
+trial=  53  strategy=sa_triple_pt  budget=54s  best_ct_ever=2
+  sa_triple_pt: best_clashes=37  sa_frontier=37  swaps=63  ils_kicks=6  best_ct_seen=0  elapsed=54.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=53  elapsed=0.87h  pool_size=316  best_ct_ever=2  sa3_best_clashes=37  N(10)≥3 not found yet
+
+trial=  54  strategy=sa_triple_pt  budget=54s  best_ct_ever=2
+  sa_triple_pt: best_clashes=37  sa_frontier=37  swaps=43  ils_kicks=6  best_ct_seen=0  elapsed=54.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=54  elapsed=0.89h  pool_size=316  best_ct_ever=2  sa3_best_clashes=37  N(10)≥3 not found yet
+
+trial=  55  strategy=sa_triple_pt  budget=54s  best_ct_ever=2
+  sa_triple_pt: best_clashes=55  sa_frontier=37  swaps=57  ils_kicks=6  best_ct_seen=0  elapsed=54.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=55  elapsed=0.91h  pool_size=316  best_ct_ever=2  sa3_best_clashes=37  N(10)≥3 not found yet
+
+trial=  56  strategy=sa_triple  budget=54s  best_ct_ever=2
+  sa_triple: best_clashes=63  sa_frontier=37  best_ct_seen=0  elapsed=54.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+  [checkpoint] Saved 311 promising pairs to disk (best ct=2)
+
+  Progress: trials=56  elapsed=0.92h  pool_size=316  best_ct_ever=2  sa3_best_clashes=37  N(10)≥3 not found yet
+
+trial=  57  strategy=sa_triple  budget=54s  best_ct_ever=2
+  sa_triple: best_clashes=60  sa_frontier=37  best_ct_seen=0  elapsed=54.0s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=57  elapsed=0.94h  pool_size=316  best_ct_ever=2  sa3_best_clashes=37  N(10)≥3 not found yet
+
+trial=  58  strategy=multi_decomp  budget=42s  n_attempts=10  best_ct_ever=2
+  multi_decomp: best_ct=-1  pairs_tried=0  elapsed=40.1s
+
+  ct=2 (0<ct<10): injecting intercalate variants of tv_21
+
+  Progress: trials=58  elapsed=0.96h  pool_size=316  best_ct_ever=2  sa3_best_clashes=37  N(10)≥3 not found yet
+
+trial=  59  strategy=multi_decomp  budget=42s  n_attempts=10  best_ct_ever=2

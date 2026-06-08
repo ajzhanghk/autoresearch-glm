@@ -1,0 +1,15 @@
+Targeting pool entry 0: cl12=0, clashes=37
+L1[0]: [4, 7, 3, 2, 8, 9, 5, 1, 0, 6]
+
+=== OPTIMIZATION: targeting E<=36 ===
+  Running optimization, timeout=120s, 4 workers...
+  FEASIBLE: E=41 cl13=20 cl23=21 elapsed=120.1s
+  Running optimization, timeout=240s, 4 workers...
+[08:25:31] Focused CP-SAT (symbreak=True) on pool entry 0
+  L1[0]: [4, 7, 3, 2, 8, 9, 5, 1, 0, 6]
+
+[08:25:31] Round 1: timeout=180s workers=4 hint_based=no
+  FEASIBLE: E=39  cl13=22  cl23=17  elapsed=180.1s
+[08:28:31] Round 2: timeout=300s workers=4 hint_based=yes
+[08:29:14] Pool entry 0 focused attack, NO symbreak, rotating 2-worker timeouts
+[08:29:14] trial=1  timeout=180s  2 workers  session_best=999
