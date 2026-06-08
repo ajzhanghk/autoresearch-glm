@@ -22,6 +22,8 @@ declare -A CMDS=(
   ["4242"]="mols10/mols_crossover_search.py --seed 4242 --budget 90 >> mols10/results/l3_crossover.log 2>&1"
   ["8888"]="mols10/mols_crossover_search.py --seed 8888 --budget 90 >> mols10/results/l3_crossover.log 2>&1"
   ["1337"]="mols10/mols_maxsat_search.py --seed 1337 --timeout 60 >> mols10/results/l3_maxsat.log 2>&1"
+  ["2023"]="mols10/mols_joint_sa.py --seed 2023 --budget 180 >> mols10/results/l3_joint_sa.log 2>&1"
+  ["3141"]="mols10/mols_joint_sa.py --seed 3141 --budget 180 >> mols10/results/l3_joint_sa.log 2>&1"
 )
 
 while true; do
