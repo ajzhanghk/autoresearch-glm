@@ -53,3 +53,27 @@ seed=11111  sat_timeout=20.0s
   trial=  520  sat=0  unsat=348  timeout=0  no_mols=172  time=22:29:26
   trial=  530  no_mols=178  unsat=352  timeout=0  time=22:29:45
   trial=  540  sat=0  unsat=359  timeout=0  no_mols=181  time=22:29:55
+  trial=  560  no_mols=188  unsat=372  timeout=0  time=22:30:18
+  trial=  580  sat=0  unsat=384  timeout=0  no_mols=196  time=22:30:43
+  trial=  590  no_mols=201  unsat=389  timeout=0  time=22:30:58
+  trial=  600  no_mols=205  unsat=395  timeout=0  time=22:31:11
+  trial=  620  sat=0  unsat=408  timeout=0  no_mols=212  time=22:31:33
+  trial=  640  sat=0  unsat=422  timeout=0  no_mols=218  time=22:31:52
+  trial=  660  sat=0  unsat=437  timeout=0  no_mols=223  time=22:32:09
+  trial=  680  sat=0  unsat=454  timeout=0  no_mols=226  time=22:32:19
+  trial=  700  sat=0  unsat=471  timeout=0  no_mols=229  time=22:32:29
+  trial=  720  sat=0  unsat=485  timeout=0  no_mols=235  time=22:32:48
+  trial=  730  no_mols=237  unsat=493  timeout=0  time=22:32:55
+  trial=  740  sat=0  unsat=500  timeout=0  no_mols=240  time=22:33:05
+  trial=  760  sat=0  unsat=513  timeout=0  no_mols=247  time=22:33:27
+  trial=  770  no_mols=250  unsat=520  timeout=0  time=22:33:37
+  trial=  780  sat=0  unsat=526  timeout=0  no_mols=254  time=22:33:50
+  trial=  790  no_mols=255  unsat=535  timeout=0  time=22:33:53
+  trial=  800  sat=0  unsat=544  timeout=0  no_mols=256  time=22:33:57
+  trial=  820  no_mols=262  unsat=558  timeout=0  time=22:34:16
+  trial=  830  no_mols=264  unsat=566  timeout=0  time=22:34:23
+  trial=  840  sat=0  unsat=576  timeout=0  no_mols=264  time=22:34:23
+  trial=  850  no_mols=266  unsat=584  timeout=0  time=22:34:30
+  trial=  860  no_mols=271  unsat=589  timeout=0  time=22:34:46
+  trial=  870  no_mols=274  unsat=596  timeout=0  time=22:34:55
+  trial=  880  sat=0  unsat=604  timeout=0  no_mols=276  time=22:35:02
