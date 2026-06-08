@@ -92,19 +92,26 @@ def build_col_index(L: np.ndarray, n: int = N) -> np.ndarray:
     return col_of
 
 
+def relabel_L3_canonical(L3: np.ndarray, n: int = N) -> np.ndarray:
+    """Relabel L3 so L3[0] = [0,...,n-1]. Symbol permutation preserves clashes."""
+    perm = np.zeros(n, dtype=np.int32)
+    for j in range(n):
+        perm[int(L3[0, j])] = j
+    return perm[L3.astype(np.int32)].astype(np.int8)
+
+
 def feasibility_check(L1: np.ndarray, L2: np.ndarray, target: int,
                       n: int = N, hint_L3: np.ndarray | None = None,
                       timeout_s: float = 300.0,
-                      num_workers: int = 4
+                      num_workers: int = 4,
+                      symbreak: bool = True,
                       ) -> tuple[str, np.ndarray | None]:
     """
     Check whether there exists L3 with cl13 + cl23 <= target.
 
     Adds hard constraint: sum(covered13) + sum(covered23) >= 2*n^2 - target.
+    Symmetry breaking: fix L3[0][j]=j (cuts n! ≈ 3.6M redundancy).
     Returns ('SAT', L3_sol), ('UNSAT', None), or ('TIMEOUT', None).
-
-    SAT is dramatically faster than optimizing when solutions exist.
-    UNSAT proves no L3 achieves E <= target for this pair.
     """
     model = cp_model.CpModel()
 
@@ -116,10 +123,16 @@ def feasibility_check(L1: np.ndarray, L2: np.ndarray, target: int,
     for j in range(n):
         model.add_all_different([L3v[i][j] for i in range(n)])
 
+    # Symmetry breaking: fix first row to identity
+    if symbreak:
+        for j in range(n):
+            model.add(L3v[0][j] == j)
+
     if hint_L3 is not None:
+        hint_canon = relabel_L3_canonical(hint_L3, n)
         for i in range(n):
             for j in range(n):
-                model.add_hint(L3v[i][j], int(hint_L3[i, j]))
+                model.add_hint(L3v[i][j], int(hint_canon[i, j]))
 
     col_of_1 = build_col_index(L1, n)
     col_of_2 = build_col_index(L2, n)

@@ -26,7 +26,8 @@ declare -A CMDS=(
   ["3141"]="mols10/mols_joint_sa.py --seed 3141 --budget 180 >> mols10/results/l3_joint_sa.log 2>&1"
   ["5678"]="mols10/mols_cpsat_worker.py --seed 5678 --timeout 180 --workers 2 >> mols10/results/l3_cpsat.log 2>&1"
   ["1234"]="mols10/mols_cpsat_worker.py --seed 1234 --timeout 180 --workers 2 >> mols10/results/l3_cpsat2.log 2>&1"
-  ["9999"]="mols10/mols_cpsat_proof.py --seed 9999 --timeout 300 --workers 3 --target 35 >> mols10/results/l3_cpsat_proof.log 2>&1"
+  ["9999"]="mols10/mols_cpsat_proof.py --seed 9999 --timeout 600 --workers 4 --target 35 >> mols10/results/l3_cpsat_proof.log 2>&1"
+  ["8765"]="mols10/mols_cpsat_proof.py --seed 8765 --timeout 300 --workers 2 --target 36 >> mols10/results/l3_cpsat_proof36.log 2>&1"
 )
 
 while true; do

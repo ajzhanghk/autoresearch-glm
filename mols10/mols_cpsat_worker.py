@@ -99,16 +99,30 @@ def build_col_index(L: np.ndarray, n: int = N) -> np.ndarray:
     return col_of
 
 
+def relabel_L3_canonical(L3: np.ndarray, n: int = N) -> np.ndarray:
+    """Relabel L3 symbols so that L3[0] = [0,1,...,n-1].
+
+    Symbol permutation is an isometry: cl13(L1, σ(L3)) = cl13(L1, L3).
+    This allows symmetry breaking without losing any solutions.
+    """
+    perm = np.zeros(n, dtype=np.int32)
+    for j in range(n):
+        perm[int(L3[0, j])] = j  # perm[old_symbol] = new_symbol
+    return perm[L3.astype(np.int32)].astype(np.int8)
+
+
 def build_and_solve(L1: np.ndarray, L2: np.ndarray, n: int = N,
                     hint_L3: np.ndarray | None = None,
                     timeout_s: float = 120.0,
-                    num_workers: int = 4
+                    num_workers: int = 4,
+                    symbreak: bool = True,
                     ) -> tuple[int, np.ndarray | None, bool]:
     """
     CP-SAT model for min cl13 + cl23 with fixed L1, L2 (cl12=0).
 
     Efficient encoding: n indicator variables per (a,b) pair, not n².
-    Returns (best_obj, best_L3, timed_out).
+    Symmetry breaking: fix L3[0][j]=j (symbol relabeling; cuts n! redundancy).
+    Returns (best_obj, best_L3, timed_out, is_optimal).
     """
     model = cp_model.CpModel()
 
@@ -122,11 +136,17 @@ def build_and_solve(L1: np.ndarray, L2: np.ndarray, n: int = N,
     for j in range(n):
         model.add_all_different([L3v[i][j] for i in range(n)])
 
-    # Warm start from near-miss hint
+    # Symmetry breaking: fix first row to identity
+    if symbreak:
+        for j in range(n):
+            model.add(L3v[0][j] == j)
+
+    # Warm start from near-miss hint (relabeled to canonical form)
     if hint_L3 is not None:
+        hint_canon = relabel_L3_canonical(hint_L3, n)
         for i in range(n):
             for j in range(n):
-                model.add_hint(L3v[i][j], int(hint_L3[i, j]))
+                model.add_hint(L3v[i][j], int(hint_canon[i, j]))
 
     # Precompute: for each symbol a, which column in each row contains a
     col_of_1 = build_col_index(L1, n)  # col_of_1[a][i] = j with L1[i,j]=a
