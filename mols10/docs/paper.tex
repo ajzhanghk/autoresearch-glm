@@ -465,6 +465,7 @@ Session & Key development & Best $\E$ & Stable since\\
 8 & Crossover, MAX-SAT, row-replace, joint 3-LS SA & \textbf{37} & Session 5\\
 9 & CP-SAT optimizer + symbreak; \textbf{E=34 for 2 independent pairs} & \textbf{34} & Session 9\\
 10 & SA/CP-SAT cascade; file-locking fix; \textbf{E=32} via rapid descent & \textbf{32} & Session 10\\
+11 & Seed sweep (60 seeds), feasibility attack, long-duration 8w; best still \textbf{32} & \textbf{32} & Session 10\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -742,7 +743,7 @@ Table~\ref{tab:pool} shows the current near-miss pool (top 8 triples by energy).
 
 \begin{table}[h]
 \centering
-\caption{Near-miss pool state (Session 10, top 8 entries).}\label{tab:pool}
+\caption{Near-miss pool state (Session 11, top 8 entries; pool has 15 total, 14 unique $(L_1,L_2)$ pairs).}\label{tab:pool}
 \begin{tabular}{cccccc}
 \toprule
 Index & Solver & $\E$ & $\cl_{12}$ & $\cl_{13}$ & $\cl_{23}$\\
@@ -751,10 +752,10 @@ Index & Solver & $\E$ & $\cl_{12}$ & $\cl_{13}$ & $\cl_{23}$\\
 1 & SA & 33 & 0 & 14 & 19\\
 2 & SA & 33 & 0 & 14 & 19\\
 3 & SA & 33 & 0 & 14 & 19\\
-4 & CP-SAT & 34 & 0 & 17 & 17\\
-5 & CP-SAT & 34 & 0 & 18 & 16\\
-6 & SA & 34 & 0 & 17 & 17\\
-7 & SA & 34 & 0 & 17 & 17\\
+4 & SA & 33 & 0 & 14 & 19\\
+5 & CP-SAT & 34 & 0 & — & —\\
+6 & CP-SAT & 34 & 0 & — & —\\
+7 & SA & 34 & 0 & — & —\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -862,6 +863,9 @@ $\E(L_1, L_2, L_3) \geq 32$.
   $\E = 32$ ($\cl_{13}=18$, $\cl_{23}=14$, $\cl_{12}=0$) was found by
   CP-SAT in 180\,s using an E=37 pool entry as warm-start.  Additionally,
   $\E = 33$ was confirmed for three independent MOLS-10 pairs.
+  Session 11 launched three new attack strategies (seed sweep over 60 seeds,
+  feasibility attack with hard constraint $\E \leq 30$, long-duration 8-worker run
+  with up to 1800\,s per seed) all targeting $\E \leq 31$.
   The proof-mode worker is actively checking $\E \leq 31$ feasibility.
   The floor 32 is the best currently known.
 \end{remark}
@@ -890,7 +894,7 @@ results: CDCL UNSAT proofs are logically complete refutations.  Additionally, $\
 independently generated pairs have been SAT-certified UNSAT.  No SAT instance has ever returned
 satisfiable ($L_3$ found).
 
-\paragraph{3. Energy barrier (updated: E = 32, Session 10).}
+\paragraph{3. Energy barrier (updated: E = 32, Sessions 10--11).}
 Sessions 5--8 found $\E = 37$ as the SA floor.  Session 9 CP-SAT broke to $\E=34$;
 Session 10 saw a rapid cascade to $\E=32$:
 \begin{itemize}[noitemsep]
@@ -898,9 +902,13 @@ Session 10 saw a rapid cascade to $\E=32$:
   \item Session 10 (SA with pool hints): $\E = 33$ confirmed for three independent pairs
   \item Session 10 (CP-SAT, seed 1234): $\E = \mathbf{32}$ ($\cl_{13}=18$, $\cl_{23}=14$,
     $\cl_{12}=0$, found in 180\,s from E=37 pool entry, verified)
+  \item Session 11: Intensive sweep (60 seeds $\times$ 300\,s $\times$ 4 workers,
+    feasibility attack with hard $\E \leq 30$ constraint,
+    and 8-worker long-duration runs up to 1800\,s) are ongoing, targeting $\E \leq 31$
 \end{itemize}
 The $\E = 32$ solution contains only 32 missing pairs out of a possible 200, equivalent to
-84\% coverage.  The proof-mode worker is checking $\E \leq 31$ feasibility.
+84\% coverage.  Proof-mode and feasibility workers are actively checking whether $\E \leq 31$
+(or any lower value) is achievable for this $(L_1, L_2)$ pair.
 
 \paragraph{4. Reverse search failure.}
 Fixing a near-miss $L_3$ and running 30+ independent reverse-search trials (7-replica
@@ -926,10 +934,11 @@ No positive evidence for $N(10) \geq 3$ has been found:
 \begin{itemize}[noitemsep]
   \item No pair with $\CT \geq 3$ has been found (311 pairs tested).
   \item No SAT instance has returned a satisfying assignment.
-  \item \sout{No energy below 37.} CP-SAT found $\E=34$ for two independent pairs
-    ($\cl_{12}=0$, $\cl_{13}+\cl_{23}=34$); verified solutions on record.
-  \item No energy below 37 has been achieved by the joint SA for any triple with $\cl_{12} \geq 0$
-    (exact CP-SAT required to reach below 37).
+  \item \sout{No energy below 37.} \sout{CP-SAT found $\E=34$ for two independent pairs.}
+    Best known energy is $\E = \mathbf{32}$ ($\cl_{12}=0$, $\cl_{13}=18$, $\cl_{23}=14$,
+    verified); this is a 84\%-coverage near-miss.
+  \item No energy below 32 found after intensive Session 11 sweep (60 seeds, feasibility
+    attacks, 8-worker long-duration runs).
   \item Reverse search has never found a triple with $\E_\text{rev} < 60$.
 \end{itemize}
 
@@ -940,9 +949,10 @@ The combination of SAT certificates (logically complete, per-pair) and the CT ba
 $N(10) = 2$.  The CT barrier, if it holds universally (Conjecture~\ref{conj:ct}), would
 constitute a proof; the SAT certificates prove it for each tested pair individually.
 
-The $\E=37$ near-miss triples are the best known approximations to a 3-MOLS triple and may
-be useful for future theoretical or computational attacks, but currently provide no path toward
-$N(10) \geq 3$.
+The $\E=32$ near-miss triple (Session 10) is the best known approximation to a 3-MOLS triple
+and may be useful for future theoretical or computational attacks.  Session 11 is aggressively
+pursuing $\E \leq 31$ with seed sweeps, feasibility attacks, and long-duration CP-SAT runs,
+but currently provides no path toward $N(10) \geq 3$.
 
 % ===========================================================================
 \section{Conclusions and Future Work}\label{sec:conclusions}
