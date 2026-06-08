@@ -466,6 +466,7 @@ Session & Key development & Best $\E$ & Stable since\\
 9 & CP-SAT optimizer + symbreak; \textbf{E=34 for 2 independent pairs} & \textbf{34} & Session 9\\
 10 & SA/CP-SAT cascade; file-locking fix; \textbf{E=32} via rapid descent & \textbf{32} & Session 10\\
 11 & Long-duration 8w (900\,s) CP-SAT breaks to \textbf{E=31}; cascade $32\to31$ & \textbf{31} & Session 11\\
+12 & L3-only SA (cell-swap bug found/fixed); 12 parallel 900\,s CP-SAT sweeps; E=31 holds & \textbf{31} & Session 11\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -863,8 +864,9 @@ $\E(L_1, L_2, L_3) \geq 31$.
   $\E = 31$ ($\cl_{13}=19$, $\cl_{23}=12$, $\cl_{12}=0$) was found by
   CP-SAT in 900\,s with 8 workers using an $\E=32$ pool entry as warm-start
   (Session 11, seed=2001).  The cascade $37 \to 31$ spans two sessions.
-  The floor 31 is the best currently known.  Session 11 continues to attack
-  with up to 1800\,s runs and 42 parallel workers.
+  The floor 31 is the best currently known.  Session 12 expands to 50+
+  parallel workers including 12 parallel 900\,s CP-SAT sweeps (seeds 0--400
+  and 2001--2100) and a fixed L3-only SA with intercalate-based moves.
 \end{remark}
 
 % ===========================================================================
@@ -901,10 +903,13 @@ Session 10 saw a rapid cascade to $\E=32$; Session 11 continues the cascade to $
     $\cl_{12}=0$, 180\,s from E=37 pool entry, verified)
   \item Session 11 (CP-SAT, seed 2001, 8 workers, 900\,s): $\E = \mathbf{31}$
     ($\cl_{13}=19$, $\cl_{23}=12$, $\cl_{12}=0$, verified), breaking $\E=32$ record
+  \item Session 12 (CP-SAT, 12 parallel 900\,s sweeps, seeds 0--400 and 2001--2100):
+    1200\,s seeds 3001/3002 found only $\E=37$--$39$; E=31 holds as current best
 \end{itemize}
 The $\E = 31$ solution covers 169 out of 200 possible orthogonal-triple symbol pairs,
-equivalent to 84.5\% coverage.  Intensive attacks (1800\,s, 8 workers; feasibility
-probes with hard constraint $\E \leq 28$; 42 parallel workers) are now targeting $\E \leq 30$.
+equivalent to 84.5\% coverage.  Session 12 operates 50+ parallel workers targeting
+$\E \leq 30$: 12 parallel 900\,s CP-SAT sweeps, L3-only SA with intercalate moves,
+and long-duration 1200--1800\,s attacks.
 
 \paragraph{4. Reverse search failure.}
 Fixing a near-miss $L_3$ and running 30+ independent reverse-search trials (7-replica
@@ -934,8 +939,8 @@ No positive evidence for $N(10) \geq 3$ has been found:
     \sout{Best known energy is $\E = 32$.}
     Best known energy is $\E = \mathbf{31}$ ($\cl_{12}=0$, $\cl_{13}=19$, $\cl_{23}=12$,
     verified, Session 11); this is a 84.5\%-coverage near-miss.
-  \item Intensive session-11 attacks (60-seed sweeps, feasibility probes,
-    8-worker long-duration CP-SAT) are ongoing targeting $\E \leq 30$.
+  \item Session 12: 12 parallel 900\,s CP-SAT sweeps (seeds 0--400 and 2001--2100),
+    L3-only SA (fixed), 50+ workers are ongoing targeting $\E \leq 30$.
   \item Reverse search has never found a triple with $\E_\text{rev} < 60$.
 \end{itemize}
 
@@ -946,10 +951,11 @@ The combination of SAT certificates (logically complete, per-pair) and the CT ba
 $N(10) = 2$.  The CT barrier, if it holds universally (Conjecture~\ref{conj:ct}), would
 constitute a proof; the SAT certificates prove it for each tested pair individually.
 
-The $\E=31$ near-miss triple (Session 11) is the new best known approximation to a 3-MOLS triple,
+The $\E=31$ near-miss triple (Session 11) is the best known approximation to a 3-MOLS triple,
 surpassing the previous $\E=32$ record set in Session 10.  The cascade $37\to36\to34\to33\to32\to31$
-has continued with each session.  Session 11 continues attacking with 42 parallel workers and
-up to 1800\,s CP-SAT runs, but currently provides no path toward $N(10) \geq 3$.
+spans Sessions 5--11.  Session 12 discovers and fixes a Latin-square-validity bug in the L3-only SA
+(the ``cell-swap'' move broke column uniqueness), and deploys 12 parallel 900\,s CP-SAT sweeps with
+50+ workers; the E=31 record holds through these attacks.  No path toward $N(10) \geq 3$ has been found.
 
 % ===========================================================================
 \section{Conclusions and Future Work}\label{sec:conclusions}
