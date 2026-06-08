@@ -214,3 +214,36 @@ trial=  12  strategy=reverse  L3_from_E=37  budget=120s  time=07:55:42
   reverse: found=False  best_E=69  session_best=63  swaps=407  ils_kicks=11  elapsed=120.0s
 
 trial=  13  strategy=reverse  L3_from_E=37  budget=120s  time=07:57:42
+  reverse: found=False  best_E=64  session_best=63  swaps=404  ils_kicks=11  elapsed=120.0s
+
+trial=  14  strategy=reverse  L3_from_E=37  budget=120s  time=07:59:42
+  reverse: found=False  best_E=67  session_best=63  swaps=391  ils_kicks=11  elapsed=120.0s
+
+trial=  15  strategy=reverse  L3_from_E=37  budget=120s  time=08:01:42
+  reverse: found=False  best_E=68  session_best=63  swaps=341  ils_kicks=11  elapsed=120.0s
+
+trial=  16  strategy=reverse  L3_from_E=37  budget=120s  time=08:03:42
+  reverse: found=False  best_E=64  session_best=63  swaps=264  ils_kicks=11  elapsed=120.0s
+
+trial=  17  strategy=reverse  L3_from_E=37  budget=120s  time=08:05:42
+  reverse: found=False  best_E=69  session_best=63  swaps=251  ils_kicks=11  elapsed=120.0s
+
+trial=  18  strategy=reverse  L3_from_E=37  budget=120s  time=08:07:42
+  reverse: found=False  best_E=63  session_best=63  swaps=220  ils_kicks=11  elapsed=120.0s
+
+trial=  19  strategy=reverse  L3_from_E=37  budget=120s  time=08:09:42
+  reverse: found=False  best_E=69  session_best=63  swaps=228  ils_kicks=11  elapsed=120.0s
+
+trial=  20  strategy=reverse  L3_from_E=37  budget=120s  time=08:11:42
+  reverse: found=False  best_E=63  session_best=63  swaps=218  ils_kicks=11  elapsed=120.0s
+
+trial=  21  strategy=reverse  L3_from_E=37  budget=120s  time=08:13:42
+  reverse: found=False  best_E=66  session_best=63  swaps=249  ils_kicks=11  elapsed=120.0s
+
+trial=  22  strategy=reverse  L3_from_E=37  budget=120s  time=08:15:42
+  reverse: found=False  best_E=65  session_best=63  swaps=236  ils_kicks=11  elapsed=120.0s
+
+trial=  23  strategy=reverse  L3_from_E=37  budget=120s  time=08:17:42
+  reverse: found=False  best_E=71  session_best=63  swaps=219  ils_kicks=11  elapsed=120.0s
+
+trial=  24  strategy=reverse  L3_from_E=37  budget=120s  time=08:19:42

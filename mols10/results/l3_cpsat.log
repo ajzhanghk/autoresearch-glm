@@ -18,3 +18,35 @@
 [08:05:39] ============================================================
 [08:05:39] trial=   1  pool_E=37  timeout=180.0s  time=08:05:39
 [08:05:39] trial=   1  pool_E=37  timeout=180.0s  time=08:05:39
+[08:08:39]   FEASIBLE: E=38  cl13=19  cl23=19  session_best=38  optimal_proven=False  elapsed=180.0s
+[08:08:39]   FEASIBLE: E=38  cl13=19  cl23=19  session_best=38  optimal_proven=False  elapsed=180.0s
+[08:08:39] trial=   2  pool_E=37  timeout=180.0s  time=08:08:39
+[08:08:39] trial=   2  pool_E=37  timeout=180.0s  time=08:08:39
+[08:11:40]   FEASIBLE: E=36  cl13=18  cl23=18  session_best=36  optimal_proven=False  elapsed=180.1s
+[08:11:40]   FEASIBLE: E=36  cl13=18  cl23=18  session_best=36  optimal_proven=False  elapsed=180.1s
+[08:11:40] trial=   3  pool_E=37  timeout=180.0s  time=08:11:40
+[08:11:40] trial=   3  pool_E=37  timeout=180.0s  time=08:11:40
+[08:14:40]   FEASIBLE: E=36  cl13=22  cl23=14  session_best=36  optimal_proven=False  elapsed=180.0s
+[08:14:40]   FEASIBLE: E=36  cl13=22  cl23=14  session_best=36  optimal_proven=False  elapsed=180.0s
+[08:14:40]   [status] trials=3  optimal_proven=0  session_best=36
+[08:14:40]   [status] trials=3  optimal_proven=0  session_best=36
+[08:14:40] trial=   4  pool_E=37  timeout=180.0s  time=08:14:40
+[08:14:40] trial=   4  pool_E=37  timeout=180.0s  time=08:14:40
+[08:14:54] ============================================================
+[08:14:54] ============================================================
+[08:14:54] CP-SAT L3 optimizer — seed=5678  timeout=180.0s  workers=2
+[08:14:54] CP-SAT L3 optimizer — seed=5678  timeout=180.0s  workers=2
+[08:14:54] ============================================================
+[08:14:54] ============================================================
+[08:14:54] trial=   1  pool_E=37  timeout=180.0s  time=08:14:54
+[08:14:54] trial=   1  pool_E=37  timeout=180.0s  time=08:14:54
+[08:15:59] ============================================================
+[08:15:59] CP-SAT L3 optimizer — seed=1234  timeout=180.0s  workers=2
+[08:15:59] ============================================================
+[08:15:59] trial=   1  pool_E=37  timeout=180.0s  time=08:15:59
+[08:17:54]   FEASIBLE: E=39  cl13=17  cl23=22  session_best=39  optimal_proven=False  elapsed=180.0s
+[08:17:54]   FEASIBLE: E=39  cl13=17  cl23=22  session_best=39  optimal_proven=False  elapsed=180.0s
+[08:17:54] trial=   2  pool_E=37  timeout=180.0s  time=08:17:54
+[08:17:54] trial=   2  pool_E=37  timeout=180.0s  time=08:17:54
+[08:18:59]   FEASIBLE: E=42  cl13=20  cl23=22  session_best=42  optimal_proven=False  elapsed=180.1s
+[08:18:59] trial=   2  pool_E=37  timeout=180.0s  time=08:18:59

@@ -275,3 +275,15 @@ seed=11111  sat_timeout=20.0s
   trial=  260  sat=0  unsat=169  timeout=0  no_mols=91  time=07:53:46
   trial=  270  no_mols=96  unsat=174  timeout=0  time=07:55:24
   trial=  280  sat=0  unsat=179  timeout=0  no_mols=101  time=07:56:59
+  trial=  300  sat=0  unsat=192  timeout=0  no_mols=108  time=07:59:16
+  trial=  320  sat=0  unsat=205  timeout=0  no_mols=115  time=08:01:33
+  trial=  330  no_mols=121  unsat=209  timeout=0  time=08:03:48
+  trial=  340  sat=0  unsat=217  timeout=0  no_mols=123  time=08:04:56
+  trial=  360  sat=0  unsat=232  timeout=0  no_mols=128  time=08:07:35
+  trial=  370  no_mols=129  unsat=241  timeout=0  time=08:08:10
+  trial=  380  no_mols=131  unsat=249  timeout=0  time=08:09:22
+  trial=  390  no_mols=133  unsat=257  timeout=0  time=08:10:34
+  trial=  400  sat=0  unsat=264  timeout=0  no_mols=136  time=08:12:17
+  trial=  420  sat=0  unsat=280  timeout=0  no_mols=140  time=08:14:36
+  trial=  430  no_mols=144  unsat=286  timeout=0  time=08:16:49
+  trial=  440  sat=0  unsat=293  timeout=0  no_mols=147  time=08:18:39
