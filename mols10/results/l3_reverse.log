@@ -166,3 +166,18 @@ seed=7777  budget_per_trial=120.0s
 ====================================================================
 
 trial=   1  strategy=reverse  L3_from_E=37  budget=120s  time=04:04:26
+  reverse: found=False  best_E=68  session_best=68  swaps=782  ils_kicks=11  elapsed=120.0s
+
+trial=   2  strategy=reverse  L3_from_E=37  budget=120s  time=04:06:26
+  reverse: found=False  best_E=65  session_best=65  swaps=791  ils_kicks=11  elapsed=120.0s
+
+trial=   3  strategy=reverse  L3_from_E=37  budget=120s  time=04:08:26
+====================================================================
+MOLS Reverse Search — fix near-miss L3, find compatible (L1, L2)
+seed=7777  budget_per_trial=120.0s
+====================================================================
+
+trial=   1  strategy=reverse  L3_from_E=37  budget=120s  time=07:33:41
+  reverse: found=False  best_E=68  session_best=68  swaps=770  ils_kicks=11  elapsed=120.0s
+
+trial=   2  strategy=reverse  L3_from_E=37  budget=120s  time=07:35:41

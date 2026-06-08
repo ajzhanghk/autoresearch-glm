@@ -50,3 +50,29 @@
 [04:04:25] crossover_search started: seed=4242 budget=90.0s
 [04:04:25] crossover_search started: seed=8888 budget=90.0s
 [04:04:25] crossover_search started: seed=8888 budget=90.0s
+[04:05:55] trial=   1  strategy=row_replace_sa        E=37  session_best=37  elapsed=90.0s
+[04:05:55] trial=   1  strategy=row_replace_sa        E=37  session_best=37  elapsed=90.0s
+[04:05:55] trial=   1  strategy=partial_completion    E=37  session_best=37  elapsed=90.0s
+[04:05:55] trial=   1  strategy=partial_completion    E=37  session_best=37  elapsed=90.0s
+[04:07:25] trial=   2  strategy=crossover             E=37  session_best=37  elapsed=90.0s
+[04:07:25] trial=   2  strategy=crossover             E=37  session_best=37  elapsed=90.0s
+[04:07:25] trial=   2  strategy=partial_completion    E=37  session_best=37  elapsed=90.0s
+[04:07:25] trial=   2  strategy=partial_completion    E=37  session_best=37  elapsed=90.0s
+[04:08:55] trial=   3  strategy=crossover             E=37  session_best=37  elapsed=90.0s
+[04:08:55] trial=   3  strategy=crossover             E=37  session_best=37  elapsed=90.0s
+[04:08:55] trial=   3  strategy=crossover             E=37  session_best=37  elapsed=90.0s
+[04:08:55] trial=   3  strategy=crossover             E=37  session_best=37  elapsed=90.0s
+[07:33:31] crossover_search started: seed=4242 budget=90.0s[07:33:31] crossover_search started: seed=8888 budget=90.0s
+[07:33:31] crossover_search started: seed=8888 budget=90.0s
+
+[07:33:31] crossover_search started: seed=4242 budget=90.0s
+[07:35:02] trial=   1  strategy=row_replace_sa        E=37  session_best=37  elapsed=90.0s
+[07:35:02] trial=   1  strategy=row_replace_sa        E=37  session_best=37  elapsed=90.0s
+[07:35:02] trial=   1  strategy=partial_completion    E=37  session_best=37  elapsed=90.0s
+[07:35:02] trial=   1  strategy=partial_completion    E=37  session_best=37  elapsed=90.0s
+[07:35:02] trial=   2  strategy=crossover             E=37  session_best=37  elapsed=0.0s
+[07:35:02] trial=   2  strategy=crossover             E=37  session_best=37  elapsed=0.0s
+[07:36:32] trial=   3  strategy=row_replace_sa        E=37  session_best=37  elapsed=90.0s
+[07:36:32] trial=   3  strategy=row_replace_sa        E=37  session_best=37  elapsed=90.0s
+[07:36:32] trial=   2  strategy=partial_completion    E=37  session_best=37  elapsed=90.0s
+[07:36:32] trial=   2  strategy=partial_completion    E=37  session_best=37  elapsed=90.0s
