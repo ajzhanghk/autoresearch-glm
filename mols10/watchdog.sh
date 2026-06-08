@@ -32,11 +32,18 @@ declare -A CMDS=(
   ["7002"]="mols10/mols_l3_search.py --seed 7002 >> mols10/results/l3_run_B.log 2>&1"
   ["7003"]="mols10/mols_l3_search.py --seed 7003 >> mols10/results/l3_run_C.log 2>&1"
   ["7004"]="mols10/mols_l3_search.py --seed 7004 >> mols10/results/l3_run_D.log 2>&1"
+  ["7005"]="mols10/mols_l3_search.py --seed 7005 >> mols10/results/l3_run_E7005.log 2>&1"
+  ["7006"]="mols10/mols_l3_search.py --seed 7006 >> mols10/results/l3_run_E7006.log 2>&1"
+  ["7007"]="mols10/mols_l3_search.py --seed 7007 >> mols10/results/l3_run_E7007.log 2>&1"
+  ["7008"]="mols10/mols_l3_search.py --seed 7008 >> mols10/results/l3_run_E7008.log 2>&1"
+  ["7009"]="mols10/mols_l3_search.py --seed 7009 >> mols10/results/l3_run_E7009.log 2>&1"
+  ["7010"]="mols10/mols_l3_search.py --seed 7010 >> mols10/results/l3_run_E7010.log 2>&1"
+  ["7011"]="mols10/mols_l3_search.py --seed 7011 >> mols10/results/l3_run_E7011.log 2>&1"
+  ["7012"]="mols10/mols_l3_search.py --seed 7012 >> mols10/results/l3_run_E7012.log 2>&1"
 )
 
 while true; do
   for SEED in "${!CMDS[@]}"; do
-    # Check if a python process with this exact seed is running
     if ! pgrep -af "python.*seed $SEED" > /dev/null 2>&1; then
       CMD="${CMDS[$SEED]}"
       log "DEAD seed=$SEED — restarting: $CMD"
