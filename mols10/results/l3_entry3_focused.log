@@ -1,0 +1,9 @@
+[08:37:16] Focused on entry 3 (E=38 in 60s)
+[08:37:16] trial=1  timeout=120s  2w  sym=True  best_E=99
+  FEAS: E=34  cl13=18  cl23=16  best_E=34  t=120.1s
+  ★ SAVED E=34!
+[08:39:16] trial=2  timeout=180s  2w  sym=True  best_E=34
+  FEAS: E=38  cl13=22  cl23=16  best_E=34  t=180.1s
+[08:42:16] trial=3  timeout=120s  2w  sym=False  best_E=34
+  FEAS: E=41  cl13=24  cl23=17  best_E=34  t=120.1s
+[08:44:16] trial=4  timeout=180s  2w  sym=True  best_E=34
