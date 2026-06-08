@@ -150,3 +150,10 @@ seed=11111  sat_timeout=20.0s
   [ 50] UNSAT  elapsed=0.11s  (so far: unsat=51)
   [100] UNSAT  elapsed=0.08s  (so far: unsat=101)
   [150] UNSAT  elapsed=0.12s  (so far: unsat=151)
+  [200] UNSAT  elapsed=0.12s  (so far: unsat=201)
+  [250] UNSAT  elapsed=0.18s  (so far: unsat=251)
+  [300] UNSAT  elapsed=0.08s  (so far: unsat=301)
+
+[Phase 1 done] pairs=311  SAT=0  UNSAT=311  TIMEOUT=0
+
+[Phase 2] Generating new MOLS pairs + SAT search...
