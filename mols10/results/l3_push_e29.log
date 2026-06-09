@@ -6,3 +6,5 @@
 [07:51:15]   Optimize: E=31→30 cl13=15 cl23=15 t=1800.1s
 [07:51:15]   Saved E=30 to pool
 [07:51:15] [Round 1] class=3a33165a E=30 | Step 2: feasibility E<=29 (1200s, 2w)
+[08:11:15]   TIMEOUT: inconclusive t=1200.1s
+[08:11:15] [Round 1] class=74bb7b86 E=31 | Step 1: build_and_solve (1800s, 2w)

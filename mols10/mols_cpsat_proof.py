@@ -105,6 +105,7 @@ def feasibility_check(L1: np.ndarray, L2: np.ndarray, target: int,
                       timeout_s: float = 300.0,
                       num_workers: int = 4,
                       symbreak: bool = True,
+                      random_seed: int | None = None,
                       ) -> tuple[str, np.ndarray | None]:
     """
     Check whether there exists L3 with cl13 + cl23 <= target.
@@ -206,6 +207,8 @@ def feasibility_check(L1: np.ndarray, L2: np.ndarray, target: int,
     solver.parameters.max_time_in_seconds = timeout_s
     solver.parameters.num_search_workers = num_workers
     solver.parameters.log_search_progress = False
+    if random_seed is not None:
+        solver.parameters.random_seed = random_seed
 
     status = solver.solve(model)
 

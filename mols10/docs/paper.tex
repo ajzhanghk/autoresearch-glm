@@ -71,8 +71,8 @@ and class~2cc8e22f ($\cl_{13}=14$, $\cl_{23}=15$, 23 intercalates, 4-move local 
 (4) Glucose3 provides machine-verifiable UNSAT certificates for all 311 pairs (42\,ms average);
 (5) Session~15 shows three additional isotopy classes (3a33165a, 74bb7b86, 0968fc79)
 reach $\E=30$ from $\E=31$ in 1200\,s, further expanding isotopy class coverage;
-(6) CP-SAT proof workers have run 12+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$
-across three classes (4f04a773, 2cc8e22f, 3461a586), all inconclusive.
+(6) CP-SAT proof workers have run 14+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$
+across three classes (4f04a773, 2cc8e22f, 3461a586), all inconclusive (Session~16 ongoing).
 
 Dedicated proof-mode workers continue checking $\E \leq 28$ feasibility across multiple
 isotopy classes.  Collectively, this constitutes the strongest computational evidence to date
@@ -473,6 +473,7 @@ Session & Key development & Best $\E$ & Stable since\\
 14b & 2-move intercalate neighborhood search on E=30 finds $\E=\mathbf{29}$ instantly (cl13=15, cl23=14) & \textbf{29} & Session 14\\
 14c & 5-move local min confirmed (22.2M quints); 6 diff-class E=31 pairs stuck at E=31; E=32 entry (class 2cc8e22f) → \textbf{E=29} in 240\,s (new class); proof TIMEOUT & \textbf{29} & Session 14\\
 15 & Three new classes (3a33165a, 74bb7b86, 0968fc79) reach E=30 in 1200\,s deep opt; 12 proof trials (E$\leq$28) all TIMEOUT; push-to-E29 sweep ongoing & \textbf{29} & Session 14\\
+16 & Push-to-E29 round 2: 3a33165a E=31$\to$30 confirmed (1800\,s); E$\leq$29 TIMEOUT (1200\,s); 74bb7b86 \& 0968fc79 in progress; 2cc8e22f proof trial 2+ TIMEOUT & \textbf{29} & Session 14\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -902,6 +903,14 @@ $\E(L_1, L_2, L_3) \geq 29$.
   Simultaneously, 12 proof-search trials (1200--1800\,s each, 2--4 workers per trial)
   targeting $\E \leq 28$ for classes 4f04a773, 2cc8e22f, and the $L_1/L_2$-swapped main pair
   (3461a586) all returned TIMEOUT: the feasibility of $\E \leq 28$ remains unresolved.
+
+  In Session~16, push-to-E29 continues with 1800\,s build-and-solve sweeps.
+  Class 3a33165a was re-optimized: E=31$\to$30 confirmed again ($\cl_{13}=15$, $\cl_{23}=15$,
+  $t=1800$\,s), but feasibility E$\leq$29 (1200\,s) returned TIMEOUT.
+  Classes 74bb7b86 and 0968fc79 are currently being processed.
+  Simultaneously, 2+ additional 1800\,s proof trials for class 2cc8e22f (E$\leq$28)
+  returned TIMEOUT; the proof search continues.
+  Total proof-worker trials across all classes now exceeds 14.
 \end{remark}
 
 % ===========================================================================
@@ -1047,8 +1056,8 @@ Supporting evidence:
   \item Is Conjecture~\ref{conj:ct} provable? A proof would resolve $N(10)$ definitively.
   \item What is the true minimum of $\E$ over all triples with $\cl_{12} = 0$? Our
     empirical minimum is $\E=29$; can $\E < 29$ be achieved?  CP-SAT proof workers
-    have run 12+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$, all inconclusive
-    (for classes 4f04a773, 2cc8e22f, and swapped pair 3461a586 combined).
+    have run 14+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$, all inconclusive
+    (for classes 4f04a773, 2cc8e22f, and swapped pair 3461a586 combined; Session~16 ongoing).
     Whether $\E = 29$ is the global minimum or merely a local floor is the central open question.
   \item What is the intercalate local minimum depth of the $\E=29$ solutions? 5-move
     checks (22.2M 5-tuples) confirm the main-class solution is at least a 5-move local

@@ -24,3 +24,10 @@
 [07:21:15] trial=  1 target=28 timeout=1800.0s random_seed=533280010
 [07:51:15]   TIMEOUT: inconclusive t=1800.1s
 [07:51:15] trial=  2 target=28 timeout=1800.0s random_seed=677013082
+[08:21:15]   TIMEOUT: inconclusive t=1800.1s
+[08:21:15] trial=  3 target=28 timeout=1800.0s random_seed=324725170
+[08:22:11] ============================================================
+[08:22:11] Proof search: class=2cc8e22f E=29 cl12=0 cl13=14 cl23=15
+[08:22:11] Target: E <= 28, timeout=1800.0s, workers=2, seed=8765
+[08:22:11] ============================================================
+[08:22:11] trial=  1 target=28 timeout=1800.0s random_seed=1269124092
