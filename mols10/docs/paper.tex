@@ -894,20 +894,20 @@ $\E(L_1, L_2, L_3) \geq 29$.
   \end{enumerate}
   Session 14 also confirms via canonical isotopy hashing that all 7 previously known
   $\E=31$ pairs belong to the \emph{same isotopy class}, explaining stagnation.
-  The $\E=29$ solution is itself a \emph{5-move} intercalate local minimum: exhaustive
-  checks confirm all 24\,314 triples (3-move), 733\,407 4-tuples, and 22\,249\,729
-  5-tuples of intercalates all give $\E \geq 29$~(best$=29$, checked in 1584\,s).
+  The $\E=29$ solution is a strict intercalate local minimum (every single move increases
+  $\E$ to $\geq 30$). Session~14 showed 5-move local minimum; Session~16 upgrades this to
+  \textbf{global intercalate-neighborhood minimum} (max-IS=13, $k=14$ empty, 181\,s;
+  and BFS depth-4 from 60,774 states all giving $\E\geq30$).
   This is deeper than the $\E=31$ solution, which was only a 3-move local minimum.
-  Proof workers now probe $\E \leq 28$ (6 trials $\times$ 600\,s each, all inconclusive).
+  Proof workers now probe $\E \leq 28$ (20+ trials across all classes, all inconclusive).
 
   In Session 14c, a \textbf{second isotopy class} (canonical hash 2cc8e22f) also achieves
   $\E=29$ ($\cl_{13}=14$, $\cl_{23}=15$, $\cl_{12}=0$), found in 240\,s by CP-SAT
   optimization from an $\E=32$ starting hint.  This new $\E=29$ entry has \emph{23 intercalates}
-  (vs.\ 28 for the main class) and minimum-neighbor $\E=31$ (vs.\ $\E=30$); it is thus an
-  even \emph{deeper} local minimum.  Exhaustive checks: 563 pairs (2-move, best$=29$),
-  14\,200 triples (3-move, best$=29$), 364\,802 quads (4-move, best$=29$, $t=22$\,s) all
-  confirm the new-class $\E=29$ is a 4-move local minimum.  Two independent $\E=29$ isotopy
-  classes now exist, both with purely uphill intercalate neighborhoods.
+  (vs.\ 28 for the main class) and minimum-neighbor $\E=31$ (vs.\ $\E=30$).
+  Session~14 found it to be a 4-move local minimum; Session~16 upgrades to \textbf{global
+  intercalate-neighborhood minimum} (max-IS=12, $k=13$ empty, 30\,s; BFS depth-5 from
+  249,035 states all giving $\E\geq30$).
 
   In Session~16 (June 9), exhaustive intercalate-neighborhood analysis of the 2cc8e22f class
   was completed up to the \textbf{maximum possible move-set size}.  The 23 intercalates of
@@ -1117,8 +1117,10 @@ No positive evidence for $N(10) \geq 3$ has been found:
     Best known energy is $\E = \mathbf{29}$ ($\cl_{12}=0$, $\cl_{13}=15$, $\cl_{23}=14$,
     verified, Session 14b); 85.5\%-coverage near-miss, the strongest ever found.
   \item Session 14: Warm-start fix $\Rightarrow$ E=30 (311\,s); 2-move neighborhood $\Rightarrow$ E=29.
-    All 7 prior $\E=31$ pairs same isotopy class; $\E=29$ is a \textbf{5-move} intercalate local minimum
-    (22.2M 5-tuples all $\geq 29$). Proof workers target $\E \leq 28$ (6+ trials all inconclusive).
+    All 7 prior $\E=31$ pairs same isotopy class.
+    Session~16 upgrades: all three $\E=29$ classes (4f04a773, 2cc8e22f, 74bb7b86) are
+    \textbf{global intercalate-neighborhood minima} (max-IS 10--13, BFS depth 4--5 with
+    445K+ states all $\geq 30$). Proof workers: 20+ trials targeting $\E \leq 28$, all inconclusive.
   \item Reverse search has never found a triple with $\E_\text{rev} < 60$.
 \end{itemize}
 
@@ -1132,12 +1134,14 @@ constitute a proof; the SAT certificates prove it for each tested pair individua
 The $\E=29$ near-miss triple (Session 14) is the best known approximation to a 3-MOLS triple,
 surpassing the previous $\E=31$ record from Session 11 by 2 units.  The full cascade is
 $37\to36\to34\to33\to32\to31\to30\to\mathbf{29}$, spanning Sessions 9--14.
-Session 14's contributions: (1) fixed the warm-start bug in \texttt{feasibility\_check} (hints
-for derived boolean variables), enabling $\E=30$ in 311\,s; (2) 2-move intercalate neighborhood
-search on $\E=30$ immediately found $\E=29$; (3) canonical isotopy hashing confirmed all 7
-prior $\E=31$ pairs are in the \emph{same isotopy class}; (4) exhaustive 5-move intercalate
-check (22.2M quintuple combinations) confirms $\E=29$ is a 5-move local minimum.
-CP-SAT proof workers probe $\E \leq 28$ (6+ trials $\times 600$\,s, all inconclusive).
+Session 14's contributions: (1) fixed the warm-start bug enabling $\E=30$ in 311\,s;
+(2) 2-move intercalate neighborhood search immediately found $\E=29$; (3) isotopy hashing
+confirmed all 7 prior $\E=31$ pairs are the same class.
+Session~16 extensions: (1) a \textbf{third E=29 class} (74bb7b86, $\cl_{13}=17$, $\cl_{23}=12$)
+confirmed; (2) all three E=29 classes proved \textbf{global intercalate-neighborhood minima}
+(max-IS 10--13; BFS depth 4--5 showing 445K+ states all at $\E \geq 30$); (3) CP-SAT
+seed diversification and gauge-permutation diversity added to proof workers.
+CP-SAT proof workers: 20+ trials $\times$ 1200--1800\,s targeting $\E \leq 28$, all inconclusive.
 No path toward $N(10) \geq 3$ has been found.
 
 % ===========================================================================
@@ -1158,12 +1162,13 @@ Supporting evidence:
     exhaustive enumeration.
   \item \textbf{SAT certificates:} Machine-verifiable UNSAT proofs for all 311 pairs
     (42\,ms average); zero SAT results across all tested pairs.
-  \item \textbf{E=29 record (Session 14):} Two-step cascade.
-    First: CP-SAT proof worker (seed=8765) found $\E=30$ in 311\,s after fixing the
-    warm-start bug.  Second: exhaustive 2-intercalate neighborhood search on $\E=30$
-    (816 pairs checked in $<$0.1\,s) immediately found $\E=\mathbf{29}$ ($\cl_{13}=15$,
-    $\cl_{23}=14$, $\cl_{12}=0$, verified).
+  \item \textbf{E=29 record (Session 14, extended Session 16):} Three independent isotopy
+    classes at $\E=29$: 4f04a773 ($\cl_{13}=15$, $\cl_{23}=14$), 2cc8e22f ($\cl_{13}=14$,
+    $\cl_{23}=15$), and 74bb7b86 ($\cl_{13}=17$, $\cl_{23}=12$, Session~16).
     The cascade $37 \to 36 \to 34 \to 33 \to 32 \to 31 \to 30 \to \mathbf{29}$ spans Sessions 9--14.
+    Session~16: all three are proved \textbf{global intercalate-neighborhood minima}
+    (BFS depth 4--5 covering 445K+ states, kmax exhaustive proofs); no intercalate path
+    can achieve $\E\leq28$.
   \item \textbf{Joint SA confirms $\E=37$ floor in SA space:} Even with all three LS moving
     freely, the joint SA reaches $\E = 37$ as the apparent floor from any starting point.
     CP-SAT descends far below via exhaustive branch-and-bound.
