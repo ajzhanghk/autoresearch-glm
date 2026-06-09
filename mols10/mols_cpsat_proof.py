@@ -106,12 +106,15 @@ def feasibility_check(L1: np.ndarray, L2: np.ndarray, target: int,
                       num_workers: int = 4,
                       symbreak: bool = True,
                       random_seed: int | None = None,
+                      gauge_perm: np.ndarray | None = None,
                       ) -> tuple[str, np.ndarray | None]:
     """
     Check whether there exists L3 with cl13 + cl23 <= target.
 
     Adds hard constraint: sum(covered13) + sum(covered23) >= 2*n^2 - target.
     Symmetry breaking: fix L3[0][j]=j (cuts n! ≈ 3.6M redundancy).
+    If gauge_perm is given (a permutation of {0,...,n-1}), fix L3[0][j]=gauge_perm[j]
+    instead; this probes a different fundamental domain of the search space.
     Returns ('SAT', L3_sol), ('UNSAT', None), or ('TIMEOUT', None).
     """
     model = cp_model.CpModel()
@@ -124,15 +127,22 @@ def feasibility_check(L1: np.ndarray, L2: np.ndarray, target: int,
     for j in range(n):
         model.add_all_different([L3v[i][j] for i in range(n)])
 
-    # Symmetry breaking: fix first row to identity
+    # Symmetry breaking: fix first row to gauge_perm (default: identity)
     if symbreak:
+        perm = gauge_perm if gauge_perm is not None else np.arange(n, dtype=np.int32)
         for j in range(n):
-            model.add(L3v[0][j] == j)
+            model.add(L3v[0][j] == int(perm[j]))
 
     # Precompute hint canonical form before building coverage vars
+    # Relabel hint so that L3[0] matches gauge_perm (or identity if no gauge)
     hint_canon = None
     if hint_L3 is not None:
-        hint_canon = relabel_L3_canonical(hint_L3, n)
+        base_canon = relabel_L3_canonical(hint_L3, n)  # L3[0] = [0,...,n-1]
+        if gauge_perm is not None:
+            # Apply gauge_perm as symbol renaming: new_symbol[i,j] = gauge_perm[base_canon[i,j]]
+            hint_canon = gauge_perm[base_canon.astype(np.int32)].astype(np.int8)
+        else:
+            hint_canon = base_canon
         for i in range(n):
             for j in range(n):
                 model.add_hint(L3v[i][j], int(hint_canon[i, j]))
