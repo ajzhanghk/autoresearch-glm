@@ -1201,7 +1201,7 @@ The best $\E$ among \emph{new} states at each depth is 30--34, consistent with
 intercalate moves always increasing energy when leaving the $\E=29$ basin.
 Remarkably, class 0968fc79 has \emph{no} depth-1 neighbor at $\E=30$: every single
 intercalate move raises $\E$ to at least~31.
-Combined with the CP-SAT infeasibility evidence (55+ trials $\times$ 1200--1800\,s all
+Combined with the CP-SAT infeasibility evidence (59+ trials $\times$ 1200--1800\,s all
 TIMEOUT), these four solutions represent formidable barriers against finding $\E \leq 28$.
 Classes 2cc8e22f and 0968fc79 are particularly striking: their minimum 1-move neighbors
 are at $\E=31$, indicating an unusually steep surrounding energy landscape.
@@ -1239,7 +1239,7 @@ No positive evidence for $N(10) \geq 3$ has been found:
     All 7 prior $\E=31$ pairs same isotopy class.
     Session~16 upgrades: all four $\E=29$ classes (4f04a773, 2cc8e22f, 74bb7b86, 0968fc79) are
     \textbf{global intercalate-neighborhood minima} (max-IS 10--13, BFS depth-5 with
-    1.1M+ states all $\geq 30$). Proof workers: 55+ trials targeting $\E \leq 28$, all inconclusive.
+    1.1M+ states all $\geq 30$). Proof workers: 59+ trials targeting $\E \leq 28$, all inconclusive.
   \item Reverse search has never found a triple with $\E_\text{rev} < 60$.
 \end{itemize}
 
@@ -1303,7 +1303,7 @@ Supporting evidence:
   \item Is Conjecture~\ref{conj:ct} provable? A proof would resolve $N(10)$ definitively.
   \item What is the true minimum of $\E$ over all triples with $\cl_{12} = 0$? Our
     empirical minimum is $\E=29$; can $\E < 29$ be achieved?  CP-SAT proof workers
-    have run 55+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$, all inconclusive
+    have run 59+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$, all inconclusive
     (for classes 4f04a773, 2cc8e22f, 74bb7b86, and 0968fc79 combined; Sessions~17--21 ongoing).
     Whether $\E = 29$ is the global minimum or merely a local floor is the central open question.
     Note: intercalate moves alone cannot achieve $\E\leq28$ from any known $\E=29$ class
@@ -1322,11 +1322,11 @@ Supporting evidence:
     Can any class reach $\E \leq 28$?  Class 3a33165a best effort: E=31
     (push workers ran 2 trials, both E=31$\to$31 inconclusive; discontinued in Session~17).
     A broader pair scan (311 MOLS-10 pairs, 180\,s each) is running (Sessions~17--21).
-    Results from 82+ scanned pairs: sa\_ct pairs give $\E=38$--45; mdecomp pairs give
+    Results from 92+ scanned pairs: sa\_ct pairs give $\E=38$--45; mdecomp pairs give
     $\E=35$--45.  Five stand-out new classes have emerged from the scan:
     \textbf{mdecomp\_48} (\texttt{8d481a18}, scan $\E=35$,
-    \textbf{push best $\E=31$} ($\cl_{13}=14$, $\cl_{23}=17$, Session~21 trial~3)
-    --- same depth as mdecomp\_71!),
+    \textbf{push best $\E=30$} ($\cl_{13}=14$, $\cl_{23}=16$, Session~21 trial~5!)
+    --- within 1 of $\E=29$!, improving from $\E=33 \to 31 \to 30$ across trials),
     \textbf{mdecomp\_71} (\texttt{d5a580f8}, scan $\E=37$,
     \textbf{push best $\E=31$} ($\cl_{13}=15$, $\cl_{23}=16$, stable across 5 trials)
     --- within 2 of $\E=29$!),
@@ -1337,9 +1337,11 @@ Supporting evidence:
     \textbf{mdecomp\_142} (\texttt{44aa4786} L1 --- 4th new family, scan $\E=37$
     ($\cl_{13}=19$, $\cl_{23}=18$), push worker just launched).
     Session~21 note: container restart; all workers restarted from scratch.
-    \textbf{Two independent pairs at $\E=31$} (mdecomp\_48 and mdecomp\_71):
-    different L1 families, both within 2 of $\E=29$, confirming the $\E=31$ barrier
-    is not an artifact of a single pair's structure.
+    \textbf{mdecomp\_48 is now the record holder at $\E=30$} --- one step from $\E=29$.
+    mdecomp\_48 shows a clear improvement trajectory across push trials: $\E=37$ (warmup)
+    $\to 33$ (trial~1) $\to 31$ (trial~3) $\to \mathbf{30}$ (trial~5).
+    mdecomp\_71 stable at $\E=31$ across 5 trials --- both pairs confirm sub-31 depth
+    is reachable from the right starting pair.
     L1 family map: \texttt{cd1785b9} (mdecomp\_71, 84, 106), \texttt{8d481a18} (mdecomp\_48),
     \texttt{6d7cf34c} (mdecomp\_121), \texttt{44aa4786} (mdecomp\_142) ---
     four distinct L1 structures, with mdecomp\_48 and mdecomp\_71 both establishing
