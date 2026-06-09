@@ -70,9 +70,9 @@ class~2cc8e22f ($\cl_{13}=14$, $\cl_{23}=15$, 23 intercalates), and
 class~74bb7b86 ($\cl_{13}=17$, $\cl_{23}=12$, Session~16);
 (3) every MOLS-10 pair tested (344 pairs) has $\CT(L_1, L_2) \leq 2 < 10$;
 (4) Glucose3 provides machine-verifiable UNSAT certificates for all 311 pairs (42\,ms average);
-(5) both 4f04a773 (28 intercalates, max independent set 13) and 2cc8e22f (23 intercalates,
-max independent set 12) are proved to be \textbf{global intercalate-neighborhood minima}:
-no ordered sequence of intercalate moves can reach $\E \leq 28$ from either $\E=29$ solution;
+(5) all three $\E=29$ classes are proved \textbf{global intercalate-neighborhood minima}:
+4f04a773 (28 ic, max-IS=13, 181\,s), 2cc8e22f (23 ic, max-IS=12, 30\,s),
+74bb7b86 (19 ic, max-IS=10, 2\,s) — no intercalate sequence can reach $\E\leq28$ from any;
 (6) CP-SAT proof workers have run 16+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$
 across four classes (4f04a773, 2cc8e22f, 3461a586, 74bb7b86), all inconclusive (Session~16 ongoing).
 
@@ -932,16 +932,17 @@ $\E(L_1, L_2, L_3) \geq 29$.
   returned TIMEOUT; the proof search continues with diverse random seeds.
   Total proof-worker trials across all classes now exceeds 16.
 
-  Also in Session~16, exhaustive intercalate-neighborhood analysis of the \textbf{main class
-  (4f04a773)} was completed up to the maximum possible move-set size.  The 28 intercalates
-  of the $\E=29$ solution form a conflict graph whose \textbf{maximum independent set has
-  size~13}.  All valid ordered sequences of $k$ original intercalates were checked exhaustively
-  ($k=1,\ldots,13$; total combinations C(28,k) from 28 to 40\,116\,600; valid counts from
-  28 down to 17; runtime 181\,s).  At $k=14$ there are zero valid combinations, completing
-  the proof.  \textbf{Conclusion: the 4f04a773 $\E=29$ solution is also a global
-  intercalate-neighborhood minimum} --- no ordered sequence of original intercalate moves
-  can achieve $\E \leq 28$.  Combined with the 2cc8e22f result (max-IS=12, Session~16),
-  both known $\E=29$ classes are now confirmed as global intercalate-neighborhood minima.
+  Also in Session~16, exhaustive intercalate-neighborhood analysis was completed for both
+  remaining $\E=29$ classes.
+  \textbf{4f04a773} (28 intercalates): conflict graph max-IS=13; all valid sequences
+  $k=1,\ldots,13$ checked (181\,s total, valid counts from 28 to 17); $k=14$ gives
+  zero valid combinations --- \textbf{global intercalate-neighborhood minimum}.
+  \textbf{74bb7b86} (19 intercalates, new third class): conflict graph max-IS=10; all valid
+  sequences $k=1,\ldots,10$ checked (2\,s total, valid counts 19 to 1); $k=11$ gives
+  zero valid combinations --- \textbf{global intercalate-neighborhood minimum}.
+  \textbf{All three known $\E=29$ classes are global intercalate-neighborhood minima.}
+  Intercalate moves alone cannot achieve $\E \leq 28$ from any of the three solutions.
+  Only CP-SAT structural reassignment can potentially find $\E \leq 28$.
 \end{remark}
 
 % ===========================================================================
@@ -1006,16 +1007,24 @@ all $k$-move subsets ($k=1,\ldots,12$) were checked exhaustively (total: $\sum_{
 completing the proof.  \textbf{No intercalate-based path to $\E\leq28$ exists} from the
 2cc8e22f solution.
 
-\paragraph{3c. Global intercalate minimum: 4f04a773 (Session 16, new).}
+\paragraph{3c. Global intercalate minimum: 4f04a773 (Session 16).}
 The same exhaustive analysis was completed for the main class (4f04a773, 28 intercalates).
 The conflict graph has \textbf{maximum independent set size~13}.
 All valid ordered sequences of $k$ original intercalates were checked for $k=1,\ldots,13$
 (C(28,k) total; valid counts: 28, 331, 2181, 8915, 23829, 42808, 52315, 43477, 24264, 8864,
 2036, 274, 17; runtime 181\,s, all giving $\E \geq 29$).
 At $k=14$ there are zero valid combinations ($C(28,14)=40{,}116{,}600$ checked in 181\,s).
-\textbf{Both known $\E=29$ isotopy classes are now confirmed global intercalate-neighborhood
+
+\paragraph{3d. Global intercalate minimum: 74bb7b86 (Session 16, new).}
+The new third class (74bb7b86, 19 intercalates) was also checked exhaustively.
+The conflict graph has \textbf{maximum independent set size~10}.
+All valid sequences for $k=1,\ldots,10$ were verified (valid counts: 19, 138, 512, 1092,
+1417, 1143, 568, 165, 24, 1; total runtime 2.2\,s, all giving $\E \geq 29$).
+At $k=11$ there are zero valid combinations, completing the proof.
+\textbf{All three known $\E=29$ isotopy classes are confirmed global intercalate-neighborhood
 minima.}  No sequence of intercalate moves, however long, can descend below $\E=29$ from
-either starting point.
+any of the three starting points.  The max independent set sizes are 13 (4f04a773),
+12 (2cc8e22f), and 10 (74bb7b86), reflecting the respective intercalate counts (28, 23, 19).
 
 \paragraph{4. Reverse search failure.}
 Fixing a near-miss $L_3$ and running 30+ independent reverse-search trials (7-replica
@@ -1113,10 +1122,12 @@ Supporting evidence:
     Note: intercalate moves alone cannot achieve $\E\leq28$ from either known $\E=29$ class
     (both proved global intercalate-neighborhood minima, Session~16); only CP-SAT
     structural reassignment can potentially find $\E\leq28$.
-  \item \textbf{RESOLVED (Session 16):} Both known $\E=29$ isotopy classes are global
-    intercalate-neighborhood minima.  The 2cc8e22f class (23 intercalates, max-IS=12,
-    $k=13$ empty) and the 4f04a773 class (28 intercalates, max-IS=13, $k=14$ empty, 181\,s)
-    are both confirmed: no intercalate sequence can achieve $\E\leq28$ from either.
+  \item \textbf{RESOLVED (Session 16):} All three known $\E=29$ isotopy classes are global
+    intercalate-neighborhood minima.
+    4f04a773 (28 ic, max-IS=13, $k=14$ empty, 181\,s),
+    2cc8e22f (23 ic, max-IS=12, $k=13$ empty, 30\,s),
+    74bb7b86 (19 ic, max-IS=10, $k=11$ empty, 2\,s):
+    no intercalate sequence can achieve $\E\leq28$ from any of these three starting points.
   \item Three isotopy classes now achieve $\E=29$: 4f04a773 ($\cl_{13}=15$, $\cl_{23}=14$),
     2cc8e22f ($\cl_{13}=14$, $\cl_{23}=15$), and \textbf{74bb7b86} ($\cl_{13}=17$,
     $\cl_{23}=12$, Session~16).  Two remaining classes (3a33165a, 0968fc79) are at $\E=30$.
