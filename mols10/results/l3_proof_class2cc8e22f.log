@@ -31,3 +31,10 @@
 [08:22:11] Target: E <= 28, timeout=1800.0s, workers=2, seed=8765
 [08:22:11] ============================================================
 [08:22:11] trial=  1 target=28 timeout=1800.0s random_seed=1269124092
+[08:52:11]   TIMEOUT: inconclusive t=1800.1s
+[08:52:11] trial=  2 target=28 timeout=1800.0s random_seed=1520502608
+[09:08:02] ============================================================
+[09:08:02] Proof search: class=2cc8e22f E=29 cl12=0 cl13=14 cl23=15
+[09:08:02] Target: E <= 28, timeout=1800.0s, workers=2, seed=22222
+[09:08:02] ============================================================
+[09:08:02] trial=  1 target=28 timeout=1800.0s random_seed=1133235416 gauge=id
