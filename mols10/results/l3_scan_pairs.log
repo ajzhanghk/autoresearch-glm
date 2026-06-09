@@ -29,3 +29,23 @@
 [18:58:41] [ 70/ 51] src=sa_ct pair_id=sa_ct_102 seed=2049020883
 [19:01:41]   -> E=42 cl13=20 cl23=22 t=180.1s
 [19:01:41] [ 71/ 52] src=mdecomp pair_id=mdecomp_105 seed=1822182405
+[19:04:41]   -> E=43 cl13=15 cl23=28 t=180.1s
+[19:04:41] [ 72/ 53] src=mdecomp pair_id=mdecomp_104 seed=531735806
+[19:07:41]   -> E=43 cl13=24 cl23=19 t=180.1s
+[19:07:41] [ 73/ 54] src=mdecomp pair_id=mdecomp_106 seed=719735672
+[19:10:41]   -> E=38 cl13=17 cl23=21 t=180.1s
+[19:10:41] [ 74/ 55] src=sa_ct pair_id=sa_ct_107 seed=1335824541
+[19:13:41]   -> E=38 cl13=15 cl23=23 t=180.0s
+[19:13:41] [ 75/ 56] src=sa_ct pair_id=sa_ct_108 seed=171536968
+[19:16:41]   -> E=42 cl13=19 cl23=23 t=180.2s
+[19:16:41] [ 76/ 57] src=mdecomp pair_id=mdecomp_111 seed=1102889409
+[19:19:42]   -> E=43 cl13=24 cl23=19 t=180.2s
+[19:19:42] [ 77/ 58] src=mdecomp pair_id=mdecomp_113 seed=1406645188
+[19:22:42]   -> E=43 cl13=22 cl23=21 t=180.1s
+[19:22:42] [ 78/ 59] src=mdecomp pair_id=mdecomp_114 seed=1735134902
+[19:25:42]   -> E=40 cl13=17 cl23=23 t=180.1s
+[19:25:42] [ 79/ 60] src=sa_ct pair_id=sa_ct_115 seed=666130324
+[19:28:42]   -> E=42 cl13=20 cl23=22 t=180.1s
+[19:28:42] [ 81/ 61] src=sa_ct pair_id=sa_ct_117 seed=1181869008
+[19:31:42]   -> E=42 cl13=20 cl23=22 t=180.1s
+[19:31:42] [ 82/ 62] src=mdecomp pair_id=mdecomp_120 seed=735639022
