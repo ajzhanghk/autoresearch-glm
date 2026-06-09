@@ -1,0 +1,20 @@
+[23:04:23] ============================================================
+[23:04:23] ============================================================
+[23:04:23] Fresh push: mdecomp_48 (pairs[23]) cl12=0
+[23:04:23] Fresh push: mdecomp_48 (pairs[23]) cl12=0
+[23:04:23] Timeout=1800.0s workers=1 seed=77777
+[23:04:23] Timeout=1800.0s workers=1 seed=77777
+[23:04:23] NOTE: No hint — fresh exploration to escape E=30 basin
+[23:04:23] NOTE: No hint — fresh exploration to escape E=30 basin
+[23:04:23] Current best from hint-push: E=30 (cl13=14, cl23=16)
+[23:04:23] Current best from hint-push: E=30 (cl13=14, cl23=16)
+[23:04:23] ============================================================
+[23:04:23] ============================================================
+[23:04:23] trial=  1 timeout=180.0s seed=1534483131 hint=none
+[23:04:23] trial=  1 timeout=180.0s seed=1534483131 hint=none
+[23:07:23]   -> E=34 cl13=17 cl23=17 t=180.0s
+[23:07:23]   -> E=34 cl13=17 cl23=17 t=180.0s
+[23:07:23]   New best: E=34
+[23:07:23]   New best: E=34
+[23:07:23] trial=  2 timeout=1800.0s seed=809023692 hint=L3
+[23:07:23] trial=  2 timeout=1800.0s seed=809023692 hint=L3
