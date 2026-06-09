@@ -478,7 +478,7 @@ Session & Key development & Best $\E$ & Stable since\\
 14c & 5-move local min confirmed (22.2M quints); 6 diff-class E=31 pairs stuck at E=31; E=32 entry (class 2cc8e22f) → \textbf{E=29} in 240\,s (new class); proof TIMEOUT & \textbf{29} & Session 14\\
 15 & Three new classes (3a33165a, 74bb7b86, 0968fc79) reach E=30 in 1200\,s deep opt; 12 proof trials (E$\leq$28) all TIMEOUT; push-to-E29 sweep ongoing & \textbf{29} & Session 14\\
 16 & Push-to-E29: 3a33165a E=31$\to$30 (1800\,s), E$\leq$29 TIMEOUT; \textbf{74bb7b86 E=31$\to$29} ($\cl_{13}=17$, $\cl_{23}=12$, 3rd class!); \textbf{0968fc79 E=31$\to$29} ($\cl_{13}=17$, $\cl_{23}=12$, 4th class!); 4f04a773 \& 74bb7b86 global ic-min proved; 0968fc79: 24 ic, max-IS=10, global ic-min; E$\leq$28 feasibility ongoing & \textbf{29} & Session 16\\
-17 & 4+1 proof workers trial 1: 4$\times$TIMEOUT (gauge=id, 1800\,s each), 0968fc79 cold TIMEOUT; push 3a33165a E=31$\to$31 (no gain); trial 2 started (diverse random gauges); 30+ total E$\leq$28 trials & \textbf{29} & Session 17\\
+17 & Trials 1--2: all 4 main + cold TIMEOUT ($\times$5); push 3a33165a 2$\times$E=31$\to$31 (no gain, discontinued); \textbf{pair scan launched} (344 pairs, 180\,s each); 30+ total E$\leq$28 trials & \textbf{29} & Session 17\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -991,7 +991,13 @@ $\E(L_1, L_2, L_3) \geq 29$.
   \textbf{Class 0968fc79 reached E=29} ($\cl_{13}=17$, $\cl_{23}=12$) in 1800\,s
   build-and-solve (also confirmed SAT at 0.5\,s), making it the \textbf{fourth} isotopy class
   to achieve $\E=29$.  Feasibility E$\leq$28 is also being probed for 0968fc79.
-  Total proof-worker trials across all classes now exceeds 20.
+  Total proof-worker trials across all classes now exceeds 30.
+
+  In Session~17, a dedicated push-to-E29 worker for class 3a33165a ran two 1800\,s trials
+  (seeds 12345, 43676229), both returning E=31$\to$31 (no improvement from the E=31 floor).
+  This worker was discontinued.  A pair scan over all 344 MOLS-10 pairs in
+  \texttt{promising\_pairs.json} was launched instead (180\,s per pair, seed=54321), to
+  search for new (L1,L2) pairs with lower-energy $L_3$ landscapes.
 
   Also in Session~16, exhaustive intercalate-neighborhood analysis was completed for all
   four $\E=29$ classes.
@@ -1272,7 +1278,10 @@ Supporting evidence:
   \item Four isotopy classes now achieve $\E=29$: 4f04a773 ($\cl_{13}=15$, $\cl_{23}=14$),
     2cc8e22f ($\cl_{13}=14$, $\cl_{23}=15$), 74bb7b86 ($\cl_{13}=17$, $\cl_{23}=12$,
     Session~16), and \textbf{0968fc79} ($\cl_{13}=17$, $\cl_{23}=12$, Session~16).
-    Can any class reach $\E \leq 28$?  Classes 3a33165a remains at $\E=30$.
+    Can any class reach $\E \leq 28$?  Class 3a33165a best effort: E=31
+    (push workers ran 2 trials, both E=31$\to$31 inconclusive; discontinued in Session~17).
+    A broader pair scan (344 MOLS-10 pairs, 180\,s each) is now running (Session~17)
+    to discover new $(L_1, L_2)$ candidates with more favorable $\E$ landscapes.
     Is there a structural explanation for why both 74bb7b86 and 0968fc79
     share the asymmetric distribution ($\cl_{13}=17$, $\cl_{23}=12$)?
   \item Does the CT distribution (always $\leq 2$) follow from a group-theoretic argument
