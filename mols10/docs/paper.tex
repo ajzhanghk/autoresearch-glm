@@ -820,6 +820,25 @@ $L_2^{74} \leftrightarrow L_2^{09}$ while permuting the $L_3$ matrices.
 Understanding this symmetry may illuminate why $\E=29$ is so persistently achieved
 for this particular $L_1$, and why $\E\leq28$ has not been found.
 
+\paragraph{Three $L_1$-families among the four $\E=29$ classes.}
+Cross-class analysis reveals that the four $\E=29$ classes decompose into
+\textbf{three distinct $L_1$-families}:
+\begin{enumerate}
+  \item \textbf{Family~A (4f04a773 + 3461a586):} The class 4f04a773 uses pair
+    $(L_1^{4f}, L_2^{4f})$ with $\cl_{13}=15$, $\cl_{23}=14$.
+    Its $L_1$--$L_2$ swap, canonical class 3461a586, uses $(L_2^{4f}, L_1^{4f})$.
+    Since the $L_3$-orthogonality problem is symmetric in $L_1$ and $L_2$,
+    both classes share the same feasibility search space.
+  \item \textbf{Family~B (2cc8e22f):} Fully independent; its $L_1^{2cc}$
+    differs from $L_1^{4f}$ by Hamming distance 96/100.
+  \item \textbf{Family~C (74bb7b86 + 0968fc79):} Shares the same $L_1^{74/09}$
+    (as shown above). The two partners $L_2^{74}$ and $L_2^{09}$ differ by 50/100
+    and together exhibit the perfect cross-clash symmetry at $\E=29$.
+\end{enumerate}
+In total, the search covers \textbf{3 independent $L_1$ matrices}.  For each,
+finding $\E=0$ would require an $L_3$ simultaneously orthogonal to $L_1$ and $L_2$;
+existence of such $L_3$ is equivalent to $N(10) \geq 3$.
+
 \subsection{L3 Diversity}
 
 The eight $L_3$ matrices in the $\E=37$ pool are all distinct. Pairwise Hamming distances
