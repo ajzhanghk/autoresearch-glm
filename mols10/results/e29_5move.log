@@ -6,3 +6,13 @@ Base E=29
   12/28 first moves, 9302252 quints, 636.3s, rate=14619/s, best=29
   15/28 first moves, 11283003 quints, 798.6s, rate=14129/s, best=29
   18/28 first moves, 13631568 quints, 977.8s, rate=13941/s, best=29
+  21/28 first moves, 15905680 quints, 1141.3s, rate=13936/s, best=29
+  24/28 first moves, 19098775 quints, 1376.7s, rate=13873/s, best=29
+  27/28 first moves, 22249729 quints, 1584.1s, rate=14045/s, best=29
+
+5-move: 22249729 quints in 1584.1s, best=29
+E=29 is a 5-move local minimum under intercalates
+
+CONFIRMED: E=29 is a 5-move intercalate local minimum.
+Total: 22,249,729 quintuple-intercalate combinations checked in 1584.1s
+All combinations gave E >= 29 (best=29, no improvement found).

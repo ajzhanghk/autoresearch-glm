@@ -1,4 +1,5 @@
 [01:31:08] Perturb sweep seed=55001 timeout=120.0s k=8 workers=2
 [01:31:08] Base E=29
 [01:33:08] trial=1 perturb_E=48 → FEASIBLE(t=False) E=29 cl13=15 cl23=14 t=120.1s
-[01:33:08] trial=1 perturb_E=48 → FEASIBLE(t=False) E=29 cl13=15 cl23=14 t=120.1s
+[01:35:08] trial=2 perturb_E=58 → FEASIBLE(t=False) E=39 cl13=24 cl23=15 t=120.1s
+[01:35:08] trial=2 perturb_E=58 → FEASIBLE(t=False) E=39 cl13=24 cl23=15 t=120.1s

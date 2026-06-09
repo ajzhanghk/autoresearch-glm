@@ -1,0 +1,77 @@
+[01:48:28] Intercalate SA: seed=42 T_start=2.0 T_end=0.05 steps=10000000
+[01:48:28] Starting from E=29 (29 from pool)
+[01:48:28] Initial intercalate moves: 28
+[01:49:52]   step=100,000 E_cur=64 E_best=29 T=1.9276 accept_rate=61.3% improve_rate=22.07% t=84s
+[01:50:45] Fast intercalate SA: seed=42 T_start=2.5 T_end=0.02 max_s=3600
+[01:50:45] Starting from E=29
+[01:51:15]   t=30s steps=109,225 attempts=14,305,638 hit_rate=0.8% E_cur=63 E_best=29 T=2.4014 accept_rate=100%
+[01:51:45]   t=60s steps=215,140 attempts=28,519,024 hit_rate=0.8% E_cur=55 E_best=29 T=2.3067 accept_rate=100%
+[01:52:15]   t=90s steps=319,817 attempts=42,735,974 hit_rate=0.7% E_cur=67 E_best=29 T=2.2157 accept_rate=100%
+[01:52:44] Fast intercalate SA: seed=202 T_start=0.5 T_end=0.02 max_s=7200
+[01:52:44] Fast intercalate SA: seed=202 T_start=0.5 T_end=0.02 max_s=7200
+[01:52:44] Starting from E=29
+[01:52:44] Starting from E=29
+[01:52:44] Fast intercalate SA: seed=101 T_start=0.3 T_end=0.02 max_s=7200
+[01:52:44] Fast intercalate SA: seed=101 T_start=0.3 T_end=0.02 max_s=7200
+[01:52:44] Starting from E=29
+[01:52:44] Starting from E=29
+[01:53:14]   t=30s steps=2,897 attempts=13,709,550 hit_rate=0.0% E_cur=31 E_best=29 T=0.4933 accept_rate=100%
+[01:53:14]   t=30s steps=2,897 attempts=13,709,550 hit_rate=0.0% E_cur=31 E_best=29 T=0.4933 accept_rate=100%
+[01:53:14]   t=30s steps=558 attempts=13,741,728 hit_rate=0.0% E_cur=29 E_best=29 T=0.2966 accept_rate=100%
+[01:53:14]   t=30s steps=558 attempts=13,741,728 hit_rate=0.0% E_cur=29 E_best=29 T=0.2966 accept_rate=100%
+[01:53:44]   t=60s steps=7,669 attempts=27,375,248 hit_rate=0.0% E_cur=30 E_best=29 T=0.4868 accept_rate=100%
+[01:53:44]   t=60s steps=7,669 attempts=27,375,248 hit_rate=0.0% E_cur=30 E_best=29 T=0.4868 accept_rate=100%
+[01:53:44]   t=60s steps=1,094 attempts=27,287,700 hit_rate=0.0% E_cur=29 E_best=29 T=0.2933 accept_rate=100%
+[01:53:44]   t=60s steps=1,094 attempts=27,287,700 hit_rate=0.0% E_cur=29 E_best=29 T=0.2933 accept_rate=100%
+[01:54:14]   t=90s steps=11,879 attempts=41,288,506 hit_rate=0.0% E_cur=31 E_best=29 T=0.4803 accept_rate=100%
+[01:54:14]   t=90s steps=11,879 attempts=41,288,506 hit_rate=0.0% E_cur=31 E_best=29 T=0.4803 accept_rate=100%
+[01:54:14]   t=90s steps=1,550 attempts=40,854,798 hit_rate=0.0% E_cur=29 E_best=29 T=0.2900 accept_rate=100%
+[01:54:14]   t=90s steps=1,550 attempts=40,854,798 hit_rate=0.0% E_cur=29 E_best=29 T=0.2900 accept_rate=100%
+[01:54:44]   t=120s steps=15,520 attempts=55,293,616 hit_rate=0.0% E_cur=30 E_best=29 T=0.4739 accept_rate=100%
+[01:54:44]   t=120s steps=15,520 attempts=55,293,616 hit_rate=0.0% E_cur=30 E_best=29 T=0.4739 accept_rate=100%
+[01:54:44]   t=120s steps=2,006 attempts=54,830,106 hit_rate=0.0% E_cur=29 E_best=29 T=0.2868 accept_rate=100%
+[01:54:44]   t=120s steps=2,006 attempts=54,830,106 hit_rate=0.0% E_cur=29 E_best=29 T=0.2868 accept_rate=100%
+[01:55:14]   t=150s steps=22,992 attempts=69,362,626 hit_rate=0.0% E_cur=30 E_best=29 T=0.4676 accept_rate=100%
+[01:55:14]   t=150s steps=22,992 attempts=69,362,626 hit_rate=0.0% E_cur=30 E_best=29 T=0.4676 accept_rate=100%
+[01:55:14]   t=150s steps=2,524 attempts=68,676,603 hit_rate=0.0% E_cur=29 E_best=29 T=0.2835 accept_rate=100%
+[01:55:14]   t=150s steps=2,524 attempts=68,676,603 hit_rate=0.0% E_cur=29 E_best=29 T=0.2835 accept_rate=100%
+[01:55:44]   t=180s steps=27,056 attempts=83,218,337 hit_rate=0.0% E_cur=31 E_best=29 T=0.4613 accept_rate=100%
+[01:55:44]   t=180s steps=27,056 attempts=83,218,337 hit_rate=0.0% E_cur=31 E_best=29 T=0.4613 accept_rate=100%
+[01:55:44]   t=180s steps=2,948 attempts=82,594,986 hit_rate=0.0% E_cur=30 E_best=29 T=0.2804 accept_rate=100%
+[01:55:44]   t=180s steps=2,948 attempts=82,594,986 hit_rate=0.0% E_cur=30 E_best=29 T=0.2804 accept_rate=100%
+[01:56:14]   t=210s steps=30,468 attempts=97,087,489 hit_rate=0.0% E_cur=29 E_best=29 T=0.4552 accept_rate=100%
+[01:56:14]   t=210s steps=30,468 attempts=97,087,489 hit_rate=0.0% E_cur=29 E_best=29 T=0.4552 accept_rate=100%
+[01:56:14]   t=210s steps=3,438 attempts=96,516,653 hit_rate=0.0% E_cur=29 E_best=29 T=0.2772 accept_rate=100%
+[01:56:14]   t=210s steps=3,438 attempts=96,516,653 hit_rate=0.0% E_cur=29 E_best=29 T=0.2772 accept_rate=100%
+[01:56:44]   t=240s steps=33,004 attempts=110,813,660 hit_rate=0.0% E_cur=29 E_best=29 T=0.4491 accept_rate=100%
+[01:56:44]   t=240s steps=33,004 attempts=110,813,660 hit_rate=0.0% E_cur=29 E_best=29 T=0.4491 accept_rate=100%
+[01:56:44]   t=240s steps=3,850 attempts=110,388,357 hit_rate=0.0% E_cur=29 E_best=29 T=0.2741 accept_rate=100%
+[01:56:44]   t=240s steps=3,850 attempts=110,388,357 hit_rate=0.0% E_cur=29 E_best=29 T=0.2741 accept_rate=100%
+[01:57:14]   t=270s steps=35,084 attempts=124,572,266 hit_rate=0.0% E_cur=29 E_best=29 T=0.4431 accept_rate=100%
+[01:57:14]   t=270s steps=35,084 attempts=124,572,266 hit_rate=0.0% E_cur=29 E_best=29 T=0.4431 accept_rate=100%
+[01:57:14]   t=270s steps=4,226 attempts=124,411,880 hit_rate=0.0% E_cur=29 E_best=29 T=0.2710 accept_rate=100%
+[01:57:14]   t=270s steps=4,226 attempts=124,411,880 hit_rate=0.0% E_cur=29 E_best=29 T=0.2710 accept_rate=100%
+[01:57:44]   t=300s steps=40,716 attempts=138,573,651 hit_rate=0.0% E_cur=30 E_best=29 T=0.4372 accept_rate=100%
+[01:57:44]   t=300s steps=40,716 attempts=138,573,651 hit_rate=0.0% E_cur=30 E_best=29 T=0.4372 accept_rate=100%
+[01:57:44]   t=300s steps=4,544 attempts=138,304,606 hit_rate=0.0% E_cur=29 E_best=29 T=0.2680 accept_rate=100%
+[01:57:44]   t=300s steps=4,544 attempts=138,304,606 hit_rate=0.0% E_cur=29 E_best=29 T=0.2680 accept_rate=100%
+[01:58:14]   t=330s steps=48,722 attempts=152,476,647 hit_rate=0.0% E_cur=30 E_best=29 T=0.4314 accept_rate=100%
+[01:58:14]   t=330s steps=48,722 attempts=152,476,647 hit_rate=0.0% E_cur=30 E_best=29 T=0.4314 accept_rate=100%
+[01:58:14]   t=330s steps=4,870 attempts=151,922,289 hit_rate=0.0% E_cur=29 E_best=29 T=0.2650 accept_rate=100%
+[01:58:14]   t=330s steps=4,870 attempts=151,922,289 hit_rate=0.0% E_cur=29 E_best=29 T=0.2650 accept_rate=100%
+[01:58:44]   t=360s steps=52,046 attempts=166,465,503 hit_rate=0.0% E_cur=29 E_best=29 T=0.4257 accept_rate=100%
+[01:58:44]   t=360s steps=52,046 attempts=166,465,503 hit_rate=0.0% E_cur=29 E_best=29 T=0.4257 accept_rate=100%
+[01:58:44]   t=360s steps=5,230 attempts=165,805,422 hit_rate=0.0% E_cur=29 E_best=29 T=0.2620 accept_rate=100%
+[01:58:44]   t=360s steps=5,230 attempts=165,805,422 hit_rate=0.0% E_cur=29 E_best=29 T=0.2620 accept_rate=100%
+[01:59:14]   t=390s steps=53,956 attempts=180,432,408 hit_rate=0.0% E_cur=29 E_best=29 T=0.4200 accept_rate=100%
+[01:59:14]   t=390s steps=53,956 attempts=180,432,408 hit_rate=0.0% E_cur=29 E_best=29 T=0.4200 accept_rate=100%
+[01:59:14]   t=390s steps=5,536 attempts=179,638,615 hit_rate=0.0% E_cur=29 E_best=29 T=0.2591 accept_rate=100%
+[01:59:14]   t=390s steps=5,536 attempts=179,638,615 hit_rate=0.0% E_cur=29 E_best=29 T=0.2591 accept_rate=100%
+[01:59:44]   t=420s steps=55,704 attempts=194,366,835 hit_rate=0.0% E_cur=29 E_best=29 T=0.4144 accept_rate=100%
+[01:59:44]   t=420s steps=55,704 attempts=194,366,835 hit_rate=0.0% E_cur=29 E_best=29 T=0.4144 accept_rate=100%
+[01:59:44]   t=420s steps=5,822 attempts=193,338,681 hit_rate=0.0% E_cur=30 E_best=29 T=0.2562 accept_rate=100%
+[01:59:44]   t=420s steps=5,822 attempts=193,338,681 hit_rate=0.0% E_cur=30 E_best=29 T=0.2562 accept_rate=100%
+[02:00:14]   t=450s steps=57,412 attempts=208,026,561 hit_rate=0.0% E_cur=29 E_best=29 T=0.4089 accept_rate=100%
+[02:00:14]   t=450s steps=57,412 attempts=208,026,561 hit_rate=0.0% E_cur=29 E_best=29 T=0.4089 accept_rate=100%
+[02:00:14]   t=450s steps=6,136 attempts=207,063,663 hit_rate=0.0% E_cur=29 E_best=29 T=0.2533 accept_rate=100%
+[02:00:14]   t=450s steps=6,136 attempts=207,063,663 hit_rate=0.0% E_cur=29 E_best=29 T=0.2533 accept_rate=100%
