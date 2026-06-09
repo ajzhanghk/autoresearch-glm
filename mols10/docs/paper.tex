@@ -64,17 +64,19 @@ we execute a never-stopping search across 15 concurrent workers.
 Our main findings are: (1) the minimum total clash energy $\E = \cl_{13} + \cl_{23}$
 has been lowered from 37 (Sessions 5--8) to \textbf{29} in Session 14, following the cascade
 $37 \to 34 \to 33 \to 32 \to 31 \to 30 \to \mathbf{29}$;
-(2) the $\E=29$ record has been confirmed across \textbf{three independent isotopy classes}:
+(2) the $\E=29$ record has been confirmed across \textbf{four independent isotopy classes}:
 class~4f04a773 ($\cl_{13}=15$, $\cl_{23}=14$, 28 intercalates),
-class~2cc8e22f ($\cl_{13}=14$, $\cl_{23}=15$, 23 intercalates), and
-class~74bb7b86 ($\cl_{13}=17$, $\cl_{23}=12$, Session~16);
+class~2cc8e22f ($\cl_{13}=14$, $\cl_{23}=15$, 23 intercalates),
+class~74bb7b86 ($\cl_{13}=17$, $\cl_{23}=12$, 19 intercalates, Session~16), and
+class~0968fc79 ($\cl_{13}=17$, $\cl_{23}=12$, 24 intercalates, Session~16);
 (3) every MOLS-10 pair tested (344 pairs) has $\CT(L_1, L_2) \leq 2 < 10$;
 (4) Glucose3 provides machine-verifiable UNSAT certificates for all 311 pairs (42\,ms average);
-(5) all three $\E=29$ classes are proved \textbf{global intercalate-neighborhood minima}:
+(5) all four $\E=29$ classes are proved \textbf{global intercalate-neighborhood minima}:
 4f04a773 (28 ic, max-IS=13, 181\,s), 2cc8e22f (23 ic, max-IS=12, 30\,s),
-74bb7b86 (19 ic, max-IS=10, 2\,s) — no intercalate sequence can reach $\E\leq28$ from any;
-(6) CP-SAT proof workers have run 16+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$
-across four classes (4f04a773, 2cc8e22f, 3461a586, 74bb7b86), all inconclusive (Session~16 ongoing).
+74bb7b86 (19 ic, max-IS=10, 2\,s), 0968fc79 (24 ic, max-IS=10, 10\,s) ---
+no intercalate sequence can reach $\E\leq28$ from any of the four classes;
+(6) CP-SAT proof workers have run 20+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$
+across four classes (4f04a773, 2cc8e22f, 74bb7b86, 0968fc79), all inconclusive (Session~16 ongoing).
 
 Dedicated proof-mode workers continue checking $\E \leq 28$ feasibility across multiple
 isotopy classes.  Collectively, this constitutes the strongest computational evidence to date
@@ -475,7 +477,7 @@ Session & Key development & Best $\E$ & Stable since\\
 14b & 2-move intercalate neighborhood search on E=30 finds $\E=\mathbf{29}$ instantly (cl13=15, cl23=14) & \textbf{29} & Session 14\\
 14c & 5-move local min confirmed (22.2M quints); 6 diff-class E=31 pairs stuck at E=31; E=32 entry (class 2cc8e22f) → \textbf{E=29} in 240\,s (new class); proof TIMEOUT & \textbf{29} & Session 14\\
 15 & Three new classes (3a33165a, 74bb7b86, 0968fc79) reach E=30 in 1200\,s deep opt; 12 proof trials (E$\leq$28) all TIMEOUT; push-to-E29 sweep ongoing & \textbf{29} & Session 14\\
-16 & Push-to-E29: 3a33165a E=31$\to$30 (1800\,s), E$\leq$29 TIMEOUT; \textbf{74bb7b86 E=31$\to$29} ($\cl_{13}=17$, $\cl_{23}=12$, 3rd class!); E$\leq$28 feasibility ongoing; 4f04a773 global intercalate min proved (28 ic, max-IS=13); 2cc8e22f 14+ proof trials TIMEOUT & \textbf{29} & Session 14\\
+16 & Push-to-E29: 3a33165a E=31$\to$30 (1800\,s), E$\leq$29 TIMEOUT; \textbf{74bb7b86 E=31$\to$29} ($\cl_{13}=17$, $\cl_{23}=12$, 3rd class!); \textbf{0968fc79 E=31$\to$29} ($\cl_{13}=17$, $\cl_{23}=12$, 4th class!); 4f04a773 \& 74bb7b86 global ic-min proved; 0968fc79: 24 ic, max-IS=10, global ic-min; E$\leq$28 feasibility ongoing & \textbf{29} & Session 16\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -763,7 +765,7 @@ Table~\ref{tab:pool} shows the current near-miss pool (top 8 triples by energy).
 
 \begin{table}[h]
 \centering
-\caption{Near-miss pool state (Session 16, top entries). Five E=29 solutions found across three distinct isotopy classes; two classes at E=30.}\label{tab:pool}
+\caption{Near-miss pool state (Session 16, top entries). Six E=29 solutions found across four distinct isotopy classes; one class at E=30.}\label{tab:pool}
 \begin{tabular}{ccccccc}
 \toprule
 Index & Isotopy class & Solver & $\E$ & $\cl_{12}$ & $\cl_{13}$ & $\cl_{23}$\\
@@ -773,21 +775,22 @@ Index & Isotopy class & Solver & $\E$ & $\cl_{12}$ & $\cl_{13}$ & $\cl_{23}$\\
 2 & 4f04a773 & CP-SAT perturb sweep & \textbf{29} & 0 & 15 & 14\\
 3 & \textbf{2cc8e22f} & CP-SAT opt. from E=32 & \textbf{29} & 0 & 14 & 15\\
 4 & \textbf{74bb7b86} & CP-SAT build-and-solve (1800\,s) & \textbf{29} & 0 & 17 & 12\\
-5 & 4f04a773 & CP-SAT proof (311\,s) & 30 & 0 & 17 & 13\\
-6--8 & d83f1182, 48db40d4, ebfeb9f7 & CP-SAT opt.~(1200\,s) & 31 & 0 & 19 & 12\\
-9--10 & \textbf{3a33165a, 0968fc79} & CP-SAT opt.~(1800\,s) & 31$\to$30 & 0 & $\sim$15 & $\sim$15\\
+5 & \textbf{0968fc79} & CP-SAT build-and-solve (1800\,s) & \textbf{29} & 0 & 17 & 12\\
+6 & 4f04a773 & CP-SAT proof (311\,s) & 30 & 0 & 17 & 13\\
+7--9 & d83f1182, 48db40d4, ebfeb9f7 & CP-SAT opt.~(1200\,s) & 31 & 0 & 19 & 12\\
+10 & \textbf{3a33165a} & CP-SAT opt.~(1800\,s) & 31$\to$30 & 0 & $\sim$15 & $\sim$15\\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Entries~[0--4] are the current record: $\E=29$.  Entries~[0--2] are from the main
+Entries~[0--5] are the current record: $\E=29$.  Entries~[0--2] are from the main
 isotopy class (4f04a773, $\cl_{13}=15$, $\cl_{23}=14$, 28 intercalates).
 \textbf{Entry~[3]} is the 2cc8e22f class ($\cl_{13}=14$, $\cl_{23}=15$, 23 intercalates).
-\textbf{Entry~[4]} is the new class 74bb7b86 ($\cl_{13}=17$, $\cl_{23}=12$), found in
-Session~16 via 1800\,s build-and-solve --- making it the \textbf{third} isotopy class to
-achieve $\E=29$.  Entry~[5] is $\E=30$ (main class).
-Entries~[6--10] are $\E=31$/$\E=30$ from various classes.  Classes 3a33165a and 0968fc79
-remain at $\E=30$ (queued for deeper optimization).
+\textbf{Entry~[4]} is class 74bb7b86 ($\cl_{13}=17$, $\cl_{23}=12$, 19 intercalates), found in
+Session~16 via 1800\,s build-and-solve --- the \textbf{third} isotopy class to achieve $\E=29$.  \textbf{Entry~[5]} is class 0968fc79 ($\cl_{13}=17$, $\cl_{23}=12$, 24
+intercalates), also found in Session~16 via 1800\,s build-and-solve ---
+the \textbf{fourth} isotopy class at $\E=29$.
+Entry~[6] is $\E=30$ (main class).  Entries~[7--10] are $\E=31$/$\E=30$ from other classes.
 The cascade $37 \to 34 \to 33 \to 32 \to 31 \to 30 \to \mathbf{29}$ spans Sessions 9--16.
 
 \subsection{L3 Diversity}
@@ -920,8 +923,9 @@ $\E(L_1, L_2, L_3) \geq 29$.
   At k=13 there are no valid (non-conflicting) combinations, completing the search.
   \textbf{Conclusion: the 2cc8e22f $\E=29$ solution is a global intercalate-neighborhood minimum}
   --- no sequence of non-conflicting intercalate moves can achieve $\E \leq 28$ from this
-  starting point.  Combined with the 5-move local minimum proof for the main class (4f04a773),
-  this confirms that neither known $\E=29$ class can be improved to $\E \leq 28$ by intercalate moves.
+  starting point.  Combined with the global intercalate-minimum proof for all four known $\E=29$ classes
+  (Session~16), this confirms that no known $\E=29$ solution can be improved to
+  $\E \leq 28$ by any sequence of intercalate moves.
 
   In Session~15, three additional isotopy classes --- 3a33165a, 74bb7b86, and 0968fc79 ---
   were pushed from $\E=31$ to $\E=30$ in 1200\,s CP-SAT optimization, expanding the
@@ -936,23 +940,27 @@ $\E(L_1, L_2, L_3) \geq 29$.
   $t=1800$\,s), but feasibility E$\leq$29 (1200\,s) returned TIMEOUT.
   \textbf{Class 74bb7b86 reached E=29} ($\cl_{13}=17$, $\cl_{23}=12$) in 1800\,s
   build-and-solve, confirmed SAT immediately (0.5\,s), making it the \textbf{third} isotopy
-  class to achieve $\E=29$.  Feasibility E$\leq$28 for this class returned TIMEOUT (1200\,s);
-  a dedicated proof worker now targets 74bb7b86 E$\leq$28.
-  Class 0968fc79 is the next build-and-solve target (started 09:01).
-  Simultaneously, 2+ additional 1800\,s proof trials for class 2cc8e22f (E$\leq$28)
-  returned TIMEOUT; the proof search continues with diverse random seeds.
-  Total proof-worker trials across all classes now exceeds 16.
+  class to achieve $\E=29$.  Feasibility E$\leq$28 for this class returned TIMEOUT (1200\,s).
+  \textbf{Class 0968fc79 reached E=29} ($\cl_{13}=17$, $\cl_{23}=12$) in 1800\,s
+  build-and-solve (also confirmed SAT at 0.5\,s), making it the \textbf{fourth} isotopy class
+  to achieve $\E=29$.  Feasibility E$\leq$28 is also being probed for 0968fc79.
+  Total proof-worker trials across all classes now exceeds 20.
 
-  Also in Session~16, exhaustive intercalate-neighborhood analysis was completed for both
-  remaining $\E=29$ classes.
+  Also in Session~16, exhaustive intercalate-neighborhood analysis was completed for all
+  four $\E=29$ classes.
   \textbf{4f04a773} (28 intercalates): conflict graph max-IS=13; all valid sequences
   $k=1,\ldots,13$ checked (181\,s total, valid counts from 28 to 17); $k=14$ gives
   zero valid combinations --- \textbf{global intercalate-neighborhood minimum}.
-  \textbf{74bb7b86} (19 intercalates, new third class): conflict graph max-IS=10; all valid
+  \textbf{74bb7b86} (19 intercalates, third class): conflict graph max-IS=10; all valid
   sequences $k=1,\ldots,10$ checked (2\,s total, valid counts 19 to 1); $k=11$ gives
   zero valid combinations --- \textbf{global intercalate-neighborhood minimum}.
-  \textbf{All three known $\E=29$ classes are global intercalate-neighborhood minima.}
-  Intercalate moves alone cannot achieve $\E \leq 28$ from any of the three solutions.
+  \textbf{0968fc79} (24 intercalates, fourth class): conflict graph max-IS=10; all valid
+  sequences $k=1,\ldots,10$ checked (10\,s total, valid counts from 24 to 10); $k=11$ gives
+  zero valid combinations --- \textbf{global intercalate-neighborhood minimum}.
+  Notably, every single intercalate of 0968fc79 increases $\E$ by \emph{at least~2} (to
+  $\E \geq 31$), making it the most isolated of all four classes under 1-move perturbations.
+  \textbf{All four known $\E=29$ classes are global intercalate-neighborhood minima.}
+  Intercalate moves alone cannot achieve $\E \leq 28$ from any of the four solutions.
   Only CP-SAT structural reassignment can potentially find $\E \leq 28$.
 \end{remark}
 
@@ -1032,24 +1040,32 @@ The conflict graph has \textbf{maximum independent set size~10}.
 All valid sequences for $k=1,\ldots,10$ were verified (valid counts: 19, 138, 512, 1092,
 1417, 1143, 568, 165, 24, 1; total runtime 2.2\,s, all giving $\E \geq 29$).
 At $k=11$ there are zero valid combinations, completing the proof.
-\textbf{All three known $\E=29$ isotopy classes are confirmed global intercalate-neighborhood
-minima.}  No sequence of intercalate moves, however long, can descend below $\E=29$ from
-any of the three starting points.  The max independent set sizes are 13 (4f04a773),
-12 (2cc8e22f), and 10 (74bb7b86), reflecting the respective intercalate counts (28, 23, 19).
 
-\paragraph{3e. All three $\E=29$ solutions are strict local minima; BFS depth-4 confirms no escape (Session 16, new).}
+\paragraph{3e. Global intercalate minimum: 0968fc79 (Session 16, new, fourth class).}
+The fourth class (0968fc79, 24 intercalates) was also checked exhaustively in Session~16.
+The conflict graph has \textbf{maximum independent set size~10}.
+All valid sequences for $k=1,\ldots,10$ were verified in 10\,s
+(valid counts: 24, 229, 1143, 3292, 5654, 5740, 3291, 989, 147, 10; all giving $\E \geq 29$).
+At $k=11$ there are zero valid combinations, completing the proof.
+\textbf{All four known $\E=29$ isotopy classes are confirmed global intercalate-neighborhood
+minima.}  No sequence of intercalate moves, however long, can descend below $\E=29$ from
+any of the four starting points.  The max independent set sizes are 13 (4f04a773),
+12 (2cc8e22f), 10 (74bb7b86), 10 (0968fc79), reflecting intercalate counts (28, 23, 19, 24).
+
+\paragraph{3f. All four $\E=29$ solutions are strict local minima; BFS depth-5 confirms no escape (Session 16).}
 A direct depth-1 check confirms that \emph{every} single intercalate applied to any of the
-three $\E=29$ solutions \emph{strictly increases} $\E$: no intercalate move leaves $\E$
+four $\E=29$ solutions \emph{strictly increases} $\E$: no intercalate move leaves $\E$
 unchanged (plateau) or decreases it.  Specifically:
 \begin{itemize}[noitemsep]
   \item 4f04a773: all 28 intercalates give $\E = 30$ (min$= 30$)
   \item 2cc8e22f: all 23 intercalates give $\E \geq 31$ (min$= 31$)
   \item 74bb7b86: all 19 intercalates give $\E = 30$ (min$= 30$)
+  \item 0968fc79: all 24 intercalates give $\E \geq 31$ (min$= 31$; steepest of all four)
 \end{itemize}
 This is the strongest possible intercalate-neighborhood structure: the $\E=29$ solutions
 sit at the bottom of a strict energy well, with \emph{no plateau moves}.
 BFS analysis with full state deduplication (counting only NEW states at each depth) was
-performed for all three $\E=29$ classes, exploring \emph{any} intercalates at each step:
+performed for all four $\E=29$ classes, exploring \emph{any} intercalates at each step:
 \begin{center}
 \begin{tabular}{lrrrr}
 \toprule
@@ -1072,21 +1088,29 @@ Class & Depth & New states & Cumulative & Best $\E$\\
 74bb7b86 & 3 & 1\,970 & 2\,205 & 33\\
 74bb7b86 & 4 & 15\,857 & 18\,062 & 32\\
 74bb7b86 & 5 & 117\,046 & 135\,108 & 33\\
+\midrule
+0968fc79 & 1 & 24 & 25 & 31\\
+0968fc79 & 2 & 310 & 335 & 32\\
+0968fc79 & 3 & 2\,954 & 3\,289 & 34\\
+0968fc79 & 4 & 23\,606 & 26\,895 & 33\\
+0968fc79 & 5 & 169\,615 & 196\,510 & 33\\
 \bottomrule
 \end{tabular}
 \end{center}
 Combined total at deepest explored depth: 527\,524 (4f04a773, depth 5) + 249\,035
-(2cc8e22f, depth 5) + 135\,108 (74bb7b86, depth 5) = \textbf{911\,667 distinct
-reachable states across all three classes, all with $\E \geq 30$.}  No new
-reachable state has $\E \leq 29$: the only $\E=29$ state in the multi-move
+(2cc8e22f, depth 5) + 135\,108 (74bb7b86, depth 5) + 196\,510 (0968fc79, depth 5)
+= \textbf{1\,108\,177 distinct reachable states across all four classes, all with $\E \geq 30$.}
+No new reachable state has $\E \leq 29$: the only $\E=29$ state in the multi-move
 neighborhood of each solution is the solution itself.
 The energy landscape forms strict, isolated valleys around each $\E=29$ point.
-The best $\E$ among \emph{new} states at each depth is 30--33, consistent with
+The best $\E$ among \emph{new} states at each depth is 30--34, consistent with
 intercalate moves always increasing energy when leaving the $\E=29$ basin.
-Combined with the CP-SAT infeasibility evidence (16+ trials $\times$ 1200--1800\,s all
-TIMEOUT), these three solutions represent formidable barriers against finding $\E \leq 28$.
-The class 2cc8e22f is particularly striking: its minimum 1-move neighbor is at $\E=31$,
-indicating an unusually steep surrounding energy landscape.
+Remarkably, class 0968fc79 has \emph{no} depth-1 neighbor at $\E=30$: every single
+intercalate move raises $\E$ to at least~31.
+Combined with the CP-SAT infeasibility evidence (20+ trials $\times$ 1200--1800\,s all
+TIMEOUT), these four solutions represent formidable barriers against finding $\E \leq 28$.
+Classes 2cc8e22f and 0968fc79 are particularly striking: their minimum 1-move neighbors
+are at $\E=31$, indicating an unusually steep surrounding energy landscape.
 
 \paragraph{4. Reverse search failure.}
 Fixing a near-miss $L_3$ and running 30+ independent reverse-search trials (7-replica
@@ -1119,9 +1143,9 @@ No positive evidence for $N(10) \geq 3$ has been found:
     verified, Session 14b); 85.5\%-coverage near-miss, the strongest ever found.
   \item Session 14: Warm-start fix $\Rightarrow$ E=30 (311\,s); 2-move neighborhood $\Rightarrow$ E=29.
     All 7 prior $\E=31$ pairs same isotopy class.
-    Session~16 upgrades: all three $\E=29$ classes (4f04a773, 2cc8e22f, 74bb7b86) are
-    \textbf{global intercalate-neighborhood minima} (max-IS 10--13, BFS depth 4--5 with
-    445K+ states all $\geq 30$). Proof workers: 20+ trials targeting $\E \leq 28$, all inconclusive.
+    Session~16 upgrades: all four $\E=29$ classes (4f04a773, 2cc8e22f, 74bb7b86, 0968fc79) are
+    \textbf{global intercalate-neighborhood minima} (max-IS 10--13, BFS depth-5 with
+    1.1M+ states all $\geq 30$). Proof workers: 20+ trials targeting $\E \leq 28$, all inconclusive.
   \item Reverse search has never found a triple with $\E_\text{rev} < 60$.
 \end{itemize}
 
@@ -1138,10 +1162,11 @@ $37\to36\to34\to33\to32\to31\to30\to\mathbf{29}$, spanning Sessions 9--14.
 Session 14's contributions: (1) fixed the warm-start bug enabling $\E=30$ in 311\,s;
 (2) 2-move intercalate neighborhood search immediately found $\E=29$; (3) isotopy hashing
 confirmed all 7 prior $\E=31$ pairs are the same class.
-Session~16 extensions: (1) a \textbf{third E=29 class} (74bb7b86, $\cl_{13}=17$, $\cl_{23}=12$)
-confirmed; (2) all three E=29 classes proved \textbf{global intercalate-neighborhood minima}
-(max-IS 10--13; BFS depth 4--5 showing 445K+ states all at $\E \geq 30$); (3) CP-SAT
-seed diversification and gauge-permutation diversity added to proof workers.
+Session~16 extensions: (1) \textbf{third and fourth E=29 classes} (74bb7b86 and 0968fc79,
+both $\cl_{13}=17$, $\cl_{23}=12$) confirmed; (2) all four E=29 classes proved
+\textbf{global intercalate-neighborhood minima} (max-IS 10--13; BFS depth-5 showing 1.1M+
+states all at $\E \geq 30$); (3) CP-SAT seed diversification and gauge-permutation diversity
+added to proof workers.
 CP-SAT proof workers: 20+ trials $\times$ 1200--1800\,s targeting $\E \leq 28$, all inconclusive.
 No path toward $N(10) \geq 3$ has been found.
 
@@ -1163,12 +1188,13 @@ Supporting evidence:
     exhaustive enumeration.
   \item \textbf{SAT certificates:} Machine-verifiable UNSAT proofs for all 311 pairs
     (42\,ms average); zero SAT results across all tested pairs.
-  \item \textbf{E=29 record (Session 14, extended Session 16):} Three independent isotopy
+  \item \textbf{E=29 record (Session 14, extended Session 16):} Four independent isotopy
     classes at $\E=29$: 4f04a773 ($\cl_{13}=15$, $\cl_{23}=14$), 2cc8e22f ($\cl_{13}=14$,
-    $\cl_{23}=15$), and 74bb7b86 ($\cl_{13}=17$, $\cl_{23}=12$, Session~16).
+    $\cl_{23}=15$), 74bb7b86 ($\cl_{13}=17$, $\cl_{23}=12$, Session~16), and
+    0968fc79 ($\cl_{13}=17$, $\cl_{23}=12$, Session~16).
     The cascade $37 \to 36 \to 34 \to 33 \to 32 \to 31 \to 30 \to \mathbf{29}$ spans Sessions 9--14.
-    Session~16: all three are proved \textbf{global intercalate-neighborhood minima}
-    (BFS depth 4--5 covering 445K+ states, kmax exhaustive proofs); no intercalate path
+    Session~16: all four are proved \textbf{global intercalate-neighborhood minima}
+    (BFS depth-5 covering 1.1M+ states, kmax exhaustive proofs); no intercalate path
     can achieve $\E\leq28$.
   \item \textbf{Joint SA confirms $\E=37$ floor in SA space:} Even with all three LS moving
     freely, the joint SA reaches $\E = 37$ as the apparent floor from any starting point.
@@ -1183,23 +1209,25 @@ Supporting evidence:
   \item Is Conjecture~\ref{conj:ct} provable? A proof would resolve $N(10)$ definitively.
   \item What is the true minimum of $\E$ over all triples with $\cl_{12} = 0$? Our
     empirical minimum is $\E=29$; can $\E < 29$ be achieved?  CP-SAT proof workers
-    have run 16+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$, all inconclusive
-    (for classes 4f04a773, 2cc8e22f, 3461a586, and 74bb7b86 combined; Session~16 ongoing).
+    have run 20+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$, all inconclusive
+    (for classes 4f04a773, 2cc8e22f, 74bb7b86, and 0968fc79 combined; Session~16 ongoing).
     Whether $\E = 29$ is the global minimum or merely a local floor is the central open question.
-    Note: intercalate moves alone cannot achieve $\E\leq28$ from either known $\E=29$ class
-    (both proved global intercalate-neighborhood minima, Session~16); only CP-SAT
+    Note: intercalate moves alone cannot achieve $\E\leq28$ from any known $\E=29$ class
+    (all four proved global intercalate-neighborhood minima, Session~16); only CP-SAT
     structural reassignment can potentially find $\E\leq28$.
-  \item \textbf{RESOLVED (Session 16):} All three known $\E=29$ isotopy classes are global
+  \item \textbf{RESOLVED (Session 16):} All four known $\E=29$ isotopy classes are global
     intercalate-neighborhood minima.
     4f04a773 (28 ic, max-IS=13, $k=14$ empty, 181\,s),
     2cc8e22f (23 ic, max-IS=12, $k=13$ empty, 30\,s),
-    74bb7b86 (19 ic, max-IS=10, $k=11$ empty, 2\,s):
-    no intercalate sequence can achieve $\E\leq28$ from any of these three starting points.
-  \item Three isotopy classes now achieve $\E=29$: 4f04a773 ($\cl_{13}=15$, $\cl_{23}=14$),
-    2cc8e22f ($\cl_{13}=14$, $\cl_{23}=15$), and \textbf{74bb7b86} ($\cl_{13}=17$,
-    $\cl_{23}=12$, Session~16).  Two remaining classes (3a33165a, 0968fc79) are at $\E=30$.
-    Can any class reach $\E \leq 28$?  Is there a structural explanation for why 74bb7b86
-    has such an asymmetric clash distribution ($\cl_{13}=17$ vs $\cl_{23}=12$)?
+    74bb7b86 (19 ic, max-IS=10, $k=11$ empty, 2\,s),
+    0968fc79 (24 ic, max-IS=10, $k=11$ empty, 10\,s):
+    no intercalate sequence can achieve $\E\leq28$ from any of these four starting points.
+  \item Four isotopy classes now achieve $\E=29$: 4f04a773 ($\cl_{13}=15$, $\cl_{23}=14$),
+    2cc8e22f ($\cl_{13}=14$, $\cl_{23}=15$), 74bb7b86 ($\cl_{13}=17$, $\cl_{23}=12$,
+    Session~16), and \textbf{0968fc79} ($\cl_{13}=17$, $\cl_{23}=12$, Session~16).
+    Can any class reach $\E \leq 28$?  Classes 3a33165a remains at $\E=30$.
+    Is there a structural explanation for why both 74bb7b86 and 0968fc79
+    share the asymmetric distribution ($\cl_{13}=17$, $\cl_{23}=12$)?
   \item Does the CT distribution (always $\leq 2$) follow from a group-theoretic argument
     related to the factorization $10 = 2 \times 5$?
   \item Why does the joint 3-LS SA converge to $\E = 37$? Is there a theoretical
