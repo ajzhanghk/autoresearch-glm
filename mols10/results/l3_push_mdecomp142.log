@@ -5,3 +5,5 @@
 [20:32:44] Trial 0: 180s warmup
 [20:35:44]   Warmup: E=41 cl13=22 cl23=19 t=180.0s
 [20:35:44] trial=  1 timeout=1800.0s seed=1737545277
+[21:05:44]   -> E=41 cl13=22 cl23=19 t=1800.0s
+[21:05:44] trial=  2 timeout=1800.0s seed=820092809
