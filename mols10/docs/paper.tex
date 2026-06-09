@@ -640,6 +640,16 @@ with the hard constraint $\cl_{13}+\cl_{23} \leq 35$:
 UNSAT proofs are often faster than optimization because the solver only needs to explore
 until the search space is exhausted, without finding an improving solution.
 
+\paragraph{CP-SAT seed diversification (Session 16 fix).}
+A critical bug was discovered in Session 16: all prior \texttt{feasibility\_check()} calls
+used the OR-Tools CP-SAT default \texttt{random\_seed=0}.  When running with
+\texttt{num\_workers=2}, the parallel search portfolios use seeds $\{0, 1\}$ --- the same
+pair every trial.  This means all 14+ proof trials were executing the \emph{same}
+deterministic search, just repeated.  The fix: \texttt{feasibility\_check()} now accepts
+a \texttt{random\_seed} parameter (added to {\tt mols\_cpsat\_proof.py}), and every proof
+trial now passes a freshly sampled random seed, generating genuinely diverse search
+trajectories.  All proof workers since Session~16 use this diversification.
+
 \subsection{New Workers: Crossover, MAX-SAT, and Joint SA}\label{sec:newworkers}
 
 Three algorithmic approaches were introduced in Session 8 to attack the $\E=37$ barrier
