@@ -1,0 +1,36 @@
+[02:25:21] ============================================================
+[02:25:21] ============================================================
+[02:25:21] Proof search: SWAPPED MAIN PAIR (3461a586)
+[02:25:21] Proof search: SWAPPED MAIN PAIR (3461a586)
+[02:25:21] L1=L2_orig, L2=L1_orig: cl12=0 cl13=14 cl23=15 E=29
+[02:25:21] L1=L2_orig, L2=L1_orig: cl12=0 cl13=14 cl23=15 E=29
+[02:25:21] Target: E <= 28, timeout=1200.0s, workers=2, seed=6666
+[02:25:21] Target: E <= 28, timeout=1200.0s, workers=2, seed=6666
+[02:25:21] ============================================================
+[02:25:21] ============================================================
+[02:25:21] trial=  1 target=28 timeout=1200.0s
+[02:25:21] trial=  1 target=28 timeout=1200.0s
+[02:45:21]   TIMEOUT: inconclusive t=1200.2s
+[02:45:21]   TIMEOUT: inconclusive t=1200.2s
+[02:45:21] trial=  2 target=28 timeout=1200.0s
+[02:45:21] trial=  2 target=28 timeout=1200.0s
+[03:05:21]   TIMEOUT: inconclusive t=1200.1s
+[03:05:21]   TIMEOUT: inconclusive t=1200.1s
+[03:05:21] trial=  3 target=28 timeout=1200.0s
+[03:05:21] trial=  3 target=28 timeout=1200.0s
+[03:25:21]   TIMEOUT: inconclusive t=1200.1s
+[03:25:21]   TIMEOUT: inconclusive t=1200.1s
+[03:25:21] trial=  4 target=28 timeout=1200.0s
+[03:25:21] trial=  4 target=28 timeout=1200.0s
+[03:45:21]   TIMEOUT: inconclusive t=1200.1s
+[03:45:21]   TIMEOUT: inconclusive t=1200.1s
+[03:45:21] trial=  5 target=28 timeout=1200.0s
+[03:45:21] trial=  5 target=28 timeout=1200.0s
+[04:05:21]   TIMEOUT: inconclusive t=1200.1s
+[04:05:21]   TIMEOUT: inconclusive t=1200.1s
+[04:05:21] trial=  6 target=28 timeout=1200.0s
+[04:05:21] trial=  6 target=28 timeout=1200.0s
+[04:25:21]   TIMEOUT: inconclusive t=1200.1s
+[04:25:21]   TIMEOUT: inconclusive t=1200.1s
+[04:25:21] trial=  7 target=28 timeout=1200.0s
+[04:25:21] trial=  7 target=28 timeout=1200.0s

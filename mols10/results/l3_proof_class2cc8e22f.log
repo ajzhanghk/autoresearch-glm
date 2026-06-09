@@ -1,0 +1,26 @@
+[02:05:11] ============================================================
+[02:05:11] Proof search: class=2cc8e22f E=29 cl12=0 cl13=14 cl23=15
+[02:05:11] Target: E <= 28, timeout=1200.0s, workers=4, seed=5555
+[02:05:11] ============================================================
+[02:05:11] trial=  1 target=28 timeout=1200.0s random_seed=1840773291
+[02:25:12]   TIMEOUT: inconclusive t=1200.1s
+[02:25:12] trial=  2 target=28 timeout=1200.0s random_seed=476729771
+[02:45:12]   TIMEOUT: inconclusive t=1200.1s
+[02:45:12] trial=  3 target=28 timeout=1200.0s random_seed=239301036
+[03:05:12]   TIMEOUT: inconclusive t=1200.1s
+[03:05:12] trial=  4 target=28 timeout=1200.0s random_seed=1049235199
+[03:25:12]   TIMEOUT: inconclusive t=1200.1s
+[03:25:12] trial=  5 target=28 timeout=1200.0s random_seed=1167511970
+[03:45:12]   TIMEOUT: inconclusive t=1200.2s
+[03:45:12] trial=  6 target=28 timeout=1200.0s random_seed=859320601
+[04:05:12]   TIMEOUT: inconclusive t=1200.1s
+[04:05:12] trial=  7 target=28 timeout=1200.0s random_seed=1041056363
+[04:25:12]   TIMEOUT: inconclusive t=1200.1s
+[04:25:12] trial=  8 target=28 timeout=1200.0s random_seed=466336439
+[07:21:15] ============================================================
+[07:21:15] Proof search: class=2cc8e22f E=29 cl12=0 cl13=14 cl23=15
+[07:21:15] Target: E <= 28, timeout=1800.0s, workers=2, seed=9999
+[07:21:15] ============================================================
+[07:21:15] trial=  1 target=28 timeout=1800.0s random_seed=533280010
+[07:51:15]   TIMEOUT: inconclusive t=1800.1s
+[07:51:15] trial=  2 target=28 timeout=1800.0s random_seed=677013082
