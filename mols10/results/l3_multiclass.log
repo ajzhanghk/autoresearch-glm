@@ -23,3 +23,11 @@
 [02:02:57] Multi-class sweep complete.
 [02:02:57]   Saved E=29 to pool!
 [02:02:57] Multi-class sweep complete.
+
+[Additional analysis of 2cc8e22f E=29 entry]
+2-move check: 563 pairs, best=29 (2-move local minimum)
+3-move check: 14200 triples in 0.83s, best=29 (3-move local minimum)
+4-move check: 364802 quads in 22.0s, best=29 (4-move local minimum)
+Intercalate neighborhood: 23 moves (vs 28 for main class)
+  E=31: 1, E=33: 7, E=34: 11, E=35: 3, E=36: 1
+Min neighbor: E=31 (vs E=30 for main class) — even deeper local minimum

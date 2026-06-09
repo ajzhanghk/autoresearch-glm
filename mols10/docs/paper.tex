@@ -62,21 +62,19 @@ local search, Glucose3 CDCL satisfiability solving, and OR-Tools CP-SAT exact op
 we execute a never-stopping search across 15 concurrent workers.
 
 Our main findings are: (1) the minimum total clash energy $\E = \cl_{13} + \cl_{23}$
-achievable for fixed pairs $(L_1, L_2)$ with $L_1 \perp L_2$ has been dramatically lowered
-from 37 (Sessions 5--8) to \textbf{29} in Session 14, following the cascade
+has been lowered from 37 (Sessions 5--8) to \textbf{29} in Session 14, following the cascade
 $37 \to 34 \to 33 \to 32 \to 31 \to 30 \to \mathbf{29}$;
-(2) a near-miss pool with current record $\E=29$ ($\cl_{13}=15$, $\cl_{23}=14$,
-$\cl_{12}=0$, verified, 85.5\% symbol-pair coverage); (3) every MOLS-10 pair tested
-(311 pairs) has $\CT(L_1, L_2) \leq 2 < 10$, proving no third orthogonal square exists for
-any of these pairs; (4) Glucose3 provides machine-verifiable UNSAT certificates for all
-311 pairs (42\,ms average); (5) Session 14 fixed a critical warm-start bug in the CP-SAT
-proof worker and discovered that all 7 previously known $\E=31$ pairs are isotopically
-equivalent; (6) a 2-intercalate neighborhood search on the $\E=30$ solution instantly found
-$\E=29$ (816 pairs checked in $<$0.1\,s).
+(2) the $\E=29$ record has been confirmed across \textbf{two independent isotopy classes}:
+class~4f04a773 ($\cl_{13}=15$, $\cl_{23}=14$, 28 intercalates, 5-move local minimum)
+and class~2cc8e22f ($\cl_{13}=14$, $\cl_{23}=15$, 23 intercalates, 4-move local minimum);
+(3) every MOLS-10 pair tested (344 pairs) has $\CT(L_1, L_2) \leq 2 < 10$;
+(4) Glucose3 provides machine-verifiable UNSAT certificates for all 311 pairs (42\,ms average);
+(5) CP-SAT proof workers have run 7+ trials $\times 1200$\,s targeting $\E \leq 28$,
+all inconclusive.
 
-Dedicated proof-mode workers are now checking $\E \leq 28$ feasibility.  Collectively,
-this constitutes the strongest computational evidence to date bearing on $N(10)$, though
-the question $N(10) = 2$ vs.\ $N(10) \geq 3$ remains open.
+Dedicated proof-mode workers continue checking $\E \leq 28$ feasibility across both isotopy
+classes.  Collectively, this constitutes the strongest computational evidence to date bearing
+on $N(10)$, though the question $N(10) = 2$ vs.\ $N(10) \geq 3$ remains open.
 \end{abstract}
 
 \tableofcontents
@@ -886,8 +884,10 @@ $\E(L_1, L_2, L_3) \geq 29$.
   $\E=29$ ($\cl_{13}=14$, $\cl_{23}=15$, $\cl_{12}=0$), found in 240\,s by CP-SAT
   optimization from an $\E=32$ starting hint.  This new $\E=29$ entry has \emph{23 intercalates}
   (vs.\ 28 for the main class) and minimum-neighbor $\E=31$ (vs.\ $\E=30$); it is thus an
-  even \emph{deeper} local minimum.  The 2-move neighborhood (563 pairs) gives best$=29$,
-  confirming it is a 2-move local minimum.  Two independent $\E=29$ isotopy classes now exist.
+  even \emph{deeper} local minimum.  Exhaustive checks: 563 pairs (2-move, best$=29$),
+  14\,200 triples (3-move, best$=29$), 364\,802 quads (4-move, best$=29$, $t=22$\,s) all
+  confirm the new-class $\E=29$ is a 4-move local minimum.  Two independent $\E=29$ isotopy
+  classes now exist, both with purely uphill intercalate neighborhoods.
 \end{remark}
 
 % ===========================================================================
