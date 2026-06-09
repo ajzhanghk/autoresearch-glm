@@ -1,0 +1,7 @@
+[13:22:31] ============================================================
+[13:22:31] Cold-start proof v2: all 4 E=29 classes, no hint, seed=13579
+[13:22:31] timeout=1800.0s, workers=1, target_E=28
+[13:22:31] ============================================================
+[13:22:31] trial=  1 class=0968fc79 target=28 cp_seed=1160914997 gauge=[np.int32(0), np.int32(2), np.int32(1), np.int32(3), np.int32(8), np.int32(4), np.int32(5), np.int32(6), np.int32(7), np.int32(9)] [COLD]
+[13:52:31]   TIMEOUT: inconclusive t=1800.1s
+[13:52:31] trial=  2 class=2cc8e22f target=28 cp_seed=379749197 gauge=[np.int32(4), np.int32(2), np.int32(1), np.int32(0), np.int32(3), np.int32(6), np.int32(9), np.int32(7), np.int32(5), np.int32(8)] [COLD]

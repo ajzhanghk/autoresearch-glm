@@ -38,3 +38,19 @@
 [09:08:02] Target: E <= 28, timeout=1800.0s, workers=2, seed=22222
 [09:08:02] ============================================================
 [09:08:02] trial=  1 target=28 timeout=1800.0s random_seed=1133235416 gauge=id
+[09:38:02]   TIMEOUT: inconclusive t=1800.1s
+[09:38:02] trial=  2 target=28 timeout=1800.0s random_seed=1293582531 gauge=[np.int32(7), np.int32(6), np.int32(2), np.int32(4), np.int32(3), np.int32(1), np.int32(8), np.int32(9), np.int32(0), np.int32(5)]
+[13:14:25] ============================================================
+[13:14:25] ============================================================
+[13:14:25] Proof search: class=2cc8e22f E=29 cl12=0 cl13=14 cl23=15
+[13:14:25] Proof search: class=2cc8e22f E=29 cl12=0 cl13=14 cl23=15
+[13:14:25] Target: E <= 28, timeout=1800.0s, workers=1, seed=66666
+[13:14:25] Target: E <= 28, timeout=1800.0s, workers=1, seed=66666
+[13:14:25] ============================================================
+[13:14:25] ============================================================
+[13:14:25] trial=  1 target=28 timeout=1800.0s random_seed=1530970936 gauge=id
+[13:14:25] trial=  1 target=28 timeout=1800.0s random_seed=1530970936 gauge=id
+[13:44:25]   TIMEOUT: inconclusive t=1800.1s
+[13:44:25]   TIMEOUT: inconclusive t=1800.1s
+[13:44:25] trial=  2 target=28 timeout=1800.0s random_seed=1085479143 gauge=[np.int32(5), np.int32(2), np.int32(7), np.int32(6), np.int32(4), np.int32(1), np.int32(3), np.int32(0), np.int32(8), np.int32(9)]
+[13:44:25] trial=  2 target=28 timeout=1800.0s random_seed=1085479143 gauge=[np.int32(5), np.int32(2), np.int32(7), np.int32(6), np.int32(4), np.int32(1), np.int32(3), np.int32(0), np.int32(8), np.int32(9)]
