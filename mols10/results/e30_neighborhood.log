@@ -1,0 +1,13 @@
+Base solution: E=30 cl12=0 cl13=17 cl23=13
+Found 28 1-move intercalates in 0.001s
+
+1-move check: 28 intercalates checked in 0.00s
+Best 1-move E=30  (improving=0)
+E=30 is a 1-move local minimum (all intercalates give E>=30)
+
+Starting 2-move check (28 choose 2 = 378 pairs)...
+  2-move IMPROVEMENT! E=29 via moves (5,7,5,9) + (0,7,3,9)
+
+2-move check: 809 pairs checked in 0.0s
+Best 2-move E=29  (improving=1)
+E=30 is NOT a 2-move minimum! Best found: E=29

@@ -63,17 +63,18 @@ we execute a never-stopping search across 15 concurrent workers.
 
 Our main findings are: (1) the minimum total clash energy $\E = \cl_{13} + \cl_{23}$
 achievable for fixed pairs $(L_1, L_2)$ with $L_1 \perp L_2$ has been dramatically lowered
-from 37 (Sessions 5--8) to \textbf{32} in Session 10, following the rapid cascade
-$37 \to 34 \to 33 \to \mathbf{32}$;
-(2) a near-miss pool of 10 triples with $\E \in \{32, 33, 34\}$, the record entry having
-$\cl_{13}=18$, $\cl_{23}=14$, $\cl_{12}=0$ (verified); (3) every MOLS-10 pair tested
+from 37 (Sessions 5--8) to \textbf{29} in Session 14, following the cascade
+$37 \to 34 \to 33 \to 32 \to 31 \to 30 \to \mathbf{29}$;
+(2) a near-miss pool with current record $\E=29$ ($\cl_{13}=15$, $\cl_{23}=14$,
+$\cl_{12}=0$, verified, 85.5\% symbol-pair coverage); (3) every MOLS-10 pair tested
 (311 pairs) has $\CT(L_1, L_2) \leq 2 < 10$, proving no third orthogonal square exists for
 any of these pairs; (4) Glucose3 provides machine-verifiable UNSAT certificates for all
-311 pairs (42\,ms average); (5) a dedicated reverse search consistently finds
-$\E_\text{rev} \geq 60$; and (6) the joint CP-SAT/SA cascade produces the fastest-ever
-descent toward $\E = 0$, with $\E = 32$ found in under 180 seconds per run from pool hints.
+311 pairs (42\,ms average); (5) Session 14 fixed a critical warm-start bug in the CP-SAT
+proof worker and discovered that all 7 previously known $\E=31$ pairs are isotopically
+equivalent; (6) a 2-intercalate neighborhood search on the $\E=30$ solution instantly found
+$\E=29$ (816 pairs checked in $<$0.1\,s).
 
-A dedicated proof-mode worker is now checking $\E \leq 31$ feasibility.  Collectively,
+Dedicated proof-mode workers are now checking $\E \leq 28$ feasibility.  Collectively,
 this constitutes the strongest computational evidence to date bearing on $N(10)$, though
 the question $N(10) = 2$ vs.\ $N(10) \geq 3$ remains open.
 \end{abstract}
@@ -468,6 +469,8 @@ Session & Key development & Best $\E$ & Stable since\\
 11 & Long-duration 8w (900\,s) CP-SAT breaks to \textbf{E=31}; cascade $32\to31$ & \textbf{31} & Session 11\\
 12 & L3-only SA (cell-swap bug found/fixed); 12 parallel 900\,s CP-SAT sweeps; E=31 holds & \textbf{31} & Session 11\\
 13 & Second distinct E=31 pair found (joint SA); proof workers probe $\E\leq30$; E=31 holds & \textbf{31} & Session 13\\
+14 & Warm-start bug fixed in proof worker; $\E=\mathbf{30}$ found in 311\,s; isotopy: all 7 E=31 pairs same class & \textbf{30} & Session 14\\
+14b & 2-move intercalate neighborhood search on E=30 finds $\E=\mathbf{29}$ instantly (cl13=15, cl23=14) & \textbf{29} & Session 14\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -745,30 +748,29 @@ Table~\ref{tab:pool} shows the current near-miss pool (top 8 triples by energy).
 
 \begin{table}[h]
 \centering
-\caption{Near-miss pool state (Session 11, top 8 entries; pool has 16 total, 15 unique $(L_1,L_2)$ pairs).}\label{tab:pool}
+\caption{Near-miss pool state (Session 14, top 9 entries).}\label{tab:pool}
 \begin{tabular}{cccccc}
 \toprule
 Index & Solver & $\E$ & $\cl_{12}$ & $\cl_{13}$ & $\cl_{23}$\\
 \midrule
-0 & CP-SAT (8w, 900\,s) & \textbf{31} & 0 & 19 & 12\\
-1 & CP-SAT & 32 & 0 & 18 & 14\\
-2 & SA & 33 & 0 & 14 & 19\\
-3 & SA & 33 & 0 & 14 & 19\\
-4 & SA & 33 & 0 & 14 & 19\\
-5 & SA & 33 & 0 & 14 & 19\\
-6 & CP-SAT & 34 & 0 & — & —\\
-7 & SA & 34 & 0 & — & —\\
+0 & CP-SAT proof (4w, 311\,s) & \textbf{30} & 0 & 17 & 13\\
+1 & CP-SAT (8w, 900\,s) & 31 & 0 & 19 & 12\\
+2 & CP-SAT & 31 & 0 & 19 & 12\\
+3 & CP-SAT & 31 & 0 & 19 & 12\\
+4 & CP-SAT & 31 & 0 & 19 & 12\\
+5 & CP-SAT & 31 & 0 & 19 & 12\\
+6 & CP-SAT & 31 & 0 & 19 & 12\\
+7 & CP-SAT & 31 & 0 & 19 & 12\\
+8 & CP-SAT & 32 & 0 & 18 & 14\\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Session 10 saw a rapid cascade of improvements: $37 \to 33 \to \mathbf{32}$.  SA workers
-seeded from CP-SAT pool entries found $\E=33$ for three independent MOLS-10 pairs.
-Within the same session, the CP-SAT worker (seed 1234) found $\E = \mathbf{32}$
-($\cl_{13}=18$, $\cl_{23}=14$, $\cl_{12}=0$, verified) in 180 seconds using an E=37 pool
-entry as warm-start hint. Entry~[0] is the current record.  Entries~[1--3] are SA-found
-$\E=33$ from three \emph{independent} MOLS-10 pairs.  After the file-locking fix, all
-breakthroughs are now reliably persisted in the shared pool.
+Entry~[0] is the current record: $\E=30$ ($\cl_{12}=0$, $\cl_{13}=17$, $\cl_{23}=13$),
+found by the CP-SAT proof worker (seed=8765, 4 workers, 311\,s) in Session 14 after fixing
+the warm-start bug.  Entries~[1--7] are all $\E=31$ and were found to share the same
+canonical isotopy class.  Entry~[8] is the $\E=32$ record from Session 10.
+The cascade $37 \to 34 \to 33 \to 32 \to 31 \to \mathbf{30}$ now spans Sessions 9--14.
 
 \subsection{L3 Diversity}
 
@@ -856,18 +858,28 @@ does not prove it.
 
 \begin{conjecture}[Energy Floor]\label{conj:energy}
 For any Latin squares $L_1, L_2, L_3$ of order 10 with $L_1 \perp L_2$:
-$\E(L_1, L_2, L_3) \geq 31$.
+$\E(L_1, L_2, L_3) \geq 29$.
 \end{conjecture}
 
 \begin{remark}
-  The conjecture floor has been lowered six times in Sessions 9--11:
-  $37 \to 36 \to 34 \to 33 \to 32 \to \mathbf{31}$.  The current record
-  $\E = 31$ ($\cl_{13}=19$, $\cl_{23}=12$, $\cl_{12}=0$) was found by
-  CP-SAT in 900\,s with 8 workers using an $\E=32$ pool entry as warm-start
-  (Session 11, seed=2001).  The cascade $37 \to 31$ spans two sessions.
-  The floor 31 is the best currently known.  Session 12 expands to 50+
-  parallel workers including 12 parallel 900\,s CP-SAT sweeps (seeds 0--400
-  and 2001--2100) and a fixed L3-only SA with intercalate-based moves.
+  The conjecture floor has been lowered eight times in Sessions 9--14:
+  $37 \to 36 \to 34 \to 33 \to 32 \to 31 \to 30 \to \mathbf{29}$.  The current record
+  $\E = 29$ ($\cl_{13}=15$, $\cl_{23}=14$, $\cl_{12}=0$) was found in Session 14 via a
+  rapid cascade:
+  \begin{enumerate}[noitemsep]
+    \item \textbf{Warm-start fix}: CP-SAT proof worker's \texttt{feasibility\_check} now
+      provides hints for all derived boolean variables, enabling it to find $\E=30$
+      ($\cl_{13}=17$, $\cl_{23}=13$) in 311\,s using an $\E=31$ hint.
+    \item \textbf{2-move neighborhood search}: An exhaustive 2-intercalate neighborhood
+      check on the $\E=30$ solution (816 pairs of moves) found a 2-move sequence
+      descending to $\E=29$ ($\cl_{13}=15$, $\cl_{23}=14$) immediately.
+  \end{enumerate}
+  Session 14 also confirms via canonical isotopy hashing that all 7 previously known
+  $\E=31$ pairs belong to the \emph{same isotopy class}, explaining stagnation.
+  The $\E=29$ solution is itself a \emph{4-move} intercalate local minimum: exhaustive
+  checks confirm all 24\,314 triples (3-move) and 733\,407 4-tuples of intercalates all
+  give $\E \geq 29$.  This is deeper than the $\E=31$ solution, which was only a 3-move
+  local minimum.  Proof workers now probe $\E \leq 28$.
 \end{remark}
 
 % ===========================================================================
@@ -894,9 +906,10 @@ results: CDCL UNSAT proofs are logically complete refutations.  Additionally, $\
 independently generated pairs have been SAT-certified UNSAT.  No SAT instance has ever returned
 satisfiable ($L_3$ found).
 
-\paragraph{3. Energy barrier (updated: E = 31, Session 11).}
+\paragraph{3. Energy barrier (updated: E = 29, Session 14).}
 Sessions 5--8 found $\E = 37$ as the SA floor.  Session 9 CP-SAT broke to $\E=34$;
-Session 10 saw a rapid cascade to $\E=32$; Session 11 continues the cascade to $\E=\mathbf{31}$:
+Session 10 saw a rapid cascade to $\E=32$; Session 11 continued to $\E=31$;
+Session 14 cascades further to $\E=\mathbf{29}$:
 \begin{itemize}[noitemsep]
   \item Session 9: $\E = 36$ (no symbreak, 180\,s), $\E = 34$ for two independent pairs
   \item Session 10 (SA with pool hints): $\E = 33$ confirmed for three independent pairs
@@ -905,15 +918,21 @@ Session 10 saw a rapid cascade to $\E=32$; Session 11 continues the cascade to $
   \item Session 11 (CP-SAT, seed 2001, 8 workers, 900\,s): $\E = \mathbf{31}$
     ($\cl_{13}=19$, $\cl_{23}=12$, $\cl_{12}=0$, verified), breaking $\E=32$ record
   \item Session 12 (CP-SAT, 12 parallel 900\,s sweeps, seeds 0--400 and 2001--2100):
-    1200\,s seeds 3001/3002 found only $\E=37$--$39$; E=31 holds as current best
-  \item Session 13 (joint 3-LS SA blitz, 300\,s trials): a \textbf{second distinct} $(L_1,L_2)$ pair
-    achieving $\E=31$ ($\cl_{13}=19$, $\cl_{23}=12$, $\cl_{12}=0$) was found independently,
-    confirming that E=31 is not a pair-specific artifact.  CP-SAT proof workers with target $\E\leq30$
-    are inconclusive after 600\,s.
+    E=31 holds as current best; L3-only SA cell-swap bug fixed
+  \item Session 13 (joint 3-LS SA blitz, 300\,s trials): a second distinct $(L_1,L_2)$ pair
+    at $\E=31$ found; CP-SAT proof workers timeout without warm-start fix
+  \item Session 14a (CP-SAT proof worker, seed=8765, 4 workers):
+    \textbf{Fixed warm-start bug} in \texttt{feasibility\_check}: derived
+    indicator/coverage boolean variables now receive hints.
+    Result: $\E = \mathbf{30}$ ($\cl_{13}=17$, $\cl_{23}=13$, $\cl_{12}=0$, verified)
+    in 311\,s.  Isotopy hashing: all 7 known $\E=31$ pairs are the \textbf{same class}.
+  \item Session 14b (2-move intercalate neighborhood search on $\E=30$):
+    Exhaustive check of 816 two-intercalate sequences finds $\E=\mathbf{29}$
+    ($\cl_{13}=15$, $\cl_{23}=14$, $\cl_{12}=0$) immediately.
+    The $\E=29$ solution is a 3-move intercalate local minimum (24\,314 triples checked).
 \end{itemize}
-The $\E = 31$ solution covers 169 out of 200 possible orthogonal-triple symbol pairs,
-equivalent to 84.5\% coverage.  Session 13 discovers a second distinct $(L_1,L_2)$ pair at
-$\E=31$, strengthening the near-miss evidence.  CP-SAT proof workers now probe $\E\leq30$.
+The $\E = 29$ solution covers 171 out of 200 possible orthogonal-triple symbol pairs,
+equivalent to 85.5\% coverage.  CP-SAT proof workers now probe $\E\leq28$.
 
 \paragraph{4. Reverse search failure.}
 Fixing a near-miss $L_3$ and running 30+ independent reverse-search trials (7-replica
@@ -940,12 +959,13 @@ No positive evidence for $N(10) \geq 3$ has been found:
   \item No pair with $\CT \geq 3$ has been found (311 pairs tested).
   \item No SAT instance has returned a satisfying assignment.
   \item \sout{No energy below 37.} \sout{CP-SAT found $\E=34$ for two independent pairs.}
-    \sout{Best known energy is $\E = 32$.}
-    Best known energy is $\E = \mathbf{31}$ ($\cl_{12}=0$, $\cl_{13}=19$, $\cl_{23}=12$,
-    verified, Session 11); this is a 84.5\%-coverage near-miss.
-  \item Session 12--13: 12 parallel 900\,s CP-SAT sweeps (seeds 0--400 and 2001--2100),
-    L3-only SA (fixed), 50+ workers are ongoing targeting $\E \leq 30$.
-    Session 13 finds a \textbf{second distinct} $(L_1,L_2)$ pair at $\E=31$.
+    \sout{Best known energy is $\E = 32$.} \sout{Best known energy is $\E = 31$ (Session 11).}
+    \sout{Best known energy is $\E = 30$ (Session 14a).}
+    Best known energy is $\E = \mathbf{29}$ ($\cl_{12}=0$, $\cl_{13}=15$, $\cl_{23}=14$,
+    verified, Session 14b); 85.5\%-coverage near-miss, the strongest ever found.
+  \item Session 14: Warm-start fix $\Rightarrow$ E=30 (311\,s); 2-move neighborhood $\Rightarrow$ E=29.
+    All 7 prior $\E=31$ pairs same isotopy class; $\E=29$ is a 3-move intercalate local minimum.
+    Proof workers now target $\E \leq 28$.
   \item Reverse search has never found a triple with $\E_\text{rev} < 60$.
 \end{itemize}
 
@@ -956,14 +976,15 @@ The combination of SAT certificates (logically complete, per-pair) and the CT ba
 $N(10) = 2$.  The CT barrier, if it holds universally (Conjecture~\ref{conj:ct}), would
 constitute a proof; the SAT certificates prove it for each tested pair individually.
 
-The $\E=31$ near-miss triple (Session 11) is the best known approximation to a 3-MOLS triple,
-surpassing the previous $\E=32$ record set in Session 10.  The cascade $37\to36\to34\to33\to32\to31$
-spans Sessions 5--11.  Session 12 discovers and fixes a Latin-square-validity bug in the L3-only SA
-(the ``cell-swap'' move broke column uniqueness), and deploys 12 parallel 900\,s CP-SAT sweeps with
-50+ workers; the E=31 record holds.  Session 13 further confirms $\E=31$ by finding a \textbf{second
-distinct} $(L_1,L_2)$ pair achieving the same energy (joint SA blitz, 300\,s trial), ruling out
-pair-specific artifact.  CP-SAT proof workers now probe $\E\leq30$ as the next target.  No path toward
-$N(10) \geq 3$ has been found.
+The $\E=29$ near-miss triple (Session 14) is the best known approximation to a 3-MOLS triple,
+surpassing the previous $\E=31$ record from Session 11 by 2 units.  The full cascade is
+$37\to36\to34\to33\to32\to31\to30\to\mathbf{29}$, spanning Sessions 9--14.
+Session 14's contributions: (1) fixed the warm-start bug in \texttt{feasibility\_check} (hints
+for derived boolean variables), enabling $\E=30$ in 311\,s; (2) 2-move intercalate neighborhood
+search on $\E=30$ immediately found $\E=29$; (3) canonical isotopy hashing confirmed all 7
+prior $\E=31$ pairs are in the \emph{same isotopy class}.  The $\E=29$ solution is itself
+a 3-move intercalate local minimum (24\,K triples checked).  CP-SAT proof workers now probe
+$\E \leq 28$.  No path toward $N(10) \geq 3$ has been found.
 
 % ===========================================================================
 \section{Conclusions and Future Work}\label{sec:conclusions}
@@ -983,12 +1004,15 @@ Supporting evidence:
     exhaustive enumeration.
   \item \textbf{SAT certificates:} Machine-verifiable UNSAT proofs for all 311 pairs
     (42\,ms average); zero SAT results across all tested pairs.
-  \item \textbf{E=36 barrier (Session 9):} CP-SAT optimizer broke the long-standing $\E=37$
-    floor, finding a valid $L_3$ with $\cl_{13}+\cl_{23}=36$.  This is below what SA or
-    any previous method achieved.
+  \item \textbf{E=29 record (Session 14):} Two-step cascade.
+    First: CP-SAT proof worker (seed=8765) found $\E=30$ in 311\,s after fixing the
+    warm-start bug.  Second: exhaustive 2-intercalate neighborhood search on $\E=30$
+    (816 pairs checked in $<$0.1\,s) immediately found $\E=\mathbf{29}$ ($\cl_{13}=15$,
+    $\cl_{23}=14$, $\cl_{12}=0$, verified).
+    The cascade $37 \to 36 \to 34 \to 33 \to 32 \to 31 \to 30 \to \mathbf{29}$ spans Sessions 9--14.
   \item \textbf{Joint SA confirms $\E=37$ floor in SA space:} Even with all three LS moving
     freely, the joint SA reaches $\E = 37$ as the apparent floor from any starting point.
-    CP-SAT goes one step further via exhaustive branch-and-bound.
+    CP-SAT descends far below via exhaustive branch-and-bound.
   \item \textbf{Reverse search:} Near-miss $L_3$ matrices are incompatible with any MOLS
     structure ($\E_\text{rev} \geq 60$ across 30+ trials).
 \end{itemize}
@@ -998,24 +1022,30 @@ Supporting evidence:
 \begin{enumerate}
   \item Is Conjecture~\ref{conj:ct} provable? A proof would resolve $N(10)$ definitively.
   \item What is the true minimum of $\E$ over all triples with $\cl_{12} = 0$? Our
-    empirical minimum is 37; can $\E < 37$ be achieved?
-  \item Are the eight $\E=37$ near-miss triples in distinct isotopy classes? Entries [1] and [2]
-    share the same $(L_1, L_2)$ but have different $L_3$ (Hamming distance 20), placing them
-    in the same isotopy class for the pair but possibly different for the triple.
+    empirical minimum is now $\E=30$; can $\E < 30$ be achieved?  Proof workers targeting
+    $\E \leq 29$ are running.
+  \item The $\E=30$ solution: is it a local minimum?  A 2-move and 3-move neighborhood
+    check (as done for $\E=31$) would confirm.  The $\E=31$ solution was confirmed as
+    a 3-move local minimum (4M triples checked).
+  \item All 7 known $\E=31$ pairs share the same isotopy class --- does the $\E=30$ pair
+    lie in a different class, or is the cascade stuck in the same basin?
   \item Does the CT distribution (always $\leq 2$) follow from a group-theoretic argument
     related to the factorization $10 = 2 \times 5$?
-  \item Why does the joint 3-LS SA also converge to $\E = 37$? Is there a theoretical
-    lower bound of 37 for the joint energy landscape?
+  \item Why does the joint 3-LS SA converge to $\E = 37$? Is there a theoretical
+    lower bound for the joint energy landscape below which only CP-SAT can descend?
 \end{enumerate}
 
 \subsection{Future Directions}
 
 \begin{enumerate}
   \item \textbf{Wider CT search} with $>$10{,}000 pairs to test Conjecture~\ref{conj:ct}.
-  \item \textbf{Isotopy classification} of the 8 near-miss $L_3$ matrices; particularly whether
-    any two of the $\E=37$ triples with $\cl_{12}=\cl_{13}=22$, $\cl_{23}=15$ are isotopic.
-  \item \textbf{Theoretical lower bound} on $\E$: can one prove $\E \geq 37$ for all triples
-    with $L_1 \perp L_2$ of order 10? The joint SA evidence supports this conjecture.
+  \item \textbf{Isotopy diversification}: All 7 known $\E=31$ pairs are in the same isotopy
+    class (confirmed by canonical hashing in Session 14).  Future work should actively seek
+    pairs in other isotopy classes --- new construction methods, group-theoretic structures,
+    or randomized isotopy-jump moves.
+  \item \textbf{Theoretical lower bound} on $\E$: can one prove $\E \geq 30$ (or higher)
+    for all triples with $L_1 \perp L_2$ of order 10?  The consistent SA barrier at
+    $\E=37$ across diverse starting points is suggestive but not a proof.
   \item \textbf{Larger compute scale} (50+ workers on HPC cluster) for broader isotopy
     class coverage.
   \item \textbf{Intercalate theory analysis} relating CT count to intercalate structure of

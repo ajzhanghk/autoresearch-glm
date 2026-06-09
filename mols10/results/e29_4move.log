@@ -1,0 +1,11 @@
+Base E=29
+4-move check: 28 intercalates, max ~614656 triples...
+(but with early exit on finding improvement)
+  5/28 first moves, 137386 quads, 8.3s, best=29
+  10/28 first moves, 263820 quads, 15.4s, best=29
+  15/28 first moves, 378846 quads, 21.9s, best=29
+  20/28 first moves, 513029 quads, 29.4s, best=29
+  25/28 first moves, 677545 quads, 38.2s, best=29
+
+4-move: 733407 quads in 41.5s, best=29
+E=29 is a 4-move local minimum under intercalates

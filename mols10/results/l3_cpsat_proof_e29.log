@@ -1,0 +1,7 @@
+[00:59:07] ============================================================
+[00:59:07] CP-SAT proof mode — seed=9999  timeout=600.0s  workers=4  target=29
+[00:59:07] Checking: does there exist L3 with cl13+cl23 <= 29?
+[00:59:07] ============================================================
+[00:59:07] trial=   1  pool_E=31  target=29  timeout=600.0s  time=00:59:07
+[01:09:07]   TIMEOUT: inconclusive  elapsed=600.1s
+[01:09:07] trial=   2  pool_E=30  target=29  timeout=600.0s  time=01:09:07

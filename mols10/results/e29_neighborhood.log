@@ -1,0 +1,11 @@
+Base E=29: cl12=0 cl13=15 cl23=14
+Found 28 1-move intercalates
+
+1-move: 28 checked in 0.002s, best=29
+
+Starting 2-move check...
+  2-move progress: 10/28 first moves, 309 pairs, 0.0s, best=29
+  2-move progress: 20/28 first moves, 596 pairs, 0.0s, best=29
+
+2-move: 816 pairs in 0.0s, best=29
+E=29 is a 2-move local minimum under intercalates

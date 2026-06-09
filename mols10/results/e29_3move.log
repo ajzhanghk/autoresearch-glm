@@ -1,0 +1,10 @@
+Base E=29
+Starting 3-move check: 28 intercalates, max 21952 triples...
+  Progress: 5/28 first moves, 4705 triples, 0.3s, best=29
+  Progress: 10/28 first moves, 8946 triples, 0.5s, best=29
+  Progress: 15/28 first moves, 12867 triples, 0.7s, best=29
+  Progress: 20/28 first moves, 17344 triples, 1.0s, best=29
+  Progress: 25/28 first moves, 22468 triples, 1.3s, best=29
+
+3-move: 24314 triples in 1.4s, best=29
+E=29 is a 3-move local minimum under intercalates
