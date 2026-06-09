@@ -18,5 +18,8 @@
 [01:58:57]   [10] ebfeb9f7: E=31→31 cl13=19 cl23=12 FEASIBLE t=240.1s
 [01:58:57]   Saved E=31 to pool!
 [01:58:57] [11] class=2cc8e22f E=32 optimizing...
-  Saved E=31 to pool!
-[01:58:57] [11] class=2cc8e22f E=32 optimizing...
+[02:02:57]   [11] 2cc8e22f: E=32→29 cl13=14 cl23=15 FEASIBLE t=240.0s
+[02:02:57]   Saved E=29 to pool!
+[02:02:57] Multi-class sweep complete.
+[02:02:57]   Saved E=29 to pool!
+[02:02:57] Multi-class sweep complete.

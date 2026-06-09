@@ -471,7 +471,7 @@ Session & Key development & Best $\E$ & Stable since\\
 13 & Second distinct E=31 pair found (joint SA); proof workers probe $\E\leq30$; E=31 holds & \textbf{31} & Session 13\\
 14 & Warm-start bug fixed in proof worker; $\E=\mathbf{30}$ found in 311\,s; isotopy: all 7 E=31 pairs same class & \textbf{30} & Session 14\\
 14b & 2-move intercalate neighborhood search on E=30 finds $\E=\mathbf{29}$ instantly (cl13=15, cl23=14) & \textbf{29} & Session 14\\
-14c & 5-move exhaustive check (22.2M quints): E=29 is 5-move local min; 7 diff-class E=31 pairs all stuck at E=31; proof workers TIMEOUT at E$\leq$28 & \textbf{29} & Session 14\\
+14c & 5-move local min confirmed (22.2M quints); 6 diff-class E=31 pairs stuck at E=31; E=32 entry (class 2cc8e22f) → \textbf{E=29} in 240\,s (new class); proof TIMEOUT & \textbf{29} & Session 14\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -754,24 +754,22 @@ Table~\ref{tab:pool} shows the current near-miss pool (top 8 triples by energy).
 \toprule
 Index & Solver & $\E$ & $\cl_{12}$ & $\cl_{13}$ & $\cl_{23}$\\
 \midrule
-0 & 2-move neighborhood from E=30 & \textbf{29} & 0 & 15 & 14\\
-1 & CP-SAT alt-pair sweep & \textbf{29} & 0 & 15 & 14\\
-2 & CP-SAT perturb sweep & \textbf{29} & 0 & 15 & 14\\
-3 & CP-SAT proof (4w, 311\,s) & 30 & 0 & 17 & 13\\
-4--12 & CP-SAT (various) & 31 & 0 & 19 & 12\\
-13 & CP-SAT & 32 & 0 & 18 & 14\\
+0 & 2-move nbhd from E=30 (class 4f04a773) & \textbf{29} & 0 & 15 & 14\\
+1 & CP-SAT alt-pair sweep (class 4f04a773) & \textbf{29} & 0 & 15 & 14\\
+2 & CP-SAT perturb sweep (class 4f04a773) & \textbf{29} & 0 & 15 & 14\\
+3 & CP-SAT opt. from E=32 (\textbf{class 2cc8e22f}) & \textbf{29} & 0 & 14 & 15\\
+4 & CP-SAT proof (4w, 311\,s, class 4f04a773) & 30 & 0 & 17 & 13\\
+5--15 & CP-SAT (various classes) & 31 & 0 & 19 & 12\\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Entries~[0--2] are the current record: $\E=29$ ($\cl_{12}=0$, $\cl_{13}=15$, $\cl_{23}=14$),
-three independent solutions all sharing the same energy structure.  Entries~[0] and~[1]
-are on the same canonical $(L_1,L_2)$ pair (class~4f04a773) but have different $L_3$ (Hamming
-distance 20).  Entry~[3] is $\E=30$, found in 311\,s by the CP-SAT proof worker (Session 14a).
-Entries~[4--12] are $\E=31$: the 7 same-isotopy-class entries from the main pair plus
-entries from 3 different isotopy classes (all achieving E=31 in 240\,s CP-SAT optimization,
-confirming E=31 is accessible from diverse starting points).
-Entry~[13] is the $\E=32$ record from Session 10.
+Entries~[0--3] are the current record: $\E=29$.  Entries~[0--2] are from the main
+isotopy class (4f04a773, $\cl_{13}=15$, $\cl_{23}=14$, 28 intercalates, min neighbor $\E=30$).
+\textbf{Entry~[3]} is from a \emph{different} isotopy class (2cc8e22f, $\cl_{13}=14$, $\cl_{23}=15$,
+23 intercalates, min neighbor $\E=31$) --- found in 240\,s by CP-SAT from an $\E=32$ hint.
+This is the first evidence that multiple isotopy classes achieve $\E=29$.  Entry~[4] is $\E=30$.
+Entries~[5--15] are $\E=31$ from various isotopy classes.
 The cascade $37 \to 34 \to 33 \to 32 \to 31 \to 30 \to \mathbf{29}$ now spans Sessions 9--14.
 
 \subsection{L3 Diversity}
@@ -883,6 +881,13 @@ $\E(L_1, L_2, L_3) \geq 29$.
   5-tuples of intercalates all give $\E \geq 29$~(best$=29$, checked in 1584\,s).
   This is deeper than the $\E=31$ solution, which was only a 3-move local minimum.
   Proof workers now probe $\E \leq 28$ (6 trials $\times$ 600\,s each, all inconclusive).
+
+  In Session 14c, a \textbf{second isotopy class} (canonical hash 2cc8e22f) also achieves
+  $\E=29$ ($\cl_{13}=14$, $\cl_{23}=15$, $\cl_{12}=0$), found in 240\,s by CP-SAT
+  optimization from an $\E=32$ starting hint.  This new $\E=29$ entry has \emph{23 intercalates}
+  (vs.\ 28 for the main class) and minimum-neighbor $\E=31$ (vs.\ $\E=30$); it is thus an
+  even \emph{deeper} local minimum.  The 2-move neighborhood (563 pairs) gives best$=29$,
+  confirming it is a 2-move local minimum.  Two independent $\E=29$ isotopy classes now exist.
 \end{remark}
 
 % ===========================================================================
@@ -1027,14 +1032,18 @@ Supporting evidence:
 \begin{enumerate}
   \item Is Conjecture~\ref{conj:ct} provable? A proof would resolve $N(10)$ definitively.
   \item What is the true minimum of $\E$ over all triples with $\cl_{12} = 0$? Our
-    empirical minimum is now $\E=29$; can $\E < 29$ be achieved?  CP-SAT proof workers
+    empirical minimum is $\E=29$; can $\E < 29$ be achieved?  CP-SAT proof workers
     have run 6+ trials $\times 600$\,s targeting $\E \leq 28$, all inconclusive.
-  \item What is the intercalate local minimum depth of the $\E=29$ solution? 5-move
-    checks (22.2M 5-tuples) confirm it is at least a 5-move local minimum; whether any
-    6-move sequence can escape to $\E \leq 28$ is open.
-  \item The $\E=29$ solution has cl$_{13}=15$, cl$_{23}=14$, 28 intercalates. Do all
-    $\E=29$ solutions share these structural invariants, or is there isotopy diversity?
-    (Two E=29 solutions found so far have the same structure but different L3.)
+    Targeting $\E \leq 28$ for both the main class (4f04a773) and the new class (2cc8e22f)
+    with 1200\,s trials is ongoing.
+  \item What is the intercalate local minimum depth of the $\E=29$ solutions? 5-move
+    checks (22.2M 5-tuples) confirm the main-class solution is at least a 5-move local
+    minimum. The new-class solution (2cc8e22f) has only 23 intercalates and min neighbor
+    $\E=31$; it may be an even deeper local minimum.
+  \item Two isotopy classes (4f04a773 and 2cc8e22f) both achieve $\E=29$.  The main-class
+    has cl$_{13}=15$, cl$_{23}=14$, 28 intercalates; the new-class has cl$_{13}=14$,
+    cl$_{23}=15$, 23 intercalates.  Is there a structural explanation for this
+    ``mirror-image'' relationship?  Are there other classes achieving $\E=29$?
   \item Does the CT distribution (always $\leq 2$) follow from a group-theoretic argument
     related to the factorization $10 = 2 \times 5$?
   \item Why does the joint 3-LS SA converge to $\E = 37$? Is there a theoretical
