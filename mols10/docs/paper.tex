@@ -926,8 +926,9 @@ $\E(L_1, L_2, L_3) \geq 29$.
   $t=1800$\,s), but feasibility E$\leq$29 (1200\,s) returned TIMEOUT.
   \textbf{Class 74bb7b86 reached E=29} ($\cl_{13}=17$, $\cl_{23}=12$) in 1800\,s
   build-and-solve, confirmed SAT immediately (0.5\,s), making it the \textbf{third} isotopy
-  class to achieve $\E=29$.  Feasibility E$\leq$28 for this class is currently running (1200\,s).
-  Class 0968fc79 is queued as the next target.
+  class to achieve $\E=29$.  Feasibility E$\leq$28 for this class returned TIMEOUT (1200\,s);
+  a dedicated proof worker now targets 74bb7b86 E$\leq$28.
+  Class 0968fc79 is the next build-and-solve target (started 09:01).
   Simultaneously, 2+ additional 1800\,s proof trials for class 2cc8e22f (E$\leq$28)
   returned TIMEOUT; the proof search continues with diverse random seeds.
   Total proof-worker trials across all classes now exceeds 16.
