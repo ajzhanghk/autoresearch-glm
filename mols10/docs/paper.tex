@@ -793,6 +793,33 @@ the \textbf{fourth} isotopy class at $\E=29$.
 Entry~[6] is $\E=30$ (main class).  Entries~[7--10] are $\E=31$/$\E=30$ from other classes.
 The cascade $37 \to 34 \to 33 \to 32 \to 31 \to 30 \to \mathbf{29}$ spans Sessions 9--16.
 
+\paragraph{Shared-$L_1$ structure of classes 74bb7b86 and 0968fc79.}
+A striking structural relationship was found in Session~16: classes 74bb7b86 and 0968fc79
+\emph{share the same $L_1$ matrix} (Hamming distance 0/100), while differing in $L_2$
+(Hamming distance 50/100).  Both pairs $(L_1, L_{2}^{74})$ and $(L_1, L_{2}^{09})$
+are valid MOLS-10 pairs (orthogonal, $\cl_{12}=0$) in different isotopy classes.
+
+Most remarkably, letting $L_3^{74}$ and $L_3^{09}$ denote the respective near-miss thirds,
+the \textbf{full $2\times 2$ cross-clash table} is:
+\[
+\begin{array}{c|cc}
+(L_2, L_3) & L_3^{74} & L_3^{09}\\
+\hline
+L_2^{74} & \E=29\ (\cl_{13}=17,\,\cl_{23}=12) & \E=29\ (\cl_{13}=17,\,\cl_{23}=12)\\
+L_2^{09} & \E=29\ (\cl_{13}=17,\,\cl_{23}=12) & \E=29\ (\cl_{13}=17,\,\cl_{23}=12)
+\end{array}
+\]
+All four cross-combinations achieve exactly $\E=29$ with \emph{identical} clash
+distribution!  This perfect symmetry shows that $L_3^{09}$ is a valid $\E=29$ solution
+for class 74bb7b86 (and vice versa), and that $\cl(L_2^{74}, L_3^{09}) = \cl(L_2^{09}, L_3^{74}) = 12$.
+The two $L_2$ matrices are not orthogonal to each other ($\cl(L_2^{74},L_2^{09})=90$);
+nor are the two $L_3$ matrices ($\cl(L_3^{74},L_3^{09})=63$).
+
+This symmetry suggests a common automorphism of the MOLS-10 structure that swaps
+$L_2^{74} \leftrightarrow L_2^{09}$ while permuting the $L_3$ matrices.
+Understanding this symmetry may illuminate why $\E=29$ is so persistently achieved
+for this particular $L_1$, and why $\E\leq28$ has not been found.
+
 \subsection{L3 Diversity}
 
 The eight $L_3$ matrices in the $\E=37$ pool are all distinct. Pairwise Hamming distances
