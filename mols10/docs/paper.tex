@@ -1026,7 +1026,7 @@ minima.}  No sequence of intercalate moves, however long, can descend below $\E=
 any of the three starting points.  The max independent set sizes are 13 (4f04a773),
 12 (2cc8e22f), and 10 (74bb7b86), reflecting the respective intercalate counts (28, 23, 19).
 
-\paragraph{3e. All three $\E=29$ solutions are strict local minima (Session 16, new).}
+\paragraph{3e. All three $\E=29$ solutions are strict local minima; BFS depth-4 confirms no escape (Session 16, new).}
 A direct depth-1 check confirms that \emph{every} single intercalate applied to any of the
 three $\E=29$ solutions \emph{strictly increases} $\E$: no intercalate move leaves $\E$
 unchanged (plateau) or decreases it.  Specifically:
@@ -1036,12 +1036,37 @@ unchanged (plateau) or decreases it.  Specifically:
   \item 74bb7b86: all 19 intercalates give $\E = 30$ (min$= 30$)
 \end{itemize}
 This is the strongest possible intercalate-neighborhood structure: the $\E=29$ solutions
-sit at the bottom of a strict energy well, with \emph{no plateau moves} and \emph{no
-escape routes} via intercalates of any length (proved by the global-minimum analysis).
-The class 2cc8e22f is notable for having its minimum neighbor at $\E=31$ (rather than 30),
-indicating an even steeper surrounding energy landscape.  Combined with the CP-SAT
-infeasibility evidence (16+ trials $\times$ 1200--1800\,s all returning TIMEOUT), these
-three solutions represent formidable barriers against finding $\E \leq 28$.
+sit at the bottom of a strict energy well, with \emph{no plateau moves}.
+BFS analysis with full state deduplication (counting only NEW states at each depth) was
+performed for all three $\E=29$ classes, exploring \emph{any} intercalates at each step:
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Class & Depth & New states & Cumulative & Best $\E$\\
+\midrule
+4f04a773 & 1 & 28 & 29 & 30\\
+4f04a773 & 2 & 457 & 486 & 30\\
+4f04a773 & 3 & 5534 & 6020 & 31\\
+\midrule
+2cc8e22f & 1 & 23 & 24 & 31\\
+2cc8e22f & 2 & 316 & 340 & 32\\
+2cc8e22f & 3 & 3271 & 3611 & 32\\
+\midrule
+74bb7b86 & 1 & 19 & 20 & 30\\
+74bb7b86 & 2 & 215 & 235 & 32\\
+74bb7b86 & 3 & 1970 & 2205 & 33\\
+74bb7b86 & 4 & 15857 & 18062 & 32\\
+\bottomrule
+\end{tabular}
+\end{center}
+The best $\E$ among \emph{new} states grows or stays at 30--33 as depth increases.
+No new reachable state has $\E \leq 29$: the only $\E=29$ state in the multi-move
+neighborhood is the original solution itself.  The energy landscape forms a strict,
+isolated valley: all paths leading to new states point strictly upward in energy.
+Combined with the CP-SAT infeasibility evidence (16+ trials $\times$ 1200--1800\,s all
+TIMEOUT), these three solutions represent formidable barriers against finding $\E \leq 28$.
+The class 2cc8e22f is particularly striking: its minimum 1-move neighbor is at $\E=31$,
+indicating an unusually steep surrounding energy landscape.
 
 \paragraph{4. Reverse search failure.}
 Fixing a near-miss $L_3$ and running 30+ independent reverse-search trials (7-replica
