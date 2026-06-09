@@ -1201,7 +1201,7 @@ The best $\E$ among \emph{new} states at each depth is 30--34, consistent with
 intercalate moves always increasing energy when leaving the $\E=29$ basin.
 Remarkably, class 0968fc79 has \emph{no} depth-1 neighbor at $\E=30$: every single
 intercalate move raises $\E$ to at least~31.
-Combined with the CP-SAT infeasibility evidence (63+ trials $\times$ 1200--1800\,s all
+Combined with the CP-SAT infeasibility evidence (67+ trials $\times$ 1200--1800\,s all
 TIMEOUT), these four solutions represent formidable barriers against finding $\E \leq 28$.
 Classes 2cc8e22f and 0968fc79 are particularly striking: their minimum 1-move neighbors
 are at $\E=31$, indicating an unusually steep surrounding energy landscape.
@@ -1239,7 +1239,7 @@ No positive evidence for $N(10) \geq 3$ has been found:
     All 7 prior $\E=31$ pairs same isotopy class.
     Session~16 upgrades: all four $\E=29$ classes (4f04a773, 2cc8e22f, 74bb7b86, 0968fc79) are
     \textbf{global intercalate-neighborhood minima} (max-IS 10--13, BFS depth-5 with
-    1.1M+ states all $\geq 30$). Proof workers: 63+ trials targeting $\E \leq 28$, all inconclusive.
+    1.1M+ states all $\geq 30$). Proof workers: 67+ trials targeting $\E \leq 28$, all inconclusive.
   \item Reverse search has never found a triple with $\E_\text{rev} < 60$.
 \end{itemize}
 
@@ -1303,7 +1303,7 @@ Supporting evidence:
   \item Is Conjecture~\ref{conj:ct} provable? A proof would resolve $N(10)$ definitively.
   \item What is the true minimum of $\E$ over all triples with $\cl_{12} = 0$? Our
     empirical minimum is $\E=29$; can $\E < 29$ be achieved?  CP-SAT proof workers
-    have run 63+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$, all inconclusive
+    have run 67+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$, all inconclusive
     (for classes 4f04a773, 2cc8e22f, 74bb7b86, and 0968fc79 combined; Sessions~17--21 ongoing).
     Whether $\E = 29$ is the global minimum or merely a local floor is the central open question.
     Note: intercalate moves alone cannot achieve $\E\leq28$ from any known $\E=29$ class
@@ -1322,7 +1322,7 @@ Supporting evidence:
     Can any class reach $\E \leq 28$?  Class 3a33165a best effort: E=31
     (push workers ran 2 trials, both E=31$\to$31 inconclusive; discontinued in Session~17).
     A broader pair scan (311 MOLS-10 pairs, 180\,s each) is running (Sessions~17--21).
-    Results from 101+ scanned pairs: sa\_ct pairs give $\E=38$--45; mdecomp pairs give
+    Results from 112+ scanned pairs: sa\_ct pairs give $\E=38$--45; mdecomp pairs give
     $\E=35$--45.  Five stand-out new classes have emerged from the scan:
     \textbf{mdecomp\_48} (\texttt{8d481a18}, scan $\E=35$,
     \textbf{push best $\E=30$} ($\cl_{13}=14$, $\cl_{23}=16$, Session~21 trial~5!)
@@ -1335,7 +1335,7 @@ Supporting evidence:
     \textbf{mdecomp\_121} (\texttt{6d7cf34c} L1, scan $\E=35$, push trials 1--2
     both $\E=35$, running), and
     \textbf{mdecomp\_142} (\texttt{44aa4786} L1 --- 4th new family, scan $\E=37$
-    ($\cl_{13}=19$, $\cl_{23}=18$), push worker just launched).
+    ($\cl_{13}=19$, $\cl_{23}=18$), push 3 trials all $\E=41$, discontinued).
     Session~21 note: container restart; all workers restarted from scratch.
     \textbf{mdecomp\_48 is now the record holder at $\E=30$} --- one step from $\E=29$.
     mdecomp\_48 shows a clear improvement trajectory across push trials: $\E=37$ (warmup)
