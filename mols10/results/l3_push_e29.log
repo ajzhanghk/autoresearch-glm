@@ -8,3 +8,8 @@
 [07:51:15] [Round 1] class=3a33165a E=30 | Step 2: feasibility E<=29 (1200s, 2w)
 [08:11:15]   TIMEOUT: inconclusive t=1200.1s
 [08:11:15] [Round 1] class=74bb7b86 E=31 | Step 1: build_and_solve (1800s, 2w)
+[08:41:15]   Optimize: E=31→29 cl13=17 cl23=12 t=1800.1s
+[08:41:15]   Saved E=29 to pool
+[08:41:15] [Round 1] class=74bb7b86 E=29 | Step 2: feasibility E<=29 (1200s, 2w)
+[08:41:16]   !!! SAT E=29 found: cl13=17 cl23=12 t=0.5s !!!
+[08:41:16]   Now targeting E<=28 for 74bb7b86 (1200s)
