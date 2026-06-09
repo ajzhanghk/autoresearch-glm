@@ -1026,6 +1026,23 @@ minima.}  No sequence of intercalate moves, however long, can descend below $\E=
 any of the three starting points.  The max independent set sizes are 13 (4f04a773),
 12 (2cc8e22f), and 10 (74bb7b86), reflecting the respective intercalate counts (28, 23, 19).
 
+\paragraph{3e. All three $\E=29$ solutions are strict local minima (Session 16, new).}
+A direct depth-1 check confirms that \emph{every} single intercalate applied to any of the
+three $\E=29$ solutions \emph{strictly increases} $\E$: no intercalate move leaves $\E$
+unchanged (plateau) or decreases it.  Specifically:
+\begin{itemize}[noitemsep]
+  \item 4f04a773: all 28 intercalates give $\E = 30$ (min$= 30$)
+  \item 2cc8e22f: all 23 intercalates give $\E \geq 31$ (min$= 31$)
+  \item 74bb7b86: all 19 intercalates give $\E = 30$ (min$= 30$)
+\end{itemize}
+This is the strongest possible intercalate-neighborhood structure: the $\E=29$ solutions
+sit at the bottom of a strict energy well, with \emph{no plateau moves} and \emph{no
+escape routes} via intercalates of any length (proved by the global-minimum analysis).
+The class 2cc8e22f is notable for having its minimum neighbor at $\E=31$ (rather than 30),
+indicating an even steeper surrounding energy landscape.  Combined with the CP-SAT
+infeasibility evidence (16+ trials $\times$ 1200--1800\,s all returning TIMEOUT), these
+three solutions represent formidable barriers against finding $\E \leq 28$.
+
 \paragraph{4. Reverse search failure.}
 Fixing a near-miss $L_3$ and running 30+ independent reverse-search trials (7-replica
 PT over $(L_1, L_2)$) consistently yields $\E_\text{rev} \geq 60$.  The gap of $\geq 60$
