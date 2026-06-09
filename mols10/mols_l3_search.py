@@ -1589,6 +1589,11 @@ def _save_triple_miss(L1: np.ndarray, L2: np.ndarray, L3: np.ndarray,
             data = json.loads(TRIPLE_MISS_FILE.read_text()) if TRIPLE_MISS_FILE.exists() else []
         except (json.JSONDecodeError, OSError):
             data = []
+        best_in_pool = min((e["clashes"] for e in data), default=999)
+        if clashes > best_in_pool + 3:
+            return  # skip entries much worse than pool best
+        if cl12 > 0:
+            return  # only save cl12=0 pairs (true near-miss triples)
         data.append(entry)
         data.sort(key=lambda e: e["clashes"])
         # Pair-diversity + L3-diversity cap enforced post-sort:

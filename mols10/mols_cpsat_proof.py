@@ -128,6 +128,8 @@ def feasibility_check(L1: np.ndarray, L2: np.ndarray, target: int,
         for j in range(n):
             model.add(L3v[0][j] == j)
 
+    # Precompute hint canonical form before building coverage vars
+    hint_canon = None
     if hint_L3 is not None:
         hint_canon = relabel_L3_canonical(hint_L3, n)
         for i in range(n):
@@ -139,36 +141,62 @@ def feasibility_check(L1: np.ndarray, L2: np.ndarray, target: int,
 
     covered13 = []
     covered23 = []
+    # Collect derived variable hints for setting after coverage var creation
+    all_ind_hints: list = []   # (var, hint_val)
+    all_cov_hints: list = []   # (var, hint_val)
 
     for a in range(n):
         for b in range(n):
             cov = model.new_bool_var(f"c13_{a}_{b}")
             indicators = []
+            any_covered = False
             for i in range(n):
                 j = int(col_of_1[a, i])
                 ind = model.new_bool_var(f"i13_{a}_{b}_{i}")
                 model.add(L3v[i][j] == b).only_enforce_if(ind)
                 model.add(L3v[i][j] != b).only_enforce_if(ind.negated())
                 indicators.append(ind)
+                if hint_canon is not None:
+                    ind_val = 1 if int(hint_canon[i, j]) == b else 0
+                    all_ind_hints.append((ind, ind_val))
+                    if ind_val:
+                        any_covered = True
             model.add_bool_or(indicators).only_enforce_if(cov)
             model.add_bool_and([x.negated() for x in indicators]).only_enforce_if(
                 cov.negated())
             covered13.append(cov)
+            if hint_canon is not None:
+                all_cov_hints.append((cov, 1 if any_covered else 0))
 
     for a in range(n):
         for b in range(n):
             cov = model.new_bool_var(f"c23_{a}_{b}")
             indicators = []
+            any_covered = False
             for i in range(n):
                 j = int(col_of_2[a, i])
                 ind = model.new_bool_var(f"i23_{a}_{b}_{i}")
                 model.add(L3v[i][j] == b).only_enforce_if(ind)
                 model.add(L3v[i][j] != b).only_enforce_if(ind.negated())
                 indicators.append(ind)
+                if hint_canon is not None:
+                    ind_val = 1 if int(hint_canon[i, j]) == b else 0
+                    all_ind_hints.append((ind, ind_val))
+                    if ind_val:
+                        any_covered = True
             model.add_bool_or(indicators).only_enforce_if(cov)
             model.add_bool_and([x.negated() for x in indicators]).only_enforce_if(
                 cov.negated())
             covered23.append(cov)
+            if hint_canon is not None:
+                all_cov_hints.append((cov, 1 if any_covered else 0))
+
+    # Set hints for all derived boolean variables (critical for warm-start to work)
+    if hint_canon is not None:
+        for var, val in all_ind_hints:
+            model.add_hint(var, val)
+        for var, val in all_cov_hints:
+            model.add_hint(var, val)
 
     # Hard feasibility constraint: must cover at least 2*n^2 - target pairs
     min_covered = 2 * n * n - target
