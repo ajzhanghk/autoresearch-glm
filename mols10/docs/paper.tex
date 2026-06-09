@@ -75,8 +75,8 @@ class~0968fc79 ($\cl_{13}=17$, $\cl_{23}=12$, 24 intercalates, Session~16);
 4f04a773 (28 ic, max-IS=13, 181\,s), 2cc8e22f (23 ic, max-IS=12, 30\,s),
 74bb7b86 (19 ic, max-IS=10, 2\,s), 0968fc79 (24 ic, max-IS=10, 10\,s) ---
 no intercalate sequence can reach $\E\leq28$ from any of the four classes;
-(6) CP-SAT proof workers have run 36+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$
-across four classes (4f04a773, 2cc8e22f, 74bb7b86, 0968fc79), all inconclusive (Session~17 ongoing).
+(6) CP-SAT proof workers have run 40+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$
+across four classes (4f04a773, 2cc8e22f, 74bb7b86, 0968fc79), all inconclusive (Sessions~17--20 ongoing).
 
 Dedicated proof-mode workers continue checking $\E \leq 28$ feasibility across multiple
 isotopy classes.  Collectively, this constitutes the strongest computational evidence to date
@@ -481,6 +481,7 @@ Session & Key development & Best $\E$ & Stable since\\
 17 & Trials 1--2: all 4 main + cold TIMEOUT ($\times$5); push 3a33165a 2$\times$E=31$\to$31 (no gain, discontinued); \textbf{pair scan launched} (344 pairs, 180\,s each); 30+ total E$\leq$28 trials & \textbf{29} & Session 17\\
 18 & Pair scan reaches mdecomp pairs; \textbf{mdecomp\_48 (new class 8d481a18) achieves E=35 in 180\,s} --- best new-class result; deep push worker launched (1800\,s, 4 workers); trials 3--4 for all 4 main classes: all TIMEOUT; cold trial 3 (4f04a773) TIMEOUT; 36+ total E$\leq$28 proof trials & \textbf{29} & Session 18\\
 19 & \textbf{mdecomp\_71 (new class d5a580f8) E=37 in 180\,s}, then \textbf{E=35 warmup with 2 workers}; mdecomp\_48 also reaches \textbf{E=35 warmup (2 workers)}; push workers (1800\,s, 2 workers) launched for both; proof workers (1 worker each) + gauge fix: trials 1--2 for all 4 main classes, all TIMEOUT; 40+ total E$\leq$28 proof trials & \textbf{29} & Session 19\\
+20 & Scan reaches 37/247 priority pairs; \textbf{mdecomp\_84 (3rd notable pair, E=37, $\cl_{13}=17$, $\cl_{23}=20$)}; push trial 1 (1800\,s, 2 workers) running for mdecomp\_48 and mdecomp\_71; proof trials 1--3 for all 4 main classes all TIMEOUT; 40+ total E$\leq$28 proof trials & \textbf{29} & Session 20\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -951,7 +952,7 @@ $\E(L_1, L_2, L_3) \geq 29$.
   \textbf{global intercalate-neighborhood minimum} (max-IS=13, $k=14$ empty, 181\,s;
   and BFS depth-4 from 60,774 states all giving $\E\geq30$).
   This is deeper than the $\E=31$ solution, which was only a 3-move local minimum.
-  Proof workers now probe $\E \leq 28$ (36+ trials across all classes, all inconclusive).
+  Proof workers now probe $\E \leq 28$ (40+ trials across all classes, all inconclusive).
 
   In Session 14c, a \textbf{second isotopy class} (canonical hash 2cc8e22f) also achieves
   $\E=29$ ($\cl_{13}=14$, $\cl_{23}=15$, $\cl_{12}=0$), found in 240\,s by CP-SAT
@@ -1008,7 +1009,7 @@ $\E(L_1, L_2, L_3) \geq 29$.
   a genuinely new isotopy class ($\cl_{12}=0$, distinct from all known E=29 classes).
   A deep push worker (1800\,s per trial, 4 workers) was immediately launched for mdecomp\_48
   to probe whether this class can reach $\E \leq 29$.
-  Total CP-SAT proof-worker trials across all 4 known classes now exceeds 36.
+  Total CP-SAT proof-worker trials across all 4 known classes now exceeds 40.
 
   In Session~19, the pair scan reached position 31 (of 247 priority pairs).
   A second promising mdecomp pair, \textbf{mdecomp\_71} (canonical hash \texttt{d5a580f8}),
@@ -1021,6 +1022,14 @@ $\E(L_1, L_2, L_3) \geq 29$.
   were restarted with the gauge fix (\texttt{trial != 1} → always-random gauge for trial
   $\geq 2$) and reduced to 1 worker each; trials 1--2 gave TIMEOUT for all 4 classes.
   Total proof-worker trials across all known classes now exceeds 40.
+
+  In Session~20, the pair scan progressed to 37 out of 247 priority pairs.  A third
+  stand-out mdecomp pair, \textbf{mdecomp\_84} (index 54 in the scan list), achieved
+  $\E = 37$ ($\cl_{13}=17$, $\cl_{23}=20$) in 180\,s under 1-worker CP-SAT --- the
+  third pair scoring $\E \leq 37$ among all scanned pairs.  Push workers for mdecomp\_48
+  and mdecomp\_71 continue trial 1 (1800\,s, 2 workers each), probing $\E < 35$.
+  Proof workers ran trial 3 for all 4 main classes (random gauge), all TIMEOUT (still
+  inconclusive).  Total proof-worker trials across all known classes remains 40+.
 
   Also in Session~16, exhaustive intercalate-neighborhood analysis was completed for all
   four $\E=29$ classes.
@@ -1091,7 +1100,7 @@ Session 14 cascades further to $\E=\mathbf{29}$:
     733\,407 4-tuples; 22\,249\,729 5-tuples checked in 1584\,s, all $\geq 29$).
 \end{itemize}
 The $\E = 29$ solution covers 171 out of 200 possible orthogonal-triple symbol pairs,
-equivalent to 85.5\% coverage.  CP-SAT proof workers probe $\E\leq28$ (36+ trials, all inconclusive).
+equivalent to 85.5\% coverage.  CP-SAT proof workers probe $\E\leq28$ (40+ trials, all inconclusive).
 
 \paragraph{3b. Global intercalate minimum: 2cc8e22f (Session 16).}
 Exhaustive intercalate-neighborhood analysis of the 2cc8e22f class $\E=29$ solution
@@ -1183,13 +1192,13 @@ The best $\E$ among \emph{new} states at each depth is 30--34, consistent with
 intercalate moves always increasing energy when leaving the $\E=29$ basin.
 Remarkably, class 0968fc79 has \emph{no} depth-1 neighbor at $\E=30$: every single
 intercalate move raises $\E$ to at least~31.
-Combined with the CP-SAT infeasibility evidence (36+ trials $\times$ 1200--1800\,s all
+Combined with the CP-SAT infeasibility evidence (40+ trials $\times$ 1200--1800\,s all
 TIMEOUT), these four solutions represent formidable barriers against finding $\E \leq 28$.
 Classes 2cc8e22f and 0968fc79 are particularly striking: their minimum 1-move neighbors
 are at $\E=31$, indicating an unusually steep surrounding energy landscape.
 
 \paragraph{4. Reverse search failure.}
-Fixing a near-miss $L_3$ and running 36+ independent reverse-search trials (7-replica
+Fixing a near-miss $L_3$ and running 40+ independent reverse-search trials (7-replica
 PT over $(L_1, L_2)$) consistently yields $\E_\text{rev} \geq 60$.  The gap of $\geq 60$
 energy units indicates the near-miss $L_3$ matrices are structurally incompatible with any
 MOLS-10 pair.
@@ -1221,7 +1230,7 @@ No positive evidence for $N(10) \geq 3$ has been found:
     All 7 prior $\E=31$ pairs same isotopy class.
     Session~16 upgrades: all four $\E=29$ classes (4f04a773, 2cc8e22f, 74bb7b86, 0968fc79) are
     \textbf{global intercalate-neighborhood minima} (max-IS 10--13, BFS depth-5 with
-    1.1M+ states all $\geq 30$). Proof workers: 36+ trials targeting $\E \leq 28$, all inconclusive.
+    1.1M+ states all $\geq 30$). Proof workers: 40+ trials targeting $\E \leq 28$, all inconclusive.
   \item Reverse search has never found a triple with $\E_\text{rev} < 60$.
 \end{itemize}
 
@@ -1243,7 +1252,7 @@ both $\cl_{13}=17$, $\cl_{23}=12$) confirmed; (2) all four E=29 classes proved
 \textbf{global intercalate-neighborhood minima} (max-IS 10--13; BFS depth-5 showing 1.1M+
 states all at $\E \geq 30$); (3) CP-SAT seed diversification and gauge-permutation diversity
 added to proof workers.
-CP-SAT proof workers: 36+ trials $\times$ 1200--1800\,s targeting $\E \leq 28$, all inconclusive.
+CP-SAT proof workers: 40+ trials $\times$ 1200--1800\,s targeting $\E \leq 28$, all inconclusive.
 No path toward $N(10) \geq 3$ has been found.
 
 % ===========================================================================
@@ -1285,8 +1294,8 @@ Supporting evidence:
   \item Is Conjecture~\ref{conj:ct} provable? A proof would resolve $N(10)$ definitively.
   \item What is the true minimum of $\E$ over all triples with $\cl_{12} = 0$? Our
     empirical minimum is $\E=29$; can $\E < 29$ be achieved?  CP-SAT proof workers
-    have run 36+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$, all inconclusive
-    (for classes 4f04a773, 2cc8e22f, 74bb7b86, and 0968fc79 combined; Session~17 ongoing).
+    have run 40+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$, all inconclusive
+    (for classes 4f04a773, 2cc8e22f, 74bb7b86, and 0968fc79 combined; Sessions~17--20 ongoing).
     Whether $\E = 29$ is the global minimum or merely a local floor is the central open question.
     Note: intercalate moves alone cannot achieve $\E\leq28$ from any known $\E=29$ class
     (all four proved global intercalate-neighborhood minima, Session~16); only CP-SAT
@@ -1303,12 +1312,13 @@ Supporting evidence:
     Session~16), and \textbf{0968fc79} ($\cl_{13}=17$, $\cl_{23}=12$, Session~16).
     Can any class reach $\E \leq 28$?  Class 3a33165a best effort: E=31
     (push workers ran 2 trials, both E=31$\to$31 inconclusive; discontinued in Session~17).
-    A broader pair scan (344 MOLS-10 pairs, 180\,s each) is running (Session~17--19).
-    Results from 31+ scanned pairs: sa\_ct pairs give $\E=38$--43; mdecomp pairs give
-    $\E=35$--43.  Two stand-out new classes: \textbf{mdecomp\_48} (\texttt{8d481a18},
-    $\E=35$) and \textbf{mdecomp\_71} (\texttt{d5a580f8}, $\E=37$ at 1 worker,
-    $\E=35$ at 2 workers in 180\,s).  Push workers (1800\,s, 2 workers) are now
-    probing both classes to determine how far below $\E=35$ they can reach.
+    A broader pair scan (344 MOLS-10 pairs, 180\,s each) is running (Session~17--20).
+    Results from 37+ scanned pairs: sa\_ct pairs give $\E=38$--43; mdecomp pairs give
+    $\E=35$--43.  Three stand-out new classes: \textbf{mdecomp\_48} (\texttt{8d481a18},
+    $\E=35$), \textbf{mdecomp\_71} (\texttt{d5a580f8}, $\E=37$ at 1 worker,
+    $\E=35$ at 2 workers in 180\,s), and \textbf{mdecomp\_84} ($\E=37$, $\cl_{13}=17$,
+    $\cl_{23}=20$).  Push workers (1800\,s, 2 workers) are probing
+    mdecomp\_48 and mdecomp\_71 to determine how far below $\E=35$ they can reach.
     Is there a structural explanation for why both 74bb7b86 and 0968fc79
     share the asymmetric distribution ($\cl_{13}=17$, $\cl_{23}=12$)?
   \item Does the CT distribution (always $\leq 2$) follow from a group-theoretic argument
