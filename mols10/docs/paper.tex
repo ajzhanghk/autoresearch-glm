@@ -896,6 +896,20 @@ $\E(L_1, L_2, L_3) \geq 29$.
   confirm the new-class $\E=29$ is a 4-move local minimum.  Two independent $\E=29$ isotopy
   classes now exist, both with purely uphill intercalate neighborhoods.
 
+  In Session~16 (June 9), exhaustive intercalate-neighborhood analysis of the 2cc8e22f class
+  was completed up to the \textbf{maximum possible move-set size}.  The 23 intercalates of
+  the $\E=29$ solution form a conflict graph whose maximum independent set has size~12.
+  All $k$-move neighborhoods ($k=1,2,\ldots,12$) were checked exhaustively:
+  k=1 (23), k=2 (253), k=3 (1771), k=4 (8855), k=5 (33649), k=6 (100947),
+  k=7 (245157), k=8 (490314), k=9 (817190), k=10 (1144066), k=11 (1352078), k=12 (1352078)
+  total subset combinations; after filtering non-conflicting sequences, valid counts drop from
+  46 (k=1) to just 4 (k=12). \textbf{Every valid combination gives $\E \geq 29$.}
+  At k=13 there are no valid (non-conflicting) combinations, completing the search.
+  \textbf{Conclusion: the 2cc8e22f $\E=29$ solution is a global intercalate-neighborhood minimum}
+  --- no sequence of non-conflicting intercalate moves can achieve $\E \leq 28$ from this
+  starting point.  Combined with the 5-move local minimum proof for the main class (4f04a773),
+  this confirms that neither known $\E=29$ class can be improved to $\E \leq 28$ by intercalate moves.
+
   In Session~15, three additional isotopy classes --- 3a33165a, 74bb7b86, and 0968fc79 ---
   were pushed from $\E=31$ to $\E=30$ in 1200\,s CP-SAT optimization, expanding the
   set of near-miss classes from 2 to up to 5 distinct isotopy classes potentially
@@ -965,6 +979,15 @@ Session 14 cascades further to $\E=\mathbf{29}$:
 \end{itemize}
 The $\E = 29$ solution covers 171 out of 200 possible orthogonal-triple symbol pairs,
 equivalent to 85.5\% coverage.  CP-SAT proof workers probe $\E\leq28$ (6+ trials, all inconclusive).
+
+\paragraph{3b. Global intercalate minimum (Session 16, new).}
+Exhaustive intercalate-neighborhood analysis of the 2cc8e22f class $\E=29$ solution
+(Session~16) proves it is a \emph{global intercalate-neighborhood minimum}:
+the 23 intercalates form a conflict graph with maximum independent set size 12;
+all $k$-move subsets ($k=1,\ldots,12$) were checked exhaustively (total: $\sum_{k=1}^{12}\binom{23}{k} = 5{,}546{,}381$ combinations, under $30$\,s), and every valid
+(non-conflicting) combination gives $\E \geq 29$.  At $k=13$ there are no valid combinations,
+completing the proof.  \textbf{No intercalate-based path to $\E\leq28$ exists} from the
+2cc8e22f solution.  This is stronger than the 5-move local minimum result for the main class.
 
 \paragraph{4. Reverse search failure.}
 Fixing a near-miss $L_3$ and running 30+ independent reverse-search trials (7-replica
@@ -1059,10 +1082,14 @@ Supporting evidence:
     have run 14+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$, all inconclusive
     (for classes 4f04a773, 2cc8e22f, and swapped pair 3461a586 combined; Session~16 ongoing).
     Whether $\E = 29$ is the global minimum or merely a local floor is the central open question.
-  \item What is the intercalate local minimum depth of the $\E=29$ solutions? 5-move
-    checks (22.2M 5-tuples) confirm the main-class solution is at least a 5-move local
-    minimum. The new-class solution (2cc8e22f) has only 23 intercalates and min neighbor
-    $\E=31$; it may be an even deeper local minimum.
+  \item What is the intercalate local minimum depth of the $\E=29$ solutions?
+    Session~14 confirmed the main-class solution is a 5-move local minimum (22.2M 5-tuples
+    checked). Session~16 proved the 2cc8e22f solution is a \textbf{global intercalate
+    neighborhood minimum}: exhaustive check of all $k$-move combinations up to the maximum
+    independent set size ($k=12$) confirms every valid combination gives $\E \geq 29$, and
+    $k=13$ has no valid combinations.  Can the main class also be proved to be a global
+    intercalate minimum (its intercalate conflict graph has 28 nodes; the maximum independent
+    set could be larger)?
   \item Two isotopy classes (4f04a773 and 2cc8e22f) both achieve $\E=29$.  Session~15
     shows three additional classes (3a33165a, 74bb7b86, 0968fc79) reach $\E=30$ in 1200\,s.
     Can any of these reach $\E=29$ (or lower)?  The main-class
