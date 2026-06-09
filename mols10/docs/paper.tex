@@ -481,7 +481,7 @@ Session & Key development & Best $\E$ & Stable since\\
 17 & Trials 1--2: all 4 main + cold TIMEOUT ($\times$5); push 3a33165a 2$\times$E=31$\to$31 (no gain, discontinued); \textbf{pair scan launched} (344 pairs, 180\,s each); 30+ total E$\leq$28 trials & \textbf{29} & Session 17\\
 18 & Pair scan reaches mdecomp pairs; \textbf{mdecomp\_48 (new class 8d481a18) achieves E=35 in 180\,s} --- best new-class result; deep push worker launched (1800\,s, 4 workers); trials 3--4 for all 4 main classes: all TIMEOUT; cold trial 3 (4f04a773) TIMEOUT; 36+ total E$\leq$28 proof trials & \textbf{29} & Session 18\\
 19 & \textbf{mdecomp\_71 (new class d5a580f8) E=37 in 180\,s}, then \textbf{E=35 warmup with 2 workers}; mdecomp\_48 also reaches \textbf{E=35 warmup (2 workers)}; push workers (1800\,s, 2 workers) launched for both; proof workers (1 worker each) + gauge fix: trials 1--2 for all 4 main classes, all TIMEOUT; 40+ total E$\leq$28 proof trials & \textbf{29} & Session 19\\
-20 & Scan reaches 37/247 priority pairs; \textbf{mdecomp\_84 (3rd notable pair, E=37, $\cl_{13}=17$, $\cl_{23}=20$)}; push trial 1 (1800\,s, 2 workers) running for mdecomp\_48 and mdecomp\_71; proof trials 1--3 for all 4 main classes all TIMEOUT; 40+ total E$\leq$28 proof trials & \textbf{29} & Session 20\\
+20 & Scan reaches 37/247 priority pairs; \textbf{mdecomp\_84 (3rd notable pair, E=37)}; push trial 1 (1800\,s, 2 workers): \textbf{mdecomp\_71 reaches E=31} ($\cl_{13}=17$, $\cl_{23}=14$)! and \textbf{mdecomp\_48 reaches E=34} ($\cl_{13}=17$, $\cl_{23}=17$) --- both new records; push workers continue trial 2; mdecomp\_84 push launched (2 workers); proof trials 1--3 for all 4 main classes all TIMEOUT; 40+ total E$\leq$28 proof trials & \textbf{29} & Session 20\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1026,8 +1026,17 @@ $\E(L_1, L_2, L_3) \geq 29$.
   In Session~20, the pair scan progressed to 37 out of 247 priority pairs.  A third
   stand-out mdecomp pair, \textbf{mdecomp\_84} (index 54 in the scan list), achieved
   $\E = 37$ ($\cl_{13}=17$, $\cl_{23}=20$) in 180\,s under 1-worker CP-SAT --- the
-  third pair scoring $\E \leq 37$ among all scanned pairs.  Push workers for mdecomp\_48
-  and mdecomp\_71 continue trial 1 (1800\,s, 2 workers each), probing $\E < 35$.
+  third pair scoring $\E \leq 37$ among all scanned pairs.
+
+  The most significant results this session came from the push workers' first 1800\,s
+  trial.  \textbf{mdecomp\_71} improved from $\E=35$ (warmup) to $\E = 31$
+  ($\cl_{13}=17$, $\cl_{23}=14$) --- a new record for any new-class pair, just two
+  energy units above the known $\E=29$ floor!  \textbf{mdecomp\_48} improved from
+  $\E=35$ (warmup) to $\E = 34$ ($\cl_{13}=17$, $\cl_{23}=17$) --- also a new record
+  for this class.  Both push workers continue trial 2 (1800\,s, 2 workers, starting
+  from the best $\E=31$ and $\E=34$ hints respectively).  A push worker was also
+  launched for mdecomp\_84 (2 workers, 1800\,s per trial).
+
   Proof workers ran trial 3 for all 4 main classes (random gauge), all TIMEOUT (still
   inconclusive).  Total proof-worker trials across all known classes remains 40+.
 
@@ -1315,10 +1324,13 @@ Supporting evidence:
     A broader pair scan (344 MOLS-10 pairs, 180\,s each) is running (Session~17--20).
     Results from 37+ scanned pairs: sa\_ct pairs give $\E=38$--43; mdecomp pairs give
     $\E=35$--43.  Three stand-out new classes: \textbf{mdecomp\_48} (\texttt{8d481a18},
-    $\E=35$), \textbf{mdecomp\_71} (\texttt{d5a580f8}, $\E=37$ at 1 worker,
-    $\E=35$ at 2 workers in 180\,s), and \textbf{mdecomp\_84} ($\E=37$, $\cl_{13}=17$,
-    $\cl_{23}=20$).  Push workers (1800\,s, 2 workers) are probing
-    mdecomp\_48 and mdecomp\_71 to determine how far below $\E=35$ they can reach.
+    scan $\E=35$, push trial 1 $\E=34$, $\cl_{13}=17$, $\cl_{23}=17$),
+    \textbf{mdecomp\_71} (\texttt{d5a580f8}, scan $\E=37$ at 1 worker,
+    warmup $\E=35$ at 2 workers, \textbf{push trial 1 $\E=31$}, $\cl_{13}=17$,
+    $\cl_{23}=14$ --- within 2 of $\E=29$!), and \textbf{mdecomp\_84}
+    ($\E=37$ in scan, push worker running).  mdecomp\_71 at $\E=31$ is the most
+    promising new class; push workers (1800\,s, 2 workers) are probing all three
+    to determine whether any can reach $\E=29$.
     Is there a structural explanation for why both 74bb7b86 and 0968fc79
     share the asymmetric distribution ($\cl_{13}=17$, $\cl_{23}=12$)?
   \item Does the CT distribution (always $\leq 2$) follow from a group-theoretic argument
