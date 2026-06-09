@@ -1,0 +1,31 @@
+[18:28:40] ============================================================
+[18:28:40] Pair scan v3: seed=54321, timeout=180.0s, start=41
+[18:28:40] Scanning: mdecomp + sa_ct first, then tv/ic/iso variants
+[18:28:40] ============================================================
+[18:28:40] Total pairs: 311, known L1 keys: 3
+[18:28:40] Priority pairs (non-TV21): 227
+[18:28:40] Secondary pairs (TV21 variants): 84
+[18:28:40] Skipping to scan position 41
+[18:28:40] [ 59/ 41] src=mdecomp pair_id=mdecomp_92 seed=831554498
+[18:31:40]   -> E=43 cl13=23 cl23=20 t=180.1s
+[18:31:40] [ 60/ 42] src=sa_ct pair_id=sa_ct_93 seed=728908206
+[18:34:40]   -> E=40 cl13=19 cl23=21 t=180.1s
+[18:34:40] [ 62/ 43] src=sa_ct pair_id=sa_ct_95 seed=1428978533
+[18:37:40]   -> E=38 cl13=15 cl23=23 t=180.1s
+[18:37:40] [ 63/ 44] src=mdecomp pair_id=mdecomp_98 seed=253825327
+[18:40:40]   -> E=39 cl13=25 cl23=14 t=180.1s
+[18:40:40] [ 64/ 45] src=mdecomp pair_id=mdecomp_99 seed=401583659
+[18:43:40]   -> E=39 cl13=19 cl23=20 t=180.1s
+[18:43:40] [ 65/ 46] src=mdecomp pair_id=mdecomp_94 seed=187026503
+[18:46:40]   -> E=44 cl13=21 cl23=23 t=180.1s
+[18:46:40] [ 66/ 47] src=mdecomp pair_id=mdecomp_95 seed=301599067
+[18:49:40]   -> E=40 cl13=22 cl23=18 t=180.1s
+[18:49:40] [ 67/ 48] src=mdecomp pair_id=mdecomp_97 seed=1108565821
+[18:52:41]   -> E=42 cl13=23 cl23=19 t=180.4s
+[18:52:41] [ 68/ 49] src=mdecomp pair_id=mdecomp_100 seed=833796429
+[18:55:41]   -> E=39 cl13=19 cl23=20 t=180.1s
+[18:55:41] [ 69/ 50] src=sa_ct pair_id=sa_ct_101 seed=1132161364
+[18:58:41]   -> E=40 cl13=19 cl23=21 t=180.1s
+[18:58:41] [ 70/ 51] src=sa_ct pair_id=sa_ct_102 seed=2049020883
+[19:01:41]   -> E=42 cl13=20 cl23=22 t=180.1s
+[19:01:41] [ 71/ 52] src=mdecomp pair_id=mdecomp_105 seed=1822182405

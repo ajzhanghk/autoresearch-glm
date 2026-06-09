@@ -24,3 +24,10 @@
 [13:44:25]   TIMEOUT: inconclusive t=1800.1s
 [13:44:25] trial=  2 target=28 timeout=1800.0s random_seed=809023692 gauge=[np.int32(9), np.int32(6), np.int32(7), np.int32(0), np.int32(1), np.int32(4), np.int32(2), np.int32(5), np.int32(3), np.int32(8)]
 [13:44:25] trial=  2 target=28 timeout=1800.0s random_seed=809023692 gauge=[np.int32(9), np.int32(6), np.int32(7), np.int32(0), np.int32(1), np.int32(4), np.int32(2), np.int32(5), np.int32(3), np.int32(8)]
+[18:28:40] ============================================================
+[18:28:40] Proof search: class=74bb7b86 E=29 cl12=0 cl13=17 cl23=12
+[18:28:40] Target: E <= 28, timeout=1800.0s, workers=1, seed=99999
+[18:28:40] ============================================================
+[18:28:40] trial=  1 target=28 timeout=1800.0s random_seed=517502649 gauge=id
+[18:58:40]   TIMEOUT: inconclusive t=1800.1s
+[18:58:40] trial=  2 target=28 timeout=1800.0s random_seed=1328368983 gauge=[np.int32(8), np.int32(3), np.int32(5), np.int32(9), np.int32(1), np.int32(2), np.int32(6), np.int32(4), np.int32(0), np.int32(7)]

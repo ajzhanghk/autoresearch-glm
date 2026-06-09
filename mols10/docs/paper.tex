@@ -1201,7 +1201,7 @@ The best $\E$ among \emph{new} states at each depth is 30--34, consistent with
 intercalate moves always increasing energy when leaving the $\E=29$ basin.
 Remarkably, class 0968fc79 has \emph{no} depth-1 neighbor at $\E=30$: every single
 intercalate move raises $\E$ to at least~31.
-Combined with the CP-SAT infeasibility evidence (40+ trials $\times$ 1200--1800\,s all
+Combined with the CP-SAT infeasibility evidence (43+ trials $\times$ 1200--1800\,s all
 TIMEOUT), these four solutions represent formidable barriers against finding $\E \leq 28$.
 Classes 2cc8e22f and 0968fc79 are particularly striking: their minimum 1-move neighbors
 are at $\E=31$, indicating an unusually steep surrounding energy landscape.
@@ -1239,7 +1239,7 @@ No positive evidence for $N(10) \geq 3$ has been found:
     All 7 prior $\E=31$ pairs same isotopy class.
     Session~16 upgrades: all four $\E=29$ classes (4f04a773, 2cc8e22f, 74bb7b86, 0968fc79) are
     \textbf{global intercalate-neighborhood minima} (max-IS 10--13, BFS depth-5 with
-    1.1M+ states all $\geq 30$). Proof workers: 40+ trials targeting $\E \leq 28$, all inconclusive.
+    1.1M+ states all $\geq 30$). Proof workers: 43+ trials targeting $\E \leq 28$, all inconclusive.
   \item Reverse search has never found a triple with $\E_\text{rev} < 60$.
 \end{itemize}
 
@@ -1303,8 +1303,8 @@ Supporting evidence:
   \item Is Conjecture~\ref{conj:ct} provable? A proof would resolve $N(10)$ definitively.
   \item What is the true minimum of $\E$ over all triples with $\cl_{12} = 0$? Our
     empirical minimum is $\E=29$; can $\E < 29$ be achieved?  CP-SAT proof workers
-    have run 40+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$, all inconclusive
-    (for classes 4f04a773, 2cc8e22f, 74bb7b86, and 0968fc79 combined; Sessions~17--20 ongoing).
+    have run 43+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$, all inconclusive
+    (for classes 4f04a773, 2cc8e22f, 74bb7b86, and 0968fc79 combined; Sessions~17--21 ongoing).
     Whether $\E = 29$ is the global minimum or merely a local floor is the central open question.
     Note: intercalate moves alone cannot achieve $\E\leq28$ from any known $\E=29$ class
     (all four proved global intercalate-neighborhood minima, Session~16); only CP-SAT
@@ -1321,16 +1321,21 @@ Supporting evidence:
     Session~16), and \textbf{0968fc79} ($\cl_{13}=17$, $\cl_{23}=12$, Session~16).
     Can any class reach $\E \leq 28$?  Class 3a33165a best effort: E=31
     (push workers ran 2 trials, both E=31$\to$31 inconclusive; discontinued in Session~17).
-    A broader pair scan (344 MOLS-10 pairs, 180\,s each) is running (Session~17--20).
-    Results from 37+ scanned pairs: sa\_ct pairs give $\E=38$--43; mdecomp pairs give
-    $\E=35$--43.  Three stand-out new classes: \textbf{mdecomp\_48} (\texttt{8d481a18},
-    scan $\E=35$, push trial 1 $\E=34$, $\cl_{13}=17$, $\cl_{23}=17$),
-    \textbf{mdecomp\_71} (\texttt{d5a580f8}, scan $\E=37$ at 1 worker,
-    warmup $\E=35$ at 2 workers, \textbf{push trial 1 $\E=31$}, $\cl_{13}=17$,
-    $\cl_{23}=14$ --- within 2 of $\E=29$!), and \textbf{mdecomp\_84}
-    ($\E=37$ in scan, push worker running).  mdecomp\_71 at $\E=31$ is the most
-    promising new class; push workers (1800\,s, 2 workers) are probing all three
-    to determine whether any can reach $\E=29$.
+    A broader pair scan (311 MOLS-10 pairs, 180\,s each) is running (Sessions~17--21).
+    Results from 52+ scanned pairs: sa\_ct pairs give $\E=38$--43; mdecomp pairs give
+    $\E=35$--44.  Three stand-out new classes: \textbf{mdecomp\_48} (\texttt{8d481a18},
+    scan $\E=35$, \textbf{push best $\E=33$} ($\cl_{13}=17$, $\cl_{23}=16$, Session~21)),
+    \textbf{mdecomp\_71} (\texttt{d5a580f8}, scan $\E=37$,
+    \textbf{push best $\E=31$} ($\cl_{13}=15$, $\cl_{23}=16$, reproduced Session~21)
+    --- within 2 of $\E=29$!), and \textbf{mdecomp\_84} (\texttt{cd1785b9} L1 family,
+    scan $\E=37$, warmup $\E=38$, push trial~1 in progress).
+    Session~21 note: container restart; all workers restarted from scratch
+    (mdecomp\_48 warmup $\E=37$, mdecomp\_71 warmup $\E=39$); both reproduced
+    prior bests within trial~1 (1800\,s, 2 workers).
+    L1 family analysis: mdecomp\_71 and mdecomp\_84 share the \texttt{cd1785b9} L1 hash;
+    6 other pairs in this family give $\E=39$--42, confirming L2 choice matters as much
+    as L1 structure.  mdecomp\_71 at $\E=31$ is the most promising new class;
+    push workers (1800\,s) are probing all three to determine whether any can reach $\E=29$.
     Is there a structural explanation for why both 74bb7b86 and 0968fc79
     share the asymmetric distribution ($\cl_{13}=17$, $\cl_{23}=12$)?
   \item Does the CT distribution (always $\leq 2$) follow from a group-theoretic argument

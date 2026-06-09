@@ -1,0 +1,11 @@
+[18:28:40] ============================================================
+[18:28:40] Deep push: mdecomp_71 (hash=d5a580f8) cl12=0
+[18:28:40] Timeout=1800.0s workers=2 seed=22221
+[18:28:40] NOTE: Previous best E=31 lost to container restart; restarting from scratch
+[18:28:40] ============================================================
+[18:28:40] Trial 0: 180s warmup
+[18:31:40]   Warmup: E=39 cl13=16 cl23=23 t=180.1s
+[18:31:40] trial=  1 timeout=1800.0s seed=179905086
+[19:01:40]   -> E=31 cl13=15 cl23=16 t=1800.1s * E<=31 *
+[19:01:40]   New best: E=31
+[19:01:40] trial=  2 timeout=1800.0s seed=1513828841

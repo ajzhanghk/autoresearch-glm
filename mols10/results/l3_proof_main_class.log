@@ -24,3 +24,10 @@
 [13:44:25]   TIMEOUT t=1800.1s
 [13:44:25] trial=  2 target=28 timeout=1800.0s cp_seed=800003107 gauge=[np.int32(4), np.int32(9), np.int32(2), np.int32(5), np.int32(1), np.int32(6), np.int32(8), np.int32(3), np.int32(7), np.int32(0)]
 [13:44:25] trial=  2 target=28 timeout=1800.0s cp_seed=800003107 gauge=[np.int32(4), np.int32(9), np.int32(2), np.int32(5), np.int32(1), np.int32(6), np.int32(8), np.int32(3), np.int32(7), np.int32(0)]
+[18:28:40] ============================================================
+[18:28:40] Proof: main class 4f04a773 E=29 cl13=15 cl23=14
+[18:28:40] Target: E <= 28, timeout=1800.0s, workers=1, seed=22222
+[18:28:40] ============================================================
+[18:28:40] trial=  1 target=28 timeout=1800.0s cp_seed=1133235416 gauge=id
+[18:58:40]   TIMEOUT t=1800.1s
+[18:58:40] trial=  2 target=28 timeout=1800.0s cp_seed=1293582531 gauge=[np.int32(7), np.int32(6), np.int32(2), np.int32(4), np.int32(3), np.int32(1), np.int32(8), np.int32(9), np.int32(0), np.int32(5)]
