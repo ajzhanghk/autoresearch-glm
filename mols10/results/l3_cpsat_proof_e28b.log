@@ -3,3 +3,7 @@
 [01:10:41] Checking: does there exist L3 with cl13+cl23 <= 28?
 [01:10:41] ============================================================
 [01:10:41] trial=   1  pool_E=29  target=28  timeout=600.0s  time=01:10:41
+[01:20:41]   TIMEOUT: inconclusive  elapsed=600.1s
+[01:20:41] trial=   2  pool_E=30  target=28  timeout=600.0s  time=01:20:41
+[01:30:41]   TIMEOUT: inconclusive  elapsed=600.1s
+[01:30:41] trial=   3  pool_E=31  target=28  timeout=600.0s  time=01:30:41

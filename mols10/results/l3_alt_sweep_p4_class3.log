@@ -1,0 +1,12 @@
+[01:24:52] ============================================================
+[01:24:52] ============================================================
+[01:24:52] Alt-pair sweep: pool[4] s=1-50 t=300s 2w
+[01:24:52] Alt-pair sweep: pool[4] s=1-50 t=300s 2w
+[01:24:52] Target: pool[4] E=31 cl12=0
+[01:24:52] Target: pool[4] E=31 cl12=0
+[01:24:52]   seed=1  session_best=31  global_best=29
+[01:24:52]   seed=1  session_best=31  global_best=29
+[01:29:52]     FEAS: E=31 cl13=19 cl23=12 t=300.1s
+[01:29:52]     FEAS: E=31 cl13=19 cl23=12 t=300.1s
+[01:29:52]   seed=2  session_best=31  global_best=29
+[01:29:52]   seed=2  session_best=31  global_best=29

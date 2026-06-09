@@ -1,0 +1,6 @@
+[01:24:34] SA intercalate seed=42001 budget=600.0s T=3.0->0.001
+[01:24:34] Start: E=29
+[01:28:03]   steps=100000 T=0.1853 E_curr=35 best=29 t=208.7s
+[01:31:32]   steps=200000 T=0.0114 E_curr=35 best=29 t=417.7s
+s
+[01:31:32]   steps=200000 T=0.0114 E_curr=35 best=29 t=417.7s

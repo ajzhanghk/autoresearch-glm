@@ -1,0 +1,8 @@
+Base E=29
+5-move check: 28 intercalates...
+  3/28 first moves, 2634403 quints, 185.0s, rate=14241/s, best=29
+  6/28 first moves, 5125384 quints, 345.7s, rate=14828/s, best=29
+  9/28 first moves, 6943225 quints, 447.4s, rate=15519/s, best=29
+  12/28 first moves, 9302252 quints, 636.3s, rate=14619/s, best=29
+  15/28 first moves, 11283003 quints, 798.6s, rate=14129/s, best=29
+  18/28 first moves, 13631568 quints, 977.8s, rate=13941/s, best=29
