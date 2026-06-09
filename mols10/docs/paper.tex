@@ -1064,6 +1064,7 @@ Class & Depth & New states & Cumulative & Best $\E$\\
 2cc8e22f & 2 & 316 & 340 & 32\\
 2cc8e22f & 3 & 3\,271 & 3\,611 & 32\\
 2cc8e22f & 4 & 28\,284 & 31\,895 & 30\\
+2cc8e22f & 5 & 217\,140 & 249\,035 & 32\\
 \midrule
 74bb7b86 & 1 & 19 & 20 & 30\\
 74bb7b86 & 2 & 215 & 235 & 32\\
@@ -1073,9 +1074,11 @@ Class & Depth & New states & Cumulative & Best $\E$\\
 \bottomrule
 \end{tabular}
 \end{center}
-Combined total: over 227\,000 distinct reachable states across all three classes,
-all with $\E \geq 30$.  No new reachable state has $\E \leq 29$: the only $\E=29$
-state in the multi-move neighborhood of each solution is the solution itself.
+Combined total at deepest explored depth: 60\,774 (4f04a773, depth 4) + 249\,035
+(2cc8e22f, depth 5) + 135\,108 (74bb7b86, depth 5) = \textbf{444\,917 distinct
+reachable states across all three classes, all with $\E \geq 30$.}  No new
+reachable state has $\E \leq 29$: the only $\E=29$ state in the multi-move
+neighborhood of each solution is the solution itself.
 The energy landscape forms strict, isolated valleys around each $\E=29$ point.
 The best $\E$ among \emph{new} states at each depth is 30--33, consistent with
 intercalate moves always increasing energy when leaving the $\E=29$ basin.
