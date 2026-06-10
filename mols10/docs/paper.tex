@@ -1324,12 +1324,12 @@ Supporting evidence:
     Can any class reach $\E \leq 28$?  Class 3a33165a best effort: E=31
     (push workers ran 2 trials, both E=31$\to$31 inconclusive; discontinued in Session~17).
     A broader pair scan (311 MOLS-10 pairs, 180\,s each) is running (Sessions~17--22).
-    Results from 212+ scanned pairs: sa\_ct pairs give $\E=35$--45; mdecomp pairs give
+    Results from 220+ scanned pairs: sa\_ct pairs give $\E=35$--45; mdecomp pairs give
     $\E=33$--45.  Fourteen stand-out classes ($\E\leq37$) have emerged from the scan:
     \textbf{mdecomp\_48} (\texttt{8d481a18} L1, scan $\E=35$,
     \textbf{push best $\E=30$} ($\cl_{13}=14$, $\cl_{23}=16$, Session~21 trial~5!)
     --- within 1 of $\E=29$!, improving from $\E=37 \to 33 \to 31 \to 30$ across trials;
-    stable at $\E=30$ across 17+ independent trials confirming a strong local basin),
+    stable at $\E=30$ across 19+ independent trials confirming a strong local basin),
     \textbf{mdecomp\_71} (\texttt{cd1785b9} L1, scan $\E=37$,
     push best $\E=31$ ($\cl_{13}=15$, $\cl_{23}=16$), stable across 16 trials then
     discontinued --- strong local basin at $\E=31$),
@@ -1342,20 +1342,20 @@ Supporting evidence:
     \textbf{mdecomp\_163} (\texttt{20d55e1d} L1, scan $\E=36$, $\cl_{13}=20$, $\cl_{23}=16$,
     push warmup + trial~1 both $\E=40$, discontinued --- redirected to mdecomp\_191),
     \textbf{mdecomp\_191} (\texttt{bccfc7b0} L1, scan $\E=36$, $\cl_{13}=19$, $\cl_{23}=17$,
-    push launched Session~22),
+    push: warmup+trial~1 both $\E=39$; trial~2 ongoing),
     \textbf{mdecomp\_192} (\texttt{20d55e1d} L1, scan $\E=36$, $\cl_{13}=23$, $\cl_{23}=13$),
     \textbf{sa\_ct\_212} (\texttt{1343a5a6} L1, scan $\E=37$, $\cl_{13}=16$, $\cl_{23}=21$),
     \textbf{mdecomp\_217} (\texttt{70f243cc} L1, scan $\E=36$, $\cl_{13}=19$, $\cl_{23}=17$),
     \textbf{sa\_ct\_236} (\texttt{1343a5a6} L1, scan $\E=37$, $\cl_{13}=20$, $\cl_{23}=17$),
     \textbf{sa\_ct\_290} (\texttt{1343a5a6} L1, scan $\E=35$, $\cl_{13}=16$, $\cl_{23}=19$),
     \textbf{mdecomp\_281} (\texttt{05f9f018} L1, scan $\mathbf{E=33}$, $\cl_{13}=12$,
-    $\cl_{23}=21$ --- \textbf{scan record}; push trial~1 $\E=34$ (matched hint);
-    trial~2 ongoing), and
+    $\cl_{23}=21$ --- \textbf{scan record}; push v2 trials 1--2 both $\E=34$ (hint-anchored);
+    push v3 launched with alternating cold/hint strategy to escape $\E=34$ basin), and
     \textbf{mdecomp\_296} (\texttt{d42b3374} L1, scan $\E=37$, $\cl_{13}=15$, $\cl_{23}=22$
     --- \textbf{10th distinct L1 family}!).
     Session~21--22: \textbf{mdecomp\_48 is the record holder at $\E=30$} --- one step from $\E=29$.
     mdecomp\_48 shows a clear improvement trajectory: $\E=37$ (warmup)
-    $\to 33$ (trial~1) $\to 31$ (trial~3) $\to \mathbf{30}$ (trial~5, stable trials~5--18+).
+    $\to 33$ (trial~1) $\to 31$ (trial~3) $\to \mathbf{30}$ (trial~5, stable trials~5--19+).
     Multi-seed convergence to $\E=30$ ($\cl_{13}=14$, $\cl_{23}=16$) is evidence of a
     genuine near-optimum; whether $\E=29$ is reachable requires deeper exploration.
     The 1343a5a6 family spans four pairs (sa\_ct\_212/236/286/290), scan $\E=35$--38;
@@ -1367,8 +1367,9 @@ Supporting evidence:
     \texttt{70f243cc} (mdecomp\_217), \texttt{1343a5a6} (sa\_ct\_212, 236, 286, 290),
     \texttt{05f9f018} (mdecomp\_281, 285), \texttt{d42b3374} (mdecomp\_296) ---
     ten distinct L1 structures identified (Sessions~17--22).
-    Push workers (1800\,s) are probing mdecomp\_48, mdecomp\_191, and mdecomp\_281 (Session~22)
-    to determine whether any can reach $\E \leq 29$.
+    Push workers (1800\,s) are probing mdecomp\_48 (19+ trials at $\E=30$, strong basin),
+    mdecomp\_191 ($\E=39$ ongoing), and mdecomp\_281 with alternating cold/hint starts
+    (seeking scan's $\E=33$ basin; hint-anchored trials stuck at $\E=34$).
     Is there a structural explanation for why both 74bb7b86 and 0968fc79
     share the asymmetric distribution ($\cl_{13}=17$, $\cl_{23}=12$)?
   \item Does the CT distribution (always $\leq 2$) follow from a group-theoretic argument

@@ -36,3 +36,7 @@
 [03:04:27]   -> E=34 cl13=17 cl23=17 t=1800.0s E<=34
 [03:04:27] trial=  2 timeout=1800.0s seed=1737545277 hint=E34
 [03:04:27] trial=  2 timeout=1800.0s seed=1737545277 hint=E34
+[03:34:27]   -> E=34 cl13=17 cl23=17 t=1800.0s E<=34
+[03:34:27]   -> E=34 cl13=17 cl23=17 t=1800.0s E<=34
+[03:34:27] trial=  3 timeout=1800.0s seed=820092809 hint=E34
+[03:34:27] trial=  3 timeout=1800.0s seed=820092809 hint=E34
