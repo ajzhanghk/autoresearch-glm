@@ -7,3 +7,5 @@
 [03:48:20] trial=  1 timeout=1800.0s seed=826759519 mode=cold
 [04:18:20]   -> E=35 cl13=19 cl23=16 t=1800.0s
 [04:18:20] trial=  2 timeout=1800.0s seed=414905422 mode=E34
+[04:48:20]   -> E=34 cl13=17 cl23=17 t=1800.0s E<=34
+[04:48:20] trial=  3 timeout=1800.0s seed=1456837275 mode=cold
