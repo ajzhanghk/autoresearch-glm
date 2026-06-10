@@ -68,3 +68,8 @@
 [05:28:45] trial= 23 target=28 cp_seed=79528733 gauge=[np.int32(9), np.int32(7), np.int32(5), np.int32(3), np.int32(2), np.int32(1), np.int32(4), np.int32(6), np.int32(0), np.int32(8)]
 [05:58:46]   TIMEOUT: inconclusive t=1800.3s
 [05:58:46] trial= 24 target=28 cp_seed=1622745366 gauge=[np.int32(4), np.int32(8), np.int32(2), np.int32(7), np.int32(1), np.int32(0), np.int32(6), np.int32(5), np.int32(3), np.int32(9)]
+[06:51:45] ============================================================
+[06:51:45] Proof: 0968fc79 (68ec561e L1) E=29 cl13=17 cl23=12
+[06:51:45] Target: E<=28, timeout=1800.0s, workers=1, seed=55555
+[06:51:45] ============================================================
+[06:51:45] trial=  1 target=28 timeout=1800.0s cp_seed=299987784 gauge=id

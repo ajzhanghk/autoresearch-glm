@@ -14,3 +14,11 @@
 [05:18:20] trial=  4 timeout=1800.0s seed=1544319557 mode=E33
 [05:48:20]   -> E=33 cl13=20 cl23=13 t=1800.1s E<=33 good
 [05:48:20] trial=  5 timeout=1800.0s seed=262475445 mode=cold
+[06:51:50] ============================================================
+[06:51:50] Deep push v3 (resumed): mdecomp_281 (pairs[226]) cl12=0
+[06:51:50] Timeout=1800.0s workers=1 seed=99991
+[06:51:50] Current best: E=33 (cl13=20, cl23=13)
+[06:51:50] Strategy: cold-start odd trials, hint-guided even trials
+[06:51:50] Resuming from trial 6
+[06:51:50] ============================================================
+[06:51:50] trial=  6 timeout=1800.0s seed=2081313454 mode=hint=E33

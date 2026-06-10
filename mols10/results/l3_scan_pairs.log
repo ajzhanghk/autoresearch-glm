@@ -469,3 +469,12 @@
 [05:59:12] [271/271] src=tv pair_id=tv_43 seed=321474873
 [06:02:12]   -> E=44 cl13=23 cl23=21 t=180.2s
 [06:02:12] [272/272] src=tv pair_id=tv_51 seed=794334139
+[06:51:55] ============================================================
+[06:51:55] Pair scan v3: seed=54321, timeout=180.0s, start=273
+[06:51:55] Scanning: mdecomp + sa_ct first, then tv/ic/iso variants
+[06:51:55] ============================================================
+[06:51:55] Total pairs: 311, known L1 keys: 3
+[06:51:55] Priority pairs (non-TV21): 227
+[06:51:55] Secondary pairs (TV21 variants): 84
+[06:51:55] Resuming from scan position 273
+[06:51:55] [273/273] src=tv pair_id=tv_58 seed=1316021074
