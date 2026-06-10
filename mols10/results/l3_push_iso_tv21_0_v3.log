@@ -1,0 +1,8 @@
+[07:54:13] ============================================================
+[07:54:13] Deep push v3 (4-worker): iso_tv_21_0 (pairs[7]) cl12=0
+[07:54:13] Timeout=1800.0s workers=4 seed=77703
+[07:54:13] Current best: E=32 (cl13=13, cl23=19)
+[07:54:13] Strategy v3: 4 parallel CP-SAT workers; odd=cold, even=hint
+[07:54:13] Resuming from trial 1
+[07:54:13] ============================================================
+[07:54:13] trial=  1 timeout=1800.0s seed=1437496498 workers=4 mode=cold

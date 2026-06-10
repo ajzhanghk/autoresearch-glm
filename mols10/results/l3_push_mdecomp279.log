@@ -1,0 +1,9 @@
+[07:54:13] ============================================================
+[07:54:13] Push: mdecomp_279 (idx=225) cl12=0
+[07:54:13] Timeout=1800.0s workers=1 seed=44441
+[07:54:13] Scan result: E=33 (cl13=12, cl23=21, seed=1737829810)
+[07:54:13] Current best: E=none yet
+[07:54:13] Strategy: cold odd trials, hint even trials (50% cold)
+[07:54:13] Resuming from trial 1
+[07:54:13] ============================================================
+[07:54:13] trial=  1 timeout=1800.0s seed=1408105093 mode=cold
