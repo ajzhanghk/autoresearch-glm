@@ -487,7 +487,7 @@ Session & Key development & Best $\E$ & Stable since\\
 23 & \textbf{NEW SCAN RECORD $\E=\mathbf{32}$} (iso\_tv\_21\_0, L1=ee29e34e, $\cl_{13}=13$, $\cl_{23}=19$) --- 12th L1 family; E=32 L3 recovered; deep push trials~1--3 all $\E=32$; mdecomp\_281 v3 trials~3+4 both $\E=33$ (cold confirmed!); iso\_tv\_10\_1 new standout $\E=37$ (13th L1); TV10 iso scanned (E=37/40/43); 17 standouts & \textbf{29} & Session 23\\
 24 & \textbf{Container reset}: all workers restarted from saved best-L3 files; iso\_tv\_21\_0 push resumed trial~5 (hint=E32); mdecomp\_281 v3 resumed trial~6 (hint=E33); mdecomp\_48 resumed trial~25; scan resumed pos~273 (TV variants); 4 proof workers restarted; 17 standouts, 13 L1 families & \textbf{29} & Session 24\\
 25 & \textbf{iso\_mdecomp48 scan}: 6 isotopy variants, all $\E=37$--41 (best: iso\_mdecomp48\_4 E=37, 14th L1 family); \textbf{iso2\_tv21\_0 scan}: 6 variants, $\E=36$--42 (2 standouts: af53f0ef E=36 [15th], 53a75a20 E=37 [16th]); scan reaches TV secondary pairs; 5 new TV L1 families (e0e09d80/18th, 8e540206/19th, 17fc775b/20th); 20 standouts; v2 push trial~1 cold $\E=32$ (no gain) & \textbf{29} & Session 25\\
-25b & \textbf{mdecomp\_279 discovered as co-scan-record} ($\E=33$, e54e791c, 17th L1 family, first push!); 5 more L1 families (21st--25th); iso\_tv\_21\_0 \textbf{v3 push launched} (4 workers, all CPUs); \textbf{mdecomp\_279 push launched}; scan at 293/323; 27+ standouts, 25 L1 families; mdecomp\_120/289 push scripts prepared ($\E=35$ each) & \textbf{29} & Session 25b\\
+25b & \textbf{mdecomp\_279 discovered as co-scan-record} ($\E=33$, e54e791c, 17th L1 family, first push!); 5 more L1 families (21st--25th); iso\_tv\_21\_0 \textbf{v3 push launched} (4 workers, all CPUs); \textbf{iso\_tv\_21\_0 v3 trial~1 cold $\E=\mathbf{30}$! NEW PUSH CO-RECORD!} ($\cl_{13}=15$, $\cl_{23}=15$); mdecomp\_279 trial~1 warmup $\E=35$; scan at 293/323; 27+ standouts, 25 L1 families & \textbf{29} & Session 25b\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1356,7 +1356,8 @@ Supporting evidence:
     \textbf{sa\_ct\_236} (\texttt{1343a5a6} L1, scan $\E=37$, $\cl_{13}=20$, $\cl_{23}=17$),
     \textbf{sa\_ct\_290} (\texttt{1343a5a6} L1, scan $\E=35$, $\cl_{13}=16$, $\cl_{23}=19$),
     \textbf{mdecomp\_279} (\texttt{e54e791c} L1, \textbf{scan $\mathbf{E=33}$}, $\cl_{13}=12$,
-    $\cl_{23}=21$ --- \textbf{co-scan-record!} (Session~25b); push trial~1 cold running), and
+    $\cl_{23}=21$ --- \textbf{co-scan-record!} (Session~25b);
+    push trial~1 cold $\E=35$ (warmup; trial~2 hint=E35 running)), and
     \textbf{mdecomp\_281} (\texttt{05f9f018} L1, scan $\mathbf{E=33}$, $\cl_{13}=12$,
     $\cl_{23}=21$; push v2 both $\E=34$ (hint-anchored);
     \textbf{push v3 confirms $\E=33$ basin}: cold trials 3,5 and hint trials 4,6 all $\E=33$
@@ -1368,8 +1369,9 @@ Supporting evidence:
     \textbf{iso\_tv\_21\_0} (\texttt{ee29e34e} L1, scan $\mathbf{E=32}$, $\cl_{13}=13$, $\cl_{23}=19$
     --- \textbf{12th distinct L1 family}!, \textbf{all-time scan record!};
     push v1 trials~1--5 all $\E=32$; v2 trial~1 cold also $\E=32$ (6 total, stable basin);
-    \textbf{v3 strategy}: num\_workers=4 (all CPUs), cold trial~1 running ---
-    4$\times$ stronger search than v1/v2; can parallel CP-SAT break $\E=32$?), and
+    \textbf{v3 trial~1 cold $\mathbf{E=30}$! ($\cl_{13}=15$, $\cl_{23}=15$)}
+    --- \textbf{\textcolor{red}{NEW PUSH CO-RECORD!}} ties mdecomp\_48's all-time push record!
+    v3 trial~2 hint=E30 running: can parallel CP-SAT break through to $\E=29$?), and
     \textbf{iso\_tv\_10\_1} (\texttt{557feb0f} L1, scan $\E=37$, $\cl_{13}=19$, $\cl_{23}=18$
     --- \textbf{13th distinct L1 family}!, TV10 isotopy variant; iso\_tv\_10\_0 $\E=40$,
     iso\_tv\_10\_2 $\E=43$), and
@@ -1428,8 +1430,9 @@ Supporting evidence:
     of scan-record iso\_tv\_21\_0 scanned (iso2: $\E=36$--42, 2 standouts at $\E=36$, $37$).
     Push L strategy: mdecomp\_48's $\E=30$ is pair-specific; isotopy does not preserve push depth.
     CPU strategy: 4-core machine fully dedicated.
-    Currently running (Session~25b): \textbf{iso\_tv\_21\_0 v3} (num\_workers=4, all CPUs; trial~1 cold)
-    and \textbf{mdecomp\_279} (1 worker, first push; trial~1 cold).
+    Currently running (Session~25b+): \textbf{iso\_tv\_21\_0 v3}
+    (\textbf{trial~1 cold found $\E=30$!}; trial~2 hint=E30 running, targeting $\E\leq29$)
+    and \textbf{mdecomp\_279} (trial~1 warmup $\E=35$; trial~2 hint=E35 running).
     Discontinued (stable basins, redirected compute): mdecomp\_48 (25+ trials $\E=30$),
     mdecomp\_281 v3 (6 trials $\E=33$), proof workers (24+ trials $\E=28$ all TIMEOUT).
     mdecomp\_45 discontinued (warmup $\E=39$, outclassed by iso\_tv\_21\_0).

@@ -6,3 +6,6 @@
 [07:54:13] Resuming from trial 1
 [07:54:13] ============================================================
 [07:54:13] trial=  1 timeout=1800.0s seed=1437496498 workers=4 mode=cold
+[08:24:13]   -> E=30 cl13=15 cl23=15 t=1800.1s *** NEW BEST E=30! ***
+[08:24:13]   Saved new best E=30
+[08:24:13] trial=  2 timeout=1800.0s seed=1333021984 workers=4 mode=hint=E30
