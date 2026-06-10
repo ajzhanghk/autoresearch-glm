@@ -1381,7 +1381,7 @@ Supporting evidence:
     deep push with E=32 hint launched Session~23),
     and \textbf{mdecomp\_281} v3 with alternating cold/hint starts
     (seeking scan's $\E=33$ basin; v2 hint-anchored stuck at $\E=34$;
-    v3 trial~1 cold-start ongoing).
+    v3 trial~1 cold $\E=35$, trial~2 hint=E34 ongoing).
     mdecomp\_45 discontinued (warmup $\E=39$, scan $\E=37$ --- outclassed by iso\_tv\_21\_0).
     Is there a structural explanation for why both 74bb7b86 and 0968fc79
     share the asymmetric distribution ($\cl_{13}=17$, $\cl_{23}=12$)?
@@ -1395,10 +1395,15 @@ Supporting evidence:
 
 \begin{enumerate}
   \item \textbf{Wider CT search} with $>$10{,}000 pairs to test Conjecture~\ref{conj:ct}.
-  \item \textbf{Isotopy diversification}: All 7 known $\E=31$ pairs are in the same isotopy
-    class (confirmed by canonical hashing in Session 14).  Future work should actively seek
-    pairs in other isotopy classes --- new construction methods, group-theoretic structures,
-    or randomized isotopy-jump moves.
+  \item \textbf{Isotopy diversification}: The discovery that \texttt{iso\_tv\_21\_0}
+    (an isotopy variant of the TV21 base pair) gives scan $\E=32$ --- far better than the
+    TV21 base pair ($\E\sim37$) and the IC-based TV21 variants ($\E\sim40$--45) ---
+    is a strong signal that isotopy transforms can dramatically change the L3 accessibility.
+    Three more isotopy variants of the TV10 base pair (\texttt{iso\_tv\_10\_0/1/2},
+    L1 families \texttt{3c814749}, \texttt{557feb0f}, \texttt{f874c342}) are queued for
+    scan and may yield additional low-$\E$ breakthroughs.
+    Future work should systematically generate isotopy transforms of all known
+    promising base pairs (mdecomp\_48, mdecomp\_281, etc.).
   \item \textbf{Theoretical lower bound} on $\E$: can one prove $\E \geq 30$ (or higher)
     for all triples with $L_1 \perp L_2$ of order 10?  The consistent SA barrier at
     $\E=37$ across diverse starting points is suggestive but not a proof.
