@@ -1461,16 +1461,14 @@ Supporting evidence:
 
 \begin{enumerate}
   \item \textbf{Wider CT search} with $>$10{,}000 pairs to test Conjecture~\ref{conj:ct}.
-  \item \textbf{Isotopy diversification}: The discovery that \texttt{iso\_tv\_21\_0}
-    (an isotopy variant of the TV21 base pair) gives scan $\E=32$ --- far better than the
-    TV21 base pair ($\E\sim37$) and the IC-based TV21 variants ($\E\sim40$--45) ---
-    is a strong signal that isotopy transforms can dramatically change the L3 accessibility.
-    Three isotopy variants of the TV10 base pair were scanned: \texttt{iso\_tv\_10\_1}
+  \item \textbf{Isotopy diversification}: \texttt{iso\_tv\_21\_0} (an isotopy variant of TV21)
+    gives scan $\E=32$ and push $\E=30$ --- far better than the TV21 base pair ($\E\sim37$).
+    This pair now holds both the scan record and (jointly with mdecomp\_48) the push record.
+    Three isotopy variants of TV10 were scanned: \texttt{iso\_tv\_10\_1}
     (L1 \texttt{557feb0f}) yielded $\E=37$ (13th distinct L1 family!), while
     \texttt{iso\_tv\_10\_0} gave $\E=40$ and \texttt{iso\_tv\_10\_2} gave $\E=43$.
-    Push workers for \texttt{iso\_tv\_10\_1} are a potential next step.
     Future work should systematically generate isotopy transforms of all known
-    promising base pairs (mdecomp\_48, mdecomp\_281, etc.).
+    promising base pairs (mdecomp\_279/281, mdecomp\_120/289, etc.) and push the best ones.
   \item \textbf{Theoretical lower bound} on $\E$: can one prove $\E \geq 30$ (or higher)
     for all triples with $L_1 \perp L_2$ of order 10?  The consistent SA barrier at
     $\E=37$ across diverse starting points is suggestive but not a proof.
