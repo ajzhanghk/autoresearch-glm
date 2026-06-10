@@ -73,7 +73,7 @@ four original (4f04a773, 2cc8e22f, 74bb7b86, 0968fc79), all proved global interc
 minima, plus \textbf{iso\_tv\_21\_0} (\texttt{ee29e34e}), a qualitatively different $L_1$ family;
 (3) every MOLS-10 pair tested (344 pairs) has $\CT(L_1, L_2) \leq 2 < 10$,
 and Glucose3 provides machine-verifiable UNSAT certificates for 311 pairs;
-(4) a systematic scan of 293+ pairs (out of 323) identifies 25 distinct $L_1$ families
+(4) a systematic scan of 301+ pairs (out of 323) identifies 28 distinct $L_1$ families
 with scan $\E \leq 37$, including the scan-record pair at $\E=32$;
 (5) CP-SAT proof workers ran 100+ trials targeting $\E \leq 28$, all inconclusive (TIMEOUT);
 (6) four original $\E=29$ classes are \textbf{5-move intercalate-neighborhood minima}
@@ -1341,7 +1341,7 @@ Supporting evidence:
     This is the \textbf{second distinct $L_1$ family} at $\E=29$, confirming the bound is structurally real.
     Can any class reach $\E \leq 28$?  100+ proof trials all TIMEOUT.  CP-SAT v3 trial~3 (cold) for iso\_tv\_21\_0 actively targeting $\E\leq28$.
     Class 3a33165a best effort: E=31 (discontinued Session~17).
-    A broader pair scan (323 MOLS-10 pairs, 180\,s each) ran Sessions~17--25b (293/323 done).
+    A broader pair scan (323 MOLS-10 pairs, 180\,s each) ran Sessions~17--26 (301+/323 done, continuation running).
     Results from 293+ scanned pairs (all 227 priority done; 66+ of 96 TV21 secondary pairs scanned, plus 12 iso/iso2 special scans):
     sa\_ct pairs give $\E=35$--45; mdecomp pairs give $\E=33$--45;
     TV21 isotopy pairs give $\E=32$--43 (15 scanned); TV10 isotopy pairs give $\E=37$--43 (3 scanned);
@@ -1415,14 +1415,20 @@ Supporting evidence:
     \textbf{mdecomp\_210} (\texttt{37eebeb5} L1, scan $\E=37$, $\cl_{13}=16$, $\cl_{23}=21$
     --- \textbf{24th distinct L1 family}!), and
     \textbf{mdecomp\_235} (\texttt{a79be19b} L1, scan $\E=37$, $\cl_{13}=20$, $\cl_{23}=17$
-    --- \textbf{25th distinct L1 family}!).
+    --- \textbf{25th distinct L1 family}!), and
+    \textbf{tv\_230} (\texttt{e0a8536d} L1, scan $\E=35$, $\cl_{13}=19$, $\cl_{23}=16$
+    --- \textbf{26th distinct L1 family}!, TV21 secondary, scan continuation Session~26), and
+    \textbf{tv\_262} (\texttt{31cd5484} L1, scan $\E=36$, $\cl_{13}=15$, $\cl_{23}=21$
+    --- \textbf{27th distinct L1 family}!, TV21 secondary), and
+    \textbf{tv\_223} (\texttt{c5c54e19} L1, scan $\E=37$
+    --- \textbf{28th distinct L1 family}!, TV21 secondary).
     Session~21--26: \textbf{iso\_tv\_21\_0 is the scan record holder at $\E=32$};
     \textbf{iso\_tv\_21\_0 v3 trajectory: $32 \to 30 \to \mathbf{29}$!}
-    (6 single-worker stuck at $\E=32$; trial~1 cold $\E=30$; trial~2 hint=E30 $\mathbf{E=29}$!).
+    (6 single-worker stuck at $\E=32$; trial~1 cold $\E=30$; trial~2 hint=E30 $\mathbf{E=29}$!;
+    trial~3 cold $\E=33$; trial~4 hint=E29 running, targeting $\E\leq28$).
     This is the \textbf{second distinct $L_1$ family} confirmed at $\E=29$ (ee29e34e),
     joining the original four classes. Pool now 21 entries.
     mdecomp\_48 trajectory: $\E=37 \to 33 \to 31 \to \mathbf{30}$ (trial~5, stable 25+ trials, stable basin).
-    Both families now at $\E=29$; iso\_tv\_21\_0 v3 trial~3 (cold) targets $\E\leq28$.
     The 1343a5a6 family spans four pairs (sa\_ct\_212/236/286/290), scan $\E=35$--38;
     mdecomp\_163/192 share L1=20d55e1d (both scan $\E=36$);
     mdecomp\_279/281/285: mdecomp\_279 (e54e791c) scan $\E=33$;
@@ -1439,10 +1445,13 @@ Supporting evidence:
     \texttt{8e540206} (tv\_190, $\E=37$), \texttt{17fc775b} (tv\_200, $\E=36$),
     \texttt{2b9a5282} (mdecomp\_216, scan $\E=36$), \texttt{752ef151} (mdecomp\_120, scan $\E=35$),
     \texttt{bbe685e3} (mdecomp\_289, scan $\E=35$), \texttt{37eebeb5} (mdecomp\_210, scan $\E=37$),
-    \texttt{a79be19b} (mdecomp\_235, scan $\E=37$) ---
-    \textbf{twenty-five distinct L1 hashes} in standout pairs, spanning $\E=30$--$37$
-    (note: af53f0ef, 53a75a20 isotopically equivalent to ee29e34e; e0e09d80 family spans 5+ TV pairs);
-    identified across 293+ scanned pairs (Sessions~17--25b).
+    \texttt{a79be19b} (mdecomp\_235, scan $\E=37$),
+    \texttt{e0a8536d} (tv\_230, scan $\E=35$), \texttt{31cd5484} (tv\_262, scan $\E=36$),
+    \texttt{c5c54e19} (tv\_223, scan $\E=37$) ---
+    \textbf{twenty-eight distinct L1 hashes} in standout pairs, spanning $\E=29$--$37$
+    (note: af53f0ef, 53a75a20 isotopically equivalent to ee29e34e; e0e09d80 family spans 5+ TV pairs;
+    ee29e34e now holds push record $\E=29$);
+    identified across 301+ scanned pairs (Sessions~17--26; scan continuation in progress, 302/323).
     Note: 6 isotopy variants of mdecomp\_48 scanned (all $\E=37$--41); 6 isotopy variants
     of scan-record iso\_tv\_21\_0 scanned (iso2: $\E=36$--42, 2 standouts at $\E=36$, $37$).
     Push L strategy: mdecomp\_48's $\E=30$ is pair-specific; isotopy does not preserve push depth.
@@ -1453,9 +1462,11 @@ Supporting evidence:
     more powerful than single-worker for near-miss optimization.
     CPU strategy: 4-core machine fully dedicated.
     Currently running (Session~26+): \textbf{iso\_tv\_21\_0 v3}
-    (trial~1 cold $\E=30$; \textbf{trial~2 hint=E30 $\mathbf{E=29}$!} --- trajectory $32\to30\to29$;
-    \textbf{trial~3 cold running, targeting $\E\leq28$})
-    and \textbf{mdecomp\_279} (trial~1 cold $\E=35$; trial~2 hint=E35 $\E=35$ (stable); trial~3 cold running).
+    (trial~1 cold $\E=30$; trial~2 hint=E30 $\E=29$!; trial~3 cold $\E=33$;
+    \textbf{trial~4 hint=E29 running, targeting $\E\leq28$})
+    and \textbf{mdecomp\_279} (trial~1 cold $\E=35$; trial~2 hint $\E=35$; trial~3 cold $\E=38$;
+    trial~4 hint=E35 running).
+    TV21 scan continuation running (pairs 293--310; standouts: tv\_230 $\E=35$, tv\_262 $\E=36$).
     Discontinued (stable basins, redirected compute): mdecomp\_48 (25+ trials $\E=30$),
     mdecomp\_281 v3 (6 trials $\E=33$), proof workers (24+ trials $\E=28$ all TIMEOUT).
     mdecomp\_45 discontinued (warmup $\E=39$, outclassed by iso\_tv\_21\_0).

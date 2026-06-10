@@ -19,3 +19,5 @@
 [08:56:37] Resuming from trial 3
 [08:56:37] ============================================================
 [08:56:37] trial=  3 timeout=1800.0s seed=233642306 workers=4 mode=cold
+[09:26:37]   -> E=33 cl13=19 cl23=14 t=1800.1s
+[09:26:37] trial=  4 timeout=1800.0s seed=1943590465 workers=4 mode=hint=E29
