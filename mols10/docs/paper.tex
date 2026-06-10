@@ -1409,11 +1409,15 @@ Supporting evidence:
     --- \textbf{24th distinct L1 family}!), and
     \textbf{mdecomp\_235} (\texttt{a79be19b} L1, scan $\E=37$, $\cl_{13}=20$, $\cl_{23}=17$
     --- \textbf{25th distinct L1 family}!).
-    Session~21--25b: \textbf{iso\_tv\_21\_0 is the scan record holder at $\E=32$}; \textbf{mdecomp\_48 holds push record at $\E=30$} --- one step from $\E=29$.
-    mdecomp\_48 shows a clear improvement trajectory: $\E=37$ (warmup)
-    $\to 33$ (trial~1) $\to 31$ (trial~3) $\to \mathbf{30}$ (trial~5, stable trials~5--25+).
-    Multi-seed convergence to $\E=30$ ($\cl_{13}=14$, $\cl_{23}=16$) is evidence of a
-    genuine near-optimum; whether $\E=29$ is reachable requires deeper exploration.
+    Session~21--25b: \textbf{iso\_tv\_21\_0 is the scan record holder at $\E=32$};
+    \textbf{push co-record at $\E=30$} now shared by \textbf{two pairs}:
+    mdecomp\_48 ($\cl_{13}=14$, $\cl_{23}=16$, stable after 25+ trials) and
+    \textbf{iso\_tv\_21\_0} ($\cl_{13}=15$, $\cl_{23}=15$, v3 trial~1 cold, Session~25b!) ---
+    both one step from $\E=29$, approaching from different $L_1$ families.
+    mdecomp\_48 trajectory: $\E=37 \to 33 \to 31 \to \mathbf{30}$ (trial~5, stable 25+ trials).
+    iso\_tv\_21\_0 trajectory: $\E=32$ (6 single-worker trials) $\to \mathbf{30}$ (4-worker trial~1!)
+    --- 4-worker parallelism broke through immediately.
+    Whether $\E=29$ is reachable for iso\_tv\_21\_0 is the immediate question (v3 trial~2 running).
     The 1343a5a6 family spans four pairs (sa\_ct\_212/236/286/290), scan $\E=35$--38;
     mdecomp\_163/192 share L1=20d55e1d (both scan $\E=36$);
     mdecomp\_279/281/285: mdecomp\_279 (e54e791c) scan $\E=33$;
