@@ -57,30 +57,30 @@ Definitive SAT Certificates}\\[0.5em]
 \begin{abstract}
 We report a systematic computational search for three mutually orthogonal Latin squares
 (MOLS) of order 10, addressing the longstanding open problem of whether $N(10) \geq 3$.
-Using parallel-tempering simulated annealing (7 replicas, $T \in [1, 4096]$), iterated
-local search, Glucose3 CDCL satisfiability solving, and OR-Tools CP-SAT exact optimization,
-we execute a never-stopping search across 15 concurrent workers.
+Using OR-Tools CP-SAT exact optimization (up to 4 parallel workers per trial), iterated
+local search, and Glucose3 CDCL satisfiability solving, we conduct a deep search across
+323 verified MOLS-10 pairs covering 25 distinct $L_1$ families.
 
-Our main findings are: (1) the minimum total clash energy $\E = \cl_{13} + \cl_{23}$
-has been lowered from 37 (Sessions 5--8) to \textbf{29} in Session 14, following the cascade
-$37 \to 34 \to 33 \to 32 \to 31 \to 30 \to \mathbf{29}$;
-(2) the $\E=29$ record has been confirmed across \textbf{four independent isotopy classes}:
-class~4f04a773 ($\cl_{13}=15$, $\cl_{23}=14$, 28 intercalates),
-class~2cc8e22f ($\cl_{13}=14$, $\cl_{23}=15$, 23 intercalates),
-class~74bb7b86 ($\cl_{13}=17$, $\cl_{23}=12$, 19 intercalates, Session~16), and
-class~0968fc79 ($\cl_{13}=17$, $\cl_{23}=12$, 24 intercalates, Session~16);
-(3) every MOLS-10 pair tested (344 pairs) has $\CT(L_1, L_2) \leq 2 < 10$;
-(4) Glucose3 provides machine-verifiable UNSAT certificates for all 311 pairs (42\,ms average);
-(5) all four $\E=29$ classes are proved \textbf{global intercalate-neighborhood minima}:
-4f04a773 (28 ic, max-IS=13, 181\,s), 2cc8e22f (23 ic, max-IS=12, 30\,s),
-74bb7b86 (19 ic, max-IS=10, 2\,s), 0968fc79 (24 ic, max-IS=10, 10\,s) ---
-no intercalate sequence can reach $\E\leq28$ from any of the four classes;
-(6) CP-SAT proof workers have run 40+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$
-across four classes (4f04a773, 2cc8e22f, 74bb7b86, 0968fc79), all inconclusive (Sessions~17--20 ongoing).
+Our main findings are:
+(1) the minimum total clash energy $\E = \cl_{13} + \cl_{23}$ has been reduced to
+\textbf{29} (Session~14), following the cascade $37 \to 34 \to 33 \to 32 \to 31 \to 30 \to \mathbf{29}$,
+then independently rediscovered at $\E=30$ for \textbf{two distinct pairs}:
+mdecomp\_48 (\texttt{8d481a18}; $\cl_{13}=14$, $\cl_{23}=16$, 25+ trials)
+and \textbf{iso\_tv\_21\_0} (\texttt{ee29e34e}; $\cl_{13}=15$, $\cl_{23}=15$, Session~25b v3 trial~1
+--- the scan-record pair with scan $\E=32$, now pushed to $\E=30$ by 4-worker CP-SAT!);
+(2) the $\E=29$ record has been confirmed across four independent isotopy classes
+(4f04a773, 2cc8e22f, 74bb7b86, 0968fc79), all proved global intercalate-neighborhood minima;
+(3) every MOLS-10 pair tested (344 pairs) has $\CT(L_1, L_2) \leq 2 < 10$,
+and Glucose3 provides machine-verifiable UNSAT certificates for 311 pairs;
+(4) a systematic scan of 293+ pairs (out of 323) identifies 25 distinct $L_1$ families
+with scan $\E \leq 37$, including the scan-record pair at $\E=32$;
+(5) CP-SAT proof workers ran 100+ trials targeting $\E \leq 28$, all inconclusive (TIMEOUT);
+(6) four independent $\E=29$ classes are \textbf{5-move intercalate-neighborhood minima}
+(22+ million 5-tuples exhaustively checked).
 
-Dedicated proof-mode workers continue checking $\E \leq 28$ feasibility across multiple
-isotopy classes.  Collectively, this constitutes the strongest computational evidence to date
+Collectively, this constitutes the strongest computational evidence to date
 bearing on $N(10)$, though the question $N(10) = 2$ vs.\ $N(10) \geq 3$ remains open.
+Active pursuit: 4-worker CP-SAT on iso\_tv\_21\_0 hint=E30 (targeting $\E\leq29$).
 \end{abstract}
 
 \tableofcontents
