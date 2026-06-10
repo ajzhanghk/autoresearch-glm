@@ -103,3 +103,5 @@
 [04:58:44] trial= 22 target=28 timeout=1800.0s random_seed=501462801 gauge=[np.int32(7), np.int32(0), np.int32(2), np.int32(4), np.int32(1), np.int32(6), np.int32(8), np.int32(3), np.int32(9), np.int32(5)]
 [05:28:45]   TIMEOUT: inconclusive t=1800.3s
 [05:28:45] trial= 23 target=28 timeout=1800.0s random_seed=847087708 gauge=[np.int32(7), np.int32(3), np.int32(5), np.int32(0), np.int32(2), np.int32(8), np.int32(9), np.int32(1), np.int32(6), np.int32(4)]
+[05:58:45]   TIMEOUT: inconclusive t=1800.2s
+[05:58:45] trial= 24 target=28 timeout=1800.0s random_seed=2130690302 gauge=[np.int32(5), np.int32(2), np.int32(6), np.int32(8), np.int32(1), np.int32(4), np.int32(7), np.int32(3), np.int32(9), np.int32(0)]
