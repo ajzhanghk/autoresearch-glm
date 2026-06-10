@@ -1460,8 +1460,10 @@ Supporting evidence:
     class coverage.
   \item \textbf{Intercalate theory analysis} relating CT count to intercalate structure of
     MOLS-10 pairs (following Wanless \& Webb~\cite{wanless2011}).
-  \item \textbf{Constraint programming approaches} using OR-Tools CP-SAT or Gurobi with
-    stronger propagation than the current Boolean encoding.
+  \item \textbf{Stronger CP-SAT strategies}: the current approach uses up to 4 parallel
+    workers; deploying on HPC nodes with 32--128 workers per trial would be qualitatively
+    stronger. Alternatively, Gurobi ILP or SDP-based bounds could give theoretical
+    certificates on the minimum achievable $\E$.
 \end{enumerate}
 
 % ===========================================================================
@@ -1471,7 +1473,7 @@ Supporting evidence:
 
 This appendix gives full $10 \times 10$ matrices for three representative pairs from the
 catalog.  For each pair, orthogonality is confirmed by verifying $\cl(L_1, L_2) = 0$.
-Complete data for all 311 pairs is in \texttt{promising\_pairs.json}.
+Complete data for all 323 pairs is in \texttt{promising\_pairs.json}.
 
 \subsection*{A.1\ \ Parker TV-21 (1960) — CT = 2}
 
