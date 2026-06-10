@@ -1,0 +1,1644 @@
+[00:53:57] ============================================================
+[00:53:57] ============================================================
+[00:53:57] D5 MOLS search seed=5555 pair_t=120.0s l3_t=600.0s 4w
+[00:53:57] D5 MOLS search seed=5555 pair_t=120.0s l3_t=600.0s 4w
+[00:53:57] D5 Cayley table built. L1_base[0]=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[00:53:57] D5 Cayley table built. L1_base[0]=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[00:53:57] D5 Cayley table L1_base[1]=[1, 2, 3, 4, 0, 6, 7, 8, 9, 5]
+[00:53:57] D5 Cayley table L1_base[1]=[1, 2, 3, 4, 0, 6, 7, 8, 9, 5]
+[00:53:57] D5 Cayley table verified as valid Latin square
+[00:53:57] D5 Cayley table verified as valid Latin square
+[00:53:57] Searching for L2 orthogonal to D5 Cayley table...
+[00:53:57] Searching for L2 orthogonal to D5 Cayley table...
+[00:53:59] D5 pair search: INFEASIBLE in 1.7s
+[00:53:59] D5 pair search: INFEASIBLE in 1.7s
+[00:53:59] D5 Cayley table has NO orthogonal partner! Trying isotopy variants...
+[00:53:59] D5 Cayley table has NO orthogonal partner! Trying isotopy variants...
+[00:54:00] trial=1 isotopy_variant: INFEASIBLE in 1.0s
+[00:54:00] trial=1 isotopy_variant: INFEASIBLE in 1.0s
+[00:54:00]   Isotopy variant also INFEASIBLE
+[00:54:00]   Isotopy variant also INFEASIBLE
+[00:54:01] trial=2 isotopy_variant: INFEASIBLE in 0.7s
+[00:54:01] trial=2 isotopy_variant: INFEASIBLE in 0.7s
+[00:54:01]   Isotopy variant also INFEASIBLE
+[00:54:01]   Isotopy variant also INFEASIBLE
+[00:54:02] trial=3 isotopy_variant: INFEASIBLE in 0.8s
+[00:54:02] trial=3 isotopy_variant: INFEASIBLE in 0.8s
+[00:54:02]   Isotopy variant also INFEASIBLE
+[00:54:02]   Isotopy variant also INFEASIBLE
+[00:54:02] trial=4 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:02] trial=4 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:02]   Isotopy variant also INFEASIBLE
+[00:54:02]   Isotopy variant also INFEASIBLE
+[00:54:02] trial=5 isotopy_variant: INFEASIBLE in 0.4s
+[00:54:02] trial=5 isotopy_variant: INFEASIBLE in 0.4s
+[00:54:02]   Isotopy variant also INFEASIBLE
+[00:54:02]   Isotopy variant also INFEASIBLE
+[00:54:03] trial=6 isotopy_variant: INFEASIBLE in 0.6s
+[00:54:03] trial=6 isotopy_variant: INFEASIBLE in 0.6s
+[00:54:03]   Isotopy variant also INFEASIBLE
+[00:54:03]   Isotopy variant also INFEASIBLE
+[00:54:04] trial=7 isotopy_variant: INFEASIBLE in 1.0s
+[00:54:04] trial=7 isotopy_variant: INFEASIBLE in 1.0s
+[00:54:04]   Isotopy variant also INFEASIBLE
+[00:54:04]   Isotopy variant also INFEASIBLE
+[00:54:05] trial=8 isotopy_variant: INFEASIBLE in 0.7s
+[00:54:05] trial=8 isotopy_variant: INFEASIBLE in 0.7s
+[00:54:05]   Isotopy variant also INFEASIBLE
+[00:54:05]   Isotopy variant also INFEASIBLE
+[00:54:05] trial=9 isotopy_variant: INFEASIBLE in 0.6s
+[00:54:05] trial=9 isotopy_variant: INFEASIBLE in 0.6s
+[00:54:05]   Isotopy variant also INFEASIBLE
+[00:54:05]   Isotopy variant also INFEASIBLE
+[00:54:06] trial=10 isotopy_variant: INFEASIBLE in 0.7s
+[00:54:06] trial=10 isotopy_variant: INFEASIBLE in 0.7s
+[00:54:06]   Isotopy variant also INFEASIBLE
+[00:54:06]   Isotopy variant also INFEASIBLE
+[00:54:08] trial=11 isotopy_variant: INFEASIBLE in 1.6s
+[00:54:08] trial=11 isotopy_variant: INFEASIBLE in 1.6s
+[00:54:08]   Isotopy variant also INFEASIBLE
+[00:54:08]   Isotopy variant also INFEASIBLE
+[00:54:08] trial=12 isotopy_variant: INFEASIBLE in 0.5s
+[00:54:08] trial=12 isotopy_variant: INFEASIBLE in 0.5s
+[00:54:08]   Isotopy variant also INFEASIBLE
+[00:54:08]   Isotopy variant also INFEASIBLE
+[00:54:08] trial=13 isotopy_variant: INFEASIBLE in 0.2s
+[00:54:08] trial=13 isotopy_variant: INFEASIBLE in 0.2s
+[00:54:08]   Isotopy variant also INFEASIBLE
+[00:54:08]   Isotopy variant also INFEASIBLE
+[00:54:09] trial=14 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:09] trial=14 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:09]   Isotopy variant also INFEASIBLE
+[00:54:09]   Isotopy variant also INFEASIBLE
+[00:54:10] trial=15 isotopy_variant: INFEASIBLE in 1.7s
+[00:54:10] trial=15 isotopy_variant: INFEASIBLE in 1.7s
+[00:54:10]   Isotopy variant also INFEASIBLE
+[00:54:10]   Isotopy variant also INFEASIBLE
+[00:54:11] trial=16 isotopy_variant: INFEASIBLE in 1.0s
+[00:54:11] trial=16 isotopy_variant: INFEASIBLE in 1.0s
+[00:54:11]   Isotopy variant also INFEASIBLE
+[00:54:11]   Isotopy variant also INFEASIBLE
+[00:54:12] trial=17 isotopy_variant: INFEASIBLE in 0.6s
+[00:54:12] trial=17 isotopy_variant: INFEASIBLE in 0.6s
+[00:54:12]   Isotopy variant also INFEASIBLE
+[00:54:12]   Isotopy variant also INFEASIBLE
+[00:54:12] trial=18 isotopy_variant: INFEASIBLE in 0.5s
+[00:54:12] trial=18 isotopy_variant: INFEASIBLE in 0.5s
+[00:54:12]   Isotopy variant also INFEASIBLE
+[00:54:12]   Isotopy variant also INFEASIBLE
+[00:54:13] trial=19 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:13] trial=19 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:13]   Isotopy variant also INFEASIBLE
+[00:54:13]   Isotopy variant also INFEASIBLE
+[00:54:13] trial=20 isotopy_variant: INFEASIBLE in 0.4s
+[00:54:13] trial=20 isotopy_variant: INFEASIBLE in 0.4s
+[00:54:13]   Isotopy variant also INFEASIBLE
+[00:54:13]   Isotopy variant also INFEASIBLE
+[00:54:14] trial=21 isotopy_variant: INFEASIBLE in 1.1s
+[00:54:14] trial=21 isotopy_variant: INFEASIBLE in 1.1s
+[00:54:14]   Isotopy variant also INFEASIBLE
+[00:54:14]   Isotopy variant also INFEASIBLE
+[00:54:15] trial=22 isotopy_variant: INFEASIBLE in 0.6s
+[00:54:15] trial=22 isotopy_variant: INFEASIBLE in 0.6s
+[00:54:15]   Isotopy variant also INFEASIBLE
+[00:54:15]   Isotopy variant also INFEASIBLE
+[00:54:16] trial=23 isotopy_variant: INFEASIBLE in 1.2s
+[00:54:16] trial=23 isotopy_variant: INFEASIBLE in 1.2s
+[00:54:16]   Isotopy variant also INFEASIBLE
+[00:54:16]   Isotopy variant also INFEASIBLE
+[00:54:16] trial=24 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:16] trial=24 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:16]   Isotopy variant also INFEASIBLE
+[00:54:16]   Isotopy variant also INFEASIBLE
+[00:54:17] trial=25 isotopy_variant: INFEASIBLE in 0.2s
+[00:54:17] trial=25 isotopy_variant: INFEASIBLE in 0.2s
+[00:54:17]   Isotopy variant also INFEASIBLE
+[00:54:17]   Isotopy variant also INFEASIBLE
+[00:54:18] trial=26 isotopy_variant: INFEASIBLE in 0.9s
+[00:54:18] trial=26 isotopy_variant: INFEASIBLE in 0.9s
+[00:54:18]   Isotopy variant also INFEASIBLE
+[00:54:18]   Isotopy variant also INFEASIBLE
+[00:54:18] trial=27 isotopy_variant: INFEASIBLE in 0.6s
+[00:54:18] trial=27 isotopy_variant: INFEASIBLE in 0.6s
+[00:54:18]   Isotopy variant also INFEASIBLE
+[00:54:18]   Isotopy variant also INFEASIBLE
+[00:54:20] trial=28 isotopy_variant: INFEASIBLE in 1.6s
+[00:54:20] trial=28 isotopy_variant: INFEASIBLE in 1.6s
+[00:54:20]   Isotopy variant also INFEASIBLE
+[00:54:20]   Isotopy variant also INFEASIBLE
+[00:54:21] trial=29 isotopy_variant: INFEASIBLE in 1.1s
+[00:54:21] trial=29 isotopy_variant: INFEASIBLE in 1.1s
+[00:54:21]   Isotopy variant also INFEASIBLE
+[00:54:21]   Isotopy variant also INFEASIBLE
+[00:54:22] trial=30 isotopy_variant: INFEASIBLE in 0.7s
+[00:54:22] trial=30 isotopy_variant: INFEASIBLE in 0.7s
+[00:54:22]   Isotopy variant also INFEASIBLE
+[00:54:22]   Isotopy variant also INFEASIBLE
+[00:54:22] trial=31 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:22] trial=31 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:22]   Isotopy variant also INFEASIBLE
+[00:54:22]   Isotopy variant also INFEASIBLE
+[00:54:22] trial=32 isotopy_variant: INFEASIBLE in 0.5s
+[00:54:22] trial=32 isotopy_variant: INFEASIBLE in 0.5s
+[00:54:22]   Isotopy variant also INFEASIBLE
+[00:54:22]   Isotopy variant also INFEASIBLE
+[00:54:23] trial=33 isotopy_variant: INFEASIBLE in 0.4s
+[00:54:23] trial=33 isotopy_variant: INFEASIBLE in 0.4s
+[00:54:23]   Isotopy variant also INFEASIBLE
+[00:54:23]   Isotopy variant also INFEASIBLE
+[00:54:24] trial=34 isotopy_variant: INFEASIBLE in 1.0s
+[00:54:24] trial=34 isotopy_variant: INFEASIBLE in 1.0s
+[00:54:24]   Isotopy variant also INFEASIBLE
+[00:54:24]   Isotopy variant also INFEASIBLE
+[00:54:24] trial=35 isotopy_variant: INFEASIBLE in 0.6s
+[00:54:24] trial=35 isotopy_variant: INFEASIBLE in 0.6s
+[00:54:24]   Isotopy variant also INFEASIBLE
+[00:54:24]   Isotopy variant also INFEASIBLE
+[00:54:26] trial=36 isotopy_variant: INFEASIBLE in 1.8s
+[00:54:26] trial=36 isotopy_variant: INFEASIBLE in 1.8s
+[00:54:26]   Isotopy variant also INFEASIBLE
+[00:54:26]   Isotopy variant also INFEASIBLE
+[00:54:26] trial=37 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:26] trial=37 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:26]   Isotopy variant also INFEASIBLE
+[00:54:26]   Isotopy variant also INFEASIBLE
+[00:54:27] trial=38 isotopy_variant: INFEASIBLE in 0.5s
+[00:54:27] trial=38 isotopy_variant: INFEASIBLE in 0.5s
+[00:54:27]   Isotopy variant also INFEASIBLE
+[00:54:27]   Isotopy variant also INFEASIBLE
+[00:54:27] trial=39 isotopy_variant: INFEASIBLE in 0.6s
+[00:54:27] trial=39 isotopy_variant: INFEASIBLE in 0.6s
+[00:54:27]   Isotopy variant also INFEASIBLE
+[00:54:27]   Isotopy variant also INFEASIBLE
+[00:54:28] trial=40 isotopy_variant: INFEASIBLE in 0.2s
+[00:54:28] trial=40 isotopy_variant: INFEASIBLE in 0.2s
+[00:54:28]   Isotopy variant also INFEASIBLE
+[00:54:28]   Isotopy variant also INFEASIBLE
+[00:54:28] trial=41 isotopy_variant: INFEASIBLE in 0.5s
+[00:54:28] trial=41 isotopy_variant: INFEASIBLE in 0.5s
+[00:54:28]   Isotopy variant also INFEASIBLE
+[00:54:28]   Isotopy variant also INFEASIBLE
+[00:54:29] trial=42 isotopy_variant: INFEASIBLE in 0.9s
+[00:54:29] trial=42 isotopy_variant: INFEASIBLE in 0.9s
+[00:54:29]   Isotopy variant also INFEASIBLE
+[00:54:29]   Isotopy variant also INFEASIBLE
+[00:54:30] trial=43 isotopy_variant: INFEASIBLE in 1.0s
+[00:54:30] trial=43 isotopy_variant: INFEASIBLE in 1.0s
+[00:54:30]   Isotopy variant also INFEASIBLE
+[00:54:30]   Isotopy variant also INFEASIBLE
+[00:54:30] trial=44 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:30] trial=44 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:30]   Isotopy variant also INFEASIBLE
+[00:54:30]   Isotopy variant also INFEASIBLE
+[00:54:31] trial=45 isotopy_variant: INFEASIBLE in 0.4s
+[00:54:31] trial=45 isotopy_variant: INFEASIBLE in 0.4s
+[00:54:31]   Isotopy variant also INFEASIBLE
+[00:54:31]   Isotopy variant also INFEASIBLE
+[00:54:31] trial=46 isotopy_variant: INFEASIBLE in 0.5s
+[00:54:31] trial=46 isotopy_variant: INFEASIBLE in 0.5s
+[00:54:31]   Isotopy variant also INFEASIBLE
+[00:54:31]   Isotopy variant also INFEASIBLE
+[00:54:32] trial=47 isotopy_variant: INFEASIBLE in 0.8s
+[00:54:32] trial=47 isotopy_variant: INFEASIBLE in 0.8s
+[00:54:32]   Isotopy variant also INFEASIBLE
+[00:54:32]   Isotopy variant also INFEASIBLE
+[00:54:33] trial=48 isotopy_variant: INFEASIBLE in 0.7s
+[00:54:33] trial=48 isotopy_variant: INFEASIBLE in 0.7s
+[00:54:33]   Isotopy variant also INFEASIBLE
+[00:54:33]   Isotopy variant also INFEASIBLE
+[00:54:33] trial=49 isotopy_variant: INFEASIBLE in 0.5s
+[00:54:33] trial=49 isotopy_variant: INFEASIBLE in 0.5s
+[00:54:33]   Isotopy variant also INFEASIBLE
+[00:54:33]   Isotopy variant also INFEASIBLE
+[00:54:34] trial=50 isotopy_variant: INFEASIBLE in 0.6s
+[00:54:34] trial=50 isotopy_variant: INFEASIBLE in 0.6s
+[00:54:34]   Isotopy variant also INFEASIBLE
+[00:54:34]   Isotopy variant also INFEASIBLE
+[00:54:35] trial=51 isotopy_variant: INFEASIBLE in 1.2s
+[00:54:35] trial=51 isotopy_variant: INFEASIBLE in 1.2s
+[00:54:35]   Isotopy variant also INFEASIBLE
+[00:54:35]   Isotopy variant also INFEASIBLE
+[00:54:36] trial=52 isotopy_variant: INFEASIBLE in 1.0s
+[00:54:36] trial=52 isotopy_variant: INFEASIBLE in 1.0s
+[00:54:36]   Isotopy variant also INFEASIBLE
+[00:54:36]   Isotopy variant also INFEASIBLE
+[00:54:37] trial=53 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:37] trial=53 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:37]   Isotopy variant also INFEASIBLE
+[00:54:37]   Isotopy variant also INFEASIBLE
+[00:54:38] trial=54 isotopy_variant: INFEASIBLE in 1.3s
+[00:54:38] trial=54 isotopy_variant: INFEASIBLE in 1.3s
+[00:54:38]   Isotopy variant also INFEASIBLE
+[00:54:38]   Isotopy variant also INFEASIBLE
+[00:54:39] trial=55 isotopy_variant: INFEASIBLE in 0.7s
+[00:54:39] trial=55 isotopy_variant: INFEASIBLE in 0.7s
+[00:54:39]   Isotopy variant also INFEASIBLE
+[00:54:39]   Isotopy variant also INFEASIBLE
+[00:54:41] trial=56 isotopy_variant: INFEASIBLE in 2.4s
+[00:54:41] trial=56 isotopy_variant: INFEASIBLE in 2.4s
+[00:54:41]   Isotopy variant also INFEASIBLE
+[00:54:41]   Isotopy variant also INFEASIBLE
+[00:54:41] trial=57 isotopy_variant: INFEASIBLE in 0.2s
+[00:54:41] trial=57 isotopy_variant: INFEASIBLE in 0.2s
+[00:54:41]   Isotopy variant also INFEASIBLE
+[00:54:41]   Isotopy variant also INFEASIBLE
+[00:54:42] trial=58 isotopy_variant: INFEASIBLE in 0.6s
+[00:54:42] trial=58 isotopy_variant: INFEASIBLE in 0.6s
+[00:54:42]   Isotopy variant also INFEASIBLE
+[00:54:42]   Isotopy variant also INFEASIBLE
+[00:54:42] trial=59 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:42] trial=59 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:42]   Isotopy variant also INFEASIBLE
+[00:54:42]   Isotopy variant also INFEASIBLE
+[00:54:42] trial=60 isotopy_variant: INFEASIBLE in 0.5s
+[00:54:42] trial=60 isotopy_variant: INFEASIBLE in 0.5s
+[00:54:42]   Isotopy variant also INFEASIBLE
+[00:54:42]   Isotopy variant also INFEASIBLE
+[00:54:44] trial=61 isotopy_variant: INFEASIBLE in 1.6s
+[00:54:44] trial=61 isotopy_variant: INFEASIBLE in 1.6s
+[00:54:44]   Isotopy variant also INFEASIBLE
+[00:54:44]   Isotopy variant also INFEASIBLE
+[00:54:44] trial=62 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:44] trial=62 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:44]   Isotopy variant also INFEASIBLE
+[00:54:44]   Isotopy variant also INFEASIBLE
+[00:54:45] trial=63 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:45] trial=63 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:45]   Isotopy variant also INFEASIBLE
+[00:54:45]   Isotopy variant also INFEASIBLE
+[00:54:45] trial=64 isotopy_variant: INFEASIBLE in 0.4s
+[00:54:45] trial=64 isotopy_variant: INFEASIBLE in 0.4s
+[00:54:45]   Isotopy variant also INFEASIBLE
+[00:54:45]   Isotopy variant also INFEASIBLE
+[00:54:45] trial=65 isotopy_variant: INFEASIBLE in 0.2s
+[00:54:45] trial=65 isotopy_variant: INFEASIBLE in 0.2s
+[00:54:45]   Isotopy variant also INFEASIBLE
+[00:54:45]   Isotopy variant also INFEASIBLE
+[00:54:46] trial=66 isotopy_variant: INFEASIBLE in 0.9s
+[00:54:46] trial=66 isotopy_variant: INFEASIBLE in 0.9s
+[00:54:46]   Isotopy variant also INFEASIBLE
+[00:54:46]   Isotopy variant also INFEASIBLE
+[00:54:47] trial=67 isotopy_variant: INFEASIBLE in 1.0s
+[00:54:47] trial=67 isotopy_variant: INFEASIBLE in 1.0s
+[00:54:47]   Isotopy variant also INFEASIBLE
+[00:54:47]   Isotopy variant also INFEASIBLE
+[00:54:48] trial=68 isotopy_variant: INFEASIBLE in 1.0s
+[00:54:48] trial=68 isotopy_variant: INFEASIBLE in 1.0s
+[00:54:48]   Isotopy variant also INFEASIBLE
+[00:54:48]   Isotopy variant also INFEASIBLE
+[00:54:49] trial=69 isotopy_variant: INFEASIBLE in 0.8s
+[00:54:49] trial=69 isotopy_variant: INFEASIBLE in 0.8s
+[00:54:49]   Isotopy variant also INFEASIBLE
+[00:54:49]   Isotopy variant also INFEASIBLE
+[00:54:50] trial=70 isotopy_variant: INFEASIBLE in 0.7s
+[00:54:50] trial=70 isotopy_variant: INFEASIBLE in 0.7s
+[00:54:50]   Isotopy variant also INFEASIBLE
+[00:54:50]   Isotopy variant also INFEASIBLE
+[00:54:52] trial=71 isotopy_variant: INFEASIBLE in 1.7s
+[00:54:52] trial=71 isotopy_variant: INFEASIBLE in 1.7s
+[00:54:52]   Isotopy variant also INFEASIBLE
+[00:54:52]   Isotopy variant also INFEASIBLE
+[00:54:52] trial=72 isotopy_variant: INFEASIBLE in 0.5s
+[00:54:52] trial=72 isotopy_variant: INFEASIBLE in 0.5s
+[00:54:52]   Isotopy variant also INFEASIBLE
+[00:54:52]   Isotopy variant also INFEASIBLE
+[00:54:53] trial=73 isotopy_variant: INFEASIBLE in 0.8s
+[00:54:53] trial=73 isotopy_variant: INFEASIBLE in 0.8s
+[00:54:53]   Isotopy variant also INFEASIBLE
+[00:54:53]   Isotopy variant also INFEASIBLE
+[00:54:54] trial=74 isotopy_variant: INFEASIBLE in 1.2s
+[00:54:54] trial=74 isotopy_variant: INFEASIBLE in 1.2s
+[00:54:54]   Isotopy variant also INFEASIBLE
+[00:54:54]   Isotopy variant also INFEASIBLE
+[00:54:55] trial=75 isotopy_variant: INFEASIBLE in 1.3s
+[00:54:55] trial=75 isotopy_variant: INFEASIBLE in 1.3s
+[00:54:55]   Isotopy variant also INFEASIBLE
+[00:54:55]   Isotopy variant also INFEASIBLE
+[00:54:56] trial=76 isotopy_variant: INFEASIBLE in 0.6s
+[00:54:56] trial=76 isotopy_variant: INFEASIBLE in 0.6s
+[00:54:56]   Isotopy variant also INFEASIBLE
+[00:54:56]   Isotopy variant also INFEASIBLE
+[00:54:56] trial=77 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:56] trial=77 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:56]   Isotopy variant also INFEASIBLE
+[00:54:56]   Isotopy variant also INFEASIBLE
+[00:54:56] trial=78 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:56] trial=78 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:56]   Isotopy variant also INFEASIBLE
+[00:54:56]   Isotopy variant also INFEASIBLE
+[00:54:58] trial=79 isotopy_variant: INFEASIBLE in 1.7s
+[00:54:58] trial=79 isotopy_variant: INFEASIBLE in 1.7s
+[00:54:58]   Isotopy variant also INFEASIBLE
+[00:54:58]   Isotopy variant also INFEASIBLE
+[00:54:58] trial=80 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:58] trial=80 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:58]   Isotopy variant also INFEASIBLE
+[00:54:58]   Isotopy variant also INFEASIBLE
+[00:54:59] trial=81 isotopy_variant: INFEASIBLE in 0.5s
+[00:54:59] trial=81 isotopy_variant: INFEASIBLE in 0.5s
+[00:54:59]   Isotopy variant also INFEASIBLE
+[00:54:59]   Isotopy variant also INFEASIBLE
+[00:54:59] trial=82 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:59] trial=82 isotopy_variant: INFEASIBLE in 0.3s
+[00:54:59]   Isotopy variant also INFEASIBLE
+[00:54:59]   Isotopy variant also INFEASIBLE
+[00:55:00] trial=83 isotopy_variant: INFEASIBLE in 1.1s
+[00:55:00] trial=83 isotopy_variant: INFEASIBLE in 1.1s
+[00:55:00]   Isotopy variant also INFEASIBLE
+[00:55:00]   Isotopy variant also INFEASIBLE
+[00:55:02] trial=84 isotopy_variant: INFEASIBLE in 1.6s
+[00:55:02] trial=84 isotopy_variant: INFEASIBLE in 1.6s
+[00:55:02]   Isotopy variant also INFEASIBLE
+[00:55:02]   Isotopy variant also INFEASIBLE
+[00:55:03] trial=85 isotopy_variant: INFEASIBLE in 0.7s
+[00:55:03] trial=85 isotopy_variant: INFEASIBLE in 0.7s
+[00:55:03]   Isotopy variant also INFEASIBLE
+[00:55:03]   Isotopy variant also INFEASIBLE
+[00:55:03] trial=86 isotopy_variant: INFEASIBLE in 0.2s
+[00:55:03] trial=86 isotopy_variant: INFEASIBLE in 0.2s
+[00:55:03]   Isotopy variant also INFEASIBLE
+[00:55:03]   Isotopy variant also INFEASIBLE
+[00:55:04] trial=87 isotopy_variant: INFEASIBLE in 1.0s
+[00:55:04] trial=87 isotopy_variant: INFEASIBLE in 1.0s
+[00:55:04]   Isotopy variant also INFEASIBLE
+[00:55:04]   Isotopy variant also INFEASIBLE
+[00:55:04] trial=88 isotopy_variant: INFEASIBLE in 0.5s
+[00:55:04] trial=88 isotopy_variant: INFEASIBLE in 0.5s
+[00:55:04]   Isotopy variant also INFEASIBLE
+[00:55:04]   Isotopy variant also INFEASIBLE
+[00:55:05] trial=89 isotopy_variant: INFEASIBLE in 0.6s
+[00:55:05] trial=89 isotopy_variant: INFEASIBLE in 0.6s
+[00:55:05]   Isotopy variant also INFEASIBLE
+[00:55:05]   Isotopy variant also INFEASIBLE
+[00:55:06] trial=90 isotopy_variant: INFEASIBLE in 0.6s
+[00:55:06] trial=90 isotopy_variant: INFEASIBLE in 0.6s
+[00:55:06]   Isotopy variant also INFEASIBLE
+[00:55:06]   Isotopy variant also INFEASIBLE
+[00:55:06] trial=91 isotopy_variant: INFEASIBLE in 0.2s
+[00:55:06] trial=91 isotopy_variant: INFEASIBLE in 0.2s
+[00:55:06]   Isotopy variant also INFEASIBLE
+[00:55:06]   Isotopy variant also INFEASIBLE
+[00:55:06] trial=92 isotopy_variant: INFEASIBLE in 0.5s
+[00:55:06] trial=92 isotopy_variant: INFEASIBLE in 0.5s
+[00:55:06]   Isotopy variant also INFEASIBLE
+[00:55:06]   Isotopy variant also INFEASIBLE
+[00:55:07] trial=93 isotopy_variant: INFEASIBLE in 0.5s
+[00:55:07] trial=93 isotopy_variant: INFEASIBLE in 0.5s
+[00:55:07]   Isotopy variant also INFEASIBLE
+[00:55:07]   Isotopy variant also INFEASIBLE
+[00:55:07] trial=94 isotopy_variant: INFEASIBLE in 0.3s
+[00:55:07] trial=94 isotopy_variant: INFEASIBLE in 0.3s
+[00:55:07]   Isotopy variant also INFEASIBLE
+[00:55:07]   Isotopy variant also INFEASIBLE
+[00:55:08] trial=95 isotopy_variant: INFEASIBLE in 0.4s
+[00:55:08] trial=95 isotopy_variant: INFEASIBLE in 0.4s
+[00:55:08]   Isotopy variant also INFEASIBLE
+[00:55:08]   Isotopy variant also INFEASIBLE
+[00:55:09] trial=96 isotopy_variant: INFEASIBLE in 1.1s
+[00:55:09] trial=96 isotopy_variant: INFEASIBLE in 1.1s
+[00:55:09]   Isotopy variant also INFEASIBLE
+[00:55:09]   Isotopy variant also INFEASIBLE
+[00:55:10] trial=97 isotopy_variant: INFEASIBLE in 0.9s
+[00:55:10] trial=97 isotopy_variant: INFEASIBLE in 0.9s
+[00:55:10]   Isotopy variant also INFEASIBLE
+[00:55:10]   Isotopy variant also INFEASIBLE
+[00:55:10] trial=98 isotopy_variant: INFEASIBLE in 0.2s
+[00:55:10] trial=98 isotopy_variant: INFEASIBLE in 0.2s
+[00:55:10]   Isotopy variant also INFEASIBLE
+[00:55:10]   Isotopy variant also INFEASIBLE
+[00:55:11] trial=99 isotopy_variant: INFEASIBLE in 1.4s
+[00:55:11] trial=99 isotopy_variant: INFEASIBLE in 1.4s
+[00:55:11]   Isotopy variant also INFEASIBLE
+[00:55:11]   Isotopy variant also INFEASIBLE
+[00:55:13] trial=100 isotopy_variant: INFEASIBLE in 1.8s
+[00:55:13] trial=100 isotopy_variant: INFEASIBLE in 1.8s
+[00:55:13]   Isotopy variant also INFEASIBLE
+[00:55:13]   Isotopy variant also INFEASIBLE
+[00:55:13] trial=101 isotopy_variant: INFEASIBLE in 0.3s
+[00:55:13] trial=101 isotopy_variant: INFEASIBLE in 0.3s
+[00:55:13]   Isotopy variant also INFEASIBLE
+[00:55:13]   Isotopy variant also INFEASIBLE
+[00:55:15] trial=102 isotopy_variant: INFEASIBLE in 1.2s
+[00:55:15] trial=102 isotopy_variant: INFEASIBLE in 1.2s
+[00:55:15]   Isotopy variant also INFEASIBLE
+[00:55:15]   Isotopy variant also INFEASIBLE
+[00:55:15] trial=103 isotopy_variant: INFEASIBLE in 0.6s
+[00:55:15] trial=103 isotopy_variant: INFEASIBLE in 0.6s
+[00:55:15]   Isotopy variant also INFEASIBLE
+[00:55:15]   Isotopy variant also INFEASIBLE
+[00:55:16] trial=104 isotopy_variant: INFEASIBLE in 0.9s
+[00:55:16] trial=104 isotopy_variant: INFEASIBLE in 0.9s
+[00:55:16]   Isotopy variant also INFEASIBLE
+[00:55:16]   Isotopy variant also INFEASIBLE
+[00:55:17] trial=105 isotopy_variant: INFEASIBLE in 0.5s
+[00:55:17] trial=105 isotopy_variant: INFEASIBLE in 0.5s
+[00:55:17]   Isotopy variant also INFEASIBLE
+[00:55:17]   Isotopy variant also INFEASIBLE
+[00:55:17] trial=106 isotopy_variant: INFEASIBLE in 0.2s
+[00:55:17] trial=106 isotopy_variant: INFEASIBLE in 0.2s
+[00:55:17]   Isotopy variant also INFEASIBLE
+[00:55:17]   Isotopy variant also INFEASIBLE
+[00:55:18] trial=107 isotopy_variant: INFEASIBLE in 1.1s
+[00:55:18] trial=107 isotopy_variant: INFEASIBLE in 1.1s
+[00:55:18]   Isotopy variant also INFEASIBLE
+[00:55:18]   Isotopy variant also INFEASIBLE
+[00:55:18] trial=108 isotopy_variant: INFEASIBLE in 0.2s
+[00:55:18] trial=108 isotopy_variant: INFEASIBLE in 0.2s
+[00:55:18]   Isotopy variant also INFEASIBLE
+[00:55:18]   Isotopy variant also INFEASIBLE
+[00:55:19] trial=109 isotopy_variant: INFEASIBLE in 1.1s
+[00:55:19] trial=109 isotopy_variant: INFEASIBLE in 1.1s
+[00:55:19]   Isotopy variant also INFEASIBLE
+[00:55:19]   Isotopy variant also INFEASIBLE
+[00:55:20] trial=110 isotopy_variant: INFEASIBLE in 0.9s
+[00:55:20] trial=110 isotopy_variant: INFEASIBLE in 0.9s
+[00:55:20]   Isotopy variant also INFEASIBLE
+[00:55:20]   Isotopy variant also INFEASIBLE
+[00:55:21] trial=111 isotopy_variant: INFEASIBLE in 0.7s
+[00:55:21] trial=111 isotopy_variant: INFEASIBLE in 0.7s
+[00:55:21]   Isotopy variant also INFEASIBLE
+[00:55:21]   Isotopy variant also INFEASIBLE
+[00:55:22] trial=112 isotopy_variant: INFEASIBLE in 1.1s
+[00:55:22] trial=112 isotopy_variant: INFEASIBLE in 1.1s
+[00:55:22]   Isotopy variant also INFEASIBLE
+[00:55:22]   Isotopy variant also INFEASIBLE
+[00:55:22] trial=113 isotopy_variant: INFEASIBLE in 0.2s
+[00:55:22] trial=113 isotopy_variant: INFEASIBLE in 0.2s
+[00:55:22]   Isotopy variant also INFEASIBLE
+[00:55:22]   Isotopy variant also INFEASIBLE
+[00:55:23] trial=114 isotopy_variant: INFEASIBLE in 0.7s
+[00:55:23] trial=114 isotopy_variant: INFEASIBLE in 0.7s
+[00:55:23]   Isotopy variant also INFEASIBLE
+[00:55:23]   Isotopy variant also INFEASIBLE
+[00:55:24] trial=115 isotopy_variant: INFEASIBLE in 0.5s
+[00:55:24] trial=115 isotopy_variant: INFEASIBLE in 0.5s
+[00:55:24]   Isotopy variant also INFEASIBLE
+[00:55:24]   Isotopy variant also INFEASIBLE
+[00:55:24] trial=116 isotopy_variant: INFEASIBLE in 0.9s
+[00:55:24] trial=116 isotopy_variant: INFEASIBLE in 0.9s
+[00:55:24]   Isotopy variant also INFEASIBLE
+[00:55:24]   Isotopy variant also INFEASIBLE
+[00:55:25] trial=117 isotopy_variant: INFEASIBLE in 0.5s
+[00:55:25] trial=117 isotopy_variant: INFEASIBLE in 0.5s
+[00:55:25]   Isotopy variant also INFEASIBLE
+[00:55:25]   Isotopy variant also INFEASIBLE
+[00:55:26] trial=118 isotopy_variant: INFEASIBLE in 0.7s
+[00:55:26] trial=118 isotopy_variant: INFEASIBLE in 0.7s
+[00:55:26]   Isotopy variant also INFEASIBLE
+[00:55:26]   Isotopy variant also INFEASIBLE
+[00:55:27] trial=119 isotopy_variant: INFEASIBLE in 1.1s
+[00:55:27] trial=119 isotopy_variant: INFEASIBLE in 1.1s
+[00:55:27]   Isotopy variant also INFEASIBLE
+[00:55:27]   Isotopy variant also INFEASIBLE
+[00:55:28] trial=120 isotopy_variant: INFEASIBLE in 1.0s
+[00:55:28] trial=120 isotopy_variant: INFEASIBLE in 1.0s
+[00:55:28]   Isotopy variant also INFEASIBLE
+[00:55:28]   Isotopy variant also INFEASIBLE
+[00:55:28] trial=121 isotopy_variant: INFEASIBLE in 0.5s
+[00:55:28] trial=121 isotopy_variant: INFEASIBLE in 0.5s
+[00:55:28]   Isotopy variant also INFEASIBLE
+[00:55:28]   Isotopy variant also INFEASIBLE
+[00:55:29] trial=122 isotopy_variant: INFEASIBLE in 0.7s
+[00:55:29] trial=122 isotopy_variant: INFEASIBLE in 0.7s
+[00:55:29]   Isotopy variant also INFEASIBLE
+[00:55:29]   Isotopy variant also INFEASIBLE
+[00:55:30] trial=123 isotopy_variant: INFEASIBLE in 1.1s
+[00:55:30] trial=123 isotopy_variant: INFEASIBLE in 1.1s
+[00:55:30]   Isotopy variant also INFEASIBLE
+[00:55:30]   Isotopy variant also INFEASIBLE
+[00:55:32] trial=124 isotopy_variant: INFEASIBLE in 2.0s
+[00:55:32] trial=124 isotopy_variant: INFEASIBLE in 2.0s
+[00:55:32]   Isotopy variant also INFEASIBLE
+[00:55:32]   Isotopy variant also INFEASIBLE
+[00:55:33] trial=125 isotopy_variant: INFEASIBLE in 1.3s
+[00:55:33] trial=125 isotopy_variant: INFEASIBLE in 1.3s
+[00:55:33]   Isotopy variant also INFEASIBLE
+[00:55:33]   Isotopy variant also INFEASIBLE
+[00:55:34] trial=126 isotopy_variant: INFEASIBLE in 0.6s
+[00:55:34] trial=126 isotopy_variant: INFEASIBLE in 0.6s
+[00:55:34]   Isotopy variant also INFEASIBLE
+[00:55:34]   Isotopy variant also INFEASIBLE
+[00:55:34] trial=127 isotopy_variant: INFEASIBLE in 0.3s
+[00:55:34] trial=127 isotopy_variant: INFEASIBLE in 0.3s
+[00:55:34]   Isotopy variant also INFEASIBLE
+[00:55:34]   Isotopy variant also INFEASIBLE
+[00:55:35] trial=128 isotopy_variant: INFEASIBLE in 1.0s
+[00:55:35] trial=128 isotopy_variant: INFEASIBLE in 1.0s
+[00:55:35]   Isotopy variant also INFEASIBLE
+[00:55:35]   Isotopy variant also INFEASIBLE
+[00:55:36] trial=129 isotopy_variant: INFEASIBLE in 0.9s
+[00:55:36] trial=129 isotopy_variant: INFEASIBLE in 0.9s
+[00:55:36]   Isotopy variant also INFEASIBLE
+[00:55:36]   Isotopy variant also INFEASIBLE
+[00:55:37] trial=130 isotopy_variant: INFEASIBLE in 0.4s
+[00:55:37] trial=130 isotopy_variant: INFEASIBLE in 0.4s
+[00:55:37]   Isotopy variant also INFEASIBLE
+[00:55:37]   Isotopy variant also INFEASIBLE
+[00:55:37] trial=131 isotopy_variant: INFEASIBLE in 0.3s
+[00:55:37] trial=131 isotopy_variant: INFEASIBLE in 0.3s
+[00:55:37]   Isotopy variant also INFEASIBLE
+[00:55:37]   Isotopy variant also INFEASIBLE
+[00:55:38] trial=132 isotopy_variant: INFEASIBLE in 1.3s
+[00:55:38] trial=132 isotopy_variant: INFEASIBLE in 1.3s
+[00:55:38]   Isotopy variant also INFEASIBLE
+[00:55:38]   Isotopy variant also INFEASIBLE
+[00:55:39] trial=133 isotopy_variant: INFEASIBLE in 0.3s
+[00:55:39] trial=133 isotopy_variant: INFEASIBLE in 0.3s
+[00:55:39]   Isotopy variant also INFEASIBLE
+[00:55:39]   Isotopy variant also INFEASIBLE
+[00:55:39] trial=134 isotopy_variant: INFEASIBLE in 0.2s
+[00:55:39] trial=134 isotopy_variant: INFEASIBLE in 0.2s
+[00:55:39]   Isotopy variant also INFEASIBLE
+[00:55:39]   Isotopy variant also INFEASIBLE
+[00:55:40] trial=135 isotopy_variant: INFEASIBLE in 1.0s
+[00:55:40] trial=135 isotopy_variant: INFEASIBLE in 1.0s
+[00:55:40]   Isotopy variant also INFEASIBLE
+[00:55:40]   Isotopy variant also INFEASIBLE
+[00:55:40] trial=136 isotopy_variant: INFEASIBLE in 0.2s
+[00:55:40] trial=136 isotopy_variant: INFEASIBLE in 0.2s
+[00:55:40]   Isotopy variant also INFEASIBLE
+[00:55:40]   Isotopy variant also INFEASIBLE
+[00:55:41] trial=137 isotopy_variant: INFEASIBLE in 0.5s
+[00:55:41] trial=137 isotopy_variant: INFEASIBLE in 0.5s
+[00:55:41]   Isotopy variant also INFEASIBLE
+[00:55:41]   Isotopy variant also INFEASIBLE
+[00:55:41] trial=138 isotopy_variant: INFEASIBLE in 0.6s
+[00:55:41] trial=138 isotopy_variant: INFEASIBLE in 0.6s
+[00:55:41]   Isotopy variant also INFEASIBLE
+[00:55:41]   Isotopy variant also INFEASIBLE
+[00:55:41] trial=139 isotopy_variant: INFEASIBLE in 0.3s
+[00:55:41] trial=139 isotopy_variant: INFEASIBLE in 0.3s
+[00:55:41]   Isotopy variant also INFEASIBLE
+[00:55:41]   Isotopy variant also INFEASIBLE
+[00:55:42] trial=140 isotopy_variant: INFEASIBLE in 0.6s
+[00:55:42] trial=140 isotopy_variant: INFEASIBLE in 0.6s
+[00:55:42]   Isotopy variant also INFEASIBLE
+[00:55:42]   Isotopy variant also INFEASIBLE
+[00:55:43] trial=141 isotopy_variant: INFEASIBLE in 0.6s
+[00:55:43] trial=141 isotopy_variant: INFEASIBLE in 0.6s
+[00:55:43]   Isotopy variant also INFEASIBLE
+[00:55:43]   Isotopy variant also INFEASIBLE
+[00:55:43] trial=142 isotopy_variant: INFEASIBLE in 0.4s
+[00:55:43] trial=142 isotopy_variant: INFEASIBLE in 0.4s
+[00:55:43]   Isotopy variant also INFEASIBLE
+[00:55:43]   Isotopy variant also INFEASIBLE
+[00:55:43] trial=143 isotopy_variant: INFEASIBLE in 0.2s
+[00:55:43] trial=143 isotopy_variant: INFEASIBLE in 0.2s
+[00:55:43]   Isotopy variant also INFEASIBLE
+[00:55:43]   Isotopy variant also INFEASIBLE
+[00:55:44] trial=144 isotopy_variant: INFEASIBLE in 0.3s
+[00:55:44] trial=144 isotopy_variant: INFEASIBLE in 0.3s
+[00:55:44]   Isotopy variant also INFEASIBLE
+[00:55:44]   Isotopy variant also INFEASIBLE
+[00:55:45] trial=145 isotopy_variant: INFEASIBLE in 1.3s
+[00:55:45] trial=145 isotopy_variant: INFEASIBLE in 1.3s
+[00:55:45]   Isotopy variant also INFEASIBLE
+[00:55:45]   Isotopy variant also INFEASIBLE
+[00:55:45] trial=146 isotopy_variant: INFEASIBLE in 0.2s
+[00:55:45] trial=146 isotopy_variant: INFEASIBLE in 0.2s
+[00:55:45]   Isotopy variant also INFEASIBLE
+[00:55:45]   Isotopy variant also INFEASIBLE
+[00:55:45] trial=147 isotopy_variant: INFEASIBLE in 0.4s
+[00:55:45] trial=147 isotopy_variant: INFEASIBLE in 0.4s
+[00:55:45]   Isotopy variant also INFEASIBLE
+[00:55:45]   Isotopy variant also INFEASIBLE
+[00:55:46] trial=148 isotopy_variant: INFEASIBLE in 0.6s
+[00:55:46] trial=148 isotopy_variant: INFEASIBLE in 0.6s
+[00:55:46]   Isotopy variant also INFEASIBLE
+[00:55:46]   Isotopy variant also INFEASIBLE
+[00:55:47] trial=149 isotopy_variant: INFEASIBLE in 1.0s
+[00:55:47] trial=149 isotopy_variant: INFEASIBLE in 1.0s
+[00:55:47]   Isotopy variant also INFEASIBLE
+[00:55:47]   Isotopy variant also INFEASIBLE
+[00:55:48] trial=150 isotopy_variant: INFEASIBLE in 0.7s
+[00:55:48] trial=150 isotopy_variant: INFEASIBLE in 0.7s
+[00:55:48]   Isotopy variant also INFEASIBLE
+[00:55:48]   Isotopy variant also INFEASIBLE
+[00:55:48] trial=151 isotopy_variant: INFEASIBLE in 0.7s
+[00:55:48] trial=151 isotopy_variant: INFEASIBLE in 0.7s
+[00:55:48]   Isotopy variant also INFEASIBLE
+[00:55:48]   Isotopy variant also INFEASIBLE
+[00:55:50] trial=152 isotopy_variant: INFEASIBLE in 1.7s
+[00:55:50] trial=152 isotopy_variant: INFEASIBLE in 1.7s
+[00:55:50]   Isotopy variant also INFEASIBLE
+[00:55:50]   Isotopy variant also INFEASIBLE
+[00:55:51] trial=153 isotopy_variant: INFEASIBLE in 1.3s
+[00:55:51] trial=153 isotopy_variant: INFEASIBLE in 1.3s
+[00:55:51]   Isotopy variant also INFEASIBLE
+[00:55:51]   Isotopy variant also INFEASIBLE
+[00:55:53] trial=154 isotopy_variant: INFEASIBLE in 1.6s
+[00:55:53] trial=154 isotopy_variant: INFEASIBLE in 1.6s
+[00:55:53]   Isotopy variant also INFEASIBLE
+[00:55:53]   Isotopy variant also INFEASIBLE
+[00:55:54] trial=155 isotopy_variant: INFEASIBLE in 0.5s
+[00:55:54] trial=155 isotopy_variant: INFEASIBLE in 0.5s
+[00:55:54]   Isotopy variant also INFEASIBLE
+[00:55:54]   Isotopy variant also INFEASIBLE
+[00:55:55] trial=156 isotopy_variant: INFEASIBLE in 1.7s
+[00:55:55] trial=156 isotopy_variant: INFEASIBLE in 1.7s
+[00:55:55]   Isotopy variant also INFEASIBLE
+[00:55:55]   Isotopy variant also INFEASIBLE
+[00:55:56] trial=157 isotopy_variant: INFEASIBLE in 0.3s
+[00:55:56] trial=157 isotopy_variant: INFEASIBLE in 0.3s
+[00:55:56]   Isotopy variant also INFEASIBLE
+[00:55:56]   Isotopy variant also INFEASIBLE
+[00:55:56] trial=158 isotopy_variant: INFEASIBLE in 0.3s
+[00:55:56] trial=158 isotopy_variant: INFEASIBLE in 0.3s
+[00:55:56]   Isotopy variant also INFEASIBLE
+[00:55:56]   Isotopy variant also INFEASIBLE
+[00:55:56] trial=159 isotopy_variant: INFEASIBLE in 0.5s
+[00:55:56] trial=159 isotopy_variant: INFEASIBLE in 0.5s
+[00:55:56]   Isotopy variant also INFEASIBLE
+[00:55:56]   Isotopy variant also INFEASIBLE
+[00:55:58] trial=160 isotopy_variant: INFEASIBLE in 1.3s
+[00:55:58] trial=160 isotopy_variant: INFEASIBLE in 1.3s
+[00:55:58]   Isotopy variant also INFEASIBLE
+[00:55:58]   Isotopy variant also INFEASIBLE
+[00:55:59] trial=161 isotopy_variant: INFEASIBLE in 0.8s
+[00:55:59] trial=161 isotopy_variant: INFEASIBLE in 0.8s
+[00:55:59]   Isotopy variant also INFEASIBLE
+[00:55:59]   Isotopy variant also INFEASIBLE
+[00:55:59] trial=162 isotopy_variant: INFEASIBLE in 0.6s
+[00:55:59] trial=162 isotopy_variant: INFEASIBLE in 0.6s
+[00:55:59]   Isotopy variant also INFEASIBLE
+[00:55:59]   Isotopy variant also INFEASIBLE
+[00:56:00] trial=163 isotopy_variant: INFEASIBLE in 0.7s
+[00:56:00] trial=163 isotopy_variant: INFEASIBLE in 0.7s
+[00:56:00]   Isotopy variant also INFEASIBLE
+[00:56:00]   Isotopy variant also INFEASIBLE
+[00:56:00] trial=164 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:00] trial=164 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:00]   Isotopy variant also INFEASIBLE
+[00:56:00]   Isotopy variant also INFEASIBLE
+[00:56:01] trial=165 isotopy_variant: INFEASIBLE in 0.6s
+[00:56:01] trial=165 isotopy_variant: INFEASIBLE in 0.6s
+[00:56:01]   Isotopy variant also INFEASIBLE
+[00:56:01]   Isotopy variant also INFEASIBLE
+[00:56:01] trial=166 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:01] trial=166 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:01]   Isotopy variant also INFEASIBLE
+[00:56:01]   Isotopy variant also INFEASIBLE
+[00:56:01] trial=167 isotopy_variant: INFEASIBLE in 0.2s
+[00:56:01] trial=167 isotopy_variant: INFEASIBLE in 0.2s
+[00:56:01]   Isotopy variant also INFEASIBLE
+[00:56:01]   Isotopy variant also INFEASIBLE
+[00:56:02] trial=168 isotopy_variant: INFEASIBLE in 0.2s
+[00:56:02] trial=168 isotopy_variant: INFEASIBLE in 0.2s
+[00:56:02]   Isotopy variant also INFEASIBLE
+[00:56:02]   Isotopy variant also INFEASIBLE
+[00:56:02] trial=169 isotopy_variant: INFEASIBLE in 0.7s
+[00:56:02] trial=169 isotopy_variant: INFEASIBLE in 0.7s
+[00:56:02]   Isotopy variant also INFEASIBLE
+[00:56:02]   Isotopy variant also INFEASIBLE
+[00:56:03] trial=170 isotopy_variant: INFEASIBLE in 0.9s
+[00:56:03] trial=170 isotopy_variant: INFEASIBLE in 0.9s
+[00:56:03]   Isotopy variant also INFEASIBLE
+[00:56:03]   Isotopy variant also INFEASIBLE
+[00:56:04] trial=171 isotopy_variant: INFEASIBLE in 1.3s
+[00:56:04] trial=171 isotopy_variant: INFEASIBLE in 1.3s
+[00:56:04]   Isotopy variant also INFEASIBLE
+[00:56:04]   Isotopy variant also INFEASIBLE
+[00:56:05] trial=172 isotopy_variant: INFEASIBLE in 0.2s
+[00:56:05] trial=172 isotopy_variant: INFEASIBLE in 0.2s
+[00:56:05]   Isotopy variant also INFEASIBLE
+[00:56:05]   Isotopy variant also INFEASIBLE
+[00:56:06] trial=173 isotopy_variant: INFEASIBLE in 0.9s
+[00:56:06] trial=173 isotopy_variant: INFEASIBLE in 0.9s
+[00:56:06]   Isotopy variant also INFEASIBLE
+[00:56:06]   Isotopy variant also INFEASIBLE
+[00:56:06] trial=174 isotopy_variant: INFEASIBLE in 0.5s
+[00:56:06] trial=174 isotopy_variant: INFEASIBLE in 0.5s
+[00:56:06]   Isotopy variant also INFEASIBLE
+[00:56:06]   Isotopy variant also INFEASIBLE
+[00:56:06] trial=175 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:06] trial=175 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:06]   Isotopy variant also INFEASIBLE
+[00:56:06]   Isotopy variant also INFEASIBLE
+[00:56:07] trial=176 isotopy_variant: INFEASIBLE in 0.2s
+[00:56:07] trial=176 isotopy_variant: INFEASIBLE in 0.2s
+[00:56:07]   Isotopy variant also INFEASIBLE
+[00:56:07]   Isotopy variant also INFEASIBLE
+[00:56:09] trial=177 isotopy_variant: INFEASIBLE in 1.9s
+[00:56:09] trial=177 isotopy_variant: INFEASIBLE in 1.9s
+[00:56:09]   Isotopy variant also INFEASIBLE
+[00:56:09]   Isotopy variant also INFEASIBLE
+[00:56:09] trial=178 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:09] trial=178 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:09]   Isotopy variant also INFEASIBLE
+[00:56:09]   Isotopy variant also INFEASIBLE
+[00:56:09] trial=179 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:09] trial=179 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:09]   Isotopy variant also INFEASIBLE
+[00:56:09]   Isotopy variant also INFEASIBLE
+[00:56:10] trial=180 isotopy_variant: INFEASIBLE in 1.2s
+[00:56:10] trial=180 isotopy_variant: INFEASIBLE in 1.2s
+[00:56:10]   Isotopy variant also INFEASIBLE
+[00:56:10]   Isotopy variant also INFEASIBLE
+[00:56:11] trial=181 isotopy_variant: INFEASIBLE in 1.0s
+[00:56:11] trial=181 isotopy_variant: INFEASIBLE in 1.0s
+[00:56:11]   Isotopy variant also INFEASIBLE
+[00:56:11]   Isotopy variant also INFEASIBLE
+[00:56:12] trial=182 isotopy_variant: INFEASIBLE in 1.2s
+[00:56:12] trial=182 isotopy_variant: INFEASIBLE in 1.2s
+[00:56:12]   Isotopy variant also INFEASIBLE
+[00:56:12]   Isotopy variant also INFEASIBLE
+[00:56:14] trial=183 isotopy_variant: INFEASIBLE in 1.3s
+[00:56:14] trial=183 isotopy_variant: INFEASIBLE in 1.3s
+[00:56:14]   Isotopy variant also INFEASIBLE
+[00:56:14]   Isotopy variant also INFEASIBLE
+[00:56:15] trial=184 isotopy_variant: INFEASIBLE in 1.4s
+[00:56:15] trial=184 isotopy_variant: INFEASIBLE in 1.4s
+[00:56:15]   Isotopy variant also INFEASIBLE
+[00:56:15]   Isotopy variant also INFEASIBLE
+[00:56:16] trial=185 isotopy_variant: INFEASIBLE in 0.7s
+[00:56:16] trial=185 isotopy_variant: INFEASIBLE in 0.7s
+[00:56:16]   Isotopy variant also INFEASIBLE
+[00:56:16]   Isotopy variant also INFEASIBLE
+[00:56:17] trial=186 isotopy_variant: INFEASIBLE in 1.2s
+[00:56:17] trial=186 isotopy_variant: INFEASIBLE in 1.2s
+[00:56:17]   Isotopy variant also INFEASIBLE
+[00:56:17]   Isotopy variant also INFEASIBLE
+[00:56:18] trial=187 isotopy_variant: INFEASIBLE in 1.3s
+[00:56:18] trial=187 isotopy_variant: INFEASIBLE in 1.3s
+[00:56:18]   Isotopy variant also INFEASIBLE
+[00:56:18]   Isotopy variant also INFEASIBLE
+[00:56:19] trial=188 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:19] trial=188 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:19]   Isotopy variant also INFEASIBLE
+[00:56:19]   Isotopy variant also INFEASIBLE
+[00:56:20] trial=189 isotopy_variant: INFEASIBLE in 1.0s
+[00:56:20] trial=189 isotopy_variant: INFEASIBLE in 1.0s
+[00:56:20]   Isotopy variant also INFEASIBLE
+[00:56:20]   Isotopy variant also INFEASIBLE
+[00:56:20] trial=190 isotopy_variant: INFEASIBLE in 0.6s
+[00:56:20] trial=190 isotopy_variant: INFEASIBLE in 0.6s
+[00:56:20]   Isotopy variant also INFEASIBLE
+[00:56:20]   Isotopy variant also INFEASIBLE
+[00:56:21] trial=191 isotopy_variant: INFEASIBLE in 0.6s
+[00:56:21] trial=191 isotopy_variant: INFEASIBLE in 0.6s
+[00:56:21]   Isotopy variant also INFEASIBLE
+[00:56:21]   Isotopy variant also INFEASIBLE
+[00:56:21] trial=192 isotopy_variant: INFEASIBLE in 0.4s
+[00:56:21] trial=192 isotopy_variant: INFEASIBLE in 0.4s
+[00:56:21]   Isotopy variant also INFEASIBLE
+[00:56:21]   Isotopy variant also INFEASIBLE
+[00:56:23] trial=193 isotopy_variant: INFEASIBLE in 1.7s
+[00:56:23] trial=193 isotopy_variant: INFEASIBLE in 1.7s
+[00:56:23]   Isotopy variant also INFEASIBLE
+[00:56:23]   Isotopy variant also INFEASIBLE
+[00:56:24] trial=194 isotopy_variant: INFEASIBLE in 0.7s
+[00:56:24] trial=194 isotopy_variant: INFEASIBLE in 0.7s
+[00:56:24]   Isotopy variant also INFEASIBLE
+[00:56:24]   Isotopy variant also INFEASIBLE
+[00:56:25] trial=195 isotopy_variant: INFEASIBLE in 1.2s
+[00:56:25] trial=195 isotopy_variant: INFEASIBLE in 1.2s
+[00:56:25]   Isotopy variant also INFEASIBLE
+[00:56:25]   Isotopy variant also INFEASIBLE
+[00:56:26] trial=196 isotopy_variant: INFEASIBLE in 1.4s
+[00:56:26] trial=196 isotopy_variant: INFEASIBLE in 1.4s
+[00:56:26]   Isotopy variant also INFEASIBLE
+[00:56:26]   Isotopy variant also INFEASIBLE
+[00:56:27] trial=197 isotopy_variant: INFEASIBLE in 0.7s
+[00:56:27] trial=197 isotopy_variant: INFEASIBLE in 0.7s
+[00:56:27]   Isotopy variant also INFEASIBLE
+[00:56:27]   Isotopy variant also INFEASIBLE
+[00:56:28] trial=198 isotopy_variant: INFEASIBLE in 1.2s
+[00:56:28] trial=198 isotopy_variant: INFEASIBLE in 1.2s
+[00:56:28]   Isotopy variant also INFEASIBLE
+[00:56:28]   Isotopy variant also INFEASIBLE
+[00:56:29] trial=199 isotopy_variant: INFEASIBLE in 1.3s
+[00:56:29] trial=199 isotopy_variant: INFEASIBLE in 1.3s
+[00:56:29]   Isotopy variant also INFEASIBLE
+[00:56:29]   Isotopy variant also INFEASIBLE
+[00:56:30] trial=200 isotopy_variant: INFEASIBLE in 1.1s
+[00:56:30] trial=200 isotopy_variant: INFEASIBLE in 1.1s
+[00:56:30]   Isotopy variant also INFEASIBLE
+[00:56:30]   Isotopy variant also INFEASIBLE
+[00:56:31] trial=201 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:31] trial=201 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:31]   Isotopy variant also INFEASIBLE
+[00:56:31]   Isotopy variant also INFEASIBLE
+[00:56:32] trial=202 isotopy_variant: INFEASIBLE in 1.1s
+[00:56:32] trial=202 isotopy_variant: INFEASIBLE in 1.1s
+[00:56:32]   Isotopy variant also INFEASIBLE
+[00:56:32]   Isotopy variant also INFEASIBLE
+[00:56:33] trial=203 isotopy_variant: INFEASIBLE in 0.8s
+[00:56:33] trial=203 isotopy_variant: INFEASIBLE in 0.8s
+[00:56:33]   Isotopy variant also INFEASIBLE
+[00:56:33]   Isotopy variant also INFEASIBLE
+[00:56:34] trial=204 isotopy_variant: INFEASIBLE in 1.1s
+[00:56:34] trial=204 isotopy_variant: INFEASIBLE in 1.1s
+[00:56:34]   Isotopy variant also INFEASIBLE
+[00:56:34]   Isotopy variant also INFEASIBLE
+[00:56:34] trial=205 isotopy_variant: INFEASIBLE in 0.5s
+[00:56:34] trial=205 isotopy_variant: INFEASIBLE in 0.5s
+[00:56:34]   Isotopy variant also INFEASIBLE
+[00:56:34]   Isotopy variant also INFEASIBLE
+[00:56:35] trial=206 isotopy_variant: INFEASIBLE in 1.1s
+[00:56:35] trial=206 isotopy_variant: INFEASIBLE in 1.1s
+[00:56:35]   Isotopy variant also INFEASIBLE
+[00:56:35]   Isotopy variant also INFEASIBLE
+[00:56:36] trial=207 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:36] trial=207 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:36]   Isotopy variant also INFEASIBLE
+[00:56:36]   Isotopy variant also INFEASIBLE
+[00:56:36] trial=208 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:36] trial=208 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:36]   Isotopy variant also INFEASIBLE
+[00:56:36]   Isotopy variant also INFEASIBLE
+[00:56:37] trial=209 isotopy_variant: INFEASIBLE in 0.7s
+[00:56:37] trial=209 isotopy_variant: INFEASIBLE in 0.7s
+[00:56:37]   Isotopy variant also INFEASIBLE
+[00:56:37]   Isotopy variant also INFEASIBLE
+[00:56:37] trial=210 isotopy_variant: INFEASIBLE in 0.7s
+[00:56:37] trial=210 isotopy_variant: INFEASIBLE in 0.7s
+[00:56:37]   Isotopy variant also INFEASIBLE
+[00:56:37]   Isotopy variant also INFEASIBLE
+[00:56:38] trial=211 isotopy_variant: INFEASIBLE in 0.6s
+[00:56:38] trial=211 isotopy_variant: INFEASIBLE in 0.6s
+[00:56:38]   Isotopy variant also INFEASIBLE
+[00:56:38]   Isotopy variant also INFEASIBLE
+[00:56:39] trial=212 isotopy_variant: INFEASIBLE in 0.7s
+[00:56:39] trial=212 isotopy_variant: INFEASIBLE in 0.7s
+[00:56:39]   Isotopy variant also INFEASIBLE
+[00:56:39]   Isotopy variant also INFEASIBLE
+[00:56:40] trial=213 isotopy_variant: INFEASIBLE in 0.9s
+[00:56:40] trial=213 isotopy_variant: INFEASIBLE in 0.9s
+[00:56:40]   Isotopy variant also INFEASIBLE
+[00:56:40]   Isotopy variant also INFEASIBLE
+[00:56:40] trial=214 isotopy_variant: INFEASIBLE in 0.2s
+[00:56:40] trial=214 isotopy_variant: INFEASIBLE in 0.2s
+[00:56:40]   Isotopy variant also INFEASIBLE
+[00:56:40]   Isotopy variant also INFEASIBLE
+[00:56:40] trial=215 isotopy_variant: INFEASIBLE in 0.5s
+[00:56:40] trial=215 isotopy_variant: INFEASIBLE in 0.5s
+[00:56:40]   Isotopy variant also INFEASIBLE
+[00:56:40]   Isotopy variant also INFEASIBLE
+[00:56:41] trial=216 isotopy_variant: INFEASIBLE in 0.6s
+[00:56:41] trial=216 isotopy_variant: INFEASIBLE in 0.6s
+[00:56:41]   Isotopy variant also INFEASIBLE
+[00:56:41]   Isotopy variant also INFEASIBLE
+[00:56:41] trial=217 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:41] trial=217 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:41]   Isotopy variant also INFEASIBLE
+[00:56:41]   Isotopy variant also INFEASIBLE
+[00:56:42] trial=218 isotopy_variant: INFEASIBLE in 0.7s
+[00:56:42] trial=218 isotopy_variant: INFEASIBLE in 0.7s
+[00:56:42]   Isotopy variant also INFEASIBLE
+[00:56:42]   Isotopy variant also INFEASIBLE
+[00:56:43] trial=219 isotopy_variant: INFEASIBLE in 1.2s
+[00:56:43] trial=219 isotopy_variant: INFEASIBLE in 1.2s
+[00:56:43]   Isotopy variant also INFEASIBLE
+[00:56:43]   Isotopy variant also INFEASIBLE
+[00:56:44] trial=220 isotopy_variant: INFEASIBLE in 1.3s
+[00:56:44] trial=220 isotopy_variant: INFEASIBLE in 1.3s
+[00:56:44]   Isotopy variant also INFEASIBLE
+[00:56:44]   Isotopy variant also INFEASIBLE
+[00:56:45] trial=221 isotopy_variant: INFEASIBLE in 0.5s
+[00:56:45] trial=221 isotopy_variant: INFEASIBLE in 0.5s
+[00:56:45]   Isotopy variant also INFEASIBLE
+[00:56:45]   Isotopy variant also INFEASIBLE
+[00:56:46] trial=222 isotopy_variant: INFEASIBLE in 1.3s
+[00:56:46] trial=222 isotopy_variant: INFEASIBLE in 1.3s
+[00:56:46]   Isotopy variant also INFEASIBLE
+[00:56:46]   Isotopy variant also INFEASIBLE
+[00:56:47] trial=223 isotopy_variant: INFEASIBLE in 0.5s
+[00:56:47] trial=223 isotopy_variant: INFEASIBLE in 0.5s
+[00:56:47]   Isotopy variant also INFEASIBLE
+[00:56:47]   Isotopy variant also INFEASIBLE
+[00:56:48] trial=224 isotopy_variant: INFEASIBLE in 1.2s
+[00:56:48] trial=224 isotopy_variant: INFEASIBLE in 1.2s
+[00:56:48]   Isotopy variant also INFEASIBLE
+[00:56:48]   Isotopy variant also INFEASIBLE
+[00:56:48] trial=225 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:48] trial=225 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:48]   Isotopy variant also INFEASIBLE
+[00:56:48]   Isotopy variant also INFEASIBLE
+[00:56:49] trial=226 isotopy_variant: INFEASIBLE in 1.0s
+[00:56:49] trial=226 isotopy_variant: INFEASIBLE in 1.0s
+[00:56:49]   Isotopy variant also INFEASIBLE
+[00:56:49]   Isotopy variant also INFEASIBLE
+[00:56:50] trial=227 isotopy_variant: INFEASIBLE in 0.9s
+[00:56:50] trial=227 isotopy_variant: INFEASIBLE in 0.9s
+[00:56:50]   Isotopy variant also INFEASIBLE
+[00:56:50]   Isotopy variant also INFEASIBLE
+[00:56:51] trial=228 isotopy_variant: INFEASIBLE in 1.2s
+[00:56:51] trial=228 isotopy_variant: INFEASIBLE in 1.2s
+[00:56:51]   Isotopy variant also INFEASIBLE
+[00:56:51]   Isotopy variant also INFEASIBLE
+[00:56:53] trial=229 isotopy_variant: INFEASIBLE in 1.7s
+[00:56:53] trial=229 isotopy_variant: INFEASIBLE in 1.7s
+[00:56:53]   Isotopy variant also INFEASIBLE
+[00:56:53]   Isotopy variant also INFEASIBLE
+[00:56:53] trial=230 isotopy_variant: INFEASIBLE in 0.5s
+[00:56:53] trial=230 isotopy_variant: INFEASIBLE in 0.5s
+[00:56:53]   Isotopy variant also INFEASIBLE
+[00:56:53]   Isotopy variant also INFEASIBLE
+[00:56:54] trial=231 isotopy_variant: INFEASIBLE in 0.6s
+[00:56:54] trial=231 isotopy_variant: INFEASIBLE in 0.6s
+[00:56:54]   Isotopy variant also INFEASIBLE
+[00:56:54]   Isotopy variant also INFEASIBLE
+[00:56:54] trial=232 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:54] trial=232 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:54]   Isotopy variant also INFEASIBLE
+[00:56:54]   Isotopy variant also INFEASIBLE
+[00:56:55] trial=233 isotopy_variant: INFEASIBLE in 1.0s
+[00:56:55] trial=233 isotopy_variant: INFEASIBLE in 1.0s
+[00:56:55]   Isotopy variant also INFEASIBLE
+[00:56:55]   Isotopy variant also INFEASIBLE
+[00:56:56] trial=234 isotopy_variant: INFEASIBLE in 0.5s
+[00:56:56] trial=234 isotopy_variant: INFEASIBLE in 0.5s
+[00:56:56]   Isotopy variant also INFEASIBLE
+[00:56:56]   Isotopy variant also INFEASIBLE
+[00:56:56] trial=235 isotopy_variant: INFEASIBLE in 0.5s
+[00:56:56] trial=235 isotopy_variant: INFEASIBLE in 0.5s
+[00:56:56]   Isotopy variant also INFEASIBLE
+[00:56:56]   Isotopy variant also INFEASIBLE
+[00:56:57] trial=236 isotopy_variant: INFEASIBLE in 0.8s
+[00:56:57] trial=236 isotopy_variant: INFEASIBLE in 0.8s
+[00:56:57]   Isotopy variant also INFEASIBLE
+[00:56:57]   Isotopy variant also INFEASIBLE
+[00:56:59] trial=237 isotopy_variant: INFEASIBLE in 1.7s
+[00:56:59] trial=237 isotopy_variant: INFEASIBLE in 1.7s
+[00:56:59]   Isotopy variant also INFEASIBLE
+[00:56:59]   Isotopy variant also INFEASIBLE
+[00:56:59] trial=238 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:59] trial=238 isotopy_variant: INFEASIBLE in 0.3s
+[00:56:59]   Isotopy variant also INFEASIBLE
+[00:56:59]   Isotopy variant also INFEASIBLE
+[00:57:00] trial=239 isotopy_variant: INFEASIBLE in 0.9s
+[00:57:00] trial=239 isotopy_variant: INFEASIBLE in 0.9s
+[00:57:00]   Isotopy variant also INFEASIBLE
+[00:57:00]   Isotopy variant also INFEASIBLE
+[00:57:01] trial=240 isotopy_variant: INFEASIBLE in 0.7s
+[00:57:01] trial=240 isotopy_variant: INFEASIBLE in 0.7s
+[00:57:01]   Isotopy variant also INFEASIBLE
+[00:57:01]   Isotopy variant also INFEASIBLE
+[00:57:02] trial=241 isotopy_variant: INFEASIBLE in 0.8s
+[00:57:02] trial=241 isotopy_variant: INFEASIBLE in 0.8s
+[00:57:02]   Isotopy variant also INFEASIBLE
+[00:57:02]   Isotopy variant also INFEASIBLE
+[00:57:02] trial=242 isotopy_variant: INFEASIBLE in 0.8s
+[00:57:02] trial=242 isotopy_variant: INFEASIBLE in 0.8s
+[00:57:02]   Isotopy variant also INFEASIBLE
+[00:57:02]   Isotopy variant also INFEASIBLE
+[00:57:03] trial=243 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:03] trial=243 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:03]   Isotopy variant also INFEASIBLE
+[00:57:03]   Isotopy variant also INFEASIBLE
+[00:57:03] trial=244 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:03] trial=244 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:03]   Isotopy variant also INFEASIBLE
+[00:57:03]   Isotopy variant also INFEASIBLE
+[00:57:03] trial=245 isotopy_variant: INFEASIBLE in 0.5s
+[00:57:03] trial=245 isotopy_variant: INFEASIBLE in 0.5s
+[00:57:03]   Isotopy variant also INFEASIBLE
+[00:57:03]   Isotopy variant also INFEASIBLE
+[00:57:04] trial=246 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:04] trial=246 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:04]   Isotopy variant also INFEASIBLE
+[00:57:04]   Isotopy variant also INFEASIBLE
+[00:57:04] trial=247 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:04] trial=247 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:04]   Isotopy variant also INFEASIBLE
+[00:57:04]   Isotopy variant also INFEASIBLE
+[00:57:05] trial=248 isotopy_variant: INFEASIBLE in 1.0s
+[00:57:05] trial=248 isotopy_variant: INFEASIBLE in 1.0s
+[00:57:05]   Isotopy variant also INFEASIBLE
+[00:57:05]   Isotopy variant also INFEASIBLE
+[00:57:05] trial=249 isotopy_variant: INFEASIBLE in 0.5s
+[00:57:05] trial=249 isotopy_variant: INFEASIBLE in 0.5s
+[00:57:05]   Isotopy variant also INFEASIBLE
+[00:57:05]   Isotopy variant also INFEASIBLE
+[00:57:06] trial=250 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:06] trial=250 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:06]   Isotopy variant also INFEASIBLE
+[00:57:06]   Isotopy variant also INFEASIBLE
+[00:57:06] trial=251 isotopy_variant: INFEASIBLE in 0.7s
+[00:57:06] trial=251 isotopy_variant: INFEASIBLE in 0.7s
+[00:57:06]   Isotopy variant also INFEASIBLE
+[00:57:06]   Isotopy variant also INFEASIBLE
+[00:57:07] trial=252 isotopy_variant: INFEASIBLE in 0.6s
+[00:57:07] trial=252 isotopy_variant: INFEASIBLE in 0.6s
+[00:57:07]   Isotopy variant also INFEASIBLE
+[00:57:07]   Isotopy variant also INFEASIBLE
+[00:57:10] trial=253 isotopy_variant: INFEASIBLE in 2.5s
+[00:57:10] trial=253 isotopy_variant: INFEASIBLE in 2.5s
+[00:57:10]   Isotopy variant also INFEASIBLE
+[00:57:10]   Isotopy variant also INFEASIBLE
+[00:57:10] trial=254 isotopy_variant: INFEASIBLE in 0.6s
+[00:57:10] trial=254 isotopy_variant: INFEASIBLE in 0.6s
+[00:57:10]   Isotopy variant also INFEASIBLE
+[00:57:10]   Isotopy variant also INFEASIBLE
+[00:57:10] trial=255 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:10] trial=255 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:10]   Isotopy variant also INFEASIBLE
+[00:57:10]   Isotopy variant also INFEASIBLE
+[00:57:11] trial=256 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:11] trial=256 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:11]   Isotopy variant also INFEASIBLE
+[00:57:11]   Isotopy variant also INFEASIBLE
+[00:57:12] trial=257 isotopy_variant: INFEASIBLE in 1.3s
+[00:57:12] trial=257 isotopy_variant: INFEASIBLE in 1.3s
+[00:57:12]   Isotopy variant also INFEASIBLE
+[00:57:12]   Isotopy variant also INFEASIBLE
+[00:57:12] trial=258 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:12] trial=258 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:12]   Isotopy variant also INFEASIBLE
+[00:57:12]   Isotopy variant also INFEASIBLE
+[00:57:13] trial=259 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:13] trial=259 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:13]   Isotopy variant also INFEASIBLE
+[00:57:13]   Isotopy variant also INFEASIBLE
+[00:57:13] trial=260 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:13] trial=260 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:13]   Isotopy variant also INFEASIBLE
+[00:57:13]   Isotopy variant also INFEASIBLE
+[00:57:13] trial=261 isotopy_variant: INFEASIBLE in 0.4s
+[00:57:13] trial=261 isotopy_variant: INFEASIBLE in 0.4s
+[00:57:13]   Isotopy variant also INFEASIBLE
+[00:57:13]   Isotopy variant also INFEASIBLE
+[00:57:15] trial=262 isotopy_variant: INFEASIBLE in 1.8s
+[00:57:15] trial=262 isotopy_variant: INFEASIBLE in 1.8s
+[00:57:15]   Isotopy variant also INFEASIBLE
+[00:57:15]   Isotopy variant also INFEASIBLE
+[00:57:15] trial=263 isotopy_variant: INFEASIBLE in 0.2s
+[00:57:15] trial=263 isotopy_variant: INFEASIBLE in 0.2s
+[00:57:15]   Isotopy variant also INFEASIBLE
+[00:57:15]   Isotopy variant also INFEASIBLE
+[00:57:16] trial=264 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:16] trial=264 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:16]   Isotopy variant also INFEASIBLE
+[00:57:16]   Isotopy variant also INFEASIBLE
+[00:57:16] trial=265 isotopy_variant: INFEASIBLE in 0.8s
+[00:57:16] trial=265 isotopy_variant: INFEASIBLE in 0.8s
+[00:57:16]   Isotopy variant also INFEASIBLE
+[00:57:16]   Isotopy variant also INFEASIBLE
+[00:57:18] trial=266 isotopy_variant: INFEASIBLE in 1.3s
+[00:57:18] trial=266 isotopy_variant: INFEASIBLE in 1.3s
+[00:57:18]   Isotopy variant also INFEASIBLE
+[00:57:18]   Isotopy variant also INFEASIBLE
+[00:57:18] trial=267 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:18] trial=267 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:18]   Isotopy variant also INFEASIBLE
+[00:57:18]   Isotopy variant also INFEASIBLE
+[00:57:18] trial=268 isotopy_variant: INFEASIBLE in 0.5s
+[00:57:18] trial=268 isotopy_variant: INFEASIBLE in 0.5s
+[00:57:18]   Isotopy variant also INFEASIBLE
+[00:57:18]   Isotopy variant also INFEASIBLE
+[00:57:19] trial=269 isotopy_variant: INFEASIBLE in 1.1s
+[00:57:19] trial=269 isotopy_variant: INFEASIBLE in 1.1s
+[00:57:19]   Isotopy variant also INFEASIBLE
+[00:57:19]   Isotopy variant also INFEASIBLE
+[00:57:20] trial=270 isotopy_variant: INFEASIBLE in 0.7s
+[00:57:20] trial=270 isotopy_variant: INFEASIBLE in 0.7s
+[00:57:20]   Isotopy variant also INFEASIBLE
+[00:57:20]   Isotopy variant also INFEASIBLE
+[00:57:21] trial=271 isotopy_variant: INFEASIBLE in 0.4s
+[00:57:21] trial=271 isotopy_variant: INFEASIBLE in 0.4s
+[00:57:21]   Isotopy variant also INFEASIBLE
+[00:57:21]   Isotopy variant also INFEASIBLE
+[00:57:21] trial=272 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:21] trial=272 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:21]   Isotopy variant also INFEASIBLE
+[00:57:21]   Isotopy variant also INFEASIBLE
+[00:57:22] trial=273 isotopy_variant: INFEASIBLE in 1.2s
+[00:57:22] trial=273 isotopy_variant: INFEASIBLE in 1.2s
+[00:57:22]   Isotopy variant also INFEASIBLE
+[00:57:22]   Isotopy variant also INFEASIBLE
+[00:57:24] trial=274 isotopy_variant: INFEASIBLE in 1.4s
+[00:57:24] trial=274 isotopy_variant: INFEASIBLE in 1.4s
+[00:57:24]   Isotopy variant also INFEASIBLE
+[00:57:24]   Isotopy variant also INFEASIBLE
+[00:57:24] trial=275 isotopy_variant: INFEASIBLE in 0.2s
+[00:57:24] trial=275 isotopy_variant: INFEASIBLE in 0.2s
+[00:57:24]   Isotopy variant also INFEASIBLE
+[00:57:24]   Isotopy variant also INFEASIBLE
+[00:57:24] trial=276 isotopy_variant: INFEASIBLE in 0.6s
+[00:57:24] trial=276 isotopy_variant: INFEASIBLE in 0.6s
+[00:57:24]   Isotopy variant also INFEASIBLE
+[00:57:24]   Isotopy variant also INFEASIBLE
+[00:57:25] trial=277 isotopy_variant: INFEASIBLE in 1.0s
+[00:57:25] trial=277 isotopy_variant: INFEASIBLE in 1.0s
+[00:57:25]   Isotopy variant also INFEASIBLE
+[00:57:25]   Isotopy variant also INFEASIBLE
+[00:57:26] trial=278 isotopy_variant: INFEASIBLE in 0.7s
+[00:57:26] trial=278 isotopy_variant: INFEASIBLE in 0.7s
+[00:57:26]   Isotopy variant also INFEASIBLE
+[00:57:26]   Isotopy variant also INFEASIBLE
+[00:57:27] trial=279 isotopy_variant: INFEASIBLE in 0.7s
+[00:57:27] trial=279 isotopy_variant: INFEASIBLE in 0.7s
+[00:57:27]   Isotopy variant also INFEASIBLE
+[00:57:27]   Isotopy variant also INFEASIBLE
+[00:57:27] trial=280 isotopy_variant: INFEASIBLE in 0.5s
+[00:57:27] trial=280 isotopy_variant: INFEASIBLE in 0.5s
+[00:57:27]   Isotopy variant also INFEASIBLE
+[00:57:27]   Isotopy variant also INFEASIBLE
+[00:57:30] trial=281 isotopy_variant: INFEASIBLE in 2.4s
+[00:57:30] trial=281 isotopy_variant: INFEASIBLE in 2.4s
+[00:57:30]   Isotopy variant also INFEASIBLE
+[00:57:30]   Isotopy variant also INFEASIBLE
+[00:57:31] trial=282 isotopy_variant: INFEASIBLE in 1.7s
+[00:57:31] trial=282 isotopy_variant: INFEASIBLE in 1.7s
+[00:57:31]   Isotopy variant also INFEASIBLE
+[00:57:31]   Isotopy variant also INFEASIBLE
+[00:57:32] trial=283 isotopy_variant: INFEASIBLE in 0.6s
+[00:57:32] trial=283 isotopy_variant: INFEASIBLE in 0.6s
+[00:57:32]   Isotopy variant also INFEASIBLE
+[00:57:32]   Isotopy variant also INFEASIBLE
+[00:57:33] trial=284 isotopy_variant: INFEASIBLE in 1.3s
+[00:57:33] trial=284 isotopy_variant: INFEASIBLE in 1.3s
+[00:57:33]   Isotopy variant also INFEASIBLE
+[00:57:33]   Isotopy variant also INFEASIBLE
+[00:57:34] trial=285 isotopy_variant: INFEASIBLE in 0.5s
+[00:57:34] trial=285 isotopy_variant: INFEASIBLE in 0.5s
+[00:57:34]   Isotopy variant also INFEASIBLE
+[00:57:34]   Isotopy variant also INFEASIBLE
+[00:57:34] trial=286 isotopy_variant: INFEASIBLE in 0.5s
+[00:57:34] trial=286 isotopy_variant: INFEASIBLE in 0.5s
+[00:57:34]   Isotopy variant also INFEASIBLE
+[00:57:34]   Isotopy variant also INFEASIBLE
+[00:57:35] trial=287 isotopy_variant: INFEASIBLE in 0.7s
+[00:57:35] trial=287 isotopy_variant: INFEASIBLE in 0.7s
+[00:57:35]   Isotopy variant also INFEASIBLE
+[00:57:35]   Isotopy variant also INFEASIBLE
+[00:57:35] trial=288 isotopy_variant: INFEASIBLE in 0.2s
+[00:57:35] trial=288 isotopy_variant: INFEASIBLE in 0.2s
+[00:57:35]   Isotopy variant also INFEASIBLE
+[00:57:35]   Isotopy variant also INFEASIBLE
+[00:57:35] trial=289 isotopy_variant: INFEASIBLE in 0.2s
+[00:57:35] trial=289 isotopy_variant: INFEASIBLE in 0.2s
+[00:57:35]   Isotopy variant also INFEASIBLE
+[00:57:35]   Isotopy variant also INFEASIBLE
+[00:57:36] trial=290 isotopy_variant: INFEASIBLE in 0.4s
+[00:57:36] trial=290 isotopy_variant: INFEASIBLE in 0.4s
+[00:57:36]   Isotopy variant also INFEASIBLE
+[00:57:36]   Isotopy variant also INFEASIBLE
+[00:57:36] trial=291 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:36] trial=291 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:36]   Isotopy variant also INFEASIBLE
+[00:57:36]   Isotopy variant also INFEASIBLE
+[00:57:37] trial=292 isotopy_variant: INFEASIBLE in 0.6s
+[00:57:37] trial=292 isotopy_variant: INFEASIBLE in 0.6s
+[00:57:37]   Isotopy variant also INFEASIBLE
+[00:57:37]   Isotopy variant also INFEASIBLE
+[00:57:38] trial=293 isotopy_variant: INFEASIBLE in 1.0s
+[00:57:38] trial=293 isotopy_variant: INFEASIBLE in 1.0s
+[00:57:38]   Isotopy variant also INFEASIBLE
+[00:57:38]   Isotopy variant also INFEASIBLE
+[00:57:38] trial=294 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:38] trial=294 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:38]   Isotopy variant also INFEASIBLE
+[00:57:38]   Isotopy variant also INFEASIBLE
+[00:57:39] trial=295 isotopy_variant: INFEASIBLE in 0.9s
+[00:57:39] trial=295 isotopy_variant: INFEASIBLE in 0.9s
+[00:57:39]   Isotopy variant also INFEASIBLE
+[00:57:39]   Isotopy variant also INFEASIBLE
+[00:57:40] trial=296 isotopy_variant: INFEASIBLE in 1.0s
+[00:57:40] trial=296 isotopy_variant: INFEASIBLE in 1.0s
+[00:57:40]   Isotopy variant also INFEASIBLE
+[00:57:40]   Isotopy variant also INFEASIBLE
+[00:57:40] trial=297 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:40] trial=297 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:40]   Isotopy variant also INFEASIBLE
+[00:57:40]   Isotopy variant also INFEASIBLE
+[00:57:40] trial=298 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:40] trial=298 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:40]   Isotopy variant also INFEASIBLE
+[00:57:40]   Isotopy variant also INFEASIBLE
+[00:57:41] trial=299 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:41] trial=299 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:41]   Isotopy variant also INFEASIBLE
+[00:57:41]   Isotopy variant also INFEASIBLE
+[00:57:41] trial=300 isotopy_variant: INFEASIBLE in 0.2s
+[00:57:41] trial=300 isotopy_variant: INFEASIBLE in 0.2s
+[00:57:41]   Isotopy variant also INFEASIBLE
+[00:57:41]   Isotopy variant also INFEASIBLE
+[00:57:41] trial=301 isotopy_variant: INFEASIBLE in 0.2s
+[00:57:41] trial=301 isotopy_variant: INFEASIBLE in 0.2s
+[00:57:41]   Isotopy variant also INFEASIBLE
+[00:57:41]   Isotopy variant also INFEASIBLE
+[00:57:42] trial=302 isotopy_variant: INFEASIBLE in 0.6s
+[00:57:42] trial=302 isotopy_variant: INFEASIBLE in 0.6s
+[00:57:42]   Isotopy variant also INFEASIBLE
+[00:57:42]   Isotopy variant also INFEASIBLE
+[00:57:43] trial=303 isotopy_variant: INFEASIBLE in 1.0s
+[00:57:43] trial=303 isotopy_variant: INFEASIBLE in 1.0s
+[00:57:43]   Isotopy variant also INFEASIBLE
+[00:57:43]   Isotopy variant also INFEASIBLE
+[00:57:44] trial=304 isotopy_variant: INFEASIBLE in 1.4s
+[00:57:44] trial=304 isotopy_variant: INFEASIBLE in 1.4s
+[00:57:44]   Isotopy variant also INFEASIBLE
+[00:57:44]   Isotopy variant also INFEASIBLE
+[00:57:44] trial=305 isotopy_variant: INFEASIBLE in 0.4s
+[00:57:44] trial=305 isotopy_variant: INFEASIBLE in 0.4s
+[00:57:44]   Isotopy variant also INFEASIBLE
+[00:57:44]   Isotopy variant also INFEASIBLE
+[00:57:45] trial=306 isotopy_variant: INFEASIBLE in 0.6s
+[00:57:45] trial=306 isotopy_variant: INFEASIBLE in 0.6s
+[00:57:45]   Isotopy variant also INFEASIBLE
+[00:57:45]   Isotopy variant also INFEASIBLE
+[00:57:45] trial=307 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:45] trial=307 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:45]   Isotopy variant also INFEASIBLE
+[00:57:45]   Isotopy variant also INFEASIBLE
+[00:57:47] trial=308 isotopy_variant: INFEASIBLE in 1.3s
+[00:57:47] trial=308 isotopy_variant: INFEASIBLE in 1.3s
+[00:57:47]   Isotopy variant also INFEASIBLE
+[00:57:47]   Isotopy variant also INFEASIBLE
+[00:57:47] trial=309 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:47] trial=309 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:47]   Isotopy variant also INFEASIBLE
+[00:57:47]   Isotopy variant also INFEASIBLE
+[00:57:47] trial=310 isotopy_variant: INFEASIBLE in 0.4s
+[00:57:47] trial=310 isotopy_variant: INFEASIBLE in 0.4s
+[00:57:47]   Isotopy variant also INFEASIBLE
+[00:57:47]   Isotopy variant also INFEASIBLE
+[00:57:47] trial=311 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:47] trial=311 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:47]   Isotopy variant also INFEASIBLE
+[00:57:47]   Isotopy variant also INFEASIBLE
+[00:57:48] trial=312 isotopy_variant: INFEASIBLE in 0.8s
+[00:57:48] trial=312 isotopy_variant: INFEASIBLE in 0.8s
+[00:57:48]   Isotopy variant also INFEASIBLE
+[00:57:48]   Isotopy variant also INFEASIBLE
+[00:57:49] trial=313 isotopy_variant: INFEASIBLE in 1.1s
+[00:57:49] trial=313 isotopy_variant: INFEASIBLE in 1.1s
+[00:57:49]   Isotopy variant also INFEASIBLE
+[00:57:49]   Isotopy variant also INFEASIBLE
+[00:57:50] trial=314 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:50] trial=314 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:50]   Isotopy variant also INFEASIBLE
+[00:57:50]   Isotopy variant also INFEASIBLE
+[00:57:50] trial=315 isotopy_variant: INFEASIBLE in 0.2s
+[00:57:50] trial=315 isotopy_variant: INFEASIBLE in 0.2s
+[00:57:50]   Isotopy variant also INFEASIBLE
+[00:57:50]   Isotopy variant also INFEASIBLE
+[00:57:51] trial=316 isotopy_variant: INFEASIBLE in 1.2s
+[00:57:51] trial=316 isotopy_variant: INFEASIBLE in 1.2s
+[00:57:51]   Isotopy variant also INFEASIBLE
+[00:57:51]   Isotopy variant also INFEASIBLE
+[00:57:52] trial=317 isotopy_variant: INFEASIBLE in 1.3s
+[00:57:52] trial=317 isotopy_variant: INFEASIBLE in 1.3s
+[00:57:52]   Isotopy variant also INFEASIBLE
+[00:57:52]   Isotopy variant also INFEASIBLE
+[00:57:54] trial=318 isotopy_variant: INFEASIBLE in 1.2s
+[00:57:54] trial=318 isotopy_variant: INFEASIBLE in 1.2s
+[00:57:54]   Isotopy variant also INFEASIBLE
+[00:57:54]   Isotopy variant also INFEASIBLE
+[00:57:54] trial=319 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:54] trial=319 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:54]   Isotopy variant also INFEASIBLE
+[00:57:54]   Isotopy variant also INFEASIBLE
+[00:57:55] trial=320 isotopy_variant: INFEASIBLE in 1.3s
+[00:57:55] trial=320 isotopy_variant: INFEASIBLE in 1.3s
+[00:57:55]   Isotopy variant also INFEASIBLE
+[00:57:55]   Isotopy variant also INFEASIBLE
+[00:57:56] trial=321 isotopy_variant: INFEASIBLE in 1.0s
+[00:57:56] trial=321 isotopy_variant: INFEASIBLE in 1.0s
+[00:57:56]   Isotopy variant also INFEASIBLE
+[00:57:56]   Isotopy variant also INFEASIBLE
+[00:57:57] trial=322 isotopy_variant: INFEASIBLE in 0.5s
+[00:57:57] trial=322 isotopy_variant: INFEASIBLE in 0.5s
+[00:57:57]   Isotopy variant also INFEASIBLE
+[00:57:57]   Isotopy variant also INFEASIBLE
+[00:57:57] trial=323 isotopy_variant: INFEASIBLE in 0.6s
+[00:57:57] trial=323 isotopy_variant: INFEASIBLE in 0.6s
+[00:57:57]   Isotopy variant also INFEASIBLE
+[00:57:57]   Isotopy variant also INFEASIBLE
+[00:57:58] trial=324 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:58] trial=324 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:58]   Isotopy variant also INFEASIBLE
+[00:57:58]   Isotopy variant also INFEASIBLE
+[00:57:59] trial=325 isotopy_variant: INFEASIBLE in 0.9s
+[00:57:59] trial=325 isotopy_variant: INFEASIBLE in 0.9s
+[00:57:59]   Isotopy variant also INFEASIBLE
+[00:57:59]   Isotopy variant also INFEASIBLE
+[00:57:59] trial=326 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:59] trial=326 isotopy_variant: INFEASIBLE in 0.3s
+[00:57:59]   Isotopy variant also INFEASIBLE
+[00:57:59]   Isotopy variant also INFEASIBLE
+[00:57:59] trial=327 isotopy_variant: INFEASIBLE in 0.7s
+[00:57:59] trial=327 isotopy_variant: INFEASIBLE in 0.7s
+[00:57:59]   Isotopy variant also INFEASIBLE
+[00:57:59]   Isotopy variant also INFEASIBLE
+[00:58:01] trial=328 isotopy_variant: INFEASIBLE in 1.1s
+[00:58:01] trial=328 isotopy_variant: INFEASIBLE in 1.1s
+[00:58:01]   Isotopy variant also INFEASIBLE
+[00:58:01]   Isotopy variant also INFEASIBLE
+[00:58:01] trial=329 isotopy_variant: INFEASIBLE in 0.6s
+[00:58:01] trial=329 isotopy_variant: INFEASIBLE in 0.6s
+[00:58:01]   Isotopy variant also INFEASIBLE
+[00:58:01]   Isotopy variant also INFEASIBLE
+[00:58:01] trial=330 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:01] trial=330 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:01]   Isotopy variant also INFEASIBLE
+[00:58:01]   Isotopy variant also INFEASIBLE
+[00:58:02] trial=331 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:02] trial=331 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:02]   Isotopy variant also INFEASIBLE
+[00:58:02]   Isotopy variant also INFEASIBLE
+[00:58:02] trial=332 isotopy_variant: INFEASIBLE in 0.4s
+[00:58:02] trial=332 isotopy_variant: INFEASIBLE in 0.4s
+[00:58:02]   Isotopy variant also INFEASIBLE
+[00:58:02]   Isotopy variant also INFEASIBLE
+[00:58:03] trial=333 isotopy_variant: INFEASIBLE in 1.0s
+[00:58:03] trial=333 isotopy_variant: INFEASIBLE in 1.0s
+[00:58:03]   Isotopy variant also INFEASIBLE
+[00:58:03]   Isotopy variant also INFEASIBLE
+[00:58:04] trial=334 isotopy_variant: INFEASIBLE in 1.3s
+[00:58:04] trial=334 isotopy_variant: INFEASIBLE in 1.3s
+[00:58:04]   Isotopy variant also INFEASIBLE
+[00:58:04]   Isotopy variant also INFEASIBLE
+[00:58:05] trial=335 isotopy_variant: INFEASIBLE in 0.4s
+[00:58:05] trial=335 isotopy_variant: INFEASIBLE in 0.4s
+[00:58:05]   Isotopy variant also INFEASIBLE
+[00:58:05]   Isotopy variant also INFEASIBLE
+[00:58:06] trial=336 isotopy_variant: INFEASIBLE in 1.0s
+[00:58:06] trial=336 isotopy_variant: INFEASIBLE in 1.0s
+[00:58:06]   Isotopy variant also INFEASIBLE
+[00:58:06]   Isotopy variant also INFEASIBLE
+[00:58:06] trial=337 isotopy_variant: INFEASIBLE in 0.7s
+[00:58:06] trial=337 isotopy_variant: INFEASIBLE in 0.7s
+[00:58:06]   Isotopy variant also INFEASIBLE
+[00:58:06]   Isotopy variant also INFEASIBLE
+[00:58:08] trial=338 isotopy_variant: INFEASIBLE in 1.3s
+[00:58:08] trial=338 isotopy_variant: INFEASIBLE in 1.3s
+[00:58:08]   Isotopy variant also INFEASIBLE
+[00:58:08]   Isotopy variant also INFEASIBLE
+[00:58:08] trial=339 isotopy_variant: INFEASIBLE in 0.4s
+[00:58:08] trial=339 isotopy_variant: INFEASIBLE in 0.4s
+[00:58:08]   Isotopy variant also INFEASIBLE
+[00:58:08]   Isotopy variant also INFEASIBLE
+[00:58:09] trial=340 isotopy_variant: INFEASIBLE in 1.0s
+[00:58:09] trial=340 isotopy_variant: INFEASIBLE in 1.0s
+[00:58:09]   Isotopy variant also INFEASIBLE
+[00:58:09]   Isotopy variant also INFEASIBLE
+[00:58:10] trial=341 isotopy_variant: INFEASIBLE in 0.6s
+[00:58:10] trial=341 isotopy_variant: INFEASIBLE in 0.6s
+[00:58:10]   Isotopy variant also INFEASIBLE
+[00:58:10]   Isotopy variant also INFEASIBLE
+[00:58:11] trial=342 isotopy_variant: INFEASIBLE in 0.9s
+[00:58:11] trial=342 isotopy_variant: INFEASIBLE in 0.9s
+[00:58:11]   Isotopy variant also INFEASIBLE
+[00:58:11]   Isotopy variant also INFEASIBLE
+[00:58:11] trial=343 isotopy_variant: INFEASIBLE in 0.7s
+[00:58:11] trial=343 isotopy_variant: INFEASIBLE in 0.7s
+[00:58:11]   Isotopy variant also INFEASIBLE
+[00:58:11]   Isotopy variant also INFEASIBLE
+[00:58:12] trial=344 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:12] trial=344 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:12]   Isotopy variant also INFEASIBLE
+[00:58:12]   Isotopy variant also INFEASIBLE
+[00:58:13] trial=345 isotopy_variant: INFEASIBLE in 0.9s
+[00:58:13] trial=345 isotopy_variant: INFEASIBLE in 0.9s
+[00:58:13]   Isotopy variant also INFEASIBLE
+[00:58:13]   Isotopy variant also INFEASIBLE
+[00:58:13] trial=346 isotopy_variant: INFEASIBLE in 0.7s
+[00:58:13] trial=346 isotopy_variant: INFEASIBLE in 0.7s
+[00:58:13]   Isotopy variant also INFEASIBLE
+[00:58:13]   Isotopy variant also INFEASIBLE
+[00:58:14] trial=347 isotopy_variant: INFEASIBLE in 0.9s
+[00:58:14] trial=347 isotopy_variant: INFEASIBLE in 0.9s
+[00:58:14]   Isotopy variant also INFEASIBLE
+[00:58:14]   Isotopy variant also INFEASIBLE
+[00:58:15] trial=348 isotopy_variant: INFEASIBLE in 1.2s
+[00:58:15] trial=348 isotopy_variant: INFEASIBLE in 1.2s
+[00:58:15]   Isotopy variant also INFEASIBLE
+[00:58:15]   Isotopy variant also INFEASIBLE
+[00:58:16] trial=349 isotopy_variant: INFEASIBLE in 1.0s
+[00:58:16] trial=349 isotopy_variant: INFEASIBLE in 1.0s
+[00:58:16]   Isotopy variant also INFEASIBLE
+[00:58:16]   Isotopy variant also INFEASIBLE
+[00:58:17] trial=350 isotopy_variant: INFEASIBLE in 0.9s
+[00:58:17] trial=350 isotopy_variant: INFEASIBLE in 0.9s
+[00:58:17]   Isotopy variant also INFEASIBLE
+[00:58:17]   Isotopy variant also INFEASIBLE
+[00:58:19] trial=351 isotopy_variant: INFEASIBLE in 1.3s
+[00:58:19] trial=351 isotopy_variant: INFEASIBLE in 1.3s
+[00:58:19]   Isotopy variant also INFEASIBLE
+[00:58:19]   Isotopy variant also INFEASIBLE
+[00:58:20] trial=352 isotopy_variant: INFEASIBLE in 1.0s
+[00:58:20] trial=352 isotopy_variant: INFEASIBLE in 1.0s
+[00:58:20]   Isotopy variant also INFEASIBLE
+[00:58:20]   Isotopy variant also INFEASIBLE
+[00:58:20] trial=353 isotopy_variant: INFEASIBLE in 0.7s
+[00:58:20] trial=353 isotopy_variant: INFEASIBLE in 0.7s
+[00:58:20]   Isotopy variant also INFEASIBLE
+[00:58:20]   Isotopy variant also INFEASIBLE
+[00:58:21] trial=354 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:21] trial=354 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:21]   Isotopy variant also INFEASIBLE
+[00:58:21]   Isotopy variant also INFEASIBLE
+[00:58:21] trial=355 isotopy_variant: INFEASIBLE in 0.6s
+[00:58:21] trial=355 isotopy_variant: INFEASIBLE in 0.6s
+[00:58:21]   Isotopy variant also INFEASIBLE
+[00:58:21]   Isotopy variant also INFEASIBLE
+[00:58:22] trial=356 isotopy_variant: INFEASIBLE in 0.7s
+[00:58:22] trial=356 isotopy_variant: INFEASIBLE in 0.7s
+[00:58:22]   Isotopy variant also INFEASIBLE
+[00:58:22]   Isotopy variant also INFEASIBLE
+[00:58:22] trial=357 isotopy_variant: INFEASIBLE in 0.2s
+[00:58:22] trial=357 isotopy_variant: INFEASIBLE in 0.2s
+[00:58:22]   Isotopy variant also INFEASIBLE
+[00:58:22]   Isotopy variant also INFEASIBLE
+[00:58:22] trial=358 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:22] trial=358 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:22]   Isotopy variant also INFEASIBLE
+[00:58:22]   Isotopy variant also INFEASIBLE
+[00:58:23] trial=359 isotopy_variant: INFEASIBLE in 1.0s
+[00:58:23] trial=359 isotopy_variant: INFEASIBLE in 1.0s
+[00:58:23]   Isotopy variant also INFEASIBLE
+[00:58:23]   Isotopy variant also INFEASIBLE
+[00:58:24] trial=360 isotopy_variant: INFEASIBLE in 0.7s
+[00:58:24] trial=360 isotopy_variant: INFEASIBLE in 0.7s
+[00:58:24]   Isotopy variant also INFEASIBLE
+[00:58:24]   Isotopy variant also INFEASIBLE
+[00:58:25] trial=361 isotopy_variant: INFEASIBLE in 0.6s
+[00:58:25] trial=361 isotopy_variant: INFEASIBLE in 0.6s
+[00:58:25]   Isotopy variant also INFEASIBLE
+[00:58:25]   Isotopy variant also INFEASIBLE
+[00:58:25] trial=362 isotopy_variant: INFEASIBLE in 0.5s
+[00:58:25] trial=362 isotopy_variant: INFEASIBLE in 0.5s
+[00:58:25]   Isotopy variant also INFEASIBLE
+[00:58:25]   Isotopy variant also INFEASIBLE
+[00:58:25] trial=363 isotopy_variant: INFEASIBLE in 0.2s
+[00:58:25] trial=363 isotopy_variant: INFEASIBLE in 0.2s
+[00:58:25]   Isotopy variant also INFEASIBLE
+[00:58:25]   Isotopy variant also INFEASIBLE
+[00:58:25] trial=364 isotopy_variant: INFEASIBLE in 0.2s
+[00:58:25] trial=364 isotopy_variant: INFEASIBLE in 0.2s
+[00:58:25]   Isotopy variant also INFEASIBLE
+[00:58:25]   Isotopy variant also INFEASIBLE
+[00:58:26] trial=365 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:26] trial=365 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:26]   Isotopy variant also INFEASIBLE
+[00:58:26]   Isotopy variant also INFEASIBLE
+[00:58:26] trial=366 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:26] trial=366 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:26]   Isotopy variant also INFEASIBLE
+[00:58:26]   Isotopy variant also INFEASIBLE
+[00:58:27] trial=367 isotopy_variant: INFEASIBLE in 0.7s
+[00:58:27] trial=367 isotopy_variant: INFEASIBLE in 0.7s
+[00:58:27]   Isotopy variant also INFEASIBLE
+[00:58:27]   Isotopy variant also INFEASIBLE
+[00:58:27] trial=368 isotopy_variant: INFEASIBLE in 0.7s
+[00:58:27] trial=368 isotopy_variant: INFEASIBLE in 0.7s
+[00:58:27]   Isotopy variant also INFEASIBLE
+[00:58:27]   Isotopy variant also INFEASIBLE
+[00:58:28] trial=369 isotopy_variant: INFEASIBLE in 1.0s
+[00:58:28] trial=369 isotopy_variant: INFEASIBLE in 1.0s
+[00:58:28]   Isotopy variant also INFEASIBLE
+[00:58:28]   Isotopy variant also INFEASIBLE
+[00:58:29] trial=370 isotopy_variant: INFEASIBLE in 1.0s
+[00:58:29] trial=370 isotopy_variant: INFEASIBLE in 1.0s
+[00:58:29]   Isotopy variant also INFEASIBLE
+[00:58:29]   Isotopy variant also INFEASIBLE
+[00:58:30] trial=371 isotopy_variant: INFEASIBLE in 0.7s
+[00:58:30] trial=371 isotopy_variant: INFEASIBLE in 0.7s
+[00:58:30]   Isotopy variant also INFEASIBLE
+[00:58:30]   Isotopy variant also INFEASIBLE
+[00:58:31] trial=372 isotopy_variant: INFEASIBLE in 0.5s
+[00:58:31] trial=372 isotopy_variant: INFEASIBLE in 0.5s
+[00:58:31]   Isotopy variant also INFEASIBLE
+[00:58:31]   Isotopy variant also INFEASIBLE
+[00:58:32] trial=373 isotopy_variant: INFEASIBLE in 1.5s
+[00:58:32] trial=373 isotopy_variant: INFEASIBLE in 1.5s
+[00:58:32]   Isotopy variant also INFEASIBLE
+[00:58:32]   Isotopy variant also INFEASIBLE
+[00:58:32] trial=374 isotopy_variant: INFEASIBLE in 0.4s
+[00:58:32] trial=374 isotopy_variant: INFEASIBLE in 0.4s
+[00:58:32]   Isotopy variant also INFEASIBLE
+[00:58:32]   Isotopy variant also INFEASIBLE
+[00:58:33] trial=375 isotopy_variant: INFEASIBLE in 0.7s
+[00:58:33] trial=375 isotopy_variant: INFEASIBLE in 0.7s
+[00:58:33]   Isotopy variant also INFEASIBLE
+[00:58:33]   Isotopy variant also INFEASIBLE
+[00:58:34] trial=376 isotopy_variant: INFEASIBLE in 1.2s
+[00:58:34] trial=376 isotopy_variant: INFEASIBLE in 1.2s
+[00:58:34]   Isotopy variant also INFEASIBLE
+[00:58:34]   Isotopy variant also INFEASIBLE
+[00:58:36] trial=377 isotopy_variant: INFEASIBLE in 1.4s
+[00:58:36] trial=377 isotopy_variant: INFEASIBLE in 1.4s
+[00:58:36]   Isotopy variant also INFEASIBLE
+[00:58:36]   Isotopy variant also INFEASIBLE
+[00:58:36] trial=378 isotopy_variant: INFEASIBLE in 0.4s
+[00:58:36] trial=378 isotopy_variant: INFEASIBLE in 0.4s
+[00:58:36]   Isotopy variant also INFEASIBLE
+[00:58:36]   Isotopy variant also INFEASIBLE
+[00:58:36] trial=379 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:36] trial=379 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:36]   Isotopy variant also INFEASIBLE
+[00:58:36]   Isotopy variant also INFEASIBLE
+[00:58:37] trial=380 isotopy_variant: INFEASIBLE in 0.2s
+[00:58:37] trial=380 isotopy_variant: INFEASIBLE in 0.2s
+[00:58:37]   Isotopy variant also INFEASIBLE
+[00:58:37]   Isotopy variant also INFEASIBLE
+[00:58:37] trial=381 isotopy_variant: INFEASIBLE in 0.6s
+[00:58:37] trial=381 isotopy_variant: INFEASIBLE in 0.6s
+[00:58:37]   Isotopy variant also INFEASIBLE
+[00:58:37]   Isotopy variant also INFEASIBLE
+[00:58:38] trial=382 isotopy_variant: INFEASIBLE in 0.4s
+[00:58:38] trial=382 isotopy_variant: INFEASIBLE in 0.4s
+[00:58:38]   Isotopy variant also INFEASIBLE
+[00:58:38]   Isotopy variant also INFEASIBLE
+[00:58:39] trial=383 isotopy_variant: INFEASIBLE in 1.2s
+[00:58:39] trial=383 isotopy_variant: INFEASIBLE in 1.2s
+[00:58:39]   Isotopy variant also INFEASIBLE
+[00:58:39]   Isotopy variant also INFEASIBLE
+[00:58:40] trial=384 isotopy_variant: INFEASIBLE in 1.0s
+[00:58:40] trial=384 isotopy_variant: INFEASIBLE in 1.0s
+[00:58:40]   Isotopy variant also INFEASIBLE
+[00:58:40]   Isotopy variant also INFEASIBLE
+[00:58:41] trial=385 isotopy_variant: INFEASIBLE in 0.9s
+[00:58:41] trial=385 isotopy_variant: INFEASIBLE in 0.9s
+[00:58:41]   Isotopy variant also INFEASIBLE
+[00:58:41]   Isotopy variant also INFEASIBLE
+[00:58:41] trial=386 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:41] trial=386 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:41]   Isotopy variant also INFEASIBLE
+[00:58:41]   Isotopy variant also INFEASIBLE
+[00:58:41] trial=387 isotopy_variant: INFEASIBLE in 0.4s
+[00:58:41] trial=387 isotopy_variant: INFEASIBLE in 0.4s
+[00:58:41]   Isotopy variant also INFEASIBLE
+[00:58:41]   Isotopy variant also INFEASIBLE
+[00:58:42] trial=388 isotopy_variant: INFEASIBLE in 0.8s
+[00:58:42] trial=388 isotopy_variant: INFEASIBLE in 0.8s
+[00:58:42]   Isotopy variant also INFEASIBLE
+[00:58:42]   Isotopy variant also INFEASIBLE
+[00:58:44] trial=389 isotopy_variant: INFEASIBLE in 1.3s
+[00:58:44] trial=389 isotopy_variant: INFEASIBLE in 1.3s
+[00:58:44]   Isotopy variant also INFEASIBLE
+[00:58:44]   Isotopy variant also INFEASIBLE
+[00:58:44] trial=390 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:44] trial=390 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:44]   Isotopy variant also INFEASIBLE
+[00:58:44]   Isotopy variant also INFEASIBLE
+[00:58:45] trial=391 isotopy_variant: INFEASIBLE in 1.7s
+[00:58:45] trial=391 isotopy_variant: INFEASIBLE in 1.7s
+[00:58:45]   Isotopy variant also INFEASIBLE
+[00:58:45]   Isotopy variant also INFEASIBLE
+[00:58:46] trial=392 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:46] trial=392 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:46]   Isotopy variant also INFEASIBLE
+[00:58:46]   Isotopy variant also INFEASIBLE
+[00:58:47] trial=393 isotopy_variant: INFEASIBLE in 1.2s
+[00:58:47] trial=393 isotopy_variant: INFEASIBLE in 1.2s
+[00:58:47]   Isotopy variant also INFEASIBLE
+[00:58:47]   Isotopy variant also INFEASIBLE
+[00:58:47] trial=394 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:47] trial=394 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:47]   Isotopy variant also INFEASIBLE
+[00:58:47]   Isotopy variant also INFEASIBLE
+[00:58:48] trial=395 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:48] trial=395 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:48]   Isotopy variant also INFEASIBLE
+[00:58:48]   Isotopy variant also INFEASIBLE
+[00:58:48] trial=396 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:48] trial=396 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:48]   Isotopy variant also INFEASIBLE
+[00:58:48]   Isotopy variant also INFEASIBLE
+[00:58:49] trial=397 isotopy_variant: INFEASIBLE in 0.8s
+[00:58:49] trial=397 isotopy_variant: INFEASIBLE in 0.8s
+[00:58:49]   Isotopy variant also INFEASIBLE
+[00:58:49]   Isotopy variant also INFEASIBLE
+[00:58:50] trial=398 isotopy_variant: INFEASIBLE in 1.3s
+[00:58:50] trial=398 isotopy_variant: INFEASIBLE in 1.3s
+[00:58:50]   Isotopy variant also INFEASIBLE
+[00:58:50]   Isotopy variant also INFEASIBLE
+[00:58:50] trial=399 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:50] trial=399 isotopy_variant: INFEASIBLE in 0.3s
+[00:58:50]   Isotopy variant also INFEASIBLE
+[00:58:50]   Isotopy variant also INFEASIBLE
+[00:58:51] trial=400 isotopy_variant: INFEASIBLE in 1.3s
+[00:58:51] trial=400 isotopy_variant: INFEASIBLE in 1.3s
+[00:58:51]   Isotopy variant also INFEASIBLE
+[00:58:51]   Isotopy variant also INFEASIBLE
+[00:58:53] trial=401 isotopy_variant: INFEASIBLE in 1.2s
+[00:58:53] trial=401 isotopy_variant: INFEASIBLE in 1.2s
+[00:58:53]   Isotopy variant also INFEASIBLE
+[00:58:53]   Isotopy variant also INFEASIBLE
+[00:58:54] trial=402 isotopy_variant: INFEASIBLE in 1.3s
+[00:58:54] trial=402 isotopy_variant: INFEASIBLE in 1.3s
+[00:58:54]   Isotopy variant also INFEASIBLE
+[00:58:54]   Isotopy variant also INFEASIBLE
+[00:58:55] trial=403 isotopy_variant: INFEASIBLE in 1.2s
+[00:58:55] trial=403 isotopy_variant: INFEASIBLE in 1.2s
+[00:58:55]   Isotopy variant also INFEASIBLE
+[00:58:55]   Isotopy variant also INFEASIBLE
+[00:58:56] trial=404 isotopy_variant: INFEASIBLE in 1.2s
+[00:58:56] trial=404 isotopy_variant: INFEASIBLE in 1.2s
+[00:58:56]   Isotopy variant also INFEASIBLE
+[00:58:56]   Isotopy variant also INFEASIBLE
+[00:58:57] trial=405 isotopy_variant: INFEASIBLE in 0.6s
+[00:58:57] trial=405 isotopy_variant: INFEASIBLE in 0.6s
+[00:58:57]   Isotopy variant also INFEASIBLE
+[00:58:57]   Isotopy variant also INFEASIBLE
+[00:58:58] trial=406 isotopy_variant: INFEASIBLE in 1.3s
+[00:58:58] trial=406 isotopy_variant: INFEASIBLE in 1.3s
+[00:58:58]   Isotopy variant also INFEASIBLE
+[00:58:58]   Isotopy variant also INFEASIBLE
+[00:58:59] trial=407 isotopy_variant: INFEASIBLE in 0.2s
+[00:58:59] trial=407 isotopy_variant: INFEASIBLE in 0.2s
+[00:58:59]   Isotopy variant also INFEASIBLE
+[00:58:59]   Isotopy variant also INFEASIBLE

@@ -1,0 +1,22 @@
+[17:52:03] ============================================================
+[17:52:03] ============================================================
+[17:52:03] Long-duration attack on best pool entry (E=32)
+[17:52:03] Long-duration attack on best pool entry (E=32)
+[17:52:03] Best entry E=32
+[17:52:03] Best entry E=32
+[17:52:03] seed=2001  timeout=900s  8w  sym=True  best=32
+[17:52:03] seed=2001  timeout=900s  8w  sym=True  best=32
+[18:07:04]   FEAS: E=31 cl13=19 cl23=12 t=900.3s
+[18:07:04]   FEAS: E=31 cl13=19 cl23=12 t=900.3s
+[18:07:04]   ★★★ NEW BEST E=31  saved=True ★★★
+[18:07:04]   ★★★ NEW BEST E=31  saved=True ★★★
+[18:07:04] seed=2002  timeout=1800s  8w  sym=True  best=31
+[18:07:04] seed=2002  timeout=1800s  8w  sym=True  best=31
+[18:37:09] ============================================================
+[18:37:09] ============================================================
+[18:37:09] Long-duration attack on best pool entry (E=32)
+[18:37:09] Long-duration attack on best pool entry (E=32)
+[18:37:09] Best entry E=31
+[18:37:09] Best entry E=31
+[18:37:09] seed=2001  timeout=900s  8w  sym=True  best=31
+[18:37:09] seed=2001  timeout=900s  8w  sym=True  best=31

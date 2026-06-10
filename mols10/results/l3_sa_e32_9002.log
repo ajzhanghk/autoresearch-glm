@@ -1,0 +1,86 @@
+[17:55:05] ============================================================
+[17:55:05] ============================================================
+[17:55:05] Targeted SA on E=32 pair (seed=9002)
+[17:55:05] Targeted SA on E=32 pair (seed=9002)
+[17:55:05] trial=1  session_best=32
+[17:55:05] trial=1  session_best=32
+[17:56:50]   E=32 cl13=18 cl23=14 t=105.2s
+[17:56:50]   E=32 cl13=18 cl23=14 t=105.2s
+[17:56:50] trial=2  session_best=32
+[17:56:50] trial=2  session_best=32
+[17:58:38]   E=32 cl13=18 cl23=14 t=107.6s
+[17:58:38]   E=32 cl13=18 cl23=14 t=107.6s
+[17:58:38] trial=3  session_best=32
+[17:58:38] trial=3  session_best=32
+[18:00:21]   E=32 cl13=17 cl23=15 t=103.1s
+[18:00:21]   E=32 cl13=17 cl23=15 t=103.1s
+[18:00:21] trial=4  session_best=32
+[18:00:21] trial=4  session_best=32
+[18:01:30]   E=35 cl13=18 cl23=17 t=69.3s
+[18:01:30]   E=35 cl13=18 cl23=17 t=69.3s
+[18:01:30] trial=5  session_best=32
+[18:01:30] trial=5  session_best=32
+[18:02:38]   E=39 cl13=20 cl23=19 t=67.8s
+[18:02:38]   E=39 cl13=20 cl23=19 t=67.8s
+[18:02:38] trial=6  session_best=32
+[18:02:38] trial=6  session_best=32
+[18:03:51]   E=39 cl13=19 cl23=20 t=73.0s
+[18:03:51]   E=39 cl13=19 cl23=20 t=73.0s
+[18:03:51] trial=7  session_best=32
+[18:03:51] trial=7  session_best=32
+[18:05:18]   E=39 cl13=20 cl23=19 t=87.0s
+[18:05:18]   E=39 cl13=20 cl23=19 t=87.0s
+[18:05:18] trial=8  session_best=32
+[18:05:18] trial=8  session_best=32
+[18:07:02]   E=38 cl13=18 cl23=20 t=104.0s
+[18:07:02]   E=38 cl13=18 cl23=20 t=104.0s
+[18:07:02] trial=9  session_best=32
+[18:07:02] trial=9  session_best=32
+[18:08:59]   E=38 cl13=20 cl23=18 t=116.8s
+[18:08:59]   E=38 cl13=20 cl23=18 t=116.8s
+[18:08:59]   → New global best E=31
+[18:08:59]   → New global best E=31
+[18:08:59] trial=10  session_best=31
+[18:08:59] trial=10  session_best=31
+[18:10:59]   E=38 cl13=20 cl23=18 t=120.2s
+[18:10:59]   E=38 cl13=20 cl23=18 t=120.2s
+[18:10:59] trial=11  session_best=31
+[18:10:59] trial=11  session_best=31
+[18:12:53]   E=37 cl13=21 cl23=16 t=113.7s
+[18:12:53]   E=37 cl13=21 cl23=16 t=113.7s
+[18:12:53] trial=12  session_best=31
+[18:12:53] trial=12  session_best=31
+[18:14:45]   E=36 cl13=21 cl23=15 t=112.1s
+[18:14:45]   E=36 cl13=21 cl23=15 t=112.1s
+[18:14:45] trial=13  session_best=31
+[18:14:45] trial=13  session_best=31
+[18:16:50]   E=37 cl13=20 cl23=17 t=125.5s
+[18:16:50]   E=37 cl13=20 cl23=17 t=125.5s
+[18:16:50] trial=14  session_best=31
+[18:16:50] trial=14  session_best=31
+[18:19:05]   E=35 cl13=20 cl23=15 t=134.9s
+[18:19:05]   E=35 cl13=20 cl23=15 t=134.9s
+[18:19:05] trial=15  session_best=31
+[18:19:05] trial=15  session_best=31
+[18:21:25]   E=39 cl13=22 cl23=17 t=140.2s
+[18:21:25]   E=39 cl13=22 cl23=17 t=140.2s
+[18:21:25] trial=16  session_best=31
+[18:21:25] trial=16  session_best=31
+[18:24:01]   E=36 cl13=21 cl23=15 t=156.0s
+[18:24:01]   E=36 cl13=21 cl23=15 t=156.0s
+[18:24:01] trial=17  session_best=31
+[18:24:01] trial=17  session_best=31
+[18:27:03]   E=35 cl13=21 cl23=14 t=181.8s
+[18:27:03]   E=35 cl13=21 cl23=14 t=181.8s
+[18:27:03]   → New global best E=13
+[18:27:03]   → New global best E=13
+[18:27:03] trial=18  session_best=13
+[18:27:03] trial=18  session_best=13
+[18:30:10]   E=25 cl13=8 cl23=17 t=186.9s
+[18:30:10]   E=25 cl13=8 cl23=17 t=186.9s
+[18:30:10] trial=19  session_best=13
+[18:30:10] trial=19  session_best=13
+[18:33:09]   E=25 cl13=10 cl23=15 t=179.3s
+[18:33:09]   E=25 cl13=10 cl23=15 t=179.3s
+[18:33:09] trial=20  session_best=13
+[18:33:09] trial=20  session_best=13

@@ -1,0 +1,15 @@
+[18:07:50] ============================================================
+[18:07:50] Seed sweep s=60-80 t=300s 6w sym=True
+[18:07:50] Best entry E=31
+[18:07:50]   seed=60  best_so_far=31
+[18:12:51]     FEAS: E=40 cl13=23 cl23=17 t=300.7s
+[18:12:51]   seed=61  best_so_far=31
+[18:17:52]     FEAS: E=38 cl13=17 cl23=21 t=301.2s
+[18:17:52]   seed=62  best_so_far=31
+[18:22:54]     FEAS: E=41 cl13=29 cl23=12 t=301.6s
+[18:22:54]   seed=63  best_so_far=31
+[18:27:56]     FEAS: E=39 cl13=19 cl23=20 t=302.0s
+[18:27:56]   seed=64  best_so_far=31
+[18:27:56]   → new global best E=13
+[18:32:58]     FEAS: E=43 cl13=20 cl23=23 t=301.9s
+[18:32:58]   seed=65  best_so_far=13

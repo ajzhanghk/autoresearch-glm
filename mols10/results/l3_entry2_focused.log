@@ -1,0 +1,39 @@
+[08:36:40] Focused attack on pool entry 2 (best in scan: E=38 in 60s)
+  L1[0]: [6, 3, 2, 5, 8, 9, 0, 1, 7, 4]
+
+[08:36:40] trial=1  timeout=120s  2w  symbreak=True  best_E=99
+  FEAS: E=38  cl13=16  cl23=22  best_E=38  t=120.1s
+[08:38:40] trial=2  timeout=180s  2w  symbreak=True  best_E=38
+  FEAS: E=38  cl13=22  cl23=16  best_E=38  t=180.1s
+[08:41:40] trial=3  timeout=120s  2w  symbreak=False  best_E=38
+  FEAS: E=38  cl13=20  cl23=18  best_E=38  t=120.1s
+[08:43:41] trial=4  timeout=180s  2w  symbreak=True  best_E=38
+  FEAS: E=37  cl13=17  cl23=20  best_E=37  t=180.1s
+[08:46:41] trial=5  timeout=120s  2w  symbreak=True  best_E=37
+  FEAS: E=39  cl13=19  cl23=20  best_E=37  t=120.1s
+[08:48:41] trial=6  timeout=180s  2w  symbreak=False  best_E=37
+  FEAS: E=42  cl13=20  cl23=22  best_E=37  t=180.1s
+[08:51:41] trial=7  timeout=120s  2w  symbreak=True  best_E=37
+  FEAS: E=40  cl13=25  cl23=15  best_E=37  t=120.2s
+[08:53:41] trial=8  timeout=180s  2w  symbreak=True  best_E=37
+  FEAS: E=39  cl13=17  cl23=22  best_E=37  t=180.1s
+[08:56:41] trial=9  timeout=120s  2w  symbreak=False  best_E=37
+  FEAS: E=41  cl13=24  cl23=17  best_E=37  t=120.1s
+[08:58:41] trial=10  timeout=180s  2w  symbreak=True  best_E=37
+  FEAS: E=39  cl13=24  cl23=15  best_E=37  t=180.1s
+[09:01:41] trial=11  timeout=120s  2w  symbreak=True  best_E=37
+  FEAS: E=35  cl13=20  cl23=15  best_E=35  t=120.1s
+  ★ SAVED E=35 to pool!
+[09:03:41] trial=12  timeout=180s  2w  symbreak=False  best_E=35
+  FEAS: E=40  cl13=22  cl23=18  best_E=35  t=180.8s
+[09:06:42] trial=13  timeout=120s  2w  symbreak=True  best_E=35
+  FEAS: E=41  cl13=23  cl23=18  best_E=35  t=120.1s
+[09:08:42] trial=14  timeout=180s  2w  symbreak=True  best_E=35
+  FEAS: E=43  cl13=23  cl23=20  best_E=35  t=180.1s
+[09:11:42] trial=15  timeout=120s  2w  symbreak=False  best_E=35
+  FEAS: E=43  cl13=23  cl23=20  best_E=35  t=120.2s
+[09:13:43] trial=16  timeout=180s  2w  symbreak=True  best_E=35
+  FEAS: E=38  cl13=17  cl23=21  best_E=35  t=180.1s
+[09:16:43] trial=17  timeout=120s  2w  symbreak=True  best_E=35
+  FEAS: E=45  cl13=28  cl23=17  best_E=35  t=120.1s
+[09:18:43] trial=18  timeout=180s  2w  symbreak=False  best_E=35

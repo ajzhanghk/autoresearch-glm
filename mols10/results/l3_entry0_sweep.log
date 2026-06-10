@@ -1,0 +1,49 @@
+[08:34:57] Entry0 sweep: solver_seeds=0..49  timeout=120.0s  workers=2  symbreak=False
+
+[08:34:57] solver_seed=0  best_ever=999
+  FEAS: E=42  cl13=21  cl23=21  elapsed=120.1s  best_ever=42
+[08:36:57] solver_seed=1  best_ever=42
+  FEAS: E=39  cl13=20  cl23=19  elapsed=120.1s  best_ever=39
+[08:38:57] solver_seed=2  best_ever=39
+  FEAS: E=42  cl13=25  cl23=17  elapsed=120.1s  best_ever=39
+[08:40:58] solver_seed=3  best_ever=39
+  FEAS: E=37  cl13=17  cl23=20  elapsed=120.1s  best_ever=37
+[08:42:58] solver_seed=4  best_ever=37
+  FEAS: E=42  cl13=22  cl23=20  elapsed=120.1s  best_ever=37
+[08:44:58] solver_seed=5  best_ever=37
+  FEAS: E=39  cl13=20  cl23=19  elapsed=120.1s  best_ever=37
+[08:46:58] solver_seed=6  best_ever=37
+  FEAS: E=39  cl13=25  cl23=14  elapsed=120.2s  best_ever=37
+[08:48:58] solver_seed=7  best_ever=37
+  FEAS: E=40  cl13=17  cl23=23  elapsed=120.1s  best_ever=37
+[08:50:58] solver_seed=8  best_ever=37
+  FEAS: E=40  cl13=20  cl23=20  elapsed=120.1s  best_ever=37
+[08:52:58] solver_seed=9  best_ever=37
+  FEAS: E=41  cl13=18  cl23=23  elapsed=120.1s  best_ever=37
+[08:54:58] solver_seed=10  best_ever=37
+  FEAS: E=43  cl13=24  cl23=19  elapsed=120.2s  best_ever=37
+[08:56:58] solver_seed=11  best_ever=37
+  FEAS: E=43  cl13=22  cl23=21  elapsed=120.1s  best_ever=37
+[08:58:59] solver_seed=12  best_ever=37
+  FEAS: E=45  cl13=23  cl23=22  elapsed=120.1s  best_ever=37
+[09:00:59] solver_seed=13  best_ever=37
+  FEAS: E=44  cl13=23  cl23=21  elapsed=120.9s  best_ever=37
+[09:03:00] solver_seed=14  best_ever=37
+  FEAS: E=43  cl13=26  cl23=17  elapsed=120.1s  best_ever=37
+[09:05:00] solver_seed=15  best_ever=37
+  FEAS: E=41  cl13=18  cl23=23  elapsed=120.1s  best_ever=37
+[09:07:00] solver_seed=16  best_ever=37
+  FEAS: E=42  cl13=23  cl23=19  elapsed=120.1s  best_ever=37
+[09:09:00] solver_seed=17  best_ever=37
+  FEAS: E=39  cl13=16  cl23=23  elapsed=120.1s  best_ever=37
+[09:11:00] solver_seed=18  best_ever=37
+  FEAS: E=41  cl13=20  cl23=21  elapsed=120.1s  best_ever=37
+[09:13:00] solver_seed=19  best_ever=37
+  FEAS: E=44  cl13=19  cl23=25  elapsed=120.1s  best_ever=37
+[09:15:00] solver_seed=20  best_ever=37
+  FEAS: E=43  cl13=20  cl23=23  elapsed=120.1s  best_ever=37
+[09:17:00] solver_seed=21  best_ever=37
+  FEAS: E=45  cl13=25  cl23=20  elapsed=120.1s  best_ever=37
+[09:19:01] solver_seed=22  best_ever=37
+  FEAS: E=42  cl13=18  cl23=24  elapsed=120.1s  best_ever=37
+[09:21:01] solver_seed=23  best_ever=37

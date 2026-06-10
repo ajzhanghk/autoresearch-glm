@@ -1,0 +1,12 @@
+[00:47:56] ============================================================
+[00:47:56] ============================================================
+[00:47:56] Fresh pair generator seed=6002 sa_budget=60s cpsat=180.0s 2w
+[00:47:56] Fresh pair generator seed=6002 sa_budget=60s cpsat=180.0s 2w
+[00:47:56] Known class hash: d83f1182
+[00:47:56] Known class hash: d83f1182
+[00:48:56] trial=1 SA failed to find orthogonal L2 (cl12=10) in 60.0s, skipping
+[00:48:56] trial=1 SA failed to find orthogonal L2 (cl12=10) in 60.0s, skipping
+[00:49:56] trial=2 SA failed to find orthogonal L2 (cl12=10) in 60.0s, skipping
+[00:49:56] trial=2 SA failed to find orthogonal L2 (cl12=10) in 60.0s, skipping
+[00:50:56] trial=3 SA failed to find orthogonal L2 (cl12=10) in 60.0s, skipping
+[00:50:56] trial=3 SA failed to find orthogonal L2 (cl12=10) in 60.0s, skipping

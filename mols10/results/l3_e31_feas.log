@@ -1,0 +1,21 @@
+.venv/bin/python3: can't open file '/tmp/e31_feas.py': [Errno 2] No such file or directory
+[18:13:04] ============================================================
+[18:13:04] ============================================================
+[18:13:04] Feasibility attack targeting E<=28 from E=31 warm-start
+[18:13:04] Feasibility attack targeting E<=28 from E=31 warm-start
+[18:13:04] Starting from E=31
+[18:13:04] Starting from E=31
+[18:13:04] target=28 timeout=600s 8w sym=True seed=200
+[18:13:04] target=28 timeout=600s 8w sym=True seed=200
+[18:23:05]   FEAS: E=39 cl13=16 cl23=23 t=600.2s
+[18:23:05]   FEAS: E=39 cl13=16 cl23=23 t=600.2s
+[18:23:05] target=28 timeout=600s 8w sym=True seed=201
+[18:23:05] target=28 timeout=600s 8w sym=True seed=201
+[18:33:05]   FEAS: E=42 cl13=20 cl23=22 t=600.3s
+[18:33:05]   FEAS: E=42 cl13=20 cl23=22 t=600.3s
+[18:33:05] target=28 timeout=600s 8w sym=True seed=202
+[18:33:05] target=28 timeout=600s 8w sym=True seed=202
+[18:43:05]   FEAS: E=37 cl13=19 cl23=18 t=600.4s
+[18:43:05]   FEAS: E=37 cl13=19 cl23=18 t=600.4s
+[18:43:05] target=28 timeout=600s 8w sym=True seed=203
+[18:43:05] target=28 timeout=600s 8w sym=True seed=203

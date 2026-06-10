@@ -1,0 +1,28 @@
+[08:32:18] Scanning all 8 pool entries with 60s CP-SAT (symbreak=True)
+
+[08:32:18] Entry 0: pool_E=37
+  FEAS: E=43  cl13=22  cl23=21  elapsed=60.3s
+[08:33:18] Entry 1: pool_E=37
+  FEAS: E=40  cl13=19  cl23=21  elapsed=60.1s
+[08:34:18] Entry 2: pool_E=37
+  FEAS: E=38  cl13=20  cl23=18  elapsed=60.2s
+[08:35:19] Entry 3: pool_E=37
+  FEAS: E=38  cl13=18  cl23=20  elapsed=60.6s
+[08:36:19] Entry 4: pool_E=37
+  FEAS: E=46  cl13=27  cl23=19  elapsed=60.2s
+[08:37:19] Entry 5: pool_E=37
+  FEAS: E=44  cl13=22  cl23=22  elapsed=60.1s
+[08:38:19] Entry 6: pool_E=37
+  FEAS: E=39  cl13=18  cl23=21  elapsed=60.2s
+[08:39:20] Entry 7: pool_E=37
+  FEAS: E=43  cl13=22  cl23=21  elapsed=60.1s
+
+=== SCAN SUMMARY ===
+  Entry 0: E=43  cl13=22  cl23=21
+  Entry 1: E=40  cl13=19  cl23=21
+  Entry 2: E=38  cl13=20  cl23=18
+  Entry 3: E=38  cl13=18  cl23=20
+  Entry 4: E=46  cl13=27  cl23=19
+  Entry 5: E=44  cl13=22  cl23=22
+  Entry 6: E=39  cl13=18  cl23=21
+  Entry 7: E=43  cl13=22  cl23=21

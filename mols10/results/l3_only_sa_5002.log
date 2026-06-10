@@ -1,0 +1,41 @@
+[18:18:22] ============================================================
+[18:18:22] ============================================================
+[18:18:22] L3-only SA (seed=5002, budget=300s per trial)
+[18:18:22] L3-only SA (seed=5002, budget=300s per trial)
+[18:18:22] trial=1 session_best=31 shakes=7
+[18:18:22] trial=1 session_best=31 shakes=7
+Traceback (most recent call last):
+  File "/tmp/l3_only_sa.py", line 193, in <module>
+    main()
+  File "/tmp/l3_only_sa.py", line 168, in main
+    E, L3_sol = sa_l3_search(L1, L2, L3_start, rng, args.budget)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/l3_only_sa.py", line 83, in sa_l3_search
+    op = rng.randint(0, 4)
+         ^^^^^^^^^^^
+AttributeError: 'numpy.random._generator.Generator' object has no attribute 'randint'
+[18:19:54] ============================================================
+[18:19:54] ============================================================
+[18:19:54] L3-only SA (seed=5002, budget=300s)
+[18:19:54] L3-only SA (seed=5002, budget=300s)
+[18:19:54] trial=1 best=31
+[18:19:54] trial=1 best=31
+[18:24:34] ============================================================
+[18:24:34] L3-only SA (seed=5002, budget=300s)
+[18:24:34] trial=1 best=31
+[18:24:54]   E=14 cl13=9 cl23=5 t=300.0s
+[18:24:54]   E=14 cl13=9 cl23=5 t=300.0s
+[18:24:54]   ★ E=14 saved=True
+[18:24:54]   ★ E=14 saved=True
+[18:24:54]   → Reloaded E=13
+[18:24:54]   → Reloaded E=13
+[18:24:54] trial=2 best=13
+[18:24:54] trial=2 best=13
+[18:29:44] ============================================================
+[18:29:44] L3-only SA (seed=5002, budget=300s)
+[18:29:44] trial=1 best=31
+[18:34:44]   E=46 cl13=24 cl23=22 t=300.0s
+[18:34:44] trial=2 best=31
+[18:36:33] ============================================================
+[18:36:33] L3-only SA (seed=5002, budget=600s)
+[18:36:33] trial=1 best=31 flips=4

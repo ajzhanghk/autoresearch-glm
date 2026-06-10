@@ -1,0 +1,16 @@
+[18:47:51] ============================================================
+[18:47:51] ============================================================
+[18:47:51] Alt-pair sweep: pool[1] s=2001-2050 t=900s 4w
+[18:47:51] Alt-pair sweep: pool[1] s=2001-2050 t=900s 4w
+[18:47:51] Target: pool[1] E=32 cl12=0
+[18:47:51] Target: pool[1] E=32 cl12=0
+[18:47:51]   seed=2001  session_best=32  global_best=31
+[18:47:51]   seed=2001  session_best=32  global_best=31
+[19:02:53]     FEAS: E=38 cl13=21 cl23=17 t=902.2s
+[19:02:53]     FEAS: E=38 cl13=21 cl23=17 t=902.2s
+[19:02:53]   seed=2002  session_best=32  global_best=31
+[19:02:53]   seed=2002  session_best=32  global_best=31
+[19:17:54]     FEAS: E=37 cl13=16 cl23=21 t=900.6s
+[19:17:54]     FEAS: E=37 cl13=16 cl23=21 t=900.6s
+[19:17:54]   seed=2003  session_best=32  global_best=31
+[19:17:54]   seed=2003  session_best=32  global_best=31

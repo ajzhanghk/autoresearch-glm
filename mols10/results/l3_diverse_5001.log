@@ -1,0 +1,10 @@
+[00:43:42] ============================================================
+[00:43:42] ============================================================
+[00:43:42] Diverse pair search seed=5001 t=300.0s 2w
+[00:43:42] Diverse pair search seed=5001 t=300.0s 2w
+[00:43:42] trial=1 pair_hash=-3e6a707ddb9bd77d
+[00:43:42] trial=1 pair_hash=-3e6a707ddb9bd77d
+[00:48:42]   FEASIBLE: E=39 cl13=23 cl23=16 session_best=39 t=300.1s optimal=False
+[00:48:42]   FEASIBLE: E=39 cl13=23 cl23=16 session_best=39 t=300.1s optimal=False
+[00:48:42] trial=2 pair_hash=-25564cd8faca2329
+[00:48:42] trial=2 pair_hash=-25564cd8faca2329

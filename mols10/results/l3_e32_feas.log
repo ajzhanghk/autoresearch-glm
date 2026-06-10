@@ -1,0 +1,22 @@
+[17:54:20] ============================================================
+[17:54:20] ============================================================
+[17:54:20] Feasibility attack: targeting E<=target
+[17:54:20] Feasibility attack: targeting E<=target
+[17:54:20] Best entry E=32
+[17:54:20] Best entry E=32
+[17:54:20] target=30 timeout=300s 6w sym=True seed=60
+[17:54:20] target=30 timeout=300s 6w sym=True seed=60
+[17:59:20]   TIMEOUT t=300.1s
+[17:59:20]   TIMEOUT t=300.1s
+[17:59:20] target=30 timeout=300s 6w sym=True seed=61
+[17:59:20] target=30 timeout=300s 6w sym=True seed=61
+[18:04:20]   TIMEOUT t=300.3s
+[18:04:20]   TIMEOUT t=300.3s
+[18:04:20] target=30 timeout=300s 6w sym=True seed=62
+[18:04:20] target=30 timeout=300s 6w sym=True seed=62
+[18:09:21]   TIMEOUT t=300.5s
+[18:09:21]   TIMEOUT t=300.5s
+[18:09:21]   → Reloaded best E=31
+[18:09:21]   → Reloaded best E=31
+[18:09:21] target=30 timeout=300s 6w sym=True seed=63
+[18:09:21] target=30 timeout=300s 6w sym=True seed=63

@@ -1,0 +1,12 @@
+[09:14:24] ============================================================
+[09:14:24] ============================================================
+[09:14:24] Focused CP-SAT attack on best pool entry, targeting E<=31
+[09:14:24] Focused CP-SAT attack on best pool entry, targeting E<=31
+[09:14:24] Best entry: E=32 cl12=0
+[09:14:24] Best entry: E=32 cl12=0
+[09:14:24] trial=1  to=300s  6w  sym=True  s=42  best=32
+[09:14:24] trial=1  to=300s  6w  sym=True  s=42  best=32
+[09:19:24]   FEAS: E=34 cl13=17 cl23=17 t=300.3s
+[09:19:24]   FEAS: E=34 cl13=17 cl23=17 t=300.3s
+[09:19:24] trial=2  to=600s  8w  sym=True  s=137  best=32
+[09:19:24] trial=2  to=600s  8w  sym=True  s=137  best=32

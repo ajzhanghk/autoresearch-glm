@@ -1,0 +1,12 @@
+[09:16:07] ============================================================
+[09:16:07] ============================================================
+[09:16:07] CP-SAT attack on pool entry index 3
+[09:16:07] CP-SAT attack on pool entry index 3
+[09:16:07] Entry E=33 cl12=0
+[09:16:07] Entry E=33 cl12=0
+[09:16:07] trial=1  to=300s  4w  sym=True  s=139  best=33
+[09:16:07] trial=1  to=300s  4w  sym=True  s=139  best=33
+[09:21:07]   FEAS: E=40 cl13=18 cl23=22 t=300.4s
+[09:21:07]   FEAS: E=40 cl13=18 cl23=22 t=300.4s
+[09:21:07] trial=2  to=600s  4w  sym=True  s=146  best=33
+[09:21:07] trial=2  to=600s  4w  sym=True  s=146  best=33

@@ -1,0 +1,40 @@
+[18:18:22] ============================================================
+[18:18:22] ============================================================
+[18:18:22] L3-only SA (seed=5001, budget=300s per trial)
+[18:18:22] L3-only SA (seed=5001, budget=300s per trial)
+[18:18:22] trial=1 session_best=31 shakes=2
+[18:18:22] trial=1 session_best=31 shakes=2
+Traceback (most recent call last):
+  File "/tmp/l3_only_sa.py", line 193, in <module>
+    main()
+  File "/tmp/l3_only_sa.py", line 168, in main
+    E, L3_sol = sa_l3_search(L1, L2, L3_start, rng, args.budget)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/l3_only_sa.py", line 83, in sa_l3_search
+    op = rng.randint(0, 4)
+         ^^^^^^^^^^^
+AttributeError: 'numpy.random._generator.Generator' object has no attribute 'randint'
+.venv/bin/python3: can't open file '/tmp/l3_sa_fixed.py': [Errno 2] No such file or directory
+[18:19:53] ============================================================
+[18:19:53] ============================================================
+[18:19:53] L3-only SA (seed=5001, budget=300s)
+[18:19:53] L3-only SA (seed=5001, budget=300s)
+[18:19:53] trial=1 best=31
+[18:19:53] trial=1 best=31
+[18:24:33] ============================================================
+[18:24:33] L3-only SA (seed=5001, budget=300s)
+[18:24:33] trial=1 best=31
+[18:24:53]   E=13 cl13=3 cl23=10 t=300.0s
+[18:24:53]   E=13 cl13=3 cl23=10 t=300.0s
+[18:24:54]   ★ E=13 saved=True
+[18:24:54]   ★ E=13 saved=True
+[18:24:54] trial=2 best=13
+[18:24:54] trial=2 best=13
+[18:29:44] ============================================================
+[18:29:44] L3-only SA (seed=5001, budget=300s)
+[18:29:44] trial=1 best=31
+[18:34:44]   E=47 cl13=22 cl23=25 t=300.0s
+[18:34:44] trial=2 best=31
+[18:36:33] ============================================================
+[18:36:33] L3-only SA (seed=5001, budget=600s)
+[18:36:33] trial=1 best=31 flips=1

@@ -1,0 +1,44 @@
+[17:51:42] ============================================================
+[17:51:42] ============================================================
+[17:51:42] Seed sweep s=0-20 t=300s 4w sym=True
+[17:51:42] Seed sweep s=0-20 t=300s 4w sym=True
+[17:51:42] Best entry E=32
+[17:51:42] Best entry E=32
+[17:51:42]   seed=0  best_so_far=32
+[17:51:42]   seed=0  best_so_far=32
+[17:56:42]     FEAS: E=41 cl13=18 cl23=23 t=300.1s
+[17:56:42]     FEAS: E=41 cl13=18 cl23=23 t=300.1s
+[17:56:42]   seed=1  best_so_far=32
+[17:56:42]   seed=1  best_so_far=32
+[18:01:43]     FEAS: E=40 cl13=21 cl23=19 t=300.6s
+[18:01:43]     FEAS: E=40 cl13=21 cl23=19 t=300.6s
+[18:01:43]   seed=2  best_so_far=32
+[18:01:43]   seed=2  best_so_far=32
+[18:06:43]     FEAS: E=40 cl13=23 cl23=17 t=300.3s
+[18:06:43]     FEAS: E=40 cl13=23 cl23=17 t=300.3s
+[18:06:43]   seed=3  best_so_far=32
+[18:06:43]   seed=3  best_so_far=32
+[18:11:43]     FEAS: E=40 cl13=21 cl23=19 t=300.6s
+[18:11:43]     FEAS: E=40 cl13=21 cl23=19 t=300.6s
+[18:11:43]   seed=4  best_so_far=32
+[18:11:43]   seed=4  best_so_far=32
+[18:11:43]   → new global best E=31
+[18:11:43]   → new global best E=31
+[18:16:44]     FEAS: E=39 cl13=20 cl23=19 t=300.5s
+[18:16:44]     FEAS: E=39 cl13=20 cl23=19 t=300.5s
+[18:16:44]   seed=5  best_so_far=31
+[18:16:44]   seed=5  best_so_far=31
+[18:21:44]     FEAS: E=39 cl13=17 cl23=22 t=300.4s
+[18:21:44]     FEAS: E=39 cl13=17 cl23=22 t=300.4s
+[18:21:44]   seed=6  best_so_far=31
+[18:21:44]   seed=6  best_so_far=31
+[18:26:45]     FEAS: E=42 cl13=20 cl23=22 t=300.4s
+[18:26:45]     FEAS: E=42 cl13=20 cl23=22 t=300.4s
+[18:26:45]   seed=7  best_so_far=31
+[18:26:45]   seed=7  best_so_far=31
+[18:26:45]   → new global best E=13
+[18:26:45]   → new global best E=13
+[18:31:45]     FEAS: E=41 cl13=18 cl23=23 t=300.4s
+[18:31:45]     FEAS: E=41 cl13=18 cl23=23 t=300.4s
+[18:31:45]   seed=8  best_so_far=13
+[18:31:45]   seed=8  best_so_far=13

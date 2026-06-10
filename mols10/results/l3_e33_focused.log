@@ -1,0 +1,20 @@
+[09:03:16] ============================================================
+[09:03:16] ============================================================
+[09:03:16] Focused CP-SAT attack on E=33 entry, targeting E<=32
+[09:03:16] Focused CP-SAT attack on E=33 entry, targeting E<=32
+[09:03:16] Best pool entry: E=33 cl12=0
+[09:03:16] Best pool entry: E=33 cl12=0
+[09:03:16] trial=1  timeout=180s  4w  sym=True  seed=42  session_best=33
+[09:03:16] trial=1  timeout=180s  4w  sym=True  seed=42  session_best=33
+[09:06:16]   FEAS: E=37  cl13=18  cl23=19  cl12=0  t=180.2s
+[09:06:16]   FEAS: E=37  cl13=18  cl23=19  cl12=0  t=180.2s
+[09:06:16] trial=2  timeout=300s  4w  sym=True  seed=99  session_best=33
+[09:06:16] trial=2  timeout=300s  4w  sym=True  seed=99  session_best=33
+[09:11:16]   FEAS: E=41  cl13=20  cl23=21  cl12=0  t=300.3s
+[09:11:16]   FEAS: E=41  cl13=20  cl23=21  cl12=0  t=300.3s
+[09:11:16] trial=3  timeout=180s  4w  sym=False  seed=17  session_best=33
+[09:11:16] trial=3  timeout=180s  4w  sym=False  seed=17  session_best=33
+[09:14:17]   FEAS: E=39  cl13=21  cl23=18  cl12=0  t=180.2s
+[09:14:17]   FEAS: E=39  cl13=21  cl23=18  cl12=0  t=180.2s
+[09:14:17] trial=4  timeout=600s  6w  sym=True  seed=101  session_best=33
+[09:14:17] trial=4  timeout=600s  6w  sym=True  seed=101  session_best=33

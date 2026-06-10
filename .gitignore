@@ -3,3 +3,10 @@ __pycache__/
 .cache/
 *.pyc
 .venv/
+*.aux
+*.log
+*.out
+*.toc
+*.pdf
+*.synctex.gz
+*.lock

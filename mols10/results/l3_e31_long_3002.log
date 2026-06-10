@@ -1,0 +1,16 @@
+[18:15:31] ============================================================
+[18:15:31] ============================================================
+[18:15:31] Long-duration attack on E=31 pair (seed=3002)
+[18:15:31] Long-duration attack on E=31 pair (seed=3002)
+[18:15:31] Starting from E=31
+[18:15:31] Starting from E=31
+[18:15:31] seed=3002 timeout=1200s 8w sym=True best=31
+[18:15:31] seed=3002 timeout=1200s 8w sym=True best=31
+[18:35:32]   FEAS: E=37 cl13=18 cl23=19 t=1200.6s
+[18:35:32]   FEAS: E=37 cl13=18 cl23=19 t=1200.6s
+[18:35:32] seed=3003 timeout=1800s 8w sym=False best=31
+[18:35:32] seed=3003 timeout=1800s 8w sym=False best=31
+[19:05:32]   FEAS: E=37 cl13=20 cl23=17 t=1800.7s
+[19:05:32]   FEAS: E=37 cl13=20 cl23=17 t=1800.7s
+[19:05:32] seed=3004 timeout=900s 8w sym=True best=31
+[19:05:32] seed=3004 timeout=900s 8w sym=True best=31

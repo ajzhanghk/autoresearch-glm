@@ -1,0 +1,179 @@
+[18:05:25] ============================================================
+[18:05:25] ============================================================
+[18:05:25] SA triple_pt blitz (seed=8003, budget=54s)
+[18:05:25] SA triple_pt blitz (seed=8003, budget=54s)
+[18:06:19] trial=1 best_clashes=62 sa_frontier=62 t=54.0s seed=1015881748
+[18:06:19] trial=1 best_clashes=62 sa_frontier=62 t=54.0s seed=1015881748
+[18:07:13] trial=2 best_clashes=32 sa_frontier=32 t=54.0s seed=2084858588
+[18:07:13] trial=2 best_clashes=32 sa_frontier=32 t=54.0s seed=2084858588
+[18:08:07] trial=3 best_clashes=32 sa_frontier=32 t=54.0s seed=1741243395
+[18:08:07] trial=3 best_clashes=32 sa_frontier=32 t=54.0s seed=1741243395
+  ★ Triple near-miss saved: clashes=52  cl12=0
+  ★ Triple near-miss saved: clashes=50  cl12=0
+  ★ Triple near-miss saved: clashes=49  cl12=0
+[18:09:01] trial=4 best_clashes=49 sa_frontier=32 t=54.0s seed=1123528667
+[18:09:01] trial=4 best_clashes=49 sa_frontier=32 t=54.0s seed=1123528667
+[18:09:55] trial=5 best_clashes=61 sa_frontier=32 t=54.0s seed=552410350
+[18:09:55] trial=5 best_clashes=61 sa_frontier=32 t=54.0s seed=552410350
+[18:10:49] trial=6 best_clashes=33 sa_frontier=32 t=54.0s seed=1148498454
+[18:10:49] trial=6 best_clashes=33 sa_frontier=32 t=54.0s seed=1148498454
+[18:11:43] trial=7 best_clashes=53 sa_frontier=32 t=54.0s seed=1521026542
+[18:11:43] trial=7 best_clashes=53 sa_frontier=32 t=54.0s seed=1521026542
+  ★ Triple near-miss saved: clashes=52  cl12=0
+[18:12:37] trial=8 best_clashes=52 sa_frontier=32 t=54.0s seed=448670055
+[18:12:37] trial=8 best_clashes=52 sa_frontier=32 t=54.0s seed=448670055
+  ★ Triple near-miss saved: clashes=52  cl12=0
+  ★ Triple near-miss saved: clashes=51  cl12=0
+  ★ Triple near-miss saved: clashes=50  cl12=0
+[18:13:31] trial=9 best_clashes=50 sa_frontier=32 t=54.0s seed=147344599
+[18:13:31] trial=9 best_clashes=50 sa_frontier=32 t=54.0s seed=147344599
+[18:14:25] trial=10 best_clashes=31 sa_frontier=31 t=54.0s seed=1254779815
+[18:14:25] trial=10 best_clashes=31 sa_frontier=31 t=54.0s seed=1254779815
+[18:15:19] trial=11 best_clashes=32 sa_frontier=31 t=54.0s seed=458198785
+[18:15:19] trial=11 best_clashes=32 sa_frontier=31 t=54.0s seed=458198785
+[18:16:13] trial=12 best_clashes=31 sa_frontier=31 t=54.0s seed=1595716978
+[18:16:13] trial=12 best_clashes=31 sa_frontier=31 t=54.0s seed=1595716978
+  ★ Triple near-miss saved: clashes=50  cl12=0
+  ★ Triple near-miss saved: clashes=48  cl12=0
+[18:17:07] trial=13 best_clashes=48 sa_frontier=31 t=54.0s seed=2005367197
+[18:17:07] trial=13 best_clashes=48 sa_frontier=31 t=54.0s seed=2005367197
+[18:18:01] trial=14 best_clashes=31 sa_frontier=31 t=54.0s seed=499171181
+[18:18:01] trial=14 best_clashes=31 sa_frontier=31 t=54.0s seed=499171181
+  ★ Triple near-miss saved: clashes=52  cl12=0
+[18:18:55] trial=15 best_clashes=52 sa_frontier=31 t=54.0s seed=1937198572
+[18:18:55] trial=15 best_clashes=52 sa_frontier=31 t=54.0s seed=1937198572
+  ★ Triple near-miss saved: clashes=52  cl12=0
+  ★ Triple near-miss saved: clashes=51  cl12=0
+[18:19:49] trial=16 best_clashes=51 sa_frontier=31 t=54.0s seed=1260873294
+[18:19:49] trial=16 best_clashes=51 sa_frontier=31 t=54.0s seed=1260873294
+[18:20:43] trial=17 best_clashes=32 sa_frontier=31 t=54.0s seed=1015441790
+[18:20:43] trial=17 best_clashes=32 sa_frontier=31 t=54.0s seed=1015441790
+  ★ Triple near-miss saved: clashes=51  cl12=0
+  ★ Triple near-miss saved: clashes=50  cl12=0
+[18:21:37] trial=18 best_clashes=50 sa_frontier=31 t=54.0s seed=1379294871
+[18:21:37] trial=18 best_clashes=50 sa_frontier=31 t=54.0s seed=1379294871
+[18:22:31] trial=19 best_clashes=32 sa_frontier=31 t=54.0s seed=1149026811
+[18:22:31] trial=19 best_clashes=32 sa_frontier=31 t=54.0s seed=1149026811
+[18:23:25] trial=20 best_clashes=32 sa_frontier=31 t=54.0s seed=1521876467
+[18:23:25] trial=20 best_clashes=32 sa_frontier=31 t=54.0s seed=1521876467
+  ★ Triple near-miss saved: clashes=52  cl12=0
+[18:24:19] trial=21 best_clashes=52 sa_frontier=31 t=54.0s seed=1776920376
+[18:24:19] trial=21 best_clashes=52 sa_frontier=31 t=54.0s seed=1776920376
+  ★ Triple near-miss saved: clashes=52  cl12=0
+[18:25:13] trial=22 best_clashes=52 sa_frontier=31 t=54.0s seed=1099564234
+[18:25:13] trial=22 best_clashes=52 sa_frontier=31 t=54.0s seed=1099564234
+[18:26:07] trial=23 best_clashes=51 sa_frontier=31 t=54.0s seed=818380946
+[18:26:07] trial=23 best_clashes=51 sa_frontier=31 t=54.0s seed=818380946
+  ★ Triple near-miss saved: clashes=52  cl12=0
+[18:27:01] trial=24 best_clashes=52 sa_frontier=31 t=54.0s seed=92441591
+[18:27:01] trial=24 best_clashes=52 sa_frontier=31 t=54.0s seed=92441591
+[18:27:55] trial=25 best_clashes=51 sa_frontier=31 t=54.0s seed=652026940
+[18:27:55] trial=25 best_clashes=51 sa_frontier=31 t=54.0s seed=652026940
+[18:28:49] trial=26 best_clashes=31 sa_frontier=31 t=54.0s seed=1332862600
+[18:28:49] trial=26 best_clashes=31 sa_frontier=31 t=54.0s seed=1332862600
+  ★ Triple near-miss saved: clashes=52  cl12=0
+  ★ Triple near-miss saved: clashes=51  cl12=0
+  ★ Triple near-miss saved: clashes=49  cl12=0
+[18:29:43] trial=27 best_clashes=49 sa_frontier=31 t=54.0s seed=875987721
+[18:29:43] trial=27 best_clashes=49 sa_frontier=31 t=54.0s seed=875987721
+[18:30:37] trial=28 best_clashes=33 sa_frontier=31 t=54.0s seed=320900541
+[18:30:37] trial=28 best_clashes=33 sa_frontier=31 t=54.0s seed=320900541
+  ★ Triple near-miss saved: clashes=37  cl12=4
+[18:31:31] trial=29 best_clashes=37 sa_frontier=31 t=54.1s seed=394721812
+[18:31:31] trial=29 best_clashes=37 sa_frontier=31 t=54.1s seed=394721812
+[18:32:25] trial=30 best_clashes=32 sa_frontier=31 t=54.0s seed=924786826
+[18:32:25] trial=30 best_clashes=32 sa_frontier=31 t=54.0s seed=924786826
+  ★ Triple near-miss saved: clashes=51  cl12=0
+  ★ Triple near-miss saved: clashes=49  cl12=0
+[18:33:19] trial=31 best_clashes=49 sa_frontier=31 t=54.0s seed=493880147
+[18:33:19] trial=31 best_clashes=49 sa_frontier=31 t=54.0s seed=493880147
+  ★ Triple near-miss saved: clashes=52  cl12=0
+[18:34:13] trial=32 best_clashes=52 sa_frontier=31 t=54.0s seed=567415035
+[18:34:13] trial=32 best_clashes=52 sa_frontier=31 t=54.0s seed=567415035
+  ★ Triple near-miss saved: clashes=51  cl12=0
+  ★ Triple near-miss saved: clashes=50  cl12=0
+[18:35:07] trial=33 best_clashes=50 sa_frontier=31 t=54.0s seed=1189851557
+[18:35:07] trial=33 best_clashes=50 sa_frontier=31 t=54.0s seed=1189851557
+  ★ Triple near-miss saved: clashes=52  cl12=0
+  ★ Triple near-miss saved: clashes=44  cl12=0
+  ★ Triple near-miss saved: clashes=34  cl12=0
+[18:36:01] trial=34 best_clashes=34 sa_frontier=31 t=54.0s seed=400445824
+[18:36:01] trial=34 best_clashes=34 sa_frontier=31 t=54.0s seed=400445824
+[18:36:55] trial=35 best_clashes=31 sa_frontier=31 t=54.0s seed=1222366352
+[18:36:55] trial=35 best_clashes=31 sa_frontier=31 t=54.0s seed=1222366352
+  ★ Triple near-miss saved: clashes=52  cl12=0
+  ★ Triple near-miss saved: clashes=50  cl12=0
+  ★ Triple near-miss saved: clashes=49  cl12=0
+[18:37:49] trial=36 best_clashes=49 sa_frontier=31 t=54.0s seed=1206537226
+[18:37:49] trial=36 best_clashes=49 sa_frontier=31 t=54.0s seed=1206537226
+[18:38:43] trial=37 best_clashes=61 sa_frontier=31 t=54.0s seed=1287375819
+[18:38:43] trial=37 best_clashes=61 sa_frontier=31 t=54.0s seed=1287375819
+  ★ Triple near-miss saved: clashes=51  cl12=0
+[18:39:37] trial=38 best_clashes=51 sa_frontier=31 t=54.0s seed=1220778536
+[18:39:37] trial=38 best_clashes=51 sa_frontier=31 t=54.0s seed=1220778536
+  ★ Triple near-miss saved: clashes=51  cl12=0
+[18:40:31] trial=39 best_clashes=51 sa_frontier=31 t=54.0s seed=273270611
+[18:40:31] trial=39 best_clashes=51 sa_frontier=31 t=54.0s seed=273270611
+[18:41:25] trial=40 best_clashes=32 sa_frontier=31 t=54.0s seed=1456897278
+[18:41:25] trial=40 best_clashes=32 sa_frontier=31 t=54.0s seed=1456897278
+  ★ Triple near-miss saved: clashes=50  cl12=0
+[18:42:19] trial=41 best_clashes=50 sa_frontier=31 t=54.0s seed=1452062745
+[18:42:19] trial=41 best_clashes=50 sa_frontier=31 t=54.0s seed=1452062745
+[18:43:13] trial=42 best_clashes=31 sa_frontier=31 t=54.1s seed=1548310515
+[18:43:13] trial=42 best_clashes=31 sa_frontier=31 t=54.1s seed=1548310515
+  ★ Triple near-miss saved: clashes=51  cl12=0
+[18:44:07] trial=43 best_clashes=51 sa_frontier=31 t=54.0s seed=1134426276
+[18:44:07] trial=43 best_clashes=51 sa_frontier=31 t=54.0s seed=1134426276
+[18:45:01] trial=44 best_clashes=32 sa_frontier=31 t=54.1s seed=292828483
+[18:45:01] trial=44 best_clashes=32 sa_frontier=31 t=54.1s seed=292828483
+[18:45:55] trial=45 best_clashes=32 sa_frontier=31 t=54.0s seed=1932053210
+[18:45:55] trial=45 best_clashes=32 sa_frontier=31 t=54.0s seed=1932053210
+[18:46:49] trial=46 best_clashes=53 sa_frontier=31 t=54.0s seed=781884021
+[18:46:49] trial=46 best_clashes=53 sa_frontier=31 t=54.0s seed=781884021
+  ★ Triple near-miss saved: clashes=52  cl12=0
+[18:47:20] ============================================================
+[18:47:20] ============================================================
+[18:47:20] SA triple_pt blitz (seed=8003, budget=300s)
+[18:47:20] SA triple_pt blitz (seed=8003, budget=300s)
+[18:52:20] trial=1 best_clashes=56 sa_frontier=56 t=300.0s seed=1015881748
+[18:52:20] trial=1 best_clashes=56 sa_frontier=56 t=300.0s seed=1015881748
+[18:57:20] trial=2 best_clashes=31 sa_frontier=31 t=300.0s seed=2084858588
+[18:57:20] trial=2 best_clashes=31 sa_frontier=31 t=300.0s seed=2084858588
+[19:02:20] trial=3 best_clashes=31 sa_frontier=31 t=300.0s seed=1741243395
+[19:02:20] trial=3 best_clashes=31 sa_frontier=31 t=300.0s seed=1741243395
+  ★ Triple near-miss saved: clashes=52  cl12=0
+  ★ Triple near-miss saved: clashes=50  cl12=0
+  ★ Triple near-miss saved: clashes=49  cl12=0
+[19:07:20] trial=4 best_clashes=49 sa_frontier=31 t=300.0s seed=1123528667
+[19:07:20] trial=4 best_clashes=49 sa_frontier=31 t=300.0s seed=1123528667
+[19:12:20] trial=5 best_clashes=57 sa_frontier=31 t=300.0s seed=552410350
+[19:12:20] trial=5 best_clashes=57 sa_frontier=31 t=300.0s seed=552410350
+[19:17:20] trial=6 best_clashes=31 sa_frontier=31 t=300.0s seed=1148498454
+[19:17:20] trial=6 best_clashes=31 sa_frontier=31 t=300.0s seed=1148498454
+  ★ Triple near-miss saved: clashes=48  cl12=0
+  ★ Triple near-miss saved: clashes=47  cl12=0
+  ★ Triple near-miss saved: clashes=45  cl12=0
+[19:22:20] trial=7 best_clashes=45 sa_frontier=31 t=300.0s seed=1521026542
+[19:22:20] trial=7 best_clashes=45 sa_frontier=31 t=300.0s seed=1521026542
+  ★ Triple near-miss saved: clashes=50  cl12=0
+  ★ Triple near-miss saved: clashes=49  cl12=0
+[19:27:20] trial=8 best_clashes=49 sa_frontier=31 t=300.0s seed=448670055
+[19:27:20] trial=8 best_clashes=49 sa_frontier=31 t=300.0s seed=448670055
+  ★ Triple near-miss saved: clashes=51  cl12=0
+  ★ Triple near-miss saved: clashes=50  cl12=0
+  ★ Triple near-miss saved: clashes=49  cl12=0
+[19:32:20] trial=9 best_clashes=49 sa_frontier=31 t=300.0s seed=147344599
+[19:32:20] trial=9 best_clashes=49 sa_frontier=31 t=300.0s seed=147344599
+[19:37:20] trial=10 best_clashes=31 sa_frontier=31 t=300.0s seed=1254779815
+[19:37:20] trial=10 best_clashes=31 sa_frontier=31 t=300.0s seed=1254779815
+[00:35:25] ============================================================
+[00:35:25] ============================================================
+[00:35:25] SA triple_pt blitz (seed=8003, budget=300s)
+[00:35:25] SA triple_pt blitz (seed=8003, budget=300s)
+  ★ Triple near-miss saved: clashes=52  cl12=0
+  ★ Triple near-miss saved: clashes=51  cl12=0
+  ★ Triple near-miss saved: clashes=50  cl12=0
+  ★ Triple near-miss saved: clashes=42  cl12=10
+  ★ Triple near-miss saved: clashes=40  cl12=7
+  ★ Triple near-miss saved: clashes=38  cl12=7
+  ★ Triple near-miss saved: clashes=36  cl12=4
