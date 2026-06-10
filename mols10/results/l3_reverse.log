@@ -262,3 +262,243 @@ trial=  28  strategy=reverse  L3_from_E=37  budget=120s  time=08:27:42
   reverse: found=False  best_E=68  session_best=63  swaps=179  ils_kicks=11  elapsed=120.0s
 
 trial=  29  strategy=reverse  L3_from_E=37  budget=120s  time=08:29:42
+  reverse: found=False  best_E=65  session_best=63  swaps=123  ils_kicks=11  elapsed=120.1s
+
+trial=  30  strategy=reverse  L3_from_E=37  budget=120s  time=08:31:42
+  reverse: found=False  best_E=63  session_best=63  swaps=114  ils_kicks=11  elapsed=120.0s
+
+trial=  31  strategy=reverse  L3_from_E=37  budget=120s  time=08:33:42
+  reverse: found=False  best_E=72  session_best=63  swaps=110  ils_kicks=11  elapsed=120.0s
+
+trial=  32  strategy=reverse  L3_from_E=34  budget=120s  time=08:35:42
+  reverse: found=False  best_E=73  session_best=63  swaps=76  ils_kicks=11  elapsed=120.0s
+
+trial=  33  strategy=reverse  L3_from_E=37  budget=120s  time=08:37:42
+  reverse: found=False  best_E=68  session_best=63  swaps=60  ils_kicks=11  elapsed=120.0s
+
+trial=  34  strategy=reverse  L3_from_E=34  budget=120s  time=08:39:42
+  reverse: found=False  best_E=68  session_best=63  swaps=70  ils_kicks=11  elapsed=120.0s
+
+trial=  35  strategy=reverse  L3_from_E=37  budget=120s  time=08:41:42
+  reverse: found=False  best_E=73  session_best=63  swaps=66  ils_kicks=11  elapsed=120.1s
+
+trial=  36  strategy=reverse  L3_from_E=37  budget=120s  time=08:43:42
+  reverse: found=False  best_E=65  session_best=63  swaps=65  ils_kicks=11  elapsed=120.0s
+
+trial=  37  strategy=reverse  L3_from_E=34  budget=120s  time=08:45:42
+  reverse: found=False  best_E=70  session_best=63  swaps=72  ils_kicks=11  elapsed=120.0s
+
+trial=  38  strategy=reverse  L3_from_E=34  budget=120s  time=08:47:42
+  reverse: found=False  best_E=64  session_best=63  swaps=75  ils_kicks=11  elapsed=120.0s
+
+trial=  39  strategy=reverse  L3_from_E=34  budget=120s  time=08:49:42
+  reverse: found=False  best_E=68  session_best=63  swaps=70  ils_kicks=11  elapsed=120.1s
+
+trial=  40  strategy=reverse  L3_from_E=34  budget=120s  time=08:51:42
+  reverse: found=False  best_E=70  session_best=63  swaps=73  ils_kicks=11  elapsed=120.1s
+
+trial=  41  strategy=reverse  L3_from_E=33  budget=120s  time=08:53:42
+  reverse: found=False  best_E=68  session_best=63  swaps=73  ils_kicks=11  elapsed=120.0s
+
+trial=  42  strategy=reverse  L3_from_E=34  budget=120s  time=08:55:42
+  reverse: found=False  best_E=70  session_best=63  swaps=76  ils_kicks=11  elapsed=120.0s
+
+trial=  43  strategy=reverse  L3_from_E=34  budget=120s  time=08:57:42
+  reverse: found=False  best_E=70  session_best=63  swaps=72  ils_kicks=11  elapsed=120.1s
+
+trial=  44  strategy=reverse  L3_from_E=34  budget=120s  time=08:59:42
+  reverse: found=False  best_E=73  session_best=63  swaps=68  ils_kicks=11  elapsed=120.0s
+
+trial=  45  strategy=reverse  L3_from_E=34  budget=120s  time=09:01:42
+  reverse: found=False  best_E=73  session_best=63  swaps=67  ils_kicks=11  elapsed=120.0s
+
+trial=  46  strategy=reverse  L3_from_E=34  budget=120s  time=09:03:42
+  reverse: found=False  best_E=67  session_best=63  swaps=68  ils_kicks=11  elapsed=120.0s
+
+trial=  47  strategy=reverse  L3_from_E=33  budget=120s  time=09:05:43
+  reverse: found=False  best_E=72  session_best=63  swaps=67  ils_kicks=11  elapsed=120.0s
+
+trial=  48  strategy=reverse  L3_from_E=33  budget=120s  time=09:07:43
+  reverse: found=False  best_E=70  session_best=63  swaps=61  ils_kicks=11  elapsed=120.1s
+
+trial=  49  strategy=reverse  L3_from_E=33  budget=120s  time=09:09:43
+  reverse: found=False  best_E=70  session_best=63  swaps=59  ils_kicks=11  elapsed=120.1s
+
+trial=  50  strategy=reverse  L3_from_E=33  budget=120s  time=09:11:43
+  reverse: found=False  best_E=67  session_best=63  swaps=64  ils_kicks=11  elapsed=120.1s
+
+trial=  51  strategy=reverse  L3_from_E=33  budget=120s  time=09:13:43
+  reverse: found=False  best_E=70  session_best=63  swaps=59  ils_kicks=11  elapsed=120.1s
+
+trial=  52  strategy=reverse  L3_from_E=32  budget=120s  time=09:15:43
+  reverse: found=False  best_E=67  session_best=63  swaps=51  ils_kicks=11  elapsed=120.1s
+
+trial=  53  strategy=reverse  L3_from_E=32  budget=120s  time=09:17:43
+  reverse: found=False  best_E=71  session_best=63  swaps=46  ils_kicks=11  elapsed=120.2s
+
+trial=  54  strategy=reverse  L3_from_E=32  budget=120s  time=09:19:43
+====================================================================
+MOLS Reverse Search — fix near-miss L3, find compatible (L1, L2)
+seed=7777  budget_per_trial=120.0s
+====================================================================
+
+trial=   1  strategy=reverse  L3_from_E=33  budget=120s  time=17:52:14
+  reverse: found=False  best_E=70  session_best=70  swaps=76  ils_kicks=11  elapsed=120.1s
+
+trial=   2  strategy=reverse  L3_from_E=33  budget=120s  time=17:54:14
+  reverse: found=False  best_E=69  session_best=69  swaps=56  ils_kicks=11  elapsed=120.1s
+
+trial=   3  strategy=reverse  L3_from_E=32  budget=120s  time=17:56:14
+  reverse: found=False  best_E=67  session_best=67  swaps=43  ils_kicks=11  elapsed=120.0s
+
+trial=   4  strategy=reverse  L3_from_E=33  budget=120s  time=17:58:14
+  reverse: found=False  best_E=70  session_best=67  swaps=45  ils_kicks=11  elapsed=120.1s
+
+trial=   5  strategy=reverse  L3_from_E=33  budget=120s  time=18:00:14
+  reverse: found=False  best_E=69  session_best=67  swaps=53  ils_kicks=11  elapsed=120.0s
+
+trial=   6  strategy=reverse  L3_from_E=33  budget=120s  time=18:02:14
+  reverse: found=False  best_E=70  session_best=67  swaps=42  ils_kicks=10  elapsed=120.1s
+
+trial=   7  strategy=reverse  L3_from_E=33  budget=120s  time=18:04:14
+  reverse: found=False  best_E=64  session_best=64  swaps=34  ils_kicks=11  elapsed=120.2s
+
+trial=   8  strategy=reverse  L3_from_E=32  budget=120s  time=18:06:14
+  reverse: found=False  best_E=70  session_best=64  swaps=32  ils_kicks=11  elapsed=120.0s
+
+trial=   9  strategy=reverse  L3_from_E=33  budget=120s  time=18:08:14
+  reverse: found=False  best_E=72  session_best=64  swaps=26  ils_kicks=10  elapsed=120.1s
+
+trial=  10  strategy=reverse  L3_from_E=33  budget=120s  time=18:10:15
+  reverse: found=False  best_E=65  session_best=64  swaps=30  ils_kicks=11  elapsed=120.0s
+
+trial=  11  strategy=reverse  L3_from_E=33  budget=120s  time=18:12:15
+  reverse: found=False  best_E=69  session_best=64  swaps=25  ils_kicks=11  elapsed=120.2s
+
+trial=  12  strategy=reverse  L3_from_E=31  budget=120s  time=18:14:15
+  reverse: found=False  best_E=67  session_best=64  swaps=26  ils_kicks=11  elapsed=120.1s
+
+trial=  13  strategy=reverse  L3_from_E=31  budget=120s  time=18:16:15
+  reverse: found=False  best_E=71  session_best=64  swaps=26  ils_kicks=11  elapsed=120.2s
+
+trial=  14  strategy=reverse  L3_from_E=33  budget=120s  time=18:18:15
+  reverse: found=False  best_E=70  session_best=64  swaps=27  ils_kicks=11  elapsed=120.0s
+
+trial=  15  strategy=reverse  L3_from_E=33  budget=120s  time=18:20:15
+  reverse: found=False  best_E=73  session_best=64  swaps=17  ils_kicks=10  elapsed=120.1s
+
+trial=  16  strategy=reverse  L3_from_E=32  budget=120s  time=18:22:15
+  reverse: found=False  best_E=69  session_best=64  swaps=22  ils_kicks=11  elapsed=120.3s
+
+trial=  17  strategy=reverse  L3_from_E=31  budget=120s  time=18:24:16
+  reverse: found=False  best_E=73  session_best=64  swaps=12  ils_kicks=9  elapsed=120.0s
+
+trial=  18  strategy=reverse  L3_from_E=32  budget=120s  time=18:26:16
+  reverse: found=False  best_E=61  session_best=61  swaps=12  ils_kicks=10  elapsed=120.3s
+
+trial=  19  strategy=reverse  L3_from_E=32  budget=120s  time=18:28:16
+  reverse: found=False  best_E=72  session_best=61  swaps=16  ils_kicks=11  elapsed=120.3s
+
+trial=  20  strategy=reverse  L3_from_E=33  budget=120s  time=18:30:16
+  reverse: found=False  best_E=71  session_best=61  swaps=23  ils_kicks=11  elapsed=120.2s
+
+trial=  21  strategy=reverse  L3_from_E=32  budget=120s  time=18:32:16
+  reverse: found=False  best_E=68  session_best=61  swaps=16  ils_kicks=11  elapsed=120.1s
+
+trial=  22  strategy=reverse  L3_from_E=33  budget=120s  time=18:34:17
+  reverse: found=False  best_E=71  session_best=61  swaps=20  ils_kicks=11  elapsed=120.1s
+
+trial=  23  strategy=reverse  L3_from_E=33  budget=120s  time=18:36:17
+  reverse: found=False  best_E=73  session_best=61  swaps=18  ils_kicks=11  elapsed=120.1s
+
+trial=  24  strategy=reverse  L3_from_E=31  budget=120s  time=18:38:17
+  reverse: found=False  best_E=70  session_best=61  swaps=16  ils_kicks=9  elapsed=120.0s
+
+trial=  25  strategy=reverse  L3_from_E=32  budget=120s  time=18:40:17
+  reverse: found=False  best_E=65  session_best=61  swaps=18  ils_kicks=10  elapsed=120.0s
+
+trial=  26  strategy=reverse  L3_from_E=32  budget=120s  time=18:42:17
+  reverse: found=False  best_E=65  session_best=61  swaps=16  ils_kicks=11  elapsed=120.3s
+
+trial=  27  strategy=reverse  L3_from_E=33  budget=120s  time=18:44:17
+  reverse: found=False  best_E=72  session_best=61  swaps=51  ils_kicks=11  elapsed=120.1s
+
+trial=  28  strategy=reverse  L3_from_E=32  budget=120s  time=18:46:17
+  reverse: found=False  best_E=69  session_best=61  swaps=54  ils_kicks=11  elapsed=120.1s
+
+trial=  29  strategy=reverse  L3_from_E=32  budget=120s  time=18:48:17
+  reverse: found=False  best_E=70  session_best=61  swaps=52  ils_kicks=11  elapsed=120.0s
+
+trial=  30  strategy=reverse  L3_from_E=31  budget=120s  time=18:50:17
+  reverse: found=False  best_E=74  session_best=61  swaps=54  ils_kicks=11  elapsed=120.1s
+
+trial=  31  strategy=reverse  L3_from_E=32  budget=120s  time=18:52:17
+  reverse: found=False  best_E=68  session_best=61  swaps=48  ils_kicks=11  elapsed=120.0s
+
+trial=  32  strategy=reverse  L3_from_E=31  budget=120s  time=18:54:17
+  reverse: found=False  best_E=67  session_best=61  swaps=47  ils_kicks=11  elapsed=120.1s
+
+trial=  33  strategy=reverse  L3_from_E=33  budget=120s  time=18:56:17
+  reverse: found=False  best_E=64  session_best=61  swaps=46  ils_kicks=11  elapsed=120.1s
+
+trial=  34  strategy=reverse  L3_from_E=31  budget=120s  time=18:58:18
+  reverse: found=False  best_E=68  session_best=61  swaps=45  ils_kicks=11  elapsed=120.0s
+
+trial=  35  strategy=reverse  L3_from_E=32  budget=120s  time=19:00:18
+  reverse: found=False  best_E=70  session_best=61  swaps=42  ils_kicks=11  elapsed=120.1s
+
+trial=  36  strategy=reverse  L3_from_E=32  budget=120s  time=19:02:18
+  reverse: found=False  best_E=72  session_best=61  swaps=42  ils_kicks=11  elapsed=120.1s
+
+trial=  37  strategy=reverse  L3_from_E=32  budget=120s  time=19:04:18
+  reverse: found=False  best_E=70  session_best=61  swaps=45  ils_kicks=11  elapsed=120.0s
+
+trial=  38  strategy=reverse  L3_from_E=31  budget=120s  time=19:06:18
+  reverse: found=False  best_E=68  session_best=61  swaps=48  ils_kicks=11  elapsed=120.0s
+
+trial=  39  strategy=reverse  L3_from_E=31  budget=120s  time=19:08:18
+  reverse: found=False  best_E=73  session_best=61  swaps=44  ils_kicks=11  elapsed=120.0s
+
+trial=  40  strategy=reverse  L3_from_E=31  budget=120s  time=19:10:18
+  reverse: found=False  best_E=69  session_best=61  swaps=39  ils_kicks=11  elapsed=120.0s
+
+trial=  41  strategy=reverse  L3_from_E=31  budget=120s  time=19:12:18
+  reverse: found=False  best_E=75  session_best=61  swaps=43  ils_kicks=11  elapsed=120.1s
+
+trial=  42  strategy=reverse  L3_from_E=31  budget=120s  time=19:14:18
+  reverse: found=False  best_E=68  session_best=61  swaps=40  ils_kicks=11  elapsed=120.0s
+
+trial=  43  strategy=reverse  L3_from_E=31  budget=120s  time=19:16:18
+  reverse: found=False  best_E=76  session_best=61  swaps=42  ils_kicks=9  elapsed=120.0s
+
+trial=  44  strategy=reverse  L3_from_E=32  budget=120s  time=19:18:18
+  reverse: found=False  best_E=71  session_best=61  swaps=35  ils_kicks=11  elapsed=120.1s
+
+trial=  45  strategy=reverse  L3_from_E=31  budget=120s  time=19:20:18
+  reverse: found=False  best_E=70  session_best=61  swaps=32  ils_kicks=11  elapsed=120.0s
+
+trial=  46  strategy=reverse  L3_from_E=31  budget=120s  time=19:22:18
+  reverse: found=False  best_E=68  session_best=61  swaps=45  ils_kicks=11  elapsed=120.0s
+
+trial=  47  strategy=reverse  L3_from_E=31  budget=120s  time=19:24:18
+  reverse: found=False  best_E=68  session_best=61  swaps=42  ils_kicks=11  elapsed=120.0s
+
+trial=  48  strategy=reverse  L3_from_E=31  budget=120s  time=19:26:18
+  reverse: found=False  best_E=71  session_best=61  swaps=36  ils_kicks=11  elapsed=120.1s
+
+trial=  49  strategy=reverse  L3_from_E=31  budget=120s  time=19:28:18
+  reverse: found=False  best_E=64  session_best=61  swaps=50  ils_kicks=11  elapsed=120.2s
+
+trial=  50  strategy=reverse  L3_from_E=31  budget=120s  time=19:30:18
+  reverse: found=False  best_E=67  session_best=61  swaps=51  ils_kicks=11  elapsed=120.0s
+
+trial=  51  strategy=reverse  L3_from_E=31  budget=120s  time=19:32:18
+  reverse: found=False  best_E=65  session_best=61  swaps=47  ils_kicks=11  elapsed=120.1s
+
+trial=  52  strategy=reverse  L3_from_E=31  budget=120s  time=19:34:19
+  reverse: found=False  best_E=69  session_best=61  swaps=52  ils_kicks=11  elapsed=120.0s
+
+trial=  53  strategy=reverse  L3_from_E=31  budget=120s  time=19:36:19
+  reverse: found=False  best_E=68  session_best=61  swaps=52  ils_kicks=11  elapsed=120.0s
+
+trial=  54  strategy=reverse  L3_from_E=31  budget=120s  time=19:38:19

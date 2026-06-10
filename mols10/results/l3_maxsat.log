@@ -44,3 +44,13 @@
 [07:35:17] trial=   3  full_maxsat  no valid L3 (timed_out=True)  99.6s
 [07:35:17] trial=   3  full_maxsat  no valid L3 (timed_out=True)  99.6s
 [07:41:29] trial=   4  guided_maxsat  no valid L3 (timed_out=True)  371.6s
+[17:52:02] maxsat_search started: seed=1337 timeout=60.0s/trial
+[17:52:02] maxsat_search started: seed=1337 timeout=60.0s/trial
+[17:54:05] trial=   1  guided_maxsat  no valid L3 (timed_out=True)  122.3s
+[17:54:05] trial=   1  guided_maxsat  no valid L3 (timed_out=True)  122.3s
+[17:57:48] trial=   2  guided_maxsat  no valid L3 (timed_out=True)  223.6s
+[17:57:48] trial=   2  guided_maxsat  no valid L3 (timed_out=True)  223.6s
+[18:05:01] trial=   3  full_maxsat  no valid L3 (timed_out=True)  433.1s
+[18:05:01] trial=   3  full_maxsat  no valid L3 (timed_out=True)  433.1s
+[18:19:23] trial=   4  guided_maxsat  no valid L3 (timed_out=True)  861.2s
+[18:19:23] trial=   4  guided_maxsat  no valid L3 (timed_out=True)  861.2s

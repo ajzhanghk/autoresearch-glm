@@ -86,3 +86,383 @@
 [08:30:40] trial=   3  pool_E=37  timeout=180.0s  time=08:30:40
 [08:30:40]   FEASIBLE: E=42  cl13=20  cl23=22  session_best=38  optimal_proven=False  elapsed=180.3s
 [08:30:40] trial=   3  pool_E=37  timeout=180.0s  time=08:30:40
+[08:33:40]   FEASIBLE: E=40  cl13=20  cl23=20  session_best=40  optimal_proven=False  elapsed=180.3s
+[08:33:40]   FEASIBLE: E=40  cl13=20  cl23=20  session_best=40  optimal_proven=False  elapsed=180.3s
+[08:33:40]   [status] trials=3  optimal_proven=0  session_best=40
+[08:33:40]   [status] trials=3  optimal_proven=0  session_best=40
+[08:33:40] trial=   4  pool_E=37  timeout=180.0s  time=08:33:40
+[08:33:40] trial=   4  pool_E=37  timeout=180.0s  time=08:33:40
+[08:33:40]   FEASIBLE: E=41  cl13=21  cl23=20  session_best=38  optimal_proven=False  elapsed=180.4s
+[08:33:40]   [status] trials=3  optimal_proven=0  session_best=38
+[08:33:40] trial=   4  pool_E=37  timeout=180.0s  time=08:33:40
+[08:36:41]   FEASIBLE: E=39  cl13=20  cl23=19  session_best=39  optimal_proven=False  elapsed=180.4s
+[08:36:41]   FEASIBLE: E=39  cl13=20  cl23=19  session_best=39  optimal_proven=False  elapsed=180.4s
+[08:36:41] trial=   5  pool_E=37  timeout=180.0s  time=08:36:41
+[08:36:41] trial=   5  pool_E=37  timeout=180.0s  time=08:36:41
+[08:36:41]   FEASIBLE: E=42  cl13=21  cl23=21  session_best=38  optimal_proven=False  elapsed=180.6s
+[08:36:41] trial=   5  pool_E=34  timeout=180.0s  time=08:36:41
+[08:39:41]   FEASIBLE: E=46  cl13=24  cl23=22  session_best=39  optimal_proven=False  elapsed=180.8s
+[08:39:41]   FEASIBLE: E=46  cl13=24  cl23=22  session_best=39  optimal_proven=False  elapsed=180.8s
+[08:39:41] trial=   6  pool_E=37  timeout=180.0s  time=08:39:41
+[08:39:41] trial=   6  pool_E=37  timeout=180.0s  time=08:39:41
+[08:39:42]   FEASIBLE: E=44  cl13=20  cl23=24  session_best=38  optimal_proven=False  elapsed=180.7s
+[08:39:42] trial=   6  pool_E=34  timeout=180.0s  time=08:39:42
+[08:42:42]   FEASIBLE: E=43  cl13=21  cl23=22  session_best=38  optimal_proven=False  elapsed=180.8s
+[08:42:42]   [status] trials=6  optimal_proven=0  session_best=38
+[08:42:43] trial=   7  pool_E=34  timeout=180.0s  time=08:42:43
+[08:42:44]   FEASIBLE: E=44  cl13=20  cl23=24  session_best=39  optimal_proven=False  elapsed=182.1s
+[08:42:44]   FEASIBLE: E=44  cl13=20  cl23=24  session_best=39  optimal_proven=False  elapsed=182.1s
+[08:42:44]   [status] trials=6  optimal_proven=0  session_best=39
+[08:42:44]   [status] trials=6  optimal_proven=0  session_best=39
+[08:42:44] trial=   7  pool_E=37  timeout=180.0s  time=08:42:44
+[08:42:44] trial=   7  pool_E=37  timeout=180.0s  time=08:42:44
+[08:45:43]   FEASIBLE: E=45  cl13=22  cl23=23  session_best=38  optimal_proven=False  elapsed=180.7s
+[08:45:43] trial=   8  pool_E=37  timeout=180.0s  time=08:45:43
+[08:45:44]   FEASIBLE: E=45  cl13=23  cl23=22  session_best=39  optimal_proven=False  elapsed=180.6s
+[08:45:44]   FEASIBLE: E=45  cl13=23  cl23=22  session_best=39  optimal_proven=False  elapsed=180.6s
+[08:45:44] trial=   8  pool_E=37  timeout=180.0s  time=08:45:44
+[08:45:44] trial=   8  pool_E=37  timeout=180.0s  time=08:45:44
+[08:48:44]   FEASIBLE: E=39  cl13=20  cl23=19  session_best=38  optimal_proven=False  elapsed=180.9s
+[08:48:44] trial=   9  pool_E=37  timeout=180.0s  time=08:48:44
+[08:48:45]   FEASIBLE: E=43  cl13=20  cl23=23  session_best=39  optimal_proven=False  elapsed=180.5s
+[08:48:45]   FEASIBLE: E=43  cl13=20  cl23=23  session_best=39  optimal_proven=False  elapsed=180.5s
+[08:48:45] trial=   9  pool_E=37  timeout=180.0s  time=08:48:45
+[08:48:45] trial=   9  pool_E=37  timeout=180.0s  time=08:48:45
+[08:51:45]   FEASIBLE: E=44  cl13=17  cl23=27  session_best=38  optimal_proven=False  elapsed=180.7s
+[08:51:45]   [status] trials=9  optimal_proven=0  session_best=38
+[08:51:45] trial=  10  pool_E=34  timeout=180.0s  time=08:51:45
+[08:51:45]   FEASIBLE: E=43  cl13=26  cl23=17  session_best=39  optimal_proven=False  elapsed=180.6s
+[08:51:45]   FEASIBLE: E=43  cl13=26  cl23=17  session_best=39  optimal_proven=False  elapsed=180.6s
+[08:51:45]   [status] trials=9  optimal_proven=0  session_best=39
+[08:51:45]   [status] trials=9  optimal_proven=0  session_best=39
+[08:51:45] trial=  10  pool_E=37  timeout=180.0s  time=08:51:45
+[08:51:45] trial=  10  pool_E=37  timeout=180.0s  time=08:51:45
+[08:54:45]   FEASIBLE: E=40  cl13=19  cl23=21  session_best=38  optimal_proven=False  elapsed=180.6s
+[08:54:45] trial=  11  pool_E=33  timeout=180.0s  time=08:54:45
+[08:54:46]   FEASIBLE: E=42  cl13=22  cl23=20  session_best=39  optimal_proven=False  elapsed=180.5s
+[08:54:46]   FEASIBLE: E=42  cl13=22  cl23=20  session_best=39  optimal_proven=False  elapsed=180.5s
+[08:54:46] trial=  11  pool_E=34  timeout=180.0s  time=08:54:46
+[08:54:46] trial=  11  pool_E=34  timeout=180.0s  time=08:54:46
+[08:57:46]   FEASIBLE: E=43  cl13=22  cl23=21  session_best=38  optimal_proven=False  elapsed=180.3s
+[08:57:46] trial=  12  pool_E=33  timeout=180.0s  time=08:57:46
+[08:57:46]   FEASIBLE: E=42  cl13=21  cl23=21  session_best=39  optimal_proven=False  elapsed=180.3s
+[08:57:46]   FEASIBLE: E=42  cl13=21  cl23=21  session_best=39  optimal_proven=False  elapsed=180.3s
+[08:57:46] trial=  12  pool_E=34  timeout=180.0s  time=08:57:46
+[08:57:46] trial=  12  pool_E=34  timeout=180.0s  time=08:57:46
+[09:00:47]   FEASIBLE: E=42  cl13=21  cl23=21  session_best=38  optimal_proven=False  elapsed=180.8s
+[09:00:47]   [status] trials=12  optimal_proven=0  session_best=38
+[09:00:47] trial=  13  pool_E=34  timeout=180.0s  time=09:00:47
+[09:00:47]   FEASIBLE: E=45  cl13=24  cl23=21  session_best=39  optimal_proven=False  elapsed=180.6s
+[09:00:47]   FEASIBLE: E=45  cl13=24  cl23=21  session_best=39  optimal_proven=False  elapsed=180.6s
+[09:00:47]   [status] trials=12  optimal_proven=0  session_best=39
+[09:00:47]   [status] trials=12  optimal_proven=0  session_best=39
+[09:00:47] trial=  13  pool_E=34  timeout=180.0s  time=09:00:47
+[09:00:47] trial=  13  pool_E=34  timeout=180.0s  time=09:00:47
+[09:03:47]   FEASIBLE: E=40  cl13=22  cl23=18  session_best=38  optimal_proven=False  elapsed=180.6s
+[09:03:47] trial=  14  pool_E=37  timeout=180.0s  time=09:03:47
+[09:03:47]   FEASIBLE: E=44  cl13=21  cl23=23  session_best=39  optimal_proven=False  elapsed=180.7s
+[09:03:47]   FEASIBLE: E=44  cl13=21  cl23=23  session_best=39  optimal_proven=False  elapsed=180.7s
+[09:03:47] trial=  14  pool_E=34  timeout=180.0s  time=09:03:47
+[09:03:47] trial=  14  pool_E=34  timeout=180.0s  time=09:03:47
+[09:06:48]   FEASIBLE: E=39  cl13=17  cl23=22  session_best=38  optimal_proven=False  elapsed=180.3s
+[09:06:48] trial=  15  pool_E=37  timeout=180.0s  time=09:06:48
+[09:06:48]   FEASIBLE: E=41  cl13=25  cl23=16  session_best=39  optimal_proven=False  elapsed=180.2s
+[09:06:48]   FEASIBLE: E=41  cl13=25  cl23=16  session_best=39  optimal_proven=False  elapsed=180.2s
+[09:06:48] trial=  15  pool_E=33  timeout=180.0s  time=09:06:48
+[09:06:48] trial=  15  pool_E=33  timeout=180.0s  time=09:06:48
+[09:07:41] ============================================================
+[09:07:41] ============================================================
+[09:07:41] CP-SAT L3 optimizer — seed=5678  timeout=180.0s  workers=2
+[09:07:41] CP-SAT L3 optimizer — seed=5678  timeout=180.0s  workers=2
+[09:07:41] ============================================================
+[09:07:41] ============================================================
+[09:07:41] trial=   1  pool_E=33  timeout=180.0s  time=09:07:41
+[09:07:41] trial=   1  pool_E=33  timeout=180.0s  time=09:07:41
+[09:07:46] ============================================================
+[09:07:46] CP-SAT L3 optimizer — seed=1234  timeout=180.0s  workers=2
+[09:07:46] ============================================================
+[09:07:46] trial=   1  pool_E=37  timeout=180.0s  time=09:07:46
+[09:10:41]   FEASIBLE: E=32  cl13=18  cl23=14  session_best=32  optimal_proven=False  elapsed=180.1s
+[09:10:41]   FEASIBLE: E=32  cl13=18  cl23=14  session_best=32  optimal_proven=False  elapsed=180.1s
+[09:10:41]   SAVED to pool: E=32  cl12=0  cl13=18  cl23=14
+[09:10:41]   SAVED to pool: E=32  cl12=0  cl13=18  cl23=14
+[09:10:41] trial=   2  pool_E=33  timeout=180.0s  time=09:10:41
+[09:10:41] trial=   2  pool_E=33  timeout=180.0s  time=09:10:41
+[09:10:46]   FEASIBLE: E=39  cl13=16  cl23=23  session_best=39  optimal_proven=False  elapsed=180.1s
+[09:10:46] trial=   2  pool_E=32  timeout=180.0s  time=09:10:46
+[09:13:41]   FEASIBLE: E=35  cl13=16  cl23=19  session_best=32  optimal_proven=False  elapsed=180.2s
+[09:13:41]   FEASIBLE: E=35  cl13=16  cl23=19  session_best=32  optimal_proven=False  elapsed=180.2s
+[09:13:41] trial=   3  pool_E=32  timeout=180.0s  time=09:13:41
+[09:13:41] trial=   3  pool_E=32  timeout=180.0s  time=09:13:41
+[09:13:46]   FEASIBLE: E=38  cl13=16  cl23=22  session_best=38  optimal_proven=False  elapsed=180.2s
+[09:13:46] trial=   3  pool_E=32  timeout=180.0s  time=09:13:46
+[09:16:41]   FEASIBLE: E=39  cl13=18  cl23=21  session_best=32  optimal_proven=False  elapsed=180.1s
+[09:16:41]   FEASIBLE: E=39  cl13=18  cl23=21  session_best=32  optimal_proven=False  elapsed=180.1s
+[09:16:41]   [status] trials=3  optimal_proven=0  session_best=32
+[09:16:41]   [status] trials=3  optimal_proven=0  session_best=32
+[09:16:41] trial=   4  pool_E=33  timeout=180.0s  time=09:16:41
+[09:16:41] trial=   4  pool_E=33  timeout=180.0s  time=09:16:41
+[09:16:47]   FEASIBLE: E=38  cl13=23  cl23=15  session_best=38  optimal_proven=False  elapsed=180.1s
+[09:16:47]   [status] trials=3  optimal_proven=0  session_best=38
+[09:16:47] trial=   4  pool_E=32  timeout=180.0s  time=09:16:47
+[09:19:42]   FEASIBLE: E=42  cl13=23  cl23=19  session_best=32  optimal_proven=False  elapsed=180.6s
+[09:19:42]   FEASIBLE: E=42  cl13=23  cl23=19  session_best=32  optimal_proven=False  elapsed=180.6s
+[09:19:42] trial=   5  pool_E=33  timeout=180.0s  time=09:19:42
+[09:19:42] trial=   5  pool_E=33  timeout=180.0s  time=09:19:42
+[09:19:47]   FEASIBLE: E=37  cl13=21  cl23=16  session_best=37  optimal_proven=False  elapsed=180.2s
+[09:19:47] trial=   5  pool_E=33  timeout=180.0s  time=09:19:47
+[17:52:00] ============================================================
+[17:52:00] ============================================================
+[17:52:01] CP-SAT L3 optimizer — seed=5678  timeout=180.0s  workers=2
+[17:52:01] CP-SAT L3 optimizer — seed=5678  timeout=180.0s  workers=2
+[17:52:01] ============================================================
+[17:52:01] ============================================================
+[17:52:00] ============================================================
+[17:52:01] CP-SAT L3 optimizer — seed=1234  timeout=180.0s  workers=2
+[17:52:01] ============================================================
+[17:52:01] trial=   1  pool_E=32  timeout=180.0s  time=17:52:01
+[17:52:01] trial=   1  pool_E=32  timeout=180.0s  time=17:52:01
+[17:52:01] trial=   1  pool_E=34  timeout=180.0s  time=17:52:01
+[17:55:01]   FEASIBLE: E=42  cl13=21  cl23=21  session_best=42  optimal_proven=False  elapsed=180.3s
+[17:55:01] trial=   2  pool_E=32  timeout=180.0s  time=17:55:01
+[17:55:01]   FEASIBLE: E=41  cl13=22  cl23=19  session_best=41  optimal_proven=False  elapsed=180.3s
+[17:55:01]   FEASIBLE: E=41  cl13=22  cl23=19  session_best=41  optimal_proven=False  elapsed=180.3s
+[17:55:01] trial=   2  pool_E=33  timeout=180.0s  time=17:55:01
+[17:55:01] trial=   2  pool_E=33  timeout=180.0s  time=17:55:01
+[17:58:03]   FEASIBLE: E=41  cl13=25  cl23=16  session_best=41  optimal_proven=False  elapsed=181.3s
+[17:58:03]   FEASIBLE: E=41  cl13=25  cl23=16  session_best=41  optimal_proven=False  elapsed=181.3s
+[17:58:03] trial=   3  pool_E=32  timeout=180.0s  time=17:58:03
+[17:58:03] trial=   3  pool_E=32  timeout=180.0s  time=17:58:03
+[17:58:03]   FEASIBLE: E=43  cl13=18  cl23=25  session_best=42  optimal_proven=False  elapsed=181.4s
+[17:58:03] trial=   3  pool_E=32  timeout=180.0s  time=17:58:03
+[18:01:03]   FEASIBLE: E=43  cl13=21  cl23=22  session_best=41  optimal_proven=False  elapsed=180.8s
+[18:01:03]   FEASIBLE: E=43  cl13=21  cl23=22  session_best=41  optimal_proven=False  elapsed=180.8s
+[18:01:03]   [status] trials=3  optimal_proven=0  session_best=41
+[18:01:03]   [status] trials=3  optimal_proven=0  session_best=41
+[18:01:03]   FEASIBLE: E=41  cl13=20  cl23=21  session_best=41  optimal_proven=False  elapsed=180.8s
+[18:01:03]   [status] trials=3  optimal_proven=0  session_best=41
+[18:01:04] trial=   4  pool_E=33  timeout=180.0s  time=18:01:04
+[18:01:04] trial=   4  pool_E=33  timeout=180.0s  time=18:01:04
+[18:01:04] trial=   4  pool_E=32  timeout=180.0s  time=18:01:04
+[18:04:04]   FEASIBLE: E=46  cl13=26  cl23=20  session_best=41  optimal_proven=False  elapsed=180.9s
+[18:04:04]   FEASIBLE: E=46  cl13=26  cl23=20  session_best=41  optimal_proven=False  elapsed=180.9s
+[18:04:04] trial=   5  pool_E=33  timeout=180.0s  time=18:04:04
+[18:04:04] trial=   5  pool_E=33  timeout=180.0s  time=18:04:04
+[18:04:05]   FEASIBLE: E=43  cl13=21  cl23=22  session_best=41  optimal_proven=False  elapsed=181.0s
+[18:04:05] trial=   5  pool_E=33  timeout=180.0s  time=18:04:05
+[18:07:06]   FEASIBLE: E=45  cl13=22  cl23=23  session_best=41  optimal_proven=False  elapsed=181.4s
+[18:07:06] trial=   6  pool_E=31  timeout=180.0s  time=18:07:06
+[18:07:07]   FEASIBLE: E=41  cl13=22  cl23=19  session_best=41  optimal_proven=False  elapsed=182.5s
+[18:07:07]   FEASIBLE: E=41  cl13=22  cl23=19  session_best=41  optimal_proven=False  elapsed=182.5s
+[18:07:07] trial=   6  pool_E=33  timeout=180.0s  time=18:07:07
+[18:07:07] trial=   6  pool_E=33  timeout=180.0s  time=18:07:07
+[18:10:08]   FEASIBLE: E=43  cl13=23  cl23=20  session_best=41  optimal_proven=False  elapsed=181.7s
+[18:10:08]   [status] trials=6  optimal_proven=0  session_best=41
+[18:10:08] trial=   7  pool_E=31  timeout=180.0s  time=18:10:08
+[18:10:09]   FEASIBLE: E=44  cl13=21  cl23=23  session_best=41  optimal_proven=False  elapsed=181.6s
+[18:10:09]   FEASIBLE: E=44  cl13=21  cl23=23  session_best=41  optimal_proven=False  elapsed=181.6s
+[18:10:09]   [status] trials=6  optimal_proven=0  session_best=41
+[18:10:09]   [status] trials=6  optimal_proven=0  session_best=41
+[18:10:09] trial=   7  pool_E=33  timeout=180.0s  time=18:10:09
+[18:10:09] trial=   7  pool_E=33  timeout=180.0s  time=18:10:09
+[18:13:10]   FEASIBLE: E=44  cl13=22  cl23=22  session_best=41  optimal_proven=False  elapsed=181.6s
+[18:13:10] trial=   8  pool_E=33  timeout=180.0s  time=18:13:10
+[18:13:11]   FEASIBLE: E=46  cl13=25  cl23=21  session_best=41  optimal_proven=False  elapsed=182.0s
+[18:13:11]   FEASIBLE: E=46  cl13=25  cl23=21  session_best=41  optimal_proven=False  elapsed=182.0s
+[18:13:11] trial=   8  pool_E=32  timeout=180.0s  time=18:13:11
+[18:13:11] trial=   8  pool_E=32  timeout=180.0s  time=18:13:11
+[18:16:12]   FEASIBLE: E=45  cl13=22  cl23=23  session_best=41  optimal_proven=False  elapsed=182.0s
+[18:16:12] trial=   9  pool_E=32  timeout=180.0s  time=18:16:12
+[18:16:14]   FEASIBLE: E=44  cl13=21  cl23=23  session_best=41  optimal_proven=False  elapsed=182.6s
+[18:16:14]   FEASIBLE: E=44  cl13=21  cl23=23  session_best=41  optimal_proven=False  elapsed=182.6s
+[18:16:14] trial=   9  pool_E=31  timeout=180.0s  time=18:16:14
+[18:16:14] trial=   9  pool_E=31  timeout=180.0s  time=18:16:14
+[18:19:14]   FEASIBLE: E=45  cl13=22  cl23=23  session_best=41  optimal_proven=False  elapsed=182.1s
+[18:19:14]   [status] trials=9  optimal_proven=0  session_best=41
+[18:19:14] trial=  10  pool_E=31  timeout=180.0s  time=18:19:14
+[18:19:16]   FEASIBLE: E=43  cl13=19  cl23=24  session_best=41  optimal_proven=False  elapsed=182.2s
+[18:19:16]   FEASIBLE: E=43  cl13=19  cl23=24  session_best=41  optimal_proven=False  elapsed=182.2s
+[18:19:16]   [status] trials=9  optimal_proven=0  session_best=41
+[18:19:16]   [status] trials=9  optimal_proven=0  session_best=41
+[18:19:16] trial=  10  pool_E=33  timeout=180.0s  time=18:19:16
+[18:19:16] trial=  10  pool_E=33  timeout=180.0s  time=18:19:16
+[18:22:16]   FEASIBLE: E=40  cl13=20  cl23=20  session_best=40  optimal_proven=False  elapsed=182.0s
+[18:22:16] trial=  11  pool_E=31  timeout=180.0s  time=18:22:16
+[18:22:19]   FEASIBLE: E=46  cl13=24  cl23=22  session_best=41  optimal_proven=False  elapsed=183.2s
+[18:22:19]   FEASIBLE: E=46  cl13=24  cl23=22  session_best=41  optimal_proven=False  elapsed=183.2s
+[18:22:19] trial=  11  pool_E=33  timeout=180.0s  time=18:22:19
+[18:22:19] trial=  11  pool_E=33  timeout=180.0s  time=18:22:19
+[18:25:18]   FEASIBLE: E=45  cl13=18  cl23=27  session_best=40  optimal_proven=False  elapsed=181.9s
+[18:25:18] trial=  12  pool_E=13  timeout=180.0s  time=18:25:18
+[18:25:21]   FEASIBLE: E=44  cl13=21  cl23=23  session_best=41  optimal_proven=False  elapsed=181.8s
+[18:25:21]   FEASIBLE: E=44  cl13=21  cl23=23  session_best=41  optimal_proven=False  elapsed=181.8s
+[18:25:21] trial=  12  pool_E=14  timeout=180.0s  time=18:25:21
+[18:25:21] trial=  12  pool_E=14  timeout=180.0s  time=18:25:21
+[18:28:21]   FEASIBLE: E=48  cl13=27  cl23=21  session_best=40  optimal_proven=False  elapsed=183.2s
+[18:28:21]   [status] trials=12  optimal_proven=0  session_best=40
+[18:28:21] trial=  13  pool_E=31  timeout=180.0s  time=18:28:21
+[18:28:24]   FEASIBLE: E=49  cl13=30  cl23=19  session_best=41  optimal_proven=False  elapsed=182.7s
+[18:28:24]   FEASIBLE: E=49  cl13=30  cl23=19  session_best=41  optimal_proven=False  elapsed=182.7s
+[18:28:24]   [status] trials=12  optimal_proven=0  session_best=41
+[18:28:24]   [status] trials=12  optimal_proven=0  session_best=41
+[18:28:24] trial=  13  pool_E=14  timeout=180.0s  time=18:28:24
+[18:28:24] trial=  13  pool_E=14  timeout=180.0s  time=18:28:24
+[18:31:24]   FEASIBLE: E=46  cl13=22  cl23=24  session_best=40  optimal_proven=False  elapsed=182.9s
+[18:31:24] trial=  14  pool_E=32  timeout=180.0s  time=18:31:24
+[18:31:26]   FEASIBLE: E=43  cl13=18  cl23=25  session_best=41  optimal_proven=False  elapsed=182.5s
+[18:31:26]   FEASIBLE: E=43  cl13=18  cl23=25  session_best=41  optimal_proven=False  elapsed=182.5s
+[18:31:26] trial=  14  pool_E=33  timeout=180.0s  time=18:31:26
+[18:31:26] trial=  14  pool_E=33  timeout=180.0s  time=18:31:26
+[18:34:27]   FEASIBLE: E=43  cl13=19  cl23=24  session_best=40  optimal_proven=False  elapsed=182.7s
+[18:34:27] trial=  15  pool_E=31  timeout=180.0s  time=18:34:27
+[18:34:29]   FEASIBLE: E=48  cl13=28  cl23=20  session_best=41  optimal_proven=False  elapsed=182.8s
+[18:34:29]   FEASIBLE: E=48  cl13=28  cl23=20  session_best=41  optimal_proven=False  elapsed=182.8s
+[18:34:29] trial=  15  pool_E=32  timeout=180.0s  time=18:34:29
+[18:34:29] trial=  15  pool_E=32  timeout=180.0s  time=18:34:29
+[18:37:30]   FEASIBLE: E=42  cl13=19  cl23=23  session_best=40  optimal_proven=False  elapsed=183.3s
+[18:37:30]   [status] trials=15  optimal_proven=0  session_best=40
+[18:37:30] trial=  16  pool_E=31  timeout=180.0s  time=18:37:30
+[18:37:32]   FEASIBLE: E=48  cl13=20  cl23=28  session_best=41  optimal_proven=False  elapsed=182.8s
+[18:37:32]   FEASIBLE: E=48  cl13=20  cl23=28  session_best=41  optimal_proven=False  elapsed=182.8s
+[18:37:32]   [status] trials=15  optimal_proven=0  session_best=41
+[18:37:32]   [status] trials=15  optimal_proven=0  session_best=41
+[18:37:32] trial=  16  pool_E=32  timeout=180.0s  time=18:37:32
+[18:37:32] trial=  16  pool_E=32  timeout=180.0s  time=18:37:32
+[18:40:33]   FEASIBLE: E=50  cl13=30  cl23=20  session_best=40  optimal_proven=False  elapsed=182.9s
+[18:40:33] trial=  17  pool_E=32  timeout=180.0s  time=18:40:33
+[18:40:35]   FEASIBLE: E=48  cl13=22  cl23=26  session_best=41  optimal_proven=False  elapsed=183.0s
+[18:40:35]   FEASIBLE: E=48  cl13=22  cl23=26  session_best=41  optimal_proven=False  elapsed=183.0s
+[18:40:35] trial=  17  pool_E=32  timeout=180.0s  time=18:40:35
+[18:40:35] trial=  17  pool_E=32  timeout=180.0s  time=18:40:35
+[18:43:36]   FEASIBLE: E=44  cl13=21  cl23=23  session_best=40  optimal_proven=False  elapsed=183.0s
+[18:43:36] trial=  18  pool_E=32  timeout=180.0s  time=18:43:36
+[18:43:38]   FEASIBLE: E=51  cl13=22  cl23=29  session_best=41  optimal_proven=False  elapsed=182.6s
+[18:43:38]   FEASIBLE: E=51  cl13=22  cl23=29  session_best=41  optimal_proven=False  elapsed=182.6s
+[18:43:38] trial=  18  pool_E=32  timeout=180.0s  time=18:43:38
+[18:43:38] trial=  18  pool_E=32  timeout=180.0s  time=18:43:38
+[18:46:40]   FEASIBLE: E=50  cl13=26  cl23=24  session_best=40  optimal_proven=False  elapsed=183.5s
+[18:46:40]   [status] trials=18  optimal_proven=0  session_best=40
+[18:46:40] trial=  19  pool_E=32  timeout=180.0s  time=18:46:40
+[18:46:41]   FEASIBLE: E=44  cl13=21  cl23=23  session_best=41  optimal_proven=False  elapsed=183.2s
+[18:46:41]   FEASIBLE: E=44  cl13=21  cl23=23  session_best=41  optimal_proven=False  elapsed=183.2s
+[18:46:41]   [status] trials=18  optimal_proven=0  session_best=41
+[18:46:41]   [status] trials=18  optimal_proven=0  session_best=41
+[18:46:41] trial=  19  pool_E=32  timeout=180.0s  time=18:46:41
+[18:46:41] trial=  19  pool_E=32  timeout=180.0s  time=18:46:41
+[18:49:41]   FEASIBLE: E=42  cl13=21  cl23=21  session_best=40  optimal_proven=False  elapsed=181.2s
+[18:49:41] trial=  20  pool_E=32  timeout=180.0s  time=18:49:41
+[18:49:42]   FEASIBLE: E=41  cl13=18  cl23=23  session_best=41  optimal_proven=False  elapsed=180.8s
+[18:49:42]   FEASIBLE: E=41  cl13=18  cl23=23  session_best=41  optimal_proven=False  elapsed=180.8s
+[18:49:42] trial=  20  pool_E=31  timeout=180.0s  time=18:49:42
+[18:49:42] trial=  20  pool_E=31  timeout=180.0s  time=18:49:42
+[18:52:42]   FEASIBLE: E=43  cl13=17  cl23=26  session_best=40  optimal_proven=False  elapsed=181.2s
+[18:52:42] trial=  21  pool_E=33  timeout=180.0s  time=18:52:42
+[18:52:43]   FEASIBLE: E=45  cl13=24  cl23=21  session_best=41  optimal_proven=False  elapsed=181.2s
+[18:52:43]   FEASIBLE: E=45  cl13=24  cl23=21  session_best=41  optimal_proven=False  elapsed=181.2s
+[18:52:43] trial=  21  pool_E=32  timeout=180.0s  time=18:52:43
+[18:52:43] trial=  21  pool_E=32  timeout=180.0s  time=18:52:43
+[18:55:43]   FEASIBLE: E=45  cl13=20  cl23=25  session_best=40  optimal_proven=False  elapsed=180.9s
+[18:55:43]   [status] trials=21  optimal_proven=0  session_best=40
+[18:55:43] trial=  22  pool_E=31  timeout=180.0s  time=18:55:43
+[18:55:44]   FEASIBLE: E=42  cl13=21  cl23=21  session_best=41  optimal_proven=False  elapsed=181.2s
+[18:55:44]   FEASIBLE: E=42  cl13=21  cl23=21  session_best=41  optimal_proven=False  elapsed=181.2s
+[18:55:44]   [status] trials=21  optimal_proven=0  session_best=41
+[18:55:44]   [status] trials=21  optimal_proven=0  session_best=41
+[18:55:44] trial=  22  pool_E=32  timeout=180.0s  time=18:55:44
+[18:55:44] trial=  22  pool_E=32  timeout=180.0s  time=18:55:44
+[18:58:45]   FEASIBLE: E=42  cl13=20  cl23=22  session_best=40  optimal_proven=False  elapsed=181.4s
+[18:58:45] trial=  23  pool_E=31  timeout=180.0s  time=18:58:45
+[18:58:46]   FEASIBLE: E=43  cl13=21  cl23=22  session_best=41  optimal_proven=False  elapsed=181.4s
+[18:58:46]   FEASIBLE: E=43  cl13=21  cl23=22  session_best=41  optimal_proven=False  elapsed=181.4s
+[18:58:46] trial=  23  pool_E=52  timeout=180.0s  time=18:58:46
+[18:58:46] trial=  23  pool_E=52  timeout=180.0s  time=18:58:46
+[19:01:46]   FEASIBLE: E=44  cl13=23  cl23=21  session_best=40  optimal_proven=False  elapsed=181.4s
+[19:01:46] trial=  24  pool_E=31  timeout=180.0s  time=19:01:46
+[19:01:47]   FEASIBLE: E=41  cl13=19  cl23=22  session_best=41  optimal_proven=False  elapsed=181.3s
+[19:01:47]   FEASIBLE: E=41  cl13=19  cl23=22  session_best=41  optimal_proven=False  elapsed=181.3s
+[19:01:47] trial=  24  pool_E=33  timeout=180.0s  time=19:01:47
+[19:01:47] trial=  24  pool_E=33  timeout=180.0s  time=19:01:47
+[19:04:48]   FEASIBLE: E=43  cl13=22  cl23=21  session_best=40  optimal_proven=False  elapsed=181.5s
+[19:04:48]   [status] trials=24  optimal_proven=0  session_best=40
+[19:04:48] trial=  25  pool_E=33  timeout=180.0s  time=19:04:48
+[19:04:48]   FEASIBLE: E=41  cl13=21  cl23=20  session_best=41  optimal_proven=False  elapsed=181.1s
+[19:04:48]   FEASIBLE: E=41  cl13=21  cl23=20  session_best=41  optimal_proven=False  elapsed=181.1s
+[19:04:48]   [status] trials=24  optimal_proven=0  session_best=41
+[19:04:48]   [status] trials=24  optimal_proven=0  session_best=41
+[19:04:48] trial=  25  pool_E=31  timeout=180.0s  time=19:04:48
+[19:04:48] trial=  25  pool_E=31  timeout=180.0s  time=19:04:48
+[19:07:49]   FEASIBLE: E=43  cl13=19  cl23=24  session_best=40  optimal_proven=False  elapsed=181.5s
+[19:07:49] trial=  26  pool_E=31  timeout=180.0s  time=19:07:49
+[19:07:50]   FEASIBLE: E=45  cl13=22  cl23=23  session_best=41  optimal_proven=False  elapsed=181.5s
+[19:07:50]   FEASIBLE: E=45  cl13=22  cl23=23  session_best=41  optimal_proven=False  elapsed=181.5s
+[19:07:50] trial=  26  pool_E=31  timeout=180.0s  time=19:07:50
+[19:07:50] trial=  26  pool_E=31  timeout=180.0s  time=19:07:50
+[19:10:50]   FEASIBLE: E=41  cl13=19  cl23=22  session_best=40  optimal_proven=False  elapsed=181.0s
+[19:10:50] trial=  27  pool_E=31  timeout=180.0s  time=19:10:50
+[19:10:51]   FEASIBLE: E=42  cl13=23  cl23=19  session_best=41  optimal_proven=False  elapsed=181.1s
+[19:10:51]   FEASIBLE: E=42  cl13=23  cl23=19  session_best=41  optimal_proven=False  elapsed=181.1s
+[19:10:51] trial=  27  pool_E=31  timeout=180.0s  time=19:10:51
+[19:10:51] trial=  27  pool_E=31  timeout=180.0s  time=19:10:51
+[19:13:52]   FEASIBLE: E=44  cl13=26  cl23=18  session_best=40  optimal_proven=False  elapsed=181.5s
+[19:13:52]   [status] trials=27  optimal_proven=0  session_best=40
+[19:13:52] trial=  28  pool_E=31  timeout=180.0s  time=19:13:52
+[19:13:52]   FEASIBLE: E=45  cl13=26  cl23=19  session_best=41  optimal_proven=False  elapsed=180.9s
+[19:13:52]   FEASIBLE: E=45  cl13=26  cl23=19  session_best=41  optimal_proven=False  elapsed=180.9s
+[19:13:52]   [status] trials=27  optimal_proven=0  session_best=41
+[19:13:52]   [status] trials=27  optimal_proven=0  session_best=41
+[19:13:52] trial=  28  pool_E=32  timeout=180.0s  time=19:13:52
+[19:13:52] trial=  28  pool_E=32  timeout=180.0s  time=19:13:52
+[19:16:53]   FEASIBLE: E=46  cl13=20  cl23=26  session_best=41  optimal_proven=False  elapsed=180.9s
+[19:16:53]   FEASIBLE: E=46  cl13=20  cl23=26  session_best=41  optimal_proven=False  elapsed=180.9s
+[19:16:53]   FEASIBLE: E=48  cl13=26  cl23=22  session_best=40  optimal_proven=False  elapsed=181.2s
+[19:16:53] trial=  29  pool_E=31  timeout=180.0s  time=19:16:53
+[19:16:53] trial=  29  pool_E=31  timeout=180.0s  time=19:16:53
+[19:16:53] trial=  29  pool_E=31  timeout=180.0s  time=19:16:53
+[19:19:55]   FEASIBLE: E=40  cl13=24  cl23=16  session_best=40  optimal_proven=False  elapsed=181.3s
+[19:19:55] trial=  30  pool_E=52  timeout=180.0s  time=19:19:55
+[19:19:57]   FEASIBLE: E=42  cl13=19  cl23=23  session_best=41  optimal_proven=False  elapsed=183.9s
+[19:19:57]   FEASIBLE: E=42  cl13=19  cl23=23  session_best=41  optimal_proven=False  elapsed=183.9s
+[19:19:57] trial=  30  pool_E=31  timeout=180.0s  time=19:19:57
+[19:19:57] trial=  30  pool_E=31  timeout=180.0s  time=19:19:57
+[19:22:56]   FEASIBLE: E=45  cl13=19  cl23=26  session_best=40  optimal_proven=False  elapsed=181.1s
+[19:22:56]   [status] trials=30  optimal_proven=0  session_best=40
+[19:22:56] trial=  31  pool_E=31  timeout=180.0s  time=19:22:56
+[19:22:58]   FEASIBLE: E=44  cl13=25  cl23=19  session_best=41  optimal_proven=False  elapsed=181.2s
+[19:22:58]   FEASIBLE: E=44  cl13=25  cl23=19  session_best=41  optimal_proven=False  elapsed=181.2s
+[19:22:58]   [status] trials=30  optimal_proven=0  session_best=41
+[19:22:58]   [status] trials=30  optimal_proven=0  session_best=41
+[19:22:58] trial=  31  pool_E=32  timeout=180.0s  time=19:22:58
+[19:22:58] trial=  31  pool_E=32  timeout=180.0s  time=19:22:58
+[19:25:58]   FEASIBLE: E=44  cl13=22  cl23=22  session_best=40  optimal_proven=False  elapsed=182.1s
+[19:25:58] trial=  32  pool_E=31  timeout=180.0s  time=19:25:58
+[19:26:00]   FEASIBLE: E=44  cl13=23  cl23=21  session_best=41  optimal_proven=False  elapsed=182.0s
+[19:26:00]   FEASIBLE: E=44  cl13=23  cl23=21  session_best=41  optimal_proven=False  elapsed=182.0s
+[19:26:00] trial=  32  pool_E=31  timeout=180.0s  time=19:26:00
+[19:26:00] trial=  32  pool_E=31  timeout=180.0s  time=19:26:00
+[19:29:00]   FEASIBLE: E=44  cl13=25  cl23=19  session_best=40  optimal_proven=False  elapsed=181.8s
+[19:29:00] trial=  33  pool_E=31  timeout=180.0s  time=19:29:00
+[19:29:02]   FEASIBLE: E=44  cl13=24  cl23=20  session_best=41  optimal_proven=False  elapsed=181.3s
+[19:29:02]   FEASIBLE: E=44  cl13=24  cl23=20  session_best=41  optimal_proven=False  elapsed=181.3s
+[19:29:02] trial=  33  pool_E=31  timeout=180.0s  time=19:29:02
+[19:29:02] trial=  33  pool_E=31  timeout=180.0s  time=19:29:02
+[19:32:01]   FEASIBLE: E=43  cl13=26  cl23=17  session_best=40  optimal_proven=False  elapsed=181.4s
+[19:32:01]   [status] trials=33  optimal_proven=0  session_best=40
+[19:32:01] trial=  34  pool_E=31  timeout=180.0s  time=19:32:01
+[19:32:03]   FEASIBLE: E=42  cl13=19  cl23=23  session_best=41  optimal_proven=False  elapsed=181.3s
+[19:32:03]   FEASIBLE: E=42  cl13=19  cl23=23  session_best=41  optimal_proven=False  elapsed=181.3s
+[19:32:03]   [status] trials=33  optimal_proven=0  session_best=41
+[19:32:03]   [status] trials=33  optimal_proven=0  session_best=41
+[19:32:03] trial=  34  pool_E=31  timeout=180.0s  time=19:32:03
+[19:32:03] trial=  34  pool_E=31  timeout=180.0s  time=19:32:03
+[19:35:02]   FEASIBLE: E=42  cl13=22  cl23=20  session_best=40  optimal_proven=False  elapsed=181.0s
+[19:35:02] trial=  35  pool_E=31  timeout=180.0s  time=19:35:02
+[19:35:04]   FEASIBLE: E=41  cl13=23  cl23=18  session_best=41  optimal_proven=False  elapsed=181.2s
+[19:35:04]   FEASIBLE: E=41  cl13=23  cl23=18  session_best=41  optimal_proven=False  elapsed=181.2s
+[19:35:04] trial=  35  pool_E=31  timeout=180.0s  time=19:35:04
+[19:35:04] trial=  35  pool_E=31  timeout=180.0s  time=19:35:04
+[19:38:04]   FEASIBLE: E=44  cl13=21  cl23=23  session_best=40  optimal_proven=False  elapsed=181.5s
+[19:38:04] trial=  36  pool_E=32  timeout=180.0s  time=19:38:04
+[19:38:05]   FEASIBLE: E=45  cl13=23  cl23=22  session_best=41  optimal_proven=False  elapsed=181.3s
+[19:38:05]   FEASIBLE: E=45  cl13=23  cl23=22  session_best=41  optimal_proven=False  elapsed=181.3s
+[19:38:05] trial=  36  pool_E=31  timeout=180.0s  time=19:38:05
+[19:38:05] trial=  36  pool_E=31  timeout=180.0s  time=19:38:05

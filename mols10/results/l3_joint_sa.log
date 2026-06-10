@@ -912,3 +912,2413 @@
 [08:30:31]   new_best E=59 cl12=25 cl13=15 cl23=19 t=121.4s T=0.128
 [08:30:34]   new_best E=56 cl12=22 cl13=14 cl23=20 t=123.8s T=0.115
 [08:30:34]   new_best E=56 cl12=22 cl13=14 cl23=20 t=123.8s T=0.115
+[08:31:30]   steps=2191525 (12175/s)
+[08:31:30]   steps=2191525 (12175/s)
+[08:31:30]   done: best_E=62  cl12=26  cl13=20  cl23=16  session_best=49  elapsed=180.0s
+[08:31:30]   done: best_E=62  cl12=26  cl13=20  cl23=16  session_best=49  elapsed=180.0s
+[08:31:30] trial=  14  strategy=pool_start  init_E=37  T_init=15.0  budget=180.0s  time=08:31:30
+[08:31:30] trial=  14  strategy=pool_start  init_E=37  T_init=15.0  budget=180.0s  time=08:31:30
+[08:31:30]   steps=2202043 (12234/s)
+[08:31:30]   steps=2202043 (12234/s)
+[08:31:30]   done: best_E=56  cl12=22  cl13=14  cl23=20  session_best=37  elapsed=180.0s
+[08:31:30]   done: best_E=56  cl12=22  cl13=14  cl23=20  session_best=37  elapsed=180.0s
+[08:31:30] trial=  14  strategy=pool_start  init_E=37  T_init=15.0  budget=180.0s  time=08:31:30
+[08:31:30] trial=  14  strategy=pool_start  init_E=37  T_init=15.0  budget=180.0s  time=08:31:30
+[08:34:30]   steps=1620045 (9000/s)
+[08:34:30]   steps=1620045 (9000/s)
+[08:34:30]   done: best_E=37  cl12=0  cl13=22  cl23=15  session_best=37  elapsed=180.0s
+[08:34:30]   done: best_E=37  cl12=0  cl13=22  cl23=15  session_best=37  elapsed=180.0s
+[08:34:30] trial=  15  strategy=heavy_perturb  init_E=92  T_init=20.0  budget=180.0s  time=08:34:30
+[08:34:30] trial=  15  strategy=heavy_perturb  init_E=92  T_init=20.0  budget=180.0s  time=08:34:30
+[08:34:30]   steps=1619295 (8996/s)
+[08:34:30]   steps=1619295 (8996/s)
+[08:34:30]   done: best_E=37  cl12=0  cl13=22  cl23=15  session_best=37  elapsed=180.0s
+[08:34:30]   done: best_E=37  cl12=0  cl13=22  cl23=15  session_best=37  elapsed=180.0s
+[08:34:30]   new_best E=85 cl12=29 cl13=28 cl23=28 t=0.0s T=19.964
+[08:34:30]   new_best E=85 cl12=29 cl13=28 cl23=28 t=0.0s T=19.964
+[08:34:30] trial=  15  strategy=heavy_perturb  init_E=109  T_init=20.0  budget=180.0s  time=08:34:30
+[08:34:30] trial=  15  strategy=heavy_perturb  init_E=109  T_init=20.0  budget=180.0s  time=08:34:30
+[08:34:30]   new_best E=106 cl12=32 cl13=33 cl23=41 t=0.0s T=20.000
+[08:34:30]   new_best E=106 cl12=32 cl13=33 cl23=41 t=0.0s T=20.000
+[08:34:30]   new_best E=104 cl12=30 cl13=41 cl23=33 t=0.0s T=20.000
+[08:34:30]   new_best E=104 cl12=30 cl13=41 cl23=33 t=0.0s T=20.000
+[08:34:30]   new_best E=103 cl12=33 cl13=36 cl23=34 t=0.0s T=19.998
+[08:34:30]   new_best E=103 cl12=33 cl13=36 cl23=34 t=0.0s T=19.998
+[08:34:30]   new_best E=102 cl12=35 cl13=34 cl23=33 t=0.0s T=19.998
+[08:34:30]   new_best E=102 cl12=35 cl13=34 cl23=33 t=0.0s T=19.998
+[08:34:30]   new_best E=96 cl12=35 cl13=34 cl23=27 t=0.0s T=19.998
+[08:34:30]   new_best E=96 cl12=35 cl13=34 cl23=27 t=0.0s T=19.998
+[08:34:30]   new_best E=93 cl12=35 cl13=29 cl23=29 t=0.0s T=19.966
+[08:34:30]   new_best E=93 cl12=35 cl13=29 cl23=29 t=0.0s T=19.966
+[08:34:30]   new_best E=83 cl12=33 cl13=27 cl23=23 t=0.1s T=19.893
+[08:34:30]   new_best E=83 cl12=33 cl13=27 cl23=23 t=0.1s T=19.893
+[08:34:30]   new_best E=90 cl12=31 cl13=27 cl23=32 t=0.3s T=19.735
+[08:34:30]   new_best E=90 cl12=31 cl13=27 cl23=32 t=0.3s T=19.735
+[08:34:32]   new_best E=88 cl12=25 cl13=27 cl23=36 t=2.1s T=18.273
+[08:34:32]   new_best E=88 cl12=25 cl13=27 cl23=36 t=2.1s T=18.273
+[08:34:39]   new_best E=85 cl12=30 cl13=30 cl23=25 t=8.8s T=13.765
+[08:34:39]   new_best E=85 cl12=30 cl13=30 cl23=25 t=8.8s T=13.765
+[08:34:50]   new_best E=82 cl12=23 cl13=35 cl23=24 t=20.3s T=8.496
+[08:34:50]   new_best E=82 cl12=23 cl13=35 cl23=24 t=20.3s T=8.496
+[08:35:03]   new_best E=81 cl12=27 cl13=29 cl23=25 t=33.3s T=4.912
+[08:35:03]   new_best E=81 cl12=27 cl13=29 cl23=25 t=33.3s T=4.912
+[08:35:15]   new_best E=77 cl12=26 cl13=23 cl23=28 t=45.0s T=2.995
+[08:35:15]   new_best E=77 cl12=26 cl13=23 cl23=28 t=45.0s T=2.995
+[08:35:15]   new_best E=76 cl12=27 cl13=21 cl23=28 t=45.0s T=2.995
+[08:35:15]   new_best E=76 cl12=27 cl13=21 cl23=28 t=45.0s T=2.995
+[08:35:19]   new_best E=80 cl12=26 cl13=23 cl23=31 t=49.3s T=2.498
+[08:35:19]   new_best E=80 cl12=26 cl13=23 cl23=31 t=49.3s T=2.498
+[08:35:20]   new_best E=79 cl12=25 cl13=24 cl23=30 t=50.2s T=2.397
+[08:35:20]   new_best E=79 cl12=25 cl13=24 cl23=30 t=50.2s T=2.397
+[08:35:22]   new_best E=78 cl12=26 cl13=29 cl23=23 t=52.5s T=2.182
+[08:35:22]   new_best E=78 cl12=26 cl13=29 cl23=23 t=52.5s T=2.182
+[08:35:26]   new_best E=77 cl12=26 cl13=25 cl23=26 t=56.5s T=1.840
+[08:35:26]   new_best E=77 cl12=26 cl13=25 cl23=26 t=56.5s T=1.840
+[08:35:31]   new_best E=76 cl12=24 cl13=28 cl23=24 t=60.8s T=1.536
+[08:35:31]   new_best E=76 cl12=24 cl13=28 cl23=24 t=60.8s T=1.536
+[08:35:34]   new_best E=73 cl12=24 cl13=24 cl23=25 t=64.4s T=1.320
+[08:35:34]   new_best E=73 cl12=24 cl13=24 cl23=25 t=64.4s T=1.320
+[08:35:36]   new_best E=71 cl12=21 cl13=27 cl23=23 t=65.9s T=1.235
+[08:35:36]   new_best E=71 cl12=21 cl13=27 cl23=23 t=65.9s T=1.235
+[08:35:37]   new_best E=75 cl12=30 cl13=26 cl23=19 t=67.2s T=1.170
+[08:35:37]   new_best E=75 cl12=30 cl13=26 cl23=19 t=67.2s T=1.170
+[08:35:37]   new_best E=74 cl12=27 cl13=27 cl23=20 t=67.4s T=1.162
+[08:35:37]   new_best E=74 cl12=27 cl13=27 cl23=20 t=67.4s T=1.162
+[08:35:42]   new_best E=73 cl12=21 cl13=24 cl23=28 t=71.9s T=0.959
+[08:35:42]   new_best E=73 cl12=21 cl13=24 cl23=28 t=71.9s T=0.959
+[08:35:42]   new_best E=70 cl12=22 cl13=21 cl23=27 t=72.4s T=0.939
+[08:35:42]   new_best E=70 cl12=22 cl13=21 cl23=27 t=72.4s T=0.939
+[08:35:42]   new_best E=72 cl12=22 cl13=23 cl23=27 t=72.7s T=0.929
+[08:35:42]   new_best E=72 cl12=22 cl13=23 cl23=27 t=72.7s T=0.929
+[08:35:43]   new_best E=67 cl12=22 cl13=21 cl23=24 t=72.7s T=0.929
+[08:35:43]   new_best E=67 cl12=22 cl13=21 cl23=24 t=72.7s T=0.929
+[08:35:43]   new_best E=71 cl12=22 cl13=25 cl23=24 t=72.9s T=0.920
+[08:35:43]   new_best E=71 cl12=22 cl13=25 cl23=24 t=72.9s T=0.920
+[08:35:43]   new_best E=69 cl12=21 cl13=24 cl23=24 t=73.0s T=0.918
+[08:35:43]   new_best E=69 cl12=21 cl13=24 cl23=24 t=73.0s T=0.918
+[08:35:43]   new_best E=66 cl12=22 cl13=21 cl23=23 t=73.0s T=0.918
+[08:35:43]   new_best E=66 cl12=22 cl13=21 cl23=23 t=73.0s T=0.918
+[08:35:43]   new_best E=65 cl12=22 cl13=20 cl23=23 t=73.5s T=0.897
+[08:35:43]   new_best E=65 cl12=22 cl13=20 cl23=23 t=73.5s T=0.897
+[08:35:44]   new_best E=64 cl12=22 cl13=20 cl23=22 t=73.7s T=0.891
+[08:35:44]   new_best E=64 cl12=22 cl13=20 cl23=22 t=73.7s T=0.891
+[08:35:45]   new_best E=68 cl12=18 cl13=25 cl23=25 t=75.3s T=0.832
+[08:35:45]   new_best E=68 cl12=18 cl13=25 cl23=25 t=75.3s T=0.832
+[08:35:58]   new_best E=67 cl12=23 cl13=23 cl23=21 t=88.4s T=0.479
+[08:35:58]   new_best E=67 cl12=23 cl13=23 cl23=21 t=88.4s T=0.479
+[08:35:58]   new_best E=63 cl12=19 cl13=19 cl23=25 t=88.5s T=0.477
+[08:35:58]   new_best E=63 cl12=19 cl13=19 cl23=25 t=88.5s T=0.477
+[08:36:01]   new_best E=66 cl12=25 cl13=20 cl23=21 t=91.4s T=0.421
+[08:36:01]   new_best E=66 cl12=25 cl13=20 cl23=21 t=91.4s T=0.421
+[08:36:02]   new_best E=62 cl12=21 cl13=19 cl23=22 t=92.1s T=0.409
+[08:36:02]   new_best E=62 cl12=21 cl13=19 cl23=22 t=92.1s T=0.409
+[08:36:02]   new_best E=65 cl12=24 cl13=21 cl23=20 t=92.2s T=0.408
+[08:36:02]   new_best E=65 cl12=24 cl13=21 cl23=20 t=92.2s T=0.408
+[08:36:09]   new_best E=64 cl12=22 cl13=23 cl23=19 t=99.0s T=0.305
+[08:36:09]   new_best E=64 cl12=22 cl13=23 cl23=19 t=99.0s T=0.305
+[08:36:10]   new_best E=63 cl12=23 cl13=24 cl23=16 t=99.7s T=0.297
+[08:36:10]   new_best E=63 cl12=23 cl13=24 cl23=16 t=99.7s T=0.297
+[08:36:15]   new_best E=62 cl12=23 cl13=23 cl23=16 t=105.3s T=0.235
+[08:36:15]   new_best E=62 cl12=23 cl13=23 cl23=16 t=105.3s T=0.235
+[08:36:16]   new_best E=61 cl12=22 cl13=21 cl23=18 t=106.2s T=0.225
+[08:36:16]   new_best E=61 cl12=22 cl13=21 cl23=18 t=106.2s T=0.225
+[08:36:17]   new_best E=60 cl12=22 cl13=21 cl23=17 t=106.8s T=0.220
+[08:36:17]   new_best E=60 cl12=22 cl13=21 cl23=17 t=106.8s T=0.220
+[08:36:26]   new_best E=61 cl12=18 cl13=23 cl23=20 t=116.6s T=0.146
+[08:36:26]   new_best E=61 cl12=18 cl13=23 cl23=20 t=116.6s T=0.146
+[08:36:26]   new_best E=58 cl12=21 cl13=19 cl23=18 t=116.6s T=0.145
+[08:36:26]   new_best E=58 cl12=21 cl13=19 cl23=18 t=116.6s T=0.145
+[08:36:39]   new_best E=60 cl12=16 cl13=25 cl23=19 t=128.9s T=0.087
+[08:36:39]   new_best E=60 cl12=16 cl13=25 cl23=19 t=128.9s T=0.087
+[08:36:39]   new_best E=59 cl12=16 cl13=24 cl23=19 t=128.9s T=0.086
+[08:36:39]   new_best E=59 cl12=16 cl13=24 cl23=19 t=128.9s T=0.086
+[08:36:42]   new_best E=58 cl12=15 cl13=23 cl23=20 t=131.9s T=0.076
+[08:36:42]   new_best E=58 cl12=15 cl13=23 cl23=20 t=131.9s T=0.076
+[08:36:43]   new_best E=57 cl12=16 cl13=22 cl23=19 t=133.6s T=0.071
+[08:36:43]   new_best E=57 cl12=16 cl13=22 cl23=19 t=133.6s T=0.071
+[08:36:49]   new_best E=56 cl12=15 cl13=22 cl23=19 t=139.5s T=0.055
+[08:36:49]   new_best E=56 cl12=15 cl13=22 cl23=19 t=139.5s T=0.055
+[08:36:54]   new_best E=55 cl12=14 cl13=22 cl23=19 t=143.7s T=0.046
+[08:36:54]   new_best E=55 cl12=14 cl13=22 cl23=19 t=143.7s T=0.046
+[08:37:18]   new_best E=54 cl12=11 cl13=22 cl23=21 t=168.3s T=0.016
+[08:37:18]   new_best E=54 cl12=11 cl13=22 cl23=21 t=168.3s T=0.016
+[08:37:30]   steps=1279867 (7110/s)
+[08:37:30]   steps=1279867 (7110/s)
+[08:37:30]   done: best_E=58  cl12=21  cl13=19  cl23=18  session_best=37  elapsed=180.0s
+[08:37:30]   done: best_E=58  cl12=21  cl13=19  cl23=18  session_best=37  elapsed=180.0s
+[08:37:30]   [status] pool=8 entries  session_best=37
+[08:37:30]   [status] pool=8 entries  session_best=37
+[08:37:30] trial=  16  strategy=pool_start  init_E=88  T_init=15.0  budget=180.0s  time=08:37:30
+[08:37:30] trial=  16  strategy=pool_start  init_E=88  T_init=15.0  budget=180.0s  time=08:37:30
+[08:37:30]   steps=1286342 (7146/s)
+[08:37:30]   steps=1286342 (7146/s)
+[08:37:30]   done: best_E=54  cl12=11  cl13=22  cl23=21  session_best=37  elapsed=180.0s
+[08:37:30]   done: best_E=54  cl12=11  cl13=22  cl23=21  session_best=37  elapsed=180.0s
+[08:37:30]   [status] pool=8 entries  session_best=37
+[08:37:30]   [status] pool=8 entries  session_best=37
+[08:37:30] trial=  16  strategy=pool_start  init_E=63  T_init=15.0  budget=180.0s  time=08:37:30
+[08:37:30] trial=  16  strategy=pool_start  init_E=63  T_init=15.0  budget=180.0s  time=08:37:30
+[08:37:32]   new_best E=85 cl12=33 cl13=27 cl23=25 t=2.1s T=13.753
+[08:37:32]   new_best E=85 cl12=33 cl13=27 cl23=25 t=2.1s T=13.753
+[08:37:56]   new_best E=81 cl12=30 cl13=26 cl23=25 t=26.3s T=5.162
+[08:37:56]   new_best E=81 cl12=30 cl13=26 cl23=25 t=26.3s T=5.162
+[08:38:16]   new_best E=79 cl12=31 cl13=24 cl23=24 t=46.1s T=2.306
+[08:38:16]   new_best E=79 cl12=31 cl13=24 cl23=24 t=46.1s T=2.306
+[08:38:23]   new_best E=78 cl12=22 cl13=24 cl23=32 t=53.1s T=1.735
+[08:38:23]   new_best E=78 cl12=22 cl13=24 cl23=32 t=53.1s T=1.735
+[08:38:23]   new_best E=77 cl12=22 cl13=23 cl23=32 t=53.2s T=1.726
+[08:38:23]   new_best E=77 cl12=22 cl13=23 cl23=32 t=53.2s T=1.726
+[08:38:30]   new_best E=76 cl12=30 cl13=25 cl23=21 t=60.3s T=1.293
+[08:38:30]   new_best E=76 cl12=30 cl13=25 cl23=21 t=60.3s T=1.293
+[08:38:30]   new_best E=75 cl12=26 cl13=25 cl23=24 t=60.4s T=1.292
+[08:38:30]   new_best E=75 cl12=26 cl13=25 cl23=24 t=60.4s T=1.292
+[08:38:41]   new_best E=74 cl12=24 cl13=25 cl23=25 t=71.4s T=0.823
+[08:38:41]   new_best E=74 cl12=24 cl13=25 cl23=25 t=71.4s T=0.823
+[08:38:42]   new_best E=72 cl12=24 cl13=21 cl23=27 t=71.7s T=0.814
+[08:38:42]   new_best E=72 cl12=24 cl13=21 cl23=27 t=71.7s T=0.814
+[08:38:46]   new_best E=71 cl12=27 cl13=20 cl23=24 t=76.6s T=0.667
+[08:38:46]   new_best E=71 cl12=27 cl13=20 cl23=24 t=76.6s T=0.667
+[08:38:49]   new_best E=70 cl12=25 cl13=19 cl23=26 t=78.9s T=0.608
+[08:38:49]   new_best E=70 cl12=25 cl13=19 cl23=26 t=78.9s T=0.608
+[08:38:50]   new_best E=68 cl12=26 cl13=17 cl23=25 t=80.1s T=0.579
+[08:38:50]   new_best E=68 cl12=26 cl13=17 cl23=25 t=80.1s T=0.579
+[08:38:55]   new_best E=67 cl12=27 cl13=17 cl23=23 t=85.0s T=0.474
+[08:38:55]   new_best E=67 cl12=27 cl13=17 cl23=23 t=85.0s T=0.474
+[08:39:03]   new_best E=65 cl12=23 cl13=22 cl23=20 t=92.9s T=0.344
+[08:39:03]   new_best E=65 cl12=23 cl13=22 cl23=20 t=92.9s T=0.344
+[08:39:06]   new_best E=62 cl12=19 cl13=23 cl23=20 t=96.2s T=0.301
+[08:39:06]   new_best E=62 cl12=19 cl13=23 cl23=20 t=96.2s T=0.301
+[08:39:06]   new_best E=60 cl12=18 cl13=22 cl23=20 t=96.4s T=0.299
+[08:39:06]   new_best E=60 cl12=18 cl13=22 cl23=20 t=96.4s T=0.299
+[08:39:11]   new_best E=62 cl12=22 cl13=19 cl23=21 t=101.3s T=0.244
+[08:39:11]   new_best E=62 cl12=22 cl13=19 cl23=21 t=101.3s T=0.244
+[08:39:16]   new_best E=61 cl12=22 cl13=18 cl23=21 t=106.1s T=0.202
+[08:39:16]   new_best E=61 cl12=22 cl13=18 cl23=21 t=106.1s T=0.202
+[08:40:30]   steps=895056 (4973/s)
+[08:40:30]   steps=895056 (4973/s)
+[08:40:30]   done: best_E=61  cl12=22  cl13=18  cl23=21  session_best=37  elapsed=180.0s
+[08:40:30]   done: best_E=61  cl12=22  cl13=18  cl23=21  session_best=37  elapsed=180.0s
+[08:40:30] trial=  17  strategy=random_start  init_E=81  T_init=25.0  budget=180.0s  time=08:40:30
+[08:40:30] trial=  17  strategy=random_start  init_E=81  T_init=25.0  budget=180.0s  time=08:40:30
+[08:40:30]   new_best E=78 cl12=0 cl13=34 cl23=44 t=0.0s T=25.000
+[08:40:30]   new_best E=78 cl12=0 cl13=34 cl23=44 t=0.0s T=25.000
+[08:40:30]   new_best E=72 cl12=0 cl13=35 cl23=37 t=0.0s T=24.999
+[08:40:30]   new_best E=72 cl12=0 cl13=35 cl23=37 t=0.0s T=24.999
+[08:40:30]   new_best E=71 cl12=0 cl13=36 cl23=35 t=0.0s T=24.981
+[08:40:30]   new_best E=71 cl12=0 cl13=36 cl23=35 t=0.0s T=24.981
+[08:40:30]   steps=898136 (4990/s)
+[08:40:30]   steps=898136 (4990/s)
+[08:40:30]   done: best_E=60  cl12=18  cl13=22  cl23=20  session_best=37  elapsed=180.0s
+[08:40:30]   done: best_E=60  cl12=18  cl13=22  cl23=20  session_best=37  elapsed=180.0s
+[08:40:30] trial=  17  strategy=random_start  init_E=68  T_init=25.0  budget=180.0s  time=08:40:30
+[08:40:30] trial=  17  strategy=random_start  init_E=68  T_init=25.0  budget=180.0s  time=08:40:30
+[08:41:45]   new_best E=70 cl12=22 cl13=26 cl23=22 t=75.2s T=0.952
+[08:41:45]   new_best E=70 cl12=22 cl13=26 cl23=22 t=75.2s T=0.952
+[08:41:45]   new_best E=69 cl12=23 cl13=24 cl23=22 t=75.5s T=0.940
+[08:41:45]   new_best E=69 cl12=23 cl13=24 cl23=22 t=75.5s T=0.940
+[08:41:51]   new_best E=67 cl12=25 cl13=21 cl23=21 t=81.5s T=0.725
+[08:41:51]   new_best E=67 cl12=25 cl13=21 cl23=21 t=81.5s T=0.725
+[08:41:53]   new_best E=66 cl12=23 cl13=21 cl23=22 t=82.8s T=0.685
+[08:41:53]   new_best E=66 cl12=23 cl13=21 cl23=22 t=82.8s T=0.685
+[08:41:54]   new_best E=65 cl12=22 cl13=21 cl23=22 t=83.7s T=0.656
+[08:41:54]   new_best E=65 cl12=22 cl13=21 cl23=22 t=83.7s T=0.656
+[08:42:26]   new_best E=68 cl12=15 cl13=28 cl23=25 t=115.8s T=0.163
+[08:42:26]   new_best E=68 cl12=15 cl13=28 cl23=25 t=115.8s T=0.163
+[08:42:27]   new_best E=66 cl12=15 cl13=26 cl23=25 t=117.2s T=0.153
+[08:42:27]   new_best E=66 cl12=15 cl13=26 cl23=25 t=117.2s T=0.153
+[08:42:27]   new_best E=65 cl12=15 cl13=25 cl23=25 t=117.4s T=0.152
+[08:42:27]   new_best E=65 cl12=15 cl13=25 cl23=25 t=117.4s T=0.152
+[08:42:33]   new_best E=64 cl12=16 cl13=22 cl23=26 t=122.8s T=0.120
+[08:42:33]   new_best E=64 cl12=16 cl13=22 cl23=26 t=122.8s T=0.120
+[08:42:33]   new_best E=63 cl12=16 cl13=21 cl23=26 t=123.1s T=0.119
+[08:42:33]   new_best E=63 cl12=16 cl13=21 cl23=26 t=123.1s T=0.119
+[08:42:34]   new_best E=62 cl12=17 cl13=21 cl23=24 t=124.6s T=0.111
+[08:42:34]   new_best E=62 cl12=17 cl13=21 cl23=24 t=124.6s T=0.111
+[08:42:37]   new_best E=60 cl12=17 cl13=20 cl23=23 t=126.7s T=0.101
+[08:42:37]   new_best E=60 cl12=17 cl13=20 cl23=23 t=126.7s T=0.101
+[08:42:41]   new_best E=59 cl12=18 cl13=20 cl23=21 t=130.8s T=0.085
+[08:42:41]   new_best E=59 cl12=18 cl13=20 cl23=21 t=130.8s T=0.085
+[08:43:30]   steps=1038381 (5769/s)
+[08:43:30]   steps=1038381 (5769/s)
+[08:43:30]   done: best_E=59  cl12=18  cl13=20  cl23=21  session_best=37  elapsed=180.0s
+[08:43:30]   done: best_E=59  cl12=18  cl13=20  cl23=21  session_best=37  elapsed=180.0s
+[08:43:30] trial=  18  strategy=pool_start  init_E=34  T_init=15.0  budget=180.0s  time=08:43:30
+[08:43:30] trial=  18  strategy=pool_start  init_E=34  T_init=15.0  budget=180.0s  time=08:43:30
+[08:43:30]   steps=1044917 (5805/s)
+[08:43:30]   steps=1044917 (5805/s)
+[08:43:30]   done: best_E=65  cl12=22  cl13=21  cl23=22  session_best=37  elapsed=180.0s
+[08:43:30]   done: best_E=65  cl12=22  cl13=21  cl23=22  session_best=37  elapsed=180.0s
+[08:43:30] trial=  18  strategy=pool_start  init_E=79  T_init=15.0  budget=180.0s  time=08:43:30
+[08:43:30] trial=  18  strategy=pool_start  init_E=79  T_init=15.0  budget=180.0s  time=08:43:30
+[08:44:03]   new_best E=78 cl12=26 cl13=26 cl23=26 t=32.6s T=3.984
+[08:44:03]   new_best E=78 cl12=26 cl13=26 cl23=26 t=32.6s T=3.984
+[08:44:26]   new_best E=75 cl12=26 cl13=29 cl23=20 t=55.8s T=1.553
+[08:44:26]   new_best E=75 cl12=26 cl13=29 cl23=20 t=55.8s T=1.553
+[08:44:27]   new_best E=73 cl12=21 cl13=27 cl23=25 t=57.2s T=1.471
+[08:44:27]   new_best E=73 cl12=21 cl13=27 cl23=25 t=57.2s T=1.471
+[08:44:49]   new_best E=72 cl12=24 cl13=24 cl23=24 t=79.2s T=0.601
+[08:44:49]   new_best E=72 cl12=24 cl13=24 cl23=24 t=79.2s T=0.601
+[08:44:49]   new_best E=71 cl12=23 cl13=24 cl23=24 t=79.3s T=0.599
+[08:44:49]   new_best E=71 cl12=23 cl13=24 cl23=24 t=79.3s T=0.599
+[08:45:01]   new_best E=70 cl12=26 cl13=24 cl23=20 t=91.4s T=0.367
+[08:45:01]   new_best E=70 cl12=26 cl13=24 cl23=20 t=91.4s T=0.367
+[08:45:08]   new_best E=69 cl12=25 cl13=23 cl23=21 t=97.7s T=0.284
+[08:45:08]   new_best E=69 cl12=25 cl13=23 cl23=21 t=97.7s T=0.284
+[08:45:08]   new_best E=66 cl12=24 cl13=23 cl23=19 t=97.7s T=0.283
+[08:45:08]   new_best E=66 cl12=24 cl13=23 cl23=19 t=97.7s T=0.283
+[08:45:11]   new_best E=64 cl12=24 cl13=22 cl23=18 t=100.9s T=0.249
+[08:45:11]   new_best E=64 cl12=24 cl13=22 cl23=18 t=100.9s T=0.249
+[08:45:11]   new_best E=63 cl12=24 cl13=22 cl23=17 t=101.3s T=0.245
+[08:45:11]   new_best E=63 cl12=24 cl13=22 cl23=17 t=101.3s T=0.245
+[08:45:24]   new_best E=62 cl12=24 cl13=21 cl23=17 t=114.4s T=0.143
+[08:45:24]   new_best E=62 cl12=24 cl13=21 cl23=17 t=114.4s T=0.143
+[08:45:25]   new_best E=61 cl12=23 cl13=21 cl23=17 t=114.8s T=0.142
+[08:45:25]   new_best E=61 cl12=23 cl13=21 cl23=17 t=114.8s T=0.142
+[08:46:30]   steps=1067416 (5930/s)
+[08:46:30]   steps=1067416 (5930/s)
+[08:46:30]   done: best_E=34  cl12=0  cl13=17  cl23=17  session_best=34  elapsed=180.0s
+[08:46:30]   done: best_E=34  cl12=0  cl13=17  cl23=17  session_best=34  elapsed=180.0s
+[08:46:30] trial=  19  strategy=heavy_perturb  init_E=87  T_init=20.0  budget=180.0s  time=08:46:30
+[08:46:30] trial=  19  strategy=heavy_perturb  init_E=87  T_init=20.0  budget=180.0s  time=08:46:30
+[08:46:30]   steps=1086929 (6038/s)
+[08:46:30]   steps=1086929 (6038/s)
+[08:46:30]   done: best_E=61  cl12=23  cl13=21  cl23=17  session_best=37  elapsed=180.0s
+[08:46:30]   done: best_E=61  cl12=23  cl13=21  cl23=17  session_best=37  elapsed=180.0s
+[08:46:30] trial=  19  strategy=heavy_perturb  init_E=105  T_init=20.0  budget=180.0s  time=08:46:30
+[08:46:30] trial=  19  strategy=heavy_perturb  init_E=105  T_init=20.0  budget=180.0s  time=08:46:30
+[08:46:30]   new_best E=98 cl12=32 cl13=33 cl23=33 t=0.0s T=20.000
+[08:46:30]   new_best E=98 cl12=32 cl13=33 cl23=33 t=0.0s T=20.000
+[08:46:30]   new_best E=97 cl12=32 cl13=30 cl23=35 t=0.0s T=20.000
+[08:46:30]   new_best E=97 cl12=32 cl13=30 cl23=35 t=0.0s T=20.000
+[08:46:30]   new_best E=96 cl12=33 cl13=33 cl23=30 t=0.1s T=19.948
+[08:46:30]   new_best E=96 cl12=33 cl13=33 cl23=30 t=0.1s T=19.948
+[08:46:30]   new_best E=92 cl12=28 cl13=32 cl23=32 t=0.1s T=19.930
+[08:46:30]   new_best E=92 cl12=28 cl13=32 cl23=32 t=0.1s T=19.930
+[08:46:30]   new_best E=86 cl12=31 cl13=24 cl23=31 t=0.6s T=19.496
+[08:46:30]   new_best E=86 cl12=31 cl13=24 cl23=31 t=0.6s T=19.496
+[08:46:31]   new_best E=90 cl12=34 cl13=29 cl23=27 t=1.0s T=19.208
+[08:46:31]   new_best E=90 cl12=34 cl13=29 cl23=27 t=1.0s T=19.208
+[08:46:33]   new_best E=88 cl12=28 cl13=31 cl23=29 t=3.3s T=17.428
+[08:46:33]   new_best E=88 cl12=28 cl13=31 cl23=29 t=3.3s T=17.428
+[08:46:38]   new_best E=86 cl12=30 cl13=27 cl23=29 t=7.8s T=14.389
+[08:46:38]   new_best E=86 cl12=30 cl13=27 cl23=29 t=7.8s T=14.389
+[08:46:42]   new_best E=85 cl12=23 cl13=31 cl23=31 t=12.1s T=12.003
+[08:46:42]   new_best E=85 cl12=23 cl13=31 cl23=31 t=12.1s T=12.003
+[08:46:42]   new_best E=84 cl12=26 cl13=26 cl23=32 t=12.5s T=11.792
+[08:46:42]   new_best E=84 cl12=26 cl13=26 cl23=32 t=12.5s T=11.792
+[08:46:48]   new_best E=84 cl12=28 cl13=27 cl23=29 t=18.6s T=9.120
+[08:46:48]   new_best E=84 cl12=28 cl13=27 cl23=29 t=18.6s T=9.120
+[08:47:02]   new_best E=81 cl12=30 cl13=23 cl23=28 t=32.5s T=5.065
+[08:47:02]   new_best E=81 cl12=30 cl13=23 cl23=28 t=32.5s T=5.065
+[08:47:03]   new_best E=80 cl12=31 cl13=24 cl23=25 t=33.6s T=4.842
+[08:47:03]   new_best E=80 cl12=31 cl13=24 cl23=25 t=33.6s T=4.842
+[08:47:03]   new_best E=76 cl12=27 cl13=24 cl23=25 t=33.6s T=4.842
+[08:47:03]   new_best E=76 cl12=27 cl13=24 cl23=25 t=33.6s T=4.842
+[08:47:06]   new_best E=83 cl12=26 cl13=23 cl23=34 t=35.6s T=4.445
+[08:47:06]   new_best E=83 cl12=26 cl13=23 cl23=34 t=35.6s T=4.445
+[08:47:08]   new_best E=82 cl12=28 cl13=28 cl23=26 t=38.5s T=3.938
+[08:47:08]   new_best E=82 cl12=28 cl13=28 cl23=26 t=38.5s T=3.938
+[08:47:15]   new_best E=81 cl12=30 cl13=26 cl23=25 t=45.4s T=2.945
+[08:47:15]   new_best E=81 cl12=30 cl13=26 cl23=25 t=45.4s T=2.945
+[08:47:17]   new_best E=80 cl12=27 cl13=24 cl23=29 t=47.6s T=2.683
+[08:47:17]   new_best E=80 cl12=27 cl13=24 cl23=29 t=47.6s T=2.683
+[08:47:18]   new_best E=79 cl12=30 cl13=18 cl23=31 t=47.9s T=2.643
+[08:47:18]   new_best E=79 cl12=30 cl13=18 cl23=31 t=47.9s T=2.643
+[08:47:23]   new_best E=78 cl12=23 cl13=26 cl23=29 t=53.0s T=2.138
+[08:47:23]   new_best E=78 cl12=23 cl13=26 cl23=29 t=53.0s T=2.138
+[08:47:33]   new_best E=75 cl12=30 cl13=21 cl23=24 t=63.5s T=1.368
+[08:47:33]   new_best E=75 cl12=30 cl13=21 cl23=24 t=63.5s T=1.368
+[08:47:35]   new_best E=76 cl12=25 cl13=26 cl23=25 t=64.6s T=1.305
+[08:47:35]   new_best E=76 cl12=25 cl13=26 cl23=25 t=64.6s T=1.305
+[08:47:36]   new_best E=75 cl12=27 cl13=26 cl23=22 t=66.2s T=1.219
+[08:47:36]   new_best E=75 cl12=27 cl13=26 cl23=22 t=66.2s T=1.219
+[08:47:37]   new_best E=74 cl12=25 cl13=20 cl23=29 t=66.8s T=1.190
+[08:47:37]   new_best E=74 cl12=25 cl13=20 cl23=29 t=66.8s T=1.190
+[08:47:37]   new_best E=73 cl12=27 cl13=20 cl23=26 t=67.0s T=1.179
+[08:47:37]   new_best E=73 cl12=27 cl13=20 cl23=26 t=67.0s T=1.179
+[08:47:37]   new_best E=71 cl12=22 cl13=25 cl23=24 t=67.1s T=1.178
+[08:47:37]   new_best E=71 cl12=22 cl13=25 cl23=24 t=67.1s T=1.178
+[08:47:43]   new_best E=72 cl12=23 cl13=20 cl23=29 t=73.6s T=0.895
+[08:47:43]   new_best E=72 cl12=23 cl13=20 cl23=29 t=73.6s T=0.895
+[08:47:44]   new_best E=69 cl12=24 cl13=21 cl23=24 t=73.8s T=0.888
+[08:47:44]   new_best E=69 cl12=24 cl13=21 cl23=24 t=73.8s T=0.888
+[08:47:44]   new_best E=68 cl12=25 cl13=21 cl23=22 t=73.8s T=0.886
+[08:47:44]   new_best E=68 cl12=25 cl13=21 cl23=22 t=73.8s T=0.886
+[08:47:44]   new_best E=67 cl12=24 cl13=21 cl23=22 t=74.0s T=0.878
+[08:47:44]   new_best E=67 cl12=24 cl13=21 cl23=22 t=74.0s T=0.878
+[08:47:44]   new_best E=65 cl12=22 cl13=21 cl23=22 t=74.5s T=0.861
+[08:47:44]   new_best E=65 cl12=22 cl13=21 cl23=22 t=74.5s T=0.861
+[08:47:45]   new_best E=71 cl12=25 cl13=26 cl23=20 t=75.4s T=0.828
+[08:47:45]   new_best E=71 cl12=25 cl13=26 cl23=20 t=75.4s T=0.828
+[08:47:45]   new_best E=70 cl12=25 cl13=27 cl23=18 t=75.4s T=0.827
+[08:47:45]   new_best E=70 cl12=25 cl13=27 cl23=18 t=75.4s T=0.827
+[08:47:46]   new_best E=68 cl12=24 cl13=26 cl23=18 t=75.9s T=0.813
+[08:47:46]   new_best E=68 cl12=24 cl13=26 cl23=18 t=75.9s T=0.813
+[08:47:46]   new_best E=64 cl12=22 cl13=22 cl23=20 t=76.2s T=0.799
+[08:47:46]   new_best E=64 cl12=22 cl13=22 cl23=20 t=76.2s T=0.799
+[08:47:46]   new_best E=66 cl12=26 cl13=22 cl23=18 t=76.3s T=0.796
+[08:47:46]   new_best E=66 cl12=26 cl13=22 cl23=18 t=76.3s T=0.796
+[08:48:06]   new_best E=63 cl12=22 cl13=19 cl23=22 t=96.0s T=0.347
+[08:48:06]   new_best E=63 cl12=22 cl13=19 cl23=22 t=96.0s T=0.347
+[08:48:08]   new_best E=63 cl12=21 cl13=21 cl23=21 t=98.6s T=0.311
+[08:48:08]   new_best E=63 cl12=21 cl13=21 cl23=21 t=98.6s T=0.311
+[08:48:12]   new_best E=62 cl12=23 cl13=22 cl23=17 t=101.9s T=0.270
+[08:48:12]   new_best E=62 cl12=23 cl13=22 cl23=17 t=101.9s T=0.270
+[08:48:12]   new_best E=61 cl12=23 cl13=21 cl23=17 t=102.2s T=0.267
+[08:48:12]   new_best E=61 cl12=23 cl13=21 cl23=17 t=102.2s T=0.267
+[08:48:13]   new_best E=60 cl12=22 cl13=21 cl23=17 t=103.3s T=0.256
+[08:48:13]   new_best E=60 cl12=22 cl13=21 cl23=17 t=103.3s T=0.256
+[08:48:15]   new_best E=62 cl12=20 cl13=20 cl23=22 t=105.0s T=0.238
+[08:48:15]   new_best E=62 cl12=20 cl13=20 cl23=22 t=105.0s T=0.238
+[08:48:17]   new_best E=59 cl12=19 cl13=22 cl23=18 t=107.3s T=0.215
+[08:48:17]   new_best E=59 cl12=19 cl13=22 cl23=18 t=107.3s T=0.215
+[08:48:17]   new_best E=58 cl12=19 cl13=21 cl23=18 t=107.5s T=0.214
+[08:48:17]   new_best E=58 cl12=19 cl13=21 cl23=18 t=107.5s T=0.214
+[08:48:18]   new_best E=57 cl12=20 cl13=19 cl23=18 t=107.8s T=0.211
+[08:48:18]   new_best E=57 cl12=20 cl13=19 cl23=18 t=107.8s T=0.211
+[08:48:22]   new_best E=56 cl12=19 cl13=19 cl23=18 t=111.7s T=0.179
+[08:48:22]   new_best E=56 cl12=19 cl13=19 cl23=18 t=111.7s T=0.179
+[08:48:22]   new_best E=60 cl12=20 cl13=21 cl23=19 t=112.2s T=0.175
+[08:48:22]   new_best E=60 cl12=20 cl13=21 cl23=19 t=112.2s T=0.175
+[08:48:24]   new_best E=57 cl12=20 cl13=20 cl23=17 t=113.9s T=0.163
+[08:48:24]   new_best E=57 cl12=20 cl13=20 cl23=17 t=113.9s T=0.163
+[08:48:50]   new_best E=56 cl12=17 cl13=19 cl23=20 t=140.5s T=0.053
+[08:48:50]   new_best E=56 cl12=17 cl13=19 cl23=20 t=140.5s T=0.053
+[08:48:50]   new_best E=55 cl12=18 cl13=19 cl23=18 t=140.5s T=0.053
+[08:48:50]   new_best E=55 cl12=18 cl13=19 cl23=18 t=140.5s T=0.053
+[08:49:30]   steps=1106027 (6145/s)
+[08:49:30]   steps=1106027 (6145/s)
+[08:49:30]   done: best_E=55  cl12=18  cl13=19  cl23=18  session_best=34  elapsed=180.0s
+[08:49:30]   done: best_E=55  cl12=18  cl13=19  cl23=18  session_best=34  elapsed=180.0s
+[08:49:30] trial=  20  strategy=pool_start  init_E=70  T_init=15.0  budget=180.0s  time=08:49:30
+[08:49:30] trial=  20  strategy=pool_start  init_E=70  T_init=15.0  budget=180.0s  time=08:49:30
+[08:49:30]   steps=1084157 (6023/s)
+[08:49:30]   steps=1084157 (6023/s)
+[08:49:30]   done: best_E=56  cl12=19  cl13=19  cl23=18  session_best=37  elapsed=180.0s
+[08:49:30]   done: best_E=56  cl12=19  cl13=19  cl23=18  session_best=37  elapsed=180.0s
+[08:49:30] trial=  20  strategy=pool_start  init_E=64  T_init=15.0  budget=180.0s  time=08:49:30
+[08:49:30] trial=  20  strategy=pool_start  init_E=64  T_init=15.0  budget=180.0s  time=08:49:30
+[08:50:50]   new_best E=69 cl12=24 cl13=19 cl23=26 t=79.7s T=0.590
+[08:50:50]   new_best E=69 cl12=24 cl13=19 cl23=26 t=79.7s T=0.590
+[08:50:50]   new_best E=67 cl12=22 cl13=19 cl23=26 t=79.9s T=0.583
+[08:50:50]   new_best E=67 cl12=22 cl13=19 cl23=26 t=79.9s T=0.583
+[08:50:51]   new_best E=66 cl12=22 cl13=18 cl23=26 t=80.7s T=0.566
+[08:50:51]   new_best E=66 cl12=22 cl13=18 cl23=26 t=80.7s T=0.566
+[08:50:51]   new_best E=64 cl12=22 cl13=17 cl23=25 t=81.2s T=0.554
+[08:50:51]   new_best E=64 cl12=22 cl13=17 cl23=25 t=81.2s T=0.554
+[08:50:53]   new_best E=63 cl12=22 cl13=16 cl23=25 t=83.5s T=0.504
+[08:50:53]   new_best E=63 cl12=22 cl13=16 cl23=25 t=83.5s T=0.504
+[08:50:56]   new_best E=62 cl12=25 cl13=15 cl23=22 t=86.5s T=0.446
+[08:50:56]   new_best E=62 cl12=25 cl13=15 cl23=22 t=86.5s T=0.446
+[08:51:03]   new_best E=62 cl12=18 cl13=20 cl23=24 t=92.7s T=0.348
+[08:51:03]   new_best E=62 cl12=18 cl13=20 cl23=24 t=92.7s T=0.348
+[08:51:04]   new_best E=61 cl12=25 cl13=14 cl23=22 t=93.7s T=0.333
+[08:51:04]   new_best E=61 cl12=25 cl13=14 cl23=22 t=93.7s T=0.333
+[08:51:05]   new_best E=60 cl12=25 cl13=14 cl23=21 t=94.8s T=0.318
+[08:51:05]   new_best E=60 cl12=25 cl13=14 cl23=21 t=94.8s T=0.318
+[08:51:17]   new_best E=59 cl12=21 cl13=19 cl23=19 t=107.3s T=0.191
+[08:51:17]   new_best E=59 cl12=21 cl13=19 cl23=19 t=107.3s T=0.191
+[08:51:22]   new_best E=58 cl12=20 cl13=18 cl23=20 t=111.8s T=0.159
+[08:51:22]   new_best E=58 cl12=20 cl13=18 cl23=20 t=111.8s T=0.159
+[08:51:25]   new_best E=57 cl12=21 cl13=19 cl23=17 t=114.6s T=0.142
+[08:51:25]   new_best E=57 cl12=21 cl13=19 cl23=17 t=114.6s T=0.142
+[08:51:31]   new_best E=56 cl12=19 cl13=20 cl23=17 t=121.6s T=0.107
+[08:51:31]   new_best E=56 cl12=19 cl13=20 cl23=17 t=121.6s T=0.107
+[08:52:11]   new_best E=61 cl12=17 cl13=21 cl23=23 t=161.4s T=0.021
+[08:52:11]   new_best E=61 cl12=17 cl13=21 cl23=23 t=161.4s T=0.021
+[08:52:30]   steps=1069612 (5942/s)
+[08:52:30]   steps=1069612 (5942/s)
+[08:52:30]   done: best_E=56  cl12=19  cl13=20  cl23=17  session_best=34  elapsed=180.0s
+[08:52:30]   done: best_E=56  cl12=19  cl13=20  cl23=17  session_best=34  elapsed=180.0s
+[08:52:30]   [status] pool=8 entries  session_best=34
+[08:52:30]   [status] pool=8 entries  session_best=34
+[08:52:30] trial=  21  strategy=random_start  init_E=64  T_init=25.0  budget=180.0s  time=08:52:30
+[08:52:30] trial=  21  strategy=random_start  init_E=64  T_init=25.0  budget=180.0s  time=08:52:30
+[08:52:30]   steps=1039645 (5776/s)
+[08:52:30]   steps=1039645 (5776/s)
+[08:52:30]   done: best_E=61  cl12=17  cl13=21  cl23=23  session_best=37  elapsed=180.0s
+[08:52:30]   done: best_E=61  cl12=17  cl13=21  cl23=23  session_best=37  elapsed=180.0s
+[08:52:30]   [status] pool=8 entries  session_best=37
+[08:52:30]   [status] pool=8 entries  session_best=37
+[08:52:30] trial=  21  strategy=random_start  init_E=74  T_init=25.0  budget=180.0s  time=08:52:30
+[08:52:30] trial=  21  strategy=random_start  init_E=74  T_init=25.0  budget=180.0s  time=08:52:30
+[08:52:30]   new_best E=70 cl12=0 cl13=32 cl23=38 t=0.0s T=25.000
+[08:52:30]   new_best E=70 cl12=0 cl13=32 cl23=38 t=0.0s T=25.000
+[08:54:00]   new_best E=68 cl12=21 cl13=28 cl23=19 t=90.5s T=0.488
+[08:54:00]   new_best E=68 cl12=21 cl13=28 cl23=19 t=90.5s T=0.488
+[08:54:03]   new_best E=67 cl12=19 cl13=28 cl23=20 t=93.2s T=0.434
+[08:54:03]   new_best E=67 cl12=19 cl13=28 cl23=20 t=93.2s T=0.434
+[08:54:04]   new_best E=64 cl12=19 cl13=25 cl23=20 t=93.7s T=0.425
+[08:54:04]   new_best E=64 cl12=19 cl13=25 cl23=20 t=93.7s T=0.425
+[08:54:11]   new_best E=63 cl12=18 cl13=25 cl23=20 t=101.2s T=0.307
+[08:54:11]   new_best E=63 cl12=18 cl13=25 cl23=20 t=101.2s T=0.307
+[08:54:13]   new_best E=62 cl12=18 cl13=24 cl23=20 t=103.1s T=0.283
+[08:54:13]   new_best E=62 cl12=18 cl13=24 cl23=20 t=103.1s T=0.283
+[08:54:24]   new_best E=62 cl12=22 cl13=22 cl23=18 t=114.3s T=0.174
+[08:54:24]   new_best E=62 cl12=22 cl13=22 cl23=18 t=114.3s T=0.174
+[08:55:30]   steps=1149417 (6386/s)
+[08:55:30]   steps=1149417 (6386/s)
+[08:55:30]   done: best_E=62  cl12=22  cl13=22  cl23=18  session_best=34  elapsed=180.0s
+[08:55:30]   done: best_E=62  cl12=22  cl13=22  cl23=18  session_best=34  elapsed=180.0s
+[08:55:30] trial=  22  strategy=pool_start  init_E=94  T_init=15.0  budget=180.0s  time=08:55:30
+[08:55:30] trial=  22  strategy=pool_start  init_E=94  T_init=15.0  budget=180.0s  time=08:55:30
+[08:55:30]   new_best E=90 cl12=38 cl13=30 cl23=22 t=0.0s T=15.000
+[08:55:30]   new_best E=90 cl12=38 cl13=30 cl23=22 t=0.0s T=15.000
+[08:55:30]   steps=1158764 (6438/s)
+[08:55:30]   steps=1158764 (6438/s)
+[08:55:30]   done: best_E=62  cl12=18  cl13=24  cl23=20  session_best=37  elapsed=180.0s
+[08:55:30]   done: best_E=62  cl12=18  cl13=24  cl23=20  session_best=37  elapsed=180.0s
+[08:55:30] trial=  22  strategy=pool_start  init_E=81  T_init=15.0  budget=180.0s  time=08:55:30
+[08:55:30] trial=  22  strategy=pool_start  init_E=81  T_init=15.0  budget=180.0s  time=08:55:30
+[08:55:32]   new_best E=88 cl12=29 cl13=30 cl23=29 t=2.2s T=13.731
+[08:55:32]   new_best E=88 cl12=29 cl13=30 cl23=29 t=2.2s T=13.731
+[08:55:38]   new_best E=84 cl12=32 cl13=28 cl23=24 t=7.7s T=10.989
+[08:55:38]   new_best E=84 cl12=32 cl13=28 cl23=24 t=7.7s T=10.989
+[08:55:57]   new_best E=82 cl12=30 cl13=30 cl23=22 t=26.8s T=5.041
+[08:55:57]   new_best E=82 cl12=30 cl13=30 cl23=22 t=26.8s T=5.041
+[08:56:02]   new_best E=79 cl12=29 cl13=26 cl23=24 t=32.2s T=4.059
+[08:56:02]   new_best E=79 cl12=29 cl13=26 cl23=24 t=32.2s T=4.059
+[08:56:04]   new_best E=77 cl12=24 cl13=26 cl23=27 t=33.7s T=3.812
+[08:56:04]   new_best E=77 cl12=24 cl13=26 cl23=27 t=33.7s T=3.812
+[08:56:12]   new_best E=74 cl12=21 cl13=25 cl23=28 t=41.6s T=2.762
+[08:56:12]   new_best E=74 cl12=21 cl13=25 cl23=28 t=41.6s T=2.762
+[08:56:12]   new_best E=73 cl12=21 cl13=24 cl23=28 t=41.7s T=2.762
+[08:56:12]   new_best E=73 cl12=21 cl13=24 cl23=28 t=41.7s T=2.762
+[08:56:22]   new_best E=78 cl12=28 cl13=29 cl23=21 t=51.8s T=1.826
+[08:56:22]   new_best E=78 cl12=28 cl13=29 cl23=21 t=51.8s T=1.826
+[08:56:26]   new_best E=77 cl12=24 cl13=29 cl23=24 t=56.4s T=1.517
+[08:56:26]   new_best E=77 cl12=24 cl13=29 cl23=24 t=56.4s T=1.517
+[08:56:27]   new_best E=76 cl12=24 cl13=22 cl23=30 t=56.8s T=1.493
+[08:56:27]   new_best E=76 cl12=24 cl13=22 cl23=30 t=56.8s T=1.493
+[08:56:32]   new_best E=75 cl12=28 cl13=22 cl23=25 t=61.9s T=1.214
+[08:56:32]   new_best E=75 cl12=28 cl13=22 cl23=25 t=61.9s T=1.214
+[08:56:42]   new_best E=72 cl12=24 cl13=28 cl23=20 t=71.8s T=0.812
+[08:56:42]   new_best E=72 cl12=24 cl13=28 cl23=20 t=71.8s T=0.812
+[08:56:42]   new_best E=70 cl12=23 cl13=27 cl23=20 t=71.9s T=0.807
+[08:56:42]   new_best E=70 cl12=23 cl13=27 cl23=20 t=71.9s T=0.807
+[08:56:43]   new_best E=72 cl12=26 cl13=20 cl23=26 t=73.1s T=0.768
+[08:56:43]   new_best E=72 cl12=26 cl13=20 cl23=26 t=73.1s T=0.768
+[08:56:43]   new_best E=71 cl12=26 cl13=19 cl23=26 t=73.2s T=0.766
+[08:56:43]   new_best E=71 cl12=26 cl13=19 cl23=26 t=73.2s T=0.766
+[08:56:43]   new_best E=70 cl12=24 cl13=19 cl23=27 t=73.3s T=0.763
+[08:56:43]   new_best E=70 cl12=24 cl13=19 cl23=27 t=73.3s T=0.763
+[08:56:44]   new_best E=69 cl12=25 cl13=19 cl23=25 t=73.8s T=0.747
+[08:56:44]   new_best E=69 cl12=25 cl13=19 cl23=25 t=73.8s T=0.747
+[08:56:45]   new_best E=69 cl12=21 cl13=27 cl23=21 t=75.6s T=0.696
+[08:56:45]   new_best E=69 cl12=21 cl13=27 cl23=21 t=75.6s T=0.696
+[08:56:47]   new_best E=67 cl12=24 cl13=22 cl23=21 t=77.6s T=0.642
+[08:56:47]   new_best E=67 cl12=24 cl13=22 cl23=21 t=77.6s T=0.642
+[08:56:49]   new_best E=66 cl12=22 cl13=24 cl23=20 t=79.3s T=0.599
+[08:56:49]   new_best E=66 cl12=22 cl13=24 cl23=20 t=79.3s T=0.599
+[08:56:58]   new_best E=65 cl12=16 cl13=25 cl23=24 t=87.9s T=0.422
+[08:56:58]   new_best E=65 cl12=16 cl13=25 cl23=24 t=87.9s T=0.422
+[08:56:58]   new_best E=64 cl12=16 cl13=23 cl23=25 t=88.0s T=0.421
+[08:56:58]   new_best E=64 cl12=16 cl13=23 cl23=25 t=88.0s T=0.421
+[08:56:59]   new_best E=63 cl12=18 cl13=23 cl23=22 t=88.7s T=0.409
+[08:56:59]   new_best E=63 cl12=18 cl13=23 cl23=22 t=88.7s T=0.409
+[08:57:04]   new_best E=62 cl12=17 cl13=24 cl23=21 t=93.7s T=0.333
+[08:57:04]   new_best E=62 cl12=17 cl13=24 cl23=21 t=93.7s T=0.333
+[08:57:08]   new_best E=68 cl12=26 cl13=21 cl23=21 t=98.4s T=0.276
+[08:57:08]   new_best E=68 cl12=26 cl13=21 cl23=21 t=98.4s T=0.276
+[08:57:09]   new_best E=61 cl12=17 cl13=24 cl23=20 t=98.8s T=0.271
+[08:57:09]   new_best E=61 cl12=17 cl13=24 cl23=20 t=98.8s T=0.271
+[08:57:10]   new_best E=67 cl12=26 cl13=20 cl23=21 t=100.3s T=0.255
+[08:57:10]   new_best E=67 cl12=26 cl13=20 cl23=21 t=100.3s T=0.255
+[08:57:11]   new_best E=60 cl12=17 cl13=24 cl23=19 t=101.5s T=0.243
+[08:57:11]   new_best E=60 cl12=17 cl13=24 cl23=19 t=101.5s T=0.243
+[08:57:12]   new_best E=65 cl12=26 cl13=19 cl23=20 t=102.0s T=0.238
+[08:57:12]   new_best E=65 cl12=26 cl13=19 cl23=20 t=102.0s T=0.238
+[08:57:13]   new_best E=64 cl12=25 cl13=19 cl23=20 t=102.8s T=0.230
+[08:57:13]   new_best E=64 cl12=25 cl13=19 cl23=20 t=102.8s T=0.230
+[08:57:13]   new_best E=63 cl12=24 cl13=19 cl23=20 t=103.5s T=0.224
+[08:57:13]   new_best E=63 cl12=24 cl13=19 cl23=20 t=103.5s T=0.224
+[08:57:14]   new_best E=62 cl12=24 cl13=19 cl23=19 t=103.8s T=0.221
+[08:57:14]   new_best E=62 cl12=24 cl13=19 cl23=19 t=103.8s T=0.221
+[08:57:15]   new_best E=61 cl12=23 cl13=19 cl23=19 t=104.6s T=0.214
+[08:57:15]   new_best E=61 cl12=23 cl13=19 cl23=19 t=104.6s T=0.214
+[08:57:47]   new_best E=60 cl12=22 cl13=21 cl23=17 t=137.0s T=0.057
+[08:57:47]   new_best E=60 cl12=22 cl13=21 cl23=17 t=137.0s T=0.057
+[08:57:52]   new_best E=59 cl12=22 cl13=20 cl23=17 t=141.7s T=0.047
+[08:57:52]   new_best E=59 cl12=22 cl13=20 cl23=17 t=141.7s T=0.047
+[08:57:53]   new_best E=58 cl12=22 cl13=20 cl23=16 t=143.0s T=0.045
+[08:57:53]   new_best E=58 cl12=22 cl13=20 cl23=16 t=143.0s T=0.045
+[08:58:30]   steps=1162138 (6456/s)
+[08:58:30]   steps=1162138 (6456/s)
+[08:58:30]   done: best_E=60  cl12=17  cl13=24  cl23=19  session_best=34  elapsed=180.0s
+[08:58:30]   done: best_E=60  cl12=17  cl13=24  cl23=19  session_best=34  elapsed=180.0s
+[08:58:30] trial=  23  strategy=heavy_perturb  init_E=97  T_init=20.0  budget=180.0s  time=08:58:30
+[08:58:30] trial=  23  strategy=heavy_perturb  init_E=97  T_init=20.0  budget=180.0s  time=08:58:30
+[08:58:30]   new_best E=95 cl12=34 cl13=30 cl23=31 t=0.0s T=20.000
+[08:58:30]   new_best E=95 cl12=34 cl13=30 cl23=31 t=0.0s T=20.000
+[08:58:30]   steps=1190500 (6614/s)
+[08:58:30]   steps=1190500 (6614/s)
+[08:58:30]   done: best_E=58  cl12=22  cl13=20  cl23=16  session_best=37  elapsed=180.0s
+[08:58:30]   done: best_E=58  cl12=22  cl13=20  cl23=16  session_best=37  elapsed=180.0s
+[08:58:30] trial=  23  strategy=heavy_perturb  init_E=95  T_init=20.0  budget=180.0s  time=08:58:30
+[08:58:30] trial=  23  strategy=heavy_perturb  init_E=95  T_init=20.0  budget=180.0s  time=08:58:30
+[08:58:30]   new_best E=94 cl12=36 cl13=31 cl23=27 t=0.1s T=19.918
+[08:58:30]   new_best E=94 cl12=36 cl13=31 cl23=27 t=0.1s T=19.918
+[08:58:30]   new_best E=94 cl12=35 cl13=32 cl23=27 t=0.1s T=19.931
+[08:58:30]   new_best E=94 cl12=35 cl13=32 cl23=27 t=0.1s T=19.931
+[08:58:30]   new_best E=92 cl12=30 cl13=30 cl23=32 t=0.2s T=19.856
+[08:58:30]   new_best E=92 cl12=30 cl13=30 cl23=32 t=0.2s T=19.856
+[08:58:30]   new_best E=90 cl12=29 cl13=35 cl23=26 t=0.2s T=19.807
+[08:58:30]   new_best E=90 cl12=29 cl13=35 cl23=26 t=0.2s T=19.807
+[08:58:30]   new_best E=93 cl12=26 cl13=36 cl23=31 t=0.3s T=19.750
+[08:58:30]   new_best E=93 cl12=26 cl13=36 cl23=31 t=0.3s T=19.750
+[08:58:30]   new_best E=90 cl12=31 cl13=29 cl23=30 t=0.5s T=19.550
+[08:58:30]   new_best E=90 cl12=31 cl13=29 cl23=30 t=0.5s T=19.550
+[08:58:31]   new_best E=88 cl12=28 cl13=29 cl23=31 t=0.7s T=19.386
+[08:58:31]   new_best E=88 cl12=28 cl13=29 cl23=31 t=0.7s T=19.386
+[08:58:33]   new_best E=89 cl12=25 cl13=32 cl23=32 t=3.3s T=17.417
+[08:58:33]   new_best E=89 cl12=25 cl13=32 cl23=32 t=3.3s T=17.417
+[08:58:41]   new_best E=88 cl12=30 cl13=33 cl23=25 t=11.0s T=12.549
+[08:58:41]   new_best E=88 cl12=30 cl13=33 cl23=25 t=11.0s T=12.549
+[08:58:41]   new_best E=86 cl12=31 cl13=24 cl23=31 t=11.3s T=12.385
+[08:58:41]   new_best E=86 cl12=31 cl13=24 cl23=31 t=11.3s T=12.385
+[08:58:43]   new_best E=87 cl12=26 cl13=31 cl23=30 t=12.6s T=11.742
+[08:58:43]   new_best E=87 cl12=26 cl13=31 cl23=30 t=12.6s T=11.742
+[08:58:45]   new_best E=83 cl12=27 cl13=25 cl23=31 t=15.1s T=10.559
+[08:58:45]   new_best E=83 cl12=27 cl13=25 cl23=31 t=15.1s T=10.559
+[08:58:45]   new_best E=82 cl12=27 cl13=25 cl23=30 t=15.1s T=10.559
+[08:58:45]   new_best E=82 cl12=27 cl13=25 cl23=30 t=15.1s T=10.559
+[08:58:45]   new_best E=84 cl12=26 cl13=27 cl23=31 t=15.4s T=10.445
+[08:58:45]   new_best E=84 cl12=26 cl13=27 cl23=31 t=15.4s T=10.445
+[08:58:45]   new_best E=83 cl12=22 cl13=30 cl23=31 t=15.4s T=10.444
+[08:58:45]   new_best E=83 cl12=22 cl13=30 cl23=31 t=15.4s T=10.444
+[08:59:14]   new_best E=82 cl12=31 cl13=20 cl23=31 t=44.2s T=3.100
+[08:59:14]   new_best E=82 cl12=31 cl13=20 cl23=31 t=44.2s T=3.100
+[08:59:18]   new_best E=80 cl12=23 cl13=36 cl23=21 t=47.8s T=2.655
+[08:59:18]   new_best E=80 cl12=23 cl13=36 cl23=21 t=47.8s T=2.655
+[08:59:18]   new_best E=79 cl12=25 cl13=33 cl23=21 t=47.8s T=2.655
+[08:59:18]   new_best E=79 cl12=25 cl13=33 cl23=21 t=47.8s T=2.655
+[08:59:23]   new_best E=81 cl12=29 cl13=26 cl23=26 t=53.2s T=2.118
+[08:59:23]   new_best E=81 cl12=29 cl13=26 cl23=26 t=53.2s T=2.118
+[08:59:24]   new_best E=79 cl12=21 cl13=26 cl23=32 t=53.7s T=2.071
+[08:59:24]   new_best E=79 cl12=21 cl13=26 cl23=32 t=53.7s T=2.071
+[08:59:24]   new_best E=78 cl12=21 cl13=31 cl23=26 t=53.7s T=2.069
+[08:59:24]   new_best E=78 cl12=21 cl13=31 cl23=26 t=53.7s T=2.069
+[08:59:31]   new_best E=78 cl12=21 cl13=34 cl23=23 t=61.0s T=1.523
+[08:59:31]   new_best E=78 cl12=21 cl13=34 cl23=23 t=61.0s T=1.523
+[08:59:31]   new_best E=76 cl12=23 cl13=32 cl23=21 t=61.0s T=1.520
+[08:59:31]   new_best E=76 cl12=23 cl13=32 cl23=21 t=61.0s T=1.520
+[08:59:32]   new_best E=76 cl12=23 cl13=21 cl23=32 t=61.8s T=1.471
+[08:59:32]   new_best E=76 cl12=23 cl13=21 cl23=32 t=61.8s T=1.471
+[08:59:33]   new_best E=75 cl12=23 cl13=20 cl23=32 t=63.1s T=1.395
+[08:59:33]   new_best E=75 cl12=23 cl13=20 cl23=32 t=63.1s T=1.395
+[08:59:33]   new_best E=74 cl12=22 cl13=20 cl23=32 t=63.3s T=1.383
+[08:59:33]   new_best E=74 cl12=22 cl13=20 cl23=32 t=63.3s T=1.383
+[08:59:33]   new_best E=72 cl12=22 cl13=23 cl23=27 t=63.3s T=1.383
+[08:59:33]   new_best E=72 cl12=22 cl13=23 cl23=27 t=63.3s T=1.383
+[08:59:33]   new_best E=70 cl12=22 cl13=24 cl23=24 t=63.4s T=1.374
+[08:59:33]   new_best E=70 cl12=22 cl13=24 cl23=24 t=63.4s T=1.374
+[08:59:36]   new_best E=75 cl12=21 cl13=26 cl23=28 t=65.8s T=1.240
+[08:59:36]   new_best E=75 cl12=21 cl13=26 cl23=28 t=65.8s T=1.240
+[08:59:39]   new_best E=69 cl12=20 cl13=26 cl23=23 t=69.0s T=1.086
+[08:59:39]   new_best E=69 cl12=20 cl13=26 cl23=23 t=69.0s T=1.086
+[08:59:55]   new_best E=69 cl12=26 cl13=21 cl23=22 t=85.4s T=0.544
+[08:59:55]   new_best E=69 cl12=26 cl13=21 cl23=22 t=85.4s T=0.544
+[09:00:00]   new_best E=68 cl12=25 cl13=20 cl23=23 t=90.5s T=0.438
+[09:00:00]   new_best E=68 cl12=25 cl13=20 cl23=23 t=90.5s T=0.438
+[09:00:01]   new_best E=67 cl12=23 cl13=20 cl23=24 t=91.0s T=0.429
+[09:00:01]   new_best E=67 cl12=23 cl13=20 cl23=24 t=91.0s T=0.429
+[09:00:02]   new_best E=67 cl12=19 cl13=25 cl23=23 t=92.1s T=0.409
+[09:00:02]   new_best E=67 cl12=19 cl13=25 cl23=23 t=92.1s T=0.409
+[09:00:06]   new_best E=66 cl12=22 cl13=24 cl23=20 t=96.0s T=0.348
+[09:00:06]   new_best E=66 cl12=22 cl13=24 cl23=20 t=96.0s T=0.348
+[09:00:08]   new_best E=66 cl12=21 cl13=21 cl23=24 t=98.0s T=0.319
+[09:00:08]   new_best E=66 cl12=21 cl13=21 cl23=24 t=98.0s T=0.319
+[09:00:10]   new_best E=65 cl12=23 cl13=19 cl23=23 t=99.5s T=0.299
+[09:00:10]   new_best E=65 cl12=23 cl13=19 cl23=23 t=99.5s T=0.299
+[09:00:11]   new_best E=64 cl12=22 cl13=18 cl23=24 t=100.8s T=0.283
+[09:00:11]   new_best E=64 cl12=22 cl13=18 cl23=24 t=100.8s T=0.283
+[09:00:17]   new_best E=63 cl12=23 cl13=17 cl23=23 t=106.6s T=0.221
+[09:00:17]   new_best E=63 cl12=23 cl13=17 cl23=23 t=106.6s T=0.221
+[09:00:19]   new_best E=60 cl12=22 cl13=17 cl23=21 t=108.9s T=0.201
+[09:00:19]   new_best E=60 cl12=22 cl13=17 cl23=21 t=108.9s T=0.201
+[09:00:22]   new_best E=59 cl12=20 cl13=17 cl23=22 t=112.3s T=0.174
+[09:00:22]   new_best E=59 cl12=20 cl13=17 cl23=22 t=112.3s T=0.174
+[09:00:25]   new_best E=57 cl12=19 cl13=17 cl23=21 t=115.4s T=0.153
+[09:00:25]   new_best E=57 cl12=19 cl13=17 cl23=21 t=115.4s T=0.153
+[09:01:30]   steps=1078142 (5990/s)
+[09:01:30]   steps=1078142 (5990/s)
+[09:01:30]   done: best_E=66  cl12=21  cl13=21  cl23=24  session_best=34  elapsed=180.0s
+[09:01:30]   done: best_E=66  cl12=21  cl13=21  cl23=24  session_best=34  elapsed=180.0s
+[09:01:30] trial=  24  strategy=pool_start  init_E=88  T_init=15.0  budget=180.0s  time=09:01:30
+[09:01:30] trial=  24  strategy=pool_start  init_E=88  T_init=15.0  budget=180.0s  time=09:01:30
+[09:01:30]   steps=1061188 (5895/s)
+[09:01:30]   steps=1061188 (5895/s)
+[09:01:30]   done: best_E=57  cl12=19  cl13=17  cl23=21  session_best=37  elapsed=180.0s
+[09:01:30]   done: best_E=57  cl12=19  cl13=17  cl23=21  session_best=37  elapsed=180.0s
+[09:01:30] trial=  24  strategy=pool_start  init_E=81  T_init=15.0  budget=180.0s  time=09:01:30
+[09:01:30] trial=  24  strategy=pool_start  init_E=81  T_init=15.0  budget=180.0s  time=09:01:30
+[09:01:34]   new_best E=87 cl12=27 cl13=30 cl23=30 t=3.9s T=12.796
+[09:01:34]   new_best E=87 cl12=27 cl13=30 cl23=30 t=3.9s T=12.796
+[09:01:38]   new_best E=86 cl12=29 cl13=29 cl23=28 t=7.7s T=10.961
+[09:01:38]   new_best E=86 cl12=29 cl13=29 cl23=28 t=7.7s T=10.961
+[09:01:43]   new_best E=84 cl12=28 cl13=27 cl23=29 t=12.8s T=8.913
+[09:01:43]   new_best E=84 cl12=28 cl13=27 cl23=29 t=12.8s T=8.913
+[09:02:00]   new_best E=80 cl12=26 cl13=26 cl23=28 t=30.0s T=4.429
+[09:02:00]   new_best E=80 cl12=26 cl13=26 cl23=28 t=30.0s T=4.429
+[09:02:08]   new_best E=76 cl12=27 cl13=24 cl23=25 t=38.4s T=3.151
+[09:02:08]   new_best E=76 cl12=27 cl13=24 cl23=25 t=38.4s T=3.151
+[09:02:16]   new_best E=78 cl12=28 cl13=27 cl23=23 t=46.4s T=2.280
+[09:02:16]   new_best E=78 cl12=28 cl13=27 cl23=23 t=46.4s T=2.280
+[09:02:16]   new_best E=77 cl12=26 cl13=28 cl23=23 t=46.4s T=2.278
+[09:02:16]   new_best E=77 cl12=26 cl13=28 cl23=23 t=46.4s T=2.278
+[09:02:20]   new_best E=75 cl12=23 cl13=28 cl23=24 t=50.2s T=1.949
+[09:02:20]   new_best E=75 cl12=23 cl13=28 cl23=24 t=50.2s T=1.949
+[09:02:29]   new_best E=74 cl12=22 cl13=28 cl23=24 t=59.0s T=1.366
+[09:02:29]   new_best E=74 cl12=22 cl13=28 cl23=24 t=59.0s T=1.366
+[09:02:30]   new_best E=75 cl12=27 cl13=23 cl23=25 t=59.9s T=1.313
+[09:02:30]   new_best E=75 cl12=27 cl13=23 cl23=25 t=59.9s T=1.313
+[09:02:30]   new_best E=73 cl12=28 cl13=23 cl23=22 t=60.0s T=1.313
+[09:02:30]   new_best E=73 cl12=28 cl13=23 cl23=22 t=60.0s T=1.313
+[09:02:33]   new_best E=72 cl12=23 cl13=22 cl23=27 t=62.8s T=1.168
+[09:02:33]   new_best E=72 cl12=23 cl13=22 cl23=27 t=62.8s T=1.168
+[09:02:35]   new_best E=70 cl12=22 cl13=22 cl23=26 t=65.0s T=1.071
+[09:02:35]   new_best E=70 cl12=22 cl13=22 cl23=26 t=65.0s T=1.071
+[09:02:43]   new_best E=68 cl12=22 cl13=22 cl23=24 t=72.8s T=0.780
+[09:02:43]   new_best E=68 cl12=22 cl13=22 cl23=24 t=72.8s T=0.780
+[09:02:47]   new_best E=71 cl12=22 cl13=20 cl23=29 t=77.4s T=0.647
+[09:02:47]   new_best E=71 cl12=22 cl13=20 cl23=29 t=77.4s T=0.647
+[09:02:51]   new_best E=70 cl12=24 cl13=20 cl23=26 t=80.8s T=0.562
+[09:02:51]   new_best E=70 cl12=24 cl13=20 cl23=26 t=80.8s T=0.562
+[09:02:52]   new_best E=69 cl12=24 cl13=20 cl23=25 t=82.0s T=0.537
+[09:02:52]   new_best E=69 cl12=24 cl13=20 cl23=25 t=82.0s T=0.537
+[09:02:54]   new_best E=68 cl12=24 cl13=19 cl23=25 t=84.3s T=0.488
+[09:02:54]   new_best E=68 cl12=24 cl13=19 cl23=25 t=84.3s T=0.488
+[09:02:55]   new_best E=67 cl12=24 cl13=19 cl23=24 t=85.3s T=0.468
+[09:02:55]   new_best E=67 cl12=24 cl13=19 cl23=24 t=85.3s T=0.468
+[09:02:56]   new_best E=67 cl12=22 cl13=19 cl23=26 t=85.9s T=0.458
+[09:02:56]   new_best E=67 cl12=22 cl13=19 cl23=26 t=85.9s T=0.458
+[09:02:57]   new_best E=66 cl12=24 cl13=19 cl23=23 t=86.8s T=0.441
+[09:02:57]   new_best E=66 cl12=24 cl13=19 cl23=23 t=86.8s T=0.441
+[09:02:59]   new_best E=65 cl12=23 cl13=18 cl23=24 t=88.7s T=0.409
+[09:02:59]   new_best E=65 cl12=23 cl13=18 cl23=24 t=88.7s T=0.409
+[09:03:00]   new_best E=64 cl12=23 cl13=18 cl23=23 t=90.1s T=0.385
+[09:03:00]   new_best E=64 cl12=23 cl13=18 cl23=23 t=90.1s T=0.385
+[09:03:05]   new_best E=65 cl12=22 cl13=21 cl23=22 t=95.3s T=0.312
+[09:03:05]   new_best E=65 cl12=22 cl13=21 cl23=22 t=95.3s T=0.312
+[09:03:08]   new_best E=63 cl12=22 cl13=18 cl23=23 t=97.8s T=0.282
+[09:03:08]   new_best E=63 cl12=22 cl13=18 cl23=23 t=97.8s T=0.282
+[09:03:08]   new_best E=62 cl12=22 cl13=19 cl23=21 t=98.0s T=0.280
+[09:03:08]   new_best E=62 cl12=22 cl13=19 cl23=21 t=98.0s T=0.280
+[09:03:09]   new_best E=64 cl12=21 cl13=19 cl23=24 t=99.0s T=0.268
+[09:03:09]   new_best E=64 cl12=21 cl13=19 cl23=24 t=99.0s T=0.268
+[09:03:09]   new_best E=63 cl12=21 cl13=19 cl23=23 t=99.2s T=0.267
+[09:03:09]   new_best E=63 cl12=21 cl13=19 cl23=23 t=99.2s T=0.267
+[09:03:16]   new_best E=62 cl12=21 cl13=21 cl23=20 t=105.8s T=0.204
+[09:03:16]   new_best E=62 cl12=21 cl13=21 cl23=20 t=105.8s T=0.204
+[09:03:24]   new_best E=61 cl12=22 cl13=19 cl23=20 t=114.0s T=0.146
+[09:03:24]   new_best E=61 cl12=22 cl13=19 cl23=20 t=114.0s T=0.146
+[09:03:25]   new_best E=59 cl12=22 cl13=18 cl23=19 t=114.9s T=0.141
+[09:03:25]   new_best E=59 cl12=22 cl13=18 cl23=19 t=114.9s T=0.141
+[09:03:27]   new_best E=61 cl12=22 cl13=19 cl23=20 t=117.3s T=0.128
+[09:03:27]   new_best E=61 cl12=22 cl13=19 cl23=20 t=117.3s T=0.128
+[09:04:30]   steps=1001211 (5562/s)
+[09:04:30]   steps=1001211 (5562/s)
+[09:04:30]   done: best_E=59  cl12=22  cl13=18  cl23=19  session_best=34  elapsed=180.0s
+[09:04:30]   done: best_E=59  cl12=22  cl13=18  cl23=19  session_best=34  elapsed=180.0s
+[09:04:30] trial=  25  strategy=random_start  init_E=78  T_init=25.0  budget=180.0s  time=09:04:30
+[09:04:30] trial=  25  strategy=random_start  init_E=78  T_init=25.0  budget=180.0s  time=09:04:30
+[09:04:30]   new_best E=77 cl12=0 cl13=35 cl23=42 t=0.0s T=25.000
+[09:04:30]   new_best E=77 cl12=0 cl13=35 cl23=42 t=0.0s T=25.000
+[09:04:30]   steps=933271 (5185/s)
+[09:04:30]   steps=933271 (5185/s)
+[09:04:30]   done: best_E=61  cl12=22  cl13=19  cl23=20  session_best=37  elapsed=180.0s
+[09:04:30]   done: best_E=61  cl12=22  cl13=19  cl23=20  session_best=37  elapsed=180.0s
+[09:04:30] trial=  25  strategy=random_start  init_E=69  T_init=25.0  budget=180.0s  time=09:04:30
+[09:04:30] trial=  25  strategy=random_start  init_E=69  T_init=25.0  budget=180.0s  time=09:04:30
+[09:05:40]   new_best E=74 cl12=25 cl13=21 cl23=28 t=69.7s T=1.210
+[09:05:40]   new_best E=74 cl12=25 cl13=21 cl23=28 t=69.7s T=1.210
+[09:05:40]   new_best E=73 cl12=25 cl13=21 cl23=27 t=69.7s T=1.209
+[09:05:40]   new_best E=73 cl12=25 cl13=21 cl23=27 t=69.7s T=1.209
+[09:05:48]   new_best E=70 cl12=25 cl13=23 cl23=22 t=77.8s T=0.850
+[09:05:48]   new_best E=70 cl12=25 cl13=23 cl23=22 t=77.8s T=0.850
+[09:05:51]   new_best E=69 cl12=21 cl13=25 cl23=23 t=81.3s T=0.731
+[09:05:51]   new_best E=69 cl12=21 cl13=25 cl23=23 t=81.3s T=0.731
+[09:05:52]   new_best E=66 cl12=21 cl13=22 cl23=23 t=82.3s T=0.699
+[09:05:52]   new_best E=66 cl12=21 cl13=22 cl23=23 t=82.3s T=0.699
+[09:05:58]   new_best E=68 cl12=22 cl13=22 cl23=24 t=88.4s T=0.537
+[09:05:58]   new_best E=68 cl12=22 cl13=22 cl23=24 t=88.4s T=0.537
+[09:06:01]   new_best E=65 cl12=17 cl13=26 cl23=22 t=90.9s T=0.481
+[09:06:01]   new_best E=65 cl12=17 cl13=26 cl23=22 t=90.9s T=0.481
+[09:06:01]   new_best E=66 cl12=21 cl13=22 cl23=23 t=91.4s T=0.470
+[09:06:01]   new_best E=66 cl12=21 cl13=22 cl23=23 t=91.4s T=0.470
+[09:06:03]   new_best E=63 cl12=17 cl13=24 cl23=22 t=92.6s T=0.447
+[09:06:03]   new_best E=63 cl12=17 cl13=24 cl23=22 t=92.6s T=0.447
+[09:06:08]   new_best E=62 cl12=15 cl13=25 cl23=22 t=98.0s T=0.353
+[09:06:08]   new_best E=62 cl12=15 cl13=25 cl23=22 t=98.0s T=0.353
+[09:06:14]   new_best E=65 cl12=23 cl13=20 cl23=22 t=104.4s T=0.267
+[09:06:14]   new_best E=65 cl12=23 cl13=20 cl23=22 t=104.4s T=0.267
+[09:06:43]   new_best E=61 cl12=16 cl13=25 cl23=20 t=133.5s T=0.076
+[09:06:43]   new_best E=61 cl12=16 cl13=25 cl23=20 t=133.5s T=0.076
+[09:06:45]   new_best E=59 cl12=18 cl13=21 cl23=20 t=135.3s T=0.070
+[09:06:45]   new_best E=59 cl12=18 cl13=21 cl23=20 t=135.3s T=0.070
+[09:07:28]   new_best E=64 cl12=22 cl13=19 cl23=23 t=178.3s T=0.011
+[09:07:28]   new_best E=64 cl12=22 cl13=19 cl23=23 t=178.3s T=0.011
+[09:07:30]   steps=899199 (4996/s)
+[09:07:30]   steps=899199 (4996/s)
+[09:07:30]   done: best_E=59  cl12=18  cl13=21  cl23=20  session_best=34  elapsed=180.0s
+[09:07:30]   done: best_E=59  cl12=18  cl13=21  cl23=20  session_best=34  elapsed=180.0s
+[09:07:30]   [status] pool=8 entries  session_best=34
+[09:07:30]   [status] pool=8 entries  session_best=34
+[09:07:30] trial=  26  strategy=pool_start  init_E=80  T_init=15.0  budget=180.0s  time=09:07:30
+[09:07:30] trial=  26  strategy=pool_start  init_E=80  T_init=15.0  budget=180.0s  time=09:07:30
+[09:07:30]   steps=829115 (4606/s)
+[09:07:30]   steps=829115 (4606/s)
+[09:07:30]   done: best_E=64  cl12=22  cl13=19  cl23=23  session_best=37  elapsed=180.0s
+[09:07:30]   done: best_E=64  cl12=22  cl13=19  cl23=23  session_best=37  elapsed=180.0s
+[09:07:30]   [status] pool=8 entries  session_best=37
+[09:07:30]   [status] pool=8 entries  session_best=37
+[09:07:30] trial=  26  strategy=pool_start  init_E=64  T_init=15.0  budget=180.0s  time=09:07:30
+[09:07:30] trial=  26  strategy=pool_start  init_E=64  T_init=15.0  budget=180.0s  time=09:07:30
+[09:08:24]   new_best E=78 cl12=33 cl13=24 cl23=21 t=53.9s T=1.680
+[09:08:24]   new_best E=78 cl12=33 cl13=24 cl23=21 t=53.9s T=1.680
+[09:08:27]   new_best E=77 cl12=28 cl13=22 cl23=27 t=57.5s T=1.453
+[09:08:27]   new_best E=77 cl12=28 cl13=22 cl23=27 t=57.5s T=1.453
+[09:08:30]   new_best E=75 cl12=23 cl13=26 cl23=26 t=60.2s T=1.299
+[09:08:30]   new_best E=75 cl12=23 cl13=26 cl23=26 t=60.2s T=1.299
+[09:08:34]   new_best E=74 cl12=25 cl13=27 cl23=22 t=63.9s T=1.120
+[09:08:34]   new_best E=74 cl12=25 cl13=27 cl23=22 t=63.9s T=1.120
+[09:08:37]   new_best E=70 cl12=21 cl13=25 cl23=24 t=66.8s T=0.994
+[09:08:37]   new_best E=70 cl12=21 cl13=25 cl23=24 t=66.8s T=0.994
+[09:08:37]   new_best E=69 cl12=21 cl13=23 cl23=25 t=67.0s T=0.986
+[09:08:37]   new_best E=69 cl12=21 cl13=23 cl23=25 t=67.0s T=0.986
+[09:08:38]   new_best E=68 cl12=22 cl13=22 cl23=24 t=67.9s T=0.949
+[09:08:38]   new_best E=68 cl12=22 cl13=22 cl23=24 t=67.9s T=0.949
+[09:09:07]   new_best E=67 cl12=27 cl13=23 cl23=17 t=97.1s T=0.290
+[09:09:07]   new_best E=67 cl12=27 cl13=23 cl23=17 t=97.1s T=0.290
+[09:09:43]   new_best E=62 cl12=16 cl13=24 cl23=22 t=133.2s T=0.067
+[09:09:43]   new_best E=62 cl12=16 cl13=24 cl23=22 t=133.2s T=0.067
+[09:09:46]   new_best E=61 cl12=16 cl13=24 cl23=21 t=135.6s T=0.061
+[09:09:46]   new_best E=61 cl12=16 cl13=24 cl23=21 t=135.6s T=0.061
+[09:09:46]   new_best E=60 cl12=16 cl13=23 cl23=21 t=136.0s T=0.060
+[09:09:46]   new_best E=60 cl12=16 cl13=23 cl23=21 t=136.0s T=0.060
+[09:09:49]   new_best E=66 cl12=28 cl13=21 cl23=17 t=138.6s T=0.054
+[09:09:49]   new_best E=66 cl12=28 cl13=21 cl23=17 t=138.6s T=0.054
+[09:09:50]   new_best E=58 cl12=16 cl13=22 cl23=20 t=140.0s T=0.051
+[09:09:50]   new_best E=58 cl12=16 cl13=22 cl23=20 t=140.0s T=0.051
+[09:09:52]   new_best E=65 cl12=28 cl13=20 cl23=17 t=142.3s T=0.046
+[09:09:52]   new_best E=65 cl12=28 cl13=20 cl23=17 t=142.3s T=0.046
+[09:09:59]   new_best E=64 cl12=26 cl13=21 cl23=17 t=149.5s T=0.035
+[09:09:59]   new_best E=64 cl12=26 cl13=21 cl23=17 t=149.5s T=0.035
+[09:10:05]   new_best E=62 cl12=23 cl13=22 cl23=17 t=154.5s T=0.028
+[09:10:05]   new_best E=62 cl12=23 cl13=22 cl23=17 t=154.5s T=0.028
+[09:10:18]   new_best E=57 cl12=17 cl13=20 cl23=20 t=168.2s T=0.016
+[09:10:18]   new_best E=57 cl12=17 cl13=20 cl23=20 t=168.2s T=0.016
+[09:10:30]   steps=725610 (4031/s)
+[09:10:30]   steps=725610 (4031/s)
+[09:10:30]   done: best_E=62  cl12=23  cl13=22  cl23=17  session_best=34  elapsed=180.0s
+[09:10:30]   done: best_E=62  cl12=23  cl13=22  cl23=17  session_best=34  elapsed=180.0s
+[09:10:30] trial=  27  strategy=heavy_perturb  init_E=100  T_init=20.0  budget=180.0s  time=09:10:30
+[09:10:30] trial=  27  strategy=heavy_perturb  init_E=100  T_init=20.0  budget=180.0s  time=09:10:30
+[09:10:30]   new_best E=93 cl12=27 cl13=30 cl23=36 t=0.0s T=20.000
+[09:10:30]   new_best E=93 cl12=27 cl13=30 cl23=36 t=0.0s T=20.000
+[09:10:30]   steps=727764 (4043/s)
+[09:10:30]   steps=727764 (4043/s)
+[09:10:30]   done: best_E=57  cl12=17  cl13=20  cl23=20  session_best=37  elapsed=180.0s
+[09:10:30]   done: best_E=57  cl12=17  cl13=20  cl23=20  session_best=37  elapsed=180.0s
+[09:10:30] trial=  27  strategy=heavy_perturb  init_E=105  T_init=20.0  budget=180.0s  time=09:10:30
+[09:10:30] trial=  27  strategy=heavy_perturb  init_E=105  T_init=20.0  budget=180.0s  time=09:10:30
+[09:10:30]   new_best E=97 cl12=35 cl13=34 cl23=28 t=0.0s T=20.000
+[09:10:30]   new_best E=97 cl12=35 cl13=34 cl23=28 t=0.0s T=20.000
+[09:10:30]   new_best E=96 cl12=34 cl13=31 cl23=31 t=0.1s T=19.941
+[09:10:30]   new_best E=96 cl12=34 cl13=31 cl23=31 t=0.1s T=19.941
+[09:10:30]   new_best E=95 cl12=33 cl13=31 cl23=31 t=0.4s T=19.699
+[09:10:30]   new_best E=95 cl12=33 cl13=31 cl23=31 t=0.4s T=19.699
+[09:10:31]   new_best E=93 cl12=29 cl13=33 cl23=31 t=0.8s T=19.369
+[09:10:31]   new_best E=93 cl12=29 cl13=33 cl23=31 t=0.8s T=19.369
+[09:10:31]   new_best E=92 cl12=29 cl13=34 cl23=29 t=0.8s T=19.351
+[09:10:31]   new_best E=92 cl12=29 cl13=34 cl23=29 t=0.8s T=19.351
+[09:10:31]   new_best E=90 cl12=34 cl13=30 cl23=26 t=0.9s T=19.234
+[09:10:31]   new_best E=90 cl12=34 cl13=30 cl23=26 t=0.9s T=19.234
+[09:10:31]   new_best E=90 cl12=32 cl13=25 cl23=33 t=1.3s T=18.897
+[09:10:31]   new_best E=90 cl12=32 cl13=25 cl23=33 t=1.3s T=18.897
+[09:10:33]   new_best E=89 cl12=31 cl13=30 cl23=28 t=3.0s T=17.629
+[09:10:33]   new_best E=89 cl12=31 cl13=30 cl23=28 t=3.0s T=17.629
+[09:10:35]   new_best E=88 cl12=25 cl13=33 cl23=30 t=5.2s T=16.051
+[09:10:35]   new_best E=88 cl12=25 cl13=33 cl23=30 t=5.2s T=16.051
+[09:10:43]   new_best E=88 cl12=33 cl13=33 cl23=22 t=13.1s T=11.512
+[09:10:43]   new_best E=88 cl12=33 cl13=33 cl23=22 t=13.1s T=11.512
+[09:10:43]   new_best E=87 cl12=29 cl13=25 cl23=33 t=13.1s T=11.516
+[09:10:43]   new_best E=87 cl12=29 cl13=25 cl23=33 t=13.1s T=11.516
+[09:10:48]   new_best E=85 cl12=26 cl13=30 cl23=29 t=17.5s T=9.534
+[09:10:48]   new_best E=85 cl12=26 cl13=30 cl23=29 t=17.5s T=9.534
+[09:10:51]   new_best E=87 cl12=26 cl13=30 cl23=31 t=21.2s T=8.170
+[09:10:51]   new_best E=87 cl12=26 cl13=30 cl23=31 t=21.2s T=8.170
+[09:10:55]   new_best E=83 cl12=26 cl13=27 cl23=30 t=25.2s T=6.910
+[09:10:55]   new_best E=83 cl12=26 cl13=27 cl23=30 t=25.2s T=6.910
+[09:11:10]   new_best E=81 cl12=28 cl13=30 cl23=23 t=39.6s T=3.760
+[09:11:10]   new_best E=81 cl12=28 cl13=30 cl23=23 t=39.6s T=3.760
+[09:11:21]   new_best E=78 cl12=21 cl13=28 cl23=29 t=50.8s T=2.345
+[09:11:21]   new_best E=78 cl12=21 cl13=28 cl23=29 t=50.8s T=2.345
+[09:11:21]   new_best E=76 cl12=21 cl13=25 cl23=30 t=50.8s T=2.345
+[09:11:21]   new_best E=76 cl12=21 cl13=25 cl23=30 t=50.8s T=2.345
+[09:11:21]   new_best E=77 cl12=32 cl13=24 cl23=21 t=50.8s T=2.339
+[09:11:21]   new_best E=77 cl12=32 cl13=24 cl23=21 t=50.8s T=2.339
+[09:11:32]   new_best E=75 cl12=26 cl13=26 cl23=23 t=61.8s T=1.473
+[09:11:32]   new_best E=75 cl12=26 cl13=26 cl23=23 t=61.8s T=1.473
+[09:11:34]   new_best E=75 cl12=24 cl13=27 cl23=24 t=64.5s T=1.315
+[09:11:34]   new_best E=75 cl12=24 cl13=27 cl23=24 t=64.5s T=1.315
+[09:11:39]   new_best E=74 cl12=23 cl13=24 cl23=27 t=69.0s T=1.084
+[09:11:39]   new_best E=74 cl12=23 cl13=24 cl23=27 t=69.0s T=1.084
+[09:11:40]   new_best E=74 cl12=24 cl13=26 cl23=24 t=69.7s T=1.052
+[09:11:40]   new_best E=74 cl12=24 cl13=26 cl23=24 t=69.7s T=1.052
+[09:11:41]   new_best E=73 cl12=26 cl13=24 cl23=23 t=71.2s T=0.988
+[09:11:41]   new_best E=73 cl12=26 cl13=24 cl23=23 t=71.2s T=0.988
+[09:11:42]   new_best E=73 cl12=22 cl13=28 cl23=23 t=72.3s T=0.946
+[09:11:42]   new_best E=73 cl12=22 cl13=28 cl23=23 t=72.3s T=0.946
+[09:11:45]   new_best E=72 cl12=21 cl13=26 cl23=25 t=74.7s T=0.853
+[09:11:45]   new_best E=72 cl12=21 cl13=26 cl23=25 t=74.7s T=0.853
+[09:11:45]   new_best E=71 cl12=20 cl13=27 cl23=24 t=75.4s T=0.827
+[09:11:45]   new_best E=71 cl12=20 cl13=27 cl23=24 t=75.4s T=0.827
+[09:11:46]   new_best E=70 cl12=19 cl13=26 cl23=25 t=76.0s T=0.809
+[09:11:46]   new_best E=70 cl12=19 cl13=26 cl23=25 t=76.0s T=0.809
+[09:11:47]   new_best E=70 cl12=24 cl13=23 cl23=23 t=77.2s T=0.767
+[09:11:47]   new_best E=70 cl12=24 cl13=23 cl23=23 t=77.2s T=0.767
+[09:11:48]   new_best E=69 cl12=20 cl13=22 cl23=27 t=78.4s T=0.729
+[09:11:48]   new_best E=69 cl12=20 cl13=22 cl23=27 t=78.4s T=0.729
+[09:12:00]   new_best E=68 cl12=18 cl13=21 cl23=29 t=90.3s T=0.442
+[09:12:00]   new_best E=68 cl12=18 cl13=21 cl23=29 t=90.3s T=0.442
+[09:12:01]   new_best E=69 cl12=24 cl13=20 cl23=25 t=90.5s T=0.439
+[09:12:01]   new_best E=69 cl12=24 cl13=20 cl23=25 t=90.5s T=0.439
+[09:12:02]   new_best E=67 cl12=19 cl13=20 cl23=28 t=92.1s T=0.410
+[09:12:02]   new_best E=67 cl12=19 cl13=20 cl23=28 t=92.1s T=0.410
+[09:12:03]   new_best E=68 cl12=25 cl13=20 cl23=23 t=92.9s T=0.396
+[09:12:03]   new_best E=68 cl12=25 cl13=20 cl23=23 t=92.9s T=0.396
+[09:12:03]   new_best E=66 cl12=19 cl13=24 cl23=23 t=93.3s T=0.389
+[09:12:03]   new_best E=66 cl12=19 cl13=24 cl23=23 t=93.3s T=0.389
+[09:12:06]   new_best E=65 cl12=17 cl13=24 cl23=24 t=95.6s T=0.353
+[09:12:06]   new_best E=65 cl12=17 cl13=24 cl23=24 t=95.6s T=0.353
+[09:12:07]   new_best E=67 cl12=22 cl13=21 cl23=24 t=96.9s T=0.335
+[09:12:07]   new_best E=67 cl12=22 cl13=21 cl23=24 t=96.9s T=0.335
+[09:12:07]   new_best E=66 cl12=21 cl13=21 cl23=24 t=97.3s T=0.329
+[09:12:07]   new_best E=66 cl12=21 cl13=21 cl23=24 t=97.3s T=0.329
+[09:12:08]   new_best E=65 cl12=22 cl13=21 cl23=22 t=98.0s T=0.319
+[09:12:08]   new_best E=65 cl12=22 cl13=21 cl23=22 t=98.0s T=0.319
+[09:12:10]   new_best E=64 cl12=16 cl13=25 cl23=23 t=99.8s T=0.296
+[09:12:10]   new_best E=64 cl12=16 cl13=25 cl23=23 t=99.8s T=0.296
+[09:12:19]   new_best E=62 cl12=16 cl13=24 cl23=22 t=108.5s T=0.204
+[09:12:19]   new_best E=62 cl12=16 cl13=24 cl23=22 t=108.5s T=0.204
+[09:12:26]   new_best E=60 cl12=16 cl13=23 cl23=21 t=116.3s T=0.148
+[09:12:26]   new_best E=60 cl12=16 cl13=23 cl23=21 t=116.3s T=0.148
+[09:12:28]   new_best E=59 cl12=16 cl13=20 cl23=23 t=118.5s T=0.134
+[09:12:28]   new_best E=59 cl12=16 cl13=20 cl23=23 t=118.5s T=0.134
+[09:13:04]   new_best E=63 cl12=21 cl13=19 cl23=23 t=154.4s T=0.029
+[09:13:04]   new_best E=63 cl12=21 cl13=19 cl23=23 t=154.4s T=0.029
+[09:13:30]   steps=714633 (3970/s)
+[09:13:30]   steps=714633 (3970/s)
+[09:13:30]   done: best_E=59  cl12=16  cl13=20  cl23=23  session_best=34  elapsed=180.0s
+[09:13:30]   done: best_E=59  cl12=16  cl13=20  cl23=23  session_best=34  elapsed=180.0s
+[09:13:30] trial=  28  strategy=pool_start  init_E=73  T_init=15.0  budget=180.0s  time=09:13:30
+[09:13:30] trial=  28  strategy=pool_start  init_E=73  T_init=15.0  budget=180.0s  time=09:13:30
+[09:13:30]   new_best E=71 cl12=0 cl13=29 cl23=42 t=0.0s T=14.999
+[09:13:30]   new_best E=71 cl12=0 cl13=29 cl23=42 t=0.0s T=14.999
+[09:13:30]   new_best E=70 cl12=0 cl13=31 cl23=39 t=0.0s T=14.999
+[09:13:30]   new_best E=70 cl12=0 cl13=31 cl23=39 t=0.0s T=14.999
+[09:13:30]   new_best E=65 cl12=0 cl13=32 cl23=33 t=0.0s T=14.999
+[09:13:30]   new_best E=65 cl12=0 cl13=32 cl23=33 t=0.0s T=14.999
+[09:13:30]   steps=754844 (4194/s)
+[09:13:30]   steps=754844 (4194/s)
+[09:13:30]   done: best_E=63  cl12=21  cl13=19  cl23=23  session_best=37  elapsed=180.0s
+[09:13:30]   done: best_E=63  cl12=21  cl13=19  cl23=23  session_best=37  elapsed=180.0s
+[09:13:30] trial=  28  strategy=pool_start  init_E=82  T_init=15.0  budget=180.0s  time=09:13:30
+[09:13:30] trial=  28  strategy=pool_start  init_E=82  T_init=15.0  budget=180.0s  time=09:13:30
+[09:13:30]   new_best E=79 cl12=20 cl13=25 cl23=34 t=0.0s T=15.000
+[09:13:30]   new_best E=79 cl12=20 cl13=25 cl23=34 t=0.0s T=15.000
+[09:14:21]   new_best E=78 cl12=28 cl13=27 cl23=23 t=50.6s T=1.917
+[09:14:21]   new_best E=78 cl12=28 cl13=27 cl23=23 t=50.6s T=1.917
+[09:14:26]   new_best E=77 cl12=27 cl13=27 cl23=23 t=55.7s T=1.559
+[09:14:26]   new_best E=77 cl12=27 cl13=27 cl23=23 t=55.7s T=1.559
+[09:14:26]   new_best E=75 cl12=30 cl13=22 cl23=23 t=55.8s T=1.556
+[09:14:26]   new_best E=75 cl12=30 cl13=22 cl23=23 t=55.8s T=1.556
+[09:14:26]   new_best E=72 cl12=23 cl13=26 cl23=23 t=55.9s T=1.550
+[09:14:26]   new_best E=72 cl12=23 cl13=26 cl23=23 t=55.9s T=1.550
+[09:14:26]   new_best E=71 cl12=23 cl13=25 cl23=23 t=55.9s T=1.545
+[09:14:26]   new_best E=71 cl12=23 cl13=25 cl23=23 t=55.9s T=1.545
+[09:14:46]   new_best E=64 cl12=23 cl13=19 cl23=22 t=75.6s T=0.695
+[09:14:46]   new_best E=64 cl12=23 cl13=19 cl23=22 t=75.6s T=0.695
+[09:14:48]   new_best E=69 cl12=22 cl13=22 cl23=25 t=78.0s T=0.630
+[09:14:48]   new_best E=69 cl12=22 cl13=22 cl23=25 t=78.0s T=0.630
+[09:14:54]   new_best E=68 cl12=20 cl13=20 cl23=28 t=83.9s T=0.496
+[09:14:54]   new_best E=68 cl12=20 cl13=20 cl23=28 t=83.9s T=0.496
+[09:14:54]   new_best E=66 cl12=19 cl13=20 cl23=27 t=84.4s T=0.486
+[09:14:54]   new_best E=66 cl12=19 cl13=20 cl23=27 t=84.4s T=0.486
+[09:14:55]   new_best E=65 cl12=19 cl13=25 cl23=21 t=84.5s T=0.485
+[09:14:55]   new_best E=65 cl12=19 cl13=25 cl23=21 t=84.5s T=0.485
+[09:14:55]   new_best E=64 cl12=19 cl13=25 cl23=20 t=84.8s T=0.479
+[09:14:55]   new_best E=64 cl12=19 cl13=25 cl23=20 t=84.8s T=0.479
+[09:15:02]   new_best E=63 cl12=25 cl13=19 cl23=19 t=92.2s T=0.354
+[09:15:02]   new_best E=63 cl12=25 cl13=19 cl23=19 t=92.2s T=0.354
+[09:15:06]   new_best E=61 cl12=24 cl13=19 cl23=18 t=96.2s T=0.302
+[09:15:06]   new_best E=61 cl12=24 cl13=19 cl23=18 t=96.2s T=0.302
+[09:15:11]   new_best E=60 cl12=22 cl13=19 cl23=19 t=100.6s T=0.252
+[09:15:11]   new_best E=60 cl12=22 cl13=19 cl23=19 t=100.6s T=0.252
+[09:15:12]   new_best E=63 cl12=19 cl13=23 cl23=21 t=101.7s T=0.241
+[09:15:12]   new_best E=63 cl12=19 cl13=23 cl23=21 t=101.7s T=0.241
+[09:15:13]   new_best E=62 cl12=19 cl13=23 cl23=20 t=102.7s T=0.231
+[09:15:13]   new_best E=62 cl12=19 cl13=23 cl23=20 t=102.7s T=0.231
+[09:15:16]   new_best E=60 cl12=18 cl13=22 cl23=20 t=106.1s T=0.201
+[09:15:16]   new_best E=60 cl12=18 cl13=22 cl23=20 t=106.1s T=0.201
+[09:15:18]   new_best E=59 cl12=21 cl13=19 cl23=19 t=107.7s T=0.189
+[09:15:18]   new_best E=59 cl12=21 cl13=19 cl23=19 t=107.7s T=0.189
+[09:15:30]   new_best E=58 cl12=22 cl13=18 cl23=18 t=119.8s T=0.115
+[09:15:30]   new_best E=58 cl12=22 cl13=18 cl23=18 t=119.8s T=0.115
+[09:15:40]   new_best E=59 cl12=17 cl13=22 cl23=20 t=130.3s T=0.075
+[09:15:40]   new_best E=59 cl12=17 cl13=22 cl23=20 t=130.3s T=0.075
+[09:16:30]   steps=658845 (3660/s)
+[09:16:30]   steps=658845 (3660/s)
+[09:16:30]   done: best_E=58  cl12=22  cl13=18  cl23=18  session_best=34  elapsed=180.0s
+[09:16:30]   done: best_E=58  cl12=22  cl13=18  cl23=18  session_best=34  elapsed=180.0s
+[09:16:30]   steps=663801 (3688/s)
+[09:16:30]   steps=663801 (3688/s)
+[09:16:30]   done: best_E=59  cl12=17  cl13=22  cl23=20  session_best=37  elapsed=180.0s
+[09:16:30]   done: best_E=59  cl12=17  cl13=22  cl23=20  session_best=37  elapsed=180.0s
+[09:16:30] trial=  29  strategy=random_start  init_E=74  T_init=25.0  budget=180.0s  time=09:16:30
+[09:16:30] trial=  29  strategy=random_start  init_E=74  T_init=25.0  budget=180.0s  time=09:16:30
+[09:16:30]   new_best E=70 cl12=0 cl13=39 cl23=31 t=0.0s T=25.000
+[09:16:30]   new_best E=70 cl12=0 cl13=39 cl23=31 t=0.0s T=25.000
+[09:16:30] trial=  29  strategy=random_start  init_E=71  T_init=25.0  budget=180.0s  time=09:16:30
+[09:16:30] trial=  29  strategy=random_start  init_E=71  T_init=25.0  budget=180.0s  time=09:16:30
+[09:17:48]   new_best E=69 cl12=22 cl13=25 cl23=22 t=78.2s T=0.835
+[09:17:48]   new_best E=69 cl12=22 cl13=25 cl23=22 t=78.2s T=0.835
+[09:17:49]   new_best E=70 cl12=26 cl13=20 cl23=24 t=78.9s T=0.809
+[09:17:49]   new_best E=70 cl12=26 cl13=20 cl23=24 t=78.9s T=0.809
+[09:18:01]   new_best E=69 cl12=28 cl13=19 cl23=22 t=90.6s T=0.486
+[09:18:01]   new_best E=69 cl12=28 cl13=19 cl23=22 t=90.6s T=0.486
+[09:18:02]   new_best E=68 cl12=26 cl13=19 cl23=23 t=91.9s T=0.460
+[09:18:02]   new_best E=68 cl12=26 cl13=19 cl23=23 t=91.9s T=0.460
+[09:18:05]   new_best E=66 cl12=23 cl13=19 cl23=24 t=94.7s T=0.407
+[09:18:05]   new_best E=66 cl12=23 cl13=19 cl23=24 t=94.7s T=0.407
+[09:18:21]   new_best E=65 cl12=20 cl13=20 cl23=25 t=111.2s T=0.199
+[09:18:21]   new_best E=65 cl12=20 cl13=20 cl23=25 t=111.2s T=0.199
+[09:18:34]   new_best E=64 cl12=20 cl13=21 cl23=23 t=124.2s T=0.113
+[09:18:34]   new_best E=64 cl12=20 cl13=21 cl23=23 t=124.2s T=0.113
+[09:18:38]   new_best E=63 cl12=19 cl13=21 cl23=23 t=127.6s T=0.098
+[09:18:38]   new_best E=63 cl12=19 cl13=21 cl23=23 t=127.6s T=0.098
+[09:18:46]   new_best E=68 cl12=23 cl13=23 cl23=22 t=136.2s T=0.067
+[09:18:46]   new_best E=68 cl12=23 cl13=23 cl23=22 t=136.2s T=0.067
+[09:18:48]   new_best E=67 cl12=23 cl13=22 cl23=22 t=138.4s T=0.061
+[09:18:48]   new_best E=67 cl12=23 cl13=22 cl23=22 t=138.4s T=0.061
+[09:18:50]   new_best E=62 cl12=20 cl13=20 cl23=22 t=139.9s T=0.057
+[09:18:50]   new_best E=62 cl12=20 cl13=20 cl23=22 t=139.9s T=0.057
+[09:18:57]   new_best E=65 cl12=24 cl13=22 cl23=19 t=147.2s T=0.042
+[09:18:57]   new_best E=65 cl12=24 cl13=22 cl23=19 t=147.2s T=0.042
+[09:19:06]   new_best E=62 cl12=23 cl13=22 cl23=17 t=155.5s T=0.029
+[09:19:06]   new_best E=62 cl12=23 cl13=22 cl23=17 t=155.5s T=0.029
+[09:19:09]   new_best E=59 cl12=17 cl13=20 cl23=22 t=158.4s T=0.026
+[09:19:09]   new_best E=59 cl12=17 cl13=20 cl23=22 t=158.4s T=0.026
+[09:19:10]   new_best E=58 cl12=17 cl13=20 cl23=21 t=160.3s T=0.024
+[09:19:10]   new_best E=58 cl12=17 cl13=20 cl23=21 t=160.3s T=0.024
+[09:19:30]   steps=586282 (3257/s)
+[09:19:30]   steps=586282 (3257/s)
+[09:19:30]   done: best_E=62  cl12=23  cl13=22  cl23=17  session_best=34  elapsed=180.0s
+[09:19:30]   done: best_E=62  cl12=23  cl13=22  cl23=17  session_best=34  elapsed=180.0s
+[09:19:30] trial=  30  strategy=pool_start  init_E=85  T_init=15.0  budget=180.0s  time=09:19:30
+[09:19:30] trial=  30  strategy=pool_start  init_E=85  T_init=15.0  budget=180.0s  time=09:19:30
+[09:19:30]   steps=585533 (3253/s)
+[09:19:30]   steps=585533 (3253/s)
+[09:19:30]   done: best_E=58  cl12=17  cl13=20  cl23=21  session_best=37  elapsed=180.0s
+[09:19:30]   done: best_E=58  cl12=17  cl13=20  cl23=21  session_best=37  elapsed=180.0s
+[09:19:30] trial=  30  strategy=pool_start  init_E=33  T_init=15.0  budget=180.0s  time=09:19:30
+[09:19:30] trial=  30  strategy=pool_start  init_E=33  T_init=15.0  budget=180.0s  time=09:19:30
+[09:19:53]   new_best E=84 cl12=30 cl13=26 cl23=28 t=23.1s T=5.876
+[09:19:53]   new_best E=84 cl12=30 cl13=26 cl23=28 t=23.1s T=5.876
+[09:20:01]   new_best E=81 cl12=29 cl13=24 cl23=28 t=30.5s T=4.341
+[09:20:01]   new_best E=81 cl12=29 cl13=24 cl23=28 t=30.5s T=4.341
+[09:20:20]   new_best E=79 cl12=25 cl13=24 cl23=30 t=50.0s T=1.970
+[09:20:20]   new_best E=79 cl12=25 cl13=24 cl23=30 t=50.0s T=1.970
+[09:20:21]   new_best E=77 cl12=28 cl13=24 cl23=25 t=51.2s T=1.874
+[09:20:21]   new_best E=77 cl12=28 cl13=24 cl23=25 t=51.2s T=1.874
+[09:20:29]   new_best E=76 cl12=25 cl13=23 cl23=28 t=58.5s T=1.393
+[09:20:29]   new_best E=76 cl12=25 cl13=23 cl23=28 t=58.5s T=1.393
+[09:20:35]   new_best E=74 cl12=29 cl13=18 cl23=27 t=64.8s T=1.078
+[09:20:35]   new_best E=74 cl12=29 cl13=18 cl23=27 t=64.8s T=1.078
+[09:20:35]   new_best E=69 cl12=27 cl13=18 cl23=24 t=64.9s T=1.076
+[09:20:35]   new_best E=69 cl12=27 cl13=18 cl23=24 t=64.9s T=1.076
+[09:21:03]   new_best E=68 cl12=22 cl13=25 cl23=21 t=93.2s T=0.340
+[09:21:03]   new_best E=68 cl12=22 cl13=25 cl23=21 t=93.2s T=0.340
+[09:21:05]   new_best E=67 cl12=22 cl13=26 cl23=19 t=95.1s T=0.315
+[09:21:05]   new_best E=67 cl12=22 cl13=26 cl23=19 t=95.1s T=0.315
+[09:21:12]   new_best E=66 cl12=23 cl13=24 cl23=19 t=102.0s T=0.238
+[09:21:12]   new_best E=66 cl12=23 cl13=24 cl23=19 t=102.0s T=0.238
+[09:21:21]   new_best E=65 cl12=22 cl13=20 cl23=23 t=111.0s T=0.165
+[09:21:21]   new_best E=65 cl12=22 cl13=20 cl23=23 t=111.0s T=0.165
+[09:21:27]   new_best E=63 cl12=22 cl13=20 cl23=21 t=117.2s T=0.128
+[09:21:27]   new_best E=63 cl12=22 cl13=20 cl23=21 t=117.2s T=0.128
+[17:51:57] ============================================================
+[17:51:57] ============================================================
+[17:51:59] Joint 3-LS SA — seed=3141  budget_per_trial=180.0s
+[17:51:59] Joint 3-LS SA — seed=3141  budget_per_trial=180.0s
+[17:51:59] ============================================================
+[17:51:59] ============================================================
+[17:51:58] ============================================================
+[17:51:58] ============================================================
+[17:51:59] Joint 3-LS SA — seed=2023  budget_per_trial=180.0s
+[17:51:59] Joint 3-LS SA — seed=2023  budget_per_trial=180.0s
+[17:51:59] ============================================================
+[17:51:59] ============================================================
+[17:51:59] trial=   1  strategy=random_start  init_E=79  T_init=25.0  budget=180.0s  time=17:51:59
+[17:51:59] trial=   1  strategy=random_start  init_E=79  T_init=25.0  budget=180.0s  time=17:51:59
+[17:51:59]   new_best E=78 cl12=0 cl13=39 cl23=39 t=0.0s T=25.000
+[17:51:59]   new_best E=78 cl12=0 cl13=39 cl23=39 t=0.0s T=25.000
+[17:51:59] trial=   1  strategy=random_start  init_E=78  T_init=25.0  budget=180.0s  time=17:51:59
+[17:51:59] trial=   1  strategy=random_start  init_E=78  T_init=25.0  budget=180.0s  time=17:51:59
+[17:53:01]   new_best E=77 cl12=25 cl13=26 cl23=26 t=61.9s T=1.698
+[17:53:01]   new_best E=77 cl12=25 cl13=26 cl23=26 t=61.9s T=1.698
+[17:53:17]   new_best E=76 cl12=25 cl13=27 cl23=24 t=77.8s T=0.850
+[17:53:17]   new_best E=76 cl12=25 cl13=27 cl23=24 t=77.8s T=0.850
+[17:53:18]   new_best E=74 cl12=25 cl13=26 cl23=23 t=78.4s T=0.827
+[17:53:18]   new_best E=74 cl12=25 cl13=26 cl23=23 t=78.4s T=0.827
+[17:53:28]   new_best E=75 cl12=30 cl13=25 cl23=20 t=88.4s T=0.537
+[17:53:28]   new_best E=75 cl12=30 cl13=25 cl23=20 t=88.4s T=0.537
+[17:53:29]   new_best E=73 cl12=28 cl13=23 cl23=22 t=89.1s T=0.519
+[17:53:29]   new_best E=73 cl12=28 cl13=23 cl23=22 t=89.1s T=0.519
+[17:53:31]   new_best E=73 cl12=23 cl13=22 cl23=28 t=92.0s T=0.458
+[17:53:31]   new_best E=73 cl12=23 cl13=22 cl23=28 t=92.0s T=0.458
+[17:53:33]   new_best E=71 cl12=27 cl13=22 cl23=22 t=93.5s T=0.430
+[17:53:33]   new_best E=71 cl12=27 cl13=22 cl23=22 t=93.5s T=0.430
+[17:53:40]   new_best E=68 cl12=25 cl13=21 cl23=22 t=100.7s T=0.314
+[17:53:40]   new_best E=68 cl12=25 cl13=21 cl23=22 t=100.7s T=0.314
+[17:53:45]   new_best E=72 cl12=23 cl13=21 cl23=28 t=105.7s T=0.253
+[17:53:45]   new_best E=72 cl12=23 cl13=21 cl23=28 t=105.7s T=0.253
+[17:53:57]   new_best E=71 cl12=22 cl13=21 cl23=28 t=117.4s T=0.152
+[17:53:57]   new_best E=71 cl12=22 cl13=21 cl23=28 t=117.4s T=0.152
+[17:54:13]   new_best E=67 cl12=26 cl13=18 cl23=23 t=133.5s T=0.075
+[17:54:13]   new_best E=67 cl12=26 cl13=18 cl23=23 t=133.5s T=0.075
+[17:54:15]   new_best E=70 cl12=22 cl13=21 cl23=27 t=135.6s T=0.069
+[17:54:15]   new_best E=70 cl12=22 cl13=21 cl23=27 t=135.6s T=0.069
+[17:54:21]   new_best E=69 cl12=21 cl13=21 cl23=27 t=141.1s T=0.054
+[17:54:21]   new_best E=69 cl12=21 cl13=21 cl23=27 t=141.1s T=0.054
+[17:54:22]   new_best E=68 cl12=20 cl13=21 cl23=27 t=142.3s T=0.052
+[17:54:22]   new_best E=68 cl12=20 cl13=21 cl23=27 t=142.3s T=0.052
+[17:54:39]   new_best E=67 cl12=22 cl13=19 cl23=26 t=159.4s T=0.025
+[17:54:39]   new_best E=67 cl12=22 cl13=19 cl23=26 t=159.4s T=0.025
+[17:54:40]   new_best E=66 cl12=21 cl13=19 cl23=26 t=160.8s T=0.023
+[17:54:40]   new_best E=66 cl12=21 cl13=19 cl23=26 t=160.8s T=0.023
+[17:54:59]   steps=273084 (1517/s)
+[17:54:59]   steps=273084 (1517/s)
+[17:54:59]   done: best_E=67  cl12=26  cl13=18  cl23=23  session_best=67  elapsed=180.1s
+[17:54:59]   done: best_E=67  cl12=26  cl13=18  cl23=23  session_best=67  elapsed=180.1s
+[17:54:59] trial=   2  strategy=pool_start  init_E=33  T_init=15.0  budget=180.0s  time=17:54:59
+[17:54:59] trial=   2  strategy=pool_start  init_E=33  T_init=15.0  budget=180.0s  time=17:54:59
+[17:54:59]   steps=267209 (1484/s)
+[17:54:59]   steps=267209 (1484/s)
+[17:54:59]   done: best_E=66  cl12=21  cl13=19  cl23=26  session_best=66  elapsed=180.1s
+[17:54:59]   done: best_E=66  cl12=21  cl13=19  cl23=26  session_best=66  elapsed=180.1s
+[17:54:59] trial=   2  strategy=pool_start  init_E=71  T_init=15.0  budget=180.0s  time=17:54:59
+[17:54:59] trial=   2  strategy=pool_start  init_E=71  T_init=15.0  budget=180.0s  time=17:54:59
+[17:56:56]   new_best E=70 cl12=20 cl13=26 cl23=24 t=116.6s T=0.132
+[17:56:56]   new_best E=70 cl12=20 cl13=26 cl23=24 t=116.6s T=0.132
+[17:57:06]   new_best E=69 cl12=19 cl13=24 cl23=26 t=126.7s T=0.087
+[17:57:06]   new_best E=69 cl12=19 cl13=24 cl23=26 t=126.7s T=0.087
+[17:57:24]   new_best E=68 cl12=19 cl13=23 cl23=26 t=144.7s T=0.042
+[17:57:24]   new_best E=68 cl12=19 cl13=23 cl23=26 t=144.7s T=0.042
+[17:57:24]   new_best E=66 cl12=20 cl13=20 cl23=26 t=144.9s T=0.042
+[17:57:24]   new_best E=66 cl12=20 cl13=20 cl23=26 t=144.9s T=0.042
+[17:57:59]   steps=149977 (833/s)
+[17:57:59]   steps=149977 (833/s)
+[17:57:59]   done: best_E=66  cl12=20  cl13=20  cl23=26  session_best=66  elapsed=180.0s
+[17:57:59]   done: best_E=66  cl12=20  cl13=20  cl23=26  session_best=66  elapsed=180.0s
+[17:57:59] trial=   3  strategy=heavy_perturb  init_E=104  T_init=20.0  budget=180.0s  time=17:57:59
+[17:57:59] trial=   3  strategy=heavy_perturb  init_E=104  T_init=20.0  budget=180.0s  time=17:57:59
+[17:57:59]   new_best E=103 cl12=35 cl13=35 cl23=33 t=0.0s T=20.000
+[17:57:59]   new_best E=103 cl12=35 cl13=35 cl23=33 t=0.0s T=20.000
+[17:57:59]   new_best E=102 cl12=35 cl13=34 cl23=33 t=0.0s T=20.000
+[17:57:59]   new_best E=102 cl12=35 cl13=34 cl23=33 t=0.0s T=20.000
+[17:58:00]   steps=148036 (822/s)
+[17:58:00]   steps=148036 (822/s)
+[17:58:00]   done: best_E=33  cl12=0  cl13=14  cl23=19  session_best=33  elapsed=180.1s
+[17:58:00]   done: best_E=33  cl12=0  cl13=14  cl23=19  session_best=33  elapsed=180.1s
+[17:58:00] trial=   3  strategy=heavy_perturb  init_E=55  T_init=20.0  budget=180.0s  time=17:58:00
+[17:58:00] trial=   3  strategy=heavy_perturb  init_E=55  T_init=20.0  budget=180.0s  time=17:58:00
+[17:58:00]   new_best E=97 cl12=31 cl13=30 cl23=36 t=0.1s T=19.902
+[17:58:00]   new_best E=97 cl12=31 cl13=30 cl23=36 t=0.1s T=19.902
+[17:58:00]   new_best E=94 cl12=29 cl13=33 cl23=32 t=0.1s T=19.901
+[17:58:00]   new_best E=94 cl12=29 cl13=33 cl23=32 t=0.1s T=19.901
+[17:58:00]   new_best E=93 cl12=30 cl13=33 cl23=30 t=0.2s T=19.829
+[17:58:00]   new_best E=93 cl12=30 cl13=33 cl23=30 t=0.2s T=19.829
+[17:58:01]   new_best E=91 cl12=28 cl13=29 cl23=34 t=1.9s T=18.439
+[17:58:01]   new_best E=91 cl12=28 cl13=29 cl23=34 t=1.9s T=18.439
+[17:58:03]   new_best E=88 cl12=31 cl13=26 cl23=31 t=3.7s T=17.098
+[17:58:03]   new_best E=88 cl12=31 cl13=26 cl23=31 t=3.7s T=17.098
+[17:58:14]   new_best E=86 cl12=28 cl13=29 cl23=29 t=14.9s T=10.660
+[17:58:14]   new_best E=86 cl12=28 cl13=29 cl23=29 t=14.9s T=10.660
+[17:58:14]   new_best E=85 cl12=27 cl13=29 cl23=29 t=14.9s T=10.660
+[17:58:14]   new_best E=85 cl12=27 cl13=29 cl23=29 t=14.9s T=10.660
+[17:58:45]   new_best E=84 cl12=27 cl13=26 cl23=31 t=45.6s T=2.913
+[17:58:45]   new_best E=84 cl12=27 cl13=26 cl23=31 t=45.6s T=2.913
+[17:58:51]   new_best E=83 cl12=29 cl13=27 cl23=27 t=51.9s T=2.237
+[17:58:51]   new_best E=83 cl12=29 cl13=27 cl23=27 t=51.9s T=2.237
+[17:58:52]   new_best E=79 cl12=32 cl13=24 cl23=23 t=52.3s T=2.200
+[17:58:52]   new_best E=79 cl12=32 cl13=24 cl23=23 t=52.3s T=2.200
+[17:59:08]   new_best E=78 cl12=24 cl13=30 cl23=24 t=68.1s T=1.127
+[17:59:08]   new_best E=78 cl12=24 cl13=30 cl23=24 t=68.1s T=1.127
+[17:59:11]   new_best E=76 cl12=27 cl13=25 cl23=24 t=71.7s T=0.968
+[17:59:11]   new_best E=76 cl12=27 cl13=25 cl23=24 t=71.7s T=0.968
+[17:59:16]   new_best E=75 cl12=22 cl13=26 cl23=27 t=76.4s T=0.795
+[17:59:16]   new_best E=75 cl12=22 cl13=26 cl23=27 t=76.4s T=0.795
+[17:59:59]   new_best E=73 cl12=27 cl13=28 cl23=18 t=119.5s T=0.128
+[17:59:59]   new_best E=73 cl12=27 cl13=28 cl23=18 t=119.5s T=0.128
+[18:00:01]   new_best E=71 cl12=28 cl13=25 cl23=18 t=121.1s T=0.120
+[18:00:01]   new_best E=71 cl12=28 cl13=25 cl23=18 t=121.1s T=0.120
+[18:00:02]   new_best E=70 cl12=23 cl13=29 cl23=18 t=122.7s T=0.112
+[18:00:02]   new_best E=70 cl12=23 cl13=29 cl23=18 t=122.7s T=0.112
+[18:00:02]   new_best E=68 cl12=26 cl13=24 cl23=18 t=123.0s T=0.111
+[18:00:02]   new_best E=68 cl12=26 cl13=24 cl23=18 t=123.0s T=0.111
+[18:00:06]   new_best E=67 cl12=25 cl13=22 cl23=20 t=126.5s T=0.096
+[18:00:06]   new_best E=67 cl12=25 cl13=22 cl23=20 t=126.5s T=0.096
+[18:00:09]   new_best E=66 cl12=23 cl13=22 cl23=21 t=129.3s T=0.085
+[18:00:09]   new_best E=66 cl12=23 cl13=22 cl23=21 t=129.3s T=0.085
+[18:00:56]   new_best E=65 cl12=23 cl13=23 cl23=19 t=176.3s T=0.012
+[18:00:56]   new_best E=65 cl12=23 cl13=23 cl23=19 t=176.3s T=0.012
+[18:00:59]   steps=146922 (816/s)
+[18:00:59]   steps=146922 (816/s)
+[18:00:59]   done: best_E=65  cl12=23  cl13=23  cl23=19  session_best=65  elapsed=180.0s
+[18:00:59]   done: best_E=65  cl12=23  cl13=23  cl23=19  session_best=65  elapsed=180.0s
+[18:00:59] trial=   4  strategy=pool_start  init_E=33  T_init=15.0  budget=180.0s  time=18:00:59
+[18:00:59] trial=   4  strategy=pool_start  init_E=33  T_init=15.0  budget=180.0s  time=18:00:59
+[18:01:00]   steps=148291 (824/s)
+[18:01:00]   steps=148291 (824/s)
+[18:01:00]   done: best_E=55  cl12=0  cl13=26  cl23=29  session_best=33  elapsed=180.0s
+[18:01:00]   done: best_E=55  cl12=0  cl13=26  cl23=29  session_best=33  elapsed=180.0s
+[18:01:00] trial=   4  strategy=pool_start  init_E=49  T_init=15.0  budget=180.0s  time=18:01:00
+[18:01:00] trial=   4  strategy=pool_start  init_E=49  T_init=15.0  budget=180.0s  time=18:01:00
+[18:04:00]   steps=149841 (832/s)
+[18:04:00]   steps=149841 (832/s)
+[18:04:00]   done: best_E=49  cl12=0  cl13=26  cl23=23  session_best=33  elapsed=180.0s
+[18:04:00]   done: best_E=49  cl12=0  cl13=26  cl23=23  session_best=33  elapsed=180.0s
+[18:04:00]   steps=150300 (835/s)
+[18:04:00]   steps=150300 (835/s)
+[18:04:00]   done: best_E=33  cl12=0  cl13=14  cl23=19  session_best=33  elapsed=180.1s
+[18:04:00]   done: best_E=33  cl12=0  cl13=14  cl23=19  session_best=33  elapsed=180.1s
+[18:04:00] trial=   5  strategy=random_start  init_E=74  T_init=25.0  budget=180.0s  time=18:04:00
+[18:04:00] trial=   5  strategy=random_start  init_E=74  T_init=25.0  budget=180.0s  time=18:04:00
+[18:04:00] trial=   5  strategy=random_start  init_E=76  T_init=25.0  budget=180.0s  time=18:04:00
+[18:04:00] trial=   5  strategy=random_start  init_E=76  T_init=25.0  budget=180.0s  time=18:04:00
+[18:05:20]   new_best E=73 cl12=24 cl13=26 cl23=23 t=80.5s T=0.755
+[18:05:20]   new_best E=73 cl12=24 cl13=26 cl23=23 t=80.5s T=0.755
+[18:05:29]   new_best E=74 cl12=25 cl13=26 cl23=23 t=89.3s T=0.516
+[18:05:29]   new_best E=74 cl12=25 cl13=26 cl23=23 t=89.3s T=0.516
+[18:05:30]   new_best E=73 cl12=26 cl13=24 cl23=23 t=89.7s T=0.506
+[18:05:30]   new_best E=73 cl12=26 cl13=24 cl23=23 t=89.7s T=0.506
+[18:05:44]   new_best E=72 cl12=27 cl13=23 cl23=22 t=104.3s T=0.269
+[18:05:44]   new_best E=72 cl12=27 cl13=23 cl23=22 t=104.3s T=0.269
+[18:05:44]   new_best E=71 cl12=26 cl13=23 cl23=22 t=104.4s T=0.267
+[18:05:44]   new_best E=71 cl12=26 cl13=23 cl23=22 t=104.4s T=0.267
+[18:05:53]   new_best E=70 cl12=25 cl13=25 cl23=20 t=112.7s T=0.186
+[18:05:53]   new_best E=70 cl12=25 cl13=25 cl23=20 t=112.7s T=0.186
+[18:06:16]   new_best E=69 cl12=25 cl13=23 cl23=21 t=136.2s T=0.067
+[18:06:16]   new_best E=69 cl12=25 cl13=23 cl23=21 t=136.2s T=0.067
+[18:06:18]   new_best E=72 cl12=25 cl13=24 cl23=23 t=138.0s T=0.062
+[18:06:18]   new_best E=72 cl12=25 cl13=24 cl23=23 t=138.0s T=0.062
+[18:06:29]   new_best E=71 cl12=25 cl13=23 cl23=23 t=149.5s T=0.038
+[18:06:29]   new_best E=71 cl12=25 cl13=23 cl23=23 t=149.5s T=0.038
+[18:06:33]   new_best E=68 cl12=25 cl13=22 cl23=21 t=153.3s T=0.032
+[18:06:33]   new_best E=68 cl12=25 cl13=22 cl23=21 t=153.3s T=0.032
+[18:06:42]   new_best E=67 cl12=24 cl13=22 cl23=21 t=161.9s T=0.022
+[18:06:42]   new_best E=67 cl12=24 cl13=22 cl23=21 t=161.9s T=0.022
+[18:07:00]   steps=107843 (599/s)
+[18:07:00]   steps=107843 (599/s)
+[18:07:00]   done: best_E=67  cl12=24  cl13=22  cl23=21  session_best=33  elapsed=180.0s
+[18:07:00]   done: best_E=67  cl12=24  cl13=22  cl23=21  session_best=33  elapsed=180.0s
+[18:07:00]   [status] pool=8 entries  session_best=33
+[18:07:00]   [status] pool=8 entries  session_best=33
+[18:07:00] trial=   6  strategy=pool_start  init_E=87  T_init=15.0  budget=180.0s  time=18:07:00
+[18:07:00] trial=   6  strategy=pool_start  init_E=87  T_init=15.0  budget=180.0s  time=18:07:00
+[18:07:00]   steps=101852 (566/s)
+[18:07:00]   steps=101852 (566/s)
+[18:07:00]   done: best_E=68  cl12=25  cl13=22  cl23=21  session_best=33  elapsed=180.1s
+[18:07:00]   done: best_E=68  cl12=25  cl13=22  cl23=21  session_best=33  elapsed=180.1s
+[18:07:00]   [status] pool=8 entries  session_best=33
+[18:07:00]   [status] pool=8 entries  session_best=33
+[18:07:00] trial=   6  strategy=pool_start  init_E=33  T_init=15.0  budget=180.0s  time=18:07:00
+[18:07:00] trial=   6  strategy=pool_start  init_E=33  T_init=15.0  budget=180.0s  time=18:07:00
+[18:07:12]   new_best E=86 cl12=25 cl13=28 cl23=33 t=12.2s T=9.137
+[18:07:12]   new_best E=86 cl12=25 cl13=28 cl23=33 t=12.2s T=9.137
+[18:07:34]   new_best E=85 cl12=28 cl13=27 cl23=30 t=33.8s T=3.801
+[18:07:34]   new_best E=85 cl12=28 cl13=27 cl23=30 t=33.8s T=3.801
+[18:07:42]   new_best E=84 cl12=31 cl13=26 cl23=27 t=42.2s T=2.696
+[18:07:42]   new_best E=84 cl12=31 cl13=26 cl23=27 t=42.2s T=2.696
+[18:07:54]   new_best E=82 cl12=33 cl13=24 cl23=25 t=54.6s T=1.635
+[18:07:54]   new_best E=82 cl12=33 cl13=24 cl23=25 t=54.6s T=1.635
+[18:07:54]   new_best E=81 cl12=29 cl13=27 cl23=25 t=54.6s T=1.635
+[18:07:54]   new_best E=81 cl12=29 cl13=27 cl23=25 t=54.6s T=1.635
+[18:07:56]   new_best E=80 cl12=25 cl13=29 cl23=26 t=56.0s T=1.541
+[18:07:56]   new_best E=80 cl12=25 cl13=29 cl23=26 t=56.0s T=1.541
+[18:08:02]   new_best E=79 cl12=28 cl13=24 cl23=27 t=62.2s T=1.199
+[18:08:02]   new_best E=79 cl12=28 cl13=24 cl23=27 t=62.2s T=1.199
+[18:08:07]   new_best E=77 cl12=23 cl13=28 cl23=26 t=67.3s T=0.975
+[18:08:07]   new_best E=77 cl12=23 cl13=28 cl23=26 t=67.3s T=0.975
+[18:08:07]   new_best E=76 cl12=23 cl13=28 cl23=25 t=67.3s T=0.975
+[18:08:07]   new_best E=76 cl12=23 cl13=28 cl23=25 t=67.3s T=0.975
+[18:08:09]   new_best E=75 cl12=23 cl13=26 cl23=26 t=69.6s T=0.887
+[18:08:09]   new_best E=75 cl12=23 cl13=26 cl23=26 t=69.6s T=0.887
+[18:08:10]   new_best E=74 cl12=21 cl13=28 cl23=25 t=70.1s T=0.868
+[18:08:10]   new_best E=74 cl12=21 cl13=28 cl23=25 t=70.1s T=0.868
+[18:08:10]   new_best E=72 cl12=24 cl13=25 cl23=23 t=70.4s T=0.858
+[18:08:10]   new_best E=72 cl12=24 cl13=25 cl23=23 t=70.4s T=0.858
+[18:08:14]   new_best E=70 cl12=21 cl13=26 cl23=23 t=74.1s T=0.740
+[18:08:14]   new_best E=70 cl12=21 cl13=26 cl23=23 t=74.1s T=0.740
+[18:08:16]   new_best E=69 cl12=21 cl13=25 cl23=23 t=76.1s T=0.680
+[18:08:16]   new_best E=69 cl12=21 cl13=25 cl23=23 t=76.1s T=0.680
+[18:08:34]   new_best E=67 cl12=21 cl13=25 cl23=21 t=94.1s T=0.328
+[18:08:34]   new_best E=67 cl12=21 cl13=25 cl23=21 t=94.1s T=0.328
+[18:08:46]   new_best E=66 cl12=21 cl13=24 cl23=21 t=106.2s T=0.200
+[18:08:46]   new_best E=66 cl12=21 cl13=24 cl23=21 t=106.2s T=0.200
+[18:08:46]   new_best E=65 cl12=21 cl13=23 cl23=21 t=106.4s T=0.199
+[18:08:46]   new_best E=65 cl12=21 cl13=23 cl23=21 t=106.4s T=0.199
+[18:08:47]   new_best E=64 cl12=21 cl13=22 cl23=21 t=106.7s T=0.197
+[18:08:47]   new_best E=64 cl12=21 cl13=22 cl23=21 t=106.7s T=0.197
+[18:09:03]   new_best E=63 cl12=21 cl13=22 cl23=20 t=123.5s T=0.099
+[18:09:03]   new_best E=63 cl12=21 cl13=22 cl23=20 t=123.5s T=0.099
+[18:09:46]   new_best E=62 cl12=21 cl13=22 cl23=19 t=166.1s T=0.018
+[18:09:46]   new_best E=62 cl12=21 cl13=22 cl23=19 t=166.1s T=0.018
+[18:10:00]   steps=93225 (518/s)
+[18:10:00]   steps=93225 (518/s)
+[18:10:00]   done: best_E=62  cl12=21  cl13=22  cl23=19  session_best=33  elapsed=180.1s
+[18:10:00]   done: best_E=62  cl12=21  cl13=22  cl23=19  session_best=33  elapsed=180.1s
+[18:10:00] trial=   7  strategy=heavy_perturb  init_E=115  T_init=20.0  budget=180.0s  time=18:10:00
+[18:10:00] trial=   7  strategy=heavy_perturb  init_E=115  T_init=20.0  budget=180.0s  time=18:10:00
+[18:10:00]   new_best E=107 cl12=37 cl13=32 cl23=38 t=0.0s T=20.000
+[18:10:00]   new_best E=107 cl12=37 cl13=32 cl23=38 t=0.0s T=20.000
+[18:10:00]   new_best E=106 cl12=38 cl13=29 cl23=39 t=0.0s T=20.000
+[18:10:00]   new_best E=106 cl12=38 cl13=29 cl23=39 t=0.0s T=20.000
+[18:10:00]   new_best E=103 cl12=34 cl13=35 cl23=34 t=0.0s T=20.000
+[18:10:00]   new_best E=103 cl12=34 cl13=35 cl23=34 t=0.0s T=20.000
+[18:10:00]   new_best E=101 cl12=36 cl13=29 cl23=36 t=0.0s T=19.998
+[18:10:00]   new_best E=101 cl12=36 cl13=29 cl23=36 t=0.0s T=19.998
+[18:10:00]   new_best E=100 cl12=35 cl13=31 cl23=34 t=0.0s T=19.998
+[18:10:00]   new_best E=100 cl12=35 cl13=31 cl23=34 t=0.0s T=19.998
+[18:10:00]   steps=94454 (525/s)
+[18:10:00]   steps=94454 (525/s)
+[18:10:00]   done: best_E=33  cl12=0  cl13=14  cl23=19  session_best=33  elapsed=180.2s
+[18:10:00]   done: best_E=33  cl12=0  cl13=14  cl23=19  session_best=33  elapsed=180.2s
+[18:10:00] trial=   7  strategy=heavy_perturb  init_E=93  T_init=20.0  budget=180.0s  time=18:10:00
+[18:10:00] trial=   7  strategy=heavy_perturb  init_E=93  T_init=20.0  budget=180.0s  time=18:10:00
+[18:10:00]   new_best E=99 cl12=37 cl13=33 cl23=29 t=0.5s T=19.574
+[18:10:00]   new_best E=99 cl12=37 cl13=33 cl23=29 t=0.5s T=19.574
+[18:10:01]   new_best E=98 cl12=35 cl13=33 cl23=30 t=1.5s T=18.786
+[18:10:01]   new_best E=98 cl12=35 cl13=33 cl23=30 t=1.5s T=18.786
+[18:10:02]   new_best E=95 cl12=32 cl13=33 cl23=30 t=2.1s T=18.272
+[18:10:02]   new_best E=95 cl12=32 cl13=33 cl23=30 t=2.1s T=18.272
+[18:10:02]   new_best E=94 cl12=31 cl13=28 cl23=35 t=2.1s T=18.272
+[18:10:02]   new_best E=94 cl12=31 cl13=28 cl23=35 t=2.1s T=18.272
+[18:10:02]   new_best E=91 cl12=30 cl13=33 cl23=28 t=2.1s T=18.271
+[18:10:02]   new_best E=91 cl12=30 cl13=33 cl23=28 t=2.1s T=18.271
+[18:10:02]   new_best E=90 cl12=31 cl13=30 cl23=29 t=2.3s T=18.125
+[18:10:02]   new_best E=90 cl12=31 cl13=30 cl23=29 t=2.3s T=18.125
+[18:10:05]   new_best E=90 cl12=31 cl13=32 cl23=27 t=5.0s T=16.216
+[18:10:05]   new_best E=90 cl12=31 cl13=32 cl23=27 t=5.0s T=16.216
+[18:10:08]   new_best E=87 cl12=27 cl13=34 cl23=26 t=7.7s T=14.445
+[18:10:08]   new_best E=87 cl12=27 cl13=34 cl23=26 t=7.7s T=14.445
+[18:10:11]   new_best E=87 cl12=28 cl13=31 cl23=28 t=11.4s T=12.380
+[18:10:11]   new_best E=87 cl12=28 cl13=31 cl23=28 t=11.4s T=12.380
+[18:10:29]   new_best E=86 cl12=26 cl13=34 cl23=26 t=29.1s T=5.849
+[18:10:29]   new_best E=86 cl12=26 cl13=34 cl23=26 t=29.1s T=5.849
+[18:10:38]   new_best E=84 cl12=25 cl13=29 cl23=30 t=38.5s T=3.938
+[18:10:38]   new_best E=84 cl12=25 cl13=29 cl23=30 t=38.5s T=3.938
+[18:10:48]   new_best E=81 cl12=24 cl13=25 cl23=32 t=47.6s T=2.681
+[18:10:48]   new_best E=81 cl12=24 cl13=25 cl23=32 t=47.6s T=2.681
+[18:10:56]   new_best E=79 cl12=27 cl13=26 cl23=26 t=56.3s T=1.853
+[18:10:56]   new_best E=79 cl12=27 cl13=26 cl23=26 t=56.3s T=1.853
+[18:11:04]   new_best E=80 cl12=32 cl13=22 cl23=26 t=63.6s T=1.362
+[18:11:04]   new_best E=80 cl12=32 cl13=22 cl23=26 t=63.6s T=1.362
+[18:11:04]   new_best E=75 cl12=22 cl13=25 cl23=28 t=64.1s T=1.335
+[18:11:04]   new_best E=75 cl12=22 cl13=25 cl23=28 t=64.1s T=1.335
+[18:11:04]   new_best E=73 cl12=22 cl13=27 cl23=24 t=64.5s T=1.311
+[18:11:04]   new_best E=73 cl12=22 cl13=27 cl23=24 t=64.5s T=1.311
+[18:11:08]   new_best E=72 cl12=22 cl13=25 cl23=25 t=68.5s T=1.109
+[18:11:08]   new_best E=72 cl12=22 cl13=25 cl23=25 t=68.5s T=1.109
+[18:11:13]   new_best E=78 cl12=27 cl13=28 cl23=23 t=72.7s T=0.927
+[18:11:13]   new_best E=78 cl12=27 cl13=28 cl23=23 t=72.7s T=0.927
+[18:11:13]   new_best E=76 cl12=27 cl13=26 cl23=23 t=72.9s T=0.920
+[18:11:13]   new_best E=76 cl12=27 cl13=26 cl23=23 t=72.9s T=0.920
+[18:11:18]   new_best E=71 cl12=23 cl13=25 cl23=23 t=78.4s T=0.731
+[18:11:18]   new_best E=71 cl12=23 cl13=25 cl23=23 t=78.4s T=0.731
+[18:11:40]   new_best E=73 cl12=27 cl13=25 cl23=21 t=100.0s T=0.293
+[18:11:40]   new_best E=73 cl12=27 cl13=25 cl23=21 t=100.0s T=0.293
+[18:12:19]   new_best E=72 cl12=26 cl13=24 cl23=22 t=139.1s T=0.056
+[18:12:19]   new_best E=72 cl12=26 cl13=24 cl23=22 t=139.1s T=0.056
+[18:13:00]   steps=95266 (529/s)
+[18:13:00]   steps=95266 (529/s)
+[18:13:00]   done: best_E=71  cl12=23  cl13=25  cl23=23  session_best=33  elapsed=180.0s
+[18:13:00]   done: best_E=71  cl12=23  cl13=25  cl23=23  session_best=33  elapsed=180.0s
+[18:13:00] trial=   8  strategy=pool_start  init_E=84  T_init=15.0  budget=180.0s  time=18:13:00
+[18:13:00] trial=   8  strategy=pool_start  init_E=84  T_init=15.0  budget=180.0s  time=18:13:00
+[18:13:00]   steps=95204 (529/s)
+[18:13:00]   steps=95204 (529/s)
+[18:13:00]   done: best_E=72  cl12=26  cl13=24  cl23=22  session_best=33  elapsed=180.0s
+[18:13:00]   done: best_E=72  cl12=26  cl13=24  cl23=22  session_best=33  elapsed=180.0s
+[18:13:00] trial=   8  strategy=pool_start  init_E=69  T_init=15.0  budget=180.0s  time=18:13:00
+[18:13:00] trial=   8  strategy=pool_start  init_E=69  T_init=15.0  budget=180.0s  time=18:13:00
+[18:13:33]   new_best E=83 cl12=27 cl13=27 cl23=29 t=33.4s T=3.857
+[18:13:33]   new_best E=83 cl12=27 cl13=27 cl23=29 t=33.4s T=3.857
+[18:13:39]   new_best E=82 cl12=27 cl13=29 cl23=26 t=38.9s T=3.091
+[18:13:39]   new_best E=82 cl12=27 cl13=29 cl23=26 t=38.9s T=3.091
+[18:13:56]   new_best E=81 cl12=30 cl13=23 cl23=28 t=55.7s T=1.562
+[18:13:56]   new_best E=81 cl12=30 cl13=23 cl23=28 t=55.7s T=1.562
+[18:13:56]   new_best E=78 cl12=29 cl13=23 cl23=26 t=56.0s T=1.544
+[18:13:56]   new_best E=78 cl12=29 cl13=23 cl23=26 t=56.0s T=1.544
+[18:14:01]   new_best E=77 cl12=25 cl13=24 cl23=28 t=61.2s T=1.249
+[18:14:01]   new_best E=77 cl12=25 cl13=24 cl23=28 t=61.2s T=1.249
+[18:14:05]   new_best E=76 cl12=26 cl13=27 cl23=23 t=65.1s T=1.066
+[18:14:05]   new_best E=76 cl12=26 cl13=27 cl23=23 t=65.1s T=1.066
+[18:14:05]   new_best E=72 cl12=22 cl13=27 cl23=23 t=65.5s T=1.050
+[18:14:05]   new_best E=72 cl12=22 cl13=27 cl23=23 t=65.5s T=1.050
+[18:14:15]   new_best E=71 cl12=21 cl13=24 cl23=26 t=74.9s T=0.715
+[18:14:15]   new_best E=71 cl12=21 cl13=24 cl23=26 t=74.9s T=0.715
+[18:14:15]   new_best E=70 cl12=21 cl13=24 cl23=25 t=75.2s T=0.707
+[18:14:15]   new_best E=70 cl12=21 cl13=24 cl23=25 t=75.2s T=0.707
+[18:14:34]   new_best E=69 cl12=23 cl13=21 cl23=25 t=94.1s T=0.328
+[18:14:34]   new_best E=69 cl12=23 cl13=21 cl23=25 t=94.1s T=0.328
+[18:14:35]   new_best E=68 cl12=21 cl13=22 cl23=25 t=95.2s T=0.313
+[18:14:35]   new_best E=68 cl12=21 cl13=22 cl23=25 t=95.2s T=0.313
+[18:14:46]   new_best E=67 cl12=21 cl13=22 cl23=24 t=106.1s T=0.201
+[18:14:46]   new_best E=67 cl12=21 cl13=22 cl23=24 t=106.1s T=0.201
+[18:15:38]   new_best E=66 cl12=20 cl13=22 cl23=24 t=157.6s T=0.025
+[18:15:38]   new_best E=66 cl12=20 cl13=22 cl23=24 t=157.6s T=0.025
+[18:16:00]   steps=88857 (494/s)
+[18:16:00]   steps=88857 (494/s)
+[18:16:00]   done: best_E=66  cl12=20  cl13=22  cl23=24  session_best=33  elapsed=180.1s
+[18:16:00]   done: best_E=66  cl12=20  cl13=22  cl23=24  session_best=33  elapsed=180.1s
+[18:16:00]   steps=89527 (497/s)
+[18:16:00]   steps=89527 (497/s)
+[18:16:00]   done: best_E=69  cl12=20  cl13=18  cl23=31  session_best=33  elapsed=180.0s
+[18:16:00]   done: best_E=69  cl12=20  cl13=18  cl23=31  session_best=33  elapsed=180.0s
+[18:16:00] trial=   9  strategy=random_start  init_E=65  T_init=25.0  budget=180.0s  time=18:16:00
+[18:16:00] trial=   9  strategy=random_start  init_E=65  T_init=25.0  budget=180.0s  time=18:16:00
+[18:16:00]   new_best E=60 cl12=0 cl13=27 cl23=33 t=0.0s T=25.000
+[18:16:00]   new_best E=60 cl12=0 cl13=27 cl23=33 t=0.0s T=25.000
+[18:16:01] trial=   9  strategy=random_start  init_E=77  T_init=25.0  budget=180.0s  time=18:16:01
+[18:16:01] trial=   9  strategy=random_start  init_E=77  T_init=25.0  budget=180.0s  time=18:16:01
+[18:16:01]   new_best E=75 cl12=0 cl13=38 cl23=37 t=0.2s T=24.744
+[18:16:01]   new_best E=75 cl12=0 cl13=38 cl23=37 t=0.2s T=24.744
+[18:17:26]   new_best E=74 cl12=28 cl13=25 cl23=21 t=85.6s T=0.606
+[18:17:26]   new_best E=74 cl12=28 cl13=25 cl23=21 t=85.6s T=0.606
+[18:17:31]   new_best E=72 cl12=26 cl13=24 cl23=22 t=91.0s T=0.479
+[18:17:31]   new_best E=72 cl12=26 cl13=24 cl23=22 t=91.0s T=0.479
+[18:17:57]   new_best E=71 cl12=25 cl13=24 cl23=22 t=116.0s T=0.161
+[18:17:57]   new_best E=71 cl12=25 cl13=24 cl23=22 t=116.0s T=0.161
+[18:18:06]   new_best E=70 cl12=24 cl13=23 cl23=23 t=125.2s T=0.108
+[18:18:06]   new_best E=70 cl12=24 cl13=23 cl23=23 t=125.2s T=0.108
+[18:19:00]   steps=73069 (406/s)
+[18:19:00]   steps=73069 (406/s)
+[18:19:00]   done: best_E=60  cl12=0  cl13=27  cl23=33  session_best=33  elapsed=180.2s
+[18:19:00]   done: best_E=60  cl12=0  cl13=27  cl23=33  session_best=33  elapsed=180.2s
+[18:19:00] trial=  10  strategy=pool_start  init_E=58  T_init=15.0  budget=180.0s  time=18:19:00
+[18:19:00] trial=  10  strategy=pool_start  init_E=58  T_init=15.0  budget=180.0s  time=18:19:00
+[18:19:01]   steps=84204 (468/s)
+[18:19:01]   steps=84204 (468/s)
+[18:19:01]   done: best_E=70  cl12=24  cl13=23  cl23=23  session_best=33  elapsed=180.1s
+[18:19:01]   done: best_E=70  cl12=24  cl13=23  cl23=23  session_best=33  elapsed=180.1s
+[18:19:01] trial=  10  strategy=pool_start  init_E=62  T_init=15.0  budget=180.0s  time=18:19:01
+[18:19:01] trial=  10  strategy=pool_start  init_E=62  T_init=15.0  budget=180.0s  time=18:19:01
+[18:22:01]   steps=76925 (427/s)
+[18:22:01]   steps=76925 (427/s)
+[18:22:01]   done: best_E=58  cl12=0  cl13=25  cl23=33  session_best=33  elapsed=180.1s
+[18:22:01]   done: best_E=58  cl12=0  cl13=25  cl23=33  session_best=33  elapsed=180.1s
+[18:22:01]   [status] pool=8 entries  session_best=33
+[18:22:01]   [status] pool=8 entries  session_best=33
+[18:22:01] trial=  11  strategy=heavy_perturb  init_E=97  T_init=20.0  budget=180.0s  time=18:22:01
+[18:22:01] trial=  11  strategy=heavy_perturb  init_E=97  T_init=20.0  budget=180.0s  time=18:22:01
+[18:22:01]   steps=76859 (427/s)
+[18:22:01]   steps=76859 (427/s)
+[18:22:01]   done: best_E=62  cl12=20  cl13=28  cl23=14  session_best=33  elapsed=180.3s
+[18:22:01]   done: best_E=62  cl12=20  cl13=28  cl23=14  session_best=33  elapsed=180.3s
+[18:22:01]   [status] pool=8 entries  session_best=33
+[18:22:01]   [status] pool=8 entries  session_best=33
+[18:22:01] trial=  11  strategy=heavy_perturb  init_E=67  T_init=20.0  budget=180.0s  time=18:22:01
+[18:22:01] trial=  11  strategy=heavy_perturb  init_E=67  T_init=20.0  budget=180.0s  time=18:22:01
+[18:22:02]   new_best E=93 cl12=34 cl13=32 cl23=27 t=1.1s T=19.057
+[18:22:02]   new_best E=93 cl12=34 cl13=32 cl23=27 t=1.1s T=19.057
+[18:22:10]   new_best E=92 cl12=30 cl13=34 cl23=28 t=9.1s T=13.596
+[18:22:10]   new_best E=92 cl12=30 cl13=34 cl23=28 t=9.1s T=13.596
+[18:22:15]   new_best E=89 cl12=32 cl13=32 cl23=25 t=14.7s T=10.769
+[18:22:15]   new_best E=89 cl12=32 cl13=32 cl23=25 t=14.7s T=10.769
+[18:22:20]   new_best E=87 cl12=27 cl13=28 cl23=32 t=19.8s T=8.650
+[18:22:20]   new_best E=87 cl12=27 cl13=28 cl23=32 t=19.8s T=8.650
+[18:22:49]   new_best E=86 cl12=29 cl13=25 cl23=32 t=48.6s T=2.564
+[18:22:49]   new_best E=86 cl12=29 cl13=25 cl23=32 t=48.6s T=2.564
+[18:22:51]   new_best E=82 cl12=26 cl13=32 cl23=24 t=50.4s T=2.383
+[18:22:51]   new_best E=82 cl12=26 cl13=32 cl23=24 t=50.4s T=2.383
+[18:23:10]   new_best E=79 cl12=31 cl13=23 cl23=25 t=69.5s T=1.062
+[18:23:10]   new_best E=79 cl12=31 cl13=23 cl23=25 t=69.5s T=1.062
+[18:23:18]   new_best E=78 cl12=25 cl13=26 cl23=27 t=77.0s T=0.773
+[18:23:18]   new_best E=78 cl12=25 cl13=26 cl23=27 t=77.0s T=0.773
+[18:23:18]   new_best E=76 cl12=25 cl13=24 cl23=27 t=77.4s T=0.761
+[18:23:18]   new_best E=76 cl12=25 cl13=24 cl23=27 t=77.4s T=0.761
+[18:23:21]   new_best E=73 cl12=22 cl13=22 cl23=29 t=80.4s T=0.671
+[18:23:21]   new_best E=73 cl12=22 cl13=22 cl23=29 t=80.4s T=0.671
+[18:23:22]   new_best E=72 cl12=23 cl13=22 cl23=27 t=81.1s T=0.651
+[18:23:22]   new_best E=72 cl12=23 cl13=22 cl23=27 t=81.1s T=0.651
+[18:24:15]   new_best E=71 cl12=24 cl13=23 cl23=24 t=134.3s T=0.069
+[18:24:15]   new_best E=71 cl12=24 cl13=23 cl23=24 t=134.3s T=0.069
+[18:25:01]   steps=75766 (421/s)
+[18:25:01]   steps=75766 (421/s)
+[18:25:01]   done: best_E=71  cl12=24  cl13=23  cl23=24  session_best=33  elapsed=180.1s
+[18:25:01]   done: best_E=71  cl12=24  cl13=23  cl23=24  session_best=33  elapsed=180.1s
+[18:25:01] trial=  12  strategy=pool_start  init_E=47  T_init=15.0  budget=180.0s  time=18:25:01
+[18:25:01] trial=  12  strategy=pool_start  init_E=47  T_init=15.0  budget=180.0s  time=18:25:01
+[18:25:01]   steps=76367 (424/s)
+[18:25:01]   steps=76367 (424/s)
+[18:25:01]   done: best_E=67  cl12=0  cl13=33  cl23=34  session_best=33  elapsed=180.2s
+[18:25:01]   done: best_E=67  cl12=0  cl13=33  cl23=34  session_best=33  elapsed=180.2s
+[18:25:01] trial=  12  strategy=pool_start  init_E=75  T_init=15.0  budget=180.0s  time=18:25:01
+[18:25:01] trial=  12  strategy=pool_start  init_E=75  T_init=15.0  budget=180.0s  time=18:25:01
+[18:26:19]   new_best E=73 cl12=24 cl13=23 cl23=26 t=77.8s T=0.637
+[18:26:19]   new_best E=73 cl12=24 cl13=23 cl23=26 t=77.8s T=0.637
+[18:26:23]   new_best E=72 cl12=23 cl13=23 cl23=26 t=82.2s T=0.533
+[18:26:23]   new_best E=72 cl12=23 cl13=23 cl23=26 t=82.2s T=0.533
+[18:26:30]   new_best E=71 cl12=22 cl13=23 cl23=26 t=88.3s T=0.415
+[18:26:30]   new_best E=71 cl12=22 cl13=23 cl23=26 t=88.3s T=0.415
+[18:26:30]   new_best E=70 cl12=22 cl13=22 cl23=26 t=88.8s T=0.407
+[18:26:30]   new_best E=70 cl12=22 cl13=22 cl23=26 t=88.8s T=0.407
+[18:26:55]   new_best E=69 cl12=22 cl13=23 cl23=24 t=113.4s T=0.150
+[18:26:55]   new_best E=69 cl12=22 cl13=23 cl23=24 t=113.4s T=0.150
+[18:28:01]   steps=55861 (310/s)
+[18:28:01]   steps=55861 (310/s)
+[18:28:01]   done: best_E=47  cl12=20  cl13=3  cl23=24  session_best=33  elapsed=180.0s
+[18:28:01]   done: best_E=47  cl12=20  cl13=3  cl23=24  session_best=33  elapsed=180.0s
+[18:28:01] trial=  13  strategy=random_start  init_E=72  T_init=25.0  budget=180.0s  time=18:28:01
+[18:28:01] trial=  13  strategy=random_start  init_E=72  T_init=25.0  budget=180.0s  time=18:28:01
+[18:28:01]   new_best E=69 cl12=0 cl13=37 cl23=32 t=0.0s T=25.000
+[18:28:01]   new_best E=69 cl12=0 cl13=37 cl23=32 t=0.0s T=25.000
+[18:28:01]   new_best E=65 cl12=0 cl13=34 cl23=31 t=0.0s T=25.000
+[18:28:01]   new_best E=65 cl12=0 cl13=34 cl23=31 t=0.0s T=25.000
+[18:28:01]   steps=57135 (317/s)
+[18:28:01]   steps=57135 (317/s)
+[18:28:01]   done: best_E=69  cl12=22  cl13=23  cl23=24  session_best=33  elapsed=180.1s
+[18:28:01]   done: best_E=69  cl12=22  cl13=23  cl23=24  session_best=33  elapsed=180.1s
+[18:28:02] trial=  13  strategy=random_start  init_E=75  T_init=25.0  budget=180.0s  time=18:28:02
+[18:28:02] trial=  13  strategy=random_start  init_E=75  T_init=25.0  budget=180.0s  time=18:28:02
+[18:28:02]   new_best E=69 cl12=0 cl13=31 cl23=38 t=0.0s T=25.000
+[18:28:02]   new_best E=69 cl12=0 cl13=31 cl23=38 t=0.0s T=25.000
+[18:30:37]   new_best E=64 cl12=22 cl13=22 cl23=20 t=155.5s T=0.029
+[18:30:37]   new_best E=64 cl12=22 cl13=22 cl23=20 t=155.5s T=0.029
+[18:31:01]   steps=60377 (335/s)
+[18:31:01]   steps=60377 (335/s)
+[18:31:01]   done: best_E=64  cl12=22  cl13=22  cl23=20  session_best=33  elapsed=180.2s
+[18:31:01]   done: best_E=64  cl12=22  cl13=22  cl23=20  session_best=33  elapsed=180.2s
+[18:31:01] trial=  14  strategy=pool_start  init_E=55  T_init=15.0  budget=180.0s  time=18:31:01
+[18:31:01] trial=  14  strategy=pool_start  init_E=55  T_init=15.0  budget=180.0s  time=18:31:01
+[18:31:02]   steps=61444 (341/s)
+[18:31:02]   steps=61444 (341/s)
+[18:31:02]   done: best_E=69  cl12=0  cl13=31  cl23=38  session_best=33  elapsed=180.3s
+[18:31:02]   done: best_E=69  cl12=0  cl13=31  cl23=38  session_best=33  elapsed=180.3s
+[18:31:02] trial=  14  strategy=pool_start  init_E=56  T_init=15.0  budget=180.0s  time=18:31:02
+[18:31:02] trial=  14  strategy=pool_start  init_E=56  T_init=15.0  budget=180.0s  time=18:31:02
+[18:34:01]   steps=63677 (354/s)
+[18:34:01]   steps=63677 (354/s)
+[18:34:01]   done: best_E=55  cl12=0  cl13=28  cl23=27  session_best=33  elapsed=180.0s
+[18:34:01]   done: best_E=55  cl12=0  cl13=28  cl23=27  session_best=33  elapsed=180.0s
+[18:34:01] trial=  15  strategy=heavy_perturb  init_E=102  T_init=20.0  budget=180.0s  time=18:34:01
+[18:34:01] trial=  15  strategy=heavy_perturb  init_E=102  T_init=20.0  budget=180.0s  time=18:34:01
+[18:34:01]   new_best E=89 cl12=30 cl13=33 cl23=26 t=0.0s T=20.000
+[18:34:01]   new_best E=89 cl12=30 cl13=33 cl23=26 t=0.0s T=20.000
+[18:34:02]   steps=64745 (360/s)
+[18:34:02]   steps=64745 (360/s)
+[18:34:02]   done: best_E=56  cl12=0  cl13=28  cl23=28  session_best=33  elapsed=180.0s
+[18:34:02]   done: best_E=56  cl12=0  cl13=28  cl23=28  session_best=33  elapsed=180.0s
+[18:34:02] trial=  15  strategy=heavy_perturb  init_E=96  T_init=20.0  budget=180.0s  time=18:34:02
+[18:34:02] trial=  15  strategy=heavy_perturb  init_E=96  T_init=20.0  budget=180.0s  time=18:34:02
+[18:34:03]   new_best E=93 cl12=31 cl13=29 cl23=33 t=0.9s T=19.281
+[18:34:03]   new_best E=93 cl12=31 cl13=29 cl23=33 t=0.9s T=19.281
+[18:34:08]   new_best E=90 cl12=24 cl13=31 cl23=35 t=5.5s T=15.839
+[18:34:08]   new_best E=90 cl12=24 cl13=31 cl23=35 t=5.5s T=15.839
+[18:34:27]   new_best E=89 cl12=30 cl13=30 cl23=29 t=25.1s T=6.935
+[18:34:27]   new_best E=89 cl12=30 cl13=30 cl23=29 t=25.1s T=6.935
+[18:34:28]   new_best E=85 cl12=34 cl13=29 cl23=22 t=26.6s T=6.493
+[18:34:28]   new_best E=85 cl12=34 cl13=29 cl23=22 t=26.6s T=6.493
+[18:34:34]   new_best E=87 cl12=33 cl13=28 cl23=26 t=32.2s T=5.141
+[18:34:34]   new_best E=87 cl12=33 cl13=28 cl23=26 t=32.2s T=5.141
+[18:34:47]   new_best E=84 cl12=29 cl13=27 cl23=28 t=44.6s T=3.036
+[18:34:47]   new_best E=84 cl12=29 cl13=27 cl23=28 t=44.6s T=3.036
+[18:34:47]   new_best E=83 cl12=29 cl13=26 cl23=28 t=44.6s T=3.036
+[18:34:47]   new_best E=83 cl12=29 cl13=26 cl23=28 t=44.6s T=3.036
+[18:34:51]   new_best E=84 cl12=27 cl13=27 cl23=30 t=49.5s T=2.477
+[18:34:51]   new_best E=84 cl12=27 cl13=27 cl23=30 t=49.5s T=2.477
+[18:34:54]   new_best E=80 cl12=28 cl13=28 cl23=24 t=51.8s T=2.248
+[18:34:54]   new_best E=80 cl12=28 cl13=28 cl23=24 t=51.8s T=2.248
+[18:34:58]   new_best E=82 cl12=24 cl13=31 cl23=27 t=56.1s T=1.869
+[18:34:58]   new_best E=82 cl12=24 cl13=31 cl23=27 t=56.1s T=1.869
+[18:34:58]   new_best E=80 cl12=24 cl13=29 cl23=27 t=56.4s T=1.849
+[18:34:58]   new_best E=80 cl12=24 cl13=29 cl23=27 t=56.4s T=1.849
+[18:34:58]   new_best E=79 cl12=24 cl13=28 cl23=27 t=56.4s T=1.848
+[18:34:58]   new_best E=79 cl12=24 cl13=28 cl23=27 t=56.4s T=1.848
+[18:35:17]   new_best E=79 cl12=26 cl13=30 cl23=23 t=74.7s T=0.853
+[18:35:17]   new_best E=79 cl12=26 cl13=30 cl23=23 t=74.7s T=0.853
+[18:35:21]   new_best E=78 cl12=25 cl13=29 cl23=24 t=78.3s T=0.732
+[18:35:21]   new_best E=78 cl12=25 cl13=29 cl23=24 t=78.3s T=0.732
+[18:35:21]   new_best E=76 cl12=25 cl13=30 cl23=21 t=78.7s T=0.721
+[18:35:21]   new_best E=76 cl12=25 cl13=30 cl23=21 t=78.7s T=0.721
+[18:35:21]   new_best E=75 cl12=24 cl13=24 cl23=27 t=79.7s T=0.691
+[18:35:21]   new_best E=75 cl12=24 cl13=24 cl23=27 t=79.7s T=0.691
+[18:35:22]   new_best E=74 cl12=24 cl13=23 cl23=27 t=80.6s T=0.666
+[18:35:22]   new_best E=74 cl12=24 cl13=23 cl23=27 t=80.6s T=0.666
+[18:35:24]   new_best E=72 cl12=25 cl13=22 cl23=25 t=82.3s T=0.619
+[18:35:24]   new_best E=72 cl12=25 cl13=22 cl23=25 t=82.3s T=0.619
+[18:35:31]   new_best E=75 cl12=27 cl13=27 cl23=21 t=88.4s T=0.478
+[18:35:31]   new_best E=75 cl12=27 cl13=27 cl23=21 t=88.4s T=0.478
+[18:35:35]   new_best E=70 cl12=23 cl13=22 cl23=25 t=93.6s T=0.383
+[18:35:35]   new_best E=70 cl12=23 cl13=22 cl23=25 t=93.6s T=0.383
+[18:35:40]   new_best E=74 cl12=29 cl13=24 cl23=21 t=98.2s T=0.316
+[18:35:40]   new_best E=74 cl12=29 cl13=24 cl23=21 t=98.2s T=0.316
+[18:35:48]   new_best E=73 cl12=26 cl13=28 cl23=19 t=105.6s T=0.231
+[18:35:48]   new_best E=73 cl12=26 cl13=28 cl23=19 t=105.6s T=0.231
+[18:35:50]   new_best E=72 cl12=24 cl13=28 cl23=20 t=107.7s T=0.212
+[18:35:50]   new_best E=72 cl12=24 cl13=28 cl23=20 t=107.7s T=0.212
+[18:36:15]   new_best E=68 cl12=22 cl13=26 cl23=20 t=133.0s T=0.073
+[18:36:15]   new_best E=68 cl12=22 cl13=26 cl23=20 t=133.0s T=0.073
+[18:37:02]   steps=67410 (374/s)
+[18:37:02]   steps=67410 (374/s)
+[18:37:02]   done: best_E=70  cl12=23  cl13=22  cl23=25  session_best=33  elapsed=180.2s
+[18:37:02]   done: best_E=70  cl12=23  cl13=22  cl23=25  session_best=33  elapsed=180.2s
+[18:37:02]   [status] pool=14 entries  session_best=33
+[18:37:02]   [status] pool=14 entries  session_best=33
+[18:37:02] trial=  16  strategy=pool_start  init_E=77  T_init=15.0  budget=180.0s  time=18:37:02
+[18:37:02] trial=  16  strategy=pool_start  init_E=77  T_init=15.0  budget=180.0s  time=18:37:02
+[18:37:02]   steps=67954 (378/s)
+[18:37:02]   steps=67954 (378/s)
+[18:37:02]   done: best_E=68  cl12=22  cl13=26  cl23=20  session_best=33  elapsed=180.0s
+[18:37:02]   done: best_E=68  cl12=22  cl13=26  cl23=20  session_best=33  elapsed=180.0s
+[18:37:02]   [status] pool=14 entries  session_best=33
+[18:37:02]   [status] pool=14 entries  session_best=33
+[18:37:02] trial=  16  strategy=pool_start  init_E=94  T_init=15.0  budget=180.0s  time=18:37:02
+[18:37:02] trial=  16  strategy=pool_start  init_E=94  T_init=15.0  budget=180.0s  time=18:37:02
+[18:37:05]   new_best E=93 cl12=30 cl13=30 cl23=33 t=2.6s T=13.499
+[18:37:05]   new_best E=93 cl12=30 cl13=30 cl23=33 t=2.6s T=13.499
+[18:37:13]   new_best E=92 cl12=30 cl13=33 cl23=29 t=10.7s T=9.704
+[18:37:13]   new_best E=92 cl12=30 cl13=33 cl23=29 t=10.7s T=9.704
+[18:37:15]   new_best E=88 cl12=26 cl13=36 cl23=26 t=12.5s T=9.017
+[18:37:15]   new_best E=88 cl12=26 cl13=36 cl23=26 t=12.5s T=9.017
+[18:37:40]   new_best E=86 cl12=26 cl13=34 cl23=26 t=37.3s T=3.300
+[18:37:40]   new_best E=86 cl12=26 cl13=34 cl23=26 t=37.3s T=3.300
+[18:37:40]   new_best E=82 cl12=23 cl13=34 cl23=25 t=37.3s T=3.300
+[18:37:40]   new_best E=82 cl12=23 cl13=34 cl23=25 t=37.3s T=3.300
+[18:38:13]   new_best E=81 cl12=26 cl13=26 cl23=29 t=70.9s T=0.843
+[18:38:13]   new_best E=81 cl12=26 cl13=26 cl23=29 t=70.9s T=0.843
+[18:38:14]   new_best E=78 cl12=27 cl13=25 cl23=26 t=71.9s T=0.808
+[18:38:14]   new_best E=78 cl12=27 cl13=25 cl23=26 t=71.9s T=0.808
+[18:38:22]   new_best E=75 cl12=21 cl13=29 cl23=25 t=80.0s T=0.581
+[18:38:22]   new_best E=75 cl12=21 cl13=29 cl23=25 t=80.0s T=0.581
+[18:38:43]   new_best E=77 cl12=26 cl13=28 cl23=23 t=100.9s T=0.249
+[18:38:43]   new_best E=77 cl12=26 cl13=28 cl23=23 t=100.9s T=0.249
+[18:38:43]   new_best E=72 cl12=26 cl13=22 cl23=24 t=100.9s T=0.249
+[18:38:43]   new_best E=72 cl12=26 cl13=22 cl23=24 t=100.9s T=0.249
+[18:38:47]   new_best E=74 cl12=27 cl13=22 cl23=25 t=105.4s T=0.207
+[18:38:47]   new_best E=74 cl12=27 cl13=22 cl23=25 t=105.4s T=0.207
+[18:39:01]   new_best E=71 cl12=26 cl13=21 cl23=24 t=119.1s T=0.119
+[18:39:01]   new_best E=71 cl12=26 cl13=21 cl23=24 t=119.1s T=0.119
+[18:39:11]   new_best E=73 cl12=29 cl13=19 cl23=25 t=128.9s T=0.080
+[18:39:11]   new_best E=73 cl12=29 cl13=19 cl23=25 t=128.9s T=0.080
+[18:39:19]   new_best E=72 cl12=28 cl13=19 cl23=25 t=137.6s T=0.056
+[18:39:19]   new_best E=72 cl12=28 cl13=19 cl23=25 t=137.6s T=0.056
+[18:39:29]   new_best E=71 cl12=27 cl13=19 cl23=25 t=147.5s T=0.037
+[18:39:29]   new_best E=71 cl12=27 cl13=19 cl23=25 t=147.5s T=0.037
+[18:39:44]   new_best E=69 cl12=25 cl13=19 cl23=25 t=162.4s T=0.020
+[18:39:44]   new_best E=69 cl12=25 cl13=19 cl23=25 t=162.4s T=0.020
+[18:39:58]   new_best E=68 cl12=24 cl13=19 cl23=25 t=176.0s T=0.012
+[18:39:58]   new_best E=68 cl12=24 cl13=19 cl23=25 t=176.0s T=0.012
+[18:40:02]   steps=59871 (333/s)
+[18:40:02]   steps=59871 (333/s)
+[18:40:02]   done: best_E=68  cl12=24  cl13=19  cl23=25  session_best=33  elapsed=180.2s
+[18:40:02]   done: best_E=68  cl12=24  cl13=19  cl23=25  session_best=33  elapsed=180.2s
+[18:40:02] trial=  17  strategy=random_start  init_E=71  T_init=25.0  budget=180.0s  time=18:40:02
+[18:40:02] trial=  17  strategy=random_start  init_E=71  T_init=25.0  budget=180.0s  time=18:40:02
+[18:40:02]   new_best E=64 cl12=0 cl13=32 cl23=32 t=0.0s T=25.000
+[18:40:02]   new_best E=64 cl12=0 cl13=32 cl23=32 t=0.0s T=25.000
+[18:40:02]   steps=59980 (333/s)
+[18:40:02]   steps=59980 (333/s)
+[18:40:02]   done: best_E=71  cl12=26  cl13=21  cl23=24  session_best=33  elapsed=180.0s
+[18:40:02]   done: best_E=71  cl12=26  cl13=21  cl23=24  session_best=33  elapsed=180.0s
+[18:40:03] trial=  17  strategy=random_start  init_E=69  T_init=25.0  budget=180.0s  time=18:40:03
+[18:40:03] trial=  17  strategy=random_start  init_E=69  T_init=25.0  budget=180.0s  time=18:40:03
+[18:40:03]   new_best E=68 cl12=0 cl13=30 cl23=38 t=0.0s T=25.000
+[18:40:03]   new_best E=68 cl12=0 cl13=30 cl23=38 t=0.0s T=25.000
+[18:43:02]   steps=64094 (356/s)
+[18:43:02]   steps=64094 (356/s)
+[18:43:02]   done: best_E=64  cl12=0  cl13=32  cl23=32  session_best=33  elapsed=180.1s
+[18:43:02]   done: best_E=64  cl12=0  cl13=32  cl23=32  session_best=33  elapsed=180.1s
+[18:43:02] trial=  18  strategy=pool_start  init_E=52  T_init=15.0  budget=180.0s  time=18:43:02
+[18:43:02] trial=  18  strategy=pool_start  init_E=52  T_init=15.0  budget=180.0s  time=18:43:02
+[18:43:03]   steps=64622 (359/s)
+[18:43:03]   steps=64622 (359/s)
+[18:43:03]   done: best_E=68  cl12=0  cl13=30  cl23=38  session_best=33  elapsed=180.3s
+[18:43:03]   done: best_E=68  cl12=0  cl13=30  cl23=38  session_best=33  elapsed=180.3s
+[18:43:03] trial=  18  strategy=pool_start  init_E=77  T_init=15.0  budget=180.0s  time=18:43:03
+[18:43:03] trial=  18  strategy=pool_start  init_E=77  T_init=15.0  budget=180.0s  time=18:43:03
+[18:44:20]   new_best E=76 cl12=23 cl13=28 cl23=25 t=77.1s T=0.655
+[18:44:20]   new_best E=76 cl12=23 cl13=28 cl23=25 t=77.1s T=0.655
+[18:44:23]   new_best E=72 cl12=23 cl13=28 cl23=21 t=79.6s T=0.591
+[18:44:23]   new_best E=72 cl12=23 cl13=28 cl23=21 t=79.6s T=0.591
+[18:44:56]   new_best E=70 cl12=22 cl13=28 cl23=20 t=112.5s T=0.155
+[18:44:56]   new_best E=70 cl12=22 cl13=28 cl23=20 t=112.5s T=0.155
+[18:45:09]   new_best E=69 cl12=22 cl13=27 cl23=20 t=126.1s T=0.089
+[18:45:09]   new_best E=69 cl12=22 cl13=27 cl23=20 t=126.1s T=0.089
+[18:45:51]   new_best E=66 cl12=21 cl13=25 cl23=20 t=167.6s T=0.017
+[18:45:51]   new_best E=66 cl12=21 cl13=25 cl23=20 t=167.6s T=0.017
+[18:46:00]   new_best E=65 cl12=21 cl13=25 cl23=19 t=176.7s T=0.011
+[18:46:00]   new_best E=65 cl12=21 cl13=25 cl23=19 t=176.7s T=0.011
+[18:46:00]   new_best E=63 cl12=21 cl13=24 cl23=18 t=177.4s T=0.011
+[18:46:00]   new_best E=63 cl12=21 cl13=24 cl23=18 t=177.4s T=0.011
+[18:46:02]   steps=110871 (616/s)
+[18:46:02]   steps=110871 (616/s)
+[18:46:02]   done: best_E=52  cl12=0  cl13=26  cl23=26  session_best=33  elapsed=180.1s
+[18:46:02]   done: best_E=52  cl12=0  cl13=26  cl23=26  session_best=33  elapsed=180.1s
+[18:46:02] trial=  19  strategy=heavy_perturb  init_E=91  T_init=20.0  budget=180.0s  time=18:46:02
+[18:46:02] trial=  19  strategy=heavy_perturb  init_E=91  T_init=20.0  budget=180.0s  time=18:46:02
+[18:46:02]   new_best E=84 cl12=30 cl13=27 cl23=27 t=0.0s T=20.000
+[18:46:02]   new_best E=84 cl12=30 cl13=27 cl23=27 t=0.0s T=20.000
+[18:46:03]   steps=111868 (621/s)
+[18:46:03]   steps=111868 (621/s)
+[18:46:03]   done: best_E=63  cl12=21  cl13=24  cl23=18  session_best=33  elapsed=180.0s
+[18:46:03]   done: best_E=63  cl12=21  cl13=24  cl23=18  session_best=33  elapsed=180.0s
+[18:46:03] trial=  19  strategy=heavy_perturb  init_E=84  T_init=20.0  budget=180.0s  time=18:46:03
+[18:46:03] trial=  19  strategy=heavy_perturb  init_E=84  T_init=20.0  budget=180.0s  time=18:46:03
+[18:46:53]   new_best E=83 cl12=23 cl13=27 cl23=33 t=50.4s T=2.383
+[18:46:53]   new_best E=83 cl12=23 cl13=27 cl23=33 t=50.4s T=2.383
+[18:46:54]   new_best E=83 cl12=22 cl13=32 cl23=29 t=51.1s T=2.311
+[18:46:54]   new_best E=83 cl12=22 cl13=32 cl23=29 t=51.1s T=2.311
+[18:46:54]   new_best E=79 cl12=22 cl13=26 cl23=31 t=51.2s T=2.297
+[18:46:54]   new_best E=79 cl12=22 cl13=26 cl23=31 t=51.2s T=2.297
+[18:46:54]   new_best E=78 cl12=22 cl13=23 cl23=33 t=51.3s T=2.289
+[18:46:54]   new_best E=78 cl12=22 cl13=23 cl23=33 t=51.3s T=2.289
+[18:46:54]   new_best E=74 cl12=27 cl13=27 cl23=20 t=51.6s T=2.259
+[18:46:54]   new_best E=74 cl12=27 cl13=27 cl23=20 t=51.6s T=2.259
+[18:47:08]   new_best E=78 cl12=24 cl13=25 cl23=29 t=64.7s T=1.303
+[18:47:08]   new_best E=78 cl12=24 cl13=25 cl23=29 t=64.7s T=1.303
+[18:47:18]   new_best E=77 cl12=21 cl13=31 cl23=25 t=75.4s T=0.829
+[18:47:18]   new_best E=77 cl12=21 cl13=31 cl23=25 t=75.4s T=0.829
+[18:47:23]   new_best E=74 cl12=21 cl13=26 cl23=27 t=79.7s T=0.690
+[18:47:23]   new_best E=74 cl12=21 cl13=26 cl23=27 t=79.7s T=0.690
+[18:47:23]   new_best E=73 cl12=21 cl13=26 cl23=26 t=79.8s T=0.687
+[18:47:23]   new_best E=73 cl12=21 cl13=26 cl23=26 t=79.8s T=0.687
+[18:47:24]   new_best E=73 cl12=23 cl13=23 cl23=27 t=81.1s T=0.652
+[18:47:24]   new_best E=73 cl12=23 cl13=23 cl23=27 t=81.1s T=0.652
+[18:47:28]   new_best E=72 cl12=22 cl13=25 cl23=25 t=84.6s T=0.561
+[18:47:28]   new_best E=72 cl12=22 cl13=25 cl23=25 t=84.6s T=0.561
+[18:47:29]   new_best E=72 cl12=23 cl13=25 cl23=24 t=86.5s T=0.518
+[18:47:29]   new_best E=72 cl12=23 cl13=25 cl23=24 t=86.5s T=0.518
+[18:48:01]   new_best E=71 cl12=25 cl13=21 cl23=25 t=117.7s T=0.139
+[18:48:01]   new_best E=71 cl12=25 cl13=21 cl23=25 t=117.7s T=0.139
+[18:48:05]   new_best E=71 cl12=24 cl13=24 cl23=23 t=122.4s T=0.114
+[18:48:05]   new_best E=71 cl12=24 cl13=24 cl23=23 t=122.4s T=0.114
+[18:48:14]   new_best E=70 cl12=24 cl13=20 cl23=26 t=130.6s T=0.080
+[18:48:14]   new_best E=70 cl12=24 cl13=20 cl23=26 t=130.6s T=0.080
+[18:48:38]   new_best E=69 cl12=25 cl13=21 cl23=23 t=155.0s T=0.029
+[18:48:38]   new_best E=69 cl12=25 cl13=21 cl23=23 t=155.0s T=0.029
+[18:49:02]   steps=165902 (922/s)
+[18:49:02]   steps=165902 (922/s)
+[18:49:02]   done: best_E=71  cl12=24  cl13=24  cl23=23  session_best=33  elapsed=180.0s
+[18:49:02]   done: best_E=71  cl12=24  cl13=24  cl23=23  session_best=33  elapsed=180.0s
+[18:49:02] trial=  20  strategy=pool_start  init_E=66  T_init=15.0  budget=180.0s  time=18:49:02
+[18:49:02] trial=  20  strategy=pool_start  init_E=66  T_init=15.0  budget=180.0s  time=18:49:02
+[18:49:03]   steps=157720 (876/s)
+[18:49:03]   steps=157720 (876/s)
+[18:49:03]   done: best_E=69  cl12=25  cl13=21  cl23=23  session_best=33  elapsed=180.1s
+[18:49:03]   done: best_E=69  cl12=25  cl13=21  cl23=23  session_best=33  elapsed=180.1s
+[18:49:03] trial=  20  strategy=pool_start  init_E=33  T_init=15.0  budget=180.0s  time=18:49:03
+[18:49:03] trial=  20  strategy=pool_start  init_E=33  T_init=15.0  budget=180.0s  time=18:49:03
+[18:50:43]   new_best E=65 cl12=23 cl13=17 cl23=25 t=100.8s T=0.250
+[18:50:43]   new_best E=65 cl12=23 cl13=17 cl23=25 t=100.8s T=0.250
+[18:51:04]   new_best E=64 cl12=23 cl13=19 cl23=22 t=121.1s T=0.109
+[18:51:04]   new_best E=64 cl12=23 cl13=19 cl23=22 t=121.1s T=0.109
+[18:51:21]   new_best E=63 cl12=20 cl13=22 cl23=21 t=138.8s T=0.053
+[18:51:21]   new_best E=63 cl12=20 cl13=22 cl23=21 t=138.8s T=0.053
+[18:52:03]   steps=146297 (813/s)
+[18:52:03]   steps=146297 (813/s)
+[18:52:03]   done: best_E=63  cl12=20  cl13=22  cl23=21  session_best=33  elapsed=180.1s
+[18:52:03]   done: best_E=63  cl12=20  cl13=22  cl23=21  session_best=33  elapsed=180.1s
+[18:52:03]   [status] pool=16 entries  session_best=33
+[18:52:03]   [status] pool=16 entries  session_best=33
+[18:52:03] trial=  21  strategy=random_start  init_E=69  T_init=25.0  budget=180.0s  time=18:52:03
+[18:52:03] trial=  21  strategy=random_start  init_E=69  T_init=25.0  budget=180.0s  time=18:52:03
+[18:52:03]   steps=149503 (831/s)
+[18:52:03]   steps=149503 (831/s)
+[18:52:03]   done: best_E=33  cl12=0  cl13=14  cl23=19  session_best=33  elapsed=180.1s
+[18:52:03]   done: best_E=33  cl12=0  cl13=14  cl23=19  session_best=33  elapsed=180.1s
+[18:52:03]   [status] pool=16 entries  session_best=33
+[18:52:03]   [status] pool=16 entries  session_best=33
+[18:52:04] trial=  21  strategy=random_start  init_E=73  T_init=25.0  budget=180.0s  time=18:52:04
+[18:52:04] trial=  21  strategy=random_start  init_E=73  T_init=25.0  budget=180.0s  time=18:52:04
+[18:53:57]   new_best E=71 cl12=23 cl13=23 cl23=25 t=113.0s T=0.184
+[18:53:57]   new_best E=71 cl12=23 cl13=23 cl23=25 t=113.0s T=0.184
+[18:54:17]   new_best E=65 cl12=25 cl13=20 cl23=20 t=133.8s T=0.075
+[18:54:17]   new_best E=65 cl12=25 cl13=20 cl23=20 t=133.8s T=0.075
+[18:54:21]   new_best E=69 cl12=22 cl13=20 cl23=27 t=137.8s T=0.063
+[18:54:21]   new_best E=69 cl12=22 cl13=20 cl23=27 t=137.8s T=0.063
+[18:54:30]   new_best E=68 cl12=21 cl13=19 cl23=28 t=146.5s T=0.043
+[18:54:30]   new_best E=68 cl12=21 cl13=19 cl23=28 t=146.5s T=0.043
+[18:55:03]   steps=136456 (758/s)
+[18:55:03]   steps=136456 (758/s)
+[18:55:03]   done: best_E=65  cl12=25  cl13=20  cl23=20  session_best=33  elapsed=180.1s
+[18:55:03]   done: best_E=65  cl12=25  cl13=20  cl23=20  session_best=33  elapsed=180.1s
+[18:55:03] trial=  22  strategy=pool_start  init_E=64  T_init=15.0  budget=180.0s  time=18:55:03
+[18:55:03] trial=  22  strategy=pool_start  init_E=64  T_init=15.0  budget=180.0s  time=18:55:03
+[18:55:04]   steps=140958 (783/s)
+[18:55:04]   steps=140958 (783/s)
+[18:55:04]   done: best_E=68  cl12=21  cl13=19  cl23=28  session_best=33  elapsed=180.1s
+[18:55:04]   done: best_E=68  cl12=21  cl13=19  cl23=28  session_best=33  elapsed=180.1s
+[18:55:04] trial=  22  strategy=pool_start  init_E=84  T_init=15.0  budget=180.0s  time=18:55:04
+[18:55:04] trial=  22  strategy=pool_start  init_E=84  T_init=15.0  budget=180.0s  time=18:55:04
+[18:55:45]   new_best E=83 cl12=32 cl13=24 cl23=27 t=41.6s T=2.771
+[18:55:45]   new_best E=83 cl12=32 cl13=24 cl23=27 t=41.6s T=2.771
+[18:56:04]   new_best E=82 cl12=33 cl13=23 cl23=26 t=60.3s T=1.295
+[18:56:04]   new_best E=82 cl12=33 cl13=23 cl23=26 t=60.3s T=1.295
+[18:56:04]   new_best E=81 cl12=29 cl13=23 cl23=29 t=60.5s T=1.282
+[18:56:04]   new_best E=81 cl12=29 cl13=23 cl23=29 t=60.5s T=1.282
+[18:56:11]   new_best E=79 cl12=26 cl13=24 cl23=29 t=67.8s T=0.954
+[18:56:11]   new_best E=79 cl12=26 cl13=24 cl23=29 t=67.8s T=0.954
+[18:56:15]   new_best E=75 cl12=23 cl13=25 cl23=27 t=71.0s T=0.839
+[18:56:15]   new_best E=75 cl12=23 cl13=25 cl23=27 t=71.0s T=0.839
+[18:56:15]   new_best E=73 cl12=23 cl13=22 cl23=28 t=71.1s T=0.835
+[18:56:15]   new_best E=73 cl12=23 cl13=22 cl23=28 t=71.1s T=0.835
+[18:56:24]   new_best E=71 cl12=23 cl13=22 cl23=26 t=79.8s T=0.585
+[18:56:24]   new_best E=71 cl12=23 cl13=22 cl23=26 t=79.8s T=0.585
+[18:56:24]   new_best E=70 cl12=23 cl13=22 cl23=25 t=80.3s T=0.575
+[18:56:24]   new_best E=70 cl12=23 cl13=22 cl23=25 t=80.3s T=0.575
+[18:57:01]   new_best E=68 cl12=23 cl13=23 cl23=22 t=117.2s T=0.128
+[18:57:01]   new_best E=68 cl12=23 cl13=23 cl23=22 t=117.2s T=0.128
+[18:57:12]   new_best E=66 cl12=22 cl13=21 cl23=23 t=128.0s T=0.083
+[18:57:12]   new_best E=66 cl12=22 cl13=21 cl23=23 t=128.0s T=0.083
+[18:57:23]   new_best E=65 cl12=21 cl13=23 cl23=21 t=139.2s T=0.053
+[18:57:23]   new_best E=65 cl12=21 cl13=23 cl23=21 t=139.2s T=0.053
+[18:57:42]   new_best E=62 cl12=21 cl13=22 cl23=19 t=158.0s T=0.024
+[18:57:42]   new_best E=62 cl12=21 cl13=22 cl23=19 t=158.0s T=0.024
+[18:57:56]   new_best E=61 cl12=19 cl13=22 cl23=20 t=172.4s T=0.014
+[18:57:56]   new_best E=61 cl12=19 cl13=22 cl23=20 t=172.4s T=0.014
+[18:58:03]   steps=143523 (797/s)
+[18:58:03]   steps=143523 (797/s)
+[18:58:03]   done: best_E=64  cl12=20  cl13=19  cl23=25  session_best=33  elapsed=180.0s
+[18:58:03]   done: best_E=64  cl12=20  cl13=19  cl23=25  session_best=33  elapsed=180.0s
+[18:58:03] trial=  23  strategy=heavy_perturb  init_E=100  T_init=20.0  budget=180.0s  time=18:58:03
+[18:58:03] trial=  23  strategy=heavy_perturb  init_E=100  T_init=20.0  budget=180.0s  time=18:58:03
+[18:58:03]   new_best E=85 cl12=28 cl13=30 cl23=27 t=0.0s T=20.000
+[18:58:03]   new_best E=85 cl12=28 cl13=30 cl23=27 t=0.0s T=20.000
+[18:58:04]   steps=145816 (810/s)
+[18:58:04]   steps=145816 (810/s)
+[18:58:04]   done: best_E=61  cl12=19  cl13=22  cl23=20  session_best=33  elapsed=180.0s
+[18:58:04]   done: best_E=61  cl12=19  cl13=22  cl23=20  session_best=33  elapsed=180.0s
+[18:58:04] trial=  23  strategy=heavy_perturb  init_E=96  T_init=20.0  budget=180.0s  time=18:58:04
+[18:58:04] trial=  23  strategy=heavy_perturb  init_E=96  T_init=20.0  budget=180.0s  time=18:58:04
+[18:58:04]   new_best E=95 cl12=30 cl13=32 cl23=33 t=0.0s T=19.958
+[18:58:04]   new_best E=95 cl12=30 cl13=32 cl23=33 t=0.0s T=19.958
+[18:58:05]   new_best E=94 cl12=34 cl13=30 cl23=30 t=1.0s T=19.191
+[18:58:05]   new_best E=94 cl12=34 cl13=30 cl23=30 t=1.0s T=19.191
+[18:58:06]   new_best E=92 cl12=34 cl13=32 cl23=26 t=1.8s T=18.498
+[18:58:06]   new_best E=92 cl12=34 cl13=32 cl23=26 t=1.8s T=18.498
+[18:58:09]   new_best E=90 cl12=26 cl13=34 cl23=30 t=5.6s T=15.817
+[18:58:09]   new_best E=90 cl12=26 cl13=34 cl23=30 t=5.6s T=15.817
+[18:58:20]   new_best E=87 cl12=30 cl13=28 cl23=29 t=16.7s T=9.870
+[18:58:20]   new_best E=87 cl12=30 cl13=28 cl23=29 t=16.7s T=9.870
+[18:58:20]   new_best E=86 cl12=30 cl13=27 cl23=29 t=16.7s T=9.869
+[18:58:20]   new_best E=86 cl12=30 cl13=27 cl23=29 t=16.7s T=9.869
+[18:58:33]   new_best E=83 cl12=29 cl13=27 cl23=27 t=30.5s T=5.528
+[18:58:33]   new_best E=83 cl12=29 cl13=27 cl23=27 t=30.5s T=5.528
+[18:58:54]   new_best E=80 cl12=29 cl13=27 cl23=24 t=50.8s T=2.340
+[18:58:54]   new_best E=80 cl12=29 cl13=27 cl23=24 t=50.8s T=2.340
+[18:58:54]   new_best E=79 cl12=29 cl13=26 cl23=24 t=50.8s T=2.339
+[18:58:54]   new_best E=79 cl12=29 cl13=26 cl23=24 t=50.8s T=2.339
+[18:58:56]   new_best E=85 cl12=29 cl13=30 cl23=26 t=52.1s T=2.214
+[18:58:56]   new_best E=85 cl12=29 cl13=30 cl23=26 t=52.1s T=2.214
+[18:59:00]   new_best E=83 cl12=27 cl13=25 cl23=31 t=56.6s T=1.834
+[18:59:00]   new_best E=83 cl12=27 cl13=25 cl23=31 t=56.6s T=1.834
+[18:59:00]   new_best E=82 cl12=27 cl13=25 cl23=30 t=56.6s T=1.834
+[18:59:00]   new_best E=82 cl12=27 cl13=25 cl23=30 t=56.6s T=1.834
+[18:59:04]   new_best E=81 cl12=23 cl13=30 cl23=28 t=60.2s T=1.573
+[18:59:04]   new_best E=81 cl12=23 cl13=30 cl23=28 t=60.2s T=1.573
+[18:59:04]   new_best E=78 cl12=23 cl13=25 cl23=30 t=60.3s T=1.567
+[18:59:04]   new_best E=78 cl12=23 cl13=25 cl23=30 t=60.3s T=1.567
+[18:59:06]   new_best E=78 cl12=25 cl13=25 cl23=28 t=62.9s T=1.402
+[18:59:06]   new_best E=78 cl12=25 cl13=25 cl23=28 t=62.9s T=1.402
+[18:59:06]   new_best E=76 cl12=24 cl13=24 cl23=28 t=63.3s T=1.384
+[18:59:06]   new_best E=76 cl12=24 cl13=24 cl23=28 t=63.3s T=1.384
+[18:59:06]   new_best E=75 cl12=24 cl13=23 cl23=28 t=63.6s T=1.363
+[18:59:06]   new_best E=75 cl12=24 cl13=23 cl23=28 t=63.6s T=1.363
+[18:59:07]   new_best E=74 cl12=24 cl13=25 cl23=25 t=63.7s T=1.357
+[18:59:07]   new_best E=74 cl12=24 cl13=25 cl23=25 t=63.7s T=1.357
+[18:59:12]   new_best E=76 cl12=26 cl13=25 cl23=25 t=68.4s T=1.116
+[18:59:12]   new_best E=76 cl12=26 cl13=25 cl23=25 t=68.4s T=1.116
+[18:59:12]   new_best E=74 cl12=26 cl13=26 cl23=22 t=68.4s T=1.116
+[18:59:12]   new_best E=74 cl12=26 cl13=26 cl23=22 t=68.4s T=1.116
+[18:59:13]   new_best E=73 cl12=25 cl13=24 cl23=24 t=68.9s T=1.088
+[18:59:13]   new_best E=73 cl12=25 cl13=24 cl23=24 t=68.9s T=1.088
+[18:59:13]   new_best E=71 cl12=26 cl13=24 cl23=21 t=69.1s T=1.083
+[18:59:13]   new_best E=71 cl12=26 cl13=24 cl23=21 t=69.1s T=1.083
+[18:59:13]   new_best E=70 cl12=24 cl13=25 cl23=21 t=69.2s T=1.076
+[18:59:13]   new_best E=70 cl12=24 cl13=25 cl23=21 t=69.2s T=1.076
+[18:59:19]   new_best E=69 cl12=22 cl13=26 cl23=21 t=74.9s T=0.848
+[18:59:19]   new_best E=69 cl12=22 cl13=26 cl23=21 t=74.9s T=0.848
+[18:59:20]   new_best E=73 cl12=27 cl13=23 cl23=23 t=76.7s T=0.784
+[18:59:20]   new_best E=73 cl12=27 cl13=23 cl23=23 t=76.7s T=0.784
+[18:59:20]   new_best E=72 cl12=22 cl13=23 cl23=27 t=77.5s T=0.757
+[18:59:20]   new_best E=72 cl12=22 cl13=23 cl23=27 t=77.5s T=0.757
+[18:59:20]   new_best E=69 cl12=23 cl13=23 cl23=23 t=77.5s T=0.757
+[18:59:20]   new_best E=69 cl12=23 cl13=23 cl23=23 t=77.5s T=0.757
+[18:59:40]   new_best E=68 cl12=21 cl13=25 cl23=22 t=97.4s T=0.328
+[18:59:40]   new_best E=68 cl12=21 cl13=25 cl23=22 t=97.4s T=0.328
+[18:59:52]   new_best E=67 cl12=21 cl13=24 cl23=22 t=108.9s T=0.202
+[18:59:52]   new_best E=67 cl12=21 cl13=24 cl23=22 t=108.9s T=0.202
+[19:00:05]   new_best E=66 cl12=18 cl13=24 cl23=24 t=121.8s T=0.117
+[19:00:05]   new_best E=66 cl12=18 cl13=24 cl23=24 t=121.8s T=0.117
+[19:00:10]   new_best E=67 cl12=22 cl13=25 cl23=20 t=126.6s T=0.095
+[19:00:10]   new_best E=67 cl12=22 cl13=25 cl23=20 t=126.6s T=0.095
+[19:00:21]   new_best E=65 cl12=22 cl13=24 cl23=19 t=137.2s T=0.061
+[19:00:21]   new_best E=65 cl12=22 cl13=24 cl23=19 t=137.2s T=0.061
+[19:00:21]   new_best E=63 cl12=21 cl13=24 cl23=18 t=137.2s T=0.061
+[19:00:21]   new_best E=63 cl12=21 cl13=24 cl23=18 t=137.2s T=0.061
+[19:00:22]   new_best E=62 cl12=22 cl13=22 cl23=18 t=138.0s T=0.059
+[19:00:22]   new_best E=62 cl12=22 cl13=22 cl23=18 t=138.0s T=0.059
+[19:01:03]   steps=147316 (818/s)
+[19:01:03]   steps=147316 (818/s)
+[19:01:03]   done: best_E=66  cl12=18  cl13=24  cl23=24  session_best=33  elapsed=180.1s
+[19:01:03]   done: best_E=66  cl12=18  cl13=24  cl23=24  session_best=33  elapsed=180.1s
+[19:01:03] trial=  24  strategy=pool_start  init_E=33  T_init=15.0  budget=180.0s  time=19:01:03
+[19:01:03] trial=  24  strategy=pool_start  init_E=33  T_init=15.0  budget=180.0s  time=19:01:03
+[19:01:04]   steps=147327 (818/s)
+[19:01:04]   steps=147327 (818/s)
+[19:01:04]   done: best_E=62  cl12=22  cl13=22  cl23=18  session_best=33  elapsed=180.1s
+[19:01:04]   done: best_E=62  cl12=22  cl13=22  cl23=18  session_best=33  elapsed=180.1s
+[19:01:04] trial=  24  strategy=pool_start  init_E=58  T_init=15.0  budget=180.0s  time=19:01:04
+[19:01:04] trial=  24  strategy=pool_start  init_E=58  T_init=15.0  budget=180.0s  time=19:01:04
+[19:04:03]   steps=148821 (827/s)
+[19:04:03]   steps=148821 (827/s)
+[19:04:03]   done: best_E=33  cl12=0  cl13=14  cl23=19  session_best=33  elapsed=180.1s
+[19:04:03]   done: best_E=33  cl12=0  cl13=14  cl23=19  session_best=33  elapsed=180.1s
+[19:04:03] trial=  25  strategy=random_start  init_E=70  T_init=25.0  budget=180.0s  time=19:04:03
+[19:04:03] trial=  25  strategy=random_start  init_E=70  T_init=25.0  budget=180.0s  time=19:04:03
+[19:04:04]   steps=146306 (813/s)
+[19:04:04]   steps=146306 (813/s)
+[19:04:04]   done: best_E=58  cl12=0  cl13=24  cl23=34  session_best=33  elapsed=180.1s
+[19:04:04]   done: best_E=58  cl12=0  cl13=24  cl23=34  session_best=33  elapsed=180.1s
+[19:04:04] trial=  25  strategy=random_start  init_E=74  T_init=25.0  budget=180.0s  time=19:04:04
+[19:04:04] trial=  25  strategy=random_start  init_E=74  T_init=25.0  budget=180.0s  time=19:04:04
+[19:05:23]   new_best E=73 cl12=24 cl13=23 cl23=26 t=78.6s T=0.821
+[19:05:23]   new_best E=73 cl12=24 cl13=23 cl23=26 t=78.6s T=0.821
+[19:05:27]   new_best E=71 cl12=23 cl13=23 cl23=25 t=83.3s T=0.670
+[19:05:27]   new_best E=71 cl12=23 cl13=23 cl23=25 t=83.3s T=0.670
+[19:05:32]   new_best E=70 cl12=24 cl13=21 cl23=25 t=88.2s T=0.540
+[19:05:32]   new_best E=70 cl12=24 cl13=21 cl23=25 t=88.2s T=0.540
+[19:05:39]   new_best E=69 cl12=24 cl13=20 cl23=25 t=94.8s T=0.405
+[19:05:39]   new_best E=69 cl12=24 cl13=20 cl23=25 t=94.8s T=0.405
+[19:05:43]   new_best E=68 cl12=24 cl13=19 cl23=25 t=99.1s T=0.336
+[19:05:43]   new_best E=68 cl12=24 cl13=19 cl23=25 t=99.1s T=0.336
+[19:05:46]   new_best E=69 cl12=19 cl13=24 cl23=26 t=102.8s T=0.286
+[19:05:46]   new_best E=69 cl12=19 cl13=24 cl23=26 t=102.8s T=0.286
+[19:05:48]   new_best E=68 cl12=19 cl13=24 cl23=25 t=104.3s T=0.268
+[19:05:48]   new_best E=68 cl12=19 cl13=24 cl23=25 t=104.3s T=0.268
+[19:05:49]   new_best E=67 cl12=18 cl13=24 cl23=25 t=105.3s T=0.257
+[19:05:49]   new_best E=67 cl12=18 cl13=24 cl23=25 t=105.3s T=0.257
+[19:05:58]   new_best E=66 cl12=18 cl13=27 cl23=21 t=114.9s T=0.169
+[19:05:58]   new_best E=66 cl12=18 cl13=27 cl23=21 t=114.9s T=0.169
+[19:06:18]   new_best E=65 cl12=18 cl13=27 cl23=20 t=134.8s T=0.071
+[19:06:18]   new_best E=65 cl12=18 cl13=27 cl23=20 t=134.8s T=0.071
+[19:06:38]   new_best E=67 cl12=21 cl13=22 cl23=24 t=153.8s T=0.031
+[19:06:38]   new_best E=67 cl12=21 cl13=22 cl23=24 t=153.8s T=0.031
+[19:06:53]   new_best E=66 cl12=19 cl13=20 cl23=27 t=168.9s T=0.016
+[19:06:53]   new_best E=66 cl12=19 cl13=20 cl23=27 t=168.9s T=0.016
+[19:07:03]   steps=139446 (775/s)
+[19:07:03]   steps=139446 (775/s)
+[19:07:03]   done: best_E=65  cl12=18  cl13=27  cl23=20  session_best=33  elapsed=180.0s
+[19:07:03]   done: best_E=65  cl12=18  cl13=27  cl23=20  session_best=33  elapsed=180.0s
+[19:07:03]   [status] pool=8 entries  session_best=33
+[19:07:03]   [status] pool=8 entries  session_best=33
+[19:07:03] trial=  26  strategy=pool_start  init_E=60  T_init=15.0  budget=180.0s  time=19:07:03
+[19:07:03] trial=  26  strategy=pool_start  init_E=60  T_init=15.0  budget=180.0s  time=19:07:03
+[19:07:04]   steps=142598 (792/s)
+[19:07:04]   steps=142598 (792/s)
+[19:07:04]   done: best_E=66  cl12=19  cl13=20  cl23=27  session_best=33  elapsed=180.1s
+[19:07:04]   done: best_E=66  cl12=19  cl13=20  cl23=27  session_best=33  elapsed=180.1s
+[19:07:04]   [status] pool=8 entries  session_best=33
+[19:07:04]   [status] pool=8 entries  session_best=33
+[19:07:04] trial=  26  strategy=pool_start  init_E=61  T_init=15.0  budget=180.0s  time=19:07:04
+[19:07:04] trial=  26  strategy=pool_start  init_E=61  T_init=15.0  budget=180.0s  time=19:07:04
+[19:10:03]   steps=144371 (802/s)
+[19:10:03]   steps=144371 (802/s)
+[19:10:03]   done: best_E=60  cl12=20  cl13=28  cl23=12  session_best=33  elapsed=180.0s
+[19:10:03]   done: best_E=60  cl12=20  cl13=28  cl23=12  session_best=33  elapsed=180.0s
+[19:10:03] trial=  27  strategy=heavy_perturb  init_E=77  T_init=20.0  budget=180.0s  time=19:10:03
+[19:10:03] trial=  27  strategy=heavy_perturb  init_E=77  T_init=20.0  budget=180.0s  time=19:10:03
+[19:10:04]   steps=141141 (784/s)
+[19:10:04]   steps=141141 (784/s)
+[19:10:04]   done: best_E=61  cl12=20  cl13=18  cl23=23  session_best=33  elapsed=180.0s
+[19:10:04]   done: best_E=61  cl12=20  cl13=18  cl23=23  session_best=33  elapsed=180.0s
+[19:10:04] trial=  27  strategy=heavy_perturb  init_E=108  T_init=20.0  budget=180.0s  time=19:10:04
+[19:10:04] trial=  27  strategy=heavy_perturb  init_E=108  T_init=20.0  budget=180.0s  time=19:10:04
+[19:10:04]   new_best E=104 cl12=32 cl13=35 cl23=37 t=0.0s T=20.000
+[19:10:04]   new_best E=104 cl12=32 cl13=35 cl23=37 t=0.0s T=20.000
+[19:10:04]   new_best E=98 cl12=34 cl13=32 cl23=32 t=0.0s T=19.999
+[19:10:04]   new_best E=98 cl12=34 cl13=32 cl23=32 t=0.0s T=19.999
+[19:10:04]   new_best E=97 cl12=29 cl13=36 cl23=32 t=0.1s T=19.911
+[19:10:04]   new_best E=97 cl12=29 cl13=36 cl23=32 t=0.1s T=19.911
+[19:10:04]   new_best E=95 cl12=32 cl13=30 cl23=33 t=0.3s T=19.715
+[19:10:04]   new_best E=95 cl12=32 cl13=30 cl23=33 t=0.3s T=19.715
+[19:10:05]   new_best E=90 cl12=34 cl13=24 cl23=32 t=1.2s T=19.051
+[19:10:05]   new_best E=90 cl12=34 cl13=24 cl23=32 t=1.2s T=19.051
+[19:10:06]   new_best E=87 cl12=33 cl13=28 cl23=26 t=1.8s T=18.555
+[19:10:06]   new_best E=87 cl12=33 cl13=28 cl23=26 t=1.8s T=18.555
+[19:10:45]   new_best E=86 cl12=30 cl13=25 cl23=31 t=40.5s T=3.609
+[19:10:45]   new_best E=86 cl12=30 cl13=25 cl23=31 t=40.5s T=3.609
+[19:10:47]   new_best E=82 cl12=22 cl13=34 cl23=26 t=42.6s T=3.312
+[19:10:47]   new_best E=82 cl12=22 cl13=34 cl23=26 t=42.6s T=3.312
+[19:10:59]   new_best E=81 cl12=27 cl13=32 cl23=22 t=55.1s T=1.956
+[19:10:59]   new_best E=81 cl12=27 cl13=32 cl23=22 t=55.1s T=1.956
+[19:10:59]   new_best E=77 cl12=24 cl13=32 cl23=21 t=55.1s T=1.956
+[19:10:59]   new_best E=77 cl12=24 cl13=32 cl23=21 t=55.1s T=1.956
+[19:11:10]   new_best E=76 cl12=27 cl13=24 cl23=25 t=67.1s T=1.176
+[19:11:10]   new_best E=76 cl12=27 cl13=24 cl23=25 t=67.1s T=1.176
+[19:11:10]   new_best E=72 cl12=26 cl13=21 cl23=25 t=66.4s T=1.213
+[19:11:10]   new_best E=72 cl12=26 cl13=21 cl23=25 t=66.4s T=1.213
+[19:11:15]   new_best E=75 cl12=24 cl13=22 cl23=29 t=71.9s T=0.962
+[19:11:15]   new_best E=75 cl12=24 cl13=22 cl23=29 t=71.9s T=0.962
+[19:11:16]   new_best E=71 cl12=25 cl13=23 cl23=23 t=71.9s T=0.960
+[19:11:16]   new_best E=71 cl12=25 cl13=23 cl23=23 t=71.9s T=0.960
+[19:11:17]   new_best E=74 cl12=24 cl13=24 cl23=26 t=74.1s T=0.875
+[19:11:17]   new_best E=74 cl12=24 cl13=24 cl23=26 t=74.1s T=0.875
+[19:11:38]   new_best E=70 cl12=25 cl13=22 cl23=23 t=94.4s T=0.371
+[19:11:38]   new_best E=70 cl12=25 cl13=22 cl23=23 t=94.4s T=0.371
+[19:11:40]   new_best E=72 cl12=24 cl13=22 cl23=26 t=97.1s T=0.331
+[19:11:40]   new_best E=72 cl12=24 cl13=22 cl23=26 t=97.1s T=0.331
+[19:11:43]   new_best E=69 cl12=23 cl13=23 cl23=23 t=98.8s T=0.308
+[19:11:43]   new_best E=69 cl12=23 cl13=23 cl23=23 t=98.8s T=0.308
+[19:11:52]   new_best E=71 cl12=27 cl13=21 cl23=23 t=109.2s T=0.199
+[19:11:52]   new_best E=71 cl12=27 cl13=21 cl23=23 t=109.2s T=0.199
+[19:12:19]   new_best E=70 cl12=23 cl13=26 cl23=21 t=135.2s T=0.066
+[19:12:19]   new_best E=70 cl12=23 cl13=26 cl23=21 t=135.2s T=0.066
+[19:12:20]   new_best E=69 cl12=27 cl13=22 cl23=20 t=137.1s T=0.061
+[19:12:20]   new_best E=69 cl12=27 cl13=22 cl23=20 t=137.1s T=0.061
+[19:12:32]   new_best E=66 cl12=23 cl13=21 cl23=22 t=148.4s T=0.038
+[19:12:32]   new_best E=66 cl12=23 cl13=21 cl23=22 t=148.4s T=0.038
+[19:12:55]   new_best E=63 cl12=24 cl13=19 cl23=20 t=171.2s T=0.014
+[19:12:55]   new_best E=63 cl12=24 cl13=19 cl23=20 t=171.2s T=0.014
+[19:13:03]   new_best E=67 cl12=24 cl13=24 cl23=19 t=179.6s T=0.010
+[19:13:03]   new_best E=67 cl12=24 cl13=24 cl23=19 t=179.6s T=0.010
+[19:13:03]   steps=137309 (763/s)
+[19:13:03]   steps=137309 (763/s)
+[19:13:03]   done: best_E=67  cl12=24  cl13=24  cl23=19  session_best=33  elapsed=180.1s
+[19:13:03]   done: best_E=67  cl12=24  cl13=24  cl23=19  session_best=33  elapsed=180.1s
+[19:13:03] trial=  28  strategy=pool_start  init_E=59  T_init=15.0  budget=180.0s  time=19:13:03
+[19:13:03] trial=  28  strategy=pool_start  init_E=59  T_init=15.0  budget=180.0s  time=19:13:03
+[19:13:04]   steps=143699 (798/s)
+[19:13:04]   steps=143699 (798/s)
+[19:13:04]   done: best_E=63  cl12=24  cl13=19  cl23=20  session_best=33  elapsed=180.0s
+[19:13:04]   done: best_E=63  cl12=24  cl13=19  cl23=20  session_best=33  elapsed=180.0s
+[19:13:04] trial=  28  strategy=pool_start  init_E=70  T_init=15.0  budget=180.0s  time=19:13:04
+[19:13:04] trial=  28  strategy=pool_start  init_E=70  T_init=15.0  budget=180.0s  time=19:13:04
+[19:14:52]   new_best E=67 cl12=23 cl13=19 cl23=25 t=107.5s T=0.190
+[19:14:52]   new_best E=67 cl12=23 cl13=19 cl23=25 t=107.5s T=0.190
+[19:14:57]   new_best E=66 cl12=21 cl13=19 cl23=26 t=113.4s T=0.150
+[19:14:57]   new_best E=66 cl12=21 cl13=19 cl23=26 t=113.4s T=0.150
+[19:14:58]   new_best E=65 cl12=21 cl13=20 cl23=24 t=113.8s T=0.147
+[19:14:58]   new_best E=65 cl12=21 cl13=20 cl23=24 t=113.8s T=0.147
+[19:15:13]   new_best E=63 cl12=21 cl13=19 cl23=23 t=129.3s T=0.078
+[19:15:13]   new_best E=63 cl12=21 cl13=19 cl23=23 t=129.3s T=0.078
+[19:15:45]   new_best E=62 cl12=18 cl13=21 cl23=23 t=160.7s T=0.022
+[19:15:45]   new_best E=62 cl12=18 cl13=21 cl23=23 t=160.7s T=0.022
+[19:16:03]   steps=136608 (759/s)
+[19:16:03]   steps=136608 (759/s)
+[19:16:03]   done: best_E=59  cl12=20  cl13=27  cl23=12  session_best=33  elapsed=180.0s
+[19:16:03]   done: best_E=59  cl12=20  cl13=27  cl23=12  session_best=33  elapsed=180.0s
+[19:16:04] trial=  29  strategy=random_start  init_E=69  T_init=25.0  budget=180.0s  time=19:16:04
+[19:16:04] trial=  29  strategy=random_start  init_E=69  T_init=25.0  budget=180.0s  time=19:16:04
+[19:16:04]   new_best E=64 cl12=0 cl13=27 cl23=37 t=0.0s T=25.000
+[19:16:04]   new_best E=64 cl12=0 cl13=27 cl23=37 t=0.0s T=25.000
+[19:16:04]   steps=140286 (779/s)
+[19:16:04]   steps=140286 (779/s)
+[19:16:04]   done: best_E=62  cl12=18  cl13=21  cl23=23  session_best=33  elapsed=180.1s
+[19:16:04]   done: best_E=62  cl12=18  cl13=21  cl23=23  session_best=33  elapsed=180.1s
+[19:16:04] trial=  29  strategy=random_start  init_E=68  T_init=25.0  budget=180.0s  time=19:16:04
+[19:16:04] trial=  29  strategy=random_start  init_E=68  T_init=25.0  budget=180.0s  time=19:16:04
+[19:18:10]   new_best E=66 cl12=24 cl13=21 cl23=21 t=126.0s T=0.105
+[19:18:10]   new_best E=66 cl12=24 cl13=21 cl23=21 t=126.0s T=0.105
+[19:18:54]   new_best E=64 cl12=24 cl13=21 cl23=19 t=169.7s T=0.016
+[19:18:54]   new_best E=64 cl12=24 cl13=21 cl23=19 t=169.7s T=0.016
+[19:19:03]   new_best E=62 cl12=24 cl13=19 cl23=19 t=178.3s T=0.011
+[19:19:03]   new_best E=62 cl12=24 cl13=19 cl23=19 t=178.3s T=0.011
+[19:19:04]   steps=116921 (650/s)
+[19:19:04]   steps=116921 (650/s)
+[19:19:04]   done: best_E=64  cl12=0  cl13=27  cl23=37  session_best=33  elapsed=180.0s
+[19:19:04]   done: best_E=64  cl12=0  cl13=27  cl23=37  session_best=33  elapsed=180.0s
+[19:19:04] trial=  30  strategy=pool_start  init_E=96  T_init=15.0  budget=180.0s  time=19:19:04
+[19:19:04] trial=  30  strategy=pool_start  init_E=96  T_init=15.0  budget=180.0s  time=19:19:04
+[19:19:04]   new_best E=93 cl12=32 cl13=34 cl23=27 t=0.0s T=15.000
+[19:19:04]   new_best E=93 cl12=32 cl13=34 cl23=27 t=0.0s T=15.000
+[19:19:05]   steps=135893 (755/s)
+[19:19:05]   steps=135893 (755/s)
+[19:19:05]   done: best_E=62  cl12=24  cl13=19  cl23=19  session_best=33  elapsed=180.1s
+[19:19:05]   done: best_E=62  cl12=24  cl13=19  cl23=19  session_best=33  elapsed=180.1s
+[19:19:05] trial=  30  strategy=pool_start  init_E=86  T_init=15.0  budget=180.0s  time=19:19:05
+[19:19:05] trial=  30  strategy=pool_start  init_E=86  T_init=15.0  budget=180.0s  time=19:19:05
+[19:19:05]   new_best E=84 cl12=20 cl13=38 cl23=26 t=0.0s T=15.000
+[19:19:05]   new_best E=84 cl12=20 cl13=38 cl23=26 t=0.0s T=15.000
+[19:19:05]   new_best E=91 cl12=31 cl13=28 cl23=32 t=1.8s T=13.920
+[19:19:05]   new_best E=91 cl12=31 cl13=28 cl23=32 t=1.8s T=13.920
+[19:19:09]   new_best E=88 cl12=28 cl13=28 cl23=32 t=5.8s T=11.859
+[19:19:09]   new_best E=88 cl12=28 cl13=28 cl23=32 t=5.8s T=11.859
+[19:19:24]   new_best E=87 cl12=25 cl13=36 cl23=26 t=20.8s T=6.433
+[19:19:24]   new_best E=87 cl12=25 cl13=36 cl23=26 t=20.8s T=6.433
+[19:19:28]   new_best E=86 cl12=27 cl13=30 cl23=29 t=24.3s T=5.599
+[19:19:28]   new_best E=86 cl12=27 cl13=30 cl23=29 t=24.3s T=5.599
+[19:19:36]   new_best E=84 cl12=30 cl13=26 cl23=28 t=32.6s T=3.984
+[19:19:36]   new_best E=84 cl12=30 cl13=26 cl23=28 t=32.6s T=3.984
+[19:19:40]   new_best E=83 cl12=29 cl13=28 cl23=26 t=35.3s T=3.570
+[19:19:40]   new_best E=83 cl12=29 cl13=28 cl23=26 t=35.3s T=3.570
+[19:19:51]   new_best E=82 cl12=26 cl13=28 cl23=28 t=47.9s T=2.143
+[19:19:51]   new_best E=82 cl12=26 cl13=28 cl23=28 t=47.9s T=2.143
+[19:19:55]   new_best E=82 cl12=29 cl13=23 cl23=30 t=50.2s T=1.952
+[19:19:55]   new_best E=82 cl12=29 cl13=23 cl23=30 t=50.2s T=1.952
+[19:19:58]   new_best E=80 cl12=22 cl13=28 cl23=30 t=53.8s T=1.683
+[19:19:58]   new_best E=80 cl12=22 cl13=28 cl23=30 t=53.8s T=1.683
+[19:19:58]   new_best E=79 cl12=22 cl13=28 cl23=29 t=53.8s T=1.683
+[19:19:58]   new_best E=79 cl12=22 cl13=28 cl23=29 t=53.8s T=1.683
+[19:20:02]   new_best E=80 cl12=30 cl13=23 cl23=27 t=58.4s T=1.400
+[19:20:02]   new_best E=80 cl12=30 cl13=23 cl23=27 t=58.4s T=1.400
+[19:20:03]   new_best E=79 cl12=25 cl13=23 cl23=31 t=59.4s T=1.345
+[19:20:03]   new_best E=79 cl12=25 cl13=23 cl23=31 t=59.4s T=1.345
+[19:20:04]   new_best E=78 cl12=24 cl13=30 cl23=24 t=59.5s T=1.335
+[19:20:04]   new_best E=78 cl12=24 cl13=30 cl23=24 t=59.5s T=1.335
+[19:20:04]   new_best E=77 cl12=24 cl13=33 cl23=20 t=59.5s T=1.335
+[19:20:04]   new_best E=77 cl12=24 cl13=33 cl23=20 t=59.5s T=1.335
+[19:20:06]   new_best E=73 cl12=25 cl13=26 cl23=22 t=61.2s T=1.248
+[19:20:06]   new_best E=73 cl12=25 cl13=26 cl23=22 t=61.2s T=1.248
+[19:20:13]   new_best E=77 cl12=28 cl13=22 cl23=27 t=69.6s T=0.886
+[19:20:13]   new_best E=77 cl12=28 cl13=22 cl23=27 t=69.6s T=0.886
+[19:20:16]   new_best E=76 cl12=28 cl13=22 cl23=26 t=72.8s T=0.779
+[19:20:16]   new_best E=76 cl12=28 cl13=22 cl23=26 t=72.8s T=0.779
+[19:20:19]   new_best E=72 cl12=24 cl13=21 cl23=27 t=74.2s T=0.735
+[19:20:19]   new_best E=72 cl12=24 cl13=21 cl23=27 t=74.2s T=0.735
+[19:20:37]   new_best E=71 cl12=21 cl13=21 cl23=29 t=92.2s T=0.354
+[19:20:37]   new_best E=71 cl12=21 cl13=21 cl23=29 t=92.2s T=0.354
+[19:21:07]   new_best E=74 cl12=28 cl13=25 cl23=21 t=123.3s T=0.100
+[19:21:07]   new_best E=74 cl12=28 cl13=25 cl23=21 t=123.3s T=0.100
+[19:21:08]   new_best E=73 cl12=26 cl13=26 cl23=21 t=124.8s T=0.094
+[19:21:08]   new_best E=73 cl12=26 cl13=26 cl23=21 t=124.8s T=0.094
+[19:21:16]   new_best E=72 cl12=24 cl13=27 cl23=21 t=131.9s T=0.070
+[19:21:16]   new_best E=72 cl12=24 cl13=27 cl23=21 t=131.9s T=0.070
+[19:21:22]   new_best E=69 cl12=28 cl13=21 cl23=20 t=137.1s T=0.057
+[19:21:22]   new_best E=69 cl12=28 cl13=21 cl23=20 t=137.1s T=0.057
+[19:21:27]   new_best E=71 cl12=24 cl13=26 cl23=21 t=143.9s T=0.043
+[19:21:27]   new_best E=71 cl12=24 cl13=26 cl23=21 t=143.9s T=0.043
+[19:21:31]   new_best E=70 cl12=25 cl13=24 cl23=21 t=147.6s T=0.037
+[19:21:31]   new_best E=70 cl12=25 cl13=24 cl23=21 t=147.6s T=0.037
+[19:21:43]   new_best E=68 cl12=23 cl13=24 cl23=21 t=159.0s T=0.023
+[19:21:43]   new_best E=68 cl12=23 cl13=24 cl23=21 t=159.0s T=0.023
+[19:22:04]   steps=119042 (661/s)
+[19:22:04]   steps=119042 (661/s)
+[19:22:04]   done: best_E=68  cl12=23  cl13=24  cl23=21  session_best=33  elapsed=180.0s
+[19:22:04]   done: best_E=68  cl12=23  cl13=24  cl23=21  session_best=33  elapsed=180.0s
+[19:22:04]   [status] pool=16 entries  session_best=33
+[19:22:04]   [status] pool=16 entries  session_best=33
+[19:22:04] trial=  31  strategy=heavy_perturb  init_E=102  T_init=20.0  budget=180.0s  time=19:22:04
+[19:22:04] trial=  31  strategy=heavy_perturb  init_E=102  T_init=20.0  budget=180.0s  time=19:22:04
+[19:22:04]   new_best E=101 cl12=35 cl13=34 cl23=32 t=0.1s T=19.879
+[19:22:04]   new_best E=101 cl12=35 cl13=34 cl23=32 t=0.1s T=19.879
+[19:22:04]   new_best E=97 cl12=33 cl13=32 cl23=32 t=0.1s T=19.879
+[19:22:04]   new_best E=97 cl12=33 cl13=32 cl23=32 t=0.1s T=19.879
+[19:22:04]   new_best E=92 cl12=30 cl13=31 cl23=31 t=0.3s T=19.781
+[19:22:04]   new_best E=92 cl12=30 cl13=31 cl23=31 t=0.3s T=19.781
+[19:22:05]   steps=115662 (643/s)
+[19:22:05]   steps=115662 (643/s)
+[19:22:05]   done: best_E=69  cl12=28  cl13=21  cl23=20  session_best=33  elapsed=180.1s
+[19:22:05]   done: best_E=69  cl12=28  cl13=21  cl23=20  session_best=33  elapsed=180.1s
+[19:22:05]   [status] pool=16 entries  session_best=33
+[19:22:05]   [status] pool=16 entries  session_best=33
+[19:22:05] trial=  31  strategy=heavy_perturb  init_E=106  T_init=20.0  budget=180.0s  time=19:22:05
+[19:22:05] trial=  31  strategy=heavy_perturb  init_E=106  T_init=20.0  budget=180.0s  time=19:22:05
+[19:22:05]   new_best E=105 cl12=36 cl13=31 cl23=38 t=0.0s T=19.998
+[19:22:05]   new_best E=105 cl12=36 cl13=31 cl23=38 t=0.0s T=19.998
+[19:22:05]   new_best E=100 cl12=36 cl13=29 cl23=35 t=0.0s T=19.998
+[19:22:05]   new_best E=100 cl12=36 cl13=29 cl23=35 t=0.0s T=19.998
+[19:22:05]   new_best E=99 cl12=29 cl13=35 cl23=35 t=0.0s T=19.998
+[19:22:05]   new_best E=99 cl12=29 cl13=35 cl23=35 t=0.0s T=19.998
+[19:22:05]   new_best E=98 cl12=32 cl13=35 cl23=31 t=0.1s T=19.897
+[19:22:05]   new_best E=98 cl12=32 cl13=35 cl23=31 t=0.1s T=19.897
+[19:22:05]   new_best E=96 cl12=35 cl13=28 cl23=33 t=0.5s T=19.586
+[19:22:05]   new_best E=96 cl12=35 cl13=28 cl23=33 t=0.5s T=19.586
+[19:22:05]   new_best E=94 cl12=31 cl13=34 cl23=29 t=0.6s T=19.472
+[19:22:05]   new_best E=94 cl12=31 cl13=34 cl23=29 t=0.6s T=19.472
+[19:22:06]   new_best E=92 cl12=26 cl13=32 cl23=34 t=1.2s T=19.041
+[19:22:06]   new_best E=92 cl12=26 cl13=32 cl23=34 t=1.2s T=19.041
+[19:22:06]   new_best E=91 cl12=30 cl13=30 cl23=31 t=2.6s T=17.896
+[19:22:06]   new_best E=91 cl12=30 cl13=30 cl23=31 t=2.6s T=17.896
+[19:22:07]   new_best E=90 cl12=31 cl13=28 cl23=31 t=3.3s T=17.426
+[19:22:07]   new_best E=90 cl12=31 cl13=28 cl23=31 t=3.3s T=17.426
+[19:22:07]   new_best E=90 cl12=23 cl13=30 cl23=37 t=2.8s T=17.759
+[19:22:07]   new_best E=90 cl12=23 cl13=30 cl23=37 t=2.8s T=17.759
+[19:22:08]   new_best E=86 cl12=28 cl13=29 cl23=29 t=4.7s T=16.432
+[19:22:08]   new_best E=86 cl12=28 cl13=29 cl23=29 t=4.7s T=16.432
+[19:22:26]   new_best E=89 cl12=30 cl13=29 cl23=30 t=21.3s T=8.142
+[19:22:26]   new_best E=89 cl12=30 cl13=29 cl23=30 t=21.3s T=8.142
+[19:22:43]   new_best E=87 cl12=26 cl13=30 cl23=31 t=38.3s T=3.974
+[19:22:43]   new_best E=87 cl12=26 cl13=30 cl23=31 t=38.3s T=3.974
+[19:22:47]   new_best E=84 cl12=31 cl13=27 cl23=26 t=42.8s T=3.285
+[19:22:47]   new_best E=84 cl12=31 cl13=27 cl23=26 t=42.8s T=3.285
+[19:22:55]   new_best E=85 cl12=30 cl13=27 cl23=28 t=51.1s T=2.314
+[19:22:55]   new_best E=85 cl12=30 cl13=27 cl23=28 t=51.1s T=2.314
+[19:23:00]   new_best E=83 cl12=24 cl13=28 cl23=31 t=55.4s T=1.928
+[19:23:00]   new_best E=83 cl12=24 cl13=28 cl23=31 t=55.4s T=1.928
+[19:23:00]   new_best E=80 cl12=23 cl13=31 cl23=26 t=55.6s T=1.914
+[19:23:00]   new_best E=80 cl12=23 cl13=31 cl23=26 t=55.6s T=1.914
+[19:23:01]   new_best E=83 cl12=25 cl13=29 cl23=29 t=57.0s T=1.803
+[19:23:01]   new_best E=83 cl12=25 cl13=29 cl23=29 t=57.0s T=1.803
+[19:23:01]   new_best E=78 cl12=25 cl13=24 cl23=29 t=57.1s T=1.791
+[19:23:01]   new_best E=78 cl12=25 cl13=24 cl23=29 t=57.1s T=1.791
+[19:23:06]   new_best E=77 cl12=26 cl13=26 cl23=25 t=61.0s T=1.521
+[19:23:06]   new_best E=77 cl12=26 cl13=26 cl23=25 t=61.0s T=1.521
+[19:23:06]   new_best E=76 cl12=26 cl13=26 cl23=24 t=61.3s T=1.505
+[19:23:06]   new_best E=76 cl12=26 cl13=26 cl23=24 t=61.3s T=1.505
+[19:23:08]   new_best E=75 cl12=24 cl13=26 cl23=25 t=63.0s T=1.398
+[19:23:08]   new_best E=75 cl12=24 cl13=26 cl23=25 t=63.0s T=1.398
+[19:23:09]   new_best E=74 cl12=26 cl13=25 cl23=23 t=64.4s T=1.319
+[19:23:09]   new_best E=74 cl12=26 cl13=25 cl23=23 t=64.4s T=1.319
+[19:23:17]   new_best E=77 cl12=25 cl13=28 cl23=24 t=73.2s T=0.908
+[19:23:17]   new_best E=77 cl12=25 cl13=28 cl23=24 t=73.2s T=0.908
+[19:23:18]   new_best E=76 cl12=24 cl13=28 cl23=24 t=74.2s T=0.873
+[19:23:18]   new_best E=76 cl12=24 cl13=28 cl23=24 t=74.2s T=0.873
+[19:23:19]   new_best E=75 cl12=26 cl13=22 cl23=27 t=75.3s T=0.832
+[19:23:19]   new_best E=75 cl12=26 cl13=22 cl23=27 t=75.3s T=0.832
+[19:23:38]   new_best E=73 cl12=23 cl13=25 cl23=25 t=93.6s T=0.384
+[19:23:38]   new_best E=73 cl12=23 cl13=25 cl23=25 t=93.6s T=0.384
+[19:23:39]   new_best E=74 cl12=28 cl13=23 cl23=23 t=95.7s T=0.351
+[19:23:39]   new_best E=74 cl12=28 cl13=23 cl23=23 t=95.7s T=0.351
+[19:23:40]   new_best E=71 cl12=23 cl13=24 cl23=24 t=95.4s T=0.355
+[19:23:40]   new_best E=71 cl12=23 cl13=24 cl23=24 t=95.4s T=0.355
+[19:23:41]   new_best E=72 cl12=28 cl13=23 cl23=21 t=97.6s T=0.325
+[19:23:41]   new_best E=72 cl12=28 cl13=23 cl23=21 t=97.6s T=0.325
+[19:23:54]   new_best E=71 cl12=29 cl13=23 cl23=19 t=110.1s T=0.192
+[19:23:54]   new_best E=71 cl12=29 cl13=23 cl23=19 t=110.1s T=0.192
+[19:24:01]   new_best E=70 cl12=28 cl13=23 cl23=19 t=117.1s T=0.143
+[19:24:01]   new_best E=70 cl12=28 cl13=23 cl23=19 t=117.1s T=0.143
+[19:24:13]   new_best E=69 cl12=20 cl13=26 cl23=23 t=128.3s T=0.089
+[19:24:13]   new_best E=69 cl12=20 cl13=26 cl23=23 t=128.3s T=0.089
+[19:24:14]   new_best E=69 cl12=28 cl13=22 cl23=19 t=130.8s T=0.080
+[19:24:14]   new_best E=69 cl12=28 cl13=22 cl23=19 t=130.8s T=0.080
+[19:24:16]   new_best E=68 cl12=20 cl13=26 cl23=22 t=131.1s T=0.079
+[19:24:16]   new_best E=68 cl12=20 cl13=26 cl23=22 t=131.1s T=0.079
+[19:24:22]   new_best E=67 cl12=27 cl13=19 cl23=21 t=138.8s T=0.057
+[19:24:22]   new_best E=67 cl12=27 cl13=19 cl23=21 t=138.8s T=0.057
+[19:24:28]   new_best E=67 cl12=21 cl13=26 cl23=20 t=143.1s T=0.048
+[19:24:28]   new_best E=67 cl12=21 cl13=26 cl23=20 t=143.1s T=0.048
+[19:24:59]   new_best E=65 cl12=21 cl13=24 cl23=20 t=174.2s T=0.013
+[19:24:59]   new_best E=65 cl12=21 cl13=24 cl23=20 t=174.2s T=0.013
+[19:25:04]   steps=123210 (684/s)
+[19:25:04]   steps=123210 (684/s)
+[19:25:04]   done: best_E=67  cl12=27  cl13=19  cl23=21  session_best=33  elapsed=180.0s
+[19:25:04]   done: best_E=67  cl12=27  cl13=19  cl23=21  session_best=33  elapsed=180.0s
+[19:25:04] trial=  32  strategy=pool_start  init_E=76  T_init=15.0  budget=180.0s  time=19:25:04
+[19:25:04] trial=  32  strategy=pool_start  init_E=76  T_init=15.0  budget=180.0s  time=19:25:04
+[19:25:05]   steps=121754 (676/s)
+[19:25:05]   steps=121754 (676/s)
+[19:25:05]   done: best_E=65  cl12=21  cl13=24  cl23=20  session_best=33  elapsed=180.1s
+[19:25:05]   done: best_E=65  cl12=21  cl13=24  cl23=20  session_best=33  elapsed=180.1s
+[19:25:05] trial=  32  strategy=pool_start  init_E=88  T_init=15.0  budget=180.0s  time=19:25:05
+[19:25:05] trial=  32  strategy=pool_start  init_E=88  T_init=15.0  budget=180.0s  time=19:25:05
+[19:25:18]   new_best E=87 cl12=28 cl13=29 cl23=30 t=12.8s T=8.915
+[19:25:18]   new_best E=87 cl12=28 cl13=29 cl23=30 t=12.8s T=8.915
+[19:25:42]   new_best E=86 cl12=26 cl13=29 cl23=31 t=37.3s T=3.294
+[19:25:42]   new_best E=86 cl12=26 cl13=29 cl23=31 t=37.3s T=3.294
+[19:25:50]   new_best E=85 cl12=27 cl13=31 cl23=27 t=45.3s T=2.377
+[19:25:50]   new_best E=85 cl12=27 cl13=31 cl23=27 t=45.3s T=2.377
+[19:25:52]   new_best E=84 cl12=27 cl13=28 cl23=29 t=47.7s T=2.164
+[19:25:52]   new_best E=84 cl12=27 cl13=28 cl23=29 t=47.7s T=2.164
+[19:25:58]   new_best E=83 cl12=28 cl13=26 cl23=29 t=53.2s T=1.727
+[19:25:58]   new_best E=83 cl12=28 cl13=26 cl23=29 t=53.2s T=1.727
+[19:25:59]   new_best E=82 cl12=28 cl13=27 cl23=27 t=53.8s T=1.687
+[19:25:59]   new_best E=82 cl12=28 cl13=27 cl23=27 t=53.8s T=1.687
+[19:26:01]   new_best E=77 cl12=29 cl13=23 cl23=25 t=56.7s T=1.496
+[19:26:01]   new_best E=77 cl12=29 cl13=23 cl23=25 t=56.7s T=1.496
+[19:26:02]   new_best E=74 cl12=26 cl13=23 cl23=25 t=57.4s T=1.456
+[19:26:02]   new_best E=74 cl12=26 cl13=23 cl23=25 t=57.4s T=1.456
+[19:26:19]   new_best E=75 cl12=22 cl13=27 cl23=26 t=75.8s T=0.689
+[19:26:19]   new_best E=75 cl12=22 cl13=27 cl23=26 t=75.8s T=0.689
+[19:26:27]   new_best E=72 cl12=23 cl13=22 cl23=27 t=82.6s T=0.523
+[19:26:27]   new_best E=72 cl12=23 cl13=22 cl23=27 t=82.6s T=0.523
+[19:26:33]   new_best E=73 cl12=22 cl13=27 cl23=24 t=88.9s T=0.405
+[19:26:33]   new_best E=73 cl12=22 cl13=27 cl23=24 t=88.9s T=0.405
+[19:26:35]   new_best E=71 cl12=22 cl13=27 cl23=22 t=91.2s T=0.369
+[19:26:35]   new_best E=71 cl12=22 cl13=27 cl23=22 t=91.2s T=0.369
+[19:26:40]   new_best E=71 cl12=24 cl13=22 cl23=25 t=94.8s T=0.318
+[19:26:40]   new_best E=71 cl12=24 cl13=22 cl23=25 t=94.8s T=0.318
+[19:26:46]   new_best E=70 cl12=23 cl13=22 cl23=25 t=101.7s T=0.240
+[19:26:46]   new_best E=70 cl12=23 cl13=22 cl23=25 t=101.7s T=0.240
+[19:26:49]   new_best E=70 cl12=20 cl13=27 cl23=23 t=105.6s T=0.205
+[19:26:49]   new_best E=70 cl12=20 cl13=27 cl23=23 t=105.6s T=0.205
+[19:26:55]   new_best E=69 cl12=22 cl13=22 cl23=25 t=109.9s T=0.173
+[19:26:55]   new_best E=69 cl12=22 cl13=22 cl23=25 t=109.9s T=0.173
+[19:26:57]   new_best E=65 cl12=20 cl13=20 cl23=25 t=111.8s T=0.160
+[19:26:57]   new_best E=65 cl12=20 cl13=20 cl23=25 t=111.8s T=0.160
+[19:27:05]   new_best E=69 cl12=21 cl13=25 cl23=23 t=121.8s T=0.106
+[19:27:05]   new_best E=69 cl12=21 cl13=25 cl23=23 t=121.8s T=0.106
+[19:27:29]   new_best E=64 cl12=20 cl13=21 cl23=23 t=144.4s T=0.043
+[19:27:29]   new_best E=64 cl12=20 cl13=21 cl23=23 t=144.4s T=0.043
+[19:27:30]   new_best E=68 cl12=23 cl13=21 cl23=24 t=146.6s T=0.039
+[19:27:30]   new_best E=68 cl12=23 cl13=21 cl23=24 t=146.6s T=0.039
+[19:27:39]   new_best E=60 cl12=17 cl13=21 cl23=22 t=154.5s T=0.028
+[19:27:39]   new_best E=60 cl12=17 cl13=21 cl23=22 t=154.5s T=0.028
+[19:27:41]   new_best E=67 cl12=23 cl13=21 cl23=23 t=157.7s T=0.025
+[19:27:41]   new_best E=67 cl12=23 cl13=21 cl23=23 t=157.7s T=0.025
+[19:27:48]   new_best E=57 cl12=14 cl13=22 cl23=21 t=162.8s T=0.020
+[19:27:48]   new_best E=57 cl12=14 cl13=22 cl23=21 t=162.8s T=0.020
+[19:28:04]   steps=123029 (683/s)
+[19:28:04]   steps=123029 (683/s)
+[19:28:04]   done: best_E=67  cl12=23  cl13=21  cl23=23  session_best=33  elapsed=180.1s
+[19:28:04]   done: best_E=67  cl12=23  cl13=21  cl23=23  session_best=33  elapsed=180.1s
+[19:28:04] trial=  33  strategy=random_start  init_E=69  T_init=25.0  budget=180.0s  time=19:28:04
+[19:28:04] trial=  33  strategy=random_start  init_E=69  T_init=25.0  budget=180.0s  time=19:28:04
+[19:28:05]   steps=124717 (693/s)
+[19:28:05]   steps=124717 (693/s)
+[19:28:05]   done: best_E=57  cl12=14  cl13=22  cl23=21  session_best=33  elapsed=180.1s
+[19:28:05]   done: best_E=57  cl12=14  cl13=22  cl23=21  session_best=33  elapsed=180.1s
+[19:28:05] trial=  33  strategy=random_start  init_E=74  T_init=25.0  budget=180.0s  time=19:28:05
+[19:28:05] trial=  33  strategy=random_start  init_E=74  T_init=25.0  budget=180.0s  time=19:28:05
+[19:29:14]   new_best E=73 cl12=24 cl13=23 cl23=26 t=68.7s T=1.264
+[19:29:14]   new_best E=73 cl12=24 cl13=23 cl23=26 t=68.7s T=1.264
+[19:29:32]   new_best E=72 cl12=26 cl13=22 cl23=24 t=87.2s T=0.565
+[19:29:32]   new_best E=72 cl12=26 cl13=22 cl23=24 t=87.2s T=0.565
+[19:29:37]   new_best E=70 cl12=22 cl13=22 cl23=26 t=92.5s T=0.449
+[19:29:37]   new_best E=70 cl12=22 cl13=22 cl23=26 t=92.5s T=0.449
+[19:30:07]   new_best E=67 cl12=22 cl13=19 cl23=26 t=121.6s T=0.126
+[19:30:07]   new_best E=67 cl12=22 cl13=19 cl23=26 t=121.6s T=0.126
+[19:30:43]   new_best E=66 cl12=20 cl13=19 cl23=27 t=158.4s T=0.026
+[19:30:43]   new_best E=66 cl12=20 cl13=19 cl23=27 t=158.4s T=0.026
+[19:30:59]   new_best E=65 cl12=23 cl13=18 cl23=24 t=174.1s T=0.013
+[19:30:59]   new_best E=65 cl12=23 cl13=18 cl23=24 t=174.1s T=0.013
+[19:31:04]   steps=145887 (810/s)
+[19:31:04]   steps=145887 (810/s)
+[19:31:04]   done: best_E=69  cl12=0  cl13=34  cl23=35  session_best=33  elapsed=180.1s
+[19:31:04]   done: best_E=69  cl12=0  cl13=34  cl23=35  session_best=33  elapsed=180.1s
+[19:31:04] trial=  34  strategy=pool_start  init_E=91  T_init=15.0  budget=180.0s  time=19:31:04
+[19:31:04] trial=  34  strategy=pool_start  init_E=91  T_init=15.0  budget=180.0s  time=19:31:04
+[19:31:05]   steps=154464 (858/s)
+[19:31:05]   steps=154464 (858/s)
+[19:31:05]   done: best_E=65  cl12=23  cl13=18  cl23=24  session_best=33  elapsed=180.1s
+[19:31:05]   done: best_E=65  cl12=23  cl13=18  cl23=24  session_best=33  elapsed=180.1s
+[19:31:05] trial=  34  strategy=pool_start  init_E=31  T_init=15.0  budget=180.0s  time=19:31:05
+[19:31:05] trial=  34  strategy=pool_start  init_E=31  T_init=15.0  budget=180.0s  time=19:31:05
+[19:31:11]   new_best E=89 cl12=28 cl13=31 cl23=30 t=6.9s T=11.337
+[19:31:11]   new_best E=89 cl12=28 cl13=31 cl23=30 t=6.9s T=11.337
+[19:31:15]   new_best E=88 cl12=32 cl13=27 cl23=29 t=11.4s T=9.425
+[19:31:15]   new_best E=88 cl12=32 cl13=27 cl23=29 t=11.4s T=9.425
+[19:31:21]   new_best E=87 cl12=32 cl13=28 cl23=27 t=17.1s T=7.498
+[19:31:21]   new_best E=87 cl12=32 cl13=28 cl23=27 t=17.1s T=7.498
+[19:31:23]   new_best E=84 cl12=28 cl13=27 cl23=29 t=19.0s T=6.932
+[19:31:23]   new_best E=84 cl12=28 cl13=27 cl23=29 t=19.0s T=6.932
+[19:31:38]   new_best E=80 cl12=24 cl13=28 cl23=28 t=34.1s T=3.750
+[19:31:38]   new_best E=80 cl12=24 cl13=28 cl23=28 t=34.1s T=3.750
+[19:32:03]   new_best E=77 cl12=25 cl13=24 cl23=28 t=58.9s T=1.370
+[19:32:03]   new_best E=77 cl12=25 cl13=24 cl23=28 t=58.9s T=1.370
+[19:32:03]   new_best E=75 cl12=23 cl13=24 cl23=28 t=59.1s T=1.360
+[19:32:03]   new_best E=75 cl12=23 cl13=24 cl23=28 t=59.1s T=1.360
+[19:32:18]   new_best E=72 cl12=25 cl13=21 cl23=26 t=74.0s T=0.741
+[19:32:18]   new_best E=72 cl12=25 cl13=21 cl23=26 t=74.0s T=0.741
+[19:32:34]   new_best E=71 cl12=24 cl13=23 cl23=24 t=90.4s T=0.381
+[19:32:34]   new_best E=71 cl12=24 cl13=23 cl23=24 t=90.4s T=0.381
+[19:33:30]   new_best E=69 cl12=23 cl13=20 cl23=26 t=145.7s T=0.040
+[19:33:30]   new_best E=69 cl12=23 cl13=20 cl23=26 t=145.7s T=0.040
+[19:34:04]   steps=154733 (860/s)
+[19:34:04]   steps=154733 (860/s)
+[19:34:04]   done: best_E=69  cl12=23  cl13=20  cl23=26  session_best=33  elapsed=180.1s
+[19:34:04]   done: best_E=69  cl12=23  cl13=20  cl23=26  session_best=33  elapsed=180.1s
+[19:34:04] trial=  35  strategy=heavy_perturb  init_E=104  T_init=20.0  budget=180.0s  time=19:34:04
+[19:34:04] trial=  35  strategy=heavy_perturb  init_E=104  T_init=20.0  budget=180.0s  time=19:34:04
+[19:34:04]   new_best E=103 cl12=29 cl13=36 cl23=38 t=0.0s T=20.000
+[19:34:04]   new_best E=103 cl12=29 cl13=36 cl23=38 t=0.0s T=20.000
+[19:34:04]   new_best E=100 cl12=28 cl13=37 cl23=35 t=0.0s T=19.999
+[19:34:04]   new_best E=100 cl12=28 cl13=37 cl23=35 t=0.0s T=19.999
+[19:34:04]   new_best E=98 cl12=37 cl13=30 cl23=31 t=0.0s T=19.999
+[19:34:04]   new_best E=98 cl12=37 cl13=30 cl23=31 t=0.0s T=19.999
+[19:34:04]   new_best E=97 cl12=32 cl13=30 cl23=35 t=0.0s T=19.999
+[19:34:04]   new_best E=97 cl12=32 cl13=30 cl23=35 t=0.0s T=19.999
+[19:34:04]   new_best E=93 cl12=28 cl13=32 cl23=33 t=0.1s T=19.915
+[19:34:04]   new_best E=93 cl12=28 cl13=32 cl23=33 t=0.1s T=19.915
+[19:34:05]   new_best E=91 cl12=33 cl13=29 cl23=29 t=1.0s T=19.188
+[19:34:05]   new_best E=91 cl12=33 cl13=29 cl23=29 t=1.0s T=19.188
+[19:34:05]   steps=157979 (878/s)
+[19:34:05]   steps=157979 (878/s)
+[19:34:05]   done: best_E=31  cl12=0  cl13=19  cl23=12  session_best=31  elapsed=180.0s
+[19:34:05]   done: best_E=31  cl12=0  cl13=19  cl23=12  session_best=31  elapsed=180.0s
+[19:34:05] trial=  35  strategy=heavy_perturb  init_E=70  T_init=20.0  budget=180.0s  time=19:34:05
+[19:34:05] trial=  35  strategy=heavy_perturb  init_E=70  T_init=20.0  budget=180.0s  time=19:34:05
+[19:34:05]   new_best E=90 cl12=27 cl13=34 cl23=29 t=1.3s T=18.934
+[19:34:05]   new_best E=90 cl12=27 cl13=34 cl23=29 t=1.3s T=18.934
+[19:34:12]   new_best E=88 cl12=32 cl13=29 cl23=27 t=7.9s T=14.319
+[19:34:12]   new_best E=88 cl12=32 cl13=29 cl23=27 t=7.9s T=14.319
+[19:34:31]   new_best E=87 cl12=30 cl13=28 cl23=29 t=27.3s T=6.310
+[19:34:31]   new_best E=87 cl12=30 cl13=28 cl23=29 t=27.3s T=6.310
+[19:34:40]   new_best E=85 cl12=27 cl13=25 cl23=33 t=35.6s T=4.449
+[19:34:40]   new_best E=85 cl12=27 cl13=25 cl23=33 t=35.6s T=4.449
+[19:34:51]   new_best E=84 cl12=28 cl13=28 cl23=28 t=47.0s T=2.743
+[19:34:51]   new_best E=84 cl12=28 cl13=28 cl23=28 t=47.0s T=2.743
+[19:34:54]   new_best E=77 cl12=21 cl13=26 cl23=30 t=50.3s T=2.389
+[19:34:54]   new_best E=77 cl12=21 cl13=26 cl23=30 t=50.3s T=2.389
+[19:35:15]   new_best E=75 cl12=22 cl13=21 cl23=32 t=70.5s T=1.018
+[19:35:15]   new_best E=75 cl12=22 cl13=21 cl23=32 t=70.5s T=1.018
+[19:35:19]   new_best E=74 cl12=22 cl13=21 cl23=31 t=74.4s T=0.865
+[19:35:19]   new_best E=74 cl12=22 cl13=21 cl23=31 t=74.4s T=0.865
+[19:35:27]   new_best E=72 cl12=20 cl13=26 cl23=26 t=82.5s T=0.614
+[19:35:27]   new_best E=72 cl12=20 cl13=26 cl23=26 t=82.5s T=0.614
+[19:35:30]   new_best E=71 cl12=21 cl13=24 cl23=26 t=85.5s T=0.540
+[19:35:30]   new_best E=71 cl12=21 cl13=24 cl23=26 t=85.5s T=0.540
+[19:35:32]   new_best E=68 cl12=23 cl13=18 cl23=27 t=87.1s T=0.506
+[19:35:32]   new_best E=68 cl12=23 cl13=18 cl23=27 t=87.1s T=0.506
+[19:35:44]   new_best E=64 cl12=23 cl13=18 cl23=23 t=98.6s T=0.312
+[19:35:44]   new_best E=64 cl12=23 cl13=18 cl23=23 t=98.6s T=0.312
+[19:35:52]   new_best E=69 cl12=19 cl13=24 cl23=26 t=108.3s T=0.207
+[19:35:52]   new_best E=69 cl12=19 cl13=24 cl23=26 t=108.3s T=0.207
+[19:36:06]   new_best E=68 cl12=21 cl13=23 cl23=24 t=122.1s T=0.116
+[19:36:06]   new_best E=68 cl12=21 cl13=23 cl23=24 t=122.1s T=0.116
+[19:36:21]   new_best E=67 cl12=21 cl13=22 cl23=24 t=137.0s T=0.061
+[19:36:21]   new_best E=67 cl12=21 cl13=22 cl23=24 t=137.0s T=0.061
+[19:36:21]   new_best E=65 cl12=21 cl13=21 cl23=23 t=137.0s T=0.061
+[19:36:21]   new_best E=65 cl12=21 cl13=21 cl23=23 t=137.0s T=0.061
+[19:36:24]   new_best E=63 cl12=22 cl13=18 cl23=23 t=138.8s T=0.057
+[19:36:24]   new_best E=63 cl12=22 cl13=18 cl23=23 t=138.8s T=0.057
+[19:36:30]   new_best E=64 cl12=21 cl13=21 cl23=22 t=145.4s T=0.043
+[19:36:30]   new_best E=64 cl12=21 cl13=21 cl23=22 t=145.4s T=0.043
+[19:36:57]   new_best E=62 cl12=21 cl13=20 cl23=21 t=172.7s T=0.014
+[19:36:57]   new_best E=62 cl12=21 cl13=20 cl23=21 t=172.7s T=0.014
+[19:37:04]   steps=151752 (843/s)
+[19:37:04]   steps=151752 (843/s)
+[19:37:04]   done: best_E=62  cl12=21  cl13=20  cl23=21  session_best=33  elapsed=180.1s
+[19:37:04]   done: best_E=62  cl12=21  cl13=20  cl23=21  session_best=33  elapsed=180.1s
+[19:37:04]   [status] pool=10 entries  session_best=33
+[19:37:04]   [status] pool=10 entries  session_best=33
+[19:37:04] trial=  36  strategy=pool_start  init_E=72  T_init=15.0  budget=180.0s  time=19:37:04
+[19:37:04] trial=  36  strategy=pool_start  init_E=72  T_init=15.0  budget=180.0s  time=19:37:04
+[19:37:04]   new_best E=66 cl12=0 cl13=32 cl23=34 t=0.0s T=15.000
+[19:37:04]   new_best E=66 cl12=0 cl13=32 cl23=34 t=0.0s T=15.000
+[19:37:05]   steps=149840 (832/s)
+[19:37:05]   steps=149840 (832/s)
+[19:37:05]   done: best_E=63  cl12=22  cl13=18  cl23=23  session_best=31  elapsed=180.0s
+[19:37:05]   done: best_E=63  cl12=22  cl13=18  cl23=23  session_best=31  elapsed=180.0s
+[19:37:05]   [status] pool=10 entries  session_best=31
+[19:37:05]   [status] pool=10 entries  session_best=31
+[19:37:05] trial=  36  strategy=pool_start  init_E=80  T_init=15.0  budget=180.0s  time=19:37:05
+[19:37:05] trial=  36  strategy=pool_start  init_E=80  T_init=15.0  budget=180.0s  time=19:37:05
+[19:38:08]   new_best E=79 cl12=29 cl13=26 cl23=24 t=62.8s T=1.170
+[19:38:08]   new_best E=79 cl12=29 cl13=26 cl23=24 t=62.8s T=1.170
+[19:38:14]   new_best E=77 cl12=28 cl13=22 cl23=27 t=68.7s T=0.922
+[19:38:14]   new_best E=77 cl12=28 cl13=22 cl23=27 t=68.7s T=0.922
+[19:38:20]   new_best E=76 cl12=26 cl13=27 cl23=23 t=74.6s T=0.724
+[19:38:20]   new_best E=76 cl12=26 cl13=27 cl23=23 t=74.6s T=0.724
+[19:38:25]   new_best E=75 cl12=27 cl13=27 cl23=21 t=79.4s T=0.596
+[19:38:25]   new_best E=75 cl12=27 cl13=27 cl23=21 t=79.4s T=0.596
+[19:38:26]   new_best E=74 cl12=25 cl13=26 cl23=23 t=81.0s T=0.558
+[19:38:26]   new_best E=74 cl12=25 cl13=26 cl23=23 t=81.0s T=0.558
+[19:38:27]   new_best E=73 cl12=25 cl13=26 cl23=22 t=81.8s T=0.539
+[19:38:27]   new_best E=73 cl12=25 cl13=26 cl23=22 t=81.8s T=0.539
+[19:38:36]   new_best E=72 cl12=25 cl13=26 cl23=21 t=90.7s T=0.376
+[19:38:36]   new_best E=72 cl12=25 cl13=26 cl23=21 t=90.7s T=0.376
+[19:38:42]   new_best E=71 cl12=24 cl13=26 cl23=21 t=96.6s T=0.296
+[19:38:42]   new_best E=71 cl12=24 cl13=26 cl23=21 t=96.6s T=0.296
+[19:38:42]   new_best E=70 cl12=25 cl13=24 cl23=21 t=97.1s T=0.291
+[19:38:42]   new_best E=70 cl12=25 cl13=24 cl23=21 t=97.1s T=0.291
+[19:39:01]   new_best E=69 cl12=24 cl13=23 cl23=22 t=115.4s T=0.138
+[19:39:01]   new_best E=69 cl12=24 cl13=23 cl23=22 t=115.4s T=0.138
+[19:39:02]   new_best E=67 cl12=24 cl13=23 cl23=20 t=116.6s T=0.131
+[19:39:02]   new_best E=67 cl12=24 cl13=23 cl23=20 t=116.6s T=0.131
+[19:39:38]   new_best E=66 cl12=24 cl13=22 cl23=20 t=152.7s T=0.030
+[19:39:38]   new_best E=66 cl12=24 cl13=22 cl23=20 t=152.7s T=0.030

@@ -7,3 +7,33 @@
 [08:42:16] trial=3  timeout=120s  2w  sym=False  best_E=34
   FEAS: E=41  cl13=24  cl23=17  best_E=34  t=120.1s
 [08:44:16] trial=4  timeout=180s  2w  sym=True  best_E=34
+  FEAS: E=41  cl13=19  cl23=22  best_E=34  t=180.1s
+[08:47:16] trial=5  timeout=120s  2w  sym=True  best_E=34
+  FEAS: E=40  cl13=23  cl23=17  best_E=34  t=120.7s
+[08:49:17] trial=6  timeout=180s  2w  sym=False  best_E=34
+  FEAS: E=40  cl13=16  cl23=24  best_E=34  t=180.1s
+[08:52:17] trial=7  timeout=120s  2w  sym=True  best_E=34
+  FEAS: E=36  cl13=18  cl23=18  best_E=34  t=120.1s
+  ★ SAVED E=36!
+[08:54:17] trial=8  timeout=180s  2w  sym=True  best_E=34
+  FEAS: E=38  cl13=17  cl23=21  best_E=34  t=180.1s
+[08:57:17] trial=9  timeout=120s  2w  sym=False  best_E=34
+  FEAS: E=36  cl13=22  cl23=14  best_E=34  t=120.1s
+  ★ SAVED E=36!
+[08:59:17] trial=10  timeout=180s  2w  sym=True  best_E=34
+  FEAS: E=40  cl13=17  cl23=23  best_E=34  t=180.1s
+[09:02:17] trial=11  timeout=120s  2w  sym=True  best_E=34
+  FEAS: E=41  cl13=25  cl23=16  best_E=34  t=120.1s
+[09:04:17] trial=12  timeout=180s  2w  sym=False  best_E=34
+  FEAS: E=42  cl13=26  cl23=16  best_E=34  t=180.1s
+[09:07:18] trial=13  timeout=120s  2w  sym=True  best_E=34
+  FEAS: E=41  cl13=25  cl23=16  best_E=34  t=120.2s
+[09:09:18] trial=14  timeout=180s  2w  sym=True  best_E=34
+  FEAS: E=43  cl13=24  cl23=19  best_E=34  t=180.1s
+[09:12:18] trial=15  timeout=120s  2w  sym=False  best_E=34
+  FEAS: E=42  cl13=19  cl23=23  best_E=34  t=120.9s
+[09:14:19] trial=16  timeout=180s  2w  sym=True  best_E=34
+  FEAS: E=44  cl13=22  cl23=22  best_E=34  t=180.1s
+[09:17:19] trial=17  timeout=120s  2w  sym=True  best_E=34
+  FEAS: E=42  cl13=20  cl23=22  best_E=34  t=120.2s
+[09:19:19] trial=18  timeout=180s  2w  sym=False  best_E=34

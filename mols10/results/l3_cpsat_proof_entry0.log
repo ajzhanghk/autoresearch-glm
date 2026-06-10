@@ -2,3 +2,23 @@
   L1[0]: [4, 7, 3, 2, 8, 9, 5, 1, 0, 6]
 
 [08:30:27] target=36  timeout=300s  workers=4  symbreak=True
+  TIMEOUT in 300.1s
+  TIMEOUT: will try next configuration
+[08:35:27] target=36  timeout=600s  workers=6  symbreak=True
+  TIMEOUT in 600.1s
+  TIMEOUT: will try next configuration
+[08:45:27] target=36  timeout=600s  workers=6  symbreak=False
+  TIMEOUT in 600.2s
+  TIMEOUT: will try next configuration
+  All configurations timed out for target=36, moving on...
+[08:55:27] target=35  timeout=300s  workers=4  symbreak=True
+  TIMEOUT in 300.1s
+  TIMEOUT: will try next configuration
+[09:00:27] target=35  timeout=600s  workers=6  symbreak=True
+  TIMEOUT in 600.3s
+  TIMEOUT: will try next configuration
+[09:10:27] target=35  timeout=600s  workers=6  symbreak=False
+  TIMEOUT in 600.3s
+  TIMEOUT: will try next configuration
+  All configurations timed out for target=35, moving on...
+[09:20:28] target=34  timeout=300s  workers=4  symbreak=True

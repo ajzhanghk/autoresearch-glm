@@ -30,3 +30,26 @@ L1[0]: [4, 7, 3, 2, 8, 9, 5, 1, 0, 6]
 [08:43:32] Best found: E=34
 
 [08:43:32] Proof mode: checking E<=35 (600s, 6 workers, symbreak=True)
+  FEASIBLE: E=36  cl13=14  cl23=22  session_best=36  elapsed=180.1s
+  ★ SAVED to pool: E=36 (saved=False)
+[08:46:15] trial=6  timeout=300s  2 workers  session_best=36
+  FEASIBLE: E=37  cl13=17  cl23=20  session_best=36  elapsed=300.1s
+[08:51:15] trial=7  timeout=180s  2 workers  session_best=36
+  TIMEOUT in 600.4s
+  TIMEOUT: E<=35 feasibility inconclusive after 600s
+  FEASIBLE: E=42  cl13=24  cl23=18  session_best=36  elapsed=180.1s
+[08:54:15] trial=8  timeout=180s  2 workers  session_best=36
+  FEASIBLE: E=40  cl13=18  cl23=22  session_best=36  elapsed=180.1s
+[08:57:16] trial=9  timeout=300s  2 workers  session_best=36
+  FEASIBLE: E=39  cl13=18  cl23=21  session_best=36  elapsed=300.1s
+[09:02:16] trial=10  timeout=180s  2 workers  session_best=36
+  FEASIBLE: E=41  cl13=21  cl23=20  session_best=36  elapsed=180.1s
+[09:05:16] trial=11  timeout=180s  2 workers  session_best=36
+  FEASIBLE: E=38  cl13=20  cl23=18  session_best=36  elapsed=180.1s
+[09:08:16] trial=12  timeout=300s  2 workers  session_best=36
+  FEASIBLE: E=40  cl13=20  cl23=20  session_best=36  elapsed=300.3s
+[09:13:16] trial=13  timeout=180s  2 workers  session_best=36
+  FEASIBLE: E=41  cl13=20  cl23=21  session_best=36  elapsed=180.1s
+[09:16:16] trial=14  timeout=180s  2 workers  session_best=36
+  FEASIBLE: E=40  cl13=23  cl23=17  session_best=36  elapsed=180.2s
+[09:19:17] trial=15  timeout=300s  2 workers  session_best=36

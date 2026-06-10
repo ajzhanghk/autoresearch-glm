@@ -289,3 +289,59 @@ seed=11111  sat_timeout=20.0s
   trial=  440  sat=0  unsat=293  timeout=0  no_mols=147  time=08:18:39
   trial=  460  no_mols=153  unsat=307  timeout=0  time=08:22:26
   trial=  480  sat=0  unsat=320  timeout=0  no_mols=160  time=08:27:19
+  trial=  500  no_mols=166  unsat=334  timeout=0  time=08:31:57
+  trial=  520  sat=0  unsat=348  timeout=0  no_mols=172  time=08:40:31
+  trial=  530  no_mols=178  unsat=352  timeout=0  time=08:50:39
+  trial=  540  sat=0  unsat=359  timeout=0  no_mols=181  time=08:55:33
+  trial=  560  no_mols=188  unsat=372  timeout=0  time=09:07:43
+Traceback (most recent call last):
+  File "/home/user/autoresearch-glm/mols10/mols_sat_worker.py", line 330, in <module>
+    main()
+  File "/home/user/autoresearch-glm/mols10/mols_sat_worker.py", line 286, in main
+    pair = quick_mols_pair(n=n, rng=pair_rng, max_steps=300_000)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/autoresearch-glm/mols10/mols_sat_worker.py", line 170, in quick_mols_pair
+    seed_pairs = _load_promising_pairs()
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/autoresearch-glm/mols10/mols_sat_worker.py", line 50, in _load_promising_pairs
+    data = json.loads(PROMISING_FILE.read_text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+========================================================
+MOLS SAT Worker — complete L3 search via Glucose3
+seed=11111  sat_timeout=20.0s
+========================================================
+
+[Phase 1] Testing 320 existing promising pairs...
+  [  0] UNSAT  elapsed=1.41s  (so far: unsat=1)
+  [ 50] UNSAT  elapsed=1.74s  (so far: unsat=51)
+  [100] UNSAT  elapsed=1.39s  (so far: unsat=101)
+========================================================
+MOLS SAT Worker — complete L3 search via Glucose3
+seed=11111  sat_timeout=20.0s
+========================================================
+
+[Phase 1] Testing 320 existing promising pairs...
+  [  0] UNSAT  elapsed=0.89s  (so far: unsat=1)
+  [ 50] UNSAT  elapsed=0.91s  (so far: unsat=51)
+  [100] UNSAT  elapsed=0.90s  (so far: unsat=101)
+  [150] UNSAT  elapsed=1.49s  (so far: unsat=151)
+  [200] UNSAT  elapsed=1.28s  (so far: unsat=201)
+  [250] UNSAT  elapsed=1.76s  (so far: unsat=251)
+  [300] UNSAT  elapsed=1.36s  (so far: unsat=301)
+
+[Phase 1 done] pairs=320  SAT=0  UNSAT=320  TIMEOUT=0
+
+[Phase 2] Generating new MOLS pairs + SAT search...
+  trial=   20  sat=0  unsat=11  timeout=0  no_mols=9  time=18:43:08
+  trial=   40  no_mols=13  unsat=27  timeout=0  time=18:54:32
+  trial=   50  no_mols=16  unsat=34  timeout=0  time=19:02:45
+  trial=   60  no_mols=23  unsat=37  timeout=0  time=19:22:04

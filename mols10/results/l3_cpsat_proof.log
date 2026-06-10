@@ -44,3 +44,330 @@
 [08:24:40] trial=   1  pool_E=37  target=35  timeout=600.0s  time=08:24:40
 [08:29:40]   TIMEOUT: inconclusive  elapsed=300.1s
 [08:29:40] trial=   2  pool_E=37  target=36  timeout=300.0s  time=08:29:40
+[08:34:40]   TIMEOUT: inconclusive  elapsed=300.6s
+[08:34:40] trial=   3  pool_E=37  target=36  timeout=300.0s  time=08:34:40
+[08:34:41]   TIMEOUT: inconclusive  elapsed=601.1s
+[08:34:41]   TIMEOUT: inconclusive  elapsed=601.1s
+[08:34:41] trial=   2  pool_E=37  target=35  timeout=600.0s  time=08:34:41
+[08:34:41] trial=   2  pool_E=37  target=35  timeout=600.0s  time=08:34:41
+[08:39:41]   TIMEOUT: inconclusive  elapsed=300.4s
+[08:39:41] trial=   4  pool_E=37  target=36  timeout=300.0s  time=08:39:41
+[08:44:41]   TIMEOUT: inconclusive  elapsed=600.4s
+[08:44:41]   TIMEOUT: inconclusive  elapsed=600.4s
+[08:44:41] trial=   3  pool_E=34  target=35  timeout=600.0s  time=08:44:41
+[08:44:41] trial=   3  pool_E=34  target=35  timeout=600.0s  time=08:44:41
+[08:44:42]   TIMEOUT: inconclusive  elapsed=300.9s
+[08:44:42] trial=   5  pool_E=37  target=36  timeout=300.0s  time=08:44:42
+[08:49:42]   TIMEOUT: inconclusive  elapsed=300.6s
+[08:49:42]   [status] trials=5  SAT=0  UNSAT=0  TIMEOUT=5
+[08:49:42] trial=   6  pool_E=34  target=36  timeout=300.0s  time=08:49:42
+[08:54:43]   TIMEOUT: inconclusive  elapsed=601.5s
+[08:54:43]   TIMEOUT: inconclusive  elapsed=601.5s
+[08:54:43] trial=   4  pool_E=34  target=35  timeout=600.0s  time=08:54:43
+[08:54:43] trial=   4  pool_E=34  target=35  timeout=600.0s  time=08:54:43
+[08:54:43]   TIMEOUT: inconclusive  elapsed=300.6s
+[08:54:43] trial=   7  pool_E=34  target=36  timeout=300.0s  time=08:54:43
+[08:59:43]   TIMEOUT: inconclusive  elapsed=300.4s
+[08:59:43] trial=   8  pool_E=52  target=36  timeout=300.0s  time=08:59:43
+[09:02:38] ============================================================
+[09:02:38] ============================================================
+[09:02:38] CP-SAT proof mode — seed=9999  timeout=600.0s  workers=4  target=32
+[09:02:38] CP-SAT proof mode — seed=9999  timeout=600.0s  workers=4  target=32
+[09:02:38] Checking: does there exist L3 with cl13+cl23 <= 32?
+[09:02:38] Checking: does there exist L3 with cl13+cl23 <= 32?
+[09:02:38] ============================================================
+[09:02:38] ============================================================
+[09:02:38] trial=   1  pool_E=34  target=32  timeout=600.0s  time=09:02:38
+[09:02:38] trial=   1  pool_E=34  target=32  timeout=600.0s  time=09:02:38
+[09:02:39] ============================================================
+[09:02:39] CP-SAT proof mode — seed=8765  timeout=300.0s  workers=2  target=33
+[09:02:39] Checking: does there exist L3 with cl13+cl23 <= 33?
+[09:02:39] ============================================================
+[09:02:39] trial=   1  pool_E=34  target=33  timeout=300.0s  time=09:02:39
+[09:07:39]   TIMEOUT: inconclusive  elapsed=300.2s
+[09:07:39] trial=   2  pool_E=34  target=33  timeout=300.0s  time=09:07:39
+[09:10:39] ============================================================
+[09:10:39] ============================================================
+[09:10:39] CP-SAT proof mode — seed=9999  timeout=600.0s  workers=4  target=32
+[09:10:39] CP-SAT proof mode — seed=9999  timeout=600.0s  workers=4  target=32
+[09:10:39] Checking: does there exist L3 with cl13+cl23 <= 32?
+[09:10:39] Checking: does there exist L3 with cl13+cl23 <= 32?
+[09:10:39] ============================================================
+[09:10:39] ============================================================
+[09:10:39] trial=   1  pool_E=33  target=32  timeout=600.0s  time=09:10:39
+[09:10:39] trial=   1  pool_E=33  target=32  timeout=600.0s  time=09:10:39
+[09:13:50] ============================================================
+[09:13:50] ============================================================
+[09:13:50] CP-SAT proof mode — seed=9999  timeout=600.0s  workers=4  target=31
+[09:13:50] CP-SAT proof mode — seed=9999  timeout=600.0s  workers=4  target=31
+[09:13:50] Checking: does there exist L3 with cl13+cl23 <= 31?
+[09:13:50] Checking: does there exist L3 with cl13+cl23 <= 31?
+[09:13:50] ============================================================
+[09:13:50] ============================================================
+[09:13:50] trial=   1  pool_E=33  target=31  timeout=600.0s  time=09:13:50
+[09:13:50] trial=   1  pool_E=33  target=31  timeout=600.0s  time=09:13:50
+[09:13:50] ============================================================
+[09:13:50] CP-SAT proof mode — seed=8765  timeout=300.0s  workers=2  target=32
+[09:13:50] Checking: does there exist L3 with cl13+cl23 <= 32?
+[09:13:50] ============================================================
+[09:13:50] trial=   1  pool_E=33  target=32  timeout=300.0s  time=09:13:50
+[09:18:50]   TIMEOUT: inconclusive  elapsed=300.3s
+[09:18:50] trial=   2  pool_E=34  target=32  timeout=300.0s  time=09:18:50
+[17:52:01] ============================================================
+[17:52:01] ============================================================
+[17:52:01] CP-SAT proof mode — seed=9999  timeout=600.0s  workers=4  target=31
+[17:52:01] CP-SAT proof mode — seed=9999  timeout=600.0s  workers=4  target=31
+[17:52:01] Checking: does there exist L3 with cl13+cl23 <= 31?
+[17:52:01] Checking: does there exist L3 with cl13+cl23 <= 31?
+[17:52:01] ============================================================
+[17:52:01] ============================================================
+[17:52:01] trial=   1  pool_E=33  target=31  timeout=600.0s  time=17:52:01
+[17:52:01] trial=   1  pool_E=33  target=31  timeout=600.0s  time=17:52:01
+[17:52:00] ============================================================
+[17:52:01] CP-SAT proof mode — seed=8765  timeout=300.0s  workers=2  target=32
+[17:52:01] Checking: does there exist L3 with cl13+cl23 <= 32?
+[17:52:01] ============================================================
+[17:52:01] trial=   1  pool_E=33  target=32  timeout=300.0s  time=17:52:01
+[17:57:01]   TIMEOUT: inconclusive  elapsed=300.3s
+[17:57:01] trial=   2  pool_E=33  target=32  timeout=300.0s  time=17:57:01
+[18:02:01]   TIMEOUT: inconclusive  elapsed=600.3s
+[18:02:01]   TIMEOUT: inconclusive  elapsed=600.3s
+[18:02:01] trial=   2  pool_E=32  target=31  timeout=600.0s  time=18:02:01
+[18:02:01] trial=   2  pool_E=32  target=31  timeout=600.0s  time=18:02:01
+[18:02:02]   TIMEOUT: inconclusive  elapsed=301.1s
+[18:02:02] trial=   3  pool_E=32  target=32  timeout=300.0s  time=18:02:02
+[18:07:03]   TIMEOUT: inconclusive  elapsed=301.0s
+[18:07:04] trial=   4  pool_E=33  target=32  timeout=300.0s  time=18:07:04
+[18:12:02]   TIMEOUT: inconclusive  elapsed=601.5s
+[18:12:02]   TIMEOUT: inconclusive  elapsed=601.5s
+[18:12:02] trial=   3  pool_E=32  target=31  timeout=600.0s  time=18:12:02
+[18:12:02] trial=   3  pool_E=32  target=31  timeout=600.0s  time=18:12:02
+[18:12:07]   TIMEOUT: inconclusive  elapsed=303.5s
+[18:12:07] trial=   5  pool_E=31  target=32  timeout=300.0s  time=18:12:07
+[18:17:12]   TIMEOUT: inconclusive  elapsed=305.3s
+[18:17:12]   [status] trials=5  SAT=0  UNSAT=0  TIMEOUT=5
+[18:17:13] trial=   6  pool_E=32  target=32  timeout=300.0s  time=18:17:13
+[18:22:05]   TIMEOUT: inconclusive  elapsed=602.3s
+[18:22:05]   TIMEOUT: inconclusive  elapsed=602.3s
+[18:22:05] trial=   4  pool_E=33  target=31  timeout=600.0s  time=18:22:05
+[18:22:05] trial=   4  pool_E=33  target=31  timeout=600.0s  time=18:22:05
+[18:22:15]   TIMEOUT: inconclusive  elapsed=302.1s
+[18:22:15] trial=   7  pool_E=33  target=32  timeout=300.0s  time=18:22:15
+[18:27:17]   TIMEOUT: inconclusive  elapsed=302.2s
+[18:27:17] trial=   8  pool_E=31  target=32  timeout=300.0s  time=18:27:17
+[18:32:08]   TIMEOUT: inconclusive  elapsed=603.0s
+[18:32:08]   TIMEOUT: inconclusive  elapsed=603.0s
+[18:32:08] trial=   5  pool_E=31  target=31  timeout=600.0s  time=18:32:08
+[18:32:08] trial=   5  pool_E=31  target=31  timeout=600.0s  time=18:32:08
+[18:32:21]   TIMEOUT: inconclusive  elapsed=303.8s
+[18:32:21] trial=   9  pool_E=48  target=32  timeout=300.0s  time=18:32:21
+[18:37:25]   TIMEOUT: inconclusive  elapsed=303.8s
+[18:37:25] trial=  10  pool_E=31  target=32  timeout=300.0s  time=18:37:25
+[18:42:12]   TIMEOUT: inconclusive  elapsed=604.4s
+[18:42:12]   TIMEOUT: inconclusive  elapsed=604.4s
+[18:42:12]   [status] trials=5  SAT=0  UNSAT=0  TIMEOUT=5
+[18:42:12]   [status] trials=5  SAT=0  UNSAT=0  TIMEOUT=5
+[18:42:12] trial=   6  pool_E=32  target=31  timeout=600.0s  time=18:42:12
+[18:42:12] trial=   6  pool_E=32  target=31  timeout=600.0s  time=18:42:12
+[18:42:28]   TIMEOUT: inconclusive  elapsed=302.9s
+[18:42:28]   [status] trials=10  SAT=0  UNSAT=0  TIMEOUT=10
+[18:42:28] trial=  11  pool_E=32  target=32  timeout=300.0s  time=18:42:28
+[18:45:59] ============================================================
+[18:45:59] CP-SAT proof mode — seed=8765  timeout=300.0s  workers=2  target=32
+[18:45:59] Checking: does there exist L3 with cl13+cl23 <= 32?
+[18:45:59] ============================================================
+[18:45:59] trial=   1  pool_E=32  target=32  timeout=300.0s  time=18:45:59
+[18:45:59] ============================================================
+[18:45:59] ============================================================
+[18:45:59] CP-SAT proof mode — seed=9999  timeout=600.0s  workers=4  target=31
+[18:45:59] CP-SAT proof mode — seed=9999  timeout=600.0s  workers=4  target=31
+[18:45:59] Checking: does there exist L3 with cl13+cl23 <= 31?
+[18:45:59] Checking: does there exist L3 with cl13+cl23 <= 31?
+[18:45:59] ============================================================
+[18:45:59] ============================================================
+[18:45:59] trial=   1  pool_E=33  target=31  timeout=600.0s  time=18:45:59
+[18:45:59] trial=   1  pool_E=33  target=31  timeout=600.0s  time=18:45:59
+[18:50:59]   TIMEOUT: inconclusive  elapsed=300.2s
+[18:50:59] trial=   2  pool_E=33  target=32  timeout=300.0s  time=18:50:59
+[18:56:00]   TIMEOUT: inconclusive  elapsed=600.2s
+[18:56:00]   TIMEOUT: inconclusive  elapsed=600.2s
+[18:56:00] trial=   2  pool_E=31  target=31  timeout=600.0s  time=18:56:00
+[18:56:00] trial=   2  pool_E=31  target=31  timeout=600.0s  time=18:56:00
+[18:56:00]   TIMEOUT: inconclusive  elapsed=300.4s
+[18:56:00] trial=   3  pool_E=31  target=32  timeout=300.0s  time=18:56:00
+[18:58:38] ============================================================
+[18:58:38] CP-SAT proof mode — seed=8765  timeout=300.0s  workers=2  target=32
+[18:58:38] Checking: does there exist L3 with cl13+cl23 <= 32?
+[18:58:38] ============================================================
+[18:58:38] trial=   1  pool_E=31  target=32  timeout=300.0s  time=18:58:38
+[18:58:38] ============================================================
+[18:58:38] ============================================================
+[18:58:38] CP-SAT proof mode — seed=9999  timeout=600.0s  workers=4  target=31
+[18:58:38] CP-SAT proof mode — seed=9999  timeout=600.0s  workers=4  target=31
+[18:58:38] Checking: does there exist L3 with cl13+cl23 <= 31?
+[18:58:38] Checking: does there exist L3 with cl13+cl23 <= 31?
+[18:58:38] ============================================================
+[18:58:38] ============================================================
+[18:58:38] trial=   1  pool_E=32  target=31  timeout=600.0s  time=18:58:38
+[18:58:38] trial=   1  pool_E=32  target=31  timeout=600.0s  time=18:58:38
+[19:00:39] ============================================================
+[19:00:39] CP-SAT proof mode — seed=8765  timeout=600.0s  workers=4  target=30
+[19:00:39] Checking: does there exist L3 with cl13+cl23 <= 30?
+[19:00:39] ============================================================
+[19:00:39] trial=   1  pool_E=31  target=30  timeout=600.0s  time=19:00:39
+[19:00:40] ============================================================
+[19:00:40] ============================================================
+[19:00:40] CP-SAT proof mode — seed=9999  timeout=600.0s  workers=4  target=30
+[19:00:40] CP-SAT proof mode — seed=9999  timeout=600.0s  workers=4  target=30
+[19:00:40] Checking: does there exist L3 with cl13+cl23 <= 30?
+[19:00:40] Checking: does there exist L3 with cl13+cl23 <= 30?
+[19:00:40] ============================================================
+[19:00:40] ============================================================
+[19:00:40] trial=   1  pool_E=32  target=30  timeout=600.0s  time=19:00:40
+[19:00:40] trial=   1  pool_E=32  target=30  timeout=600.0s  time=19:00:40
+[19:10:40]   TIMEOUT: inconclusive  elapsed=600.6s
+[19:10:40] trial=   2  pool_E=32  target=30  timeout=600.0s  time=19:10:40
+[19:10:41]   TIMEOUT: inconclusive  elapsed=600.7s
+[19:10:41]   TIMEOUT: inconclusive  elapsed=600.7s
+[19:10:41] trial=   2  pool_E=31  target=30  timeout=600.0s  time=19:10:41
+[19:10:41] trial=   2  pool_E=31  target=30  timeout=600.0s  time=19:10:41
+[19:20:41]   TIMEOUT: inconclusive  elapsed=601.1s
+[19:20:41] trial=   3  pool_E=31  target=30  timeout=600.0s  time=19:20:41
+[19:20:41]   TIMEOUT: inconclusive  elapsed=600.2s
+[19:20:41]   TIMEOUT: inconclusive  elapsed=600.2s
+[19:20:41] trial=   3  pool_E=31  target=30  timeout=600.0s  time=19:20:41
+[19:20:41] trial=   3  pool_E=31  target=30  timeout=600.0s  time=19:20:41
+[19:30:41]   TIMEOUT: inconclusive  elapsed=600.4s
+[19:30:41]   TIMEOUT: inconclusive  elapsed=600.4s
+[19:30:41] trial=   4  pool_E=49  target=30  timeout=600.0s  time=19:30:41
+[19:30:41] trial=   4  pool_E=49  target=30  timeout=600.0s  time=19:30:41
+[19:30:41]   TIMEOUT: inconclusive  elapsed=600.7s
+[19:30:41] trial=   4  pool_E=49  target=30  timeout=600.0s  time=19:30:41
+[00:35:25] ============================================================
+[00:35:25] CP-SAT proof mode — seed=8765  timeout=600.0s  workers=4  target=30
+[00:35:25] Checking: does there exist L3 with cl13+cl23 <= 30?
+[00:35:25] ============================================================
+[00:35:25] trial=   1  pool_E=31  target=30  timeout=600.0s  time=00:35:25
+[00:45:25]   TIMEOUT: inconclusive  elapsed=600.1s
+[00:45:25] trial=   2  pool_E=31  target=30  timeout=600.0s  time=00:45:25
+[00:50:36]   SAT: E=30  cl12=0  cl13=17  cl23=13  elapsed=311.1s
+[00:50:36]   SAVED to pool: new best E=30  (was pool_E=31)
+[00:50:36]   -> target achieved! E=30 <= 30
+[00:50:36] trial=   3  pool_E=30  target=30  timeout=600.0s  time=00:50:36
+[00:50:36]   SAT: E=30  cl12=0  cl13=17  cl23=13  elapsed=0.5s
+[00:50:36]   SAVED to pool: new best E=30  (was pool_E=30)
+[00:50:36]   -> target achieved! E=30 <= 30
+[00:50:36] trial=   4  pool_E=30  target=30  timeout=600.0s  time=00:50:36
+[00:50:37]   SAT: E=30  cl12=0  cl13=17  cl23=13  elapsed=0.4s
+[00:50:37]   SAVED to pool: new best E=30  (was pool_E=30)
+[00:50:37]   -> target achieved! E=30 <= 30
+[00:50:37] trial=   5  pool_E=30  target=30  timeout=600.0s  time=00:50:37
+[00:50:37]   SAT: E=30  cl12=0  cl13=17  cl23=13  elapsed=0.4s
+[00:50:37]   SAVED to pool: new best E=30  (was pool_E=30)
+[00:50:37]   -> target achieved! E=30 <= 30
+[00:50:37]   [status] trials=5  SAT=4  UNSAT=0  TIMEOUT=1
+[00:50:37] trial=   6  pool_E=30  target=30  timeout=600.0s  time=00:50:37
+[00:50:38]   SAT: E=30  cl12=0  cl13=17  cl23=13  elapsed=0.4s
+[00:50:38]   SAVED to pool: new best E=30  (was pool_E=30)
+[00:50:38]   -> target achieved! E=30 <= 30
+[00:50:38] trial=   7  pool_E=30  target=30  timeout=600.0s  time=00:50:38
+[00:50:38]   SAT: E=30  cl12=0  cl13=17  cl23=13  elapsed=0.5s
+[00:50:38]   SAVED to pool: new best E=30  (was pool_E=30)
+[00:50:38]   -> target achieved! E=30 <= 30
+[00:50:38] trial=   8  pool_E=30  target=30  timeout=600.0s  time=00:50:38
+[00:50:39]   SAT: E=30  cl12=0  cl13=17  cl23=13  elapsed=0.4s
+[00:50:39]   SAVED to pool: new best E=30  (was pool_E=30)
+[00:50:39]   -> target achieved! E=30 <= 30
+[00:50:39] trial=   9  pool_E=30  target=30  timeout=600.0s  time=00:50:39
+[00:50:39]   SAT: E=30  cl12=0  cl13=17  cl23=13  elapsed=0.5s
+[00:50:39]   SAVED to pool: new best E=30  (was pool_E=30)
+[00:50:39]   -> target achieved! E=30 <= 30
+[00:50:39] trial=  10  pool_E=30  target=30  timeout=600.0s  time=00:50:39
+[00:50:40]   SAT: E=30  cl12=0  cl13=17  cl23=13  elapsed=0.4s
+[00:50:40]   SAVED to pool: new best E=30  (was pool_E=30)
+[00:50:40]   -> target achieved! E=30 <= 30
+[00:50:40]   [status] trials=10  SAT=9  UNSAT=0  TIMEOUT=1
+[00:50:40] trial=  11  pool_E=30  target=30  timeout=600.0s  time=00:50:40
+[00:50:40]   SAT: E=30  cl12=0  cl13=17  cl23=13  elapsed=0.4s
+[00:50:40]   SAVED to pool: new best E=30  (was pool_E=30)
+[00:50:40]   -> target achieved! E=30 <= 30
+[00:50:40] trial=  12  pool_E=30  target=30  timeout=600.0s  time=00:50:40
+[00:50:41]   SAT: E=30  cl12=0  cl13=17  cl23=13  elapsed=0.5s
+[00:50:41]   SAVED to pool: new best E=30  (was pool_E=30)
+[00:50:41]   -> target achieved! E=30 <= 30
+[00:50:41] trial=  13  pool_E=30  target=30  timeout=600.0s  time=00:50:41
+[00:50:41]   SAT: E=30  cl12=0  cl13=17  cl23=13  elapsed=0.5s
+[00:50:41]   SAVED to pool: new best E=30  (was pool_E=30)
+[00:50:41]   -> target achieved! E=30 <= 30
+[00:50:41] trial=  14  pool_E=30  target=30  timeout=600.0s  time=00:50:41
+[00:50:42]   SAT: E=30  cl12=0  cl13=17  cl23=13  elapsed=0.5s
+[00:50:42]   SAVED to pool: new best E=30  (was pool_E=30)
+[00:50:42]   -> target achieved! E=30 <= 30
+[00:50:42] trial=  15  pool_E=30  target=30  timeout=600.0s  time=00:50:42
+[00:50:42]   SAT: E=30  cl12=0  cl13=17  cl23=13  elapsed=0.5s
+[00:50:42]   SAVED to pool: new best E=30  (was pool_E=30)
+[00:50:42]   -> target achieved! E=30 <= 30
+[00:50:42]   [status] trials=15  SAT=14  UNSAT=0  TIMEOUT=1
+[00:50:42] trial=  16  pool_E=30  target=30  timeout=600.0s  time=00:50:42
+[00:50:42]   SAT: E=30  cl12=0  cl13=17  cl23=13  elapsed=0.5s
+[00:50:42]   SAVED to pool: new best E=30  (was pool_E=30)
+[00:50:42]   -> target achieved! E=30 <= 30
+[00:50:42] trial=  17  pool_E=30  target=30  timeout=600.0s  time=00:50:42
+[00:50:43]   SAT: E=30  cl12=0  cl13=17  cl23=13  elapsed=0.4s
+[00:50:43]   SAVED to pool: new best E=30  (was pool_E=30)
+[00:50:43]   -> target achieved! E=30 <= 30
+[00:50:43] trial=  18  pool_E=30  target=30  timeout=600.0s  time=00:50:43
+[00:50:43]   SAT: E=30  cl12=0  cl13=17  cl23=13  elapsed=0.5s
+[00:50:43]   SAVED to pool: new best E=30  (was pool_E=30)
+[00:50:43]   -> target achieved! E=30 <= 30
+[00:50:43] trial=  19  pool_E=30  target=30  timeout=600.0s  time=00:50:43
+[00:50:44]   SAT: E=30  cl12=0  cl13=17  cl23=13  elapsed=0.5s
+[00:50:44]   SAVED to pool: new best E=30  (was pool_E=30)
+[00:50:44]   -> target achieved! E=30 <= 30
+[00:50:44] trial=  20  pool_E=32  target=30  timeout=600.0s  time=00:50:44
+[00:59:07] ============================================================
+[00:59:07] CP-SAT proof mode — seed=8765  timeout=600.0s  workers=4  target=29
+[00:59:07] Checking: does there exist L3 with cl13+cl23 <= 29?
+[00:59:07] ============================================================
+[00:59:07] trial=   1  pool_E=31  target=29  timeout=600.0s  time=00:59:07
+[00:59:07] ============================================================
+[00:59:07] CP-SAT proof mode — seed=9999  timeout=600.0s  workers=4  target=29
+[00:59:07] Checking: does there exist L3 with cl13+cl23 <= 29?
+[00:59:07] ============================================================
+[00:59:07] trial=   1  pool_E=31  target=29  timeout=600.0s  time=00:59:07
+[01:09:07]   TIMEOUT: inconclusive  elapsed=600.1s
+[01:09:07] trial=   2  pool_E=30  target=29  timeout=600.0s  time=01:09:07
+[01:09:07]   TIMEOUT: inconclusive  elapsed=600.2s
+[01:09:07] trial=   2  pool_E=31  target=29  timeout=600.0s  time=01:09:07
+[01:10:40] ============================================================
+[01:10:40] CP-SAT proof mode — seed=1111  timeout=600.0s  workers=4  target=28
+[01:10:40] Checking: does there exist L3 with cl13+cl23 <= 28?
+[01:10:40] ============================================================
+[01:10:40] trial=   1  pool_E=29  target=28  timeout=600.0s  time=01:10:40
+[01:10:41] ============================================================
+[01:10:41] CP-SAT proof mode — seed=2222  timeout=600.0s  workers=4  target=28
+[01:10:41] Checking: does there exist L3 with cl13+cl23 <= 28?
+[01:10:41] ============================================================
+[01:10:41] trial=   1  pool_E=29  target=28  timeout=600.0s  time=01:10:41
+[01:20:40]   TIMEOUT: inconclusive  elapsed=600.1s
+[01:20:40] trial=   2  pool_E=29  target=28  timeout=600.0s  time=01:20:40
+[01:20:41]   TIMEOUT: inconclusive  elapsed=600.1s
+[01:20:41] trial=   2  pool_E=30  target=28  timeout=600.0s  time=01:20:41
+[01:30:40]   TIMEOUT: inconclusive  elapsed=600.2s
+[01:30:40] trial=   3  pool_E=29  target=28  timeout=600.0s  time=01:30:40
+[01:30:41]   TIMEOUT: inconclusive  elapsed=600.1s
+[01:30:41] trial=   3  pool_E=31  target=28  timeout=600.0s  time=01:30:41
+[01:31:56] ============================================================
+[01:31:56] CP-SAT proof mode — seed=3333  timeout=900.0s  workers=4  target=28
+[01:31:56] Checking: does there exist L3 with cl13+cl23 <= 28?
+[01:31:56] ============================================================
+[01:31:56] trial=   1  pool_E=30  target=28  timeout=900.0s  time=01:31:56
+[01:40:40]   TIMEOUT: inconclusive  elapsed=600.3s
+[01:40:41] trial=   4  pool_E=29  target=28  timeout=600.0s  time=01:40:41
+[01:40:42]   TIMEOUT: inconclusive  elapsed=600.3s
+[01:40:42] trial=   4  pool_E=29  target=28  timeout=600.0s  time=01:40:42
+[02:05:24] ============================================================
+[02:05:24] CP-SAT proof mode — seed=7777  timeout=1200.0s  workers=4  target=28
+[02:05:24] Checking: does there exist L3 with cl13+cl23 <= 28?
+[02:05:24] ============================================================
+[02:05:24] trial=   1  pool_E=31  target=28  timeout=1200.0s  time=02:05:24
