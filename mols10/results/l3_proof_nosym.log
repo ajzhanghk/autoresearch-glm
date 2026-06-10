@@ -1,0 +1,12 @@
+[08:36:03] Proof mode on entry 0, NO symbreak
+[08:36:03] target=36  timeout=300s  workers=4  symbreak=False
+  TIMEOUT in 300.1s
+[08:41:03] target=36  timeout=600s  workers=4  symbreak=False
+  TIMEOUT in 600.3s
+[08:51:04] target=36  timeout=600s  workers=6  symbreak=False
+  TIMEOUT in 600.4s
+[09:01:04] target=35  timeout=300s  workers=4  symbreak=False
+  TIMEOUT in 300.1s
+[09:06:04] target=35  timeout=600s  workers=4  symbreak=False
+  TIMEOUT in 601.3s
+[09:16:05] target=35  timeout=600s  workers=6  symbreak=False

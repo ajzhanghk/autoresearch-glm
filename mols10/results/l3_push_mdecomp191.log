@@ -8,3 +8,5 @@
 [03:11:07] trial=  1 timeout=1800.0s seed=374346491 hint=E39
 [03:41:07]   -> E=39 cl13=19 cl23=20 t=1800.0s
 [03:41:07] trial=  2 timeout=1800.0s seed=1328399513 hint=E39
+[04:11:07]   -> E=39 cl13=19 cl23=20 t=1800.0s
+[04:11:07] trial=  3 timeout=1800.0s seed=179354141 hint=E39

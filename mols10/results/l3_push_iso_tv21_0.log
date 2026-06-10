@@ -1,0 +1,7 @@
+[04:17:01] ============================================================
+[04:17:01] Deep push: iso_tv_21_0 (pairs[7]) cl12=0
+[04:17:01] Timeout=1800.0s workers=1 seed=77701
+[04:17:01] SCAN RECORD: E=32 (cl13=13, cl23=19). Starting hint: E=32
+[04:17:01] Strategy: hint-guided (3 trials), then cold start (1 trial), repeat
+[04:17:01] ============================================================
+[04:17:01] trial=  1 timeout=1800.0s seed=1190914057 mode=hint=E32
