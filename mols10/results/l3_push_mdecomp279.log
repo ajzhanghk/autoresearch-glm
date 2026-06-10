@@ -14,3 +14,5 @@
 [08:54:13] trial=  3 timeout=1800.0s seed=1140845809 mode=cold
 [09:24:13]   -> E=38 cl13=16 cl23=22 t=1800.1s
 [09:24:13] trial=  4 timeout=1800.0s seed=1347430676 mode=hint=E35
+[09:54:13]   -> E=35 cl13=19 cl23=16 t=1800.0s E<=35 good
+[09:54:13] trial=  5 timeout=1800.0s seed=1090830099 mode=cold
