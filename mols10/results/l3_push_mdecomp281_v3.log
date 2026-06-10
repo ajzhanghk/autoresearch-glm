@@ -12,3 +12,5 @@
 [05:18:20]   -> E=33 cl13=20 cl23=13 t=1800.0s E<=33 good
 [05:18:20]   New best: E=33
 [05:18:20] trial=  4 timeout=1800.0s seed=1544319557 mode=E33
+[05:48:20]   -> E=33 cl13=20 cl23=13 t=1800.1s E<=33 good
+[05:48:20] trial=  5 timeout=1800.0s seed=262475445 mode=cold
