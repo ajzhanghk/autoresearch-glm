@@ -14,3 +14,7 @@
 [02:35:03]   Warmup: E=40 cl13=20 cl23=20 t=180.1s
 [02:35:03] trial=  1 timeout=1800.0s seed=406518757 hint=L3 E_best=40
 [02:35:03] trial=  1 timeout=1800.0s seed=406518757 hint=L3 E_best=40
+[03:05:03]   -> E=40 cl13=20 cl23=20 t=1800.0s
+[03:05:03]   -> E=40 cl13=20 cl23=20 t=1800.0s
+[03:05:03] trial=  2 timeout=1800.0s seed=253216119 hint=L3 E_best=40
+[03:05:03] trial=  2 timeout=1800.0s seed=253216119 hint=L3 E_best=40
