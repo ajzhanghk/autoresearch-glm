@@ -331,3 +331,13 @@
 [02:32:03] [229/202] src=mdecomp pair_id=mdecomp_285 seed=1599295565
 [02:35:03]   -> E=38 cl13=18 cl23=20 t=180.2s
 [02:35:03] [230/203] src=sa_ct pair_id=sa_ct_286 seed=681233494
+[02:38:03]   -> E=42 cl13=21 cl23=21 t=180.1s
+[02:38:03] [231/204] src=sa_ct pair_id=sa_ct_287 seed=865900817
+[02:41:03]   -> E=42 cl13=20 cl23=22 t=180.1s
+[02:41:03] [232/205] src=mdecomp pair_id=mdecomp_291 seed=1121950242
+[02:44:03]   -> E=41 cl13=18 cl23=23 t=180.1s
+[02:44:03] [233/206] src=mdecomp pair_id=mdecomp_292 seed=1091620467
+[02:47:03]   -> E=40 cl13=22 cl23=18 t=180.1s
+[02:47:03] [234/207] src=sa_ct pair_id=sa_ct_293 seed=564972360
+[02:50:03]   -> E=39 cl13=16 cl23=23 t=180.1s
+[02:50:03] [235/208] src=sa_ct pair_id=sa_ct_295 seed=1290428012
