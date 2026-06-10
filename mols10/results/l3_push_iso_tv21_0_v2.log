@@ -1,0 +1,8 @@
+[07:22:39] ============================================================
+[07:22:39] Deep push v2: iso_tv_21_0 (pairs[7]) cl12=0
+[07:22:39] Timeout=1800.0s workers=1 seed=77702
+[07:22:39] Current best: E=32 (cl13=13, cl23=19)
+[07:22:39] Strategy v2: cold-start ODD trials, hint-guided EVEN (50% cold)
+[07:22:39] Resuming from trial 1
+[07:22:39] ============================================================
+[07:22:39] trial=  1 timeout=1800.0s seed=1142904902 mode=cold

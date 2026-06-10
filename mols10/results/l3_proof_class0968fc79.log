@@ -73,3 +73,5 @@
 [06:51:45] Target: E<=28, timeout=1800.0s, workers=1, seed=55555
 [06:51:45] ============================================================
 [06:51:45] trial=  1 target=28 timeout=1800.0s cp_seed=299987784 gauge=id
+[07:21:45]   TIMEOUT t=1800.1s
+[07:21:45] trial=  2 target=28 timeout=1800.0s cp_seed=800003107 gauge=[np.int32(4), np.int32(9), np.int32(2), np.int32(5), np.int32(1), np.int32(6), np.int32(8), np.int32(3), np.int32(7), np.int32(0)]

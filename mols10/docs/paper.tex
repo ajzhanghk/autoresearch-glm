@@ -1326,14 +1326,15 @@ Supporting evidence:
     Can any class reach $\E \leq 28$?  Class 3a33165a best effort: E=31
     (push workers ran 2 trials, both E=31$\to$31 inconclusive; discontinued in Session~17).
     A broader pair scan (311 MOLS-10 pairs, 180\,s each) is running (Sessions~17--22).
-    Results from 227+ priority scanned pairs (all mdecomp/sa\_ct done; 84 TV21 secondary pairs pending):
+    Results from 283+ scanned pairs (all 227 priority done; 56+ of 96 TV21 secondary pairs scanned):
     sa\_ct pairs give $\E=35$--45; mdecomp pairs give $\E=33$--45;
-    TV21 isotopy pairs give $\E=32$--43 (9 scanned); TV10 isotopy pairs give $\E=37$--43 (3 scanned).
-    Eighteen stand-out classes ($\E\leq37$) have emerged from the scan (priority + TV21/TV10 secondary + isotopy variants):
+    TV21 isotopy pairs give $\E=32$--43 (15 scanned); TV10 isotopy pairs give $\E=37$--43 (3 scanned);
+    iso2 variants of scan-record pair give $\E=36$--42 (6 scanned, 2 standouts).
+    Twenty stand-out classes ($\E\leq37$) have emerged from the scan (priority + TV21/TV10 secondary + isotopy variants):
     \textbf{mdecomp\_48} (\texttt{8d481a18} L1, scan $\E=35$,
     \textbf{push best $\E=30$} ($\cl_{13}=14$, $\cl_{23}=16$, Session~21 trial~5!)
     --- within 1 of $\E=29$!, improving from $\E=37 \to 33 \to 31 \to 30$ across trials;
-    stable at $\E=30$ across 19+ independent trials confirming a strong local basin),
+    stable at $\E=30$ across 25+ independent trials confirming a strong local basin),
     \textbf{mdecomp\_71} (\texttt{cd1785b9} L1, scan $\E=37$,
     push best $\E=31$ ($\cl_{13}=15$, $\cl_{23}=16$), stable across 16 trials then
     discontinued --- strong local basin at $\E=31$),
@@ -1354,25 +1355,31 @@ Supporting evidence:
     \textbf{sa\_ct\_290} (\texttt{1343a5a6} L1, scan $\E=35$, $\cl_{13}=16$, $\cl_{23}=19$),
     \textbf{mdecomp\_281} (\texttt{05f9f018} L1, scan $\mathbf{E=33}$, $\cl_{13}=12$,
     $\cl_{23}=21$; push v2 both $\E=34$ (hint-anchored);
-    \textbf{push v3 trial~3 cold confirms $\E=33$} ($\cl_{13}=20$, $\cl_{23}=13$);
-    trial~4 hint=E33 running --- can it break below $\E=33$?), and
+    \textbf{push v3 confirms $\E=33$ basin}: cold trials 3,5 and hint trials 4,6 all $\E=33$
+    ($\cl_{13}=20$, $\cl_{23}=13$) --- 6 trials, all $\E=33$; deep basin), and
     \textbf{mdecomp\_296} (\texttt{d42b3374} L1, scan $\E=37$, $\cl_{13}=15$, $\cl_{23}=22$
     --- \textbf{10th distinct L1 family}!), and
     \textbf{mdecomp\_45} (\texttt{4cf608bd} L1, scan $\E=37$, $\cl_{13}=20$, $\cl_{23}=17$
     --- \textbf{11th distinct L1 family}!), and
     \textbf{iso\_tv\_21\_0} (\texttt{ee29e34e} L1, scan $\mathbf{E=32}$, $\cl_{13}=13$, $\cl_{23}=19$
     --- \textbf{12th distinct L1 family}!, \textbf{all-time scan record!};
-    push trials~1--3 all hint=E32 $\Rightarrow$ $\E=32$ (very stable basin);
-    trial~4 \emph{first cold start} running --- will it escape $\E=32$?), and
+    push v1 trials~1--5 all hint/cold $\Rightarrow$ $\E=32$ (very stable basin);
+    \textbf{v2 strategy launched} (50\% cold starts, SEED=77702; modeled after mdecomp\_281~v3
+    which broke $\E=34\to33$ via cold trial~3); v2 trial~1 cold running), and
     \textbf{iso\_tv\_10\_1} (\texttt{557feb0f} L1, scan $\E=37$, $\cl_{13}=19$, $\cl_{23}=18$
     --- \textbf{13th distinct L1 family}!, TV10 isotopy variant; iso\_tv\_10\_0 $\E=40$,
     iso\_tv\_10\_2 $\E=43$), and
     \textbf{iso\_mdecomp48\_4} (\texttt{1b41f88d} L1, scan $\E=37$, $\cl_{13}=16$, $\cl_{23}=21$
     --- \textbf{14th distinct L1 family}!, isotopy variant of mdecomp\_48 (push record $\E=30$);
-    iso\_mdecomp48\_0-3,5 gave $\E=38$--41).
-    Session~21--23: \textbf{iso\_tv\_21\_0 is the NEW scan record holder at $\E=32$}; \textbf{mdecomp\_48 holds push record at $\E=30$} --- one step from $\E=29$.
+    iso\_mdecomp48\_0-3,5 gave $\E=38$--41), and
+    \textbf{iso2\_tv21\_0\_1} (\texttt{af53f0ef} L1, scan $\E=36$, $\cl_{13}=20$, $\cl_{23}=16$
+    --- \textbf{15th distinct L1 family}!, isotopy variant of scan-record iso\_tv\_21\_0;
+    iso2 full scan: E=36,40,42,37,38,40 --- 2 standouts out of 6 variants), and
+    \textbf{iso2\_tv21\_0\_3} (\texttt{53a75a20} L1, scan $\E=37$, $\cl_{13}=23$, $\cl_{23}=14$
+    --- \textbf{16th distinct L1 family}!, isotopy variant of scan-record iso\_tv\_21\_0).
+    Session~21--25: \textbf{iso\_tv\_21\_0 is the NEW scan record holder at $\E=32$}; \textbf{mdecomp\_48 holds push record at $\E=30$} --- one step from $\E=29$.
     mdecomp\_48 shows a clear improvement trajectory: $\E=37$ (warmup)
-    $\to 33$ (trial~1) $\to 31$ (trial~3) $\to \mathbf{30}$ (trial~5, stable trials~5--19+).
+    $\to 33$ (trial~1) $\to 31$ (trial~3) $\to \mathbf{30}$ (trial~5, stable trials~5--25+).
     Multi-seed convergence to $\E=30$ ($\cl_{13}=14$, $\cl_{23}=16$) is evidence of a
     genuine near-optimum; whether $\E=29$ is reachable requires deeper exploration.
     The 1343a5a6 family spans four pairs (sa\_ct\_212/236/286/290), scan $\E=35$--38;
@@ -1384,17 +1391,20 @@ Supporting evidence:
     \texttt{70f243cc} (mdecomp\_217), \texttt{1343a5a6} (sa\_ct\_212, 236, 286, 290),
     \texttt{05f9f018} (mdecomp\_281, 285), \texttt{d42b3374} (mdecomp\_296),
     \texttt{4cf608bd} (mdecomp\_45), \texttt{ee29e34e} (iso\_tv\_21\_0),
-    \texttt{557feb0f} (iso\_tv\_10\_1), \texttt{1b41f88d} (iso\_mdecomp48\_4) ---
-    \textbf{fourteen distinct L1 structures} identified across 317+ scanned pairs (Sessions~17--24).
-    Note: 6 isotopy variants of mdecomp\_48 scanned; all gave $\E=37$--41, confirming that
-    mdecomp\_48's $\E=30$ push record is specific to its exact L1/L2 pair structure.
+    \texttt{557feb0f} (iso\_tv\_10\_1), \texttt{1b41f88d} (iso\_mdecomp48\_4),
+    \texttt{af53f0ef} (iso2\_tv21\_0\_1, $\E=36$), \texttt{53a75a20} (iso2\_tv21\_0\_3, $\E=37$) ---
+    \textbf{sixteen distinct L1 hashes} in standout pairs, spanning $\E=30$--$37$
+    (note: af53f0ef, 53a75a20 are isotopically equivalent to ee29e34e);
+    identified across 323 scanned pairs (Sessions~17--25).
+    Note: 6 isotopy variants of mdecomp\_48 scanned (all $\E=37$--41); 6 isotopy variants
+    of scan-record iso\_tv\_21\_0 scanned (iso2: $\E=36$--42, 2 standouts at $\E=36$, $37$).
+    Push L strategy: mdecomp\_48's $\E=30$ is pair-specific; isotopy does not preserve push depth.
     Push workers (1800\,s) are probing:
-    \textbf{mdecomp\_48} (20+ trials at $\E=30$, strong basin --- push record),
-    \textbf{iso\_tv\_21\_0} (new! \texttt{ee29e34e} L1 family, \textbf{scan record $\E=32$},
-    deep push with E=32 hint launched Session~23),
-    and \textbf{mdecomp\_281} v3 with alternating cold/hint starts
-    (\textbf{confirmed $\E=33$ basin}: trials 3(cold)+4(hint) both $\E=33$
-    ($\cl_{13}=20$, $\cl_{23}=13$); trial~5 cold running --- will it break below $\E=33$?).
+    \textbf{mdecomp\_48} (25+ consecutive $\E=30$ --- push record, extremely stable basin),
+    \textbf{iso\_tv\_21\_0 v2} (50\% cold starts, SEED=77702; v1 trials 1--5 all $\E=32$;
+    strategy switch motivated by mdecomp\_281 v3 success: cold trial~3 found $\E=33$ new best),
+    and \textbf{mdecomp\_281} v3 (\textbf{confirmed $\E=33$ deep basin}: 6 trials (3 cold, 3 hint)
+    all $\E=33$ ($\cl_{13}=20$, $\cl_{23}=13$); no improvement found yet).
     mdecomp\_45 discontinued (warmup $\E=39$, scan $\E=37$ --- outclassed by iso\_tv\_21\_0).
     Is there a structural explanation for why both 74bb7b86 and 0968fc79
     share the asymmetric distribution ($\cl_{13}=17$, $\cl_{23}=12$)?
