@@ -1329,7 +1329,7 @@ Supporting evidence:
     Results from 227+ priority scanned pairs (all mdecomp/sa\_ct done; 84 TV21 secondary pairs pending):
     sa\_ct pairs give $\E=35$--45; mdecomp pairs give $\E=33$--45;
     TV21 isotopy pairs give $\E=32$--43 (9 scanned); TV10 isotopy pairs give $\E=37$--43 (3 scanned).
-    Seventeen stand-out classes ($\E\leq37$) have emerged from the scan (priority + TV21/TV10 secondary):
+    Eighteen stand-out classes ($\E\leq37$) have emerged from the scan (priority + TV21/TV10 secondary + isotopy variants):
     \textbf{mdecomp\_48} (\texttt{8d481a18} L1, scan $\E=35$,
     \textbf{push best $\E=30$} ($\cl_{13}=14$, $\cl_{23}=16$, Session~21 trial~5!)
     --- within 1 of $\E=29$!, improving from $\E=37 \to 33 \to 31 \to 30$ across trials;
@@ -1366,7 +1366,10 @@ Supporting evidence:
     trial~4 \emph{first cold start} running --- will it escape $\E=32$?), and
     \textbf{iso\_tv\_10\_1} (\texttt{557feb0f} L1, scan $\E=37$, $\cl_{13}=19$, $\cl_{23}=18$
     --- \textbf{13th distinct L1 family}!, TV10 isotopy variant; iso\_tv\_10\_0 $\E=40$,
-    iso\_tv\_10\_2 $\E=43$).
+    iso\_tv\_10\_2 $\E=43$), and
+    \textbf{iso\_mdecomp48\_4} (\texttt{1b41f88d} L1, scan $\E=37$, $\cl_{13}=16$, $\cl_{23}=21$
+    --- \textbf{14th distinct L1 family}!, isotopy variant of mdecomp\_48 (push record $\E=30$);
+    iso\_mdecomp48\_0-3,5 gave $\E=38$--41).
     Session~21--23: \textbf{iso\_tv\_21\_0 is the NEW scan record holder at $\E=32$}; \textbf{mdecomp\_48 holds push record at $\E=30$} --- one step from $\E=29$.
     mdecomp\_48 shows a clear improvement trajectory: $\E=37$ (warmup)
     $\to 33$ (trial~1) $\to 31$ (trial~3) $\to \mathbf{30}$ (trial~5, stable trials~5--19+).
@@ -1381,8 +1384,10 @@ Supporting evidence:
     \texttt{70f243cc} (mdecomp\_217), \texttt{1343a5a6} (sa\_ct\_212, 236, 286, 290),
     \texttt{05f9f018} (mdecomp\_281, 285), \texttt{d42b3374} (mdecomp\_296),
     \texttt{4cf608bd} (mdecomp\_45), \texttt{ee29e34e} (iso\_tv\_21\_0),
-    \texttt{557feb0f} (iso\_tv\_10\_1) ---
-    \textbf{thirteen distinct L1 structures} identified across 265+ scanned pairs (Sessions~17--23).
+    \texttt{557feb0f} (iso\_tv\_10\_1), \texttt{1b41f88d} (iso\_mdecomp48\_4) ---
+    \textbf{fourteen distinct L1 structures} identified across 317+ scanned pairs (Sessions~17--24).
+    Note: 6 isotopy variants of mdecomp\_48 scanned; all gave $\E=37$--41, confirming that
+    mdecomp\_48's $\E=30$ push record is specific to its exact L1/L2 pair structure.
     Push workers (1800\,s) are probing:
     \textbf{mdecomp\_48} (20+ trials at $\E=30$, strong basin --- push record),
     \textbf{iso\_tv\_21\_0} (new! \texttt{ee29e34e} L1 family, \textbf{scan record $\E=32$},
