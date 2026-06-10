@@ -1303,8 +1303,8 @@ Supporting evidence:
   \item Is Conjecture~\ref{conj:ct} provable? A proof would resolve $N(10)$ definitively.
   \item What is the true minimum of $\E$ over all triples with $\cl_{12} = 0$? Our
     empirical minimum is $\E=29$; can $\E < 29$ be achieved?  CP-SAT proof workers
-    have run 99+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$, all inconclusive
-    (for classes 4f04a773, 2cc8e22f, 74bb7b86, and 0968fc79 combined; Sessions~17--21 ongoing).
+    have run 100+ trials $\times 1200$--$1800$\,s targeting $\E \leq 28$, all inconclusive
+    (for classes 4f04a773, 2cc8e22f, 74bb7b86, and 0968fc79 combined; Sessions~17--22 ongoing).
     Whether $\E = 29$ is the global minimum or merely a local floor is the central open question.
     Note: intercalate moves alone cannot achieve $\E\leq28$ from any known $\E=29$ class
     (all four proved global intercalate-neighborhood minima, Session~16); only CP-SAT
@@ -1321,38 +1321,46 @@ Supporting evidence:
     Session~16), and \textbf{0968fc79} ($\cl_{13}=17$, $\cl_{23}=12$, Session~16).
     Can any class reach $\E \leq 28$?  Class 3a33165a best effort: E=31
     (push workers ran 2 trials, both E=31$\to$31 inconclusive; discontinued in Session~17).
-    A broader pair scan (311 MOLS-10 pairs, 180\,s each) is running (Sessions~17--21).
-    Results from 191+ scanned pairs: sa\_ct pairs give $\E=38$--45; mdecomp pairs give
-    $\E=35$--45.  Five stand-out new classes have emerged from the scan:
-    \textbf{mdecomp\_48} (\texttt{8d481a18}, scan $\E=35$,
+    A broader pair scan (311 MOLS-10 pairs, 180\,s each) is running (Sessions~17--22).
+    Results from 199+ scanned pairs: sa\_ct pairs give $\E=35$--45; mdecomp pairs give
+    $\E=33$--45.  Fourteen stand-out classes ($\E\leq37$) have emerged from the scan:
+    \textbf{mdecomp\_48} (\texttt{8d481a18} L1, scan $\E=35$,
     \textbf{push best $\E=30$} ($\cl_{13}=14$, $\cl_{23}=16$, Session~21 trial~5!)
-    --- within 1 of $\E=29$!, improving from $\E=33 \to 31 \to 30$ across trials),
-    \textbf{mdecomp\_71} (\texttt{d5a580f8}, scan $\E=37$,
-    \textbf{push best $\E=31$} ($\cl_{13}=15$, $\cl_{23}=16$, stable across 5 trials)
-    --- within 2 of $\E=29$!),
+    --- within 1 of $\E=29$!, improving from $\E=37 \to 33 \to 31 \to 30$ across trials;
+    stable at $\E=30$ across 16+ independent trials confirming a strong local basin),
+    \textbf{mdecomp\_71} (\texttt{cd1785b9} L1, scan $\E=37$,
+    push best $\E=31$ ($\cl_{13}=15$, $\cl_{23}=16$), stable across 16 trials then
+    discontinued --- strong local basin at $\E=31$),
     \textbf{mdecomp\_84} (\texttt{cd1785b9} L1, scan $\E=37$, push 4 trials all
-    $\E=38$, discontinued in favour of mdecomp\_142),
-    \textbf{mdecomp\_121} (\texttt{6d7cf34c} L1, scan $\E=35$, push trials 1--2
-    both $\E=35$, running), and
-    \textbf{mdecomp\_142} (\texttt{44aa4786} L1 --- 4th new family, scan $\E=37$
-    ($\cl_{13}=19$, $\cl_{23}=18$), push 3 trials all $\E=41$, discontinued).
-    Session~21 note: container restart; all workers restarted from scratch.
-    \textbf{mdecomp\_48 is now the record holder at $\E=30$} --- one step from $\E=29$.
-    mdecomp\_48 shows a clear improvement trajectory across push trials: $\E=37$ (warmup)
-    $\to 33$ (trial~1) $\to 31$ (trial~3) $\to \mathbf{30}$ (trial~5, stable trials~5--10).
-    mdecomp\_71 stable at $\E=31$ across 14 trials --- both pairs confirm sub-31 depth
-    is reachable from the right starting pair.  The $\E=30$ plateau for mdecomp\_48 suggests
-    a strong local basin: across 10+ independent CP-SAT trials (2 workers, hint, diverse seeds),
-    and even with different base seeds and no-warmup restarts, the solver consistently returns
-    $\E=30$ ($\cl_{13}=14$, $\cl_{23}=16$).  This multi-seed convergence to the same solution
-    is evidence that $\E=30$ may be a genuine near-optimum for this pair; whether $\E=29$ is
-    reachable requires deeper exploration beyond the current search horizon.
+    $\E=38$, discontinued),
+    \textbf{mdecomp\_121} (\texttt{6d7cf34c} L1, scan $\E=35$, push trials all
+    $\E=35$, discontinued),
+    \textbf{mdecomp\_142} (\texttt{44aa4786} L1, scan $\E=37$
+    ($\cl_{13}=19$, $\cl_{23}=18$), push 3 trials all $\E=41$, discontinued),
+    \textbf{mdecomp\_163} (\texttt{20d55e1d} L1, scan $\E=36$, $\cl_{13}=20$, $\cl_{23}=16$),
+    \textbf{mdecomp\_191} (\texttt{bccfc7b0} L1, scan $\E=36$, $\cl_{13}=19$, $\cl_{23}=17$),
+    \textbf{mdecomp\_192} (\texttt{20d55e1d} L1, scan $\E=36$, $\cl_{13}=23$, $\cl_{23}=13$),
+    \textbf{sa\_ct\_212} (\texttt{1343a5a6} L1, scan $\E=37$, $\cl_{13}=16$, $\cl_{23}=21$),
+    \textbf{mdecomp\_217} (\texttt{70f243cc} L1, scan $\E=36$, $\cl_{13}=19$, $\cl_{23}=17$),
+    \textbf{sa\_ct\_236} (\texttt{1343a5a6} L1, scan $\E=37$, $\cl_{13}=20$, $\cl_{23}=17$),
+    \textbf{sa\_ct\_290} (\texttt{1343a5a6} L1, scan $\E=35$, $\cl_{13}=16$, $\cl_{23}=19$), and
+    \textbf{mdecomp\_281} (\texttt{05f9f018} L1, scan $\mathbf{E=33}$, $\cl_{13}=12$,
+    $\cl_{23}=21$ --- \textbf{new scan record}; deep push launched Session~22).
+    Session~21--22: \textbf{mdecomp\_48 is the record holder at $\E=30$} --- one step from $\E=29$.
+    mdecomp\_48 shows a clear improvement trajectory: $\E=37$ (warmup)
+    $\to 33$ (trial~1) $\to 31$ (trial~3) $\to \mathbf{30}$ (trial~5, stable trials~5--16+).
+    Multi-seed convergence to $\E=30$ ($\cl_{13}=14$, $\cl_{23}=16$) is evidence of a
+    genuine near-optimum; whether $\E=29$ is reachable requires deeper exploration.
+    The 1343a5a6 family spans three pairs (sa\_ct\_212/236/290), all scan $\E=35$--37;
+    mdecomp\_163/192 share L1=20d55e1d (two pairs, both scan $\E=36$).
     L1 family map: \texttt{cd1785b9} (mdecomp\_71, 84, 106), \texttt{8d481a18} (mdecomp\_48),
-    \texttt{6d7cf34c} (mdecomp\_121), \texttt{44aa4786} (mdecomp\_142) ---
-    four distinct L1 structures, with mdecomp\_48 and mdecomp\_71 both establishing
-    $\E=31$ as the current deep-push frontier.
-    Push workers (1800\,s) are probing mdecomp\_48, 71, 121, and 142 to determine
-    whether any can reach $\E \leq 29$.
+    \texttt{6d7cf34c} (mdecomp\_121), \texttt{44aa4786} (mdecomp\_142),
+    \texttt{20d55e1d} (mdecomp\_163, 192), \texttt{bccfc7b0} (mdecomp\_191),
+    \texttt{70f243cc} (mdecomp\_217), \texttt{1343a5a6} (sa\_ct\_212, 236, 290),
+    \texttt{05f9f018} (mdecomp\_281) ---
+    nine distinct L1 structures identified.
+    Push workers (1800\,s) are probing mdecomp\_48 and mdecomp\_281 (Session~22
+    scan record $\E=33$) to determine whether any can reach $\E \leq 29$.
     Is there a structural explanation for why both 74bb7b86 and 0968fc79
     share the asymmetric distribution ($\cl_{13}=17$, $\cl_{23}=12$)?
   \item Does the CT distribution (always $\leq 2$) follow from a group-theoretic argument

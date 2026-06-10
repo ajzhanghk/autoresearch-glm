@@ -309,3 +309,19 @@
 [01:59:01] [218/191] src=mdecomp pair_id=mdecomp_277 seed=1742200298
 [02:02:01]   -> E=41 cl13=26 cl23=15 t=180.1s
 [02:02:01] [219/192] src=mdecomp pair_id=mdecomp_287 seed=168043773
+[02:05:01]   -> E=38 cl13=19 cl23=19 t=180.1s
+[02:05:01] [220/193] src=mdecomp pair_id=mdecomp_288 seed=26196345
+[02:08:01]   -> E=40 cl13=20 cl23=20 t=179.9s
+[02:08:01] [221/194] src=mdecomp pair_id=mdecomp_289 seed=1359093399
+[02:11:02]   -> E=35 cl13=16 cl23=19 t=180.8s <** E<=37 **>
+[02:11:02] [222/195] src=sa_ct pair_id=sa_ct_290 seed=1309038298
+[02:14:02]   -> E=41 cl13=22 cl23=19 t=180.1s
+[02:14:02] [223/196] src=sa_ct pair_id=sa_ct_289 seed=779143890
+[02:17:02]   -> E=43 cl13=20 cl23=23 t=180.1s
+[02:17:02] [224/197] src=sa_ct pair_id=sa_ct_292 seed=318407752
+[02:20:02]   -> E=39 cl13=19 cl23=20 t=180.1s
+[02:20:02] [225/198] src=mdecomp pair_id=mdecomp_279 seed=1737829810
+[02:23:02]   -> E=33 cl13=12 cl23=21 t=180.3s <*** NEW RECORD ***>
+[02:23:02] [226/199] src=mdecomp pair_id=mdecomp_281 seed=533748733
+[02:26:02]   -> E=43 cl13=21 cl23=22 t=180.1s
+[02:26:02] [227/200] src=sa_ct pair_id=sa_ct_282 seed=1459133732
