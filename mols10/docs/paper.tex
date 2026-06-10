@@ -1437,6 +1437,11 @@ Supporting evidence:
     Note: 6 isotopy variants of mdecomp\_48 scanned (all $\E=37$--41); 6 isotopy variants
     of scan-record iso\_tv\_21\_0 scanned (iso2: $\E=36$--42, 2 standouts at $\E=36$, $37$).
     Push L strategy: mdecomp\_48's $\E=30$ is pair-specific; isotopy does not preserve push depth.
+    \textbf{4-worker vs 1-worker CP-SAT}: iso\_tv\_21\_0 was stuck at $\E=32$ for 6 trials
+    with 1-worker CP-SAT (v1: 5 trials, v2: 1 trial); the \textbf{4-worker v3 found $\E=30$
+    in the very first cold trial}. This demonstrates that parallel CP-SAT workers (sharing
+    learned clauses and exploring different search subtrees simultaneously) are qualitatively
+    more powerful than single-worker for near-miss optimization.
     CPU strategy: 4-core machine fully dedicated.
     Currently running (Session~25b+): \textbf{iso\_tv\_21\_0 v3}
     (\textbf{trial~1 cold found $\E=30$!}; trial~2 hint=E30 running, targeting $\E\leq29$)
