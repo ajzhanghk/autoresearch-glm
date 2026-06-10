@@ -1303,8 +1303,8 @@ Supporting evidence:
     achieves \textbf{push $\E=29$} ($\cl_{13}=14$, $\cl_{23}=15$) via 4-worker CP-SAT in
     trial~2 (hint=E30, Session~26).  Trajectory: scan $\E=32 \to$ trial~1 cold $\E=30 \to$
     trial~2 hint $\E=\mathbf{29}$.  This is the \textbf{second distinct $L_1$ family} to
-    reach $\E=29$ (alongside the original mdecomp\_48-class families), confirming
-    that $\E=29$ is not an artifact of the first family's structure.
+    reach $\E=29$ (alongside the original four classes 4f04a773/2cc8e22f/74bb7b86/0968fc79), confirming
+    that $\E=29$ is not an artifact of a single $L_1$ family.
     The pair now joins the five-class $\E=29$ pool (21 entries).
     v3 trial~3 (cold) actively runs targeting $\E\leq28$.
   \item \textbf{E=30 push co-record en route (Session 25b):} trial~1 cold of the same v3 run
@@ -1336,11 +1336,11 @@ Supporting evidence:
     74bb7b86 (19 ic, max-IS=10, $k=11$ empty, 2\,s),
     0968fc79 (24 ic, max-IS=10, $k=11$ empty, 10\,s):
     no intercalate sequence can achieve $\E\leq28$ from any of these four starting points.
-  \item Four isotopy classes now achieve $\E=29$: 4f04a773 ($\cl_{13}=15$, $\cl_{23}=14$),
-    2cc8e22f ($\cl_{13}=14$, $\cl_{23}=15$), 74bb7b86 ($\cl_{13}=17$, $\cl_{23}=12$,
-    Session~16), and \textbf{0968fc79} ($\cl_{13}=17$, $\cl_{23}=12$, Session~16).
-    Can any class reach $\E \leq 28$?  Class 3a33165a best effort: E=31
-    (push workers ran 2 trials, both E=31$\to$31 inconclusive; discontinued in Session~17).
+  \item \textbf{Five} classes now achieve $\E=29$: original four (4f04a773, 2cc8e22f, 74bb7b86, 0968fc79)
+    plus \textbf{iso\_tv\_21\_0} (\texttt{ee29e34e}, $\cl_{13}=14$, $\cl_{23}=15$, Session~26!).
+    This is the \textbf{second distinct $L_1$ family} at $\E=29$, confirming the bound is structurally real.
+    Can any class reach $\E \leq 28$?  100+ proof trials all TIMEOUT.  CP-SAT v3 trial~3 (cold) for iso\_tv\_21\_0 actively targeting $\E\leq28$.
+    Class 3a33165a best effort: E=31 (discontinued Session~17).
     A broader pair scan (323 MOLS-10 pairs, 180\,s each) ran Sessions~17--25b (293/323 done).
     Results from 293+ scanned pairs (all 227 priority done; 66+ of 96 TV21 secondary pairs scanned, plus 12 iso/iso2 special scans):
     sa\_ct pairs give $\E=35$--45; mdecomp pairs give $\E=33$--45;
@@ -1349,9 +1349,8 @@ Supporting evidence:
     Twenty-seven+ stand-out classes ($\E\leq37$) have emerged from the scan (priority + TV21/TV10 secondary + isotopy variants):
     \textbf{mdecomp\_48} (\texttt{8d481a18} L1, scan $\E=35$,
     \textbf{push best $\E=30$} ($\cl_{13}=14$, $\cl_{23}=16$, Session~21 trial~5!)
-    --- within 1 of $\E=29$!, improving from $\E=37 \to 33 \to 31 \to 30$ across trials;
-    stable at $\E=30$ across 25+ independent trials confirming a strong local basin;
-    \textbf{now tied by iso\_tv\_21\_0 v3 trial~1!}),
+    --- improving from $\E=37 \to 33 \to 31 \to 30$ across trials;
+    stable at $\E=30$ across 25+ independent trials confirming a strong local basin),
     \textbf{mdecomp\_71} (\texttt{cd1785b9} L1, scan $\E=37$,
     push best $\E=31$ ($\cl_{13}=15$, $\cl_{23}=16$), stable across 16 trials then
     discontinued --- strong local basin at $\E=31$),
