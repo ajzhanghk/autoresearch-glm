@@ -209,3 +209,39 @@
 [23:28:55] [165/141] src=sa_ct pair_id=sa_ct_223 seed=512024817
 [23:31:55]   -> E=41 cl13=23 cl23=18 t=180.1s
 [23:31:55] [166/142] src=sa_ct pair_id=sa_ct_224 seed=1783748485
+[23:34:55]   -> E=40 cl13=19 cl23=21 t=180.1s
+[23:34:55] [167/143] src=mdecomp pair_id=mdecomp_228 seed=979478363
+[23:37:55]   -> E=43 cl13=21 cl23=22 t=180.3s
+[23:37:55] [168/144] src=mdecomp pair_id=mdecomp_214 seed=427522445
+[23:40:55]   -> E=38 cl13=16 cl23=22 t=180.1s
+[23:40:55] [169/145] src=mdecomp pair_id=mdecomp_215 seed=1753628500
+[23:43:56]   -> E=45 cl13=27 cl23=18 t=180.5s
+[23:43:56] [170/146] src=sa_ct pair_id=sa_ct_216 seed=408851758
+[23:46:56]   -> E=41 cl13=20 cl23=21 t=180.1s
+[23:46:56] [171/147] src=sa_ct pair_id=sa_ct_217 seed=2138437988
+[23:49:56]   -> E=40 cl13=22 cl23=18 t=180.1s
+[23:49:56] [172/148] src=mdecomp pair_id=mdecomp_218 seed=1387333865
+[23:52:56]   -> E=40 cl13=21 cl23=19 t=180.1s
+[23:52:56] [174/149] src=sa_ct pair_id=sa_ct_219 seed=1730427915
+[23:55:56]   -> E=43 cl13=20 cl23=23 t=180.1s
+[23:55:56] [175/150] src=mdecomp pair_id=mdecomp_224 seed=1475989334
+[23:58:56]   -> E=45 cl13=25 cl23=20 t=180.1s
+[23:58:56] [176/151] src=mdecomp pair_id=mdecomp_225 seed=2110002028
+[00:01:56]   -> E=43 cl13=22 cl23=21 t=180.1s
+[00:01:56] [177/152] src=sa_ct pair_id=sa_ct_227 seed=780347821
+[00:04:56]   -> E=41 cl13=21 cl23=20 t=180.1s
+[00:04:56] [178/153] src=sa_ct pair_id=sa_ct_228 seed=1745866467
+[00:07:56]   -> E=43 cl13=20 cl23=23 t=180.1s
+[00:07:56] [179/154] src=mdecomp pair_id=mdecomp_227 seed=2042490066
+[00:10:57]   -> E=41 cl13=22 cl23=19 t=180.1s
+[00:10:57] [180/155] src=mdecomp pair_id=mdecomp_229 seed=1811142031
+[00:13:57]   -> E=39 cl13=18 cl23=21 t=180.1s
+[00:13:57] [181/156] src=mdecomp pair_id=mdecomp_233 seed=1123484368
+[00:16:57]   -> E=43 cl13=19 cl23=24 t=180.1s
+[00:16:57] [182/157] src=sa_ct pair_id=sa_ct_230 seed=1408305887
+[00:19:57]   -> E=40 cl13=20 cl23=20 t=180.1s
+[00:19:57] [183/158] src=mdecomp pair_id=mdecomp_235 seed=977975421
+[00:22:57]   -> E=37 cl13=20 cl23=17 t=180.1s <** E<=37 **>
+[00:22:57] [184/159] src=sa_ct pair_id=sa_ct_236 seed=482459593
+[00:25:57]   -> E=38 cl13=20 cl23=18 t=180.1s
+[00:25:57] [185/160] src=sa_ct pair_id=sa_ct_231 seed=1167156469

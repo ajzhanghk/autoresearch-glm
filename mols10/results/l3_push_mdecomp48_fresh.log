@@ -18,3 +18,11 @@
 [23:07:23]   New best: E=34
 [23:07:23] trial=  2 timeout=1800.0s seed=809023692 hint=L3
 [23:07:23] trial=  2 timeout=1800.0s seed=809023692 hint=L3
+[23:37:23]   -> E=34 cl13=17 cl23=17 t=1800.0s
+[23:37:23]   -> E=34 cl13=17 cl23=17 t=1800.0s
+[23:37:23] trial=  3 timeout=1800.0s seed=1656430083 hint=L3
+[23:37:23] trial=  3 timeout=1800.0s seed=1656430083 hint=L3
+[00:07:23]   -> E=34 cl13=17 cl23=17 t=1800.0s
+[00:07:23]   -> E=34 cl13=17 cl23=17 t=1800.0s
+[00:07:23] trial=  4 timeout=1800.0s seed=1957288605 hint=L3
+[00:07:23] trial=  4 timeout=1800.0s seed=1957288605 hint=L3
