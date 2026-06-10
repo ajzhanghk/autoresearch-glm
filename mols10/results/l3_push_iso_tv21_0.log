@@ -7,3 +7,5 @@
 [04:17:01] trial=  1 timeout=1800.0s seed=1190914057 mode=hint=E32
 [04:47:01]   -> E=32 cl13=13 cl23=19 t=1800.0s
 [04:47:01] trial=  2 timeout=1800.0s seed=455085167 mode=hint=E32
+[05:17:01]   -> E=32 cl13=13 cl23=19 t=1800.0s
+[05:17:01] trial=  3 timeout=1800.0s seed=2009934355 mode=hint=E32
