@@ -25,3 +25,5 @@
 [09:56:37]   Saved new best E=26
 [09:56:37]   Saved E=26 to pool!
 [09:56:37] trial=  5 timeout=1800.0s seed=1665723849 workers=4 mode=cold
+[10:26:37]   -> E=31 cl13=17 cl23=14 t=1800.1s
+[10:26:37] trial=  6 timeout=1800.0s seed=1014286829 workers=4 mode=hint=E26
