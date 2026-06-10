@@ -9,3 +9,13 @@
 [08:24:13]   -> E=30 cl13=15 cl23=15 t=1800.1s *** NEW BEST E=30! ***
 [08:24:13]   Saved new best E=30
 [08:24:13] trial=  2 timeout=1800.0s seed=1333021984 workers=4 mode=hint=E30
+[08:54:15]   -> E=29 cl13=14 cl23=15 t=1801.8s *** NEW BEST E=29! ***
+[08:54:15]   Saved new best E=29
+[08:56:37] ============================================================
+[08:56:37] Deep push v3 (4-worker): iso_tv_21_0 (pairs[7]) cl12=0
+[08:56:37] Timeout=1800.0s workers=4 seed=77703
+[08:56:37] Current best: E=29 (cl13=14, cl23=15)
+[08:56:37] Strategy v3: 4 parallel CP-SAT workers; odd=cold, even=hint
+[08:56:37] Resuming from trial 3
+[08:56:37] ============================================================
+[08:56:37] trial=  3 timeout=1800.0s seed=233642306 workers=4 mode=cold

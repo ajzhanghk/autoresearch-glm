@@ -10,3 +10,5 @@
 [08:24:13]   -> E=35 cl13=19 cl23=16 t=1800.0s *** NEW BEST E=35! ***
 [08:24:13]   Saved new best E=35
 [08:24:13] trial=  2 timeout=1800.0s seed=1921876417 mode=hint=E35
+[08:54:13]   -> E=35 cl13=19 cl23=16 t=1800.0s E<=35 good
+[08:54:13] trial=  3 timeout=1800.0s seed=1140845809 mode=cold

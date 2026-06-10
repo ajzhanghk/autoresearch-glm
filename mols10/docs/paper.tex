@@ -64,23 +64,24 @@ local search, and Glucose3 CDCL satisfiability solving, we conduct a deep search
 Our main findings are:
 (1) the minimum total clash energy $\E = \cl_{13} + \cl_{23}$ has been reduced to
 \textbf{29} (Session~14), following the cascade $37 \to 34 \to 33 \to 32 \to 31 \to 30 \to \mathbf{29}$,
-then independently rediscovered at $\E=30$ for \textbf{two distinct pairs}:
-mdecomp\_48 (\texttt{8d481a18}; $\cl_{13}=14$, $\cl_{23}=16$, 25+ trials)
-and \textbf{iso\_tv\_21\_0} (\texttt{ee29e34e}; $\cl_{13}=15$, $\cl_{23}=15$, Session~25b v3 trial~1
---- the scan-record pair with scan $\E=32$, now pushed to $\E=30$ by 4-worker CP-SAT!);
-(2) the $\E=29$ record has been confirmed across four independent isotopy classes
-(4f04a773, 2cc8e22f, 74bb7b86, 0968fc79), all proved global intercalate-neighborhood minima;
+and independently reproduced at $\E=29$ for \textbf{iso\_tv\_21\_0} (\texttt{ee29e34e};
+$\cl_{13}=14$, $\cl_{23}=15$, Session~26 v3 trial~2 hint=E30 --- the scan-record pair with
+scan $\E=32$, pushed $30 \to \mathbf{29}$ by 4-worker CP-SAT in two consecutive trials!),
+confirming $\E=29$ is reachable from a \textbf{second distinct $L_1$ family};
+(2) the $\E=29$ record has been confirmed across \textbf{five independent} classes:
+four original (4f04a773, 2cc8e22f, 74bb7b86, 0968fc79), all proved global intercalate-neighborhood
+minima, plus \textbf{iso\_tv\_21\_0} (\texttt{ee29e34e}), a qualitatively different $L_1$ family;
 (3) every MOLS-10 pair tested (344 pairs) has $\CT(L_1, L_2) \leq 2 < 10$,
 and Glucose3 provides machine-verifiable UNSAT certificates for 311 pairs;
 (4) a systematic scan of 293+ pairs (out of 323) identifies 25 distinct $L_1$ families
 with scan $\E \leq 37$, including the scan-record pair at $\E=32$;
 (5) CP-SAT proof workers ran 100+ trials targeting $\E \leq 28$, all inconclusive (TIMEOUT);
-(6) four independent $\E=29$ classes are \textbf{5-move intercalate-neighborhood minima}
+(6) four original $\E=29$ classes are \textbf{5-move intercalate-neighborhood minima}
 (22+ million 5-tuples exhaustively checked).
 
 Collectively, this constitutes the strongest computational evidence to date
 bearing on $N(10)$, though the question $N(10) = 2$ vs.\ $N(10) \geq 3$ remains open.
-Active pursuit: 4-worker CP-SAT on iso\_tv\_21\_0 hint=E30 (targeting $\E\leq29$).
+Active pursuit: 4-worker CP-SAT on iso\_tv\_21\_0 trial~3 cold (targeting $\E\leq28$).
 \end{abstract}
 
 \tableofcontents
@@ -488,6 +489,7 @@ Session & Key development & Best $\E$ & Stable since\\
 24 & \textbf{Container reset}: all workers restarted from saved best-L3 files; iso\_tv\_21\_0 push resumed trial~5 (hint=E32); mdecomp\_281 v3 resumed trial~6 (hint=E33); mdecomp\_48 resumed trial~25; scan resumed pos~273 (TV variants); 4 proof workers restarted; 17 standouts, 13 L1 families & \textbf{29} & Session 24\\
 25 & \textbf{iso\_mdecomp48 scan}: 6 isotopy variants, all $\E=37$--41 (best: iso\_mdecomp48\_4 E=37, 14th L1 family); \textbf{iso2\_tv21\_0 scan}: 6 variants, $\E=36$--42 (2 standouts: af53f0ef E=36 [15th], 53a75a20 E=37 [16th]); scan reaches TV secondary pairs; 5 new TV L1 families (e0e09d80/18th, 8e540206/19th, 17fc775b/20th); 20 standouts; v2 push trial~1 cold $\E=32$ (no gain) & \textbf{29} & Session 25\\
 25b & \textbf{mdecomp\_279 discovered as co-scan-record} ($\E=33$, e54e791c, 17th L1 family, first push!); 5 more L1 families (21st--25th); iso\_tv\_21\_0 \textbf{v3 push launched} (4 workers, all CPUs); \textbf{iso\_tv\_21\_0 v3 trial~1 cold $\E=\mathbf{30}$! NEW PUSH CO-RECORD!} ($\cl_{13}=15$, $\cl_{23}=15$); mdecomp\_279 trial~1 warmup $\E=35$; scan at 293/323; 27+ standouts, 25 L1 families & \textbf{29} & Session 25b\\
+26 & \textbf{iso\_tv\_21\_0 v3 trial~2 hint=E30 $\E=\mathbf{29}$!} ($\cl_{13}=14$, $\cl_{23}=15$, seed=1333021984) --- \textbf{SECOND DISTINCT $L_1$ FAMILY REACHES $\E=29$!} (ee29e34e, the all-time scan-record pair); trajectory $32 \to 30 \to 29$ in two 4-worker trials; pool now 21 entries; mdecomp\_279 trial~2 $\E=35$ (stable); v3 trial~3 cold running (targeting $\E\leq28$) & \textbf{29} & Session 26\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1296,13 +1298,18 @@ Supporting evidence:
     Session~16: all four are proved \textbf{global intercalate-neighborhood minima}
     (BFS depth-5 covering 1.1M+ states, kmax exhaustive proofs); no intercalate path
     can achieve $\E\leq28$.
-  \item \textbf{E=30 push co-record (Session 25b):} \texttt{iso\_tv\_21\_0} (\texttt{ee29e34e},
-    the all-time scan-record pair at scan $\E=32$) achieves \textbf{push $\E=30$}
-    ($\cl_{13}=15$, $\cl_{23}=15$) via 4-worker CP-SAT in trial~1 (Session~25b).
-    This is the second distinct pair to reach $\E=30$, alongside mdecomp\_48
-    ($\cl_{13}=14$, $\cl_{23}=16$).  The symmetric clashes ($\cl_{13}=\cl_{23}=15$) for
-    iso\_tv\_21\_0 contrast with mdecomp\_48's asymmetric distribution.
-    4-worker CP-SAT (trial~2, hint=E30) now targets $\E\leq29$ for this pair.
+  \item \textbf{E=29 confirmed for second distinct $L_1$ family (Session~26):}
+    \texttt{iso\_tv\_21\_0} (\texttt{ee29e34e}, the all-time scan-record pair at scan $\E=32$)
+    achieves \textbf{push $\E=29$} ($\cl_{13}=14$, $\cl_{23}=15$) via 4-worker CP-SAT in
+    trial~2 (hint=E30, Session~26).  Trajectory: scan $\E=32 \to$ trial~1 cold $\E=30 \to$
+    trial~2 hint $\E=\mathbf{29}$.  This is the \textbf{second distinct $L_1$ family} to
+    reach $\E=29$ (alongside the original mdecomp\_48-class families), confirming
+    that $\E=29$ is not an artifact of the first family's structure.
+    The pair now joins the five-class $\E=29$ pool (21 entries).
+    v3 trial~3 (cold) actively runs targeting $\E\leq28$.
+  \item \textbf{E=30 push co-record en route (Session 25b):} trial~1 cold of the same v3 run
+    first achieved $\E=30$ ($\cl_{13}=15$, $\cl_{23}=15$), momentarily sharing the push
+    record with mdecomp\_48 ($\cl_{13}=14$, $\cl_{23}=16$) before trial~2 pushed further.
   \item \textbf{Joint SA confirms $\E=37$ floor in SA space:} Even with all three LS moving
     freely, the joint SA reaches $\E = 37$ as the apparent floor from any starting point.
     CP-SAT descends far below via exhaustive branch-and-bound.
@@ -1377,9 +1384,10 @@ Supporting evidence:
     \textbf{iso\_tv\_21\_0} (\texttt{ee29e34e} L1, scan $\mathbf{E=32}$, $\cl_{13}=13$, $\cl_{23}=19$
     --- \textbf{12th distinct L1 family}!, \textbf{all-time scan record!};
     push v1 trials~1--5 all $\E=32$; v2 trial~1 cold also $\E=32$ (6 total, stable basin);
-    \textbf{v3 trial~1 cold $\mathbf{E=30}$! ($\cl_{13}=15$, $\cl_{23}=15$)}
-    --- \textbf{\textcolor{red}{NEW PUSH CO-RECORD!}} ties mdecomp\_48's all-time push record!
-    v3 trial~2 hint=E30 running: can parallel CP-SAT break through to $\E=29$?), and
+    \textbf{v3 trial~1 cold $\mathbf{E=30}$! ($\cl_{13}=15$, $\cl_{23}=15$)};
+    \textbf{\textcolor{red}{v3 trial~2 hint=E30 $\mathbf{E=29}$! ($\cl_{13}=14$, $\cl_{23}=15$)}}
+    --- \textbf{SECOND DISTINCT $L_1$ FAMILY AT $\E=29$!} trajectory $32\to30\to29$;
+    v3 trial~3 cold running, targeting $\E\leq28$), and
     \textbf{iso\_tv\_10\_1} (\texttt{557feb0f} L1, scan $\E=37$, $\cl_{13}=19$, $\cl_{23}=18$
     --- \textbf{13th distinct L1 family}!, TV10 isotopy variant; iso\_tv\_10\_0 $\E=40$,
     iso\_tv\_10\_2 $\E=43$), and
@@ -1409,15 +1417,13 @@ Supporting evidence:
     --- \textbf{24th distinct L1 family}!), and
     \textbf{mdecomp\_235} (\texttt{a79be19b} L1, scan $\E=37$, $\cl_{13}=20$, $\cl_{23}=17$
     --- \textbf{25th distinct L1 family}!).
-    Session~21--25b: \textbf{iso\_tv\_21\_0 is the scan record holder at $\E=32$};
-    \textbf{push co-record at $\E=30$} now shared by \textbf{two pairs}:
-    mdecomp\_48 ($\cl_{13}=14$, $\cl_{23}=16$, stable after 25+ trials) and
-    \textbf{iso\_tv\_21\_0} ($\cl_{13}=15$, $\cl_{23}=15$, v3 trial~1 cold, Session~25b!) ---
-    both one step from $\E=29$, approaching from different $L_1$ families.
-    mdecomp\_48 trajectory: $\E=37 \to 33 \to 31 \to \mathbf{30}$ (trial~5, stable 25+ trials).
-    iso\_tv\_21\_0 trajectory: $\E=32$ (6 single-worker trials) $\to \mathbf{30}$ (4-worker trial~1!)
-    --- 4-worker parallelism broke through immediately.
-    Whether $\E=29$ is reachable for iso\_tv\_21\_0 is the immediate question (v3 trial~2 running).
+    Session~21--26: \textbf{iso\_tv\_21\_0 is the scan record holder at $\E=32$};
+    \textbf{iso\_tv\_21\_0 v3 trajectory: $32 \to 30 \to \mathbf{29}$!}
+    (6 single-worker stuck at $\E=32$; trial~1 cold $\E=30$; trial~2 hint=E30 $\mathbf{E=29}$!).
+    This is the \textbf{second distinct $L_1$ family} confirmed at $\E=29$ (ee29e34e),
+    joining the original four classes. Pool now 21 entries.
+    mdecomp\_48 trajectory: $\E=37 \to 33 \to 31 \to \mathbf{30}$ (trial~5, stable 25+ trials, stable basin).
+    Both families now at $\E=29$; iso\_tv\_21\_0 v3 trial~3 (cold) targets $\E\leq28$.
     The 1343a5a6 family spans four pairs (sa\_ct\_212/236/286/290), scan $\E=35$--38;
     mdecomp\_163/192 share L1=20d55e1d (both scan $\E=36$);
     mdecomp\_279/281/285: mdecomp\_279 (e54e791c) scan $\E=33$;
@@ -1447,9 +1453,10 @@ Supporting evidence:
     learned clauses and exploring different search subtrees simultaneously) are qualitatively
     more powerful than single-worker for near-miss optimization.
     CPU strategy: 4-core machine fully dedicated.
-    Currently running (Session~25b+): \textbf{iso\_tv\_21\_0 v3}
-    (\textbf{trial~1 cold found $\E=30$!}; trial~2 hint=E30 running, targeting $\E\leq29$)
-    and \textbf{mdecomp\_279} (trial~1 warmup $\E=35$; trial~2 hint=E35 running).
+    Currently running (Session~26+): \textbf{iso\_tv\_21\_0 v3}
+    (trial~1 cold $\E=30$; \textbf{trial~2 hint=E30 $\mathbf{E=29}$!} --- trajectory $32\to30\to29$;
+    \textbf{trial~3 cold running, targeting $\E\leq28$})
+    and \textbf{mdecomp\_279} (trial~1 cold $\E=35$; trial~2 hint=E35 $\E=35$ (stable); trial~3 cold running).
     Discontinued (stable basins, redirected compute): mdecomp\_48 (25+ trials $\E=30$),
     mdecomp\_281 v3 (6 trials $\E=33$), proof workers (24+ trials $\E=28$ all TIMEOUT).
     mdecomp\_45 discontinued (warmup $\E=39$, outclassed by iso\_tv\_21\_0).
