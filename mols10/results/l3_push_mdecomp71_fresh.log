@@ -1,0 +1,18 @@
+[01:33:08] ============================================================
+[01:33:08] ============================================================
+[01:33:08] Fresh push: mdecomp_71 (pairs[42]) cl12=0
+[01:33:08] Fresh push: mdecomp_71 (pairs[42]) cl12=0
+[01:33:08] Timeout=1800.0s workers=1 seed=99999
+[01:33:08] Timeout=1800.0s workers=1 seed=99999
+[01:33:08] NOTE: No hint — fresh exploration; current best E=31 from hint-push
+[01:33:08] NOTE: No hint — fresh exploration; current best E=31 from hint-push
+[01:33:08] ============================================================
+[01:33:08] ============================================================
+[01:33:08] trial=  1 timeout=180.0s seed=517502649 hint=none
+[01:33:08] trial=  1 timeout=180.0s seed=517502649 hint=none
+[01:36:08]   -> E=41 cl13=22 cl23=19 t=180.0s
+[01:36:08]   -> E=41 cl13=22 cl23=19 t=180.0s
+[01:36:08]   New best: E=41
+[01:36:08]   New best: E=41
+[01:36:08] trial=  2 timeout=1800.0s seed=1328368983 hint=L3
+[01:36:08] trial=  2 timeout=1800.0s seed=1328368983 hint=L3
