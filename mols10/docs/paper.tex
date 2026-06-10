@@ -1296,6 +1296,13 @@ Supporting evidence:
     Session~16: all four are proved \textbf{global intercalate-neighborhood minima}
     (BFS depth-5 covering 1.1M+ states, kmax exhaustive proofs); no intercalate path
     can achieve $\E\leq28$.
+  \item \textbf{E=30 push co-record (Session 25b):} \texttt{iso\_tv\_21\_0} (\texttt{ee29e34e},
+    the all-time scan-record pair at scan $\E=32$) achieves \textbf{push $\E=30$}
+    ($\cl_{13}=15$, $\cl_{23}=15$) via 4-worker CP-SAT in trial~1 (Session~25b).
+    This is the second distinct pair to reach $\E=30$, alongside mdecomp\_48
+    ($\cl_{13}=14$, $\cl_{23}=16$).  The symmetric clashes ($\cl_{13}=\cl_{23}=15$) for
+    iso\_tv\_21\_0 contrast with mdecomp\_48's asymmetric distribution.
+    4-worker CP-SAT (trial~2, hint=E30) now targets $\E\leq29$ for this pair.
   \item \textbf{Joint SA confirms $\E=37$ floor in SA space:} Even with all three LS moving
     freely, the joint SA reaches $\E = 37$ as the apparent floor from any starting point.
     CP-SAT descends far below via exhaustive branch-and-bound.
