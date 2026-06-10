@@ -1326,8 +1326,9 @@ Supporting evidence:
     (push workers ran 2 trials, both E=31$\to$31 inconclusive; discontinued in Session~17).
     A broader pair scan (311 MOLS-10 pairs, 180\,s each) is running (Sessions~17--22).
     Results from 227+ priority scanned pairs (all mdecomp/sa\_ct done; 84 TV21 secondary pairs pending):
-    sa\_ct pairs give $\E=35$--45; mdecomp pairs give $\E=33$--45; TV21 isotopy pairs give $\E=32$--42 (9+ scanned).
-    Sixteen stand-out classes ($\E\leq37$) have emerged from the scan (priority + TV21 secondary):
+    sa\_ct pairs give $\E=35$--45; mdecomp pairs give $\E=33$--45;
+    TV21 isotopy pairs give $\E=32$--43 (9 scanned); TV10 isotopy pairs give $\E=37$--43 (3 scanned).
+    Seventeen stand-out classes ($\E\leq37$) have emerged from the scan (priority + TV21/TV10 secondary):
     \textbf{mdecomp\_48} (\texttt{8d481a18} L1, scan $\E=35$,
     \textbf{push best $\E=30$} ($\cl_{13}=14$, $\cl_{23}=16$, Session~21 trial~5!)
     --- within 1 of $\E=29$!, improving from $\E=37 \to 33 \to 31 \to 30$ across trials;
@@ -1360,7 +1361,11 @@ Supporting evidence:
     --- \textbf{11th distinct L1 family}!), and
     \textbf{iso\_tv\_21\_0} (\texttt{ee29e34e} L1, scan $\mathbf{E=32}$, $\cl_{13}=13$, $\cl_{23}=19$
     --- \textbf{12th distinct L1 family}!, \textbf{new all-time scan record!},
-    TV21 secondary pair, recovered via seed=889819773, deep push running with E=32 hint).
+    TV21 secondary pair, recovered via seed=889819773, deep push trials~1--2 both $\E=32$
+    (stable basin), trial~3 hint=E32 running), and
+    \textbf{iso\_tv\_10\_1} (\texttt{557feb0f} L1, scan $\E=37$, $\cl_{13}=19$, $\cl_{23}=18$
+    --- \textbf{13th distinct L1 family}!, TV10 isotopy variant; iso\_tv\_10\_0 $\E=40$,
+    iso\_tv\_10\_2 $\E=43$).
     Session~21--23: \textbf{iso\_tv\_21\_0 is the NEW scan record holder at $\E=32$}; \textbf{mdecomp\_48 holds push record at $\E=30$} --- one step from $\E=29$.
     mdecomp\_48 shows a clear improvement trajectory: $\E=37$ (warmup)
     $\to 33$ (trial~1) $\to 31$ (trial~3) $\to \mathbf{30}$ (trial~5, stable trials~5--19+).
@@ -1374,8 +1379,9 @@ Supporting evidence:
     \texttt{20d55e1d} (mdecomp\_163, 192), \texttt{bccfc7b0} (mdecomp\_191),
     \texttt{70f243cc} (mdecomp\_217), \texttt{1343a5a6} (sa\_ct\_212, 236, 286, 290),
     \texttt{05f9f018} (mdecomp\_281, 285), \texttt{d42b3374} (mdecomp\_296),
-    \texttt{4cf608bd} (mdecomp\_45), \texttt{ee29e34e} (iso\_tv\_21\_0) ---
-    \textbf{twelve distinct L1 structures} identified across 235+ scanned pairs (Sessions~17--23).
+    \texttt{4cf608bd} (mdecomp\_45), \texttt{ee29e34e} (iso\_tv\_21\_0),
+    \texttt{557feb0f} (iso\_tv\_10\_1) ---
+    \textbf{thirteen distinct L1 structures} identified across 265+ scanned pairs (Sessions~17--23).
     Push workers (1800\,s) are probing:
     \textbf{mdecomp\_48} (20+ trials at $\E=30$, strong basin --- push record),
     \textbf{iso\_tv\_21\_0} (new! \texttt{ee29e34e} L1 family, \textbf{scan record $\E=32$},
@@ -1402,9 +1408,10 @@ Supporting evidence:
     (an isotopy variant of the TV21 base pair) gives scan $\E=32$ --- far better than the
     TV21 base pair ($\E\sim37$) and the IC-based TV21 variants ($\E\sim40$--45) ---
     is a strong signal that isotopy transforms can dramatically change the L3 accessibility.
-    Three more isotopy variants of the TV10 base pair (\texttt{iso\_tv\_10\_0/1/2},
-    L1 families \texttt{3c814749}, \texttt{557feb0f}, \texttt{f874c342}) are queued for
-    scan and may yield additional low-$\E$ breakthroughs.
+    Three isotopy variants of the TV10 base pair were scanned: \texttt{iso\_tv\_10\_1}
+    (L1 \texttt{557feb0f}) yielded $\E=37$ (13th distinct L1 family!), while
+    \texttt{iso\_tv\_10\_0} gave $\E=40$ and \texttt{iso\_tv\_10\_2} gave $\E=43$.
+    Push workers for \texttt{iso\_tv\_10\_1} are a potential next step.
     Future work should systematically generate isotopy transforms of all known
     promising base pairs (mdecomp\_48, mdecomp\_281, etc.).
   \item \textbf{Theoretical lower bound} on $\E$: can one prove $\E \geq 30$ (or higher)
