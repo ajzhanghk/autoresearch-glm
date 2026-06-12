@@ -491,6 +491,7 @@ Session & Key development & Best $\E$ & Stable since\\
 25b & \textbf{mdecomp\_279 discovered as co-scan-record} ($\E=33$, e54e791c, 17th L1 family, first push!); 5 more L1 families (21st--25th); iso\_tv\_21\_0 \textbf{v3 push launched} (4 workers, all CPUs); \textbf{iso\_tv\_21\_0 v3 trial~1 cold $\E=\mathbf{30}$! NEW PUSH CO-RECORD!} ($\cl_{13}=15$, $\cl_{23}=15$); mdecomp\_279 trial~1 warmup $\E=35$; scan at 293/323; 27+ standouts, 25 L1 families & \textbf{29} & Session 25b\\
 26 & \textbf{iso\_tv\_21\_0 v3 trial~2 hint=E30 $\E=\mathbf{29}$!} ($\cl_{13}=14$, $\cl_{23}=15$, seed=1333021984) --- \textbf{SECOND DISTINCT $L_1$ FAMILY REACHES $\E=29$!} (ee29e34e, the all-time scan-record pair); trajectory $32 \to 30 \to 29$ in two 4-worker trials; pool now 21 entries; mdecomp\_279 trial~2 $\E=35$ (stable); v3 trial~3 cold running (targeting $\E\leq28$) & \textbf{29} & Session 26\\
 26b & \textbf{iso\_tv\_21\_0 v3 trial~4 hint=E29 $\E=\mathbf{26}$!!!} ($\cl_{13}=8$, $\cl_{23}=18$, seed=1943590465) --- \textbf{NEW ALL-TIME RECORD!} 3 below previous best; pool updated (22 entries); scan COMPLETE (all 323/323 pairs); 3 new L1 families (tv\_230 $\E=35$, tv\_262 $\E=36$, tv\_223 $\E=37$; 28 total); v3 trial~5 cold running, trial~6 hint=E26 next & \textbf{26} & Session 26b\\
+27 & \textbf{Dual-strategy enhanced push}: (1)~\textbf{v5 short-timeout} (300\,s, 2 workers, hint=E26) for 3$\times$ more seed diversity; (2)~\textbf{LNS v2 with perturbation} (6/10 rows free, perturb strength 3, 120\,s/round, 2 workers) to escape E=26 basin --- proved E=26 is \emph{4-row locally optimal} (4-free-row LNS trivially optimal in 0.1\,s across all $\binom{10}{4}=210$ row subsets); new LNS explores strongly-perturbed hints ($\E_\text{perturbed}\approx50$) to force search into new basins; both strategies share best-file and auto-update hint on improvement & \textbf{26} & Session 27\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1327,7 +1328,11 @@ Supporting evidence:
     empirical minimum is now $\mathbf{E=26}$ (iso\_tv\_21\_0 v3 trial~4, Session~26b)!
     The hint cascade $32\to30\to29\to26$ suggests further improvement is possible.
     The central question: can the hint-guided push reach $\E=0$ (3-MOLS of order 10)?
-    CP-SAT hint trial~6 (hint=E26) actively targets $\E\leq20$.
+    Session~27 launches dual-strategy enhanced push: v5 (300\,s, 2 workers, more seed diversity)
+    and LNS~v2 (6-free-rows with perturbation, 120\,s/round, 2 workers).
+    \textbf{Key structural finding}: E=26 is 4-row locally optimal --- 4-free-row LNS
+    finds E=26 trivially (0.1\,s) for all row subsets, proving no 4-row perturbation can improve.
+    LNS~v2 applies random LS-moves (perturbing hint to $\E\approx50$) to force search into new basins.
     Note: the original four $\E=29$ classes are all proved global intercalate-neighborhood
     minima (Session~16); iso\_tv\_21\_0's $\E=26$ solution has no such proof yet.
   \item \textbf{RESOLVED (Session 16):} All four known $\E=29$ isotopy classes are global
@@ -1340,7 +1345,8 @@ Supporting evidence:
   \item \textbf{iso\_tv\_21\_0} (\texttt{ee29e34e}) now holds the all-time record at $\mathbf{E=26}$
     ($\cl_{13}=8$, $\cl_{23}=18$, Session~26b)! Hint cascade: $32\to30\to29\to26$.
     Five classes had reached $\E=29$: original four (4f04a773/2cc8e22f/74bb7b86/0968fc79) plus iso\_tv\_21\_0.
-    Can iso\_tv\_21\_0 reach $\E < 26$?  Trial~6 hint=E26 running.  Scan COMPLETE (323/323 pairs).
+    Can iso\_tv\_21\_0 reach $\E < 26$?  Session~27 dual-strategy attack: v5 (300\,s, short-timeout diversity)
+    + LNS~v2 (6-free-rows, strong perturbation, escaping the 4-row-optimal basin).  Scan COMPLETE (323/323 pairs).
     Class 3a33165a best effort: E=31 (discontinued Session~17).
     A complete scan of all 323 MOLS-10 pairs (180\,s each) ran Sessions~17--26b.
     Results from 293+ scanned pairs (all 227 priority done; 66+ of 96 TV21 secondary pairs scanned, plus 12 iso/iso2 special scans):
