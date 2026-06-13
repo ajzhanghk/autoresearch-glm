@@ -1336,6 +1336,17 @@ Supporting evidence:
     LNS~v2 applies random LS-moves (perturbing hint to $\E\approx50$) to force search into new basins.
     Note: the original four $\E=29$ classes are all proved global intercalate-neighborhood
     minima (Session~16); iso\_tv\_21\_0's $\E=26$ solution has no such proof yet.
+    \textbf{Session~28 deeper structural analysis}: (a)~\textbf{1-move neighborhood exhausted}:
+    row-swap min $\E=43$, col-swap min $\E=42$, symbol-relabel $\E=26$ (invariant), intercalate
+    min $\E=28$ --- no 1-move improvement possible; (b)~\textbf{2-IC neighborhood}: all 281
+    double-intercalate combos give $\E\geq26$; (c)~\textbf{Unique basin}: 5 independent 30\,s
+    CP-SAT trials with hint=E26 all return the \emph{same canonical $L_3$}, suggesting a
+    single-attractor E=26 basin; (d)~\textbf{Feasibility attack} with hard constraint $\E\leq25$
+    running (each INFEASIBLE certificate accumulates proof of optimality);
+    (e)~\textbf{E=29 CP-SAT cascade} on 3 stored families (aba463bd/0c3b8715/68ec561e)
+    never previously CP-SAT-hint-pushed; (f)~\textbf{mdecomp\_279 scan-cascade} targeting
+    reproduction of scan $\E=33$ then hint-cascade (push trials used cold starts, got $\E=35$;
+    cascade from hint=E33 unexplored).
   \item \textbf{RESOLVED (Session 16):} All four known $\E=29$ isotopy classes are global
     intercalate-neighborhood minima.
     4f04a773 (28 ic, max-IS=13, $k=14$ empty, 181\,s),
