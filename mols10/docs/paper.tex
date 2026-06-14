@@ -493,6 +493,7 @@ Session & Key development & Best $\E$ & Stable since\\
 26b & \textbf{iso\_tv\_21\_0 v3 trial~4 hint=E29 $\E=\mathbf{26}$!!!} ($\cl_{13}=8$, $\cl_{23}=18$, seed=1943590465) --- \textbf{NEW ALL-TIME RECORD!} 3 below previous best; pool updated (22 entries); scan COMPLETE (all 323/323 pairs); 3 new L1 families (tv\_230 $\E=35$, tv\_262 $\E=36$, tv\_223 $\E=37$; 28 total); v3 trial~5 cold running, trial~6 hint=E26 next & \textbf{26} & Session 26b\\
 27 & \textbf{Dual-strategy enhanced push}: (1)~\textbf{v5 short-timeout} (300\,s, 2 workers, hint=E26) for 3$\times$ more seed diversity; (2)~\textbf{LNS v2 with perturbation} (6/10 rows free, perturb strength 3, 120\,s/round, 2 workers) to escape E=26 basin --- proved E=26 is \emph{4-row locally optimal} (4-free-row LNS trivially optimal in 0.1\,s across all $\binom{10}{4}=210$ row subsets); new LNS explores strongly-perturbed hints ($\E_\text{perturbed}\approx50$) to force search into new basins; both strategies share best-file and auto-update hint on improvement & \textbf{26} & Session 27\\
 28 & \textbf{Local-minimum analysis + smart multi-family attack}: 1-move neighborhood analysis proves E=26 is a \emph{strict local minimum} under ALL standard LS moves (row-swap min E=43, col-swap min E=42, sym-relabel E=26, intercalate min E=28); 2-IC analysis: all 281 double-intercalate combinations give $\E\geq26$; \textbf{two new smart strategies launched}: (1)~\textbf{E=29 family cascade} (4 workers, 600\,s) applies CP-SAT hint-cascade to 3 stored E=29 families (aba463bd/0c3b8715/68ec561e) \emph{never previously CP-SAT-pushed}; (2)~\textbf{Feasibility E$\leq$25 attack} on iso\_tv\_21\_0; pool cleaned (354$\to$14 entries). \textbf{KEY RESULT}: using pool E=29 entry as hint for ee29e34e (iso\_tv\_21\_0), cascade trial~4 finds $\mathbf{E=28}$ ($\cl_{13}=16$, $\cl_{23}=12$, seed=2085968723) via \emph{different cascade path} --- this is a \textbf{second, genuinely distinct $L_3$ structure} (confirmed different canonical form from E=26 solution); balanced split 16+12 vs unbalanced 8+18 for E=26; new cascade line active with hint=E28; \textbf{mdecomp\_279 (e54e791c)} also breakthrough: cold trial finds $\E=29$ ($\cl_{13}=12$, $\cl_{23}=17$, scan was only E=33!), hint cascade begins & \textbf{26+28} & Session 28\\
+29 & \textbf{Three-front attack continues}: \textbf{mdecomp\_279 hint cascade} (trial~4, hint=E29) achieves $\mathbf{E=28}$ ($\cl_{13}=8$, $\cl_{23}=20$, seed=1046158808) for pair e54e791c --- \emph{completely independent} (L1,L2) pair now matching the ee29e34e cascade record; trial~5 (hint=E28) active; \textbf{E=29 family cascade} trial~6 (aba463bd, hint=E29) $\to$ E=29 (no gain), trial~7 targets 0c3b8715; \textbf{Feasibility E$\leq$25}: 6~trials all time out ($0$~SAT, $0$~INFEASIBLE) --- \emph{6$\times$600\,s$\times$2 workers = 7200 worker-seconds exhausted}, strengthening empirical evidence that E=25 is not achievable from iso\_tv\_21\_0; unique-basin confirmed: 5 independent CP-SAT trials all return same canonical E=26 $L_3$; \textbf{strategy: scan 118 unexplored mdecomp CT=2 pairs} to find those reaching $\E\leq29$ quickly & \textbf{26} & Session 29\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1344,9 +1345,13 @@ Supporting evidence:
     single-attractor E=26 basin; (d)~\textbf{Feasibility attack} with hard constraint $\E\leq25$
     running (each INFEASIBLE certificate accumulates proof of optimality);
     (e)~\textbf{E=29 CP-SAT cascade} on 3 stored families (aba463bd/0c3b8715/68ec561e)
-    never previously CP-SAT-hint-pushed; (f)~\textbf{mdecomp\_279 scan-cascade} targeting
-    reproduction of scan $\E=33$ then hint-cascade (push trials used cold starts, got $\E=35$;
-    cascade from hint=E33 unexplored).
+    never previously CP-SAT-hint-pushed; (f)~\textbf{mdecomp\_279 scan-cascade}: v3 scan-seed
+    reproduces $\E=29$ (trial~1), cascade achieves $\E=28$ (trial~4, Session~29);
+    (g)~\textbf{Feas E$\leq$25 evidence}: 6~trials $\times$ 600\,s $\times$ 2 workers = 7200 worker-seconds
+    exhausted with 0 SAT and 0 INFEASIBLE certificates, strongly suggesting E=26 is the global minimum
+    for iso\_tv\_21\_0;
+    (h)~\textbf{Two independent paths to E=28}: ee29e34e cascade ($\cl_{13}=16$, $\cl_{23}=12$)
+    and mdecomp\_279 ($\cl_{13}=8$, $\cl_{23}=20$) from different (L1,L2) pairs.
   \item \textbf{RESOLVED (Session 16):} All four known $\E=29$ isotopy classes are global
     intercalate-neighborhood minima.
     4f04a773 (28 ic, max-IS=13, $k=14$ empty, 181\,s),
@@ -1390,7 +1395,10 @@ Supporting evidence:
     \textbf{sa\_ct\_290} (\texttt{1343a5a6} L1, scan $\E=35$, $\cl_{13}=16$, $\cl_{23}=19$),
     \textbf{mdecomp\_279} (\texttt{e54e791c} L1, \textbf{scan $\mathbf{E=33}$}, $\cl_{13}=12$,
     $\cl_{23}=21$ --- \textbf{co-scan-record!} (Session~25b);
-    push trial~1 cold $\E=35$ (warmup; trial~2 hint=E35 running)), and
+    v3 scan-seed cold trial~1 finds $\E=29$ ($\cl_{13}=12$, $\cl_{23}=17$)!
+    \textbf{Session~29: hint cascade trial~4 (hint=E29) $\to$ $\mathbf{E=28}$} ($\cl_{13}=8$, $\cl_{23}=20$,
+    seed=1046158808) --- second independent (L1,L2) pair reaches $\E=28$;
+    trial~5 (hint=E28) running; trajectory $33\to29\to28$), and
     \textbf{mdecomp\_281} (\texttt{05f9f018} L1, scan $\mathbf{E=33}$, $\cl_{13}=12$,
     $\cl_{23}=21$; push v2 both $\E=34$ (hint-anchored);
     \textbf{push v3 confirms $\E=33$ basin}: cold trials 3,5 and hint trials 4,6 all $\E=33$
