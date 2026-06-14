@@ -1,0 +1,14 @@
+[02:15:02] Loaded existing best: E=31
+[02:15:02] ============================================================
+[02:15:02] mdecomp_68 (pairs[40]) cold-scan-then-cascade v2
+[02:15:02] cl12=0 timeout=600.0s workers=4
+[02:15:02] Strategy: cold starts to escape E=31 basin, then cascade
+[02:15:02] Current best: E=31
+[02:15:02] ============================================================
+[02:15:02] trial=  1 mode=cold[861157327]
+[02:25:03]   -> E=35 cl13=20 cl23=15 t=600.5s
+[02:25:03] trial=  2 mode=cold[1217597288]
+[02:35:03]   -> E=36 cl13=16 cl23=20 t=600.1s
+[02:35:03] trial=  3 mode=hint=E31
+[02:45:03]   -> E=31 cl13=17 cl23=14 t=600.1s
+[02:45:03] trial=  4 mode=cold[1349358149]
