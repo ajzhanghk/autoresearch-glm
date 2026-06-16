@@ -353,7 +353,7 @@ Intercalate交换是拉丁方空间中最细粒度的局部移动操作，本文
 
 \begin{theorem}[$E=26$的局部极小性]\label{thm:local_min}
 设$L_3^*$为\texttt{iso\_tv\_21\_0}对应的能量$E=26$的最优$L_3$，则：
-\begin{enumerate}[(i)]
+\begin{enumerate}[label=(\roman*)]
 \item \textbf{1-行交换邻域}：对所有$\binom{10}{2}=45$个行对置换，$E \geq 43$；
 \item \textbf{1-列交换邻域}：对所有45个列对置换，$E \geq 42$；
 \item \textbf{1-intercalate邻域}：对所有单intercalate交换，$E \geq 28$；
@@ -370,7 +370,7 @@ Intercalate交换是拉丁方空间中最细粒度的局部移动操作，本文
 
 \begin{theorem}[三族$E=28$汇聚]\label{thm:three_pairs}
 以下三个互不同构的MOLS-10对，各自达到能量$E=28$：
-\begin{enumerate}[(i)]
+\begin{enumerate}[label=(\roman*)]
 \item \texttt{iso\_tv\_21\_0}次级级联：$E=28$（$\cl_{13}=16,\cl_{23}=12$）；
 \item \texttt{mdecomp\_279}（指纹\texttt{e54e791c}）：$E=28$（$\cl_{13}=8,\cl_{23}=20$）；
 \item \texttt{mdecomp\_113}（指纹\texttt{2469c6dc}）：$E=28$（$\cl_{13}=17,\cl_{23}=11$）。
@@ -489,7 +489,7 @@ $\geq 3$ & 0（已验证） & 0（已验证） & 0 \\
 $E=26$能量记录代表了当前计算搜索所能达到的极限。从物理直觉上看，这意味着在已知最优的MOLS对基础上，与完美3-MOLS相比仍有26个"错误"（碰撞符号对）。能量26相对于总共$n^2=100$个位置，约为26\%的碰撞率。
 
 $E=26$解的严格局部极小性（定理\ref{thm:local_min}）尤其值得关注：在所有细粒度局部移动（intercalate、行/列交换）下能量均不降低，且7200工作进程秒的大规模可行性攻击也未能证明$E\leq 25$可达或不可达。这表明$E=26$可能是：
-\begin{enumerate}[(a)]
+\begin{enumerate}[label=(\alph*)]
 \item 当前搜索策略下的真实全局极小；
 \item 能量景观中的一个特别"深"的局部极小，需要大跨度的"跳跃"才能逃逸；
 \item 一个反映$N(10)=2$这一深层数学事实的结构性障碍。
