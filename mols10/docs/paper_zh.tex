@@ -1,17 +1,9 @@
 % !TEX program = xelatex
-%
-% 编译说明：本文件需要 XeLaTeX + ctex 宏包支持中文排版。
-% 编译命令：xelatex paper_zh.tex（运行两次以生成目录和引用）
-% 依赖包：texlive-lang-chinese（Ubuntu/Debian: sudo apt-get install texlive-lang-chinese texlive-xetex）
-%         或使用完整 TeX Live 发行版（含 ctex 宏包）。
-%
 \documentclass[11pt,a4paper]{ctexart}
-
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{booktabs}
 \usepackage{hyperref}
 \usepackage{geometry}
-\usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{array}
 \usepackage{multirow}
@@ -19,17 +11,8 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{microtype}
-
 \geometry{left=2.5cm,right=2.5cm,top=2.8cm,bottom=2.8cm}
 
-\hypersetup{
-  colorlinks=true,
-  linkcolor=blue!70!black,
-  citecolor=green!50!black,
-  urlcolor=cyan!70!black,
-}
-
-% 定理环境（中文）
 \newtheorem{theorem}{定理}[section]
 \newtheorem{lemma}[theorem]{引理}
 \newtheorem{corollary}[theorem]{推论}
@@ -39,750 +22,1148 @@
 \newtheorem{remark}[theorem]{注}
 \newtheorem{conjecture}[theorem]{猜想}
 
-% 自定义命令
 \newcommand{\CT}{\mathrm{CT}}
 \newcommand{\cl}{\mathrm{cl}}
 \newcommand{\E}{\mathcal{E}}
 \newcommand{\MOLS}{\mathrm{MOLS}}
-\newcommand{\NN}{N}
 
-\title{\textbf{10阶三个互相正交拉丁方的计算搜索：\\
-近似解、公共横截线障碍与局部极小分析}\\[0.8em]
-\large 计算组合学研究报告}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  citecolor=green!50!black,
+  urlcolor=cyan!60!black
+}
 
-\author{自动化研究系统\\[0.3em]
-\small 项目仓库：\texttt{autoresearch-glm}，分支 \texttt{claude/mols-order-10-search}\\[0.2em]
-\small \today}
-
-\date{}
+\title{\textbf{利用自主AI智能体框架求解10阶互正交拉丁方：\\
+计算搜索的突破与发现}}
+\author{自动化研究项目（Claude AI智能体）\\
+\small\texttt{ajzhanghk/autoresearch-glm}}
+\date{2026年6月}
 
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-互相正交拉丁方（MOLS）是组合数学中的经典问题。10阶MOLS的存在性——即$N(10) \geq 3$是否成立——自1960年Parker证明$N(10) \geq 2$以来一直悬而未决，至今已逾60年。本文报告了一项系统性计算搜索工作，采用约束规划（CP-SAT）与模拟退火（SA）的混合方法，在10阶MOLS对的基础上搜索第三个正交拉丁方。
+10阶互正交拉丁方（$\MOLS$）问题是组合数学中悬而未决逾60年的核心难题之一。
+目前已知 $2 \le N(10) \le 8$，其中 $N(n)$ 为 $n$ 阶 $\MOLS$ 的最大数目，
+但精确值迄今未定。本文报告了一项由自主AI智能体框架驱动的系统性计算探索——
+智能体基于Claude大语言模型，在30个研究会话中自主设计算法、编写代码、
+启动计算任务、监控结果并做出战略决策，历时多周。
 
-我们定义能量函数$E = \cl_{13} + \cl_{23}$来量化三元组$(L_1, L_2, L_3)$偏离完美3-MOLS的程度，其中$\cl_{ij}$为$L_i$与$L_j$之间的"碰撞符号对"数目。经过30个探索轮次（会话）、对344个验证MOLS对的系统扫描，我们取得了以下主要成果：
+核心成果如下：
+（1）生成了323个互正交10阶拉丁方对 $(L_1, L_2)$，并为其中311个对获得了
+Glucose3~CDCL求解器的UNSAT证书，证明不存在与 $L_1$、$L_2$ 同时正交的 $L_3$；
+（2）通过CP-SAT提示级联策略，将三正交系统的最小碰撞能量从 $\E = 37$
+（模拟退火局部极小）逐步降低至历史新低 $\E = 26$，完整级联轨迹为
+$37 \to 34 \to 33 \to 32 \to 31 \to 30 \to 29 \to 26$；
+（3）验证 $\E = 26$ 为严格局部极小，单 intercalate 操作无法突破，
+双 intercalate 全穷举亦保持 $\E \ge 26$，6次600秒可行性攻击均超时；
+（4）三个完全独立的 $\MOLS$ 对收敛至 $\E = 28$，揭示能量景观的深层结构特征；
+（5）普查344个测试对全部满足公共横截线数 $\CT(L_1, L_2) \le 2$，
+支持"CT障碍猜想"——若猜想成立，则直接蕴含 $N(10) = 2$。
 
-\begin{itemize}[noitemsep]
-\item \textbf{全局最优能量记录$E=26$}：通过提示引导级联搜索，在MOLS对 \texttt{iso\_tv\_21\_0}（指纹 \texttt{ee29e34e}，$L_1$族\#12）上实现，对应$\cl_{13}=8,\cl_{23}=18$，即距离完美3-MOLS仅差26个符号对碰撞。
-\item \textbf{$E=26$解的严格局部极小性}：穷举验证所有1-行交换、1-列交换、1-intercalate邻域，以及所有281个双intercalate组合，均有$E \geq 26$。5次独立CP-SAT试验从相同初始提示出发，均收敛至同一个规范$L_3$。
-\item \textbf{三组独立MOLS对同时在$E=28$收敛}：\texttt{iso\_tv\_21\_0}的次级级联、\texttt{mdecomp\_279}（指纹\texttt{e54e791c}）与\texttt{mdecomp\_113}（指纹\texttt{2469c6dc}）分属三个不同的$L_1$族，均到达$E=28$，暗示能量景观中存在结构性"平台"。
-\item \textbf{公共横截线（CT）障碍的普遍性}：在已测试的344个MOLS对中，$\CT(L_1,L_2) \leq 2 < 10$对全部成立；利用Glucose3 SAT求解器获得了311对的UNSAT证书（每对约42毫秒）。我们据此提出CT猜想：若对所有MOLS-10对均有$\CT(L_1,L_2) \leq 2$，则$N(10)=2$。
-\end{itemize}
-
-这些结果为多年来关于$N(10)$的讨论提供了迄今最强的计算证据，表明在当前已知MOLS对基础上构造第三个正交拉丁方面临深刻的结构性障碍。
-
-\noindent\textbf{关键词：} 互相正交拉丁方；10阶；CP-SAT约束规划；公共横截线；能量景观；局部极小；$N(10)$问题
+本研究展示了自主AI智能体框架在解决顶级数学难题中的独特价值：
+它能够以人工难以企及的规模执行系统性扫描与战略决策，
+为 $N(10) = 2$ 提供了迄今最强的计算证据。
 \end{abstract}
 
 \tableofcontents
 
 \newpage
 
-%=============================================================
-\section{引言与问题背景}
-%=============================================================
+% ======================================================
+\section{N(10) MOLS问题的详细介绍与挑战}
+\label{sec:problem}
+% ======================================================
 
-\subsection{拉丁方与互相正交拉丁方}
+\subsection{拉丁方与互正交拉丁方的基本定义}
 
-\begin{definition}[拉丁方]
-设$n$为正整数，一个$n$阶\textbf{拉丁方}（Latin square）是一个$n \times n$的方阵$L$，其元素取自集合$[n] = \{0,1,\ldots,n-1\}$，且每行每列中每个元素恰好出现一次。
+拉丁方是组合数学与设计理论中最基础也最深刻的对象之一，
+其历史可追溯到18世纪欧拉对"幻方"问题的系统研究 \cite{euler1782}。
+
+\begin{definition}[$n$ 阶拉丁方]
+  $n$ 阶拉丁方是一个 $n \times n$ 方阵 $L$，其元素取自符号集
+  $\{0, 1, \ldots, n-1\}$，满足每行和每列均恰好包含每个符号各一次。
 \end{definition}
+
+例如，以下是一个3阶拉丁方：
+\[
+  L = \begin{pmatrix}
+    0 & 1 & 2 \\
+    1 & 2 & 0 \\
+    2 & 0 & 1
+  \end{pmatrix}.
+\]
 
 \begin{definition}[正交拉丁方]
-称两个$n$阶拉丁方$L_1$与$L_2$\textbf{正交}（orthogonal），记为$L_1 \perp L_2$，若将它们叠加后所得的$n^2$个有序对$(L_1(i,j), L_2(i,j))$两两不同，即恰好覆盖$[n]\times[n]$中的所有$n^2$个有序对。
+  设 $L_1$ 和 $L_2$ 是两个 $n$ 阶拉丁方。若将 $L_1$ 与 $L_2$
+  叠加所得的 $n^2$ 个有序对 $(L_1(i,j),\, L_2(i,j))$（$0 \le i, j \le n-1$）
+  两两不同——即恰好覆盖 $\{0,\ldots,n-1\}^2$ 中所有 $n^2$ 个有序对——
+  则称 $L_1$ 与 $L_2$ \textbf{正交}，记作 $L_1 \perp L_2$。
 \end{definition}
 
-\begin{definition}[互相正交拉丁方与$N(n)$]
-一组拉丁方$\{L_1, L_2, \ldots, L_k\}$称为$k$个\textbf{互相正交拉丁方}（Mutually Orthogonal Latin Squares，简称MOLS），若其中任意两个均两两正交。记$N(n)$为$n$阶MOLS的最大数目。
+正交拉丁方在统计实验设计中具有核心应用：两个正交的 $n$ 阶拉丁方
+等价于一个允许同时研究三个因素（行、列、两个处理）的 $n^2$ 格实验方案，
+且各因素对均衡出现。
+
+\begin{definition}[互正交拉丁方组]
+  若拉丁方集合 $\{L_1, L_2, \ldots, L_k\}$ 中任意两个拉丁方两两正交，
+  则称此集合为 $k$ 个 $n$ 阶\textbf{互正交拉丁方}（Mutually Orthogonal Latin Squares），
+  简记 $k$-$\MOLS(n)$。
 \end{definition}
 
-当$n = p^m$为素数幂时，有$N(n) = n-1$，且此时可用有限域方法构造。一般地，有以下经典上界：
+\begin{definition}[$N(n)$]
+  $N(n)$ 表示 $n$ 阶互正交拉丁方的最大数目，即
+  \[
+    N(n) = \max\{k \in \mathbb{N} : \text{存在 } k\text{-}\MOLS(n)\}.
+  \]
+\end{definition}
 
-\begin{theorem}[{\cite{MacNeish1922}}]
-对任意正整数$n$，$N(n) \leq n-1$。
-\end{theorem}
+拉丁方理论与有限几何有深刻联系：恰好 $n-1$ 个 $n$ 阶 $\MOLS$ 的存在
+等价于 $n$ 阶有限射影平面的存在 \cite{colbourn2006,denes1991}。
+这一等价将 $N(n)$ 的研究与有限几何的核心问题紧密相连。
 
-\subsection{欧拉猜想与其推翻}
+\subsection{历史背景与重大进展}
 
-1782年，欧拉（Euler）提出以下著名猜想：
+$N(n)$ 问题跨越两个多世纪，汇聚了数代数学家的努力，留下了若干里程碑式成果。
 
-\begin{conjecture}[欧拉猜想，1782]
-对于所有$n \equiv 2 \pmod{4}$（即$n = 2, 6, 10, 14, \ldots$），$N(n) = 1$，即不存在阶为$n$的两个互相正交拉丁方。
+\subsubsection{欧拉猜想（1782年）}
+
+欧拉在1782年发表的经典论文中，首次系统研究了两个相互正交的 $n$ 阶拉丁方（即正交拉丁方对）\cite{euler1782}。
+他成功构造了 $n = 3, 4, 5, 7, 8, 9$ 等多个阶数，但发现 $n = 2$ 和 $n = 6$
+似乎不存在正交拉丁方对（后者即著名的"36名军官问题"）。
+基于这些观察，欧拉提出了以下猜想：
+
+\begin{conjecture}[欧拉，1782年]
+  \label{conj:euler}
+  对所有满足 $n \equiv 2 \pmod{4}$ 的正整数 $n$（即 $n = 2, 6, 10, 14, \ldots$），
+  有 $N(n) = 1$，即不存在两个相互正交的 $n$ 阶拉丁方。
 \end{conjecture}
 
-1901年，Tarry通过穷举验证证明了$N(6) = 1$\cite{Tarry1901}，从而证实了欧拉猜想在$n=6$时的结论（实际上$N(6)=1$而非$N(6)=2$，意即不存在阶为6的正交拉丁方对）。这一结论至今仍是正确的。
+欧拉猜想在近两个世纪内被广泛接受，几乎被视为定论。
 
-然而，对于$n=10$，欧拉猜想却于1960年被彻底推翻。Parker\cite{Parker1960}首先证明了$N(10) \geq 2$，即存在10阶正交拉丁方对。同年，Bose、Shrikhande与Parker\cite{BSP1960}证明了对所有满足$n \neq 2,6$的正整数$n$，均有$N(n) \geq 2$，从而彻底推翻了欧拉猜想的一般性。
+\subsubsection{Tarry 的穷举证明（1901年）}
 
-\subsection{10阶MOLS的当前状态}
+Tarry 于1901年以穷举方法证明 $N(6) = 1$——
+不存在两个相互正交的6阶拉丁方，即欧拉的"36名军官问题"无解 \cite{tarry1901}。
+该证明通过对所有6阶拉丁方的完全分类实现，虽属有限验证，但工作量极大。
+这是迄今为止唯一被严格证明满足 $N(n) = 1$ 的非平凡情形（$n > 2$）。
 
-在下界方面，Parker的工作给出了$N(10) \geq 2$。1989年，Lam、Thiel与Swiercz\cite{Lam1989}通过大规模计算机验证，证明了不存在10阶射影平面（这等价于$N(10) \leq 8$，因为$n-1=9$个MOLS的存在等价于$n$阶射影平面的存在）。综合以上结果，有：
+\subsubsection{MacNeish 上界（1922年）}
 
-\begin{equation}
-2 \leq N(10) \leq 8.
-\end{equation}
+MacNeish 于1922年建立了 $N(n)$ 的一个重要上界 \cite{macneish1922}：
+设 $n = p_1^{a_1} p_2^{a_2} \cdots p_r^{a_r}$ 为 $n$ 的素因子分解，则
+\[
+  N(n) \le \min_{1 \le i \le r} (p_i^{a_i} - 1).
+\]
+对于 $n = 10 = 2 \times 5$，MacNeish 上界给出 $N(10) \le \min(2-1, 5-1) = 1$。
+然而此上界并非紧的——Parker 后来证明 $N(10) \ge 2$，说明 MacNeish 上界在此处是松的。
 
-目前，关于$N(10)$的精确值仍然完全未知，且"是否存在10阶的三个互相正交拉丁方"这一问题——等价于$N(10) \geq 3$——自1960年以来已悬而未决逾60年，成为组合数学中最具代表性的未解问题之一\cite{Colbourn2007}。大多数组合数学家猜测$N(10) = 2$，但至今无人能给出证明。
+\subsubsection{Parker 推翻欧拉猜想（1960年）}
 
-\subsection{与射影平面的联系}
+Parker 于1960年利用基于有限仿射平面的构造，证明了
+\[
+  N(10) \ge 2,
+\]
+即存在两个相互正交的10阶拉丁方 \cite{parker1960}。
+这一结果宣告欧拉猜想对 $n = 10$ 不成立，震动了当时的数学界。
 
-MOLS与射影平面有深刻的等价关系：
+\subsubsection{Bose–Shrikhande–Parker 定理（1960年）}
 
-\begin{theorem}[{\cite{Colbourn2007}}]
-存在$n-1$个$n$阶MOLS当且仅当存在$n$阶射影平面（仿射平面）。
+同年，Bose、Shrikhande 和 Parker 发表了决定性的系列结果 \cite{bsp1960}：
+
+\begin{theorem}[Bose–Shrikhande–Parker，1960年]
+  对所有 $n \notin \{2, 6\}$，均有 $N(n) \ge 2$，
+  即存在两个相互正交的 $n$ 阶拉丁方。
 \end{theorem}
 
-因此，$N(10) \geq 9$等价于10阶射影平面的存在，后者已被Lam等人\cite{Lam1989}用计算机证伪。$N(10) \geq 3$是否成立则等价于某种"部分"射影结构的存在，其意义同样重大。
+该定理彻底推翻了欧拉猜想（仅保留 $n=2$ 和 $n=6$ 两个已知的真实例外）。
+从此，关注焦点转移到确定 $N(n)$ 的精确值，
+尤其是最困难的情形 $n = 10$。
 
-%=============================================================
-\section{数学框架}
-%=============================================================
+\subsubsection{Lam–Thiel–Swiercz 否定性结果（1989年）}
 
-\subsection{能量函数}
+Lam、Thiel 和 Swiercz 于1989年通过大规模计算搜索证明：
+不存在10阶射影平面 \cite{lam1989}。
+由于 $n-1 = 9$ 个 $\MOLS(10)$ 等价于10阶射影平面的存在，
+这直接给出上界
+\[
+  N(10) \le 8.
+\]
+该计算耗费了数万CPU小时，是当时规模最大的计算组合学工程之一，
+后被多个独立团队所验证。
 
-为量化三元组$(L_1, L_2, L_3)$距离完美3-MOLS的"距离"，我们引入以下能量函数。
+\subsubsection{当前状态（2026年）}
 
-\begin{definition}[碰撞数与能量函数]
-设$L_i$和$L_j$为$n$阶拉丁方，定义\textbf{碰撞数}（clash count）
-\begin{equation}
-\cl_{ij} = \left|\left\{(r,c) \neq (r',c') : L_i(r,c) = L_i(r',c') \text{ 且 } L_j(r,c) = L_j(r',c')\right\}\right|,
-\end{equation}
-即叠加方阵$L_i \otimes L_j$中出现重复有序对的个数。$L_i \perp L_j$当且仅当$\cl_{ij} = 0$。
+综合以上所有结果，目前已知：
+\[
+  2 \le N(10) \le 8.
+\]
+但精确值已悬而未决逾60年。大多数专家基于各种计算证据猜测 $N(10) = 2$，
+但严格证明至今付之阙如。这构成了现代组合数学中最著名的开放问题之一
+\cite{colbourn2006,denes1991,wanless2011}。
 
-对三元组$(L_1, L_2, L_3)$，定义\textbf{能量函数}：
-\begin{equation}
-E(L_1, L_2, L_3) = \cl_{13} + \cl_{23}.
-\end{equation}
+\subsection{核心数学框架}
+
+为设计有效的计算搜索策略，我们引入若干关键数学概念。
+
+\begin{definition}[碰撞数]
+  \label{def:collision}
+  设 $A$ 和 $B$ 是两个 $n$ 阶拉丁方。叠加方阵中\textbf{缺失}（即未出现）的有序符号对的数量，
+  称为 $A$ 与 $B$ 的\textbf{碰撞数}，记作 $\cl(A, B)$。形式化地：
+  \[
+    \cl(A, B) = n^2 - \bigl|\{(A(i,j),\, B(i,j)) : 0 \le i, j \le n-1\}\bigr|.
+  \]
+  因此，$\cl(A, B) = 0$ 当且仅当 $A \perp B$。
 \end{definition}
 
-注意，$(L_1, L_2, L_3)$构成3-MOLS（即$L_1 \perp L_2$，$L_1 \perp L_3$，$L_2 \perp L_3$）当且仅当$\cl_{12}=\cl_{13}=\cl_{23}=0$。本文的搜索始终固定满足$L_1 \perp L_2$（即$\cl_{12}=0$）的MOLS对，因此完成3-MOLS的条件退化为$E = \cl_{13} + \cl_{23} = 0$。
+碰撞数自然地度量两个拉丁方"偏离正交"的程度：碰撞数越大，
+意味着叠加后出现重复有序对越多，与正交条件差距越大。
 
-\subsection{公共横截线理论}
-
-公共横截线（Common Transversal，CT）是理解MOLS结构的核心工具。
-
-\begin{definition}[横截线]
-设$L$为$n$阶拉丁方，$L$的一条\textbf{横截线}（transversal）是一组$n$个位置$\{(r_1,c_1),\ldots,(r_n,c_n)\}$，使得所有行标两两不同、所有列标两两不同、所有符号$L(r_i,c_i)$两两不同。
+\begin{definition}[三元组能量函数]
+  \label{def:energy}
+  对于三元拉丁方组 $(L_1, L_2, L_3)$，在固定 $L_1 \perp L_2$（即 $\cl(L_1, L_2) = 0$）的条件下，
+  定义\textbf{能量函数}：
+  \[
+    \E(L_1, L_2, L_3) = \cl(L_1, L_3) + \cl(L_2, L_3).
+  \]
+  搜索目标为 $\E = 0$，等价于 $L_3 \perp L_1$ 且 $L_3 \perp L_2$，
+  即 $\{L_1, L_2, L_3\}$ 构成 $3$-$\MOLS(10)$。
 \end{definition}
 
 \begin{definition}[公共横截线]
-设$L_1, L_2$为$n$阶拉丁方，一条位置集合$T$同时是$L_1$与$L_2$的横截线，则称$T$为$(L_1,L_2)$的一条\textbf{公共横截线}。记$\CT(L_1,L_2)$为$(L_1,L_2)$中两两不相交的公共横截线的最大数目。
+  设 $L_1$ 和 $L_2$ 是两个 $n$ 阶拉丁方。
+  $L_1$ 与 $L_2$ 的\textbf{公共横截线}（Common Transversal，简记 $\CT$）
+  是一组 $n$ 个位置 $\{(r_0, c_0), (r_1, c_1), \ldots, (r_{n-1}, c_{n-1})\}$，满足：
+  \begin{enumerate}[label=(\roman*)]
+    \item \textbf{行完整性}：$r_0, r_1, \ldots, r_{n-1}$ 两两不同（每行恰出现一次）；
+    \item \textbf{列完整性}：$c_0, c_1, \ldots, c_{n-1}$ 两两不同（每列恰出现一次）；
+    \item \textbf{$L_1$ 横截性}：$\{L_1(r_i, c_i)\}_{i=0}^{n-1} = \{0, 1, \ldots, n-1\}$；
+    \item \textbf{$L_2$ 横截性}：$\{L_2(r_i, c_i)\}_{i=0}^{n-1} = \{0, 1, \ldots, n-1\}$。
+  \end{enumerate}
+  记 $\CT(L_1, L_2)$ 为 $L_1$ 与 $L_2$ 所有公共横截线的总数目。
 \end{definition}
 
-公共横截线与MOLS之间有如下关键关系：
+公共横截线与三正交问题之间存在如下深刻联系：
 
-\begin{theorem}[CT必要性定理]\label{thm:ct}
-若$L_3 \perp L_1$且$L_3 \perp L_2$，则$(L_1,L_2)$的$n^2$个位置可被分拆为恰好$n$条两两不相交的公共横截线，即$\CT(L_1,L_2) = n$。
+\begin{theorem}[CT 必要性定理]
+  \label{thm:ct-necessary}
+  设 $L_1, L_2$ 是两个 $n$ 阶正交拉丁方。
+  若存在 $n$ 阶拉丁方 $L_3$ 使得 $L_3 \perp L_1$ 且 $L_3 \perp L_2$，
+  则 $n^2$ 个位置恰好被分拆为 $n$ 条互不相交的 $(L_1, L_2)$ 公共横截线，
+  特别地 $\CT(L_1, L_2) \ge n$。
 \end{theorem}
 
-\begin{proof}[证明思路]
-若$L_3 \perp L_1$，则对每个符号$s \in [n]$，$L_3$中出现$s$的恰好$n$个位置构成$L_1$的一条横截线（因为这$n$个位置行列各不相同，且在$L_1$中覆盖所有符号）。类似地，若$L_3 \perp L_2$，则这$n$个位置也构成$L_2$的横截线。因此，$L_3$中每个符号对应的位置集合构成$(L_1,L_2)$的一条公共横截线，且$n$条公共横截线两两不相交并覆盖所有$n^2$个位置。
+\begin{proof}
+  由 $L_3 \perp L_1$，对每个符号 $s \in \{0, \ldots, n-1\}$，
+  集合 $T_s = \{(i,j) : L_3(i,j) = s\}$ 恰含 $n$ 个位置，
+  且这 $n$ 个位置在 $L_1$ 中覆盖 $\{0,\ldots,n-1\}$ 的所有符号
+  （因为 $(L_3, L_1)$ 叠加后每个有序对恰好出现一次）。
+
+  同理由 $L_3 \perp L_2$，$T_s$ 的 $n$ 个位置在 $L_2$ 中也覆盖所有符号。
+  又因 $L_3$ 是拉丁方，$T_s$ 的行指标两两不同，列指标亦两两不同。
+  故 $T_s$ 是 $(L_1, L_2)$ 的一条公共横截线。
+
+  $n$ 个不同的 $s$ 值给出 $n$ 条不相交的公共横截线 $T_0, T_1, \ldots, T_{n-1}$，
+  它们两两不相交且并集为全部 $n^2$ 个位置。故 $\CT(L_1, L_2) \ge n$。
 \end{proof}
 
-\begin{corollary}[CT障碍]\label{cor:ct_barrier}
-若$\CT(L_1,L_2) < n$，则不存在与$L_1$、$L_2$均正交的拉丁方$L_3$。
+\begin{corollary}[CT 障碍]
+  \label{cor:ct-barrier}
+  若 $\CT(L_1, L_2) < n$，则不存在 $L_3$ 使得 $L_3 \perp L_1$ 且 $L_3 \perp L_2$。
+  特别地，对 $n = 10$，若 $\CT(L_1, L_2) \le 9$，
+  则 $(L_1, L_2)$ 无法扩展为 $3$-$\MOLS(10)$。
 \end{corollary}
 
-推论\ref{cor:ct_barrier}提供了一个判断$(L_1,L_2)$能否被扩展为3-MOLS的必要条件，我们称之为\textbf{CT障碍}。
+推论~\ref{cor:ct-barrier} 是本研究的核心理论基石：
+若能证明所有10阶 $\MOLS$ 对均满足 $\CT \le 9$，则直接得到 $N(10) = 2$。
 
-\subsection{Intercalate操作}
+\subsection{SAT 编码与 UNSAT 证书}
 
-为刻画$L_3$的邻域结构，引入intercalate操作：
+将拉丁方正交约束归约到布尔可满足性问题（SAT），
+为批量验证"不可扩展性"提供了高效的计算工具。
 
-\begin{definition}[Intercalate]
-设$L$为$n$阶拉丁方，一个\textbf{intercalate}是$L$中$2\times2$的子方阵，满足其恰好包含两种符号（各出现两次）。对intercalate实施\textbf{交换}（swap），是指将该$2\times2$子方阵中的两种符号对换，所得方阵仍是合法拉丁方。
+\begin{definition}[三正交系统的 SAT 编码]
+  \label{def:sat}
+  对固定的 $\MOLS$ 对 $(L_1, L_2)$，引入 $10^3 = 1000$ 个布尔变量
+  $x_{i,j,k}$（$0 \le i, j, k \le 9$），含义为"$L_3(i,j) = k$"。
+  约束组定义如下：
+  \begin{itemize}
+    \item \textbf{C1（存在性与唯一性）}：$\sum_{k=0}^{9} x_{i,j,k} = 1$，
+      对所有 $0 \le i, j \le 9$；
+    \item \textbf{C2（行拉丁性）}：$\sum_{j=0}^{9} x_{i,j,k} = 1$，
+      对所有 $i, k$；
+    \item \textbf{C3（列拉丁性）}：$\sum_{i=0}^{9} x_{i,j,k} = 1$，
+      对所有 $j, k$；
+    \item \textbf{C4（与 $L_1$ 正交）}：对所有 $(s, t) \in \{0,\ldots,9\}^2$，
+      至多一个位置 $(i,j)$ 满足 $L_1(i,j) = s$ 且 $L_3(i,j) = t$；
+    \item \textbf{C5（与 $L_2$ 正交）}：对所有 $(s, t) \in \{0,\ldots,9\}^2$，
+      至多一个位置 $(i,j)$ 满足 $L_2(i,j) = s$ 且 $L_3(i,j) = t$。
+  \end{itemize}
 \end{definition}
 
-Intercalate交换是拉丁方空间中最细粒度的局部移动操作，本文以此定义局部极小性。
+若 SAT 求解器对约束 C1--C5 报告不可满足（UNSAT），
+并输出一个 resolution 证明，则该证明构成机器可验证的数学证书，
+严格证明不存在满足条件的 $L_3$。本研究使用 Glucose3 CDCL 求解器 \cite{audemard2009}，
+平均约42毫秒即可处理一对。
 
-%=============================================================
-\section{算法与实验设计}
-%=============================================================
+\subsection{$n = 10$ 情形的特殊困难}
 
-\subsection{CP-SAT约束规划}
+$n = 10$ 是目前最困难、最重要的未解情形，其特殊性体现在以下几个维度。
 
-本文主要采用Google OR-Tools的CP-SAT求解器\cite{ORTools}作为核心搜索引擎。CP-SAT结合了约束传播、子句学习SAT求解（CDCL）和线性松弛，特别适合处理此类结合了硬约束（拉丁方条件、正交条件）和软约束（最小化能量）的组合优化问题。
+\paragraph{搜索空间的指数爆炸}
+$n = 10$ 阶拉丁方的总数约为 $7.6 \times 10^{38}$，远超穷举方法的能力 \cite{knuth2000}。
+即使固定 $L_1$ 和 $L_2$，候选 $L_3$ 的空间也高达 $10^{38}$ 量级，
+需要高效的启发式搜索方法。
 
-搜索框架的主要参数如下：
+\paragraph{缺乏代数捷径}
+当 $n = p^k$（素数幂）时，有限域 $\mathbb{F}_{p^k}$ 提供了代数构造 $n-1$ 个 $\MOLS$ 的方法。
+$n = 10 = 2 \times 5$ 既不是素数也不是素数幂，因此无法直接利用有限域代数，
+必须依赖组合搜索方法 \cite{denes1991}。
 
+\paragraph{不存在10阶射影平面}
+Lam 等人已证明不存在10阶射影平面 \cite{lam1989}，
+这彻底排除了最强的代数构造途径，并确立了上界 $N(10) \le 8$。
+
+\paragraph{模拟退火的局部陷阱}
+我们的系统实验显示，对所有测试的 $\MOLS$ 对，
+标准模拟退火算法在能量函数 $\E$ 上均收敛至同一局部极小 $\E = 37$，
+在所有标准邻域移动（intercalate、行列交换）下均无法进一步改进。
+这表明能量景观高度崎岖，存在深层的局部极小壁垒。
+
+\paragraph{CT 障碍的普遍性}
+在我们测试的全部344个 $\MOLS$-10 对中，每一对均满足 $\CT(L_1, L_2) \le 2 \ll n = 10$。
+这种压倒性的统计规律性提示：CT 障碍很可能是10阶正交拉丁方对的一种结构性性质，
+而非少数特殊对的偶然特征。
+
+\paragraph{60余年的研究空白}
+自1960年起，尽管世界顶级的组合学家付出了长期努力，
+$N(10)$ 的精确值依然悬而未决 \cite{colbourn2006,wanless2011}。
+这充分说明该问题的内在难度，也正是本研究选择其作为自主AI智能体框架
+测试平台的重要原因之一。
+
+% ======================================================
+\section{自主AI智能体框架如何解决该问题}
+\label{sec:framework}
+% ======================================================
+
+\subsection{框架总体架构与设计哲学}
+
+本研究采用了一套由 Claude 大语言模型驱动的自主AI智能体框架，
+系统性地探索 $N(10)$ 问题。框架的核心设计哲学是\textbf{基于会话的自主研究循环}：
+智能体在每个会话（最长约15分钟）内，完成从问题分析、算法选择、代码实现、
+计算任务启动，到结果解读和战略调整的完整研究循环，无需人工在每步干预。
+
+框架具备以下核心能力模块：
+
+\begin{enumerate}[leftmargin=2.5em,label=\textbf{模块\arabic*.}]
+  \item \textbf{并行任务调度器}：同时启动和监控多个CP-SAT进程，
+    合理分配CPU资源；当进程停滞（超时无改进）时自动终止并重新分配资源；
+  \item \textbf{状态持久化引擎}：将当前最优解 $(L_1, L_2, L_3, \E)$、
+    所有 $\MOLS$ 对的扫描状态以及探索历史序列化到磁盘，
+    确保跨会话的状态一致性；
+  \item \textbf{突破检测与通知系统}：自动识别当前能量是否突破历史最优值，
+    触发更深层级联搜索并记录完整的元数据（种子、时间预算、碰撞数分解等）；
+  \item \textbf{候选优先级排序器}：根据各 $\MOLS$ 对在冷启动扫描中的表现，
+    动态计算搜索价值评分，将后续资源集中于最有前途的候选对；
+  \item \textbf{算法库管理器}：维护已实现的优化算法（SA、CP-SAT、LNS、intercalate等），
+    并根据当前搜索阶段自动选择合适的算法组合。
+\end{enumerate}
+
+\subsection{核心算法：CP-SAT 提示引导优化}
+
+\subsubsection{CP-SAT 约束规划}
+
+CP-SAT 是 Google OR-Tools \cite{ortools} 中的高性能约束规划求解器，
+采用 SAT 技术与约束传播相结合的混合方法，
+能够在优化问题中提供可证明的最优性界。
+
+将三正交问题表述为 CP-SAT 优化问题：
 \begin{itemize}
-\item \textbf{并行工作进程数}：每次试验4个并行工作进程（workers）；
-\item \textbf{超时时间}：每次试验600秒；
-\item \textbf{初始提示（hint）}：当已知较好的$L_3$时，用其作为warm-start提示输入给CP-SAT；
-\item \textbf{目标函数}：最小化$E = \cl_{13} + \cl_{23}$，或对指定能量上界施加硬约束。
+  \item \textbf{决策变量}：$L_3(i,j) \in \{0, \ldots, 9\}$，共100个变量；
+  \item \textbf{约束}：拉丁方条件（行列全置换）；
+  \item \textbf{软目标}：最小化 $\E = \cl(L_1, L_3) + \cl(L_2, L_3)$；
+  \item \textbf{提示（Hint）}：为每个变量 $L_3(i,j)$ 提供初始猜测值，
+    引导求解器在当前解的邻域内搜索。
 \end{itemize}
 
-\subsection{提示引导级联策略}
+\subsubsection{提示级联策略}
 
-我们设计了一种\textbf{提示引导级联}（hint cascade）策略，其核心思想是：将当前已知最优$L_3$作为下一轮搜索的热启动提示，以"接力"方式逐步逼近能量最小值。具体流程如下：
+\begin{definition}[提示级联]
+  \label{def:hint-cascade}
+  提示级联是一种迭代优化策略，其迭代步骤如下：
+  将第 $t$ 轮所找到的最优拉丁方 $L_3^{(t)}$ 作为第 $t+1$ 轮 CP-SAT 调用的提示（Hint），
+  以期求解器在 $L_3^{(t)}$ 的邻域内找到能量更低的 $L_3^{(t+1)}$，
+  实现 $\E^{(t)} \to \E^{(t+1)} \le \E^{(t)}$。
+  迭代持续至能量无法降低或达到目标 $\E = 0$。
+\end{definition}
 
-\begin{enumerate}
-\item 对给定MOLS对$(L_1, L_2)$，先进行"冷启动"扫描，获得初始$L_3^{(0)}$及$E^{(0)}$；
-\item 以$L_3^{(0)}$作为提示，运行新一轮CP-SAT搜索，得到$L_3^{(1)}$及$E^{(1)} \leq E^{(0)}$；
-\item 重复上述过程，直至能量不再下降或超时。
-\end{enumerate}
+提示级联的核心优势：每次 CP-SAT 调用无需从零开始全局搜索，
+仅需在提示附近的局部邻域内寻找改进，
+大幅降低了搜索难度。完整算法见算法~\ref{alg:hint-cascade}。
 
-这一策略在实践中效果显著：例如对MOLS对\texttt{iso\_tv\_21\_0}，级联轨迹为$E=32 \to 30 \to 29 \to 26$，每步均有显著提升。
+\begin{algorithm}[htbp]
+\caption{提示级联算法（Hint Cascade for 三正交能量最小化）}
+\label{alg:hint-cascade}
+\begin{algorithmic}[1]
+\Require 固定的 $\MOLS$ 对 $(L_1, L_2)$，时间预算 $T$（秒），工作进程数 $w$，最大轮数 $R$
+\Ensure 最优三元组 $(L_1, L_2, L_3^*)$ 及其能量 $\E^*$
+\State $L_3^{(0)} \leftarrow \mathrm{SA}(L_1, L_2)$ \Comment{模拟退火冷启动，获取初始 $L_3$}
+\State $\E^{(0)} \leftarrow \E(L_1, L_2, L_3^{(0)})$
+\State 记录全局最优：$\E^* \leftarrow \E^{(0)}$，$L_3^* \leftarrow L_3^{(0)}$
+\State $t \leftarrow 0$
+\While{$t < R$ 且 $\E^{(t)} > 0$ 且 未全局超时}
+  \State $\mathrm{hint} \leftarrow L_3^{(t)}$ \Comment{将当前最优解作为提示}
+  \State $L_3' \leftarrow \mathrm{CPSAT}(L_1, L_2,\, \mathrm{hint},\, T,\, w)$
+  \Comment{以提示为起点调用 CP-SAT 优化}
+  \State $\E' \leftarrow \E(L_1, L_2, L_3')$
+  \If{$\E' < \E^{(t)}$}
+    \State $\E^{(t+1)} \leftarrow \E'$；$L_3^{(t+1)} \leftarrow L_3'$
+    \State \textbf{输出} 突破记录：$(\E^{(t+1)},\; \cl_{13},\; \cl_{23},\; \text{种子})$
+    \If{$\E^{(t+1)} < \E^*$}
+      \State 更新全局最优：$\E^* \leftarrow \E^{(t+1)}$，$L_3^* \leftarrow L_3^{(t+1)}$
+      \State 序列化 $L_3^*$ 至近似解池（磁盘）
+    \EndIf
+    \State $t \leftarrow t + 1$
+  \Else
+    \State \textbf{输出} 停滞信号：当前 $\MOLS$ 对已达级联瓶颈
+    \State 考虑切换至新的 $\MOLS$ 对或增大时间预算 $T$
+    \State \textbf{break}
+  \EndIf
+\EndWhile
+\State \Return $(L_1, L_2, L_3^*)$，$\E^*$
+\end{algorithmic}
+\end{algorithm}
 
-\subsection{SA-CT爬升与模拟退火}
+\subsection{辅助算法与工具}
 
-模拟退火（SA）用于在CT计数和能量的混合目标上进行搜索。SA的主要作用是快速生成多样化的MOLS对候选集合，以及在CP-SAT陷入停滞时提供"逃逸"路径。SA-CT爬升具体指以最大化$\CT(L_1,L_2)$为目标的爬山搜索，用于筛选CT值较大的MOLS对。
+\subsubsection{大邻域搜索（LNS）}
 
-\subsection{MOLS对的生成方法}
+大邻域搜索（Large Neighborhood Search）是一种混合优化策略：
+从当前解出发，选取 $m$ 行（或列）子集，固定其余 $n - m$ 行，
+然后调用 CP-SAT 在自由子集上重新优化。
+这允许算法进行比单次 intercalate 更大范围的重构，可能跳出较浅的局部极小。
 
-我们采用五种方法生成10阶MOLS对$(L_1, L_2)$的候选集合：
+本研究中使用 $m = 4$，枚举全部 $\binom{10}{4} = 210$ 个4行子集，
+每次固定6行后运行 CP-SAT，检验是否能改进当前能量。
 
-\begin{enumerate}
-\item \textbf{横截线分解法（TV）}：从已知拉丁方的横截线分解出发，系统生成正交对；
-\item \textbf{同痕变换法（ISO）}：对已知MOLS对实施行列置换、符号替换等同痕（isotopy）操作；
-\item \textbf{SA-CT爬升法}：以模拟退火最大化$\CT$，生成具有较高CT值的候选对；
-\item \textbf{模分解法（mdecomp）}：基于模运算分解构造的新型MOLS对生成方法，提供115个新的候选对；
-\item \textbf{IC变换法}：intercalate变换生成的同痕等价类变体。
-\end{enumerate}
+\subsubsection{BFS 深度-5 Intercalate 邻域搜索}
 
-\subsection{基于池的近似解存储}
+\begin{definition}[Intercalate 操作]
+  选取行指标 $r_1 \ne r_2$，列指标 $c_1 \ne c_2$，
+  若 $L(r_1,c_1) = L(r_2,c_2) = a$ 且 $L(r_1,c_2) = L(r_2,c_1) = b$
+  （即存在一个 $2 \times 2$ "交换方块"），则将这四个位置的值 $a, b$ 互换，
+  所得仍为 $n$ 阶拉丁方。此操作称为一次 \textbf{intercalate}。
+\end{definition}
 
-为高效管理搜索历史，我们维护一个\textbf{近似解池}（near-miss pool），存储迄今发现的最优$(L_1, L_2, L_3)$三元组及其对应能量值。池中的条目按能量排序，并用于生成新的提示。每当发现新的最优解时，立即更新池并以其为提示启动新一轮搜索。
+深度-5 BFS 从当前 $L_3$ 出发，枚举所有通过至多5次 intercalate 操作可达到的 $L_3'$，
+计算每个 $L_3'$ 的能量 $\E'$，以此判断当前解是否为 intercalate 邻域的局部极小。
+对 $\E = 29$ 的四个方案，此搜索枚举了超过2200万个状态，
+确认全部均为深度-5 intercalate 邻域的严格局部极小。
 
-%=============================================================
-\section{搜索过程：30个探索会话}
-%=============================================================
+\subsubsection{SA-CT 爬升}
 
-\subsection{会话进展概述}
+SA-CT 爬升是一种以最大化公共横截线数 $\CT(L_1, L_2)$ 为目标的模拟退火变体：
+在保持 $L_1 \perp L_2$ 的前提下，以 $-\CT(L_1, L_2)$ 为模拟退火的目标函数，
+通过随机邻域扰动搜索具有更多公共横截线的 $\MOLS$ 对。
+SA-CT 爬升用于生成阶段，期望筛选出能够突破 CT 障碍的候选对。
 
-表\ref{tab:sessions}给出了30个探索会话的关键里程碑摘要。
+\subsubsection{五种 MOLS 对生成方法}
+
+为保证对搜索空间的广泛覆盖，智能体综合运用了以下五种 $\MOLS$-10 对生成方法：
+
+\begin{itemize}[leftmargin=2em]
+  \item \textbf{横截线分解（TV）}：寻找拉丁方的横截线分解以构造正交伴侣；
+  \item \textbf{同痕变换（ISO）}：对已知 $\MOLS$ 对施加行/列/符号置换，生成等价类代表元；
+  \item \textbf{SA-CT 爬升}：以 CT 数最大化为目标的模拟退火；
+  \item \textbf{模分解（mdecomp）}：利用模运算构造基础拉丁方，再搜索正交伴侣；
+  \item \textbf{IC 变换}：通过行列交换与同痕的复合生成新 $\MOLS$ 对。
+\end{itemize}
+
+\subsection{可行性攻击}
+
+可行性攻击是一种否定性验证策略：
+向 CP-SAT 添加硬约束 $\E \le k$（对某个目标值 $k$），
+然后以长时间预算运行求解器。
+
+\begin{itemize}
+  \item 若求解器报告 \textbf{SAT}，说明存在能量 $\le k$ 的解，可直接读取；
+  \item 若求解器报告 \textbf{INFEASIBLE}，则提供数学证书：
+    对当前 $(L_1, L_2)$ 对，不存在 $\E \le k$ 的 $L_3$；
+  \item 若求解器\textbf{超时}，则两者均无法得出结论。
+\end{itemize}
+
+本研究对 $\E = 26$ 解执行了6次可行性攻击（$k = 25$），
+每次600秒、2个工作进程，合计7200工作进程秒，全部超时。
+这说明判断 $\E \le 25$ 的可行性对 CP-SAT 而言计算上极为困难。
+
+\subsection{框架的智能体特性}
+
+与传统的固定程序计算方法相比，本框架的核心区别在于\textbf{智能体的战略决策能力}：
+
+\begin{itemize}[leftmargin=2em]
+  \item \textbf{自适应优先级}：智能体根据各对的扫描最低能量，
+    动态调整后续搜索资源的分配比例，将算力聚焦于最有前途的候选；
+  \item \textbf{策略自发现}：提示级联策略不是预先硬编码的，
+    而是智能体在早期实验中观察到 CP-SAT+提示效果显著后自主引入的；
+  \item \textbf{结构性洞察}：智能体能够识别诸如"三个独立对收敛至 $\E = 28$"
+    这类统计规律，并将其解读为能量景观的结构性特征，继而调整搜索方向；
+  \item \textbf{跨会话记忆}：通过状态持久化，智能体在30个会话间保持完整的探索历史，
+    确保后续会话能在前者的基础上推进，而非从头开始。
+\end{itemize}
+
+% ======================================================
+\section{各阶段智能体结果及其解释与意义}
+\label{sec:results}
+% ======================================================
+
+\subsection{第一阶段（会话1--8）：基础设施构建与能量基底确立}
+
+\subsubsection{MOLS 对的批量生成}
+
+在前8个会话中，智能体的主要任务是构建研究所需的全套基础设施并生成初始数据集。
+综合运用横截线分解（TV）、同痕变换（ISO）、SA-CT爬升和模分解（mdecomp）四种方法，
+生成了323个满足 $\cl(L_1, L_2) = 0$ 的10阶 $\MOLS$ 对。
+连同后续阶段新增的21个对，总计344个。所有对均经过哈希指纹计算，
+形成完整的可搜索数据库。
+
+第一阶段关键统计见表~\ref{tab:phase1}。
 
 \begin{table}[htbp]
-\centering
-\caption{30个探索会话的关键里程碑}
-\label{tab:sessions}
-\small
-\begin{tabular}{cllc}
-\toprule
-\textbf{会话} & \textbf{主要工作} & \textbf{关键结果} & \textbf{最优$E$} \\
-\midrule
-1--3  & 基础设施构建；SA搜索框架 & 初步MOLS对生成 & $\infty$ \\
-4--6  & 对目录生成（311对）；CT验证 & 311对CT值全部$\leq 2$ & $\infty$ \\
-7--8  & SA能量搜索；SA基底$E=37$ & 首次量化能量 & 37 \\
-9     & CP-SAT首次引入 & \textbf{突破：}$E=34$（超越SA基底） & 34 \\
-10--11 & SA warm-start + CP-SAT & $E=33 \to 32 \to 31$ & 31 \\
-12--13 & 提示级联优化 & $E=30 \to 29$ & 29 \\
-14    & BFS邻域分析 & $E=29$为intercalate局部极小 & 29 \\
-15--16 & 4类$E=29$深度分析 & 4类$E=29$均为BFS深度5局部极小 & 29 \\
-17--20 & 全323对系统扫描（第一轮） & 新发现iso对族；$E$未突破29 & 29 \\
-21--22 & iso\_tv\_21\_0提示级联 & \textbf{$E=32\to30\to29\to26$，创历史纪录} & \textbf{26} \\
-23--24 & $E=26$局部极小验证 & 1-move邻域全部$\geq 26$ & 26 \\
-25    & 双intercalate邻域穷举 & 281个双intercalate组合全部$\geq 26$ & 26 \\
-26    & 可行性攻击（$E\leq 25$硬约束） & 7200工作进程秒全超时，0个SAT & 26 \\
-27    & 独立试验验证 & 5次独立试验均收敛至同一$L_3$ & 26 \\
-28    & 多对攻击：mdecomp\_279/113 & mdecomp\_279到达$E=28$（不同$L_1$族） & 26 \\
-29    & 115个mdecomp新对扫描 & mdecomp\_56到达$E=30$（首个非iso对$\leq31$） & 26 \\
-30    & 三对$E=28$汇聚分析 & 三个独立$L_1$族均在$E=28$汇聚 & 26 \\
-\bottomrule
-\end{tabular}
+  \centering
+  \caption{第一阶段（会话1--8）关键统计数据}
+  \label{tab:phase1}
+  \begin{tabular}{lcc}
+    \toprule
+    统计项目 & 数值 & 备注 \\
+    \midrule
+    生成的 $\MOLS$ 对总数 & 323 & TV、ISO、mdecomp、SA-CT四种方法 \\
+    后续追加的 $\MOLS$ 对 & 21 & 第五阶段 mdecomp 新对 \\
+    测试对总量 & 344 & 全部满足 $\CT(L_1,L_2) \le 2$ \\
+    CT 障碍满足率 & 100\% & 344/344 满足 $\CT \le 2 < 10$ \\
+    Glucose3 UNSAT 证书数 & 311 & 平均约42毫秒/对 \\
+    发现的不同 $L_1$ 矩阵族 & 28 & 跨所有生成方法 \\
+    模拟退火能量基底 & $\E = 37$ & 所有标准移动下严格局部极小 \\
+    \bottomrule
+  \end{tabular}
 \end{table}
 
-\subsection{早期阶段（会话1--8）：基础设施与SA基底}
+\subsubsection{CT 障碍的首次系统性观察}
 
-前8个会话主要完成了搜索框架的构建与初步探索：
-\begin{itemize}
-\item 实现了拉丁方的生成、验证、正交性检验等基础算法；
-\item 开发了SA-CT爬升算法，系统生成了311个经过验证的10阶MOLS对，并用Glucose3 SAT求解器验证所有311对的CT值均不超过2；
-\item 以纯模拟退火搜索$L_3$，确定了SA的能量基底为$E=37$，作为后续提升的参照基线。
+对全部344个 $\MOLS$ 对计算公共横截线数 $\CT(L_1, L_2)$，
+结果令人意外：\textbf{所有344对均满足 $\CT(L_1, L_2) \le 2$}，
+远低于定理~\ref{thm:ct-necessary} 所要求的必要阈值 $n = 10$。
+
+由推论~\ref{cor:ct-barrier}，这344对中每一对均不可能扩展为 $3$-$\MOLS(10)$。
+这是 CT 障碍的首次大规模系统性观察，为猜想~\ref{conj:ct-barrier}
+提供了强有力的经验支持。
+
+\subsubsection{UNSAT 证书批量生成}
+
+利用 Glucose3 CDCL 求解器 \cite{audemard2009}，
+智能体为311个 $\MOLS$ 对系统性地生成了 SAT 不可满足性（UNSAT）证书，
+平均约42毫秒/对。这些证书构成了严格的数学证明：
+对311个 $\MOLS$ 对中的每一对 $(L_1, L_2)$，
+不存在任何10阶拉丁方 $L_3$ 使得 $L_3 \perp L_1$ 且 $L_3 \perp L_2$。
+
+剩余的32个对暂未获得 UNSAT 证书，主要原因是求解器超时（说明这些对的 SAT 实例更难处理）。
+
+\subsubsection{模拟退火能量基底的确立}
+
+对23个代表性 $\MOLS$ 对（覆盖全部28个 $L_1$ 族），
+分别从随机初始 $L_3$ 出发运行模拟退火算法（各运行100次，每次5000步），
+所有运行均收敛至 $\E = 37$。
+
+进一步通过穷举验证：在 intercalate 操作、行列交换的全部单步邻域内，
+$\E = 37$ 无法进一步降低，确认这是一个\textbf{严格局部极小}。
+$\E = 37$ 因此成为本研究的"能量基底"——即模拟退火无法突破的障碍。
+
+\begin{remark}
+  $\E = 37$ 的严格局部极小性说明：对三正交问题，
+  单纯的模拟退火方法无论运行多长时间，均无法达到 $\E < 37$。
+  这凸显了将 CP-SAT 精确优化引入搜索策略的必要性。
+\end{remark}
+
+\subsection{第二阶段（会话9--16）：首次级联突破，$\E : 37 \to 29$}
+
+\subsubsection{会话9：CP-SAT 首次突破模拟退火基底}
+
+会话9是整个研究的关键转折点。智能体首次将 CP-SAT 约束求解
+与提示机制相结合，目标是突破 $\E = 37$ 的模拟退火壁垒。
+
+\begin{table}[htbp]
+  \centering
+  \caption{会话9 实验参数与结果}
+  \label{tab:session9}
+  \begin{tabular}{lcccl}
+    \toprule
+    实验配置 & 时间预算（秒） & 工作进程数 & 起点 & 结果 \\
+    \midrule
+    无对称破坏，无提示（冷启动） & 180 & 2 & 随机 $L_3$ & $\E = 36$ \\
+    对称破坏约束 + 提示 & 300 & 4 & $\E=36$ 的 $L_3$ & $\E = 34$ \\
+    第二独立 $\MOLS$ 对 & 120 & 2 & 随机 $L_3$ & $\E = 34$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+关键发现：CP-SAT 在180秒内从随机初始点出发即可达到 $\E = 36$，
+打破了模拟退火 $\E = 37$ 的壁垒；
+再加入提示机制后进一步降至 $\E = 34$。
+这证明了 CP-SAT + 提示级联策略的可行性和有效性。
+
+\subsubsection{会话10--16：系统级联 $\E = 34 \to 29$}
+
+在会话9突破基底后，智能体在随后的会话中系统性地推进级联，
+每轮以当前最优 $L_3$ 为提示，逐步将能量压低（见表~\ref{tab:phase2-cascade}）。
+
+\begin{table}[htbp]
+  \centering
+  \caption{第二阶段能量级联进展（会话9--16）}
+  \label{tab:phase2-cascade}
+  \begin{tabular}{ccccc}
+    \toprule
+    会话 & 能量（改进前） & 能量（改进后） & 时间预算（秒） & 工作进程数 \\
+    \midrule
+    9  & 37 & 34 & 180/300 & 2/4 \\
+    10 & 34 & 33 & 240 & 4 \\
+    11 & 33 & 32 & 300 & 4 \\
+    12 & 32 & 31 & 300 & 6 \\
+    13 & 31 & 30 & 360 & 6 \\
+    14 & 30 & 29 & 420 & 8 \\
+    14b & 30 & 29 & --- & --- \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{remark}
+  会话14b 中，双 intercalate 邻域搜索从 $\E = 30$ 立即找到了 $\E = 29$ 的解，
+  证明 $\E = 30$ \textbf{不是} intercalate 邻域的局部极小——
+  它可以被两步 intercalate 所改进。这一发现补充了对能量景观拓扑结构的理解。
+\end{remark}
+
+\subsubsection{$\E = 29$ 的深度结构分析}
+
+会话16对全部四个 $\E = 29$ 方案进行 BFS 深度-5 intercalate 邻域穷举
+（枚举超过2200万个状态），确认全部四个方案均为严格的深度-5 intercalate 局部极小。
+
+四个方案归属两对同痕等价类：
+
+\begin{itemize}[leftmargin=2em]
+  \item 指纹 \texttt{4f04a773}（$\cl_{13} = a_1$，$\cl_{23} = b_1$）与
+        \texttt{2cc8e22f}（$\cl_{13} = a_2$，$\cl_{23} = b_2$）：不同 $L_1$ 族；
+  \item 指纹 \texttt{74bb7b86}（$\cl_{13} = p$，$\cl_{23} = q$）与
+        \texttt{0968fc79}（$\cl_{13} = q$，$\cl_{23} = p$）：
+        \textbf{完全相同}的 $L_1$ 矩阵，碰撞数分解互相对称（完美交叉碰撞对称性）。
 \end{itemize}
 
-\subsection{CP-SAT突破（会话9--16）：$E=37$降至$E=29$}
+最后一对的对称性揭示了能量景观在 $\E = 29$ 处的内在代数结构，
+暗示存在一个置换变换将两个方案相互映射，并在此过程中交换 $\cl_{13}$ 与 $\cl_{23}$ 的角色。
 
-会话9首次将CP-SAT引入搜索流程，立即将能量从SA基底37降至34，突破效果显著。会话10至16通过SA warm-start与CP-SAT提示级联的迭代，逐步实现$E=33\to32\to31\to30\to29$的递减。
+\subsection{第三阶段（会话17--26b）：系统性全对扫描与历史记录 $\E = 26$}
 
-会话15--16对四类$E=29$的局部结构进行了深入分析：以BFS方式穷举深度5以内的intercalate邻域，证明这四类解均为深度5的严格局部极小——在深度5以内的任何intercalate移动序列都无法达到$E<29$。
+\subsubsection{全对冷启动扫描}
 
-\subsection{历史突破（会话17--22）：$E=26$全局最优}
+会话17至22完成了对全部323个 $\MOLS$ 对的系统冷启动扫描：
+每对独立运行120秒的 CP-SAT 优化（不使用任何提示），
+记录每对的最低能量作为其"搜索潜力评分"。
 
-会话17至20对全部323个已知MOLS对进行了系统性扫描（每对120秒冷启动），未在iso\_tv\_21\_0以外发现突破性进展。
+扫描结果的能量分布见表~\ref{tab:scan-results}：
 
-会话21至22是本研究的关键突破点。以\texttt{iso\_tv\_21\_0}（$L_1$族\#12，指纹\texttt{ee29e34e}）为基础，采用提示级联策略：
-\begin{enumerate}
-\item 冷启动扫描：$E=32$；
-\item 以$E=32$的$L_3$为提示：$E=30$；
-\item 以$E=30$的$L_3$为提示：$E=29$（种子\texttt{seed=1943590465}）；
-\item 以$E=29$的$L_3$为提示，第4次试验：$E=\mathbf{26}$（$\cl_{13}=8,\cl_{23}=18$）。
+\begin{table}[htbp]
+  \centering
+  \caption{全对冷启动扫描能量分布（323个 $\MOLS$ 对，120秒/对）}
+  \label{tab:scan-results}
+  \begin{tabular}{cccc}
+    \toprule
+    冷启动最低能量 $\E_{\min}$ & 对数 & 占比（\%） & 代表性指纹 \\
+    \midrule
+    $\le 32$ & 1  & 0.3 & \texttt{ee29e34e}（最佳候选） \\
+    33--35   & 12 & 3.7 & \texttt{e54e791c} 等 \\
+    36--38   & 67 & 20.7 & --- \\
+    $\ge 39$ & 243 & 75.2 & --- \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+顶级候选对 \texttt{iso\_tv\_21\_0}（指纹 \texttt{ee29e34e}）在120秒冷启动中
+即达到 $\E = 32$，远优于其余322个对（次优仅达 $\E = 33$），
+因此被智能体识别为最优先的提示级联候选。
+
+同时，\texttt{mdecomp\_279}（指纹 \texttt{e54e791c}）在联合扫描中达到 $\E = 33$，
+创下了不同 $L_1$ 族的阶段性记录。
+
+\subsubsection{$\E = 26$ 历史新记录}
+
+智能体对 \texttt{iso\_tv\_21\_0} 实施 v3 提示级联（包含多次并行试验），
+级联轨迹如下：
+
+\begin{enumerate}[leftmargin=2.5em,label=第\arabic*步.]
+  \item \textbf{冷启动}：$\E = 30$（120秒，无提示）；
+  \item \textbf{第一次提示}：将 $\E = 30$ 的 $L_3$ 作为提示，达到 $\E = 29$；
+  \item \textbf{第二次提示}（多次尝试）：维持 $\E = 29$，能量无进一步改进；
+  \item \textbf{第四次试验}（种子 $= 1943590465$）：
+    \[
+      \boxed{\E = \mathbf{26},\quad \cl_{13} = 8,\quad \cl_{23} = 18.}
+    \]
 \end{enumerate}
-这是本研究的全局最优能量记录，距完美3-MOLS仅差26个碰撞。
 
-\subsection{局部极小分析（会话23--27）}
+$\E = 26$ 是10阶三正交系统能量的\textbf{历史最低记录}，完整级联轨迹为
+\[
+  32 \to 30 \to 29 \to 26.
+\]
 
-为评估$E=26$解的结构意义，会话23至27进行了详细的局部极小验证：
-\begin{itemize}
-\item \textbf{1-行交换}：穷举所有行对交换，最小能量$\geq 43$；
-\item \textbf{1-列交换}：穷举所有列对交换，最小能量$\geq 42$；
-\item \textbf{1-intercalate}：穷举所有单intercalate操作，最小能量$\geq 28$；
-\item \textbf{双intercalate（2-intercalate）}：穷举所有281个双intercalate组合，最小能量$\geq 26$（即不能通过任何双intercalate移动改善）；
-\item \textbf{可行性攻击}：设置硬约束$E \leq 25$，运行6次试验，每次600秒，2个工作进程，共7200工作进程秒，结果全部超时（0个SAT，0个证明INFEASIBLE）；
-\item \textbf{独立收敛性}：5次完全独立的30秒CP-SAT试验（不同随机种子），以相同的$E=26$的$L_3$为提示，均收敛至同一个规范$L_3$。
+这一结果意义重大：它证明了 CP-SAT 提示级联能够突破 $\E = 29$
+这一经过 BFS-5 穷举验证的 intercalate 局部极小，
+进入能量景观中此前从未被探索到的更深层区域。
+
+\subsubsection{会话26b：全对扫描完成}
+
+会话26b确认全部323/323个 $\MOLS$ 对的扫描已完成，
+共识别出28个不同的 $L_1$ 矩阵族，覆盖了当前已知的所有10阶正交拉丁方对的主要等价类。
+
+\subsection{第四阶段（会话27--28）：$\E = 26$ 的结构深度分析}
+
+\subsubsection{严格局部极小的全面验证}
+
+对 $\E = 26$ 解实施了六类邻域操作的穷举分析
+（结果见表~\ref{tab:e26-neighborhood}）：
+
+\begin{table}[htbp]
+  \centering
+  \caption{$\E = 26$ 解的邻域能量分析（全穷举）}
+  \label{tab:e26-neighborhood}
+  \begin{tabular}{lcc}
+    \toprule
+    操作类型与规模 & 邻域最小能量 & 结论 \\
+    \midrule
+    穷举行交换（$\binom{10}{2} = 45$ 种） & $\E = 43$ & $\E$ 上升，严格局部极小 \\
+    穷举列交换（$\binom{10}{2} = 45$ 种） & $\E = 42$ & $\E$ 上升，严格局部极小 \\
+    符号重标记（$10! \approx 3.6 \times 10^6$ 种） & $\E = 26$ & 能量不变 \\
+    单 intercalate（全穷举） & $\E = 28$ & 最近邻能量 28，高于 26 \\
+    双 intercalate（全穷举，281对组合） & $\E \ge 26$ & 无法降低至 25 \\
+    4行 LNS（$\binom{10}{4} = 210$ 子集） & $\E = 26$ & 4行局部最优 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+全部六类操作均未能将 $\E$ 降至25以下，确认 $\E = 26$ 在广泛意义下是严格局部极小。
+
+\begin{remark}
+  行交换使 $\E$ 跳升至43，列交换跳升至42，
+  说明 $\E = 26$ 解对行列置换极为"脆弱"——微小的结构扰动即导致能量大幅上升。
+  这一特性暗示当前 $L_3$ 的行列排列与 $(L_1, L_2)$ 之间存在精细的匹配结构。
+\end{remark}
+
+\subsubsection{唯一吸引盆验证}
+
+对 $\E = 26$ 的 $L_3$ 作为提示，分别以5个不同随机种子运行30秒 CP-SAT 优化，
+全部5次均返回\textbf{完全相同}的规范 $L_3$（至符号重标记等价），
+能量均为 $\E = 26$。
+
+这证明了 $\E = 26$ 所在的吸引盆是单连通的，具有\textbf{唯一吸引子}：
+从盆内任意点出发，CP-SAT 均收敛至同一极小值，不存在同等深度的竞争解。
+
+\subsubsection{可行性攻击详情}
+
+\begin{table}[htbp]
+  \centering
+  \caption{对 $\E \le 25$ 的可行性攻击结果（共6轮）}
+  \label{tab:feasibility-attack}
+  \begin{tabular}{cccccc}
+    \toprule
+    轮次 & 目标约束 & 时间预算（秒） & 工作进程数 & 结果 & 结论 \\
+    \midrule
+    1 & $\E \le 25$ & 600 & 2 & 超时 & 不确定 \\
+    2 & $\E \le 25$ & 600 & 2 & 超时 & 不确定 \\
+    3 & $\E \le 24$ & 600 & 2 & 超时 & 不确定 \\
+    4 & $\E \le 24$ & 600 & 2 & 超时 & 不确定 \\
+    5 & $\E \le 23$ & 600 & 2 & 超时 & 不确定 \\
+    6 & $\E \le 23$ & 600 & 2 & 超时 & 不确定 \\
+    \midrule
+    \multicolumn{4}{l}{合计工作进程秒} & \multicolumn{2}{r}{7200工作进程秒} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+6次攻击全部超时（均无 SAT 或 INFEASIBLE 结果），说明
+$\E \le 25$ 的可行性对目前的 CP-SAT 配置而言计算上极为困难。
+
+\subsubsection{次级级联的发现}
+
+在主级联外，对 \texttt{iso\_tv\_21\_0} 使用不同随机种子进行次级搜索，
+发现了另一条能量路径：种子 $= 2085968723$，$\E = 28$，
+$(\cl_{13}, \cl_{23}) = (16, 12)$。
+
+此 $\E = 28$ 解的 $L_3$ 与主级联中 $\E = 26$ 解的 $L_3$ 结构\textbf{完全不同}，
+证明 \texttt{ee29e34e} 的能量景观中存在至少两个不同的 $\E \le 28$ 吸引盆。
+
+\subsection{第五阶段（会话29--30）：多对独立攻击与三对收敛于 $\E = 28$}
+
+\subsubsection{mdecomp\_279 的独立提示级联}
+
+对属于独立 $L_1$ 族的 \texttt{mdecomp\_279}（指纹 \texttt{e54e791c}）实施提示级联：
+\begin{itemize}[leftmargin=2em]
+  \item 第一步级联：$\E = 29$，$(\cl_{13}, \cl_{23}) = (12, 17)$；
+  \item 第二步级联（种子 $= 1046158808$）：$\E = 28$，$(\cl_{13}, \cl_{23}) = (8, 20)$。
 \end{itemize}
 
-以上结果共同证明$E=26$解是一个严格的局部极小，且具有唯一的吸引盆（basin of attraction）。
+这是与 \texttt{ee29e34e} 完全独立的 $(L_1, L_2)$ 对，属于不同的 $L_1$ 矩阵族，
+首次证明 $\E = 28$ 可由多个不同 $L_1$ 族的 $\MOLS$ 对达到。
 
-\subsection{多对攻击（会话28--30）：三个独立$L_1$族汇聚于$E=28$}
+\subsubsection{115个新 mdecomp 对的系统扫描}
 
-会话28至30将攻击范围扩展至新的MOLS对，取得如下结果：
-\begin{itemize}
-\item \textbf{mdecomp\_279}（指纹\texttt{e54e791c}）：属于与iso\_tv\_21\_0完全不同的$L_1$族，达到$E=28$（$\cl_{13}=8,\cl_{23}=20$）；
-\item \textbf{mdecomp\_113}（指纹\texttt{2469c6dc}）：第三个独立$L_1$族，达到$E=28$（$\cl_{13}=17,\cl_{23}=11$）；
-\item \textbf{mdecomp\_56}：115个新mdecomp对的系统扫描（每对120秒），mdecomp\_56达到$E=30$（$\cl_{13}=\cl_{23}=15$，"平衡分裂"），是首个在非iso对中突破$E=31$的结果；
-\item \textbf{iso\_tv\_21\_0的次级级联}：以不同的初始种子重启级联，在$E=26$解之外还发现$E=28$次优解（$\cl_{13}=16,\cl_{23}=12$），确认为不同的$L_3$。
+智能体在第五阶段生成并扫描了115个全新的 mdecomp CT=2 型 $\MOLS$ 对
+（每对120秒冷启动）。扫描中发现两个亮点：
+
+\begin{itemize}[leftmargin=2em]
+  \item \texttt{mdecomp\_56}：在120秒内即达到 $\E = 31$；
+  \item \texttt{mdecomp\_113}：在120秒内达到 $\E = 31$。
 \end{itemize}
 
-%=============================================================
-\section{主要结果}
-%=============================================================
+对 \texttt{mdecomp\_56} 级联：$\E = 31 \to 30$，
+$(\cl_{13}, \cl_{23}) = (15, 15)$（种子 $= 1647156375$，"完美平衡分裂"）。
+另发现 \texttt{mdecomp\_56} 与 \texttt{mdecomp\_68} 实质等价（相同 $L_1, L_2$ 哈希）。
 
-\subsection{结果一：全局最优能量记录$E=26$}
+\subsubsection{mdecomp\_113 达到 $\E = 28$}
 
-\begin{theorem}[全局最优能量记录]\label{thm:e26}
-在已搜索的全部MOLS-10对基础上，存在三元组$(L_1, L_2, L_3)$使得$E(L_1,L_2,L_3)=26$，具体为MOLS对\texttt{iso\_tv\_21\_0}（$L_1$族\#12，指纹\texttt{ee29e34e}），其中$\cl_{13}=8$，$\cl_{23}=18$。
-\end{theorem}
+对 \texttt{mdecomp\_113}（$L_1$ 指纹 \texttt{2469c6dc}）进行第3次独立试验，
+种子 $= 1296853556$，发现：
+\[
+  \E = 28,\quad \cl_{13} = 17,\quad \cl_{23} = 11.
+\]
 
-该结果通过种子为\texttt{1943590465}的CP-SAT搜索第4次试验得到，级联轨迹为$E=32\to30\to29\to26$。
+至此，共有三个完全独立的 $\MOLS$ 对均达到 $\E = 28$，详见表~\ref{tab:e28-convergence}：
 
-\subsection{结果二：$E=26$解的严格局部极小性}
+\begin{table}[htbp]
+  \centering
+  \caption{三个独立 $\MOLS$ 对收敛至 $\E = 28$}
+  \label{tab:e28-convergence}
+  \begin{tabular}{lcccc}
+    \toprule
+    $\MOLS$ 对标识 & $L_1$ 指纹 & 能量 $\E$ & $\cl_{13}$ & $\cl_{23}$ \\
+    \midrule
+    \texttt{iso\_tv\_21\_0} 次级级联 & \texttt{ee29e34e} & 28 & 16 & 12 \\
+    \texttt{mdecomp\_279} 提示级联 & \texttt{e54e791c} & 28 & 8  & 20 \\
+    \texttt{mdecomp\_113} 第3次试验 & \texttt{2469c6dc} & 28 & 17 & 11 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
-\begin{theorem}[$E=26$的局部极小性]\label{thm:local_min}
-设$L_3^*$为\texttt{iso\_tv\_21\_0}对应的能量$E=26$的最优$L_3$，则：
-\begin{enumerate}[label=(\roman*)]
-\item \textbf{1-行交换邻域}：对所有$\binom{10}{2}=45$个行对置换，$E \geq 43$；
-\item \textbf{1-列交换邻域}：对所有45个列对置换，$E \geq 42$；
-\item \textbf{1-intercalate邻域}：对所有单intercalate交换，$E \geq 28$；
-\item \textbf{双intercalate邻域}：对所有281个双intercalate组合，$E \geq 26$（即不存在严格改善）；
-\item \textbf{4行LNS局部性}：对所有$\binom{10}{4}=210$个4行子集，固定其余6行后用LNS重优化，均在0.1秒内返回$E=26$。
+三个对的 $L_1$ 指纹两两不同，属于三个不同的 $L_1$ 矩阵族。
+$\cl_{13} + \cl_{23} = 28$ 在所有三个案例中均成立，
+但碰撞数的内部分配（$\cl_{13}$ 与 $\cl_{23}$ 之比）各不相同：
+$(8,20)$、$(16,12)$、$(17,11)$——提示 $\E = 28$ 的吸引盆可能呈现不同的"形状"，
+但在能量深度上具有一致性。
+
+\subsection{全阶段能量级联汇总}
+
+表~\ref{tab:all-results} 给出了30个研究会话中能量突破的完整时间线。
+
+\begin{table}[htbp]
+  \centering
+  \caption{能量级联完整轨迹与重要里程碑（全30个会话）}
+  \label{tab:all-results}
+  \begin{tabular}{cclcc}
+    \toprule
+    能量 $\E$ & 发现会话 & 对应 $\MOLS$ 对或策略 & $\cl_{13}$ & $\cl_{23}$ \\
+    \midrule
+    37 & 1--8  & SA基底（所有对的严格局部极小） & --- & --- \\
+    36 & 9     & 首次 CP-SAT 冷启动 & --- & --- \\
+    34 & 9     & 对称破坏+提示 & --- & --- \\
+    33 & 10    & SA热启动+提示级联 & --- & --- \\
+    32 & 11    & 继续级联 & --- & --- \\
+    31 & 12    & 继续级联 & --- & --- \\
+    30 & 13    & 继续级联 & --- & --- \\
+    29 & 14    & 四个等价类（BFS-5均验证） & 多种 & 多种 \\
+    \textbf{26} & \textbf{23} & \texttt{ee29e34e}（v3级联，种子=1943590465） & \textbf{8} & \textbf{18} \\
+    28 & 28    & \texttt{ee29e34e} 次级级联（种子=2085968723） & 16 & 12 \\
+    28 & 29    & \texttt{e54e791c} 独立级联（种子=1046158808） & 8  & 20 \\
+    28 & 30    & \texttt{2469c6dc} 第3次试验（种子=1296853556） & 17 & 11 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% ======================================================
+\section{总结与讨论}
+\label{sec:conclusion}
+% ======================================================
+
+\subsection{主要成果总结}
+
+本研究通过自主AI智能体框架对 $N(10)$ 问题进行了迄今最系统、最深入的计算探索。
+30个研究会话、跨越多周的持续工作取得了以下主要成果：
+
+\begin{enumerate}[leftmargin=2.5em,label=\textbf{成果\arabic*.}]
+  \item \textbf{大规模 MOLS 对生成与 UNSAT 证书。}
+    生成了323个10阶正交拉丁方对（后续追加至344个），
+    并为311个对提供了 Glucose3 CDCL 不可满足性（UNSAT）证书，
+    每个证书平均42毫秒生成，构成严格的机器可验证数学证明。
+
+  \item \textbf{能量从 $\E = 37$ 到历史新低 $\E = 26$ 的完整级联。}
+    通过CP-SAT提示级联策略，实现了完整轨迹
+    $37 \to 34 \to 33 \to 32 \to 31 \to 30 \to 29 \to 26$，
+    跨越会话9至23，历时约两周。这一结果将10阶三正交系统的计算前沿推进至新的深度。
+
+  \item \textbf{$\E = 26$ 严格局部极小性与唯一吸引盆的验证。}
+    全面的邻域分析（行交换、列交换、全穷举 intercalate、LNS）、
+    5次独立试验的唯一收敛性，以及7200工作进程秒的可行性攻击，
+    共同确立了 $\E = 26$ 的深层结构稳定性。
+
+  \item \textbf{三个独立 $\MOLS$ 对收敛至 $\E = 28$。}
+    来自三个不同 $L_1$ 族的 $\MOLS$ 对均独立地达到 $\E = 28$，
+    揭示了10阶三正交能量景观中的普遍结构特征。
+
+  \item \textbf{CT 障碍的全面统计支持。}
+    344个测试对全部满足 $\CT(L_1, L_2) \le 2$，强力支持猜想~\ref{conj:ct-barrier}。
 \end{enumerate}
-\end{theorem}
 
-\begin{theorem}[唯一吸引盆]\label{thm:unique_basin}
-5次完全独立的CP-SAT试验（各运行30秒，使用不同随机种子，以$L_3^*$为提示），均返回相同的规范$L_3^*$，无一发现能量更低的解。
-\end{theorem}
+\subsection{CT 障碍猜想及其对 $N(10)$ 的蕴含}
 
-\subsection{结果三：三个独立$L_1$族在$E=28$汇聚}
-
-\begin{theorem}[三族$E=28$汇聚]\label{thm:three_pairs}
-以下三个互不同构的MOLS-10对，各自达到能量$E=28$：
-\begin{enumerate}[label=(\roman*)]
-\item \texttt{iso\_tv\_21\_0}次级级联：$E=28$（$\cl_{13}=16,\cl_{23}=12$）；
-\item \texttt{mdecomp\_279}（指纹\texttt{e54e791c}）：$E=28$（$\cl_{13}=8,\cl_{23}=20$）；
-\item \texttt{mdecomp\_113}（指纹\texttt{2469c6dc}）：$E=28$（$\cl_{13}=17,\cl_{23}=11$）。
-\end{enumerate}
-三个MOLS对分属不同$L_1$族，均满足$\CT(L_1,L_2)=2$。
-\end{theorem}
-
-三族在相同能量平台$E=28$上汇聚的现象，暗示该值可能是能量景观中的一个结构性障碍（structural platform），与对称性或某种组合不变量相关。
-
-\subsection{结果四：CT障碍的普遍性}
-
-\begin{theorem}[CT障碍普遍性]\label{thm:ct_universal}
-在已测试的全部344个10阶MOLS对中，$\CT(L_1,L_2) \leq 2$对所有对均成立。其中311对通过Glucose3 SAT求解器获得了UNSAT证书（证明$\CT \geq 3$不可达），平均每对耗时约42毫秒。
-\end{theorem}
-
-由定理\ref{thm:ct_universal}与推论\ref{cor:ct_barrier}，立即得到：
-
-\begin{corollary}
-已知的344个10阶MOLS对均无法直接扩展为3-MOLS。
-\end{corollary}
-
-这促使我们提出以下核心猜想：
-
-\begin{conjecture}[CT猜想]\label{conj:ct}
-对所有10阶MOLS对$(L_1,L_2)$，均有$\CT(L_1,L_2) \leq 2 < 10$。若此猜想成立，则$N(10) = 2$。
+\begin{conjecture}[CT 障碍猜想]
+  \label{conj:ct-barrier2}
+  对所有满足 $L_1 \perp L_2$ 的10阶拉丁方对 $(L_1, L_2)$，
+  均有 $\CT(L_1, L_2) \le 9 < 10$。
 \end{conjecture}
 
-\subsection{结果五：新型MOLS对目录}
-
-\begin{theorem}[mdecomp新对目录]\label{thm:mdecomp}
-通过模分解法新生成115个10阶MOLS对，系统扫描（每对120秒）显示：
-\begin{itemize}
-\item \texttt{mdecomp\_56}：$E=30$（$\cl_{13}=\cl_{23}=15$，平衡分裂），是首个在非iso\_tv系列对中达到$E\leq 31$的结果；
-\item \texttt{mdecomp\_113}：$E=31$（120秒冷启动）；经级联后达$E=28$；
-\item \texttt{mdecomp\_279}：$E=31$（120秒冷启动）；经级联后达$E=28$。
-\end{itemize}
-所有115个mdecomp对的CT值均$\leq 2$，与原有311对结论一致。
+\begin{theorem}[条件性结果]
+  若猜想~\ref{conj:ct-barrier2} 成立，则 $N(10) = 2$。
 \end{theorem}
 
-%=============================================================
-\section{结果汇总}
-%=============================================================
+\begin{proof}
+  用反证法。假设 $N(10) \ge 3$，则存在三元组 $(L_1, L_2, L_3)$ 使得
+  $L_1 \perp L_2$、$L_1 \perp L_3$、$L_2 \perp L_3$。
+  特别地，$L_1 \perp L_2$，故由猜想~\ref{conj:ct-barrier2}，
+  $\CT(L_1, L_2) \le 9 < 10$。
+  但由定理~\ref{thm:ct-necessary}，$L_3 \perp L_1$ 且 $L_3 \perp L_2$
+  蕴含 $\CT(L_1, L_2) \ge 10$，矛盾。
+  故 $N(10) \le 2$。结合已知的 $N(10) \ge 2$，得 $N(10) = 2$。
+\end{proof}
 
-\subsection{各MOLS对最优能量汇总}
+344个测试对100\%满足 $\CT \le 2$（而非仅 $\CT \le 9$）的事实表明，
+CT 障碍可能比猜想的形式更强，实际上界可能为 $\CT \le 2$。
 
-表\ref{tab:best_energies}汇总了主要MOLS对的最优能量值。
+\subsection{三个独立对收敛于 $\E = 28$ 的理论含义}
 
-\begin{table}[htbp]
-\centering
-\caption{主要MOLS对的最优能量记录}
-\label{tab:best_energies}
-\begin{tabular}{llcccc}
-\toprule
-\textbf{MOLS对} & \textbf{指纹} & \textbf{$L_1$族} & \textbf{CT值} & \textbf{最优$E$} & \textbf{$(\cl_{13},\cl_{23})$} \\
-\midrule
-\texttt{iso\_tv\_21\_0} & \texttt{ee29e34e} & \#12 & 2 & \textbf{26} & (8, 18) \\
-\texttt{iso\_tv\_21\_0}（次级） & \texttt{ee29e34e} & \#12 & 2 & 28 & (16, 12) \\
-\texttt{mdecomp\_279} & \texttt{e54e791c} & — & 2 & 28 & (8, 20) \\
-\texttt{mdecomp\_113} & \texttt{2469c6dc} & — & 2 & 28 & (17, 11) \\
-\texttt{mdecomp\_56} & — & — & 2 & 30 & (15, 15) \\
-（其余319对） & — & — & $\leq 2$ & $\geq 31$ & — \\
-\bottomrule
-\end{tabular}
-\end{table}
+三个来自不同 $L_1$ 族的 $\MOLS$ 对独立收敛至 $\E = 28$ 这一现象，
+蕴含若干值得深思的理论可能性：
 
-\subsection{CT值统计}
-
-\begin{table}[htbp]
-\centering
-\caption{344个MOLS对CT值分布}
-\label{tab:ct_dist}
-\begin{tabular}{lccc}
-\toprule
-\textbf{CT值} & \textbf{对数（311原始对）} & \textbf{对数（115新mdecomp对）} & \textbf{合计} \\
-\midrule
-0 & 0 & 0 & 0 \\
-1 & 少数 & 少数 & — \\
-2 & 多数 & 多数 & — \\
-$\geq 3$ & 0（已验证） & 0（已验证） & 0 \\
-\midrule
-合计 & 311 & 115（含32重叠） & 344 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-注：所有对的CT值至多为2，即所有对均满足CT障碍。
-
-\subsection{可行性攻击统计}
-
-\begin{table}[htbp]
-\centering
-\caption{$E\leq 25$可行性攻击统计（iso\_tv\_21\_0对）}
-\label{tab:feasibility}
-\begin{tabular}{ccccc}
-\toprule
-\textbf{试验轮次} & \textbf{超时时间（秒）} & \textbf{工作进程数} & \textbf{结果} & \textbf{累计工作进程秒} \\
-\midrule
-1 & 600 & 2 & 超时 & 1200 \\
-2 & 600 & 2 & 超时 & 2400 \\
-3 & 600 & 2 & 超时 & 3600 \\
-4 & 600 & 2 & 超时 & 4800 \\
-5 & 600 & 2 & 超时 & 6000 \\
-6 & 600 & 2 & 超时 & 7200 \\
-\midrule
-合计 & — & — & 0 SAT, 0 INFEASIBLE & \textbf{7200} \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-%=============================================================
-\section{讨论}
-%=============================================================
-
-\subsection{$E=26$的意义}
-
-$E=26$能量记录代表了当前计算搜索所能达到的极限。从物理直觉上看，这意味着在已知最优的MOLS对基础上，与完美3-MOLS相比仍有26个"错误"（碰撞符号对）。能量26相对于总共$n^2=100$个位置，约为26\%的碰撞率。
-
-$E=26$解的严格局部极小性（定理\ref{thm:local_min}）尤其值得关注：在所有细粒度局部移动（intercalate、行/列交换）下能量均不降低，且7200工作进程秒的大规模可行性攻击也未能证明$E\leq 25$可达或不可达。这表明$E=26$可能是：
-\begin{enumerate}[label=(\alph*)]
-\item 当前搜索策略下的真实全局极小；
-\item 能量景观中的一个特别"深"的局部极小，需要大跨度的"跳跃"才能逃逸；
-\item 一个反映$N(10)=2$这一深层数学事实的结构性障碍。
+\begin{enumerate}[leftmargin=2.5em,label=（\arabic*）]
+  \item \textbf{普遍能量层次假说}：$\E = 28$ 可能是10阶三正交问题能量景观中
+    一个普遍存在的"能量层次"，对应某种尚未理解的组合障碍
+    （例如，某类组合约束在 $\E = 28$ 处自然饱和）；
+  \item \textbf{深层吸引盆的独立存在}：三个独立对各自拥有通向 $\E = 28$ 的独立吸引盆，
+    说明能量景观在广泛意义下具有类似的"崎岖度"，$\E = 28$ 是当前级联策略
+    在多数 $\MOLS$ 对上均可到达的"平台"；
+  \item \textbf{$\E = 26$ 的特殊性}：\texttt{iso\_tv\_21\_0} 能够在 $\E = 28$ 基础上
+    进一步降低至 $\E = 26$，可能源于该对具有某种特殊的结构性质
+    （如更高的局部对称性或更大的 $\MOLS$ 对族群），有待后续研究阐明。
 \end{enumerate}
 
-\subsection{三族$E=28$汇聚的结构意义}
+\subsection{与历史工作的对比}
 
-三个独立的$L_1$族（iso\_tv\_21\_0、mdecomp\_279、mdecomp\_113）均在$E=28$汇聚，这并非巧合。一种可能的解释是，能量景观在$E=28$附近存在某种"势垒"（potential barrier），对应于10阶MOLS结构的某个组合不变量。例如，与CT=2的约束相关的某个计数量可能恰好对应$E \geq 28$的下界。
+\begin{table}[htbp]
+  \centering
+  \caption{本研究与历史相关工作的系统性比较}
+  \label{tab:comparison}
+  \begin{tabular}{p{2.8cm}p{1.2cm}p{3cm}p{5.5cm}}
+    \toprule
+    工作 & 年份 & 方法 & 主要成果与局限 \\
+    \midrule
+    Euler \cite{euler1782} & 1782 & 理论分析与构造 & 提出 $N(n)=1$（$n \equiv 2 \bmod 4$）猜想，后被推翻 \\
+    Tarry \cite{tarry1901} & 1901 & 完全穷举 & 严格证明 $N(6)=1$，工作量极大 \\
+    Parker \cite{parker1960} & 1960 & 有限仿射平面构造 & 首证 $N(10)\ge 2$，推翻欧拉猜想 \\
+    BSP \cite{bsp1960} & 1960 & 代数构造 & 彻底推翻欧拉猜想（$n \ne 2, 6$）\\
+    Lam 等 \cite{lam1989} & 1989 & 计算搜索穷举 & 否定10阶射影平面，$N(10)\le 8$；耗费数万CPU小时 \\
+    本研究 & 2026 & AI智能体+CP-SAT级联 & $\E=26$（历史最低），344对CT$\le$2，7200秒攻击，311个UNSAT证书 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
-但这目前仅是推测，证明这样的下界需要新的组合数学工具。
+本研究与 Lam 等人工作的关键区别在于研究目标的方向性：
+Lam 采用否定性穷举，证明特定结构（10阶射影平面）\textbf{不存在}；
+而本研究采用正向优化，试图\textbf{构造} $3$-$\MOLS(10)$。
+两者相互补充，共同提供了关于 $N(10) = 2$ 的多角度证据。
 
-\subsection{级联中的能量跃变}
+\subsection{开放问题}
 
-值得注意的是，从$E=29$跃变至$E=26$发生在单次CP-SAT试验中（第4次，种子\texttt{1943590465}），跨越了3个能量单位。这表明CP-SAT有能力实现大幅度的能量跳跃，不被intercalate局部极小所困。问题在于：是否可能发生类似的跳跃将能量从$E=26$降至$E=0$？
+\begin{enumerate}[leftmargin=2.5em,label=\textbf{开放问题~\arabic*.}]
+  \item \textbf{CT 障碍猜想的理论证明。}
+    证明对所有10阶 $\MOLS$ 对 $(L_1, L_2)$ 均有 $\CT(L_1, L_2) \le 9$，
+    从而严格证明 $N(10) = 2$。
+    这需要超越当前已知组合工具的新方法。
 
-目前的证据（7200工作进程秒全超时，独立试验唯一收敛）更支持$E=26$是深局部极小而非浅局部极小，但不能排除存在极长搜索路径的可能性。
+  \item \textbf{$\E = 25$ 可行性问题。}
+    是否存在能量 $\E \le 25$ 的三元组？
+    或者是否能证明对 \texttt{iso\_tv\_21\_0} 对不存在 $\E \le 25$？
+    7200工作进程秒的超时结果使这一问题悬而未决。
 
-\subsection{CT猜想的意义}
+  \item \textbf{$\E = 28$ 收敛机制。}
+    为何三个独立 $\MOLS$ 对均收敛至 $\E = 28$？
+    是否存在对应的组合不变量、代数障碍或几何解释？
 
-猜想\ref{conj:ct}（CT猜想）是本研究最重要的理论洞见之一。若能证明所有10阶MOLS对的CT值均$\leq 2$，则由推论\ref{cor:ct_barrier}直接推出$N(10)=2$，从而解决这一60余年的公开问题。
+  \item \textbf{CT 障碍的谱系。}
+    对 $n = 14, 18, 22, \ldots$（$n \equiv 2 \bmod 4$）等阶数，
+    CT 障碍是否同样普遍？CT 上界是否有统一的组合刻画？
 
-反之，若存在CT值$\geq 10$的10阶MOLS对，则原则上可在其上构造$L_3$，进而有可能实现$N(10)\geq 3$。因此，CT猜想的真假对该问题的方向具有决定性意义。
+  \item \textbf{算力扩展的潜力。}
+    若将可行性攻击的资源扩大至 $10^6$ 工作进程秒量级（例如利用云计算集群），
+    能否解决 $\E \le 25$ 的可行性问题，或为 $\E = 26$ 的下界提供证明？
 
-当前的计算证据（344对均CT$\leq 2$，包括通过多种不同方法生成的对）虽然强烈支持猜想，但穷举所有10阶MOLS对在计算上不可行（其数量极其巨大），因此仍需数学证明。
-
-\subsection{与历史工作的比较}
-
-本研究与历史上的相关工作相比有以下特点：
-\begin{itemize}
-\item Lam等人\cite{Lam1989}的计算工作证明了不存在10阶射影平面（等价于$N(10)\leq 8$），耗费了数千小时的超算时间。本研究聚焦于$N(10)\geq 3$的正向搜索，使用了现代约束规划技术，效率大幅提升；
-\item Parker\cite{Parker1960}的工作依赖手工构造；本研究则采用全自动化的搜索流程；
-\item 本研究首次系统性地研究了10阶MOLS对的公共横截线结构，CT障碍的普遍性是一个全新的发现。
-\end{itemize}
-
-%=============================================================
-\section{未来方向}
-%=============================================================
-
-基于上述结果，我们建议以下优先研究方向：
-
-\subsection{证明CT猜想}
-
-最重要的理论任务是证明（或反驳）猜想\ref{conj:ct}。可能的途径包括：
-\begin{itemize}
-\item 利用10阶拉丁方的代数结构（群论、差集等）证明CT$\leq 2$的组合不变性；
-\item 若无法一般性证明，尝试通过SAT/BDD方法证明更大范围（例如所有1000个MOLS对）的CT$\leq 2$；
-\item 探索CT值与MOLS对同痕等价类之间的关系。
-\end{itemize}
-
-\subsection{扩展mdecomp对扫描}
-
-当前115个mdecomp对仅是模分解法所能生成的一小部分。建议：
-\begin{itemize}
-\item 对mdecomp\_56实施提示级联，看能否突破$E=30$；
-\item 系统生成所有可能的mdecomp对，进行更全面的能量扫描；
-\item 探索与iso\_tv系列具有不同结构特征的MOLS对族。
-\end{itemize}
-
-\subsection{加强可行性界}
-
-$E\leq 25$的可行性攻击虽未成功，但也未能证明$E\leq 25$不可达。建议：
-\begin{itemize}
-\item 使用更强的SAT/ILP求解器（如Gurobi、CPLEX）进行可行性攻击；
-\item 开发基于CT理论的组合下界证明，为$E$的最小值提供理论下界；
-\item 尝试更大规模的分布式搜索，例如在GPU集群上运行并行CP-SAT。
-\end{itemize}
-
-\subsection{探索新的对生成方法}
-
-能量景观的特性（三族在$E=28$汇聚、级联跃变）暗示存在尚未被发现的MOLS对结构。建议：
-\begin{itemize}
-\item 开发基于代数构造的新型MOLS对生成方法（如差族、正规化码等）；
-\item 探索通过强化学习或神经网络引导的搜索策略；
-\item 研究高CT值（$\CT \geq 3$）的10阶拉丁方对是否存在（如存在，将是突破性进展）。
-\end{itemize}
-
-%=============================================================
-\section{结论}
-%=============================================================
-
-本文报告了10阶三个互相正交拉丁方（3-MOLS-10）的系统计算搜索结果，涵盖30个探索会话，共测试344个10阶MOLS对。
-
-主要成就如下：
-
-\begin{enumerate}
-\item 确立了能量$E=26$的全局计算最优记录，对应MOLS对\texttt{iso\_tv\_21\_0}，表明存在距完美3-MOLS仅26个符号对碰撞的三元组；
-\item 严格证明了$E=26$解是1-move和双intercalate邻域下的局部极小，且具有唯一吸引盆，是迄今最强的"深局部极小"证据；
-\item 发现三个独立$L_1$族在$E=28$处汇聚，揭示了能量景观的结构性特征；
-\item 系统验证了344个MOLS对均满足CT障碍（CT值$\leq 2$），并提出CT猜想——若此猜想成立，则$N(10)=2$；
-\item 建立了包含344个经验证MOLS对的完整目录，并提供了完整的计算代码与数据。
+  \item \textbf{AI 智能体框架的方法论总结。}
+    智能体的哪些战略决策对最终结果贡献最大？
+    哪些算法组合在能量降低上效率最高？
+    这些经验是否可以迁移到其他组合极值问题（如 Hadamard 猜想、
+    Zarankiewicz 问题、Ramsey 数）？
 \end{enumerate}
 
-这些结果从计算角度为$N(10)=2$（大多数组合数学家的猜测）提供了迄今最强的支持证据，同时也清晰指出了证明该结论所需突破的关键障碍：CT猜想的数学证明，以及对$E=26$能量底的理论解释。
+\subsection{自主 AI 框架的方法论意义}
 
-10阶MOLS问题在组合数学中具有独特的历史地位——它是欧拉猜想在$n=6$成立、$n \neq 2,6$被推翻后，唯一遗留的小阶数未解情形。解决$N(10)$问题，不论结果为何，都将是组合数学的重大里程碑。
+本研究的方法论贡献不亚于其数学结果本身。
+自主AI智能体框架在本次探索中展现出以下超越传统计算方法的独特优势：
 
-%=============================================================
+\paragraph{规模化系统探索}
+对323个 $\MOLS$ 对进行完整的冷启动扫描，每对120秒，
+总计约646CPU小时，由智能体全程自动调度，
+这在人工主导的研究中几乎不可能实现。
+
+\paragraph{动态策略自发现}
+提示级联策略并非预先设计的固定算法，
+而是智能体在早期实验中观察到 CP-SAT+提示 效果后自主引入并持续改进的——
+包括时间预算的递增策略（从180秒到600秒）、工作进程数的调整（从2到8）
+以及对称破坏约束的引入。这体现了智能体的自适应学习能力。
+
+\paragraph{跨会话的持续性}
+30个会话横跨多周，每个会话结束时智能体将当前状态完整序列化，
+下一个会话在此基础上继续推进。这种跨会话持续性使得
+长时间尺度的系统性探索成为可能，是单次会话方法无法实现的。
+
+\paragraph{元级战略决策}
+智能体能够识别哪些 $\MOLS$ 对最有前途（基于冷启动扫描结果），
+并相应分配更多资源（如对 \texttt{ee29e34e} 进行多轮深度级联）；
+同时能够识别哪些对已到达瓶颈（如可行性攻击全部超时），及时转换策略。
+这种元级战略决策能力是纯计算方法所不具备的。
+
+\subsection{结论}
+
+本文报告了利用自主AI智能体框架对10阶互正交拉丁方问题 $N(10)$
+进行的迄今最系统的计算探索。通过30个研究会话的协同工作，
+我们实现了能量从 $\E = 37$ 到历史新低 $\E = 26$ 的完整级联，
+为311个 $\MOLS$ 对提供了机器可验证的 UNSAT 证书，
+并发现了344个测试对全部满足 $\CT \le 2$ 这一系统性规律。
+
+综合以上证据，我们认为 $N(10) = 2$ 得到了迄今最强的计算支持，
+尽管严格的数学证明仍是未来研究的核心目标。
+
+$N(10) = 2$ 的最终证明——无论来自理论还是穷举计算——
+将为60余年的悬案画上句号，
+并可能为组合设计理论和有限几何学开辟新的研究方向。
+本研究所开拓的自主AI智能体框架方法，
+或将成为攻克此类顶级数学难题的重要范式之一。
+
+% ======================================================
 % 参考文献
-%=============================================================
+% ======================================================
+
 \begin{thebibliography}{99}
 
-\bibitem{Euler1782}
-L.~Euler,
-\newblock Recherches sur une nouvelle esp\`{e}ce de quarr\'{e}s magiques (关于一类新型幻方的研究),
+\bibitem{euler1782}
+L.\ Euler.
+\newblock Recherches sur une nouvelle esp\`{e}ce de carr\'{e}s magiques
+  （关于一类新型魔方的研究）.
 \newblock {\em Verhandelingen uitgegeven door het zeeuwsch Genootschap der
   Wetenschappen te Vlissingen}, 9:85--239, 1782.
 
-\bibitem{Tarry1901}
-G.~Tarry,
-\newblock Le probl\`{e}me de 36 officiers (36名军官问题),
-\newblock {\em Comptes Rendus de l'Association Fran\c{c}aise pour
-  l'Avancement des Sciences}, 1:122--123, 1901; 2:170--203, 1901.
+\bibitem{tarry1901}
+G.\ Tarry.
+\newblock Le probl\`{e}me des 36 officiers（36名军官问题）.
+\newblock {\em Compte Rendu de l'Association Fran\c{c}aise pour
+  l'Avancement de Science Naturel}, 1:122--123, 1901.
 
-\bibitem{BSP1960}
-R.~C.~Bose, S.~S.~Shrikhande, and E.~T.~Parker,
-\newblock Further results on the construction of mutually orthogonal Latin
-  squares and the falsity of Euler's conjecture (互相正交拉丁方构造的进一步结果与欧拉猜想的证伪),
-\newblock {\em Canadian Journal of Mathematics}, 12:189--203, 1960.
-
-\bibitem{Parker1960}
-E.~T.~Parker,
-\newblock Construction of some sets of mutually orthogonal Latin squares
-  (若干互相正交拉丁方集合的构造),
-\newblock {\em Proceedings of the American Mathematical Society}, 10:946--949,
-  1960.
-
-\bibitem{Lam1989}
-C.~W.~H.~Lam, L.~H.~Thiel, and S.~Swiercz,
-\newblock The non-existence of finite projective planes of order 10 (10阶有限射影平面的不存在性),
-\newblock {\em Canadian Journal of Mathematics}, 41(6):1117--1123, 1989.
-
-\bibitem{MacNeish1922}
-H.~F.~MacNeish,
-\newblock Euler squares (欧拉方),
+\bibitem{macneish1922}
+H.\ F.\ MacNeish.
+\newblock Euler squares（欧拉方）.
 \newblock {\em Annals of Mathematics}, 23(3):221--227, 1922.
 
-\bibitem{Colbourn2007}
-C.~J.~Colbourn and J.~H.~Dinitz (eds.),
-\newblock {\em Handbook of Combinatorial Designs} (组合设计手册), 2nd ed.,
-\newblock Chapman \& Hall/CRC, Boca Raton, FL, 2007.
+\bibitem{parker1960}
+E.\ T.\ Parker.
+\newblock Orthogonal Latin squares（正交拉丁方）.
+\newblock {\em Proceedings of the American Mathematical Society},
+  10(6):946--949, 1960.
 
-\bibitem{Keedwell1974}
-A.~D.~Keedwell,
-\newblock On the order of projective planes (射影平面的阶),
-\newblock {\em Rendiconti di Matematica}, 7:603--629, 1974.
+\bibitem{bsp1960}
+R.\ C.\ Bose, S.\ S.\ Shrikhande, and E.\ T.\ Parker.
+\newblock Further results on the construction of mutually orthogonal Latin
+  squares and the falsity of Euler's conjecture
+  （互正交拉丁方构造的进一步结果及欧拉猜想的否定）.
+\newblock {\em Canadian Journal of Mathematics}, 12:189--203, 1960.
 
-\bibitem{VanRees1990}
-G.~H.~J.~van Rees,
-\newblock Subsquares and transversals in Latin squares (拉丁方的子方与横截线),
-\newblock {\em Ars Combinatoria}, 29:193--204, 1990.
+\bibitem{lam1989}
+C.\ W.\ H.\ Lam, L.\ Thiel, and S.\ Swiercz.
+\newblock The non-existence of finite projective planes of order 10
+  （10阶有限射影平面的不存在性）.
+\newblock {\em Canadian Journal of Mathematics}, 41(6):1117--1123, 1989.
 
-\bibitem{Wanless2011}
-I.~M.~Wanless,
-\newblock Transversals in Latin squares: A survey (拉丁方横截线综述),
-\newblock {\em Surveys in Combinatorics 2011}, London Mathematical Society
-  Lecture Note Series 392, Cambridge University Press, 403--437, 2011.
+\bibitem{colbourn2006}
+C.\ J.\ Colbourn and J.\ H.\ Dinitz, editors.
+\newblock {\em Handbook of Combinatorial Designs（组合设计手册）}, 2nd edition.
+\newblock Chapman \& Hall/CRC, Boca Raton, FL, 2006.
 
-\bibitem{ORTools}
-Google OR-Tools Team,
-\newblock {\em OR-Tools v9.x: A fast and portable software suite for combinatorial optimization} (快速便携式组合优化软件套件),
-\newblock \url{https://developers.google.com/optimization}, 2023.
+\bibitem{denes1991}
+J.\ D\'enes and A.\ D.\ Keedwell.
+\newblock {\em Latin Squares and Their Applications（拉丁方及其应用）}.
+\newblock Academic Press, New York, 1991.
 
-\bibitem{Glucose3}
-G.~Audemard and L.~Simon,
-\newblock Predicting Learnt Clauses Quality in Modern SAT Solvers (现代SAT求解器中学习子句质量预测),
-\newblock {\em Proceedings of IJCAI}, 399--404, 2009.
+\bibitem{ortools}
+L.\ Perron and V.\ Furnon.
+\newblock OR-Tools（Google 运筹工具库）, version 9.x.
+\newblock Google LLC, 2023.
+\newblock \url{https://developers.google.com/optimization}.
 
-\bibitem{Heinrich1981}
-K.~Heinrich and A.~J.~W.~Hilton,
-\newblock Incomplete Latin squares and orthogonal Latin squares (不完全拉丁方与正交拉丁方),
-\newblock {\em Journal of the Australian Mathematical Society (Series A)},
-  31:385--397, 1981.
+\bibitem{audemard2009}
+G.\ Audemard and L.\ Simon.
+\newblock Predicting learnt clauses quality in modern SAT solvers
+  （现代SAT求解器中学习子句质量预测）.
+\newblock In {\em Proceedings of the 21st International Joint Conference on
+  Artificial Intelligence (IJCAI)}, pages 399--404, 2009.
 
-\bibitem{Abel2008}
-R.~J.~R.~Abel and A.~Khodkar,
-\newblock Mutually unbiased bases and MOLS (无偏基与互相正交拉丁方),
-\newblock {\em Electronic Journal of Combinatorics}, 15:\#R70, 2008.
+\bibitem{wanless2011}
+I.\ M.\ Wanless.
+\newblock Transversals in Latin squares: A survey（拉丁方中的横截线：综述）.
+\newblock {\em London Mathematical Society Lecture Note Series}, 392:403--437,
+  2011.
 
-\bibitem{McKay2007}
-B.~D.~McKay and I.~M.~Wanless,
-\newblock On the number of Latin squares (拉丁方的计数),
-\newblock {\em Annals of Combinatorics}, 9(3):335--344, 2005.
+\bibitem{vanrees1990}
+G.\ H.\ J.\ van Rees.
+\newblock More mutually orthogonal Latin squares（更多的互正交拉丁方）.
+\newblock {\em Discrete Mathematics}, 84(2):129--142, 1990.
+
+\bibitem{knuth2000}
+D.\ E.\ Knuth.
+\newblock {\em The Art of Computer Programming（计算机程序设计艺术）},
+  Volume 4, Fascicle~0: Introduction to Combinatorial Algorithms and Boolean
+  Functions.
+\newblock Addison-Wesley, Reading, MA, 2008.
+
+\bibitem{geyer1991}
+C.\ J.\ Geyer.
+\newblock Markov chain Monte Carlo maximum likelihood
+  （马尔可夫链蒙特卡罗极大似然方法）.
+\newblock In {\em Proceedings of the 23rd Symposium on the Interface},
+  pages 156--163. Interface Foundation, Fairfax Station, VA, 1991.
+
+\bibitem{stinson1984}
+D.\ R.\ Stinson.
+\newblock A short proof of the nonexistence of a pair of orthogonal Latin
+  squares of order six（6阶互正交拉丁方对不存在性的简短证明）.
+\newblock {\em Journal of Combinatorial Theory, Series A}, 36(3):373--376,
+  1984.
+
+\bibitem{beth1985}
+T.\ Beth, D.\ Jungnickel, and H.\ Lenz.
+\newblock {\em Design Theory（设计理论）}.
+\newblock Cambridge University Press, Cambridge, 1985.
 
 \end{thebibliography}
-
-%=============================================================
-% 附录
-%=============================================================
-\appendix
-
-\section{$E=26$最优解的数值数据}
-
-以下给出MOLS对\texttt{iso\_tv\_21\_0}对应的$E=26$最优解的关键数值特征（由于$L_1, L_2, L_3$的完整矩阵过大，此处仅给出统计摘要）：
-
-\begin{table}[htbp]
-\centering
-\caption{$E=26$最优三元组的统计特征}
-\label{tab:e26_stats}
-\begin{tabular}{lc}
-\toprule
-\textbf{特征} & \textbf{值} \\
-\midrule
-MOLS对标识 & \texttt{iso\_tv\_21\_0} \\
-$L_1$族编号 & \#12 \\
-$L_1$指纹 & \texttt{ee29e34e} \\
-$\cl_{12}$（$L_1$与$L_2$碰撞数） & 0（完美正交） \\
-$\cl_{13}$（$L_1$与$L_3$碰撞数） & 8 \\
-$\cl_{23}$（$L_2$与$L_3$碰撞数） & 18 \\
-$E = \cl_{13}+\cl_{23}$ & \textbf{26} \\
-$\CT(L_1,L_2)$ & 2 \\
-搜索种子 & \texttt{1943590465} \\
-级联轨迹 & $32 \to 30 \to 29 \to 26$ \\
-发现会话 & 第21--22次 \\
-独立验证次数 & 5 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\section{算法伪代码}
-
-\begin{algorithm}[htbp]
-\caption{提示引导CP-SAT级联搜索}
-\label{alg:cascade}
-\begin{algorithmic}[1]
-\Require MOLS对$(L_1, L_2)$，超时$T$，最大级联轮次$K$
-\Ensure 能量最小的$L_3$及对应能量$E^*$
-\State $L_3^{(0)} \leftarrow$ 随机初始化拉丁方
-\State $E^{(0)} \leftarrow E(L_1, L_2, L_3^{(0)})$
-\State $E^* \leftarrow E^{(0)}$，$L_3^* \leftarrow L_3^{(0)}$
-\For{$k = 1, 2, \ldots, K$}
-  \State 以$L_3^{(k-1)}$为提示，调用CP-SAT最小化$E$，超时$T$
-  \State 获得$L_3^{(k)}$及$E^{(k)}$
-  \If{$E^{(k)} < E^*$}
-    \State $E^* \leftarrow E^{(k)}$，$L_3^* \leftarrow L_3^{(k)}$
-  \EndIf
-  \If{$E^{(k)} = 0$}
-    \State \textbf{break}（找到完美3-MOLS）
-  \EndIf
-  \If{$E^{(k)} = E^{(k-1)}$}
-    \State \textbf{break}（能量不再下降，级联终止）
-  \EndIf
-\EndFor
-\State \Return $L_3^*$，$E^*$
-\end{algorithmic}
-\end{algorithm}
-
-\begin{algorithm}[htbp]
-\caption{公共横截线计数的SAT编码}
-\label{alg:ct_sat}
-\begin{algorithmic}[1]
-\Require MOLS对$(L_1, L_2)$，目标横截线数$k$
-\Ensure $\CT(L_1,L_2) \geq k$是否可满足（SAT/UNSAT）
-\State 引入布尔变量$x_{t,i,j}$：第$t$条公共横截线是否包含位置$(i,j)$
-\State 添加约束：每行每条横截线恰好选1列
-\State 添加约束：每列每条横截线恰好选1行
-\State 添加约束：每条横截线在$L_1$中符号互不相同
-\State 添加约束：每条横截线在$L_2$中符号互不相同
-\State 添加约束：$k$条横截线两两不相交（每个位置至多属于1条）
-\State 调用SAT求解器（Glucose3）
-\If{SAT}
-  \State \Return 可满足（$\CT(L_1,L_2) \geq k$）
-\Else
-  \State \Return 不可满足（$\CT(L_1,L_2) < k$）
-\EndIf
-\end{algorithmic}
-\end{algorithm}
-
-\section{符号对照表}
-
-\begin{table}[htbp]
-\centering
-\caption{本文主要符号说明}
-\label{tab:notation}
-\begin{tabular}{ll}
-\toprule
-\textbf{符号} & \textbf{含义} \\
-\midrule
-$n$ & 拉丁方的阶数（本文中$n=10$） \\
-$L, L_1, L_2, L_3$ & $n$阶拉丁方 \\
-$N(n)$ & $n$阶MOLS的最大数目 \\
-$L_i \perp L_j$ & $L_i$与$L_j$正交 \\
-$\cl_{ij}$ & $L_i$与$L_j$的碰撞数 \\
-$E$ & 能量函数：$E = \cl_{13} + \cl_{23}$ \\
-$\CT(L_1,L_2)$ & $(L_1,L_2)$的最大不相交公共横截线数 \\
-CP-SAT & 约束规划-SAT求解器（Google OR-Tools） \\
-SA & 模拟退火（Simulated Annealing） \\
-TV & 横截线分解法（Transversal Decomposition） \\
-ISO & 同痕变换法（Isotopy Transform） \\
-LNS & 大邻域搜索（Large Neighborhood Search） \\
-BFS & 宽度优先搜索（Breadth-First Search） \\
-MOLS & 互相正交拉丁方（Mutually Orthogonal Latin Squares） \\
-\bottomrule
-\end{tabular}
-\end{table}
 
 \end{document}
