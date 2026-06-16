@@ -150,15 +150,17 @@ Tarry 于1901年以穷举方法证明 $N(6) = 1$——
 该证明通过对所有6阶拉丁方的完全分类实现，虽属有限验证，但工作量极大。
 这是迄今为止唯一被严格证明满足 $N(n) = 1$ 的非平凡情形（$n > 2$）。
 
-\subsubsection{MacNeish 上界（1922年）}
+\subsubsection{MacNeish 猜想与下界（1922年）}
 
-MacNeish 于1922年建立了 $N(n)$ 的一个重要上界 \cite{macneish1922}：
+MacNeish 于1922年证明了关于 $N(n)$ 的一个重要\textbf{下界} \cite{macneish1922}：
 设 $n = p_1^{a_1} p_2^{a_2} \cdots p_r^{a_r}$ 为 $n$ 的素因子分解，则
 \[
-  N(n) \le \min_{1 \le i \le r} (p_i^{a_i} - 1).
+  N(n) \ge \min_{1 \le i \le r} (p_i^{a_i} - 1).
 \]
-对于 $n = 10 = 2 \times 5$，MacNeish 上界给出 $N(10) \le \min(2-1, 5-1) = 1$。
-然而此上界并非紧的——Parker 后来证明 $N(10) \ge 2$，说明 MacNeish 上界在此处是松的。
+MacNeish 进一步猜想上述下界恰好是等号，即 $N(n) = \min_i(p_i^{a_i}-1)$（MacNeish 猜想）。
+对于 $n = 10 = 2 \times 5$，该猜想预测 $N(10) = \min(2^1-1,\, 5^1-1) = \min(1,4) = 1$，
+即不存在两个相互正交的10阶拉丁方。然而此猜想于1960年被 Parker 推翻。
+此外，平凡的一般上界 $N(n) \le n-1$ 由 MOLS 的定义直接导出（$n \times n$ 方阵至多只能有 $n-1$ 个两两正交的拉丁方）。
 
 \subsubsection{Parker 推翻欧拉猜想（1960年）}
 
