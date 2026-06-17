@@ -78306,7 +78306,9 @@
         0,
         4
       ]
-    ]
+    ],
+    "ct_count": 2,
+    "max_disjoint": 2
   },
   {
     "pair_id": "iso_mdecomp48_1",
@@ -78554,7 +78556,9 @@
         5,
         6
       ]
-    ]
+    ],
+    "ct_count": 2,
+    "max_disjoint": 2
   },
   {
     "pair_id": "iso_mdecomp48_2",
@@ -78802,7 +78806,9 @@
         6,
         9
       ]
-    ]
+    ],
+    "ct_count": 2,
+    "max_disjoint": 2
   },
   {
     "pair_id": "iso_mdecomp48_3",
@@ -79050,7 +79056,9 @@
         4,
         7
       ]
-    ]
+    ],
+    "ct_count": 2,
+    "max_disjoint": 2
   },
   {
     "pair_id": "iso_mdecomp48_4",
@@ -79298,7 +79306,9 @@
         4,
         6
       ]
-    ]
+    ],
+    "ct_count": 2,
+    "max_disjoint": 2
   },
   {
     "pair_id": "iso_mdecomp48_5",
@@ -79546,7 +79556,9 @@
         5,
         7
       ]
-    ]
+    ],
+    "ct_count": 2,
+    "max_disjoint": 2
   },
   {
     "pair_id": "iso2_tv21_0_0",
@@ -79794,7 +79806,9 @@
         1,
         8
       ]
-    ]
+    ],
+    "ct_count": 2,
+    "max_disjoint": 2
   },
   {
     "pair_id": "iso2_tv21_0_1",
@@ -80042,7 +80056,9 @@
         3,
         4
       ]
-    ]
+    ],
+    "ct_count": 2,
+    "max_disjoint": 2
   },
   {
     "pair_id": "iso2_tv21_0_2",
@@ -80290,7 +80306,9 @@
         2,
         8
       ]
-    ]
+    ],
+    "ct_count": 2,
+    "max_disjoint": 2
   },
   {
     "pair_id": "iso2_tv21_0_3",
@@ -80538,7 +80556,9 @@
         3,
         0
       ]
-    ]
+    ],
+    "ct_count": 2,
+    "max_disjoint": 2
   },
   {
     "pair_id": "iso2_tv21_0_4",
@@ -80786,7 +80806,9 @@
         7,
         6
       ]
-    ]
+    ],
+    "ct_count": 2,
+    "max_disjoint": 2
   },
   {
     "pair_id": "iso2_tv21_0_5",
@@ -81034,6 +81056,8 @@
         4,
         5
       ]
-    ]
+    ],
+    "ct_count": 2,
+    "max_disjoint": 2
   }
 ]

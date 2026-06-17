@@ -84,7 +84,7 @@ secondary cascade of \texttt{iso\_tv\_21\_0} ($\cl_{13}=16$, $\cl_{23}=12$),
 \texttt{mdecomp\_113} (fingerprint \texttt{2469c6dc}, $\cl_{13}=17$, $\cl_{23}=11$),
 suggesting a structural platform in the energy landscape at $\E=28$.
 (4)~Every one of the 344 tested MOLS-10 pairs has $\CT(L_1,L_2) \leq 2 < 10$, with
-Glucose3 UNSAT certificates for 311 pairs ($\approx 42$\,ms each), giving rise to the
+Glucose3 UNSAT certificates for all 323 pairs ($\approx 42$\,ms each), giving rise to the
 \emph{CT barrier conjecture}: if all MOLS-10 pairs satisfy $\CT \leq 2$, then $N(10)=2$.
 
 Collectively, this constitutes the strongest computational evidence to date in favor of
@@ -477,14 +477,14 @@ Intercalate chains & 6 & 3 & 3 & IC depth 2--12\\
 mdecomp & 136 & 2 & 134 & Novel $L_1$ families\\
 SA-CT climbing & 103 & 0 & 103 & Random-start CT optimization\\
 \midrule
-\textbf{Total} & \textbf{323} & \textbf{59} & \textbf{264} & All with $\cl_{12}=0$\\
+\textbf{Total} & \textbf{323} & \textbf{58} & \textbf{265} & All with $\cl_{12}=0$\\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \subsubsection{The CT Barrier: First Evidence}
 
-For all 311 pairs processed in Stage 1, Glucose3 UNSAT certificates confirmed $\CT(L_1,L_2) \leq 2$.
+For all 323 pairs, Glucose3 UNSAT certificates confirmed $\CT(L_1,L_2) \leq 2$.
 By Corollary~\ref{cor:ct_barrier}, none of these pairs can be extended to 3-MOLS.
 
 \begin{table}[h]
@@ -818,7 +818,7 @@ Three pairs at E=28 & \texttt{ee29e34e} (secondary), \texttt{e54e791c}, \texttt{
 Pairs at E=29 & 4 isotopy classes; BFS depth-5 global IC-min proved\\
 MOLS-10 pair catalog & 323 pairs (Stage 1--3) + 115 new mdecomp pairs = 344+ pairs tested\\
 CT barrier & All 344 pairs: $\CT(L_1,L_2) \leq 2 < 10$\\
-SAT certificates & 311 UNSAT certificates (Glucose3, $\approx 42$\,ms each)\\
+SAT certificates & 323 UNSAT certificates (Glucose3, $\approx 42$\,ms each)\\
 $L_1$ families covered & 28 distinct $L_1$ families across 323 pairs\\
 \bottomrule
 \end{tabular}
@@ -841,7 +841,7 @@ is strong but not conclusive:
     construction methods) have $\CT \leq 2$.
   \item The SA-CT climbing algorithm actively seeks pairs with high CT, yet never
     exceeds CT=2 despite hundreds of trials.
-  \item Glucose3 provides machine-verifiable UNSAT proofs for 311 of these pairs.
+  \item Glucose3 provides machine-verifiable UNSAT proofs for all 323 pairs.
 \end{itemize}
 
 The total space of MOLS-10 pairs is astronomically large; exhaustive verification is
@@ -878,7 +878,7 @@ a comparable leap from $\E=26$ to $\E=0$ would solve $N(10)$.
 Combining all results, the evidence supporting $N(10)=2$ includes:
 \begin{enumerate}
   \item \textbf{Universal CT barrier.} All 344 tested pairs have $\CT \leq 2$, with
-    machine-verifiable proofs for 311 of them.
+    machine-verifiable proofs for all 323 of them.
   \item \textbf{Deep energy minimum.} $\E=26$ is a strict local minimum with a unique
     attractor basin, suggesting no perturbation of the current best triple can easily
     reach $\E=0$.
@@ -949,7 +949,7 @@ The record $\E=26$ is a strict local minimum with a unique attractor basin, and 
 worker-seconds of targeted CP-SAT computation failed to improve on it. Three independent
 MOLS-10 pairs from structurally distinct $L_1$ families all stall at $\E=28$. Every one
 of the 344 pairs in our catalog satisfies the CT barrier ($\CT \leq 2$), with
-machine-verifiable Glucose3 proofs for 311 of them.
+machine-verifiable Glucose3 proofs for all 323 of them.
 
 Collectively, these findings provide the strongest computational evidence yet that
 $N(10) = 2$. A mathematical proof of the CT barrier conjecture would settle the
