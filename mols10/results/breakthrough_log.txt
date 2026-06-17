@@ -1,0 +1,1 @@
+[21:16:11] Monitor started. Current bests: {'mdecomp_113': 28, 'mdecomp_56': 30, 'mdecomp_279': 28, 'iso_tv21_0': 26}
