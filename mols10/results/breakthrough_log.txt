@@ -1,3 +1,5 @@
 [21:16:11] Monitor started. Current bests: {'mdecomp_113': 28, 'mdecomp_56': 30, 'mdecomp_279': 28, 'iso_tv21_0': 26}
 [21:20:11] Scan now 51/115 pairs. Top: [('mdecomp_56', 31), ('mdecomp_113', 31), ('mdecomp_68', 33)]
 [21:52:57] Monitor started. Current bests: {'mdecomp_113': 28, 'mdecomp_56': 30, 'mdecomp_279': 28, 'iso_tv21_0': 26}
+[21:57:57] Scan now 52/115 pairs. Top: [('mdecomp_56', 31), ('mdecomp_113', 31), ('mdecomp_68', 33)]
+[22:01:57] Scan now 53/115 pairs. Top: [('mdecomp_56', 31), ('mdecomp_113', 31), ('mdecomp_68', 33)]
