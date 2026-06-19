@@ -1,0 +1,5 @@
+[05:36:32] ============================================================
+[05:36:32] Perturb+cascade on iso_tv_21_0, anchor E=26, best=26
+[05:36:32] Strategy: random k-intercalate perturbation → CP-SAT re-optimize
+[05:36:32] ============================================================
+[05:36:32] trial=  1 k=6 E_perturbed=48 seed=1516897935
