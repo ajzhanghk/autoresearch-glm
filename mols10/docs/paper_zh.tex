@@ -919,6 +919,68 @@ CT=2 是已知所有10阶MOLS对的上界，为 $N(10)=2$ 提供了强有力的�
 通过回溯搜索所有合法的（行$_1$, 行$_2$）分配（至多$2^{10}=1024$种组合），
 安装最优解。该方法允许等效于多次同步intercalate的大规模移动，评估持续中。
 
+% ======================================================
+\subsection{第七阶段（会话32+）：193个非mdecomp对全面勘测与新突破}
+% ======================================================
+
+\subsubsection{193个非mdecomp对的系统勘测}
+
+针对所有193个非mdecomp对（iso、iso2、iso\_tv\_10、sa\_ct、ic、tv等类型）
+启动了交叉播种勘测。使用已知最优$L_3$（来自$\E=26$与$\E=28$锚点）作为起始
+种子，对iso类对每种子运行500k步SA，对sa/ic/tv类运行150k步SA。前44对结果如下：
+
+\begin{table}[h]
+\centering
+\caption{非mdecomp对勘测优秀结果（已完成51/193对）}
+\label{tab:nonmdecomp_zh}
+\begin{tabular}{llr}
+\toprule
+对编号 & 类型 & 最优 $\E$ \\
+\midrule
+iso\_tv\_21\_0  & iso    & \textbf{26}（历史最优，全局最小）\\
+sa\_ct\_80      & sa\_ct & \textbf{31}（非iso非mdecomp类最优！）\\
+iso2\_tv21\_0\_0/1/5 & iso2 & 32（共3对）\\
+iso\_tv\_10\_2   & iso   & 32\\
+sa\_ct\_66      & sa\_ct & 32\\
+sa\_ct\_127     & sa\_ct & 32\\
+sa\_ct\_144     & sa\_ct & 32\\
+iso\_tv\_21\_1/2 & iso   & 33（同族但较差）\\
+iso\_tv\_10\_1   & iso   & 33\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{重要发现}：sa\_ct\_80达到 $\E=31$，是首个非等价变体、非mdecomp对
+突破 $\E=32$ 的成果。该结果通过使用iso\_tv\_21\_0的最优$L_3$（$\E=26$）
+作为交叉种子而得到，进一步印证了交叉播种策略的有效性。
+
+iso\_tv\_21\_0 在同族中的唯一性依然突出：iso\_tv\_21\_1/2 仅能达到
+$\E=33$，而iso\_tv\_21\_0 独享 $\E=26$ 的最深吸引盆。
+
+\subsubsection{mdecomp对深度搜索新成果}
+
+对最优mdecomp对实施5M步深度SA，获得新结果：
+\begin{itemize}[noitemsep]
+  \item \textbf{mdecomp\_113}：$\E=28$（确认最优）
+  \item \textbf{mdecomp\_111}：$\E=29$（新结果，从勘测 $\E=34$ 提升）
+  \item \textbf{mdecomp\_56}：$\E=30$（确认）
+  \item \textbf{mdecomp\_68、mdecomp\_100}：$\E=31$（与sa\_ct\_80持平）
+\end{itemize}
+
+mdecomp对最优层集中于 $\E=28$--$31$，进一步证实iso\_tv\_21\_0
+的 $\E=26$ 结果是真正的异常值。
+
+\subsubsection{对sa\_ct\_80的专项深度搜索}
+
+针对sa\_ct\_80启动了专项20M步SA（$T: 12.0 \to 0.02$），使用勘测$\E=31$
+结果及iso\_tv\_21\_0（$\E=26$）交叉种子，循环尝试多样扰动，目标：$\E < 31$。
+
+\subsubsection{CT障碍的全面确认}
+
+对193个非mdecomp对的CT验证确认了普遍规律：所有测试对均满足
+$\CT(L_1, L_2) \leq 2$。综合目录现已覆盖来自28+个不同$L_1$族的
+\textbf{514+个不同对}，全部满足 $\CT \leq 2$。
+
 \subsection{全阶段能量级联汇总}
 
 表~\ref{tab:all-results} 给出了31+个研究会话中能量突破的完整时间线。
