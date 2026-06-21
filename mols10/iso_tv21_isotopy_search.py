@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
-Focused isotopy search for iso_tv_21_0.
-Applies random isotopic transformations to (L1, L2) to find a representation
-where the minimum achievable E < 26 (current global best).
+Isotopy search for multiple promising pairs.
+For each pair with survey E <= THRESHOLD, applies random isotopic transformations
+to (L1, L2) to find a representation with lower minimum E.
 
-Insight: iso_tv_21_0 achieves E=26 while tv_21 (original) achieves E=31.
-iso_tv_21_0 IS an isotopy of tv_21. By applying further isotopies to
-iso_tv_21_0, we may find a representation where the minimum is even lower.
+Key pairs:
+- iso_tv_21_0: global best E=26; looking for E<26 isotopy
+- iso2_tv21_0_*: survey E=32; looking for E<26 isotopy
+- tv_147: tv_unique_survey E=32; looking for E<26 isotopy
 """
 import json, sys, time, random, math
 from datetime import datetime
@@ -122,11 +123,19 @@ def run_sa(L1, L2, L3_init, n_steps, seed, n_perturb=0):
     return E_best, L3_best
 
 
-# Load iso_tv_21_0
+# Load all pairs and promising ones
 all_pairs = json.loads((REPO / "mols10/results/promising_pairs.json").read_text())
-pair = next(p for p in all_pairs if p['pair_id'] == 'iso_tv_21_0')
-L1_base = np.array(pair['L1'], dtype=np.int8).reshape(N, N)
-L2_base = np.array(pair['L2'], dtype=np.int8).reshape(N, N)
+pair_map = {p['pair_id']: p for p in all_pairs}
+
+# Target pairs for isotopy search (ordered by priority)
+TARGET_PAIRS = [
+    'iso_tv_21_0',    # global best E=26 → looking for E<26
+    'iso2_tv21_0_0',  # survey E=32 → looking for E<26 isotopy
+    'tv_147',         # tv_unique_survey E=32 → looking for E<26 isotopy
+    'iso2_tv21_0_1',  # survey E=32
+    'iso2_tv21_0_5',  # survey E=32
+    'iso_tv_10_2',    # survey E=32
+]
 
 # Load seeds
 seed_data = []
@@ -138,22 +147,41 @@ for f in ['iso_tv21_0_best_l3.json', 'mdecomp113_best.json']:
             seed_data.append(np.array(d['L3'], dtype=np.int8).reshape(N, N))
 
 # Load existing results
-existing = json.loads(RESULTS_FILE.read_text()) if RESULTS_FILE.exists() else {
-    'global_best_E': 9999, 'isotopies_tried': 0
-}
-global_best_E = existing.get('global_best_E', 9999)
+existing = json.loads(RESULTS_FILE.read_text()) if RESULTS_FILE.exists() else {}
+global_best_E = existing.get('global_best_E', 26)
+if global_best_E > 26: global_best_E = 26  # Must beat current record
 
 log("=" * 70)
-log(f"Isotopy search for iso_tv_21_0 (current best E=26)")
-log(f"Goal: find isotopy with E < 26")
-log(f"N_STEPS={N_STEPS_PER_ISO//1000}k per isotopy, precomputed IC list")
+log(f"Isotopy search for multiple promising pairs (goal: E < 26)")
+log(f"Targets: {TARGET_PAIRS}")
+log(f"N_STEPS={N_STEPS_PER_ISO//1000}k per isotopy per seed, precomputed IC list")
 log("=" * 70)
 
 rng = random.Random(16180339)
 iso_num = existing.get('isotopies_tried', 0)
 
+# Cycle through target pairs
+pair_cycle_idx = iso_num % len(TARGET_PAIRS)
+
 while True:
+    pair_id = TARGET_PAIRS[pair_cycle_idx % len(TARGET_PAIRS)]
+    pair_cycle_idx += 1
     iso_num += 1
+
+    if pair_id not in pair_map:
+        # Try to load from tv_unique_survey
+        tv_survey_file = REPO / "mols10/results/tv_unique_survey.json"
+        if tv_survey_file.exists():
+            tv_survey = json.loads(tv_survey_file.read_text())
+            if pair_id in tv_survey and tv_survey[pair_id].get('L3'):
+                # Use the survey's L1, L2
+                pass
+        log(f"  {pair_id}: NOT IN PAIR MAP, skipping")
+        continue
+
+    p = pair_map[pair_id]
+    L1_base = np.array(p['L1'], dtype=np.int8).reshape(N, N)
+    L2_base = np.array(p['L2'], dtype=np.int8).reshape(N, N)
 
     # Generate random isotopy of (L1_base, L2_base)
     rp1 = list(range(N)); rng.shuffle(rp1)
@@ -179,20 +207,22 @@ while True:
         global_best_E = best_E_this
         cl13 = count_clashes(L1_iso, best_L3_this)
         cl23 = count_clashes(L2_iso, best_L3_this)
-        log(f"*** ISO {iso_num}: NEW BEST E={global_best_E} cl13={cl13} cl23={cl23} ***")
+        log(f"*** ISO {iso_num} ({pair_id}): NEW GLOBAL BEST E={global_best_E} cl13={cl13} cl23={cl23} ***")
         existing.update({
             'global_best_E': int(global_best_E),
             'isotopies_tried': iso_num,
+            'best_pair': pair_id,
             'best_iso_index': iso_num,
             'L1': L1_iso.tolist(), 'L2': L2_iso.tolist(),
             'L3': best_L3_this.tolist(),
             'cl13': int(cl13), 'cl23': int(cl23)
         })
         RESULTS_FILE.write_text(json.dumps(existing, indent=2))
-        git_push(f"iso_tv21_isotopy: E={global_best_E} at isotopy #{iso_num}\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>")
+        git_push(f"isotopy_search: {pair_id} isotopy E={global_best_E} (beats E=26!)\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>")
         if global_best_E == 0:
             log("*** 3-MOLS FOUND! ***"); sys.exit(0)
-    elif iso_num % 20 == 0:
-        log(f"Isotopy {iso_num}: best_E={best_E_this}, global_best={global_best_E}")
-        existing['isotopies_tried'] = iso_num
-        RESULTS_FILE.write_text(json.dumps(existing, indent=2))
+    else:
+        log(f"Isotopy {iso_num} ({pair_id}): best_E={best_E_this}, global_best={global_best_E}")
+        if iso_num % 10 == 0:
+            existing['isotopies_tried'] = iso_num
+            RESULTS_FILE.write_text(json.dumps(existing, indent=2))
