@@ -7,3 +7,20 @@
 [00:38:20] SA intercalate search on iso_tv_21_0, start E=26
 [00:38:20] Strategy: accept uphill moves to escape E=28/26 basins
 [00:38:20] ============================================================
+[00:40:25] run=   1 seed=1778890210 perturb=3 best_E=33 final_E=33 accept=35.3% t=124.8s global_best=26
+[00:42:30] run=   2 seed=1075647052 perturb=3 best_E=36 final_E=39 accept=35.8% t=124.9s global_best=26
+[00:44:35] run=   3 seed=1191436949 perturb=3 best_E=35 final_E=37 accept=35.4% t=125.8s global_best=26
+[00:49:21] run=   4 seed=1234801316 perturb=0 best_E=26 final_E=38 accept=35.5% t=285.1s global_best=26
+[00:54:34] run=   5 seed=1418176011 perturb=0 best_E=26 final_E=33 accept=35.1% t=313.7s global_best=26
+[01:01:09] run=   6 seed=984959441 perturb=4 best_E=26 final_E=39 accept=36.5% t=394.9s global_best=26
+[01:09:51] run=   7 seed=577506769 perturb=2 best_E=34 final_E=34 accept=35.6% t=522.4s global_best=26
+[01:18:23] run=   8 seed=749835908 perturb=2 best_E=35 final_E=35 accept=36.4% t=511.8s global_best=26
+[01:26:14] run=   9 seed=993222935 perturb=0 best_E=26 final_E=39 accept=37.1% t=470.3s global_best=26
+[01:35:54] run=  10 seed=1616902874 perturb=0 best_E=26 final_E=38 accept=37.1% t=580.0s global_best=26
+[01:45:20] run=  11 seed=1067596310 perturb=2 best_E=37 final_E=37 accept=36.2% t=566.1s global_best=26
+[01:55:17] run=  12 seed=1623044134 perturb=4 best_E=34 final_E=34 accept=35.4% t=597.3s global_best=26
+[02:05:21] run=  13 seed=98075958 perturb=4 best_E=32 final_E=38 accept=36.1% t=604.5s global_best=26
+[02:13:06] run=  14 seed=1856479045 perturb=0 best_E=26 final_E=34 accept=37.0% t=464.9s global_best=26
+[02:23:10] run=  15 seed=1152205303 perturb=0 best_E=26 final_E=40 accept=37.4% t=603.4s global_best=26
+[02:31:29] run=  16 seed=1232621280 perturb=1 best_E=30 final_E=39 accept=37.3% t=499.6s global_best=26
+[02:41:27] run=  17 seed=195978929 perturb=3 best_E=37 final_E=37 accept=35.5% t=598.0s global_best=26
