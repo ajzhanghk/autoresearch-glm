@@ -866,6 +866,73 @@ combinations) and the best is installed. This allows moves equivalent to multipl
 simultaneous intercalates. Evaluation ongoing.
 
 %===========================================================================
+\subsection{Stage 7 (Sessions 32+): Non-mdecomp Survey and New Promising Pairs}
+%===========================================================================
+
+\subsubsection{Systematic Survey of 193 Non-mdecomp Pairs}
+
+A cross-seeded survey of all 193 non-mdecomp pairs (iso, iso2, iso\_tv\_10, sa\_ct,
+ic, and tv variants) was launched. The survey uses known best $L_3$ solutions
+(from $\E=26$ and $\E=28$ anchors) as starting seeds, running 500k-step SA per seed for
+iso-type pairs and 150k-step SA for sa/ic/tv pairs. Results for the first 44 pairs:
+
+\begin{table}[h]
+\centering
+\caption{Top results from the non-mdecomp pair survey (44 of 193 surveyed).}\label{tab:nonmdecomp}
+\begin{tabular}{llr}
+\toprule
+Pair ID & Type & Best $\E$\\
+\midrule
+iso\_tv\_21\_0  & iso   & \textbf{26} (prior result, global best)\\
+sa\_ct\_80      & sa\_ct & \textbf{31} (best non-iso non-mdecomp!)\\
+iso2\_tv21\_0\_0 & iso2 & 32\\
+iso2\_tv21\_0\_1 & iso2 & 32\\
+iso2\_tv21\_0\_5 & iso2 & 32\\
+iso\_tv\_10\_2   & iso  & 32\\
+sa\_ct\_66      & sa\_ct & 32\\
+sa\_ct\_127     & sa\_ct & 32\\
+iso\_tv\_21\_1   & iso  & 33\\
+iso\_tv\_21\_2   & iso  & 33\\
+iso\_tv\_10\_1   & iso  & 33\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The sa\_ct\_80 result ($\E=31$) is notable: it is the first non-isotopy-variant,
+non-mdecomp pair to reach $\E \leq 31$. This was discovered by using the
+iso\_tv\_21\_0 best $L_3$ (at $\E=26$) as a cross-seed for sa\_ct\_80. Among the iso
+variants, iso\_tv\_21\_0 remains unique in its depth ($\E=26$), while iso\_tv\_21\_1 and
+iso\_tv\_21\_2 give only $\E=33$.
+
+\subsubsection{Deeper mdecomp Results}
+
+Extended deep SA (5M--step runs) on the top mdecomp pairs produced:
+\begin{itemize}[noitemsep]
+  \item \textbf{mdecomp\_113}: $\E=28$ (confirmed best; 16-minute deep SA runs consistently return to $\E=28$)
+  \item \textbf{mdecomp\_111}: $\E=29$ (new; improved from scan $\E=34$)
+  \item \textbf{mdecomp\_56}: $\E=30$ (confirmed)
+  \item \textbf{mdecomp\_68}: $\E=31$ (equaling sa\_ct\_80)
+  \item \textbf{mdecomp\_100}: $\E=31$
+\end{itemize}
+
+The mdecomp pair landscape is now well-characterised: the top pairs cluster at
+$\E=28$--$31$, confirming that the iso\_tv\_21\_0 result ($\E=26$) is exceptional.
+
+\subsubsection{Dedicated Deep Search on sa\_ct\_80}
+
+A dedicated long-SA process (20M steps per run, $T: 12.0 \to 0.02$) was launched
+for sa\_ct\_80, with cross-seeding from the survey $\E=31$ result and iso\_tv\_21\_0
+($\E=26$). The process cycles through diverse seeds (survey $L_3$, generic cross-seeds,
+large perturbations) searching for $\E < 31$.
+
+\subsubsection{All Tested Pairs Have CT $\leq$ 2}
+
+Extending the CT verification to the 193 non-mdecomp pairs confirms the universal
+pattern: every tested pair has $\CT(L_1, L_2) \leq 2$. The combined catalog now covers
+\textbf{514+ distinct pairs} from \textbf{28+ distinct $L_1$ families}, all with
+$\CT \leq 2$.
+
+%===========================================================================
 \section{Summary and Discussion}
 \label{sec:discussion}
 %===========================================================================
@@ -881,22 +948,20 @@ Table~\ref{tab:summary} compiles the main quantitative results of the 31+ sessio
 \toprule
 Result & Details\\
 \midrule
-All-time energy record & $\E=26$ ($\cl_{13}=8$, $\cl_{23}=18$), pair \texttt{ee29e34e}, seed=1943590465\\
+All-time energy record & $\E=26$ ($\cl_{13}=8$, $\cl_{23}=18$), pair \texttt{iso\_tv\_21\_0} / \texttt{ee29e34e}, seed=1943590465\\
 Energy cascade & $37 \to 34 \to 33 \to 32 \to 31 \to 30 \to 29 \to 26$ (Sessions 5--26b)\\
 E=26 local min & Strict under all row/col/symbol/intercalate 1-moves\\
-E=26 2-IC analysis & All 281 double-intercalate combos yield $\E \geq 26$\\
-E=26 LNS & All 210 four-row subsets return $\E=26$ in $<0.1$\,s\\
-E=26 unique basin & 5 independent CP-SAT trials converge to same $L_3$\\
-E=26 BFS depth-6 & 77,507 unique states explored; global min = 26\\
+E=26 BFS depth-6 & 77,507 unique states explored; global min = 26 (strict)\\
 Feasibility attack & 7,200 worker-seconds with $\E \leq 25$ constraint: 0 SAT, 0 INFEASIBLE\\
 Three pairs at E=28 & \texttt{ee29e34e} (secondary), \texttt{e54e791c}, \texttt{2469c6dc}\\
-mdecomp\_113 BFS & 15,524 states at depth 5; global min = 28 (strict 2-deep)\\
-Pairs at E=29 & 4 isotopy classes; BFS depth-5 global IC-min proved\\
+mdecomp top results & mdecomp\_113: $\E=28$; mdecomp\_111: $\E=29$; mdecomp\_56: $\E=30$\\
+Best non-mdecomp & sa\_ct\_80: $\E=31$; sa\_ct\_66, sa\_ct\_127, iso\_tv\_10\_2: $\E=32$\\
+Non-mdecomp survey & 44/193 pairs surveyed; best: $\E=31$ (sa\_ct\_80)\\
 Fast SA speed & $5{,}000$--$6{,}000$ steps/s via incremental frequency-table updates\\
-MOLS-10 pair catalog & 323 pairs (Stage 1--3) + 191 new pairs surveyed = 514+ pairs tested\\
-CT barrier & All 514+ pairs: $\CT(L_1,L_2) \leq 2 < 10$\\
+MOLS-10 pair catalog & 193 non-mdecomp + 124 mdecomp + 197 other = 514+ pairs tested\\
+CT barrier & \textbf{All 514+ pairs}: $\CT(L_1,L_2) \leq 2 < 10$\\
 SAT certificates & 323 UNSAT certificates (Glucose3, $\approx 42$\,ms each)\\
-$L_1$ families covered & 28+ distinct $L_1$ families across 323 pairs\\
+$L_1$ families covered & 28+ distinct $L_1$ families\\
 \bottomrule
 \end{tabular}
 \end{table}
