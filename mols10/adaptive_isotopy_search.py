@@ -34,8 +34,9 @@ T_END   = 0.03
 
 # Target pairs ordered by priority (best known E first)
 TARGET_PAIRS = [
+    'tv_222',         # tv_unique_survey E=31 ← NEW BEST non-mdecomp!
     'iso_tv_21_0',    # global best E=26 → looking for E<26
-    'tv_147',         # tv_unique_survey E=32 → already found isotopy E=31!
+    'tv_147',         # tv_unique_survey E=32 → found isotopy E=31!
     'iso2_tv21_0_0',  # survey E=32
     'iso2_tv21_0_1',  # survey E=32
     'iso2_tv21_0_5',  # survey E=32
@@ -163,8 +164,9 @@ for f, label in [('iso_tv21_0_best_l3.json', 'iso_tv21_0_E26'),
 tv_survey_file = REPO / "mols10/results/tv_unique_survey.json"
 if tv_survey_file.exists():
     tv_survey = json.loads(tv_survey_file.read_text())
-    if 'tv_147' in tv_survey and tv_survey['tv_147'].get('L3'):
-        seed_data.append((np.array(tv_survey['tv_147']['L3'], dtype=np.int8).reshape(N, N), 'tv147_E32'))
+    for pid, label in [('tv_222', 'tv222_E31'), ('tv_147', 'tv147_E32')]:
+        if pid in tv_survey and tv_survey[pid].get('L3'):
+            seed_data.append((np.array(tv_survey[pid]['L3'], dtype=np.int8).reshape(N, N), label))
 
 # Load existing results
 existing = json.loads(RESULTS_FILE.read_text()) if RESULTS_FILE.exists() else {}
