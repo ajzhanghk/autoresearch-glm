@@ -2,3 +2,8 @@
 [05:36:32] SA intercalate search on iso_tv_21_0, start E=26
 [05:36:32] Strategy: accept uphill moves to escape E=28/26 basins
 [05:36:32] ============================================================
+[05:40:09] run=   1 seed=1778890210 perturb=3 best_E=33 final_E=33 accept=35.3% t=217.8s global_best=26
+[00:38:20] ============================================================
+[00:38:20] SA intercalate search on iso_tv_21_0, start E=26
+[00:38:20] Strategy: accept uphill moves to escape E=28/26 basins
+[00:38:20] ============================================================

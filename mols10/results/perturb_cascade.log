@@ -3,3 +3,12 @@
 [05:36:32] Strategy: random k-intercalate perturbation → CP-SAT re-optimize
 [05:36:32] ============================================================
 [05:36:32] trial=  1 k=6 E_perturbed=48 seed=1516897935
+[05:38:32]   -> E=35 cl13=18 cl23=17 t=120.8s
+[05:38:32] trial=  2 k=1 E_perturbed=30 seed=1498375166
+[05:40:32]   -> E=30 cl13=11 cl23=19 t=120.1s
+[05:40:33] trial=  3 k=6 E_perturbed=40 seed=204864278
+[00:38:20] ============================================================
+[00:38:20] Perturb+cascade on iso_tv_21_0, anchor E=26, best=26
+[00:38:20] Strategy: random k-intercalate perturbation → CP-SAT re-optimize
+[00:38:20] ============================================================
+[00:38:20] trial=  1 k=6 E_perturbed=48 seed=1516897935
