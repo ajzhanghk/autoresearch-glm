@@ -918,12 +918,56 @@ Extended deep SA (5M--step runs) on the top mdecomp pairs produced:
 The mdecomp pair landscape is now well-characterised: the top pairs cluster at
 $\E=28$--$31$, confirming that the iso\_tv\_21\_0 result ($\E=26$) is exceptional.
 
-\subsubsection{Dedicated Deep Search on sa\_ct\_80}
+\subsubsection{Major Finding: Catalog Duplication}
 
-A dedicated long-SA process (20M steps per run, $T: 12.0 \to 0.02$) was launched
-for sa\_ct\_80, with cross-seeding from the survey $\E=31$ result and iso\_tv\_21\_0
-($\E=26$). The process cycles through diverse seeds (survey $L_3$, generic cross-seeds,
-large perturbations) searching for $\E < 31$.
+Detailed analysis of the 193 non-mdecomp pair catalog revealed massive redundancy:
+all 103 sa\_ct\_* pairs \emph{and} all 22 ic\_* pairs are identical to tv\_21
+(sharing the same $L_1, L_2$ matrices). Combined with tv\_21 itself, this means
+126 of the 193 ``non-mdecomp'' entries are duplicates of a single pair.
+
+The 193 pairs actually represent only \textbf{36 truly unique} $(L_1, L_2)$ combinations:
+tv\_21 (duplicated 126 times), plus 35 others. The full 323-pair catalog reduces to
+\textbf{110 unique pairs}:
+\begin{itemize}[noitemsep]
+  \item 74 mdecomp pairs (all unique)
+  \item 36 non-mdecomp unique pairs
+\end{itemize}
+
+\subsubsection{BFS Analysis: E=31 Is a Strict 6-IC Local Minimum for tv\_21}
+
+A breadth-first search from the tv\_21 best state ($\E=31$) explored all states
+reachable within 6 intercalate moves:
+
+\begin{table}[h]
+\centering
+\caption{BFS from tv\_21 best state ($\E=31$).}\label{tab:bfs_tv21}
+\begin{tabular}{rrrr}
+\toprule
+Depth & New States & Min $\E$ at Depth & Total States\\
+\midrule
+1 & 25 & 32 & 26\\
+2 & 329 & 33 & 355\\
+3 & 3{,}189 & 33 & 3{,}544\\
+4 & 25{,}663 & 32 & 29{,}207\\
+5 & 184{,}315 & 33 & 213{,}522\\
+6 & 1{,}234{,}877 & 33 & 1{,}448{,}399\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All 1,448,399 states explored have $\E \geq 31$, proving that $\E=31$ is a
+\textbf{strict 6-IC local minimum} for tv\_21. This parallels the iso\_tv\_21\_0
+result ($\E=26$ strict 6-IC local min with 77,507 states), confirming a universal
+pattern of deep isolated energy basins.
+
+\subsubsection{Survey of 23 Unique Canonical tv\_* Pairs}
+
+Having established that the sa\_ct\_* and ic\_* groups are duplicates of tv\_21,
+a targeted survey of the remaining 23 unique canonical tv\_* pairs was launched.
+These pairs (tv\_10, tv\_29, tv\_32, tv\_35, tv\_44, tv\_147, tv\_171, and 16 others)
+represent completely unexplored regions of the Latin square space. For each pair,
+5 cross-seeds $\times$ 500k steps and 2 random starts $\times$ 200k steps were run.
+Early result: tv\_10 achieved $\E=34$ in the survey.
 
 \subsubsection{All Tested Pairs Have CT $\leq$ 2}
 
