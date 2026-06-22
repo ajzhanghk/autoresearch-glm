@@ -816,12 +816,29 @@ $360{,}000$ steps/s, a \textbf{22$\times$ speedup} over the previous Python impl
 ($16{,}000$ steps/s). This throughput enables 10M-step deep searches in under 30 seconds
 and makes previously impractical long-run descent trajectories routine.
 
-\paragraph{Isotopy search: tv\_223 and iso\_tv\_21\_0 at $\E=30$.}
-The isotopy transformation search (applying independent permutations $\sigma_1, \sigma_2$
-to $(L_1, L_2)$ to generate a new pair in a different isotopy class) was run in a
-quick phase (20M steps, 4 seeds) on tv\_223. This immediately found $\E=30$, triggering
-a deep 240M-step SA search. Separately, iso\_tv\_21\_0 under the same isotopy strategy
-also achieved $\E=30$ in the quick phase.
+\paragraph{Fast isotopy search: tv\_254 at $\E=\mathbf{28}$, tv\_223 and iso\_tv\_21\_0 at $\E=29$.}
+The numba-accelerated isotopy search (360k+ steps/s) was scaled to an adaptive three-phase
+multi-instance search across 18 promising pairs. For each random isotopy of each pair:
+\begin{itemize}[noitemsep]
+  \item \textbf{Phase 1}: 4 seeds $\times$ 5M steps (20M total, $\approx\!44$\,s); if $\E \leq 30$, proceed.
+  \item \textbf{Phase 2}: 8 seeds $\times$ 30M steps (240M total, $\approx\!9$\,min); if $\E \leq 29$, proceed.
+  \item \textbf{Phase 3}: 8 seeds $\times$ 150M steps (1.2B total, $\approx\!44$\,min).
+\end{itemize}
+Key discoveries from this search:
+\begin{itemize}[noitemsep]
+  \item \textbf{tv\_254 isotopy}: Phase 1 found $\E=30$, Phase 2 descended to $\E=\mathbf{28}$
+    ($\cl_{13}=15$, $\cl_{23}=13$)---a new independent-isotopy record matching the mdecomp
+    pairs, and the first tv\_* pair to reach $\E < 29$ via any method.
+  \item \textbf{tv\_223 isotopy}: Phase 1 found $\E=30$, Phase 2 descended to $\E=\mathbf{29}$
+    ($\cl_{13}=15$, $\cl_{23}=14$).
+  \item \textbf{iso\_tv\_21\_0 isotopy}: Phase 1 found $\E=30$, Phase 2 descended to $\E=\mathbf{29}$
+    ($\cl_{13}=16$, $\cl_{23}=13$).
+\end{itemize}
+The tv\_254 result is particularly significant: an \emph{independently chosen random isotopy}
+of a tv\_* pair reaches $\E=28$, the same floor previously seen only for mdecomp pairs.
+This strongly suggests the $\E=28$ barrier is a universal landscape feature, not an artifact
+of any particular pair structure. Ultra-deep follow-up SA (100M+ steps starting from $\E=28$)
+is ongoing, targeting $\E < 26$.
 
 \subsubsection{Landscape Universality: All Tested Minima are Strict 2-Deep IC Local Minima}
 
@@ -982,58 +999,58 @@ These pairs (tv\_10, tv\_29, tv\_32, tv\_35, tv\_44, tv\_147, tv\_171, tv\_222, 
 represent completely unexplored regions of the Latin square space. For each pair,
 5 cross-seeds $\times$ 500k steps and 2 random starts $\times$ 200k steps were run.
 
-Results from 16 of 23 pairs surveyed (Table~\ref{tab:tv_survey}):
+Results from 20 of 23 pairs surveyed (Table~\ref{tab:tv_survey}), with 3 pairs remaining:
 
 \begin{table}[h]
 \centering
-\caption{tv\_unique\_survey results (16/23 pairs done).}\label{tab:tv_survey}
+\caption{tv\_unique\_survey results (20/23 pairs done; 3 remaining: tv\_35, tv\_42, tv\_44).}\label{tab:tv_survey}
 \begin{tabular}{lcl}
 \toprule
 Pair & $\E$ & Notes\\
 \midrule
 tv\_222 & \textbf{30} & NEW non-mdecomp pair at $\E=30$; via deep SA (10M steps)\\
-tv\_223 & \textbf{31} & Equal best\\
-tv\_254 & \textbf{31} & Equal best\\
+tv\_223 & \textbf{31} & Equal best; isotopy gives $\E=\mathbf{29}$\\
+tv\_254 & \textbf{31} & Equal best; isotopy gives $\E=\mathbf{28}$ (new record)\\
 tv\_270 & \textbf{31} & Equal best\\
-tv\_147 & 32 & Previous best (now surpassed)\\
+tv\_147 & 32 & \\
 tv\_225, tv\_238 & 32 & \\
-tv\_227 & 33 & \\
+tv\_227, tv\_32 & 33 & \\
+tv\_280, tv\_29, tv\_315 & 34 & (continuation results)\\
 tv\_10, tv\_171, tv\_215, tv\_218, tv\_230, tv\_239, tv\_245, tv\_262 & 34 & \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Three distinct tv\_* pairs independently achieve $\E=31$ (tv\_223, tv\_254, tv\_270).
-\textbf{tv\_222} achieves $\E=\mathbf{30}$, found via deep SA (10M steps starting from the
-$\E=31$ survey seed with 3 intercalate-chain perturbations), descending $37 \to 36 \to 35 \to
-34 \to 33 \to 32 \to 31 \to 30$. This is the first non-\texttt{iso\_tv\_21\_0} pair to achieve
-$\E < 31$. Combined with a focused deep SA result showing iso2\_tv21\_0\_1 also at $\E=31$,
-we now have at least \textbf{4 distinct non-mdecomp pairs} with confirmed $\E=31$ and one at
-$\E=30$.
+Four distinct tv\_* pairs independently achieve $\E \leq 31$ (tv\_222, tv\_223, tv\_254, tv\_270).
+\textbf{tv\_222} achieves $\E=\mathbf{30}$ via deep SA (10M steps starting from the
+$\E=31$ survey seed with 3 perturbations), descending $37 \to 36 \to \cdots \to 30$.
+\textbf{tv\_254} and \textbf{tv\_223} under independent isotopies achieve $\E=28$ and $\E=29$
+respectively, surpassing all canonical tv\_* pair energies.
+We now have at least \textbf{4 distinct non-mdecomp pairs} with $\E \leq 31$ and one at $\E=30$.
 
 \subsubsection{Isotopy Transformation Search}
 
-A new strategy was introduced: apply independent random isotopy transformations
+A strategy was introduced: apply \emph{independent} random isotopy transformations
 $\sigma_1, \sigma_2$ to $(L_1, L_2)$ and search for $L_3$ minimizing
 $\cl_{13}(\sigma_1(L_1), L_3) + \cl_{23}(\sigma_2(L_2), L_3)$.
 Because $\sigma_1 \neq \sigma_2$ in general, the resulting pair $(\sigma_1(L_1), \sigma_2(L_2))$
 lies in a different abstract isotopy class than $(L_1, L_2)$, so its minimum achievable energy
 can differ from that of the original pair.
 
-An adaptive two-phase search was implemented:
-\begin{enumerate}
-  \item \textbf{Phase 1}: 500k-step SA over 5--8 diverse seeds; if $\E \leq 31$, proceed.
-  \item \textbf{Phase 2}: 5M-step deep SA on the same isotopy representation.
-\end{enumerate}
-
-Key findings from the isotopy search:
+An adaptive three-phase search (see Numba paragraph above) was run in parallel across 18 pairs.
+Key findings (cumulative):
 \begin{itemize}
   \item tv\_147 under a random isotopy: $\E=31$ (vs.\ canonical $\E=32$).
-  \item iso\_tv\_10\_0 under a random isotopy: $\E=30$ (Phase 2 did not find $\E < 26$).
-  \item iso\_tv\_10\_1, iso\_tv\_10\_2, iso2\_tv21\_0\_1 under isotopy: $\E=31$.
-  \item iso\_tv\_21\_0 under random isotopies typically gives $\E=34$--$36$ (the canonical
-    representation is notably better-conditioned than random isotopies).
+  \item iso\_tv\_10\_0, iso\_tv\_10\_1, iso\_tv\_10\_2 under isotopy: $\E=30$--$31$.
+  \item iso2\_tv21\_0\_1 under isotopy: $\E=31$.
+  \item \textbf{iso\_tv\_21\_0} under random isotopy: $\E=\mathbf{29}$ (Phase 2).
+  \item \textbf{tv\_223} under random isotopy: $\E=\mathbf{29}$ (Phase 2).
+  \item \textbf{tv\_254} under random isotopy: $\E=\mathbf{28}$ (Phase 2) --- \textbf{new record}.
 \end{itemize}
+
+The three best isotopy results surpass all canonical tv\_* pair minima and match or
+approach the mdecomp-pair barrier at $\E=28$. Ultra-deep follow-up from the tv\_254
+$\E=28$ starting point is ongoing.
 
 \subsubsection{All Tested Pairs Have CT $\leq$ 2}
 
@@ -1066,7 +1083,9 @@ Feasibility attack & 7,200 worker-seconds with $\E \leq 25$ constraint: 0 SAT, 0
 Three pairs at E=28 & \texttt{ee29e34e} (secondary), \texttt{e54e791c}, \texttt{2469c6dc}\\
 mdecomp top results & mdecomp\_113: $\E=28$; mdecomp\_111: $\E=29$; mdecomp\_56: $\E=30$\\
 Best non-mdecomp & tv\_222: $\E=\mathbf{30}$ (deep SA, 10M steps); tv\_223/254/270, iso2\_tv21\_0\_1: $\E=31$; tv\_147/225/238: $\E=32$\\
-Non-mdecomp survey & tv\_unique\_survey 16/23: tv\_222 at $\E=\mathbf{30}$; \textbf{3 pairs at $\E=31$}; isotopy search: tv\_223 at $\E=30$ (deep 240M-step SA); iso\_tv\_21\_0 isotopy at $\E=30$\\
+Non-mdecomp isotopy & \textbf{tv\_254 isotopy}: $\E=\mathbf{28}$ (cl13=15, cl23=13; Phase 2, 240M steps) — new record;
+  tv\_223/iso\_tv\_21\_0 isotopy: $\E=29$; canonical tv\_222: $\E=30$\\
+Non-mdecomp survey & tv\_unique\_survey 20/23 done: tv\_222 at $\E=\mathbf{30}$; \textbf{3 pairs at $\E=31$}; tv\_32: $\E=33$; tv\_280, tv\_29, tv\_315: $\E=34$\\
 Fast SA speed & $360{,}000$ steps/s (numba JIT, 22$\times$ speedup over $16{,}000$ steps/s baseline); incremental frequency-table updates\\
 MOLS-10 pair catalog & 193 non-mdecomp + 124 mdecomp + 197 other = 514+ pairs tested\\
 CT barrier & \textbf{All 514+ pairs}: $\CT(L_1,L_2) \leq 2 < 10$\\
