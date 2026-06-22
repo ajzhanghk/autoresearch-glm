@@ -24,8 +24,8 @@ PROMISING_FILE = REPO / "mols10/results/adaptive_isotopy_promising.json"
 BRANCH       = "claude/mols-order-10-search-yfQXK"
 
 N_STEPS_QUICK = 500_000    # Phase 1: quick filter
-N_STEPS_DEEP  = 8_000_000  # Phase 2: deep search if promising
-DEEP_THRESHOLD = 30        # Run deep SA if phase1 E <= this
+N_STEPS_DEEP  = 5_000_000  # Phase 2: deep search if promising
+DEEP_THRESHOLD = 31        # Run deep SA if phase1 E <= this (lowered from 30)
 SAVE_THRESHOLD = 32        # Save isotopy data if E <= this
 GOAL_E = 26                # Must beat current global best
 
@@ -34,17 +34,20 @@ T_END   = 0.03
 
 # Target pairs ordered by priority (best known E first)
 TARGET_PAIRS = [
-    'tv_222',         # tv_unique_survey E=31 ← NEW BEST non-mdecomp!
-    'iso_tv_21_0',    # global best E=26 → looking for E<26
-    'tv_147',         # tv_unique_survey E=32 → found isotopy E=31!
-    'iso2_tv21_0_0',  # survey E=32
-    'iso2_tv21_0_1',  # survey E=32
-    'iso2_tv21_0_5',  # survey E=32
-    'iso_tv_10_2',    # survey E=32
-    'iso_tv_21_1',    # survey E=33
-    'iso_tv_21_2',    # survey E=33
-    'iso_tv_10_1',    # survey E=33
-    'iso2_tv21_0_3',  # survey E=34
+    'tv_222',          # survey E=31
+    'tv_223',          # survey E=31
+    'tv_254',          # survey E=31
+    'tv_270',          # survey E=31
+    'iso_tv_21_0',     # global best E=26 → looking for E<26
+    'iso2_tv21_0_1',   # focused SA E=31
+    'tv_147',          # survey E=32
+    'iso2_tv21_0_0',   # survey E=32
+    'iso2_tv21_0_5',   # survey E=32
+    'iso_tv_10_2',     # survey E=32
+    'iso_tv_21_1',     # survey E=33
+    'iso_tv_21_2',     # survey E=33
+    'iso_tv_10_1',     # survey E=33
+    'iso2_tv21_0_3',   # survey E=34
     'iso2_tv21_0_4',  # survey E=34
     'iso_tv_10_0',    # survey E=34
 ]
@@ -164,9 +167,10 @@ for f, label in [('iso_tv21_0_best_l3.json', 'iso_tv21_0_E26'),
 tv_survey_file = REPO / "mols10/results/tv_unique_survey.json"
 if tv_survey_file.exists():
     tv_survey = json.loads(tv_survey_file.read_text())
-    for pid, label in [('tv_222', 'tv222_E31'), ('tv_147', 'tv147_E32')]:
+    for pid in ['tv_222', 'tv_223', 'tv_254', 'tv_270', 'tv_147']:
         if pid in tv_survey and tv_survey[pid].get('L3'):
-            seed_data.append((np.array(tv_survey[pid]['L3'], dtype=np.int8).reshape(N, N), label))
+            E_s = tv_survey[pid]['E']
+            seed_data.append((np.array(tv_survey[pid]['L3'], dtype=np.int8).reshape(N, N), f'{pid}_E{E_s}'))
 
 # Load existing results
 existing = json.loads(RESULTS_FILE.read_text()) if RESULTS_FILE.exists() else {}

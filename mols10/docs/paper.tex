@@ -964,10 +964,58 @@ pattern of deep isolated energy basins.
 
 Having established that the sa\_ct\_* and ic\_* groups are duplicates of tv\_21,
 a targeted survey of the remaining 23 unique canonical tv\_* pairs was launched.
-These pairs (tv\_10, tv\_29, tv\_32, tv\_35, tv\_44, tv\_147, tv\_171, and 16 others)
+These pairs (tv\_10, tv\_29, tv\_32, tv\_35, tv\_44, tv\_147, tv\_171, tv\_222, and others)
 represent completely unexplored regions of the Latin square space. For each pair,
 5 cross-seeds $\times$ 500k steps and 2 random starts $\times$ 200k steps were run.
-Early result: tv\_10 achieved $\E=34$ in the survey.
+
+Results from 16 of 23 pairs surveyed (Table~\ref{tab:tv_survey}):
+
+\begin{table}[h]
+\centering
+\caption{tv\_unique\_survey results (16/23 pairs done).}\label{tab:tv_survey}
+\begin{tabular}{lcl}
+\toprule
+Pair & $\E$ & Notes\\
+\midrule
+tv\_222 & \textbf{31} & NEW non-mdecomp pair at $\E=31$\\
+tv\_223 & \textbf{31} & Equal best\\
+tv\_254 & \textbf{31} & Equal best\\
+tv\_270 & \textbf{31} & Equal best\\
+tv\_147 & 32 & Previous best (now surpassed)\\
+tv\_225, tv\_238 & 32 & \\
+tv\_227 & 33 & \\
+tv\_10, tv\_171, tv\_215, tv\_218, tv\_230, tv\_239, tv\_245, tv\_262 & 34 & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Four distinct tv\_* pairs independently achieve $\E=31$. Combined with a focused deep SA result
+showing iso2\_tv21\_0\_1 also at $\E=31$, we now have at least \textbf{5 distinct non-mdecomp
+pairs} with confirmed $\E=31$.
+
+\subsubsection{Isotopy Transformation Search}
+
+A new strategy was introduced: apply independent random isotopy transformations
+$\sigma_1, \sigma_2$ to $(L_1, L_2)$ and search for $L_3$ minimizing
+$\cl_{13}(\sigma_1(L_1), L_3) + \cl_{23}(\sigma_2(L_2), L_3)$.
+Because $\sigma_1 \neq \sigma_2$ in general, the resulting pair $(\sigma_1(L_1), \sigma_2(L_2))$
+lies in a different abstract isotopy class than $(L_1, L_2)$, so its minimum achievable energy
+can differ from that of the original pair.
+
+An adaptive two-phase search was implemented:
+\begin{enumerate}
+  \item \textbf{Phase 1}: 500k-step SA over 5--8 diverse seeds; if $\E \leq 31$, proceed.
+  \item \textbf{Phase 2}: 5M-step deep SA on the same isotopy representation.
+\end{enumerate}
+
+Key findings from the isotopy search:
+\begin{itemize}
+  \item tv\_147 under a random isotopy: $\E=31$ (vs.\ canonical $\E=32$).
+  \item iso\_tv\_10\_0 under a random isotopy: $\E=30$ (Phase 2 did not find $\E < 26$).
+  \item iso\_tv\_10\_1, iso\_tv\_10\_2, iso2\_tv21\_0\_1 under isotopy: $\E=31$.
+  \item iso\_tv\_21\_0 under random isotopies typically gives $\E=34$--$36$ (the canonical
+    representation is notably better-conditioned than random isotopies).
+\end{itemize}
 
 \subsubsection{All Tested Pairs Have CT $\leq$ 2}
 
@@ -999,8 +1047,8 @@ E=26 BFS depth-6 & 77,507 unique states explored; global min = 26 (strict)\\
 Feasibility attack & 7,200 worker-seconds with $\E \leq 25$ constraint: 0 SAT, 0 INFEASIBLE\\
 Three pairs at E=28 & \texttt{ee29e34e} (secondary), \texttt{e54e791c}, \texttt{2469c6dc}\\
 mdecomp top results & mdecomp\_113: $\E=28$; mdecomp\_111: $\E=29$; mdecomp\_56: $\E=30$\\
-Best non-mdecomp & sa\_ct\_80: $\E=31$; sa\_ct\_66, sa\_ct\_127, iso\_tv\_10\_2: $\E=32$\\
-Non-mdecomp survey & 44/193 pairs surveyed; best: $\E=31$ (sa\_ct\_80)\\
+Best non-mdecomp & tv\_222/223/254/270, iso2\_tv21\_0\_1: $\E=31$ (5 pairs); tv\_147/225/238: $\E=32$\\
+Non-mdecomp survey & tv\_unique\_survey 16/23: \textbf{4 pairs at $\E=31$}; isotopy search: $\E=30$ for iso\_tv\_10\_0\\
 Fast SA speed & $5{,}000$--$6{,}000$ steps/s via incremental frequency-table updates\\
 MOLS-10 pair catalog & 193 non-mdecomp + 124 mdecomp + 197 other = 514+ pairs tested\\
 CT barrier & \textbf{All 514+ pairs}: $\CT(L_1,L_2) \leq 2 < 10$\\

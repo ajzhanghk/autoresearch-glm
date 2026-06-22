@@ -129,13 +129,16 @@ pair_map = {p['pair_id']: p for p in all_pairs}
 
 # Target pairs for isotopy search (ordered by priority)
 TARGET_PAIRS = [
-    'tv_222',         # tv_unique_survey E=31 ← NEW BEST non-mdecomp!
-    'iso_tv_21_0',    # global best E=26 → looking for E<26
-    'tv_147',         # tv_unique_survey E=32 → found isotopy E=31!
-    'iso2_tv21_0_0',  # survey E=32
-    'iso2_tv21_0_1',  # survey E=32
-    'iso2_tv21_0_5',  # survey E=32
-    'iso_tv_10_2',    # survey E=32
+    'tv_222',          # survey E=31
+    'tv_223',          # survey E=31
+    'tv_254',          # survey E=31
+    'tv_270',          # survey E=31
+    'iso_tv_21_0',     # global best E=26 → looking for E<26
+    'iso2_tv21_0_1',   # focused SA E=31
+    'tv_147',          # survey E=32
+    'iso2_tv21_0_0',   # survey E=32
+    'iso2_tv21_0_5',   # survey E=32
+    'iso_tv_10_2',     # survey E=32
 ]
 
 # Load seeds
@@ -146,11 +149,11 @@ for f in ['iso_tv21_0_best_l3.json', 'mdecomp113_best.json']:
         d = json.loads(fpath.read_text())
         if 'L3' in d:
             seed_data.append(np.array(d['L3'], dtype=np.int8).reshape(N, N))
-# Also add tv_222 L3 as seed (E=31)
+# Also add E=31 survey seeds
 tv_survey_f = REPO / "mols10/results/tv_unique_survey.json"
 if tv_survey_f.exists():
     tv_data = json.loads(tv_survey_f.read_text())
-    for pid in ['tv_222', 'tv_147']:
+    for pid in ['tv_222', 'tv_223', 'tv_254', 'tv_270', 'tv_147']:
         if pid in tv_data and tv_data[pid].get('L3'):
             seed_data.append(np.array(tv_data[pid]['L3'], dtype=np.int8).reshape(N, N))
 
