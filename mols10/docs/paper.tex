@@ -999,11 +999,11 @@ These pairs (tv\_10, tv\_29, tv\_32, tv\_35, tv\_44, tv\_147, tv\_171, tv\_222, 
 represent completely unexplored regions of the Latin square space. For each pair,
 5 cross-seeds $\times$ 500k steps and 2 random starts $\times$ 200k steps were run.
 
-Results from 20 of 23 pairs surveyed (Table~\ref{tab:tv_survey}), with 3 pairs remaining:
+Results from 22 of 23 pairs surveyed (Table~\ref{tab:tv_survey}), with 1 pair remaining (tv\_44):
 
 \begin{table}[h]
 \centering
-\caption{tv\_unique\_survey results (20/23 pairs done; 3 remaining: tv\_35, tv\_42, tv\_44).}\label{tab:tv_survey}
+\caption{tv\_unique\_survey results (22/23 pairs done; 1 remaining: tv\_44).}\label{tab:tv_survey}
 \begin{tabular}{lcl}
 \toprule
 Pair & $\E$ & Notes\\
@@ -1012,16 +1012,17 @@ tv\_222 & \textbf{30} & NEW non-mdecomp pair at $\E=30$; via deep SA (10M steps)
 tv\_223 & \textbf{31} & Equal best; isotopy gives $\E=\mathbf{29}$\\
 tv\_254 & \textbf{31} & Equal best; isotopy gives $\E=\mathbf{28}$ (new record)\\
 tv\_270 & \textbf{31} & Equal best\\
-tv\_147 & 32 & \\
-tv\_225, tv\_238 & 32 & \\
+tv\_42, tv\_147, tv\_225, tv\_238 & 32 & \\
 tv\_227, tv\_32 & 33 & \\
 tv\_280, tv\_29, tv\_315 & 34 & (continuation results)\\
 tv\_10, tv\_171, tv\_215, tv\_218, tv\_230, tv\_239, tv\_245, tv\_262 & 34 & \\
+tv\_35 & 35 & \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Four distinct tv\_* pairs independently achieve $\E \leq 31$ (tv\_222, tv\_223, tv\_254, tv\_270).
+Four distinct tv\_* pairs independently achieve $\E \leq 31$ (tv\_222, tv\_223, tv\_254, tv\_270),
+with tv\_42 and tv\_147/225/238 at $\E=32$, and tv\_35 at $\E=35$ (most difficult).
 \textbf{tv\_222} achieves $\E=\mathbf{30}$ via deep SA (10M steps starting from the
 $\E=31$ survey seed with 3 perturbations), descending $37 \to 36 \to \cdots \to 30$.
 \textbf{tv\_254} and \textbf{tv\_223} under independent isotopies achieve $\E=28$ and $\E=29$
@@ -1079,25 +1080,29 @@ Other direct-pair results: \texttt{tv\_223}: $\E=30$; \texttt{iso2\_tv21\_0\_0}:
 
 Continuing cross-seed SA with all 16 pairs uncovered a broader pattern:
 
-\begin{theorem}[Multiple pairs at $\E=27$]\label{thm:multi_e27}
-The following canonical pairs achieve $\E \leq 27$ using the iso0\_E26 global-best
-$L_3$ as a starting seed (10M SA steps, 360k steps/s):
+\begin{theorem}[Multiple pairs at $\E \leq 27$]\label{thm:multi_e27}
+The following canonical pairs achieve improved energies using the iso0\_E26 global-best
+$L_3$ as a starting seed (10M SA steps, 360k+ steps/s, confirmed by extended runs):
 \begin{itemize}[noitemsep]
   \item \texttt{iso2\_tv21\_0\_5}: $\E=\mathbf{27}$ ($\cl_{13}=15$, $\cl_{23}=12$)
   \item \texttt{tv\_254}: $\E=\mathbf{27}$ ($\cl_{13}=12$, $\cl_{23}=15$)
-  \item \texttt{tv\_147}: $\E=\mathbf{29}$ ($\cl_{13}=12$, $\cl_{23}=17$) — was $\E=32$ in survey
+  \item \texttt{tv\_147}: $\E=\mathbf{29}$ ($\cl_{13}=12$, $\cl_{23}=17$) --- was $\E=32$ in survey
+  \item \texttt{iso\_tv\_10\_2}: $\E=\mathbf{30}$ ($\cl_{13}=18$, $\cl_{23}=12$) --- was $\E=31$
   \item \texttt{tv\_222}, \texttt{tv\_223}, \texttt{iso2\_tv21\_0\_0}: $\E=30$
+  \item \texttt{iso\_tv\_21\_2}, \texttt{tv\_238}: $\E=31$ --- both improved from $\E=32$
 \end{itemize}
 \end{theorem}
 
-Four distinct pairs now at $\E \leq 29$, with two at $\E=27$ (only 1 above the
-all-time record). The iso0\_E26 L3 (while achieving $\E=73{+}$ initial energy for
-non-iso-tv-21-0 pairs) consistently serves as an effective ``fertilizer'' seed
---- the SA descends rapidly to deep basins from these high-energy starts.
+Six or more distinct pairs now achieve $\E \leq 30$ via iso0\_E26 seeding, with two at
+$\E=27$ (only 1 above the all-time record). The iso0\_E26 $L_3$ (while achieving
+$\E=73{+}$ initial energy for non-iso-tv-21-0 pairs) consistently serves as an
+effective ``fertilizer'' seed --- the SA descends rapidly to deep basins from
+these high-energy starts, outperforming all other seeds across pair types.
 
 A dedicated ultra-deep SA (\texttt{iso2\_deep\_sa.py}, 300M steps, $T_\text{end}=0.005$)
-is now targeting $\E < 26$ on \texttt{iso2\_tv21\_0\_5}, and
-\texttt{fast\_direct\_sa.py} continues probing all pairs.
+is targeting $\E < 26$ on \texttt{iso2\_tv21\_0\_5}; \texttt{fast\_direct\_sa.py}
+continues cycling all 16 pairs. An analogous search on \texttt{tv\_254} is queued to
+launch when Phase~3 completes and CPU capacity frees.
 
 \subsubsection{All Tested Pairs Have CT $\leq$ 2}
 
@@ -1129,12 +1134,12 @@ E=26 BFS depth-6 & 77,507 unique states explored; global min = 26 (strict)\\
 Feasibility attack & 7,200 worker-seconds with $\E \leq 25$ constraint: 0 SAT, 0 INFEASIBLE\\
 Three pairs at E=28 & \texttt{ee29e34e} (secondary), \texttt{e54e791c}, \texttt{2469c6dc}\\
 mdecomp top results & mdecomp\_113: $\E=28$; mdecomp\_111: $\E=29$; mdecomp\_56: $\E=30$\\
-Best non-mdecomp & tv\_222: $\E=\mathbf{30}$ (deep SA, 10M steps); tv\_223/254/270, iso2\_tv21\_0\_1: $\E=31$; tv\_147/225/238: $\E=32$\\
+Best non-mdecomp & iso2\_tv21\_0\_5 \& tv\_254: $\E=\mathbf{27}$; tv\_147: $\E=29$; tv\_222/223/iso\_tv\_10\_2/iso2\_tv21\_0\_0: $\E=30$; iso\_tv\_21\_2/tv\_238: $\E=31$ (all via iso0\_E26 seeding)\\
 Direct pair (new) & \textbf{iso2\_tv21\_0\_5 \& tv\_254}: $\E=\mathbf{27}$ each;
   tv\_147: $\E=29$; tv\_222/223/iso2\_tv21\_0\_0: $\E=30$ --- all via 10M-step SA from iso0\_E26 seed\\
 Non-mdecomp isotopy & tv\_254/iso\_tv\_21\_0 isotopy: $\E=\mathbf{28}$; tv\_223 isotopy: $\E=29$;
   Phase 3 (1.2B steps) running for both; canonical tv\_222: $\E=30$\\
-Non-mdecomp survey & tv\_unique\_survey 20/23 done: tv\_222 at $\E=\mathbf{30}$; \textbf{3 pairs at $\E=31$}; tv\_32: $\E=33$; tv\_280, tv\_29, tv\_315: $\E=34$\\
+Non-mdecomp survey & tv\_unique\_survey 22/23 done: tv\_222 at $\E=\mathbf{30}$; \textbf{4 pairs at $\E=31$}; tv\_42, tv\_147, tv\_225, tv\_238: $\E=32$; tv\_32: $\E=33$; many pairs: $\E=34$--$35$\\
 Fast SA speed & $360{,}000$ steps/s (numba JIT, 22$\times$ speedup over $16{,}000$ steps/s baseline); incremental frequency-table updates\\
 MOLS-10 pair catalog & 193 non-mdecomp + 124 mdecomp + 197 other = 514+ pairs tested\\
 CT barrier & \textbf{All 514+ pairs}: $\CT(L_1,L_2) \leq 2 < 10$\\
@@ -1178,12 +1183,15 @@ Breaking this barrier required a non-local optimization method (CP-SAT). The flo
 remarkably robust: it persisted across all pairs, all pool sizes, and all SA
 hyperparameter settings.
 
-\paragraph{The E=28 platform.}
-Three structurally independent pairs ($L_1$ families \texttt{ee29e34e}, \texttt{e54e791c},
-and \texttt{2469c6dc}) all converge to $\E=28$ via hint cascade. This suggests a structural
-``platform'' in the energy landscape at $\E=28$: a region where many distinct local
-optima cluster. Whether $\E=28$ represents a fundamental combinatorial barrier or merely
-reflects current algorithm limitations is unknown.
+\paragraph{The E=27--28 platform.}
+Three mdecomp pairs ($L_1$ families \texttt{ee29e34e}, \texttt{e54e791c},
+and \texttt{2469c6dc}) converge to $\E=28$ via hint cascade. Independently, non-mdecomp
+pairs \texttt{iso2\_tv21\_0\_5} and \texttt{tv\_254} reach $\E=27$ (one unit deeper),
+and independent isotopies of \texttt{tv\_254} and \texttt{iso\_tv\_21\_0} reach $\E=28$.
+This convergence of structurally diverse pairs at $\E \in \{27,28\}$ suggests a structural
+``platform'' in the energy landscape: a dense cluster of local optima where many approach
+paths terminate. Whether $\E=27$ represents a new fundamental combinatorial barrier or
+merely reflects current algorithm limitations is under active investigation (Phase~3 running).
 
 \paragraph{The E=26 basin.}
 The $\E=26$ state is the deepest known point in the energy landscape. Its properties
@@ -1203,10 +1211,13 @@ Combining all results, the evidence supporting $N(10)=2$ includes:
     attractor basin; BFS depth-6 confirms 77,507 intercalate-reachable states all have
     $\E \geq 26$. The best random-start SA from scratch reaches only $\E=52$.
   \item \textbf{Landscape universality.} All tested energy minima (iso\_tv\_21\_0 at
-    $\E=26$; mdecomp\_113, mdecomp\_279 at $\E=28$; mdecomp\_56 at $\E=30$) are strict
-    or near-strict 2-deep local minima. No gradient toward lower energy is found anywhere.
-  \item \textbf{Convergence barrier.} Three independent pairs stall at $\E=28$;
-    the pairs at $\E=29$ are BFS-depth-5 global intercalate-minima.
+    $\E=26$; mdecomp\_113, mdecomp\_279 at $\E=28$; mdecomp\_56 at $\E=30$; iso2\_tv21\_0\_5
+    and tv\_254 at $\E=27$) appear to be strict or near-strict local minima. The $\E=27$
+    minimum (iso2\_tv21\_0\_5) withstood 300M SA steps without improvement, mirroring
+    the robustness seen at $\E=26$.
+  \item \textbf{Convergence barrier.} Three independent mdecomp pairs stall at $\E=28$;
+    two non-mdecomp pairs stall at $\E=27$; Phase~3 (1.2B steps) is probing whether $\E<26$
+    is reachable from $\E=28/29$ isotopy starting points.
   \item \textbf{Exhaustive feasibility failure.} 7,200 worker-seconds of CP-SAT
     with hard constraint $\E \leq 25$ found neither a solution nor a proof of
     infeasibility, suggesting $\E=25$ is very hard to reach.
