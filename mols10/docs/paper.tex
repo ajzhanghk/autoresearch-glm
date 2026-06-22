@@ -1077,9 +1077,27 @@ This result is \textbf{only 1 unit above the all-time record} $\E=26$ for
 Other direct-pair results: \texttt{tv\_223}: $\E=30$; \texttt{iso2\_tv21\_0\_0}: $\E=30$;
 \texttt{tv\_222}: $\E=30$ (confirmed); \texttt{iso\_tv\_21\_0}: $\E=26$ (confirmed global best).
 
-A dedicated ultra-deep SA (300M steps, \texttt{iso2\_deep\_sa.py}) is now targeting
-$\E < 26$ on \texttt{iso2\_tv21\_0\_5}, starting from the $\E=27$ seed. This is the
-most promising active search direction.
+Continuing cross-seed SA with all 16 pairs uncovered a broader pattern:
+
+\begin{theorem}[Multiple pairs at $\E=27$]\label{thm:multi_e27}
+The following canonical pairs achieve $\E \leq 27$ using the iso0\_E26 global-best
+$L_3$ as a starting seed (10M SA steps, 360k steps/s):
+\begin{itemize}[noitemsep]
+  \item \texttt{iso2\_tv21\_0\_5}: $\E=\mathbf{27}$ ($\cl_{13}=15$, $\cl_{23}=12$)
+  \item \texttt{tv\_254}: $\E=\mathbf{27}$ ($\cl_{13}=12$, $\cl_{23}=15$)
+  \item \texttt{tv\_147}: $\E=\mathbf{29}$ ($\cl_{13}=12$, $\cl_{23}=17$) — was $\E=32$ in survey
+  \item \texttt{tv\_222}, \texttt{tv\_223}, \texttt{iso2\_tv21\_0\_0}: $\E=30$
+\end{itemize}
+\end{theorem}
+
+Four distinct pairs now at $\E \leq 29$, with two at $\E=27$ (only 1 above the
+all-time record). The iso0\_E26 L3 (while achieving $\E=73{+}$ initial energy for
+non-iso-tv-21-0 pairs) consistently serves as an effective ``fertilizer'' seed
+--- the SA descends rapidly to deep basins from these high-energy starts.
+
+A dedicated ultra-deep SA (\texttt{iso2\_deep\_sa.py}, 300M steps, $T_\text{end}=0.005$)
+is now targeting $\E < 26$ on \texttt{iso2\_tv21\_0\_5}, and
+\texttt{fast\_direct\_sa.py} continues probing all pairs.
 
 \subsubsection{All Tested Pairs Have CT $\leq$ 2}
 
@@ -1112,8 +1130,8 @@ Feasibility attack & 7,200 worker-seconds with $\E \leq 25$ constraint: 0 SAT, 0
 Three pairs at E=28 & \texttt{ee29e34e} (secondary), \texttt{e54e791c}, \texttt{2469c6dc}\\
 mdecomp top results & mdecomp\_113: $\E=28$; mdecomp\_111: $\E=29$; mdecomp\_56: $\E=30$\\
 Best non-mdecomp & tv\_222: $\E=\mathbf{30}$ (deep SA, 10M steps); tv\_223/254/270, iso2\_tv21\_0\_1: $\E=31$; tv\_147/225/238: $\E=32$\\
-Direct pair (new) & \textbf{iso2\_tv21\_0\_5}: $\E=\mathbf{27}$ (cl13=15, cl23=12; 10M steps from iso0\_E26 seed)
-  --- only 1 unit above global record; iso\_tv\_21\_0: $\E=26$ (confirmed)\\
+Direct pair (new) & \textbf{iso2\_tv21\_0\_5 \& tv\_254}: $\E=\mathbf{27}$ each;
+  tv\_147: $\E=29$; tv\_222/223/iso2\_tv21\_0\_0: $\E=30$ --- all via 10M-step SA from iso0\_E26 seed\\
 Non-mdecomp isotopy & tv\_254/iso\_tv\_21\_0 isotopy: $\E=\mathbf{28}$; tv\_223 isotopy: $\E=29$;
   Phase 3 (1.2B steps) running for both; canonical tv\_222: $\E=30$\\
 Non-mdecomp survey & tv\_unique\_survey 20/23 done: tv\_222 at $\E=\mathbf{30}$; \textbf{3 pairs at $\E=31$}; tv\_32: $\E=33$; tv\_280, tv\_29, tv\_315: $\E=34$\\
