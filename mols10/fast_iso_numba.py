@@ -221,10 +221,13 @@ while True:
         }
         # Re-read from disk to merge entries from other instances
         on_disk = json.loads(PROMISING_F.read_text()) if PROMISING_F.exists() else []
-        # Merge: add our entry if not already present
-        key = (INSTANCE, iso_num)
-        if not any(e.get('inst') == INSTANCE and e.get('iso_num') == iso_num for e in on_disk):
+        # Update if better E, or add if not present
+        existing_idx = next((i for i, e in enumerate(on_disk)
+                             if e.get('inst') == INSTANCE and e.get('iso_num') == iso_num), None)
+        if existing_idx is None:
             on_disk.append(entry)
+        elif entry['E'] < on_disk[existing_idx]['E']:
+            on_disk[existing_idx] = entry  # update with better result
         # Also include our in-memory entries not yet on disk
         for e in promising:
             if not any(ex.get('inst') == e.get('inst') and ex.get('iso_num') == e.get('iso_num') for ex in on_disk):
