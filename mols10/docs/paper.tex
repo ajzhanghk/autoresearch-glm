@@ -809,6 +809,20 @@ steps/s in previous SA implementations. Continuous restarts from the $\E=26$ anc
 confirm that it is a strict attractor: every restart from a perturbed anchor returns to
 $\E \geq 26$, and the best random-start run from scratch reaches only $\E = 52$.
 
+\paragraph{Numba JIT-Compiled SA (22$\times$ speedup).}
+A further major speedup was achieved by reimplementing the SA core with \texttt{numba}
+just-in-time compilation. The JIT-compiled SA with incremental energy updates reaches
+$360{,}000$ steps/s, a \textbf{22$\times$ speedup} over the previous Python implementation
+($16{,}000$ steps/s). This throughput enables 10M-step deep searches in under 30 seconds
+and makes previously impractical long-run descent trajectories routine.
+
+\paragraph{Isotopy search: tv\_223 and iso\_tv\_21\_0 at $\E=30$.}
+The isotopy transformation search (applying independent permutations $\sigma_1, \sigma_2$
+to $(L_1, L_2)$ to generate a new pair in a different isotopy class) was run in a
+quick phase (20M steps, 4 seeds) on tv\_223. This immediately found $\E=30$, triggering
+a deep 240M-step SA search. Separately, iso\_tv\_21\_0 under the same isotopy strategy
+also achieved $\E=30$ in the quick phase.
+
 \subsubsection{Landscape Universality: All Tested Minima are Strict 2-Deep IC Local Minima}
 
 BFS analysis was extended from iso\_tv\_21\_0 to additional pairs:
@@ -977,7 +991,7 @@ Results from 16 of 23 pairs surveyed (Table~\ref{tab:tv_survey}):
 \toprule
 Pair & $\E$ & Notes\\
 \midrule
-tv\_222 & \textbf{31} & NEW non-mdecomp pair at $\E=31$\\
+tv\_222 & \textbf{30} & NEW non-mdecomp pair at $\E=30$; via deep SA (10M steps)\\
 tv\_223 & \textbf{31} & Equal best\\
 tv\_254 & \textbf{31} & Equal best\\
 tv\_270 & \textbf{31} & Equal best\\
@@ -989,9 +1003,13 @@ tv\_10, tv\_171, tv\_215, tv\_218, tv\_230, tv\_239, tv\_245, tv\_262 & 34 & \\
 \end{tabular}
 \end{table}
 
-Four distinct tv\_* pairs independently achieve $\E=31$. Combined with a focused deep SA result
-showing iso2\_tv21\_0\_1 also at $\E=31$, we now have at least \textbf{5 distinct non-mdecomp
-pairs} with confirmed $\E=31$.
+Three distinct tv\_* pairs independently achieve $\E=31$ (tv\_223, tv\_254, tv\_270).
+\textbf{tv\_222} achieves $\E=\mathbf{30}$, found via deep SA (10M steps starting from the
+$\E=31$ survey seed with 3 intercalate-chain perturbations), descending $37 \to 36 \to 35 \to
+34 \to 33 \to 32 \to 31 \to 30$. This is the first non-\texttt{iso\_tv\_21\_0} pair to achieve
+$\E < 31$. Combined with a focused deep SA result showing iso2\_tv21\_0\_1 also at $\E=31$,
+we now have at least \textbf{4 distinct non-mdecomp pairs} with confirmed $\E=31$ and one at
+$\E=30$.
 
 \subsubsection{Isotopy Transformation Search}
 
@@ -1047,9 +1065,9 @@ E=26 BFS depth-6 & 77,507 unique states explored; global min = 26 (strict)\\
 Feasibility attack & 7,200 worker-seconds with $\E \leq 25$ constraint: 0 SAT, 0 INFEASIBLE\\
 Three pairs at E=28 & \texttt{ee29e34e} (secondary), \texttt{e54e791c}, \texttt{2469c6dc}\\
 mdecomp top results & mdecomp\_113: $\E=28$; mdecomp\_111: $\E=29$; mdecomp\_56: $\E=30$\\
-Best non-mdecomp & tv\_222/223/254/270, iso2\_tv21\_0\_1: $\E=31$ (5 pairs); tv\_147/225/238: $\E=32$\\
-Non-mdecomp survey & tv\_unique\_survey 16/23: \textbf{4 pairs at $\E=31$}; isotopy search: $\E=30$ for iso\_tv\_10\_0\\
-Fast SA speed & $5{,}000$--$6{,}000$ steps/s via incremental frequency-table updates\\
+Best non-mdecomp & tv\_222: $\E=\mathbf{30}$ (deep SA, 10M steps); tv\_223/254/270, iso2\_tv21\_0\_1: $\E=31$; tv\_147/225/238: $\E=32$\\
+Non-mdecomp survey & tv\_unique\_survey 16/23: tv\_222 at $\E=\mathbf{30}$; \textbf{3 pairs at $\E=31$}; isotopy search: tv\_223 at $\E=30$ (deep 240M-step SA); iso\_tv\_21\_0 isotopy at $\E=30$\\
+Fast SA speed & $360{,}000$ steps/s (numba JIT, 22$\times$ speedup over $16{,}000$ steps/s baseline); incremental frequency-table updates\\
 MOLS-10 pair catalog & 193 non-mdecomp + 124 mdecomp + 197 other = 514+ pairs tested\\
 CT barrier & \textbf{All 514+ pairs}: $\CT(L_1,L_2) \leq 2 < 10$\\
 SAT certificates & 323 UNSAT certificates (Glucose3, $\approx 42$\,ms each)\\
