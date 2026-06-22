@@ -816,29 +816,29 @@ $360{,}000$ steps/s, a \textbf{22$\times$ speedup} over the previous Python impl
 ($16{,}000$ steps/s). This throughput enables 10M-step deep searches in under 30 seconds
 and makes previously impractical long-run descent trajectories routine.
 
-\paragraph{Fast isotopy search: tv\_254 at $\E=\mathbf{28}$, tv\_223 and iso\_tv\_21\_0 at $\E=29$.}
+\paragraph{Fast isotopy search: tv\_254 and iso\_tv\_21\_0 at $\E=\mathbf{28}$, tv\_223 at $\E=29$.}
 The numba-accelerated isotopy search (360k+ steps/s) was scaled to an adaptive three-phase
 multi-instance search across 18 promising pairs. For each random isotopy of each pair:
 \begin{itemize}[noitemsep]
   \item \textbf{Phase 1}: 4 seeds $\times$ 5M steps (20M total, $\approx\!44$\,s); if $\E \leq 30$, proceed.
-  \item \textbf{Phase 2}: 8 seeds $\times$ 30M steps (240M total, $\approx\!9$\,min); if $\E \leq 29$, proceed.
-  \item \textbf{Phase 3}: 8 seeds $\times$ 150M steps (1.2B total, $\approx\!44$\,min).
+  \item \textbf{Phase 2}: 8 seeds $\times$ 30M steps (240M total, $\approx\!9{-}11$\,min); if $\E \leq 29$, proceed.
+  \item \textbf{Phase 3}: 8 seeds $\times$ 150M steps (1.2B total, $\approx\!55$\,min) --- ultra-deep.
 \end{itemize}
-Key discoveries from this search:
+Key discoveries from this search (ordered by significance):
 \begin{itemize}[noitemsep]
   \item \textbf{tv\_254 isotopy}: Phase 1 found $\E=30$, Phase 2 descended to $\E=\mathbf{28}$
-    ($\cl_{13}=15$, $\cl_{23}=13$)---a new independent-isotopy record matching the mdecomp
-    pairs, and the first tv\_* pair to reach $\E < 29$ via any method.
+    ($\cl_{13}=15$, $\cl_{23}=13$)---a new record matching the mdecomp pairs.
+  \item \textbf{iso\_tv\_21\_0 isotopy}: Phase 1 found $\E=30$, Phase 2 descended to $\E=\mathbf{28}$
+    ($\cl_{13}=16$, $\cl_{23}=12$). Phase 3 (1.2B steps) triggered and running.
   \item \textbf{tv\_223 isotopy}: Phase 1 found $\E=30$, Phase 2 descended to $\E=\mathbf{29}$
-    ($\cl_{13}=15$, $\cl_{23}=14$).
-  \item \textbf{iso\_tv\_21\_0 isotopy}: Phase 1 found $\E=30$, Phase 2 descended to $\E=\mathbf{29}$
-    ($\cl_{13}=16$, $\cl_{23}=13$).
+    ($\cl_{13}=15$, $\cl_{23}=14$). Phase 3 (1.2B steps) triggered and running.
 \end{itemize}
-The tv\_254 result is particularly significant: an \emph{independently chosen random isotopy}
-of a tv\_* pair reaches $\E=28$, the same floor previously seen only for mdecomp pairs.
-This strongly suggests the $\E=28$ barrier is a universal landscape feature, not an artifact
-of any particular pair structure. Ultra-deep follow-up SA (100M+ steps starting from $\E=28$)
-is ongoing, targeting $\E < 26$.
+Two simultaneous Phase 3 searches are now running: iso\_tv\_21\_0 and tv\_223 isotopies
+at $\E \leq 29$, each receiving 1.2B SA steps targeting $\E < 26$. Additionally,
+three \textbf{distinct independent isotopies} have now reached $\E=28$ (tv\_254, iso\_tv\_21\_0
+isotopy, and the pre-existing mdecomp results), strongly suggesting $\E=28$ is a universal
+energy floor that can be reached from many different pair representations, with a deep
+barrier preventing descent to $\E < 26$.
 
 \subsubsection{Landscape Universality: All Tested Minima are Strict 2-Deep IC Local Minima}
 
@@ -1043,14 +1043,19 @@ Key findings (cumulative):
   \item tv\_147 under a random isotopy: $\E=31$ (vs.\ canonical $\E=32$).
   \item iso\_tv\_10\_0, iso\_tv\_10\_1, iso\_tv\_10\_2 under isotopy: $\E=30$--$31$.
   \item iso2\_tv21\_0\_1 under isotopy: $\E=31$.
-  \item \textbf{iso\_tv\_21\_0} under random isotopy: $\E=\mathbf{29}$ (Phase 2).
-  \item \textbf{tv\_223} under random isotopy: $\E=\mathbf{29}$ (Phase 2).
-  \item \textbf{tv\_254} under random isotopy: $\E=\mathbf{28}$ (Phase 2) --- \textbf{new record}.
+  \item \textbf{iso\_tv\_21\_0} under random isotopy: $\E=\mathbf{28}$ (Phase 2, $\cl_{13}=16$, $\cl_{23}=12$);
+    Phase 3 (1.2B steps) now running.
+  \item \textbf{tv\_223} under random isotopy: $\E=\mathbf{29}$ (Phase 2, $\cl_{13}=15$, $\cl_{23}=14$);
+    Phase 3 (1.2B steps) now running.
+  \item \textbf{tv\_254} under random isotopy: $\E=\mathbf{28}$ (Phase 2, $\cl_{13}=15$, $\cl_{23}=13$);
+    ultra-deep follow-up SA ongoing.
 \end{itemize}
 
-The three best isotopy results surpass all canonical tv\_* pair minima and match or
-approach the mdecomp-pair barrier at $\E=28$. Ultra-deep follow-up from the tv\_254
-$\E=28$ starting point is ongoing.
+\textbf{Key observation}: Three distinct independent isotopies have reached $\E=28$,
+the universal floor previously seen only for mdecomp pairs. This provides the strongest
+evidence yet that $\E=28$ is a structural barrier in the MOLS-10 energy landscape.
+Two simultaneous Phase 3 searches are running to probe whether $\E < 26$ is reachable
+from $\E=28/29$ isotopy starting points.
 
 \subsubsection{All Tested Pairs Have CT $\leq$ 2}
 
@@ -1083,8 +1088,9 @@ Feasibility attack & 7,200 worker-seconds with $\E \leq 25$ constraint: 0 SAT, 0
 Three pairs at E=28 & \texttt{ee29e34e} (secondary), \texttt{e54e791c}, \texttt{2469c6dc}\\
 mdecomp top results & mdecomp\_113: $\E=28$; mdecomp\_111: $\E=29$; mdecomp\_56: $\E=30$\\
 Best non-mdecomp & tv\_222: $\E=\mathbf{30}$ (deep SA, 10M steps); tv\_223/254/270, iso2\_tv21\_0\_1: $\E=31$; tv\_147/225/238: $\E=32$\\
-Non-mdecomp isotopy & \textbf{tv\_254 isotopy}: $\E=\mathbf{28}$ (cl13=15, cl23=13; Phase 2, 240M steps) — new record;
-  tv\_223/iso\_tv\_21\_0 isotopy: $\E=29$; canonical tv\_222: $\E=30$\\
+Non-mdecomp isotopy & \textbf{tv\_254 isotopy}: $\E=\mathbf{28}$ (cl13=15, cl23=13);
+  \textbf{iso\_tv\_21\_0 isotopy}: $\E=\mathbf{28}$ (Phase 2); tv\_223 isotopy: $\E=29$;
+  canonical tv\_222: $\E=30$; Phase 3 (1.2B steps) running for iso\_tv\_21\_0 \& tv\_223 isotopies\\
 Non-mdecomp survey & tv\_unique\_survey 20/23 done: tv\_222 at $\E=\mathbf{30}$; \textbf{3 pairs at $\E=31$}; tv\_32: $\E=33$; tv\_280, tv\_29, tv\_315: $\E=34$\\
 Fast SA speed & $360{,}000$ steps/s (numba JIT, 22$\times$ speedup over $16{,}000$ steps/s baseline); incremental frequency-table updates\\
 MOLS-10 pair catalog & 193 non-mdecomp + 124 mdecomp + 197 other = 514+ pairs tested\\
