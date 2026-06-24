@@ -59,6 +59,7 @@ _fp = REPO/"mols10/results/cpsat_e27_step_best.json"
 if _fp.exists():
     cpsat_seed = json.loads(_fp.read_text())
 
+GLOBAL_RECORD = 26  # current best from fixed pairs — only report if we beat this
 global_best_E = 999
 global_best_info = None
 
@@ -125,12 +126,13 @@ while True:
         cl23 = int(count_clashes(L2_iso, L3_final))
         elapsed = time.time() - t_start
         log(f"*** NEW BEST E={E_final} cl13={cl13} cl23={cl23} trial={trial_num} base={base_pair_id} t={elapsed:.0f}s ***")
-        BEST_FILE.write_text(json.dumps({
-            'E': E_final, 'cl13': cl13, 'cl23': cl23,
-            'base_pair_id': base_pair_id, 'trial': trial_num,
-            'L1': L1_iso.tolist(), 'L2': L2_iso.tolist(), 'L3': L3_final.tolist()
-        }, indent=2))
-        git_push(f"rand_iso: E={E_final} (base={base_pair_id})\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>")
+        if E_final < GLOBAL_RECORD:
+            BEST_FILE.write_text(json.dumps({
+                'E': E_final, 'cl13': cl13, 'cl23': cl23,
+                'base_pair_id': base_pair_id, 'trial': trial_num,
+                'L1': L1_iso.tolist(), 'L2': L2_iso.tolist(), 'L3': L3_final.tolist()
+            }, indent=2))
+            git_push(f"rand_iso: GLOBAL RECORD E={E_final} (base={base_pair_id})\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>")
         if E_final == 0:
             log("*** 3-MOLS FOUND! ***")
             FOUND_FILE.write_text(json.dumps({
