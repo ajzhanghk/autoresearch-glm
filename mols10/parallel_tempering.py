@@ -29,8 +29,6 @@ from mols_cpsat_worker import count_clashes, N
 sys.path.insert(0, "/tmp")
 from fast_sa_numba import make_pc, _run_sa_core
 
-LOG       = REPO / "mols10/results/parallel_tempering.log"
-BEST_FILE = REPO / "mols10/results/pt_best.json"
 FOUND_FILE = REPO / "mols10/results/MOLS10_FOUND.json"
 BRANCH    = "claude/mols-order-10-search-yfQXK"
 
@@ -69,15 +67,28 @@ best_data = json.loads((REPO/"mols10/results/fast_deep_sa_best.json").read_text(
 
 # Choose which pair to run PT on
 PAIR_ID = sys.argv[1] if len(sys.argv) > 1 else 'iso2_tv21_0_5'
+LOG       = REPO / f"mols10/results/pt_{PAIR_ID}.log"
+BEST_FILE = REPO / f"mols10/results/pt_best_{PAIR_ID}.json"
 p = pair_map[PAIR_ID]
 L1 = np.array(p['L1'], dtype=np.int8).reshape(N,N)
 L2 = np.array(p['L2'], dtype=np.int8).reshape(N,N)
 L1f = L1.ravel().astype(np.int32)
 L2f = L2.ravel().astype(np.int32)
 
-# Seed best L3
+# Seed best L3 — prefer per-pair best file if it exists
+_CPSAT_STEP = REPO / "mols10/results/cpsat_e27_step_best.json"
 seed_L3 = np.array(best_data[PAIR_ID]['L3'], dtype=np.int8).reshape(N,N)
 E_seed = count_clashes(L1, seed_L3) + count_clashes(L2, seed_L3)
+if BEST_FILE.exists():
+    _bd = json.loads(BEST_FILE.read_text())
+    if _bd.get('pair_id') == PAIR_ID and _bd.get('E', 999) < E_seed:
+        seed_L3 = np.array(_bd['L3'], dtype=np.int8).reshape(N,N)
+        E_seed = _bd['E']
+elif _CPSAT_STEP.exists():
+    _bd = json.loads(_CPSAT_STEP.read_text())
+    if _bd.get('pair_id') == PAIR_ID and _bd.get('E', 999) < E_seed:
+        seed_L3 = np.array(_bd['L3'], dtype=np.int8).reshape(N,N)
+        E_seed = _bd['E']
 
 log("="*70)
 log(f"Parallel Tempering SA — pair={PAIR_ID} seed_E={E_seed}")
@@ -108,13 +119,6 @@ for k in range(N_REPLICAS):
 
 global_best_E = E_seed
 global_best_L3 = seed_L3.copy()
-
-# Load existing best
-if BEST_FILE.exists():
-    bd = json.loads(BEST_FILE.read_text())
-    if bd.get('pair_id') == PAIR_ID and bd.get('E', 999) < global_best_E:
-        global_best_E = bd['E']
-        global_best_L3 = np.array(bd['L3'], dtype=np.int8).reshape(N,N)
 
 swap_accepted = [0] * (N_REPLICAS - 1)
 swap_tried    = [0] * (N_REPLICAS - 1)
@@ -186,7 +190,7 @@ while True:
             }, indent=2))
             sys.exit(0)
 
-    # Also check all replicas for global best
+    # Also check all replicas for global best — SAVE IMMEDIATELY
     for k, (E_k, L3_k) in enumerate(replicas):
         if E_k < global_best_E:
             global_best_E = E_k
@@ -194,6 +198,20 @@ while True:
             cl13 = int(count_clashes(L1, L3_k))
             cl23 = int(count_clashes(L2, L3_k))
             log(f"*** NEW BEST (replica {k}) E={global_best_E} cl13={cl13} cl23={cl23} round={round_num} ***")
+            BEST_FILE.write_text(json.dumps({
+                'E': global_best_E, 'cl13': cl13, 'cl23': cl23,
+                'pair_id': PAIR_ID, 'round': round_num,
+                'L1': L1.tolist(), 'L2': L2.tolist(), 'L3': global_best_L3.tolist()
+            }, indent=2))
+            git_push(f"pt: {PAIR_ID} E={global_best_E} (NEW BEST!)\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>")
+            if global_best_E == 0:
+                log("*** 3-MOLS FOUND! ***")
+                FOUND_FILE.write_text(json.dumps({
+                    'found': True, 'pair_id': PAIR_ID,
+                    'L1': L1.tolist(), 'L2': L2.tolist(), 'L3': global_best_L3.tolist(),
+                    'cl12': int(count_clashes(L1,L2)), 'cl13': cl13, 'cl23': cl23
+                }, indent=2))
+                sys.exit(0)
 
     if round_num % N_ROUNDS_LOG == 0:
         elapsed = time.time() - t_start
