@@ -22,6 +22,7 @@ INSTANCE = sys.argv[2] if len(sys.argv) > 2 else '0'
 LOG = REPO / f"mols10/results/mate_{PAIR_ID}_{INSTANCE}.log"
 FOUND_FILE = REPO / "mols10/results/MOLS10_FOUND.json"
 BEST_FILE  = REPO / f"mols10/results/escape_best_{PAIR_ID}.json"
+MATE_BEST  = REPO / f"mols10/results/mate_best_{PAIR_ID}.json"
 BRANCH     = "claude/mols-order-10-search-yfQXK"
 
 SA_STEPS = 5_000_000
@@ -139,6 +140,8 @@ while True:
         best_mate = L_prime.copy()
         elapsed = time.time() - t_start
         log(f"*** NEW BEST MATE: cl(L3,L')={cl} trial={trial} t={elapsed:.0f}s ***")
+        MATE_BEST.write_text(json.dumps({'pair_id': PAIR_ID, 'cl': int(cl),
+            'trial': trial, 'L_prime': L_prime.tolist()}, indent=2))
         if cl == 0:
             log(f"*** FOUND ORTHOGONAL MATE! L3 and L' are orthogonal ***")
             log(f"Now searching for L'' orthogonal to both L3 and L'...")
