@@ -299,6 +299,49 @@ The CT=2 ceiling across 310 tested pairs (124 from random L1 starts, not just Pa
 
 ---
 
+## Session 8 Additions: Transversal-Decomposition Reformulation
+
+**Key reformulation.** A 3-MOLS(10) exists iff some Latin square $L$ admits two
+transversal decompositions $P_1 = \{T_1,\dots,T_{10}\}$, $P_2 = \{S_1,\dots,S_{10}\}$
+that are *mutually orthogonal*: $|T_i \cap S_j| = 1$ for all $i,j$. Given such a pair,
+$B(r,c) = i$ for $(r,c) \in T_i$ and $C(r,c) = j$ for $(r,c) \in S_j$ yields the triple
+$(L, B, C)$. Each decomposition is precisely an orthogonal mate; orthogonality of the
+two decompositions is precisely $\mathrm{CT}$-completeness between the two mates.
+
+**Exhaustive decomposition counts (CP-SAT, proved INFEASIBLE for further ones):**
+
+| Square | Transversals | Decompositions | Orthogonal decomposition pairs |
+|--------|-------------|----------------|-------------------------------|
+| tv_254 L1 | 872 | exactly 3 | 0 (all 3 pairs checked) |
+| tv_254 L3 (E=23) | 856 | exactly 1 | — (unique mate, ct(L3,L')=0) |
+| tv_94 L1 | 872 | exactly 4 | 0 (all 6 pairs checked) |
+| tv_227 L1 | 880 | exactly 1 | — |
+| tv_239 L1 | 872 | exactly 1 | — |
+| tv_150 L1 | 872 | exactly 4 | 0 |
+| tv_179 L1 | 872 | exactly 4 | 0 |
+
+Pattern so far: known MOLS(10) L1's have very few decompositions (1–4), and every
+decomposition pair fails orthogonality badly. This is the same CT≤2 barrier viewed
+from the single-square side.
+
+**IC-transversal-maximization finding.** SA over intercalate (IC) moves starting from
+tv_254 L1 (872 transversals) readily pushes transversal counts to 940–980 — but every
+CP-SAT mate found for these high-transversal squares has $\mathrm{ct} \le 1$ with its
+parent. High transversal count alone does not produce high CT.
+
+**Prescribed-automorphism exhaustive searches (new).** CP-SAT over triples invariant
+under $(r,c,s) \mapsto (r{+}d, c{+}d, s{+}d) \bmod 10$ — order-5 subspace for $d=2$,
+order-2 for $d=5$. Either finds a symmetric 3-MOLS(10) or *proves* none exists with
+that symmetry. (Results recorded in `mols10/results/sym_infeasible_d*.json` when
+infeasibility is proved.)
+
+**New searches running:**
+- `sweep_all_pairs_decomp.py`: all 324 pairs' L1, up to 20 decompositions each, all pairs checked for orthogonality
+- `random_ls_decomp.py`: uniform-ish random LS via backtracking → decomposition orthogonality check (explores outside known isotopy classes)
+- `mols3_sym_cpsat.py`: prescribed-automorphism CP-SAT (d=2, d=5)
+
+---
+
 ## File Map
 
 | File | Purpose |

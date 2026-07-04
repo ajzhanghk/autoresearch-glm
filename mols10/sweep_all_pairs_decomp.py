@@ -184,6 +184,20 @@ log(f"Top 5 pairs by transversal count: {[(n,p) for n,p,_ in pair_trans[:5]]}")
 my_pairs = pair_trans[INSTANCE::N_INSTANCES]
 log(f"This instance handles {len(my_pairs)} pairs")
 
+# Resume: skip pairs already fully processed (logged with a result line)
+done_ids = set()
+if LOG.exists():
+    for line in LOG.read_text().splitlines():
+        # a pair is done if we logged its decomp-count result
+        if "] [" in line and (" decomp(s) in " in line or " decomps in " in line or " decomps, no orthogonal" in line or "Only " in line):
+            try:
+                pid = line.split("] [",1)[1].split("]",1)[0]
+                done_ids.add(pid)
+            except Exception:
+                pass
+my_pairs = [(n, p, d) for (n, p, d) in my_pairs if p not in done_ids]
+log(f"Resume: {len(done_ids)} already done, {len(my_pairs)} remaining")
+
 t_global = time.time()
 for idx, (n_trans, pair_id, pdata) in enumerate(my_pairs):
     L1 = np.array(pdata['L1'], dtype=np.int8).reshape(N,N)
