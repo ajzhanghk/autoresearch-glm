@@ -166,9 +166,9 @@ def main():
         eq = (TA8[lo:hi, None, :] == TA8[None, :, :])
         cnt = eq.sum(axis=2, dtype=np.int8)
         for k in range(hi - lo):
-            row = np.nonzero(cnt[k] >= 2)[0]
-            row = row[row != (lo + k)]
-            bad[lo + k] = row
+            # keep self (I=10 >= 2): y_j must force x_j = 0, else selected
+            # transversals count as phantom commons
+            bad[lo + k] = np.nonzero(cnt[k] >= 2)[0]
     log(f"done in {time.time()-t0:.0f}s")
 
     cell_to_t = [[[] for _ in range(N)] for _ in range(N)]
