@@ -232,7 +232,7 @@ def main():
         frac = (step % STEPS_PER_CYCLE) / STEPS_PER_CYCLE
         T = T0 * (T_END / T0) ** frac  # sawtooth reheating schedule
 
-        k = rng.choice([2, 2, 3, 3, 4])
+        k = rng.choice([2, 2, 3, 3, 4, 4, 5])
         out_idx = rng.sample(range(N), k)
         removed = [sel[i] for i in out_idx]
         kept = [sel[i] for i in range(N) if i not in out_idx]
@@ -257,15 +257,25 @@ def main():
             continue  # only the original cover exists
         n_moves += 1
 
-        # Evaluate a random alternative cover (not the original)
+        # Steepest ascent: evaluate ALL alternative covers, take the best ct
         orig = tuple(sorted(removed))
         alts = [cv for cv in covers if tuple(sorted(cv)) != orig]
         if not alts:
             continue
-        cv = rng.choice(alts)
-        new_sel = kept + list(cv)
-        newB = build_B(new_sel, trans)
-        new_ct = ev.ct(newB)
+        best_alt_ct = -1
+        best_alt_sel = None
+        best_alt_B = None
+        for cv in alts:
+            cand_sel = kept + list(cv)
+            candB = build_B(cand_sel, trans)
+            cct = ev.ct(candB)
+            if cct > best_alt_ct:
+                best_alt_ct = cct
+                best_alt_sel = cand_sel
+                best_alt_B = candB
+        new_sel = best_alt_sel
+        newB = best_alt_B
+        new_ct = best_alt_ct
 
         d = new_ct - cur_ct
         if d >= 0 or rng.random() < np.exp(d / max(T, 1e-9)):

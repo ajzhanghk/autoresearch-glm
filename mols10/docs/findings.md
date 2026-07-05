@@ -342,6 +342,43 @@ infeasibility is proved.)
 
 ---
 
+## Session 9: THE CT BARRIER IS BROKEN — ct=6 via turn-squares
+
+**Turn-square pivot.** All previous squares had ~872 transversals; the known
+order-10 maximum is **5504**, attained by turn-squares (Z10 Cayley table with
+a 5×5 pattern of turned intercalates; 2^25 family). Hill-climb over patterns
+reaches 5504 within minutes from random starts (many distinct optimal patterns).
+
+**Streaming mate enumeration.** For a 5504-transversal square L, orthogonal
+mates = exact covers of the cell grid by 10 disjoint transversals. Using
+CP-SAT `enumerate_all_solutions` with a callback that computes ct(L,B) per
+mate (vectorized numpy over all 5504 transversals):
+
+| Square | Mates streamed (600s) | best ct | ct histogram (top) |
+|--------|----------------------|---------|--------------------|
+| 5504-A (inst 0) | 2046 | **6** | 6:1, 4:23, 3:98, 2:313, 1:738, 0:873 |
+| 5504-B (inst 1) | 2224 | **5** | 5:4, 4:21, 3:89, 2:353, 1:832, 0:925 |
+
+The ct=6 pair was independently verified: cl(L,B)=0 and exactly 6 common
+transversals. **This breaks the ct≤2 barrier that held for all 324
+previously known pairs.** The needed threshold for 3-MOLS(10) is ct≥10 —
+we are at 6/10, and the streamed sample is a tiny DFS-ordered corner of a
+mate space that plausibly holds millions of mates.
+
+**Mate-space LNS (`mate_ct_lns.py`).** New local search directly over
+decompositions of the fixed 5504-square: remove k∈{2..5} transversals from
+the current mate, exact-cover the freed cells with alternative disjoint
+transversals (backtracking over the pool), steepest-ascent on ct with SA
+fallback. ~4M steps/hour.
+
+**Interpretation.** High-transversal squares have qualitatively richer mate
+spaces. The classical literature (Brown–Parker) examined turn-square mates
+for triple extension in the 1980s; our streaming+LNS machinery covers this
+ground far faster and extends beyond the turn family via IC perturbations
+(`near_turn_search.py`).
+
+---
+
 ## File Map
 
 | File | Purpose |
