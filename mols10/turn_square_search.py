@@ -229,6 +229,15 @@ def process_square(L, pat, cnt, label, mate_budget_s=600):
     log(f"  [{label}] {cb.n_mates} mates in {time.time()-t0:.0f}s; best_ct={cb.best_ct}; ct hist(top)={hist_top}")
 
     if cb.best_ct >= 0 and cb.best_mate_decomp is not None:
+        # Never clobber a better result from an earlier rank/run
+        prev_best = -1
+        if BEST_CT_FILE.exists():
+            try:
+                prev_best = json.loads(BEST_CT_FILE.read_text()).get('best_ct', -1)
+            except Exception:
+                pass
+        if cb.best_ct <= prev_best:
+            return cb
         BEST_CT_FILE.write_text(json.dumps({
             'pattern': pat, 'n_trans': len(trans), 'n_mates_seen': cb.n_mates,
             'best_ct': int(cb.best_ct),
