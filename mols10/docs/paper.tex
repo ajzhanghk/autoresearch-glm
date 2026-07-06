@@ -87,12 +87,24 @@ secondary cascade of \texttt{iso\_tv\_21\_0} ($\cl_{13}=16$, $\cl_{23}=12$),
 \texttt{mdecomp\_279} (fingerprint \texttt{e54e791c}, $\cl_{13}=8$, $\cl_{23}=20$), and
 \texttt{mdecomp\_113} (fingerprint \texttt{2469c6dc}, $\cl_{13}=17$, $\cl_{23}=11$),
 suggesting a structural platform in the energy landscape at $\E=28$.
-(4)~Every one of the 344 tested MOLS-10 pairs has $\CT(L_1,L_2) \leq 2 < 10$, with
-Glucose3 UNSAT certificates for all 323 pairs ($\approx 42$\,ms each), giving rise to the
-\emph{CT barrier conjecture}: if all MOLS-10 pairs satisfy $\CT \leq 2$, then $N(10)=2$.
+(4)~Every one of the 344 originally tested MOLS-10 pairs has $\CT(L_1,L_2) \leq 2 < 10$, with
+Glucose3 UNSAT certificates for all 323 pairs ($\approx 42$\,ms each), initially suggesting a
+\emph{CT barrier conjecture} ($\CT \leq 2$ for all pairs, which would imply $N(10)=2$).
+(5)~A structural reformulation --- a 3-MOLS(10) exists iff a single square admits two
+mutually orthogonal transversal decompositions --- redirected the search to
+transversal-rich squares. Exhaustive CP-SAT censuses show the catalog squares admit at
+most 4 decompositions each, none mutually orthogonal, and the $\E=23$ record square has a
+\emph{unique} mate with $\CT = 0$. Pivoting to the $2^{25}$ \emph{turn-square} family
+(which attains the order-10 maximum of 5504 transversals) and streaming orthogonal mates
+via CP-SAT solution enumeration \textbf{refutes the strong CT barrier conjecture}: a
+turn-square mate pair with $\CT = 6$ was found and independently verified. Mate-space
+large-neighborhood search saturates at $\CT = 6$ over 45.8M steps; exact max-$\CT$
+optimization over the full mate space is formulated (via an intersection-reduction lemma
+cutting the model to 26.5\% of pairs) and running.
 
-Collectively, this constitutes the strongest computational evidence to date in favor of
-$N(10) = 2$, while leaving the question formally open.
+Collectively, the energy-cascade and census results constitute strong computational
+evidence for $N(10) = 2$, while the turn-square $\CT$ breakthrough shows the pair
+landscape is richer than the early data suggested; the question remains formally open.
 \end{abstract}
 
 \tableofcontents
@@ -1118,7 +1130,9 @@ launch when Phase~3 completes and CPU capacity frees.
 Extending the CT verification to the 193 non-mdecomp pairs confirms the universal
 pattern: every tested pair has $\CT(L_1, L_2) \leq 2$. The combined catalog now covers
 \textbf{514+ distinct pairs} from \textbf{28+ distinct $L_1$ families}, all with
-$\CT \leq 2$.
+$\CT \leq 2$. (This uniformity was later shown to be an artifact of the catalog's
+low transversal counts: Stage~9, Section~\ref{sec:stage9}, exhibits a pair with
+$\CT = 6$ from the transversal-rich turn-square family.)
 
 %===========================================================================
 \subsection{Stage 5 (Sessions 31--32+): Aggressive PT and $\E=23$ All-Time Record}
@@ -1201,6 +1215,183 @@ At the time of writing, escape SA is ongoing at $\approx 683$ combined trials/hr
 across three instances, with best result $\E=23$ (no improvement yet).
 
 %===========================================================================
+\subsection{Stage 8 (Sessions 33+): The Transversal-Decomposition Reformulation}
+\label{sec:stage8}
+%===========================================================================
+
+Stage~8 abandoned incremental energy descent in favor of a structural
+reformulation that reduces the 3-MOLS(10) problem to a question about a
+\emph{single} Latin square.
+
+\begin{proposition}[Decomposition reformulation]\label{prop:ddecomp}
+A 3-MOLS(10) exists if and only if some Latin square $L$ of order 10 admits two
+transversal decompositions $P_1 = \{T_1,\dots,T_{10}\}$ and
+$P_2 = \{S_1,\dots,S_{10}\}$ that are mutually orthogonal:
+$|T_i \cap S_j| = 1$ for all $i,j$. Given such a pair, setting $B(r,c)=i$ for
+$(r,c) \in T_i$ and $C(r,c)=j$ for $(r,c) \in S_j$ yields the triple $(L,B,C)$.
+\end{proposition}
+
+Each transversal decomposition of $L$ is precisely an orthogonal mate of $L$,
+and mutual orthogonality of two decompositions is precisely the statement that
+the two mates are orthogonal \emph{to each other}. The reformulation focuses the
+search on squares with rich transversal structure.
+
+\subsubsection{Exhaustive Decomposition Census of the Known Pairs}
+
+For each candidate square, all transversals were enumerated by bitmask
+backtracking, and CP-SAT exact-cover with forbidden-solution loops enumerated
+\emph{all} transversal decompositions, with infeasibility of the final
+iteration proving exhaustiveness.
+
+\begin{table}[h]
+\centering
+\caption{Exhaustive decomposition census (CP-SAT proofs of completeness).
+No pair of decompositions of any square is mutually orthogonal.}\label{tab:census}
+\begin{tabular}{lccc}
+\toprule
+Square & Transversals & Decompositions (exact) & Orthogonal decomp.\ pairs\\
+\midrule
+\texttt{tv\_254} $L_1$ & 872 & 3 & 0 (all 3 pairs checked)\\
+\texttt{tv\_254} $L_3$ ($\E{=}23$) & 856 & 1 & --- (unique mate)\\
+\texttt{tv\_94} $L_1$ & 872 & 4 & 0 (all 6 pairs checked)\\
+\texttt{tv\_150} $L_1$ & 872 & 4 & 0\\
+\texttt{tv\_179} $L_1$ & 872 & 4 & 0\\
+\texttt{tv\_227} $L_1$ & 880 & 1 & ---\\
+\texttt{tv\_239} $L_1$ & 872 & 1 & ---\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{theorem}[The $\E=23$ state cannot complete]\label{thm:e23mate}
+The record $\E=23$ square $L_3$ of pair \texttt{tv\_254} has exactly one
+orthogonal mate $L'$ (uniqueness proved by CP-SAT infeasibility of a second
+exact cover, 27.7\,s), and $\CT(L_3, L') = 0$. Hence no third square can be
+orthogonal to both, and the \texttt{tv\_254} branch cannot be extended to a
+3-MOLS(10) through $L_3$.
+\end{theorem}
+
+Attempts to increase transversal counts by intercalate moves (starting from
+the 872-transversal \texttt{tv\_254} $L_1$) readily produced squares with
+940--980 transversals, but every CP-SAT mate found for them had
+$\CT \leq 1$: within this family, more transversals did not translate into
+more common transversals.
+
+\subsubsection{Prescribed-Automorphism Exhaustive Searches}
+
+As an independent line, CP-SAT models were built for full triples
+$(L_1,L_2,L_3)$ constrained to be invariant under
+$(r,c,s) \mapsto (r{+}d,\, c{+}d,\, s{+}d) \bmod 10$; the order-5 case $d=2$
+shrinks the search space by a factor of five. A Boolean encoding
+(3{,}000 cell variables, 300 orthogonality \emph{exactly-one} constraints over
+product literals, symmetry-compatible anchoring $L_1(0,0)=0$) was solved with
+4 workers. Both $d=2$ and $d=5$ runs returned UNKNOWN at a 7{,}200\,s budget;
+the symmetric subspaces remain undecided (neither a symmetric triple nor an
+infeasibility certificate).
+
+%===========================================================================
+\subsection{Stage 9 (Sessions 34+): Turn-Squares Break the CT Barrier}
+\label{sec:stage9}
+%===========================================================================
+
+\subsubsection{The Turn-Square Family}
+
+All squares in Table~\ref{tab:census} carry $\sim$872 transversals, whereas the
+maximum transversal count among \emph{all} order-10 Latin squares is
+\textbf{5504}, attained by \emph{turn-squares}: start from the $\mathbb{Z}_{10}$
+Cayley table $B(i,j) = i{+}j \bmod 10$ (which has zero transversals) and
+``turn'' (swap the two values of) any subset of the 25 disjoint intercalates
+occupying cells $\{a,a{+}5\} \times \{b,b{+}5\}$, $a,b \in \{0,\dots,4\}$
+--- a family of $2^{25}$ squares indexed by $5\times5$ 0/1 patterns.
+Hill-climbing over patterns (flip one bit, keep if the transversal count does
+not decrease) reaches 5504 from random starts within minutes, hitting many
+distinct optimal patterns; a typical example is
+$\left(\begin{smallmatrix}1&1&0&1&1\\1&1&1&1&0\\1&1&1&1&1\\1&1&1&1&1\\1&1&0&0&1\end{smallmatrix}\right)$.
+
+\subsubsection{Streaming Mate Enumeration and the $\CT=6$ Pair}
+
+For a 5504-transversal turn-square $L$, orthogonal mates are exact covers of
+the $10\times10$ cell grid by 10 disjoint transversals. CP-SAT solution
+enumeration (\texttt{enumerate\_all\_solutions} with a solution callback)
+streams mates at $\approx 200$/minute; the callback computes $\CT(L,B)$ for
+each mate by a vectorized distinctness test of $B$-values over all 5504
+transversals.
+
+\begin{table}[h]
+\centering
+\caption{$\CT$ distribution over streamed mates of two 5504-transversal
+turn-squares (600\,s enumeration each; DFS order, i.e., a structured ---
+not uniform --- sample of the mate space).}\label{tab:cthist}
+\begin{tabular}{lccl}
+\toprule
+Square & Mates streamed & $\max \CT$ & $\CT$ histogram\\
+\midrule
+$A$ & 2046 & \textbf{6} & $6{:}1,\ 4{:}23,\ 3{:}98,\ 2{:}313,\ 1{:}738,\ 0{:}873$\\
+$B$ & 2224 & 5 & $5{:}4,\ 4{:}21,\ 3{:}89,\ 2{:}353,\ 1{:}832,\ 0{:}925$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{theorem}[The CT barrier is broken]\label{thm:ct6}
+There exists a MOLS-10 pair with $\CT = 6$: the 5504-transversal turn-square
+$A$ and one of its streamed mates $B$ satisfy $\cl(A,B)=0$ and have exactly
+six common transversals (independently verified by full enumeration).
+This refutes the strong CT Barrier Conjecture ($\CT \leq 2$ for all MOLS-10
+pairs) that was consistent with all 344 previously tested pairs.
+\end{theorem}
+
+Eight further 5504-patterns examined in the same way all produced streamed
+maxima $\CT \in \{5, 6\}$. The requirement for a triple is $\CT \geq 10$; the
+turn-square family closed more than half the observed gap in a single step.
+
+\subsubsection{Mate-Space Local Search Saturates at $\CT = 6$}
+
+To push past 6, a large-neighborhood search was run directly in mate space:
+the state is a decomposition (mate) of the fixed square $A$; a move removes
+$k \in \{2,\dots,5\}$ of its 10 transversals and re-covers the freed cells by
+an alternative disjoint $k$-set found by exact-cover backtracking over the
+5504-transversal pool, with steepest-ascent selection among all alternative
+covers and simulated-annealing acceptance ($\approx 3.4$M steps/hour,
+vectorized $\CT$ evaluation).
+
+The result is sharply negative: $45.8$ million steps ($3.9$ million applied
+moves) never improved past $\CT = 6$ from square $A$'s seed, and a parallel
+run on square $B$ stalled at $\CT = 5$ over $41$ million steps. The $\CT = 6$
+mate is a deep local optimum of the $k \leq 5$ re-cover neighborhood.
+
+\subsubsection{Exact Models over the Full Mate Space}
+
+Two CP-SAT models attack the square-$A$ question globally. Both rest on a
+partition argument:
+
+\begin{lemma}[Intersection reduction]\label{lem:partition}
+Let $X$ be a transversal decomposition of $L$ and $t_j$ any transversal of
+$L$. Since the ten members of $X$ partition the 100 cells,
+$\sum_{i \in X} |t_i \cap t_j| = 10$; hence if no member of $X$ meets $t_j$
+in $\geq 2$ cells, every member meets it exactly once. Only
+``$|t_i \cap t_j| \geq 2$'' pairs (26.5\% of all pairs; mean 1458 per
+transversal) need explicit forbidding.
+\end{lemma}
+
+\paragraph{Double-cover feasibility.} Booleans $x_i, z_j$ select two
+decompositions $X, Z$; exact-cover constraints for each; for every $i$,
+one enforced-linear constraint $x_i \Rightarrow \sum_{j \in \mathrm{bad}(i)} z_j = 0$;
+symmetry breaking orders the $(0,0)$-transversals of $X$ and $Z$. SAT would
+\emph{be} a 3-MOLS(10); INFEASIBLE would prove the square extends to no
+triple. The model builds in 9\,s ($\approx$11k variables); a 6-hour, 4-worker
+run on square $B$ returned UNKNOWN, and a concurrent square-$A$ run was
+OOM-killed at 8\,GB --- establishing a one-model-at-a-time memory discipline.
+
+\paragraph{Max-$\CT$ optimization.} Booleans $x_i$ select one decomposition;
+indicator $y_j \Rightarrow \sum_{i \in \mathrm{bad}(j)} x_i = 0$ (with
+$j \in \mathrm{bad}(j)$, since a selected transversal is never a common one);
+objective $\max \sum_j y_j$. Every incumbent is a record-$\CT$ pair; an
+incumbent $\geq 10$ triggers exact-cover completion of the common transversals
+into a third square $C$ and full clash verification; a proved optimum $< 10$
+is a theorem that square $A$ belongs to no 3-MOLS(10). Warm-started from the
+$\CT=6$ mate, the model reproduces $\CT = 6$ within two minutes; longer runs
+are in progress at the time of writing.
+
+%===========================================================================
 \section{Summary and Discussion}
 \label{sec:discussion}
 %===========================================================================
@@ -1232,36 +1423,48 @@ Non-mdecomp isotopy & \textbf{Four isotopies at $\E=28$}: tv\_254, iso\_tv\_21\_
 Non-mdecomp survey & tv\_unique\_survey \textbf{23/23} done: tv\_222/223/254/270 at $\E=\mathbf{31}$; tv\_42, tv\_147, tv\_225, tv\_238: $\E=32$; tv\_32: $\E=33$; tv\_44: $\E=34$; many pairs: $\E=34$--$35$\\
 Fast SA speed & $360{,}000$ steps/s (numba JIT, 22$\times$ speedup over $16{,}000$ steps/s baseline); incremental frequency-table updates\\
 MOLS-10 pair catalog & 193 non-mdecomp + 124 mdecomp + 197 other = 514+ pairs tested\\
-CT barrier & \textbf{All 514+ pairs}: $\CT(L_1,L_2) \leq 2 < 10$\\
+CT record (catalog) & All 514+ catalog pairs: $\CT(L_1,L_2) \leq 2 < 10$\\
 SAT certificates & 323 UNSAT certificates (Glucose3, $\approx 42$\,ms each)\\
 $L_1$ families covered & 28+ distinct $L_1$ families\\
+Decomposition census & Catalog squares: $\leq 4$ decompositions each, none mutually orthogonal; $\E{=}23$ square: unique mate, $\CT=0$\\
+\textbf{CT record (turn-squares)} & $\CT = \mathbf{6}$ (5504-transversal turn-square + streamed mate; verified) --- strong CT barrier \textbf{refuted}\\
+Mate-space LNS & 45.8M steps / 3.9M moves from the $\CT{=}6$ seed: no improvement (deep local optimum of the $k \leq 5$ re-cover neighborhood)\\
+Exact mate-space models & Double-cover feasibility: UNKNOWN at 6\,h; max-$\CT$ optimization (intersection-reduction lemma, 26.5\% of pairs forbidden): running\\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{The CT Barrier and the N(10)=2 Conjecture}
+\subsection{The CT Barrier: Strong Form Refuted, Weak Form Open}
 
-The most striking structural observation from this project is the universality of the
-CT barrier:
+For most of the project the data supported a strong conjecture:
 
-\begin{conjecture}[CT Barrier Conjecture]\label{conj:ct}
+\begin{conjecture}[CT Barrier Conjecture, strong form --- \textbf{refuted}]\label{conj:ct}
 Every MOLS-10 pair $(L_1, L_2)$ satisfies $\CT(L_1, L_2) \leq 2$.
 \end{conjecture}
 
-If Conjecture~\ref{conj:ct} is true, then by Corollary~\ref{cor:ct_barrier},
-$N(10) = 2$---settling the 60-year-old open problem. Our evidence for this conjecture
-is strong but not conclusive:
-\begin{itemize}[noitemsep]
-  \item All 344 pairs tested (from 28 distinct $L_1$ families, using 5 different
-    construction methods) have $\CT \leq 2$.
-  \item The SA-CT climbing algorithm actively seeks pairs with high CT, yet never
-    exceeds CT=2 despite hundreds of trials.
-  \item Glucose3 provides machine-verifiable UNSAT proofs for all 323 pairs.
-\end{itemize}
+The evidence was substantial --- all 344 pairs tested across 28 distinct $L_1$
+families and 5 construction methods had $\CT \leq 2$, SA-CT climbing never
+exceeded 2, and Glucose3 gave UNSAT certificates for all 323 original pairs.
+Nevertheless, Stage~9 \emph{refuted} the strong form
+(Theorem~\ref{thm:ct6}): the 5504-transversal turn-square admits a mate with
+$\CT = 6$. The lesson is methodological: the barrier at $\CT \leq 2$ was a
+property of the low-transversal region of pair space that the earlier
+constructions sampled, not of MOLS-10 pairs as such. Transversal-rich squares
+carry qualitatively richer mate structure.
 
-The total space of MOLS-10 pairs is astronomically large; exhaustive verification is
-computationally infeasible. A mathematical proof of the CT barrier would resolve the
-problem definitively.
+What remains open is the weak form, which is what the $N(10)$ question
+actually requires:
+
+\begin{conjecture}[CT Barrier Conjecture, weak form]\label{conj:ctweak}
+Every MOLS-10 pair $(L_1, L_2)$ satisfies $\CT(L_1, L_2) < 10$.
+\end{conjecture}
+
+If Conjecture~\ref{conj:ctweak} is true, then by Corollary~\ref{cor:ct_barrier},
+$N(10) = 2$. The observed record now stands at $\CT = 6$, with mate-space
+local search saturating there (45.8M steps without improvement) and exact
+optimization over the full mate space of the record square still undecided.
+The total space of MOLS-10 pairs remains astronomically large; a mathematical
+proof either way would resolve the problem definitively.
 
 \subsection{The Energy Landscape: Structural Observations}
 
@@ -1306,8 +1509,18 @@ landscape has not yet been exhausted.
 
 Combining all results, the evidence supporting $N(10)=2$ includes:
 \begin{enumerate}
-  \item \textbf{Universal CT barrier.} All 514+ tested pairs have $\CT \leq 2$, with
-    machine-verifiable proofs for all 323 of the original pairs.
+  \item \textbf{CT deficit (updated).} All 514+ pairs from the original catalog have
+    $\CT \leq 2$ (machine-verifiable proofs for all 323 original pairs), and the
+    turn-square breakthrough reached only $\CT = 6$ --- still short of the
+    $\CT \geq 10$ that a triple requires, with mate-space local search saturating
+    at 6 over 45.8M steps. (Note, however, that Stage~9 shows this deficit is
+    \emph{not} universal at the $\CT \leq 2$ level; see
+    Theorem~\ref{thm:ct6}. The direction of this evidence is weaker than
+    previously believed.)
+  \item \textbf{Decomposition census.} Every exhaustively analyzed square from the
+    catalog has at most 4 transversal decompositions, no two of them mutually
+    orthogonal (Table~\ref{tab:census}); the $\E=23$ record square has a unique
+    mate with $\CT = 0$ (Theorem~\ref{thm:e23mate}).
   \item \textbf{Deep energy minimum.} $\E=23$ (pair \texttt{tv\_254}) is a strict 4-deep
     IC local minimum; BFS depth-4 confirms 28,553 IC-reachable states all have $\E \geq 23$.
     Prior record $\E=26$ (\texttt{iso\_tv\_21\_0}) is a strict 1-IC local minimum with unique
@@ -1349,10 +1562,13 @@ strategic adaptation.
 \subsection{Open Questions and Future Directions}
 
 \begin{enumerate}
-  \item \textbf{Prove or disprove the CT Barrier Conjecture.} A mathematical proof
-    that all MOLS-10 pairs have $\CT \leq 2$ would resolve $N(10)=2$. Alternatively,
-    finding a MOLS-10 pair with $\CT \geq 10$ would be a major breakthrough toward
-    $N(10) \geq 3$.
+  \item \textbf{Prove or disprove the weak CT Barrier Conjecture.} The strong form
+    ($\CT \leq 2$) is refuted by the turn-square $\CT=6$ pair; the weak form
+    ($\CT < 10$, Conjecture~\ref{conj:ctweak}) is what $N(10)=2$ requires. Deciding
+    the max-$\CT$ optimization over the full mate space of a 5504-transversal
+    turn-square (Section~\ref{sec:stage9}) is the most concrete next step: a proved
+    optimum $<10$ per square accumulates nonexistence theorems; an incumbent
+    $\geq 10$ with decomposable commons \emph{is} a 3-MOLS(10).
 
   \item \textbf{Improve the energy record.} Can $\E < 26$ be achieved? CP-SAT with
     longer timeouts, distributed search, or new algorithmic ideas might escape the
@@ -1362,9 +1578,12 @@ strategic adaptation.
     to exactly $\E=28$? Is there a combinatorial invariant of MOLS-10 pairs that
     implies $\E \geq 28$ for all pairs and all $L_3$?
 
-  \item \textbf{Extend the pair catalog.} Are there MOLS-10 pairs with structural
-    properties fundamentally different from those in the current 323+115-pair catalog?
-    In particular, are there pairs with $\CT > 2$?
+  \item \textbf{Extend the pair catalog.} Stage~9 answered the old form of this
+    question: pairs with $\CT > 2$ exist (turn-square mates reach $\CT = 6$).
+    The refined question: which structural features beyond raw transversal count
+    (5504 vs.\ 872) govern the attainable $\CT$, and do any order-10 squares
+    outside the turn family combine high transversal counts with richer
+    common-transversal structure?
 
   \item \textbf{Prove a lower bound on $\E$.} A theoretical argument showing $\E \geq c$
     for some $c > 0$ and all MOLS-10 pairs would give a conditional proof of $N(10)=2$
