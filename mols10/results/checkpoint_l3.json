@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-06-07T06:41:45.450499",
+  "timestamp": "2026-06-07T06:36:01.952699",
   "elapsed": 42.0,
   "stats": {
-    "nodes": 153598,
+    "nodes": 167569,
     "prune_domain": 0,
-    "prune_forward": 155242
+    "prune_forward": 169327
   },
   "L3_partial": [
     [
