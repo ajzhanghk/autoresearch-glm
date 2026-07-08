@@ -32,10 +32,12 @@ INSTANCE = int(sys.argv[1]) if len(sys.argv) > 1 else 0
 N_INST = int(sys.argv[2]) if len(sys.argv) > 2 else 2
 STREAM_S = int(sys.argv[3]) if len(sys.argv) > 3 else 600
 TOPK = int(sys.argv[4]) if len(sys.argv) > 4 else 10
-LOG = REPO / f"mols10/results/nearturn2_{INSTANCE}.log"
-BEST = REPO / f"mols10/results/nearturn2_best_{INSTANCE}.json"
+SEED_SQ = REPO / (sys.argv[5] if len(sys.argv) > 5
+                  else "mols10/results/turnsq_ct6_squareA.json")
+DEPTH_TAG = sys.argv[6] if len(sys.argv) > 6 else "d1"
+LOG = REPO / f"mols10/results/nearturn2_{DEPTH_TAG}_{INSTANCE}.log"
+BEST = REPO / f"mols10/results/nearturn2_{DEPTH_TAG}_best_{INSTANCE}.json"
 BRANCH = "claude/mols-order-10-search-yfQXK"
-SEED_SQ = REPO / "mols10/results/turnsq_ct6_squareA.json"
 
 def log(msg):
     line = f"[{datetime.now().strftime('%H:%M:%S')}] {msg}"
@@ -190,7 +192,8 @@ def main():
     log(f"Near-turn CYCLE search — instance={INSTANCE}/{N_INST}, stream={STREAM_S}s")
     seed = json.loads(SEED_SQ.read_text())
     L0 = np.array(seed['L'], dtype=np.int8)
-    assert sigma_invariant(L0)
+    if not sigma_invariant(L0):
+        log("base square already sigma-broken (depth >= 2 exploration)")
 
     moves = gen_moves(L0)
     log(f"{len(moves)} cycle-swap moves generated")
