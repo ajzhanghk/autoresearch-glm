@@ -109,7 +109,9 @@ def row_cycles(L, r1, r2):
                 seen[c] = True
                 cyc.append(c)
                 c = p[c]
-            if len(cyc) >= 3:
+            # length-N "cycles" are full row/column transpositions, i.e.
+            # isotopies: the result stays in the (MMM-excluded) turn class
+            if 3 <= len(cyc) <= N - 1:
                 cycles.append(cyc)
     return cycles
 
