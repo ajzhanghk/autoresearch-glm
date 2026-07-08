@@ -193,10 +193,15 @@ def main():
     seed = json.loads((REPO / f"mols10/results/nearturn2_seed_{INSTANCE % 2}.json"
                        ).read_text())
     L = np.array(seed['L'], dtype=np.int8)
+    # diversify instances: random warm-up walk before climbing
+    for _ in range(INSTANCE + 3):
+        L2 = random_move(L, rng)
+        if L2 is not None:
+            L = L2
     cur = count_transversals(L)
     best_score = cur
     best_ct_overall = -1
-    log(f"start count={cur}")
+    log(f"start count={cur} (after {INSTANCE+3} warm-up moves)")
 
     T = 40.0
     step = 0
@@ -207,6 +212,16 @@ def main():
         if L2 is None:
             continue
         n2 = count_transversals(L2)
+        if n2 >= 5504:
+            # 5504 is (empirically) attained only by the MMM-excluded turn
+            # class; its isotopes evade the aligned turnlike() test. Save
+            # once for a later isotopy audit, never enter.
+            marker = REPO / f"mols10/results/transclimb_5504_{INSTANCE}.json"
+            if not marker.exists():
+                marker.write_text(json.dumps({'count': int(n2),
+                                              'L': L2.tolist()}))
+                log(f"step {step}: hit count={n2} (turn-suspect), rejected")
+            continue
         accept = n2 >= cur or rng.random() < np.exp(min(0, (n2 - cur)) / T)
         if accept and not turnlike(L2):
             L, cur = L2, n2
