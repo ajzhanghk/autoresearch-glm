@@ -75,5 +75,12 @@
 "bound": 3,
 "n_trans": 2080,
 "elapsed": 883
+},
+"11": {
+"status": "OPTIMAL",
+"maxct": 3,
+"bound": 3,
+"n_trans": 2080,
+"elapsed": 755
 }
 }
