@@ -1388,8 +1388,117 @@ objective $\max \sum_j y_j$. Every incumbent is a record-$\CT$ pair; an
 incumbent $\geq 10$ triggers exact-cover completion of the common transversals
 into a third square $C$ and full clash verification; a proved optimum $< 10$
 is a theorem that square $A$ belongs to no 3-MOLS(10). Warm-started from the
-$\CT=6$ mate, the model reproduces $\CT = 6$ within two minutes; longer runs
-are in progress at the time of writing.
+$\CT=6$ mate, the model reproduces $\CT = 6$ within two minutes. A sharper
+pure-feasibility variant (hard constraint $\sum_j y_j \geq 10$, no objective)
+and a checkpointed split into 608 subproblems by the $(0,0)$-covering
+transversal both remained UNKNOWN within multi-hour budgets before this
+line was overtaken by the literature findings of Stage~10.
+
+%===========================================================================
+\subsection{Stage 10: Literature Integration --- the Turn Class is Excluded}
+\label{sec:stage10}
+%===========================================================================
+
+A systematic literature review, conducted after the $\CT=6$ discovery,
+repositioned the entire program:
+
+\begin{itemize}[noitemsep]
+  \item \textbf{McKay--Meynert--Myrvold~\cite{mmm2007}.} Every square in a
+    hypothetical 3-MOLS(10) has \emph{trivial} autoparatopism group. Since
+    every turn-square admits the nontrivial autotopism
+    $\sigma : (r,c) \mapsto (r{+}5, c{+}5)$ (symbols fixed), \textbf{the
+    entire turn class --- including our $\CT = 6$ square --- is excluded
+    from triples}. The per-square decision computations of
+    Section~\ref{sec:stage9} were stopped; their motivation (a triple
+    through square $A$) is settled negatively by the literature theorem.
+  \item \textbf{Common-transversal records.} The best published value for
+    order-10 MOLS pairs was 4; recent SAT-based work~\cite{bright2022,bright2025} found
+    pairs with up to \textbf{7} common transversals. Our independently built
+    pipeline reached 6 within hours of adopting the transversal-rich
+    strategy --- confirming the approach, and framing the next target:
+    exceed 7, on squares \emph{not} excluded by symmetry.
+  \item \textbf{Bright et al.~\cite{bright2022}.} All 18{,}526{,}320 pairs of MOLS(10)
+    satisfying a nontrivial GF(2) relation fail to extend to a triple.
+    Combined with McKay--Meynert--Myrvold, the open search space is:
+    trivial-symmetry squares, relation-free pairs.
+  \item \textbf{Myrvold~\cite{myrvold1999} / Bright~\cite{bright2025}.} Of 28 structural cases for
+    a pair involving a square with a $4\times4$ subsquare, 20 are excluded;
+    the remaining 8 admit pairs (so only the third square can rule them out).
+  \item \textbf{Transversal maxima.} Whether 5504 is the true order-10
+    maximum is open; McKay et al.~\cite{mmw2006} examined billions of squares (including
+    all with nontrivial symmetry) without exceeding it. No census of
+    transversal counts for \emph{trivial-symmetry} squares exists --- the
+    frontier mined in Stage~11.
+\end{itemize}
+
+An immediate corollary sharpens the interpretation of Stage~9: the turn
+class realizes the highest known $\CT$ values precisely because of its
+symmetry-driven transversal wealth, yet that same symmetry excludes it from
+triples. High $\CT$ and completability are in structural tension.
+
+%===========================================================================
+\subsection{Stage 11: The Asymmetric Frontier}
+\label{sec:stage11}
+%===========================================================================
+
+Stage~11 asks the question the literature leaves open: how much of the turn
+class's transversal wealth (and hence $\CT$ reach) survives symmetry
+breaking?
+
+\paragraph{One-swap near-turn squares.} The 5504-square's only intercalates
+are its 25 structural blocks (all $\sigma$-preserving), so the minimal
+symmetry-breaking Latin-preserving moves are \emph{partial row/column cycle
+swaps} (cycle length $3$--$9$; length-10 ``cycles'' are full transpositions,
+i.e.\ isotopies that stay in the excluded class --- a trap detected when such
+moves ``kept'' 5504 transversals). All such swaps on the base patterns give
+squares with exactly \textbf{2112} transversals.
+
+\paragraph{$\CT$ ceiling at 3.} Streaming mates of 20 one-swap squares
+(600\,s each, $\approx$68k mates) gave $\max \CT = 3$ uniformly. A
+randomized multi-pass sweep over the full 160-square one-swap library ---
+each pass applying a fresh random isotopy, which preserves $\CT$ but
+scrambles the CP-SAT enumeration order so successive passes sample
+different mate-space corners --- accumulated $\approx$700k further mates
+across three passes: \textbf{still $\max \CT = 3$}. Depth-2 perturbations
+(two swaps) drop to 1650--1850 transversals and $\CT \leq 3$ on
+$\approx$7k mates.
+
+\paragraph{The landscape falls off the ridge.} Simulated annealing over
+general Latin squares maximizing the transversal count (partial-cycle-swap
+moves, turn-class states rejected by count fingerprint) was run from
+one-swap seeds: all four instances collapsed from 2112 to 1000--1900 within
+$3\times10^5$ steps and froze. Outside the turn class the transversal
+landscape drops steeply; the one-swap ridge appears to be locally optimal
+asymmetric material.
+
+\paragraph{The $\CT$--richness law.} The project's accumulated data now
+spans three orders of transversal richness:
+
+\begin{table}[h]
+\centering
+\caption{Empirical streamed-$\CT$ ceiling vs.\ transversal count.}
+\label{tab:ctlaw}
+\begin{tabular}{lcccl}
+\toprule
+Square family & Transversals & Symmetry & $\max \CT$ seen & Sample\\
+\midrule
+Catalog (Stages 1--8) & 856--880 & trivial & 2 & 514+ pairs, SAT-certified\\
+Depth-2 near-turn & 1650--1850 & trivial$^*$ & 3 & $\approx$7k mates\\
+One-swap near-turn & 2112 & trivial$^*$ & 3 & $\approx$770k mates, 160 squares\\
+Turn class & 5504 & $\mathbb{Z}_2$ ($\sigma$) & 6 & 68k+ mates, 45.8M LNS steps\\
+Literature record & --- & (relation-carrying) & 7 & Bright et al.~\cite{bright2022}\\
+\bottomrule
+\end{tabular}
+
+\smallskip
+{\footnotesize $^*$$\sigma$-broken; full autoparatopism-triviality audit pending.}
+\end{table}
+
+The pattern is monotone: $\CT$ reach tracks transversal richness, the
+richest known class is excluded by symmetry, and the asymmetric frontier
+so far tops out at $\CT = 3$ against the $\CT \geq 10$ needed for a triple.
+Every datapoint gathered here is consistent with the weak CT barrier
+(Conjecture~\ref{conj:ctweak}) and hence with $N(10) = 2$.
 
 %===========================================================================
 \section{Summary and Discussion}
@@ -1702,6 +1811,45 @@ G.~H.~J.~van Rees,
 B.~D.~McKay and I.~M.~Wanless,
 \newblock On the number of Latin squares,
 \newblock {\em Annals of Combinatorics}, 9(3):335--344, 2005.
+
+\bibitem{mmm2007}
+B.~D.~McKay, A.~Meynert, and W.~Myrvold,
+\newblock Small Latin squares, quasigroups, and loops,
+\newblock {\em Journal of Combinatorial Designs}, 15(2):98--119, 2007.
+
+\bibitem{myrvold1999}
+W.~Myrvold,
+\newblock Negative results for orthogonal triples of Latin squares of order 10,
+\newblock {\em Journal of Combinatorial Mathematics and Combinatorial
+Computing}, 29:95--105, 1999.
+
+\bibitem{eganwanless2016}
+J.~Egan and I.~M.~Wanless,
+\newblock Enumeration of MOLS of small order,
+\newblock {\em Mathematics of Computation}, 85(298):799--824, 2016.
+
+\bibitem{bright2022}
+C.~Bright, K.~K.~H.~Cheung, B.~Stevens, I.~Kotsireas, and V.~Ganesh,
+\newblock Pairs of MOLS of order ten satisfying non-trivial relations,
+\newblock {\em Designs, Codes and Cryptography}, 90:2293--2318, 2022.
+
+\bibitem{bright2025}
+C.~Bright et al.,
+\newblock Myrvold's results on orthogonal triples of $10 \times 10$ Latin
+squares: a SAT investigation,
+\newblock {\em The Electronic Journal of Combinatorics}, 33(1):\#P30, 2026.
+(arXiv:2503.10504).
+
+\bibitem{mmw2006}
+B.~D.~McKay, J.~C.~McLeod, and I.~M.~Wanless,
+\newblock The number of transversals in a Latin square,
+\newblock {\em Designs, Codes and Cryptography}, 40(3):269--284, 2006.
+
+\bibitem{delisle2006}
+E.~Delisle,
+\newblock The search for a triple of mutually orthogonal Latin squares of
+order ten: looking through pairs of dimension thirty-five and less,
+\newblock Master's thesis, University of Victoria, 2006.
 
 \end{thebibliography}
 
