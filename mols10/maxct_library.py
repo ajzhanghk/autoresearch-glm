@@ -139,7 +139,10 @@ def prove_maxct(L, cap_s):
     model.maximize(sum(y))
     solver = cp_model.CpSolver()
     solver.parameters.max_time_in_seconds = cap_s
-    solver.parameters.num_workers = 2
+    # 4 workers minimum: the objective-bound (core/LP) workers only run at
+    # higher worker counts — at 2 workers the bound stays at the trivial
+    # 2112 forever (observed empirically on sq0/sq1)
+    solver.parameters.num_workers = 4
     st = solver.solve(model)
     name = solver.status_name(st)
     obj = int(solver.objective_value) if st in (cp_model.OPTIMAL, cp_model.FEASIBLE) else -1
