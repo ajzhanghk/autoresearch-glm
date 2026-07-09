@@ -5,5 +5,26 @@
 "bound": 3,
 "n_trans": 2112,
 "elapsed": 1391
+},
+"1": {
+"status": "OPTIMAL",
+"maxct": 3,
+"bound": 3,
+"n_trans": 2112,
+"elapsed": 1225
+},
+"2": {
+"status": "OPTIMAL",
+"maxct": 3,
+"bound": 3,
+"n_trans": 2048,
+"elapsed": 681
+},
+"3": {
+"status": "OPTIMAL",
+"maxct": 3,
+"bound": 3,
+"n_trans": 2048,
+"elapsed": 685
 }
 }
