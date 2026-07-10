@@ -151,6 +151,9 @@ def main():
     solver = cp_model.CpSolver()
     solver.parameters.max_time_in_seconds = TIMEOUT
     solver.parameters.num_workers = WORKERS
+    # fresh trajectory each (re)launch: container restarts make long runs
+    # Las Vegas anyway, so embrace seed rotation
+    solver.parameters.random_seed = int(time.time()) % 2_000_000_000
     t0 = time.time()
     st = solver.solve(m)
     el = time.time() - t0
