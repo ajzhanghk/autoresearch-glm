@@ -327,5 +327,19 @@
 "bound": 3,
 "n_trans": 2048,
 "elapsed": 942
+},
+"47": {
+"status": "OPTIMAL",
+"maxct": 3,
+"bound": 3,
+"n_trans": 2048,
+"elapsed": 936
+},
+"48": {
+"status": "OPTIMAL",
+"maxct": 3,
+"bound": 3,
+"n_trans": 2080,
+"elapsed": 1168
 }
 }
