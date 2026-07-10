@@ -299,5 +299,33 @@
 "bound": 3,
 "n_trans": 2048,
 "elapsed": 378
+},
+"43": {
+"status": "OPTIMAL",
+"maxct": 3,
+"bound": 3,
+"n_trans": 2048,
+"elapsed": 359
+},
+"44": {
+"status": "OPTIMAL",
+"maxct": 3,
+"bound": 3,
+"n_trans": 2048,
+"elapsed": 1366
+},
+"45": {
+"status": "OPTIMAL",
+"maxct": 3,
+"bound": 3,
+"n_trans": 2048,
+"elapsed": 1675
+},
+"46": {
+"status": "OPTIMAL",
+"maxct": 3,
+"bound": 3,
+"n_trans": 2048,
+"elapsed": 942
 }
 }
