@@ -467,5 +467,12 @@
 "bound": 1907,
 "n_trans": 2048,
 "elapsed": 2404
+},
+"67": {
+"status": "FEASIBLE",
+"maxct": 3,
+"bound": 1898,
+"n_trans": 2048,
+"elapsed": 2404
 }
 }
