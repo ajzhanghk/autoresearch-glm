@@ -1,0 +1,20 @@
+[
+ {
+  "file": "pair_1.json",
+  "case": "WW",
+  "desc": "L=Q (TR type W), B=mate derived from rows of P (type W) as transversals of Q",
+  "transversals_L": 848,
+  "transversals_B": 784,
+  "common_transversals": 0,
+  "P_orth_Q_directly": false
+ },
+ {
+  "file": "pair_2.json",
+  "case": "WW",
+  "desc": "L=P (TR type W), B=mate derived from rows of Q (type W) as transversals of P",
+  "transversals_L": 896,
+  "transversals_B": 784,
+  "common_transversals": 0,
+  "P_orth_Q_directly": false
+ }
+]
