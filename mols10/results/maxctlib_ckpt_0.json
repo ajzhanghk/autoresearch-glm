@@ -425,5 +425,19 @@
 "bound": 1957,
 "n_trans": 2080,
 "elapsed": 2404
+},
+"61": {
+"status": "FEASIBLE",
+"maxct": 3,
+"bound": 1950,
+"n_trans": 2080,
+"elapsed": 2402
+},
+"62": {
+"status": "FEASIBLE",
+"maxct": 3,
+"bound": 1984,
+"n_trans": 2112,
+"elapsed": 2402
 }
 }
