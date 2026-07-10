@@ -27,3 +27,12 @@ common transversals exist, so common=0 rules that out immediately for that pair)
 |------|--------------|--------------|-----------------|-----------------|--------|------------|
 | pair_1.json | WW | L=Q (TR type W), B=mate derived from rows of P (type W) as transversals of Q | 848 | 784 | 0 | Myrvold-MOLS run.sh WW, kissat seed 1, 3144s CPU (log WW-1.log) |
 | pair_2.json | WW | L=P (TR type W), B=mate derived from rows of Q (type W) as transversals of P | 896 | 784 | 0 | Myrvold-MOLS run.sh WW, kissat seed 1, 3144s CPU (log WW-1.log) |
+
+## Exhaustive mate analysis (main session)
+
+- pair_1 L: 848 transversals, exactly 2 transversal decompositions (orthogonal
+  mates) in total; max ct over ALL mates = 0 (proved by complete enumeration).
+- pair_2 L: 896 transversals, exactly 1 decomposition; max ct = 0 (proved).
+
+Both case-WW sample squares therefore belong to no 3-MOLS(10). Pattern matches
+the low-transversal catalog: few mates, vanishing common-transversal counts.
