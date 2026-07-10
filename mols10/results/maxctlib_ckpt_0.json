@@ -355,5 +355,12 @@
 "bound": 1852,
 "n_trans": 2048,
 "elapsed": 2403
+},
+"51": {
+"status": "OPTIMAL",
+"maxct": 3,
+"bound": 3,
+"n_trans": 2048,
+"elapsed": 2365
 }
 }
