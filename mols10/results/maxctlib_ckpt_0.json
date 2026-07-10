@@ -383,5 +383,33 @@
 "bound": 1984,
 "n_trans": 2112,
 "elapsed": 2403
+},
+"55": {
+"status": "FEASIBLE",
+"maxct": 3,
+"bound": 1990,
+"n_trans": 2112,
+"elapsed": 2406
+},
+"56": {
+"status": "FEASIBLE",
+"maxct": 2,
+"bound": 1929,
+"n_trans": 2048,
+"elapsed": 2405
+},
+"57": {
+"status": "FEASIBLE",
+"maxct": 3,
+"bound": 1925,
+"n_trans": 2048,
+"elapsed": 2404
+},
+"58": {
+"status": "OPTIMAL",
+"maxct": 3,
+"bound": 3,
+"n_trans": 2016,
+"elapsed": 2354
 }
 }
