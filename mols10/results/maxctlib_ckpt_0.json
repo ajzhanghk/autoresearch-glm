@@ -138,5 +138,33 @@
 "bound": 3,
 "n_trans": 2048,
 "elapsed": 580
+},
+"20": {
+"status": "OPTIMAL",
+"maxct": 3,
+"bound": 3,
+"n_trans": 2048,
+"elapsed": 1387
+},
+"21": {
+"status": "OPTIMAL",
+"maxct": 3,
+"bound": 3,
+"n_trans": 2048,
+"elapsed": 1454
+},
+"22": {
+"status": "OPTIMAL",
+"maxct": 3,
+"bound": 3,
+"n_trans": 2080,
+"elapsed": 1992
+},
+"23": {
+"status": "OPTIMAL",
+"maxct": 3,
+"bound": 3,
+"n_trans": 2080,
+"elapsed": 1689
 }
 }
