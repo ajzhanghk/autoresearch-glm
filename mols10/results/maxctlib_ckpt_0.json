@@ -488,5 +488,33 @@
 "bound": 3,
 "n_trans": 2080,
 "elapsed": 1259
+},
+"70": {
+"status": "OPTIMAL",
+"maxct": 3,
+"bound": 3,
+"n_trans": 2048,
+"elapsed": 2152
+},
+"71": {
+"status": "FEASIBLE",
+"maxct": 3,
+"bound": 1883,
+"n_trans": 2048,
+"elapsed": 2403
+},
+"72": {
+"status": "FEASIBLE",
+"maxct": 3,
+"bound": 1941,
+"n_trans": 2112,
+"elapsed": 2402
+},
+"73": {
+"status": "FEASIBLE",
+"maxct": 2,
+"bound": 1952,
+"n_trans": 2112,
+"elapsed": 2403
 }
 }
