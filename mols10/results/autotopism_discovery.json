@@ -1,0 +1,43 @@
+{
+ "discovery": "one-swap near-turn squares retain a nontrivial (conjugate) autotopism; they are NOT asymmetric",
+ "verified_autotopism_nearturn2_seed_0": {
+  "alpha": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "beta": [
+   7,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   0,
+   8,
+   9
+  ],
+  "gamma": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   0,
+   1,
+   2,
+   3,
+   4
+  ]
+ },
+ "implication": "ALL tested high-ct squares (catalog<=2, one-swap=3, turn=6, corpus ct>=4) have nontrivial autotopism => all MMM-excluded. The genuine trivial-autotopism frontier is untested. Per MMM, any 3-MOLS(10) square must be trivial-autotopism.",
+ "corpus_ct4plus_autotopism": "38/38 nontrivial (all MMM-excluded)"
+}
