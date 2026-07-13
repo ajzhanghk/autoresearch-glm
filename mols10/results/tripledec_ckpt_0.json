@@ -963,5 +963,15 @@
 "status": "INFEASIBLE",
 "n_trans": 1672,
 "elapsed": 46
+},
+"193": {
+"status": "INFEASIBLE",
+"n_trans": 1648,
+"elapsed": 175
+},
+"194": {
+"status": "INFEASIBLE",
+"n_trans": 1676,
+"elapsed": 194
 }
 }
