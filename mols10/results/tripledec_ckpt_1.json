@@ -3,5 +3,10 @@
 "status": "INFEASIBLE",
 "n_trans": 860,
 "elapsed": 46
+},
+"1": {
+"status": "INFEASIBLE",
+"n_trans": 840,
+"elapsed": 39
 }
 }
