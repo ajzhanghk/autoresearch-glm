@@ -18,5 +18,10 @@
   "status": "INFEASIBLE",
   "n_trans": 1804,
   "elapsed": 640
+ },
+ "u_1_45_1776.json": {
+  "status": "INFEASIBLE",
+  "n_trans": 1776,
+  "elapsed": 599
  }
 }
