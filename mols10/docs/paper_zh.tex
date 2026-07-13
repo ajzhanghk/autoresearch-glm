@@ -10,7 +10,7 @@
 \usepackage{enumitem}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
-\usepackage{microtype}
+\usepackage[expansion=false]{microtype}
 \geometry{left=2.5cm,right=2.5cm,top=2.8cm,bottom=2.8cm}
 
 \newtheorem{theorem}{定理}[section]
@@ -1078,7 +1078,77 @@ UNKNOWN；(ii) 最大化-$\CT$ 优化模型（$\max\sum_j y_j$，
 $y_j \Rightarrow \sum_{i\in\mathrm{bad}(j)}x_i=0$ 且 $j\in\mathrm{bad}(j)$），
 每个增量解即新 $\CT$ 纪录对，增量解 $\ge10$ 自动触发公共横截线精确覆盖
 补全第三方块并验证；若证得最优值 $<10$ 则为方块 $A$ 的不可扩张定理。
-撰稿时该优化仍在运行。
+
+\subsection{第十至十二阶段（会话34+）：对称性诊断——$\CT=7$ 与真正的前沿}
+\label{sec:stage1012-zh}
+
+\paragraph{文献重定位。}
+系统的文献核查改变了整个格局：McKay--Meynert--Myrvold（2007，\cite{mmm2007}）
+证明 3-MOLS(10) 中每个方块的自同构群必平凡；所有 turn-square 都带非平凡
+自同构 $\sigma:(r,c)\mapsto(r{+}5,c{+}5)$，故整个 turn 族（含我们的 $\CT=6$
+方块）被排除在三元组之外。文献公开的 MOLS(10) 对公共横截线纪录为 7
+（此前发表为 4，见 Bright 等\cite{bright2022,bright2025}）；Bright 等
+（2022）另证 1850 万个带非平凡关系的对无一可扩张。
+
+\paragraph{$\CT=7$：追平世界纪录。}
+对 10{,}481 个已验证 10 阶正交对（Zaikin 的 Brown-DLS 枚举、ODLK/BOINC
+规范库、Myrvold SAT 情形）的公共横截线普查给出全局直方图
+$\{0{:}5899,1{:}3363,2{:}961,3{:}220,4{:}32,5{:}6\}$，最大 $\CT=5$。
+对其中一个横截线富集方块（\texttt{pair\_4}，4224 条横截线）以其 $\CT=5$
+伴侣热启动运行精确最大化-$\CT$ 模型，约 4.5 小时后得到 $\CT=\mathbf{7}$
+的新伴侣——\textbf{追平任何 MOLS-10 对的最佳公共横截线纪录}\cite{bright2022}，
+并经独立验证（双方拉丁、正交、恰 7 条公共横截线）。
+
+\paragraph{却是一条死路。}
+直接的自同构群计算（\texttt{autotopism.py}，规范化首行为恒等后，以轮换
+匹配共轭子在毫秒内判定整个群）显示：\texttt{pair\_4} 有\emph{非平凡}
+自同构（显式验证 $\alpha=\gamma=(0\,5)(1\,6)(2\,7)(3\,8)(4\,9)$），
+故由 MMM 定理\cite{mmm2007}不属于任何 3-MOLS(10)。这个追平纪录的 $\CT=7$
+是结构性死路。
+
+\begin{theorem}[所有已测高 $\CT$ 方块均被对称性排除]\label{thm:allexcluded-zh}
+语料库 38 个 $\CT\geq4$ 方块\emph{全部}具有非平凡自同构群；turn 方块、
+单交换与深度 2 近 turn 方块、\texttt{pair\_4}（$\CT=7$）亦然。本项目将
+$\CT$ 推过 2 的每一个 10 阶方块都被 MMM 定理\cite{mmm2007}排除于三元组之外。
+\end{theorem}
+
+\paragraph{重大前提纠正。}
+所谓"非对称单交换方块"其实\emph{并非}非对称：单次部分循环交换破坏了
+对齐平移 $\sigma$，却保留一个\emph{共轭}的非平凡自同构（对
+\texttt{nearturn2\_seed\_0} 显式验证 $\alpha=\gamma=\sigma$、
+$\beta=(0\,7)$，满足 $L[\alpha(r),\beta(c)]=\gamma(L(r,c))$ 恒成立）。
+先前基于 $\sigma$ 对齐的检测漏掉了它；完整自同构计算不会。
+
+\paragraph{真正的非对称前沿。}
+纠正后，搜索指向三元组唯一可能存身之处：\emph{平凡}自同构群的方块。
+两个事实将其牢牢限制在低位：（i）一般的平凡自同构方块横截线稀少——15 个
+随机样本均为 760--836 条，正是 $\CT\leq2$ 的目录区间；（ii）一个\emph{每步
+接受都经自同构平凡性检测把关}（绝不离开 MMM 可用区）的横截线最大化退火，
+仅能爬到约 1100 条，且这些纪录处流扫的伴侣 $\CT\leq1$。
+
+\begin{center}
+\small
+\begin{tabular}{lcccl}
+\toprule
+方块族 & 横截线数 & 自同构群 & 最大 $\CT$ & MMM 状态\\
+\midrule
+一般非对称 & 760--836 & \textbf{平凡} & $\leq$2 & 可用\\
+目录（1--8 阶段） & 856--880 & 平凡 & 2 & 可用\\
+受限非对称前沿 & $\sim$1100 & \textbf{平凡} & $\leq$1 & 可用\\
+语料 $\CT\geq4$ 方块 & 4224 & 非平凡 & 5 & 排除\\
+单/双交换近 turn & 1650--2112 & 非平凡 & 3 & 排除\\
+\texttt{pair\_4}（追平纪录） & 4224 & 非平凡 & \textbf{7} & 排除\\
+turn 类 & 5504 & $\mathbb{Z}_2$ & 6 & 排除\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+结论比第十一阶段的"$\CT$--富度定律"更为锐利：\textbf{将 $\CT$ 抬向三元组
+所需 $\CT\geq10$ 的横截线财富，本身就是非平凡对称性的产物，而同样的对称性
+又经 MMM 定理禁止该方块补全为三元组。} 每一个已测的平凡自同构方块——唯一
+可能属于 3-MOLS(10) 的方块——都停在 $\CT\leq2$（一般与目录）或 $\CT\leq1$
+（受把关约束的横截线最大化）。这一张力是本项目迄今为 $N(10)=2$ 提供的
+最强结构证据，尽管仍是证据而非证明。
 
 \subsection{全阶段能量级联汇总}
 
@@ -1401,6 +1471,22 @@ D.\ R.\ Stinson.
 T.\ Beth, D.\ Jungnickel, and H.\ Lenz.
 \newblock {\em Design Theory（设计理论）}.
 \newblock Cambridge University Press, Cambridge, 1985.
+
+\bibitem{mmm2007}
+B.~D.~McKay, A.~Meynert, and W.~Myrvold.
+\newblock Small Latin squares, quasigroups, and loops.
+\newblock {\em Journal of Combinatorial Designs}, 15(2):98--119, 2007.
+
+\bibitem{bright2022}
+C.~Bright, K.~K.~H.~Cheung, B.~Stevens, I.~Kotsireas, and V.~Ganesh.
+\newblock Pairs of MOLS of order ten satisfying non-trivial relations.
+\newblock {\em Designs, Codes and Cryptography}, 90:2293--2318, 2022.
+
+\bibitem{bright2025}
+C.~Bright et al.
+\newblock Myrvold's results on orthogonal triples of $10 \times 10$ Latin
+squares: a SAT investigation.
+\newblock {\em Electronic Journal of Combinatorics}, 33(1):\#P30, 2026.
 
 \end{thebibliography}
 
