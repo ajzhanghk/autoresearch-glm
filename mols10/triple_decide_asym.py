@@ -227,6 +227,13 @@ def main():
         key = str(len(ckpt))
         ckpt[key] = {'status': name, 'n_trans': M, 'elapsed': round(el)}
         CKPT.write_text(json.dumps(ckpt, indent=0))
+        # persist UNKNOWN (undecided, richest) squares for a longer re-attack:
+        # these are the only territory where a triple could still hide.
+        if name not in ('OPTIMAL', 'FEASIBLE', 'INFEASIBLE'):
+            udir = REPO / "mols10/results/undecided"
+            udir.mkdir(exist_ok=True)
+            (udir / f"u_{INSTANCE}_{key}_{M}.json").write_text(
+                json.dumps({'L': L.tolist(), 'n_trans': M}))
         n_done = len(ckpt)
         n_unsat = sum(1 for v in ckpt.values() if v['status'] == 'INFEASIBLE')
         log(f"square {key}: {M} trans -> {name} in {el:.0f}s "
