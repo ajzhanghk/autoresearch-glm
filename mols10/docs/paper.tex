@@ -1974,4 +1974,110 @@ order ten: looking through pairs of dimension thirty-five and less,
 
 \end{thebibliography}
 
+\appendix
+\newpage
+\section{The Record-Tying $\CT=7$ Case}
+\label{app:ct7}
+
+This appendix exhibits, in full, the concrete order-10 pair that attains
+$\CT = 7$ (Stage~12, \S\ref{sec:stage12}), tying the best published
+common-transversal count for any pair of MOLS-10~\cite{bright2022}. The two
+squares are printed first, then the object ``$\CT=7$'' names --- the seven
+transversals common to both --- is listed explicitly, with the exact
+recipe for verifying the count by hand.
+
+\paragraph{A note on ``two vs.\ three''.} The record is a property of an
+orthogonal \emph{pair} $(L_1, L_2)$, not a triple. A third square $L_3$
+orthogonal to both would exist iff the pair had \emph{ten} pairwise-disjoint
+common transversals (they would be the ten symbol-classes of $L_3$); here
+there are only seven common transversals in total, so no third square exists
+and this is not a 3-MOLS(10). Moreover $L_1$ has nontrivial autotopism group,
+so by McKay--Meynert--Myrvold~\cite{mmm2007} it belongs to no triple at all:
+the record-tying $\CT=7$ is a structural dead end, printed here as the
+concrete high-water mark of the common-transversal statistic.
+
+\subsection*{The pair}
+
+$L_1$ (4224 transversals) and its mate $L_2$ (816 transversals),
+$\cl(L_1,L_2)=0$ (orthogonal):
+\[
+L_1=\begin{pmatrix}
+  0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+  1 & 2 & 3 & 4 & 9 & 0 & 5 & 6 & 7 & 8 \\
+  2 & 3 & 4 & 0 & 8 & 1 & 9 & 5 & 6 & 7 \\
+  3 & 5 & 9 & 8 & 2 & 7 & 1 & 0 & 4 & 6 \\
+  4 & 0 & 8 & 7 & 6 & 3 & 2 & 1 & 9 & 5 \\
+  9 & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 & 0 \\
+  8 & 7 & 6 & 5 & 0 & 9 & 4 & 3 & 2 & 1 \\
+  7 & 6 & 5 & 9 & 1 & 8 & 0 & 4 & 3 & 2 \\
+  6 & 4 & 0 & 1 & 7 & 2 & 8 & 9 & 5 & 3 \\
+  5 & 9 & 1 & 2 & 3 & 6 & 7 & 8 & 0 & 4 \\
+\end{pmatrix}
+\qquad
+L_2=\begin{pmatrix}
+  0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+  6 & 3 & 8 & 7 & 5 & 2 & 4 & 9 & 1 & 0 \\
+  9 & 4 & 5 & 1 & 7 & 8 & 2 & 3 & 0 & 6 \\
+  7 & 0 & 6 & 2 & 8 & 9 & 5 & 4 & 3 & 1 \\
+  1 & 5 & 9 & 8 & 3 & 6 & 0 & 2 & 4 & 7 \\
+  3 & 6 & 4 & 5 & 2 & 0 & 9 & 1 & 7 & 8 \\
+  4 & 2 & 7 & 9 & 6 & 1 & 8 & 0 & 5 & 3 \\
+  5 & 8 & 1 & 0 & 9 & 3 & 7 & 6 & 2 & 4 \\
+  2 & 9 & 3 & 4 & 0 & 7 & 1 & 8 & 6 & 5 \\
+  8 & 7 & 0 & 6 & 1 & 4 & 3 & 5 & 9 & 2 \\
+\end{pmatrix}
+\]
+
+\subsection*{How $\CT$ is computed}
+
+A \emph{transversal} of a Latin square $M$ is a choice of one cell in each
+row, no two in the same column, whose ten symbols are all distinct --- i.e.\
+a permutation $c:\{0,\dots,9\}\to\{0,\dots,9\}$ (row $r$ picks column $c(r)$)
+such that $\{M[r,c(r)]\}_{r=0}^{9}=\{0,\dots,9\}$. Writing a transversal as
+the tuple $(c(0),\dots,c(9))$ of chosen columns, it is a \emph{common
+transversal} of the pair $(L_1,L_2)$ when it is a transversal of \emph{both}
+squares simultaneously: the ten symbols $L_1[r,c(r)]$ are distinct \emph{and}
+the ten symbols $L_2[r,c(r)]$ are distinct. $\CT(L_1,L_2)$ is the number of
+such tuples.
+
+Operationally the count is obtained by (i)~enumerating all 4224 transversals
+of $L_1$ by row-by-row backtracking (bitmask over used columns and used
+symbols), then (ii)~keeping those whose $L_2$-symbols
+$\{L_2[r,c(r)]\}_{r=0}^{9}$ are also all distinct. Exactly seven survive; they
+are $T_1,\dots,T_7$ below. (Equivalently one may enumerate the 816
+transversals of $L_2$ and test the $L_1$-side --- the count is the same.)
+
+\subsection*{The seven common transversals}
+
+Each row of the table gives one common transversal as its column choice
+$(c(0),\dots,c(9))$; row $r$ of the square contributes the cell in column
+$c(r)$. For every $T_k$ the reader may check directly that both
+$(L_1[r,c(r)])_{r}$ and $(L_2[r,c(r)])_{r}$ run through $0,\dots,9$ exactly
+once.
+
+\begin{center}
+\begin{tabular}{c|cccccccccc}
+\toprule
+ & $c(0)$ & $c(1)$ & $c(2)$ & $c(3)$ & $c(4)$ & $c(5)$ & $c(6)$ & $c(7)$ & $c(8)$ & $c(9)$\\
+\midrule
+$T_{1}$ & 0 & 7 & 2 & 4 & 9 & 1 & 5 & 8 & 3 & 6 \\
+$T_{2}$ & 3 & 6 & 8 & 2 & 0 & 9 & 1 & 4 & 5 & 7 \\
+$T_{3}$ & 4 & 0 & 6 & 1 & 3 & 7 & 2 & 5 & 9 & 8 \\
+$T_{4}$ & 4 & 7 & 3 & 2 & 6 & 8 & 1 & 5 & 9 & 0 \\
+$T_{5}$ & 5 & 1 & 9 & 7 & 2 & 8 & 6 & 3 & 0 & 4 \\
+$T_{6}$ & 5 & 2 & 4 & 9 & 6 & 0 & 1 & 7 & 3 & 8 \\
+$T_{7}$ & 9 & 0 & 3 & 1 & 4 & 2 & 6 & 8 & 5 & 7 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent\emph{Worked check for $T_1=(0,7,2,4,9,1,5,8,3,6)$.} The chosen
+cells carry $L_1$-symbols
+$(0,6,4,2,5,8,9,3,1,7)$ and $L_2$-symbols $(0,9,5,8,7,6,1,2,4,3)$; both are
+permutations of $\{0,\dots,9\}$, so $T_1$ is a transversal of $L_1$ and of
+$L_2$ at once, i.e.\ a common transversal. The same holds for
+$T_2,\dots,T_7$, and no eighth column-tuple passes both tests, giving
+$\CT(L_1,L_2)=7$. Because $7<10$, no set of ten disjoint common transversals
+exists, confirming there is no third orthogonal square.
+
 \end{document}
