@@ -1,0 +1,6 @@
+{
+ "validation": "decide_triple model verified against direct pairwise-orthogonality computation",
+ "result": "5/5 multi-decomposition squares MATCH (all INFEASIBLE, confirmed by brute force)",
+ "mechanism_datapoint": "a 1420-transversal trivial-autotopism square has 25 orthogonal mates (decompositions) but NO two of them are mutually orthogonal => no triple",
+ "interpretation": "MMM-eligible squares have mates but the mates are never mutually orthogonal; this is the concrete mechanism of N(10)=2 evidence"
+}
