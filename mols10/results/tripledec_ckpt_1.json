@@ -748,5 +748,10 @@
 "status": "INFEASIBLE",
 "n_trans": 856,
 "elapsed": 49
+},
+"150": {
+"status": "UNKNOWN",
+"n_trans": 1804,
+"elapsed": 401
 }
 }
