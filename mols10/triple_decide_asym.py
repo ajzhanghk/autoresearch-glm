@@ -120,21 +120,40 @@ def random_move(L, rng):
         return np.ascontiguousarray(M1.T) if tp else M1
     return None
 
+_TURN_BASES = None
+def _load_bases():
+    global _TURN_BASES
+    if _TURN_BASES is None:
+        _TURN_BASES = []
+        for p in ["mols10/results/turnsq_ct6_squareA.json",
+                  "mols10/results/turnsq_best_ct_1.json"]:
+            try:
+                _TURN_BASES.append(np.array(json.loads((REPO/p).read_text())['L'],
+                                            dtype=np.int8))
+            except Exception:
+                pass
+    return _TURN_BASES
+
 def gen_trivial_square(rng, min_trans):
-    """Random trivial-autotopism square, climbed toward min_trans transversals."""
+    """Richest MMM-eligible material: 2 partial-cycle swaps off a 5504-
+    transversal turn base break the symmetry to trivial autotopism while
+    retaining ~1400-1672 transversals (empirically the sweet spot; more
+    swaps lose transversals, random climbing caps ~1100). Best fish odds:
+    a triple needs 2 orthogonal decompositions, favored by high richness."""
+    bases = _load_bases()
+    for _ in range(120):
+        L = bases[rng.randrange(len(bases))].copy()
+        for _ in range(2):
+            m = random_move(L, rng)
+            if m is not None: L = m
+        n = count_trans(L)
+        if n >= min_trans and not has_nontrivial_autotopism(L):
+            return L
+    # fallback: random climb
     L = np.array([[(i+j) % N for j in range(N)] for i in range(N)], dtype=np.int8)
     for _ in range(300):
         m = random_move(L, rng)
         if m is not None: L = m
-    cur = count_trans(L)
-    tries = 0
-    while (cur < min_trans or has_nontrivial_autotopism(L)) and tries < 4000:
-        tries += 1
-        m = random_move(L, rng)
-        if m is None: continue
-        n2 = count_trans(m)
-        if n2 >= cur - 40 or rng.random() < 0.1:
-            L, cur = m, n2
     return L if not has_nontrivial_autotopism(L) else None
 
 def decide_triple(L, cap_s):
