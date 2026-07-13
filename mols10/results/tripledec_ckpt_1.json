@@ -403,5 +403,15 @@
 "status": "UNKNOWN",
 "n_trans": 1776,
 "elapsed": 403
+},
+"81": {
+"status": "INFEASIBLE",
+"n_trans": 1792,
+"elapsed": 67
+},
+"82": {
+"status": "INFEASIBLE",
+"n_trans": 844,
+"elapsed": 48
 }
 }

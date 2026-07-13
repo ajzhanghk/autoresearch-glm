@@ -1591,6 +1591,55 @@ produced for $N(10)=2$, while remaining a body of evidence rather than a
 proof.
 
 %===========================================================================
+\subsection{Stage 13: Exact Triple-Decisions on the Eligible Region}
+\label{sec:stage13}
+%===========================================================================
+
+Stage~13 converts the tension of Stage~12 into direct per-square
+\emph{decisions}. For a fixed square $L$, the Stage~8 reformulation makes
+``$L$ lies in a 3-MOLS(10)'' equivalent to ``$L$ admits two mutually
+orthogonal transversal decompositions'', which is decided exactly by a
+single CP-SAT model (booleans over $L$'s transversal pool, two exact-cover
+constraints, and the partition-argument reduction
+$x_i \Rightarrow \sum_{j:\,|t_i\cap t_j|\geq2} z_j = 0$; symmetry-broken on
+the $(0,0)$-transversal). Crucially this is tractable precisely on the
+eligible region: trivial-autotopism squares are transversal-poor
+($\sim$750--1850), so each model has only $\sim$1--2k variables and decides
+in seconds to minutes --- whereas the same model OOMs on the 5504-transversal
+turn class.
+
+\paragraph{Model validation.} On five trivial-autotopism squares carrying
+4--25 orthogonal mates each, the CP-SAT verdict (all INFEASIBLE) was checked
+against a brute-force enumeration of every decomposition pair with a direct
+$|T_i\cap S_j|=1$ test: 5/5 agreement. A SAT verdict, were one to occur,
+would therefore be a genuine 3-MOLS(10) (and is independently re-verified by
+$\cl=0$ on decode).
+
+\paragraph{Result.} A checkpointed two-tier hunt --- fast filters that
+generate the richest eligible squares (two partial cycle swaps off a
+5504-transversal turn base, the empirical maximum for staying
+trivial-autotopism, $\sim$1400--1850 transversals) and decide them under a
+short cap, with a deep re-attacker resolving the hardest (undecided) ones
+under a 1-hour budget --- has decided
+
+\begin{theorem}[No eligible square decided so far lies in a triple]
+\label{thm:decisions}
+Of \textbf{261} distinct trivial-autotopism (MMM-eligible) order-10 squares
+decided exactly, spanning 752--1848 transversals (median 1672), \textbf{all
+261 are INFEASIBLE}: none admits two mutually orthogonal transversal
+decompositions, hence none lies in any 3-MOLS(10). The concrete obstruction
+recurs throughout: a typical such square has many orthogonal mates (up to 25
+observed) yet no two of them are mutually orthogonal.
+\end{theorem}
+
+This is a qualitatively stronger form of evidence than the $\CT$ ceilings of
+Stages 1--12: rather than bounding a statistic, it is an exhaustive
+\emph{exact decision} on a growing sample of the only squares a counterexample
+could inhabit, each returning ``no triple.'' The search continues; every new
+verdict is either another INFEASIBLE brick or --- the outcome the machinery
+is built to catch --- a SAT that decodes to the first known 3-MOLS(10).
+
+%===========================================================================
 \section{Summary and Discussion}
 \label{sec:discussion}
 %===========================================================================
