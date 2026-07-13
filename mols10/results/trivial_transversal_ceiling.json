@@ -1,0 +1,6 @@
+{
+ "finding": "trivial-autotopism (MMM-eligible) order-10 squares appear capped near 1848 transversals",
+ "evidence": "2-swaps off 5504 turn bases reach max ~1848 while staying trivial; autotopism-gated single-swap climbing from 1804 cannot exceed it; more swaps degrade transversal count",
+ "contrast": "symmetric turn class reaches 5504; the transversal wealth needed for high CT / many orthogonal mates is unavailable to MMM-eligible squares",
+ "consequence": "the fish habitat (transversal-rich trivial squares) is essentially empty above ~1850; all 374+ eligible squares decided (752-1848 transversals) are INFEASIBLE"
+}
