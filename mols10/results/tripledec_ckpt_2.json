@@ -98,5 +98,25 @@
 "status": "INFEASIBLE",
 "n_trans": 1676,
 "elapsed": 161
+},
+"20": {
+"status": "INFEASIBLE",
+"n_trans": 1848,
+"elapsed": 44
+},
+"21": {
+"status": "INFEASIBLE",
+"n_trans": 1792,
+"elapsed": 46
+},
+"22": {
+"status": "INFEASIBLE",
+"n_trans": 1648,
+"elapsed": 121
+},
+"23": {
+"status": "INFEASIBLE",
+"n_trans": 1580,
+"elapsed": 113
 }
 }
