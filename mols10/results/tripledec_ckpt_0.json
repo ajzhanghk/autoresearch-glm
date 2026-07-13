@@ -1503,5 +1503,25 @@
 "status": "INFEASIBLE",
 "n_trans": 1848,
 "elapsed": 99
+},
+"301": {
+"status": "INFEASIBLE",
+"n_trans": 1848,
+"elapsed": 75
+},
+"302": {
+"status": "UNKNOWN",
+"n_trans": 1676,
+"elapsed": 403
+},
+"303": {
+"status": "INFEASIBLE",
+"n_trans": 1664,
+"elapsed": 83
+},
+"304": {
+"status": "INFEASIBLE",
+"n_trans": 1648,
+"elapsed": 267
 }
 }
