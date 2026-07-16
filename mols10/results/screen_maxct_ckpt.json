@@ -222,5 +222,21 @@
 "bound": 2,
 "n_trans": 824,
 "elapsed": 74
+},
+"28": {
+"label": "mdecomp_98_L1",
+"status": "OPTIMAL",
+"maxct": 2,
+"bound": 2,
+"n_trans": 856,
+"elapsed": 62
+},
+"29": {
+"label": "mdecomp_98_L2",
+"status": "OPTIMAL",
+"maxct": 2,
+"bound": 2,
+"n_trans": 824,
+"elapsed": 76
 }
 }
