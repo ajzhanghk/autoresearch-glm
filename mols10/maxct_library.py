@@ -167,7 +167,14 @@ def main():
         try: ckpt = json.loads(CKPT.read_text())
         except Exception: pass
 
-    mine = [k for k in range(len(lib)) if k % N_INST == INSTANCE]
+    reps_file = REPO / "mols10/results/oneswap_reps_pending.json"
+    if reps_file.exists():
+        # isotopy-class dedup: 160 squares collapse to 12 classes
+        # (oneswap_classes.json); prove one representative per class
+        mine = json.loads(reps_file.read_text())
+        log(f"representative mode: {mine}")
+    else:
+        mine = [k for k in range(len(lib)) if k % N_INST == INSTANCE]
     pending = [k for k in mine if str(k) not in ckpt]
     log(f"stripe {len(mine)}, done {len(mine)-len(pending)}, pending {len(pending)}")
 
