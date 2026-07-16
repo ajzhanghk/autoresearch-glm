@@ -1640,6 +1640,79 @@ verdict is either another INFEASIBLE brick or --- the outcome the machinery
 is built to catch --- a SAT that decodes to the first known 3-MOLS(10).
 
 %===========================================================================
+\subsection{Stage 12: The Proven max-$\CT$ Map --- Exact Screening at Scale}
+\label{sec:stage12}
+%===========================================================================
+
+Stage 12 turned the exact max-$\CT$ model into a \emph{screening tool}: on
+squares in the 800--900-transversal league it converges to OPTIMAL in
+55--200\,s, making theorem-level verdicts cheaper than sampling. For a
+square $L$, the proven value $\max_B \CT(L,B)$ over \emph{all} orthogonal
+mates $B$ decides its fate conclusively: below 10, no 3-MOLS(10) contains
+$L$ with \emph{any} partner.
+
+\begin{theorem}[Catalog-wide exclusion]\label{thm:catalogscreen}
+Every one of the 222 distinct squares occurring in the project's 324-pair
+catalog has proven maximum $\CT$ over all orthogonal mates equal to 0
+(2 squares), 1 (52 squares), or 2 (168 squares) --- 100\% OPTIMAL
+convergence. Hence no square ever touched by the Stage 1--7 energy
+cascades belongs to any 3-MOLS(10).
+\end{theorem}
+
+Two corollaries deserve emphasis. First, the observed $\CT \leq 2$ barrier
+of the catalog era was \emph{exactly tight}: the proven per-square maxima
+never exceed the sampled values. Second, the $\E = 23$ record pair
+\texttt{tv\_254} has proven $\max \CT = 2$ for both of its squares
+(103\,s and 99\,s), so the entire energy-minimization program on that
+pair --- indeed on every catalog pair --- could never have reached
+$\E = 0$. Exact screening, had it existed in Stage 1, would have
+redirected the project immediately; this is perhaps the sharpest
+methodological lesson of the whole effort.
+
+\paragraph{The Myrvold open cases.} The literature's only structured
+subspace not closed by symmetry or relation arguments comprises
+Myrvold's eight unresolved $4\times4$-subsquare cases~\cite{myrvold1999,
+bright2025}. Reproducing Bright et al.'s SAT pipeline (kissat on the
+Myrvold-MOLS case encodings), case WW yielded two verified orthogonal
+pairs, with transversal counts 848/784 and 896/784 --- the ordinary
+$\sim$850 league, not the transversal-rich region --- and sample
+$\CT = 0$. All four squares were then screened exactly:
+
+\begin{theorem}[WW-case samples excluded]\label{thm:ww}
+All four squares of the two verified case-WW pairs have proven
+$\max \CT = 0$: no orthogonal mate of any of them shares even one
+common transversal with it.
+\end{theorem}
+
+The remaining seven cases are being solved by the same pipeline, with
+each solved case's squares screened within minutes of solution.
+
+\paragraph{The proven landscape.} Combining Stages 9--12, every family
+the project can construct now carries a proven verdict:
+
+\begin{table}[h]
+\centering
+\caption{Proven max-$\CT$ landscape (all verdicts CP-SAT OPTIMAL).}
+\label{tab:provenmap}
+\begin{tabular}{lccl}
+\toprule
+Family & Transversals & Proven $\max \CT$ & Fate\\
+\midrule
+Catalog (222 squares) & 804--880 & $\leq 2$ & excluded (Thm.~\ref{thm:catalogscreen})\\
+WW-case samples (4) & 784--896 & 0 & excluded (Thm.~\ref{thm:ww})\\
+One-swap near-turn (12 classes) & 2112 & 3 & excluded (family theorem)\\
+Turn class & 5504 & $\geq 6$ (unproven above) & excluded by symmetry~\cite{mmm2007}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The one gap in the proven map is the turn class itself: its max-$\CT$ is
+known only to lie in $[6, 5504]$ (the exact model times out at the
+5504-variable scale). Closing that gap --- deciding whether even the
+transversal-richest order-10 squares can numerically host $\CT \geq 10$
+--- is the sharpest remaining question the current machinery can attack.
+
+%===========================================================================
 \section{Summary and Discussion}
 \label{sec:discussion}
 %===========================================================================
