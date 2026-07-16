@@ -1,7 +1,7 @@
-UX 2 1
-VX 2 1
-SX 2 1
-UU 1 1
-UW 1 1
-WX 1 1
-XX 1 1
+UX 0 0
+VX 0 0
+SX 0 0
+UU 0 0
+UW 0 0
+WX 0 0
+XX 0 0
