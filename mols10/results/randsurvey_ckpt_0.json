@@ -839,6 +839,34 @@
 "bound": 0,
 "n_trans": 872,
 "elapsed": 28
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 852,
+"elapsed": 23
+},
+{
+"status": "NO_MATE",
+"maxct": 0,
+"bound": 0,
+"n_trans": 832,
+"elapsed": 28
+},
+{
+"status": "NO_MATE",
+"maxct": 0,
+"bound": 0,
+"n_trans": 872,
+"elapsed": 30
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 792,
+"elapsed": 17
 }
 ]
 }
