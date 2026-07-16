@@ -90,6 +90,20 @@
 "bound": 0,
 "n_trans": 828,
 "elapsed": 43
+},
+{
+"status": "OPTIMAL",
+"maxct": 1,
+"bound": 1,
+"n_trans": 872,
+"elapsed": 60
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 804,
+"elapsed": 37
 }
 ]
 }
