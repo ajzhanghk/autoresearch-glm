@@ -1758,5 +1758,21 @@
 "bound": 2,
 "n_trans": 824,
 "elapsed": 55
+},
+"220": {
+"label": "mate_tv254_L3Lprime_L1",
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 856,
+"elapsed": 68
+},
+"221": {
+"label": "mate_tv254_L3Lprime_L2",
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 800,
+"elapsed": 55
 }
 }
