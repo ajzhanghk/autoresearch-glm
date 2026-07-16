@@ -878,5 +878,29 @@
 "bound": 2,
 "n_trans": 824,
 "elapsed": 69
+},
+"110": {
+"label": "mdecomp_273_L1",
+"status": "OPTIMAL",
+"maxct": 2,
+"bound": 2,
+"n_trans": 856,
+"elapsed": 74
+},
+"111": {
+"label": "mdecomp_273_L2",
+"status": "OPTIMAL",
+"maxct": 2,
+"bound": 2,
+"n_trans": 824,
+"elapsed": 74
+},
+"112": {
+"label": "mdecomp_274_L1",
+"status": "OPTIMAL",
+"maxct": 2,
+"bound": 2,
+"n_trans": 856,
+"elapsed": 65
 }
 }
