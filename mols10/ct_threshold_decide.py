@@ -144,6 +144,9 @@ def main():
     solver = cp_model.CpSolver()
     solver.parameters.max_time_in_seconds = TIMEOUT
     solver.parameters.num_workers = 4
+    # Las Vegas restarts: the environment kills long runs, so each relaunch
+    # must explore a different search trajectory
+    solver.parameters.random_seed = int(time.time()) % 99991
     t0 = time.time()
     st = solver.solve(model)
     el = time.time() - t0

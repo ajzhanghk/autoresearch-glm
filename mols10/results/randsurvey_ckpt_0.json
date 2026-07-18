@@ -2337,6 +2337,20 @@
 "bound": 0,
 "n_trans": 828,
 "elapsed": 54
+},
+{
+"status": "NO_MATE",
+"maxct": 0,
+"bound": 0,
+"n_trans": 804,
+"elapsed": 44
+},
+{
+"status": "NO_MATE",
+"maxct": 0,
+"bound": 0,
+"n_trans": 792,
+"elapsed": 51
 }
 ]
 }
