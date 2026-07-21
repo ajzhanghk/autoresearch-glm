@@ -4542,6 +4542,20 @@
 "bound": 2,
 "n_trans": 864,
 "elapsed": 63
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 864,
+"elapsed": 79
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 812,
+"elapsed": 56
 }
 ]
 }
