@@ -3982,6 +3982,55 @@
 "bound": 1,
 "n_trans": 848,
 "elapsed": 62
+},
+{
+"status": "OPTIMAL",
+"maxct": 1,
+"bound": 1,
+"n_trans": 852,
+"elapsed": 51
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 760,
+"elapsed": 29
+},
+{
+"status": "OPTIMAL",
+"maxct": 1,
+"bound": 1,
+"n_trans": 892,
+"elapsed": 56
+},
+{
+"status": "NO_MATE",
+"maxct": 0,
+"bound": 0,
+"n_trans": 844,
+"elapsed": 46
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 796,
+"elapsed": 44
+},
+{
+"status": "NO_MATE",
+"maxct": 0,
+"bound": 0,
+"n_trans": 812,
+"elapsed": 46
+},
+{
+"status": "NO_MATE",
+"maxct": 0,
+"bound": 0,
+"n_trans": 820,
+"elapsed": 44
 }
 ]
 }
