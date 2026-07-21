@@ -6208,6 +6208,34 @@
 "bound": 0,
 "n_trans": 844,
 "elapsed": 54
+},
+{
+"status": "NO_MATE",
+"maxct": 0,
+"bound": 0,
+"n_trans": 792,
+"elapsed": 49
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 872,
+"elapsed": 65
+},
+{
+"status": "NO_MATE",
+"maxct": 0,
+"bound": 0,
+"n_trans": 740,
+"elapsed": 40
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 780,
+"elapsed": 41
 }
 ]
 }
