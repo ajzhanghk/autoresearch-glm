@@ -7181,6 +7181,13 @@
 "bound": 0,
 "n_trans": 804,
 "elapsed": 58
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 832,
+"elapsed": 55
 }
 ]
 }
