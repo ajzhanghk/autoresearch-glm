@@ -6845,6 +6845,27 @@
 "bound": 0,
 "n_trans": 796,
 "elapsed": 76
+},
+{
+"status": "NO_MATE",
+"maxct": 0,
+"bound": 0,
+"n_trans": 808,
+"elapsed": 75
+},
+{
+"status": "OPTIMAL",
+"maxct": 1,
+"bound": 1,
+"n_trans": 816,
+"elapsed": 72
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 872,
+"elapsed": 84
 }
 ]
 }
