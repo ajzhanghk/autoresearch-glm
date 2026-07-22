@@ -7720,6 +7720,34 @@
 "bound": 0,
 "n_trans": 784,
 "elapsed": 74
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 840,
+"elapsed": 107
+},
+{
+"status": "NO_MATE",
+"maxct": 0,
+"bound": 0,
+"n_trans": 772,
+"elapsed": 77
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 868,
+"elapsed": 103
+},
+{
+"status": "NO_MATE",
+"maxct": 0,
+"bound": 0,
+"n_trans": 796,
+"elapsed": 73
 }
 ]
 }
