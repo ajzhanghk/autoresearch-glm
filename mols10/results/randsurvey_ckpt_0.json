@@ -9323,6 +9323,20 @@
 "bound": 0,
 "n_trans": 820,
 "elapsed": 99
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 808,
+"elapsed": 100
+},
+{
+"status": "OPTIMAL",
+"maxct": 1,
+"bound": 1,
+"n_trans": 820,
+"elapsed": 101
 }
 ]
 }
