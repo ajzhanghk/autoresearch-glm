@@ -10478,6 +10478,41 @@
 "bound": 0,
 "n_trans": 840,
 "elapsed": 68
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 816,
+"elapsed": 63
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 828,
+"elapsed": 62
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 896,
+"elapsed": 75
+},
+{
+"status": "OPTIMAL",
+"maxct": 1,
+"bound": 1,
+"n_trans": 880,
+"elapsed": 77
+},
+{
+"status": "NO_MATE",
+"maxct": 0,
+"bound": 0,
+"n_trans": 812,
+"elapsed": 52
 }
 ]
 }
