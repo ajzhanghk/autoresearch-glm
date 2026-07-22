@@ -9113,6 +9113,27 @@
 "bound": 0,
 "n_trans": 824,
 "elapsed": 90
+},
+{
+"status": "NO_MATE",
+"maxct": 0,
+"bound": 0,
+"n_trans": 792,
+"elapsed": 85
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 856,
+"elapsed": 114
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 856,
+"elapsed": 101
 }
 ]
 }
