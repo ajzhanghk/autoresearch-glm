@@ -8273,6 +8273,27 @@
 "bound": 0,
 "n_trans": 836,
 "elapsed": 113
+},
+{
+"status": "NO_MATE",
+"maxct": 0,
+"bound": 0,
+"n_trans": 848,
+"elapsed": 98
+},
+{
+"status": "NO_MATE",
+"maxct": 0,
+"bound": 0,
+"n_trans": 808,
+"elapsed": 90
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 848,
+"elapsed": 137
 }
 ]
 }
