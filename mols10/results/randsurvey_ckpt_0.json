@@ -10058,6 +10058,20 @@
 "bound": 0,
 "n_trans": 820,
 "elapsed": 47
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 824,
+"elapsed": 73
+},
+{
+"status": "OPTIMAL",
+"maxct": 0,
+"bound": 0,
+"n_trans": 812,
+"elapsed": 38
 }
 ]
 }
