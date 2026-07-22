@@ -10989,6 +10989,20 @@
 "bound": 0,
 "n_trans": 836,
 "elapsed": 56
+},
+{
+"status": "NO_MATE",
+"maxct": 0,
+"bound": 0,
+"n_trans": 804,
+"elapsed": 55
+},
+{
+"status": "NO_MATE",
+"maxct": 0,
+"bound": 0,
+"n_trans": 832,
+"elapsed": 65
 }
 ]
 }
