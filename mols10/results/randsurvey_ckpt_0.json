@@ -7853,6 +7853,13 @@
 "bound": 0,
 "n_trans": 852,
 "elapsed": 118
+},
+{
+"status": "NO_MATE",
+"maxct": 0,
+"bound": 0,
+"n_trans": 760,
+"elapsed": 46
 }
 ]
 }
