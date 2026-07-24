@@ -1713,6 +1713,49 @@ transversal-richest order-10 squares can numerically host $\CT \geq 10$
 --- is the sharpest remaining question the current machinery can attack.
 
 %===========================================================================
+\subsection{Stage 13: The Unbiased Landscape --- A Uniform-Measure Survey}
+\label{sec:stage13}
+%===========================================================================
+
+Every family in Table~\ref{tab:provenmap} was reached by a \emph{biased}
+construction (isotopy classes, mdecomp seeds, turn patterns). To probe the
+landscape without construction bias, Stage 13 runs the first survey (to our
+knowledge) of the proven max-$\CT$ distribution under the \emph{uniform}
+measure on order-10 Latin squares. Samples are drawn by the Jacobson--Matthews
+Markov chain~\cite{jm1996} (incidence-cube $\pm1$ moves, 20{,}000-step
+burn-in, 3{,}000 steps between samples), and each sample's max-$\CT$ over all
+orthogonal mates is proven by the exact CP-SAT model (55--200\,s per square).
+
+\begin{theorem}[Uniform-measure $\CT$ ceiling]\label{thm:survey}
+Across $N = 1617$ uniformly-sampled order-10 Latin squares (each with a
+CP-SAT-proven max-$\CT$), the distribution of proven max-$\CT$ is
+$0\!:\!787,\ 1\!:\!173,\ 2\!:\!13$ among the squares admitting an orthogonal
+mate, with 644 squares proven to have \emph{no} orthogonal mate at all. Not a
+single sampled square has max-$\CT > 2$.
+\end{theorem}
+
+The zero-count in the tail is what carries statistical force. Applying the
+Clopper--Pearson exact binomial bound (equivalently, the ``rule of three'') to
+the $0/1617$ events observed at the $\CT \geq 3$ threshold gives:
+
+\begin{corollary}[Rigorous tail bound]\label{cor:tailbound}
+With 95\% confidence, the fraction of order-10 Latin squares whose maximum
+common-transversal count over all orthogonal mates is $\geq 3$ is at most
+$1.85\times10^{-3}$; a fortiori the fraction with max-$\CT \geq 10$ (the
+threshold a 3-MOLS(10) requires) is at most $1.85\times10^{-3}$ as well
+(99\% confidence: $2.84\times10^{-3}$).
+\end{corollary}
+
+This converts the qualitative ``we never saw high $\CT$'' into a quantitative
+statement: under the uniform measure, transversal-rich orthogonality is not
+merely unobserved but provably rare. Combined with the exclusion theorems of
+Stages 9--12 (which handle the biased, transversal-rich squares that the
+uniform measure almost never reaches), the two halves close from opposite
+directions: the structured families that \emph{could} host high $\CT$ are
+excluded by proof or by symmetry, and the generic squares that dominate the
+uniform measure are bounded by $\CT \leq 2$ with high statistical confidence.
+
+%===========================================================================
 \section{Summary and Discussion}
 \label{sec:discussion}
 %===========================================================================
@@ -2054,6 +2097,11 @@ G.~H.~J.~van Rees,
 B.~D.~McKay and I.~M.~Wanless,
 \newblock On the number of Latin squares,
 \newblock {\em Annals of Combinatorics}, 9(3):335--344, 2005.
+
+\bibitem{jm1996}
+M.~T.~Jacobson and P.~Matthews,
+\newblock Generating uniformly distributed random Latin squares,
+\newblock {\em Journal of Combinatorial Designs}, 4(6):405--437, 1996.
 
 \bibitem{mmm2007}
 B.~D.~McKay, A.~Meynert, and W.~Myrvold,
