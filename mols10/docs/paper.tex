@@ -1701,59 +1701,97 @@ Family & Transversals & Proven $\max \CT$ & Fate\\
 Catalog (222 squares) & 804--880 & $\leq 2$ & excluded (Thm.~\ref{thm:catalogscreen})\\
 WW-case samples (4) & 784--896 & 0 & excluded (Thm.~\ref{thm:ww})\\
 One-swap near-turn (12 classes) & 2112 & 3 & excluded (family theorem)\\
-Turn class & 5504 & $\geq 6$ (unproven above) & excluded by symmetry~\cite{mmm2007}\\
+Turn class & 5504 & $\in[7,5504]$ (record $\CT{=}7$ certified) & excluded by symmetry~\cite{mmm2007}\\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The one gap in the proven map is the turn class itself: its max-$\CT$ is
-known only to lie in $[6, 5504]$ (the exact model times out at the
-5504-variable scale). Closing that gap --- deciding whether even the
-transversal-richest order-10 squares can numerically host $\CT \geq 10$
---- is the sharpest remaining question the current machinery can attack.
+The one gap in the proven map is the turn class itself: an exact
+sigma-symmetry-broken threshold model certifies a mate with $\CT = 7$
+(matching the literature record on a different family), and the exact
+maximum is known only to lie in $[7, 5504]$ (the model times out at the
+5504-variable scale for the $\geq 8$ decision). Closing that gap ---
+deciding whether even the transversal-richest order-10 squares can
+numerically host $\CT \geq 10$ --- is the sharpest remaining question the
+current machinery can attack.
 
 %===========================================================================
-\subsection{Stage 13: The Unbiased Landscape --- A Uniform-Measure Survey}
-\label{sec:stage13}
+\subsection{Stage 14: Statistical and Coding-Theory Frontiers}
+\label{sec:stage14}
 %===========================================================================
 
+Two final, methodologically distinct frontiers close the investigation
+from directions the exact per-square screening cannot reach: an unbiased
+statistical census of the generic landscape, and the coding-theory
+(linear-programming / semidefinite) obstruction hierarchy.
+
+\paragraph{The unbiased landscape.}
 Every family in Table~\ref{tab:provenmap} was reached by a \emph{biased}
-construction (isotopy classes, mdecomp seeds, turn patterns). To probe the
-landscape without construction bias, Stage 13 runs the first survey (to our
-knowledge) of the proven max-$\CT$ distribution under the \emph{uniform}
-measure on order-10 Latin squares. Samples are drawn by the Jacobson--Matthews
-Markov chain~\cite{jm1996} (incidence-cube $\pm1$ moves, 20{,}000-step
-burn-in, 3{,}000 steps between samples), and each sample's max-$\CT$ over all
-orthogonal mates is proven by the exact CP-SAT model (55--200\,s per square).
+construction. To probe the landscape without construction bias, we ran the
+first (to our knowledge) survey of the proven max-$\CT$ distribution under
+the \emph{uniform} measure on order-10 Latin squares, sampling by the
+Jacobson--Matthews Markov chain~\cite{jm1996} (incidence-cube $\pm1$ moves,
+20{,}000-step burn-in, 3{,}000 steps between samples) and proving each
+sample's max-$\CT$ with the exact CP-SAT model.
 
 \begin{theorem}[Uniform-measure $\CT$ ceiling]\label{thm:survey}
-Across $N = 1617$ uniformly-sampled order-10 Latin squares (each with a
-CP-SAT-proven max-$\CT$), the distribution of proven max-$\CT$ is
-$0\!:\!787,\ 1\!:\!173,\ 2\!:\!13$ among the squares admitting an orthogonal
-mate, with 644 squares proven to have \emph{no} orthogonal mate at all. Not a
-single sampled square has max-$\CT > 2$.
+Across $N = 1647$ uniformly-sampled order-10 Latin squares, each with a
+CP-SAT-proven max-$\CT$ over all orthogonal mates, the distribution of
+proven max-$\CT$ is $0\!:\!801,\ 1\!:\!179,\ 2\!:\!13$ among the
+mate-admitting squares, with the remainder proven to have no orthogonal
+mate at all. \emph{No sampled square has max-$\CT > 2$.}
 \end{theorem}
 
-The zero-count in the tail is what carries statistical force. Applying the
-Clopper--Pearson exact binomial bound (equivalently, the ``rule of three'') to
-the $0/1617$ events observed at the $\CT \geq 3$ threshold gives:
-
 \begin{corollary}[Rigorous tail bound]\label{cor:tailbound}
-With 95\% confidence, the fraction of order-10 Latin squares whose maximum
-common-transversal count over all orthogonal mates is $\geq 3$ is at most
-$1.85\times10^{-3}$; a fortiori the fraction with max-$\CT \geq 10$ (the
-threshold a 3-MOLS(10) requires) is at most $1.85\times10^{-3}$ as well
-(99\% confidence: $2.84\times10^{-3}$).
+By the Clopper--Pearson exact bound (``rule of three'') applied to the
+$0/1647$ events at the $\CT \geq 3$ threshold, with 95\% confidence the
+fraction of order-10 Latin squares whose maximum common-transversal count
+over all orthogonal mates is $\geq 3$ is at most $1.82\times10^{-3}$; a
+fortiori the fraction with max-$\CT \geq 10$ (the threshold a 3-MOLS(10)
+requires) is at most $1.82\times10^{-3}$ (99\% confidence:
+$2.79\times10^{-3}$).
 \end{corollary}
 
-This converts the qualitative ``we never saw high $\CT$'' into a quantitative
-statement: under the uniform measure, transversal-rich orthogonality is not
-merely unobserved but provably rare. Combined with the exclusion theorems of
-Stages 9--12 (which handle the biased, transversal-rich squares that the
-uniform measure almost never reaches), the two halves close from opposite
-directions: the structured families that \emph{could} host high $\CT$ are
-excluded by proof or by symmetry, and the generic squares that dominate the
-uniform measure are bounded by $\CT \leq 2$ with high statistical confidence.
+This converts ``high $\CT$ never observed'' into ``provably rare under the
+uniform measure.'' Together with Stages 9--12 it closes the landscape from
+both ends: the structured, transversal-rich families that \emph{could} host
+high $\CT$ are excluded by proof or by symmetry, while the generic squares
+that dominate the uniform measure are statistically bounded by $\CT\leq2$.
+
+\paragraph{The coding-theory obstruction hierarchy.}
+A 3-MOLS(10) is equivalent to an orthogonal array $\mathrm{OA}(100,5,10,2)$
+of index~1: a length-5 code of 100 words over a 10-letter alphabet in which
+distinct words agree in at most one coordinate, so pairwise Hamming
+distances are locked into $\{4,5\}$. This exposes the problem to the
+Delsarte linear-programming and Schrijver semidefinite obstruction machinery.
+
+\begin{proposition}[LP/counting bounds are blind here]\label{prop:coding}
+{\normalfont(i)} The two-point Delsarte LP is feasible for
+$\mathrm{OA}(100,5,10,2)$; its forced inner distribution is
+$a_4=45,\ a_5=54$ with all MacWilliams dual coefficients nonnegative. The
+\emph{same} LP is feasible for $\mathrm{OA}(36,4,6,2)$ (which is
+$2$-MOLS(6) = Euler's officers, \emph{proven nonexistent}): the two-point
+bound cannot even separate a known-nonexistent instance from the open one.
+{\normalfont(ii)} A three-point counting relaxation using only provably
+necessary constraints --- including the exact two-coordinate joint
+three-point counts forced by index-1 orthogonality (e.g.\ ``all-equal at
+one coordinate $\Rightarrow$ all-distinct at any other'') --- is likewise
+feasible for both $\mathrm{OA}(36,4,6,2)$ and $\mathrm{OA}(100,5,10,2)$.
+\end{proposition}
+
+The relaxation of Proposition~\ref{prop:coding}(ii) is designed so that
+every constraint is a necessary condition of a genuine array; hence an
+infeasible verdict would be a rigorous nonexistence proof, and no
+false-positive is possible. That it remains feasible even for Euler's
+officers pinpoints the ceiling of the exact-counting approach: the class of
+exactly-forced necessary counts terminates at two coordinates (two
+index-1 partitions are forced into the unique $n\times n$ grid, whereas
+three partitions form a Latin square whose triple-counts are
+structure-dependent and therefore not an exact necessary value). The
+counting hierarchy is thus provably exhausted at a level too weak to
+obstruct even the 36 officers, a fortiori too weak for 3-MOLS(10). This is
+a precise, if negative, explanation of why polynomial LP/SDP relaxations do
+not resolve $N(10)$.
 
 %===========================================================================
 \section{Summary and Discussion}
@@ -1990,21 +2028,47 @@ strategic adaptation.
 
 \subsection{Conclusion}
 
-We have presented the most thorough computational investigation of the $N(10)$ problem to
-date, enabled by an autonomous AI agentic research framework operating over 31+ sessions.
-The energy $\E = \cl_{13} + \cl_{23}$ was driven from the SA floor of 37 to an all-time
-record of 26, passing through the levels 34, 33, 32, 31, 30, 29 along the way.
+We have presented the most thorough computational investigation of the $N(10)$
+problem to date, enabled by an autonomous AI agentic research framework, and the
+investigation passed through four qualitatively distinct phases as its own results
+redirected it.
 
-The record $\E=26$ is a strict local minimum with a unique attractor basin, BFS-verified
-to depth 6 across 77,507 unique intercalate-reachable states (all with $\E \geq 26$).
-Three independent MOLS-10 pairs from structurally distinct $L_1$ families all stall at
-$\E=28$, and BFS analysis of mdecomp\_113 ($\E=28$) also yields a strict 2-deep local
-minimum. Every one of the 514+ pairs in our catalog satisfies the CT barrier ($\CT \leq 2$),
-with machine-verifiable Glucose3 proofs for all 323 of the original pairs.
+\emph{Energy minimization} (Stages 1--7) drove the pair-completion energy
+$\E = \cl_{13} + \cl_{23}$ from the SA floor of 37 to an all-time record of 23 (pair
+\texttt{tv\_254}, via aggressive parallel tempering), a strict 4-deep intercalate
+local minimum; three independent families stall at a common $\E=28$ platform.
+\emph{Structural reformulation} (Stages 8--9) recast a 3-MOLS(10) as a single square
+admitting two mutually orthogonal transversal decompositions, which pointed the search
+at transversal-rich squares and, via the turn-square family (5504 transversals, the
+order-10 maximum), \emph{refuted the strong CT-barrier conjecture}: a verified
+orthogonal pair with $\CT = 6$ (later pushed to a certified $\CT = 7$), where the entire
+prior catalog had been capped at $\CT \leq 2$.
 
-Collectively, these findings provide the strongest computational evidence yet that
-$N(10) = 2$. A mathematical proof of the CT barrier conjecture would settle the
-problem definitively.
+\emph{Exact adjudication} (Stages 10--12) then turned the max-$\CT$ CP-SAT model into a
+theorem factory. Integrating the literature --- McKay--Meynert--Myrvold's exclusion of
+every non-trivial-symmetry square~\cite{mmm2007} --- showed the transversal-rich turn
+class, precisely because of its symmetry, cannot lie in any triple; and exact screening
+proved a max-$\CT$ ceiling for every constructible family: $\leq 2$ across all 222
+distinct catalog squares (including both squares of the $\E=23$ record pair), $=3$ for
+all twelve isotopy classes of one-swap near-turn squares, and $=0$ for the Myrvold
+open-case samples we solved. \emph{Statistical and coding-theory closure} (Stages
+13--14) attacked the two remaining directions: an unbiased Jacobson--Matthews survey of
+1647 uniformly random squares, each with a CP-SAT-proven max-$\CT$, found none exceeding
+2, yielding a rigorous 95\% tail bound of $1.82\times10^{-3}$ on the fraction of squares
+with max-$\CT \geq 3$; and the coding-theory obstruction hierarchy was shown, by a
+false-positive-proof relaxation, to be too weak to obstruct even Euler's nonexistent 36
+officers, let alone 3-MOLS(10) --- a precise account of why polynomial LP/SDP bounds do
+not resolve the question.
+
+The strong CT-barrier ($\CT \leq 2$) is thus \emph{false}, but every avenue by which a
+high-$\CT$ square might extend to a triple has been closed by an exclusion theorem, a
+symmetry argument, or a high-confidence statistical bound. Collectively these findings
+constitute the strongest computational evidence to date that $N(10) = 2$, while leaving
+the weak CT-barrier ($\CT < 10$ for all pairs) --- the exact statement that would settle
+the sixty-year-old question --- formally open. A proof of the weak barrier, or a single
+counterexample, remains the decisive step; our proven max-$\CT$ map and its one open
+entry (the exact maximum of the turn class, known to lie in $[7,5504]$) mark the sharpest
+point at which the current machinery meets it.
 
 %===========================================================================
 \begin{thebibliography}{99}
@@ -2098,15 +2162,15 @@ B.~D.~McKay and I.~M.~Wanless,
 \newblock On the number of Latin squares,
 \newblock {\em Annals of Combinatorics}, 9(3):335--344, 2005.
 
-\bibitem{jm1996}
-M.~T.~Jacobson and P.~Matthews,
-\newblock Generating uniformly distributed random Latin squares,
-\newblock {\em Journal of Combinatorial Designs}, 4(6):405--437, 1996.
-
 \bibitem{mmm2007}
 B.~D.~McKay, A.~Meynert, and W.~Myrvold,
 \newblock Small Latin squares, quasigroups, and loops,
 \newblock {\em Journal of Combinatorial Designs}, 15(2):98--119, 2007.
+
+\bibitem{jm1996}
+M.~T.~Jacobson and P.~Matthews,
+\newblock Generating uniformly distributed random Latin squares,
+\newblock {\em Journal of Combinatorial Designs}, 4(6):405--437, 1996.
 
 \bibitem{myrvold1999}
 W.~Myrvold,
